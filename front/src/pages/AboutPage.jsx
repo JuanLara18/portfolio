@@ -26,7 +26,7 @@ import {
   Box
 } from 'lucide-react';
 import { HoverMotion } from '../components/layout';
-import { ScrollIndicator } from '../components/ui';
+import { ScrollIndicator, OptimizedImage } from '../components/ui';
 
 // Animation variants
 const fadeInUp = motionVariants.fadeInUp();
@@ -136,11 +136,10 @@ const ExperienceCard = ({
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-center mb-4 gap-4">
           <div className="w-24 h-24 md:w-24 md:h-24 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md">
-            <img 
-              src={`${process.env.PUBLIC_URL}/images/company-logos/${logo}`} 
+            <OptimizedImage 
+              src={`/images/company-logos/${logo}`} 
               alt={`${company} company logo`}
-              loading="lazy"
-              className="w-full h-full object-contain"
+              className="object-contain"
             />
           </div>
           
@@ -212,11 +211,10 @@ const EducationCard = ({
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-center mb-6 gap-4">
           <div className="w-24 h-24 md:w-24 md:h-24 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md">
-            <img 
-              src={`${process.env.PUBLIC_URL}/images/institutions/${logo}`} 
+            <OptimizedImage 
+              src={`/images/institutions/${logo}`} 
               alt={`${institution} institutional logo`}
-              loading="lazy"
-              className="w-full h-full object-contain"
+              className="object-contain"
             />
           </div>
           
@@ -291,11 +289,10 @@ const CourseCard = ({
       <div className="relative z-10">
         <div className="flex items-start gap-3 mb-3">
           <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1 shadow-sm">
-            <img 
-              src={`${process.env.PUBLIC_URL}/images/institutions/${logo}`} 
+            <OptimizedImage 
+              src={`/images/institutions/${logo}`} 
               alt={`${provider} training provider logo`}
-              loading="lazy"
-              className="w-full h-full object-contain"
+              className="object-contain"
             />
           </div>
           
@@ -747,11 +744,10 @@ const courses = [
                   {/* Profile image - responsive sizing */}
                   <div className="relative w-36 h-36 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 mx-auto mb-4 sm:mb-6">
                     <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-800 border-2 sm:border-4 border-white dark:border-gray-600 shadow-xl">
-                      <img 
-                        src={`${process.env.PUBLIC_URL}/images/Profile.jpeg`} 
-                        alt="Juan Lara - Computer Scientist and Mathematician" 
-                        loading="lazy"
-                        className="w-full h-full object-cover"
+                      <OptimizedImage 
+                        src="/images/Profile.jpeg" 
+                        alt="Juan Lara - Computer Scientist and Mathematician"
+                        eager={true}
                       />
                       {/* Subtle professional overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/5 via-transparent to-transparent dark:from-blue-900/10"></div>

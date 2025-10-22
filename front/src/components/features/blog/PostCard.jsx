@@ -3,6 +3,7 @@ import { Calendar, Clock, Tag, ArrowRight, Brain, FileText } from 'lucide-react'
 import { BLOG_CONFIG, formatDate } from '../../../utils/blogUtils';
 import { variants as motionVariants } from '../../../utils';
 import { MotionCard } from '../../common';
+import { OptimizedImage } from '../../ui/OptimizedImage';
 
 const fadeInUp = motionVariants.fadeInUp();
 
@@ -31,19 +32,11 @@ export const PostCard = ({ post }) => {
     >
       {/* Header Image */}
       <div className="relative overflow-hidden aspect-[16/9]">
-        <img 
-          src={headerImage}
+        <OptimizedImage 
+          src={post.headerImage || `/blog/headers/default-${post.category}.jpg`}
           alt={post.title}
-          className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-          onError={(e) => {
-            const fallbackByCat = withPublicUrl(`/blog/headers/default-${post.category}.jpg`);
-            const fallback = withPublicUrl('/blog/headers/default.jpg');
-            if (e.target.src !== fallbackByCat) {
-              e.target.src = fallbackByCat;
-            } else if (e.target.src !== fallback) {
-              e.target.src = fallback;
-            }
-          }}
+          fallback={`/blog/headers/default.jpg`}
+          className="transform transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
         

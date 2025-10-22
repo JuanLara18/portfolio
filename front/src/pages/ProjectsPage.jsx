@@ -23,7 +23,7 @@ import {
   Terminal,
   Mail
 } from 'lucide-react';
-import { ScrollIndicator } from '../components/ui';
+import { ScrollIndicator, OptimizedImage } from '../components/ui';
 
 // Animation variants (centralized)
 const fadeInUp = motionVariants.fadeInUp();
@@ -291,11 +291,10 @@ const ProjectCard = ({ project, inView }) => {
       <div className="relative overflow-hidden aspect-[4/3]">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 z-10"></div>
         {project.image ? (
-          <img 
-            src={`${process.env.PUBLIC_URL}/images/project-previews/${project.image}`} 
-            alt={project.name} 
-            loading="lazy"
-            className="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105"
+          <OptimizedImage 
+            src={`/images/project-previews/${project.image}`} 
+            alt={project.name}
+            className="transform transition-transform duration-700 hover:scale-105"
           />
         ) : (
           <div className={`w-full h-full flex items-center justify-center bg-${getCategoryColor(project.category)}-100 dark:bg-${getCategoryColor(project.category)}-900/30`}>
