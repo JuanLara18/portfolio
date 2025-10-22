@@ -42,6 +42,7 @@
     "autoprefixer": "^10.4.16",
     "gh-pages": "^6.3.0",
     "postcss": "^8.4.31",
+    "sharp": "^0.34.4",
     "tailwindcss": "^3.3.0"
   },
   "scripts": {
@@ -52,7 +53,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "prebuild": "npm run build-blog-data",
-    "build-blog-data": "node scripts/build-blog-data.js"
+    "build-blog-data": "node scripts/build-blog-data.js",
+    "preview-images": "node scripts/preview-optimization.js",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "browserslist": {
     "production": [
