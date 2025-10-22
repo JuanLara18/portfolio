@@ -3,6 +3,7 @@ title: "Tetris Is NP-Complete: The Hardest Problem Hiding in Plain Sight"
 date: 2025-08-23
 excerpt: "That seemingly simple game on your phone? It harbors one of computer science's most notorious complexity classes. Discover how Tetris became a lens for understanding computational hardness—and why some problems resist even our most powerful computers."
 tags: [Tetris, ComplexityTheory, NPCompleteness, Algorithms, Games]
+headerImage: "/blog/headers/tetris-header.jpg"
 readingTimeMinutes: 24
 slug: tetris-is-np-complete-hard-math-in-a-classic-game
 estimatedWordCount: 4800

@@ -28,6 +28,7 @@
         "Algorithms",
         "Games"
       ],
+      "headerImage": "/blog/headers/tetris-header.jpg",
       "readingTimeMinutes": 24,
       "slug": "tetris-np-complete",
       "estimatedWordCount": 4800,
@@ -69,6 +70,6 @@
       "readingTime": 11
     }
   ],
-  "lastUpdated": "2025-10-22T21:50:47.465Z",
+  "lastUpdated": "2025-10-22T22:06:28.800Z",
   "totalPosts": 4
 }
