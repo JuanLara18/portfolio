@@ -316,8 +316,8 @@ export default function BlogPostPage() {
         
         {/* Content Overlay */}
         <div className="relative z-10 h-full flex items-end">
-          <div className="container mx-auto px-6 pb-16">
-            <motion.div 
+          <div className="container mx-auto px-3 md:px-6 pb-12 md:pb-16">
+            <motion.div
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
@@ -393,18 +393,18 @@ export default function BlogPostPage() {
       </motion.section>
       
       {/* Post Content */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
+      <section className="py-8 md:py-16">
+        <div className="container mx-auto px-3 md:px-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12">
               {/* Main Content */}
-              <motion.article 
+              <motion.article
                 initial="hidden"
                 animate="visible"
                 variants={slideInLeft}
                 className="lg:w-3/4"
               >
-                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12 border border-gray-100 dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-8 lg:p-12 border border-gray-100 dark:border-gray-700">
                   {post.excerpt && (
                     <div className="mb-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
                       <p className="text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">

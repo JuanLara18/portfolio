@@ -256,8 +256,8 @@ export default function BlogCategoryPage() {
         <div className="absolute top-40 right-20 w-72 h-72 rounded-full bg-blue-100/50 dark:bg-blue-900/20 blur-3xl -z-10"></div>
         <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-indigo-100/30 dark:bg-indigo-900/10 blur-3xl -z-10"></div>
         
-        <div className="container mx-auto px-6">
-          <motion.div 
+        <div className="container mx-auto px-3 md:px-6">
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
@@ -313,9 +313,9 @@ export default function BlogCategoryPage() {
       </motion.section>
       
       {/* Posts Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <motion.div 
+      <section className="py-8 md:py-16">
+        <div className="container mx-auto px-3 md:px-6">
+          <motion.div
             initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
