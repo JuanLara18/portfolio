@@ -14,15 +14,9 @@ const fadeInUp = motionVariants.fadeInUp();
 export const PostCard = ({ post }) => {
   const categoryConfig = BLOG_CONFIG.categories[post.category];
   
-  const withPublicUrl = (p) => {
-    if (!p) return '';
-    const base = process.env.PUBLIC_URL || '';
-    if (p.startsWith('http')) return p;
-    if (p.startsWith('/')) return `${base}${p}`;
-    return `${base}/${p}`;
-  };
-  
-  const headerImage = withPublicUrl(post.headerImage || `/blog/headers/default-${post.category}.jpg`);
+  // Get the header image path, ensuring it uses the correct path
+  const headerImagePath = post.headerImage || `/blog/headers/default-${post.category}.jpg`;
+  const fallbackPath = `/blog/headers/default.jpg`;
   
   return (
     <MotionCard 
@@ -33,9 +27,9 @@ export const PostCard = ({ post }) => {
       {/* Header Image */}
       <div className="relative overflow-hidden aspect-[16/9]">
         <OptimizedImage 
-          src={post.headerImage || `/blog/headers/default-${post.category}.jpg`}
+          src={headerImagePath}
           alt={post.title}
-          fallback={`/blog/headers/default.jpg`}
+          fallback={fallbackPath}
           className="transform transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
