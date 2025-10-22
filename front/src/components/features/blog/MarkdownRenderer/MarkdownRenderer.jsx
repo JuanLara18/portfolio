@@ -107,14 +107,14 @@ const CodeBlock = ({ language, value, ...props }) => {
   
   return (
     <div className="relative my-6 group">
-      <div className="flex items-center justify-between bg-gray-800 dark:bg-gray-900 text-gray-300 px-4 py-2 text-sm rounded-t-lg border-b border-gray-600">
+      <div className="flex items-center justify-between bg-gray-800 dark:bg-gray-900 text-gray-300 px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-t-lg border-b border-gray-600">
         <span className="font-medium">{language || 'code'}</span>
         <button
           onClick={copyToClipboard}
-          className="flex items-center gap-1 hover:text-white transition-colors opacity-0 group-hover:opacity-100"
+          className="flex items-center gap-1 hover:text-white transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100 text-xs sm:text-sm"
         >
-          {copied ? <Check size={16} /> : <Copy size={16} />}
-          {copied ? 'Copied!' : 'Copy'}
+          {copied ? <Check size={14} /> : <Copy size={14} />}
+          <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy'}</span>
         </button>
       </div>
       <SyntaxHighlighter
@@ -126,6 +126,10 @@ const CodeBlock = ({ language, value, ...props }) => {
           borderTopRightRadius: 0,
           borderBottomLeftRadius: '0.5rem',
           borderBottomRightRadius: '0.5rem',
+          fontSize: '0.875rem',
+          lineHeight: '1.5',
+          padding: '1rem',
+          overflowX: 'auto',
         }}
         {...props}
       >
@@ -158,7 +162,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h1: ({ children, ...props }) => (
 			<h1 
 		id={slugify(extractText(children))}
-				className="text-3xl md:text-4xl font-bold mb-6 mt-8 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2"
+				className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 mt-6 sm:mt-8 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2"
 				{...props}
 			>
 				{children}
@@ -167,7 +171,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h2: ({ children, ...props }) => (
 			<h2 
 		id={slugify(extractText(children))}
-				className="text-2xl md:text-3xl font-bold mb-4 mt-8 text-gray-900 dark:text-gray-100"
+				className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 mt-6 sm:mt-8 text-gray-900 dark:text-gray-100"
 				{...props}
 			>
 				{children}
@@ -176,7 +180,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h3: ({ children, ...props }) => (
 			<h3 
 		id={slugify(extractText(children))}
-				className="text-xl md:text-2xl font-semibold mb-3 mt-6 text-gray-900 dark:text-gray-100"
+				className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 mt-5 sm:mt-6 text-gray-900 dark:text-gray-100"
 				{...props}
 			>
 				{children}
@@ -185,7 +189,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h4: ({ children, ...props }) => (
 			<h4 
 		id={slugify(extractText(children))}
-				className="text-lg md:text-xl font-semibold mb-3 mt-5 text-gray-900 dark:text-gray-100"
+				className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 mt-4 sm:mt-5 text-gray-900 dark:text-gray-100"
 				{...props}
 			>
 				{children}
@@ -212,7 +216,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
     
 		// Enhanced paragraphs
 		p: ({ children, ...props }) => (
-			<p className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300 text-base md:text-lg" {...props}>
+			<p className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300 text-base sm:text-lg" {...props}>
 				{children}
 			</p>
 		),
@@ -296,7 +300,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 			if (inline) {
 				return (
 					<code 
-						className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-sm font-mono border"
+						className="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded text-sm font-mono border border-gray-300 dark:border-gray-600 whitespace-nowrap"
 						{...props}
 					>
 						{children}
@@ -305,9 +309,9 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 			}
       
 			return (
-				<div className="my-6">
+				<div className="my-6 overflow-x-auto">
 					<code 
-						className={`${className} block p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-x-auto text-sm leading-relaxed`}
+						className={`${className} block p-3 sm:p-4 bg-gray-800 dark:bg-gray-900 text-gray-100 rounded-lg border border-gray-700 dark:border-gray-800 text-sm leading-relaxed font-mono`}
 						{...props}
 					>
 						{children}
@@ -319,7 +323,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		// Enhanced pre blocks (for code syntax highlighting)
 		pre: ({ children, ...props }) => (
 			<pre 
-				className="my-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-x-auto"
+				className="my-6 p-3 sm:p-4 bg-gray-800 dark:bg-gray-900 rounded-lg border border-gray-700 dark:border-gray-800 overflow-x-auto text-sm sm:text-base"
 				{...props}
 			>
 				{children}

@@ -10,7 +10,7 @@
 @media (max-width:320px){
   header[class*="fixed"]{min-height:80px}
   .hero-section{padding-top:5.5rem!important}
-  .mobile-card-container{padding-left:.75rem!important;padding-right:.75rem!important}
+  /* Keep consistent - no override */
   .mobile-card{padding:.875rem!important;border-radius:.5rem!important}
   
   /* Profile card on very small screens */
@@ -185,21 +185,45 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   }
 
   /* Card sizing for improved readability on phones */
-  .mobile-card-container{padding-left:0.5rem!important;padding-right:0.5rem!important}
+  /* No longer override padding - let Tailwind classes handle it consistently */
+  /* .mobile-card-container uses px-4 sm:px-6 across all pages now */
+  
   /* Slightly tighter cards on phones to allow more content on screen */
   .mobile-card{margin-left:0!important;margin-right:0!important;padding:1rem!important;border-radius:.875rem!important;margin-bottom:1rem!important}
   .mobile-card-large{padding:1.25rem!important;font-size:1rem!important;line-height:1.5!important}
   .mobile-card-optimized{width:100%!important;box-sizing:border-box!important}
 
   /* Blog content specific optimizations */
-  article .bg-white, article .dark\:bg-gray-800{padding:1rem!important}
+  article .bg-white, article .dark\:bg-gray-800{padding:1.25rem!important}
 
   /* Better text readability on blog posts */
-  article p, article li{font-size:1rem!important;line-height:1.65!important}
-  article h1, article h2, article h3{margin-top:1.5rem!important;margin-bottom:0.75rem!important}
+  article p, article li{font-size:1rem!important;line-height:1.7!important}
+  article h1, article h2, article h3{margin-top:1.75rem!important;margin-bottom:0.875rem!important}
 
   /* Excerpt boxes on mobile - reduce padding */
-  article .mb-8.p-6{padding:1rem!important;margin-bottom:1.5rem!important}
+  article .mb-8.p-6{padding:1.25rem!important;margin-bottom:1.5rem!important}
+  
+  /* Code blocks - better visibility and scrolling */
+  article pre, article code[class*="language-"]{
+    font-size:0.875rem!important;
+    line-height:1.5!important;
+    max-width:100%!important;
+    overflow-x:auto!important;
+  }
+  
+  /* Inline code better visibility */
+  article code:not([class*="language-"]){
+    padding:0.15rem 0.4rem!important;
+    font-size:0.9rem!important;
+    background:rgba(229,231,235,1)!important;
+    border:1px solid rgba(209,213,219,1)!important;
+  }
+  
+  .dark article code:not([class*="language-"]){
+    background:rgba(55,65,81,0.8)!important;
+    border:1px solid rgba(75,85,99,1)!important;
+    color:rgba(229,231,235,1)!important;
+  }
 
   /* Text inside cards */
   /* Slightly smaller typography to fit more content while keeping proportions */
@@ -226,9 +250,6 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   .card-tag-hero svg{opacity:0.95}
   .dark .card-tag-hero{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.12)}
 
-  /* Narrow hero/container margins on landing to use side space better */
-  .hero-section .mobile-card-container{padding-left:0.5rem!important;padding-right:0.5rem!important}
-
   /* Images and decorative elements */
   .mobile-card img{width:100%!important;height:auto!important;object-fit:cover!important}
   .mobile-card .absolute.w-40.h-40,.mobile-card .absolute.w-24.h-24{width:3.25rem!important;height:3.25rem!important;opacity:.9!important}
@@ -238,7 +259,7 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 @media (max-width:480px){
   header[class*="fixed"]{min-height:76px}
   .hero-section{padding-top:5rem!important;min-height:calc(100dvh - 3.5rem)!important;height:auto!important}
-  .mobile-card-container{padding-left:0.35rem!important;padding-right:0.35rem!important}
+  /* Keep consistent with larger mobile - use px-4 from Tailwind */
   .mobile-card{padding:1.125rem!important}
 
   /* Even tighter blog content on small phones */
@@ -348,7 +369,7 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 @media (max-width:320px){
   header[class*="fixed"]{min-height:80px}
   .hero-section{padding-top:5.5rem!important;min-height:calc(100dvh - 3rem)!important;height:auto!important}
-  .mobile-card-container{padding-left:.5rem!important;padding-right:.5rem!important}
+  /* Keep consistent horizontal padding with larger screens */
   .mobile-card{padding:.875rem!important;border-radius:.5rem!important}
   
   /* Profile card on very small screens - more compact but visible */
@@ -362,6 +383,9 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
     height: auto !important;
     min-height: calc(100dvh - 3rem) !important;
   }
+  
+  /* Blog articles on very small screens */
+  article .bg-white, article .dark\:bg-gray-800{padding:1rem!important}
 }
 
 /* Medium-mobile: 480–640 special case for 2-column mobile-grid-double */

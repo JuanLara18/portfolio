@@ -339,7 +339,7 @@ const ProjectCard = ({ project, inView }) => {
       
       <div className="p-4 sm:p-6">
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{project.name}</h3>
-  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 card-description">{project.description}</p>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 card-description">{project.description}</p>
         
         <div className="flex flex-wrap gap-1.5 mb-4 sm:mb-6">
           {project.tags && project.tags.slice(0, 4).map((tag, index) => (
@@ -580,7 +580,7 @@ export default function ProjectsPage() {
         <div className="absolute top-20 sm:top-40 right-10 sm:right-20 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-blue-100/50 dark:bg-blue-900/20 blur-3xl -z-10"></div>
         <div className="absolute -bottom-10 sm:-bottom-20 -left-10 sm:-left-20 w-60 sm:w-80 h-60 sm:h-80 rounded-full bg-indigo-100/30 dark:bg-indigo-900/10 blur-3xl -z-10"></div>
         
-  <div className="container mx-auto px-4 sm:px-6 -mt-10 mobile-card-container">
+  <div className="container mx-auto px-0 sm:px-6 lg:px-8 mobile-card-container">
           <motion.div 
             initial="hidden"
             animate="visible"
@@ -667,7 +667,7 @@ export default function ProjectsPage() {
       
       {/* All Projects Grid */}
       <section className="py-0 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 mobile-card-container">
+        <div className="container mx-auto px-0 sm:px-6 lg:px-8 mobile-card-container">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -822,7 +822,7 @@ export default function ProjectsPage() {
       
       {/* Collaboration CTA */}
     <section className="py-16 sm:py-24 bg-gray-900 dark:bg-gray-950 text-white">
-      <div className="container mx-auto px-4 sm:px-6 mobile-card-container">
+      <div className="container mx-auto px-0 sm:px-6 lg:px-8 mobile-card-container">
         <motion.div 
           initial="hidden"
           whileInView="visible"

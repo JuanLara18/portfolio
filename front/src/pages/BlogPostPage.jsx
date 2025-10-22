@@ -293,7 +293,7 @@ export default function BlogPostPage() {
   <motion.section 
         ref={heroRef}
         style={{ y: headerY, opacity: headerOpacity }}
-        className="relative h-96 md:h-[500px] overflow-hidden parallax-smooth"
+        className="relative min-h-[450px] sm:min-h-[500px] md:min-h-[550px] overflow-hidden parallax-smooth"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -311,12 +311,12 @@ export default function BlogPostPage() {
               }
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
         </div>
         
         {/* Content Overlay */}
-        <div className="relative z-10 h-full flex items-end">
-          <div className="container mx-auto px-3 md:px-6 pb-12 md:pb-16">
+        <div className="relative z-10 h-full min-h-[450px] sm:min-h-[500px] md:min-h-[550px] flex items-end">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-16">
             <motion.div
               initial="hidden"
               animate="visible"
@@ -324,69 +324,51 @@ export default function BlogPostPage() {
               className="max-w-4xl"
             >
               {/* Back Button */}
-              <div className="mb-6">
+              <div className="mb-4 sm:mb-6">
                 <button
                   onClick={() => navigate('/blog')}
-                  className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-lg hover:bg-white/30 transition-colors border border-white/20"
+                  className="inline-flex items-center px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-lg hover:bg-white/30 transition-colors border border-white/20 text-sm sm:text-base"
                 >
                   <ArrowLeft size={16} className="mr-2" />
-                  Back to Blog
+                  <span className="hidden xs:inline">Back to Blog</span>
+                  <span className="xs:hidden">Back</span>
                 </button>
               </div>
               
               {/* Category Badge */}
-              <div className="mb-4">
+              <div className="mb-3 sm:mb-4">
                 <Link 
                   to={`/blog/category/${post.category}`}
-                  className="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded-full text-sm font-medium border border-white/20 hover:bg-white/30 transition-colors"
+                  className="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded-full text-xs sm:text-sm font-medium border border-white/20 hover:bg-white/30 transition-colors"
                 >
                   {categoryConfig?.name || post.category}
                 </Link>
               </div>
               
               {/* Title */}
-              <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight">
                 {post.title}
               </h1>
               
               {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-6 text-white/90">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-white/90 text-sm sm:text-base">
                 <div className="flex items-center">
-                  <User size={16} className="mr-2" />
-                  <span>Juan Lara</span>
+                  <Calendar size={14} className="mr-1.5 sm:mr-2" />
+                  <span className="hidden sm:inline">{formatDate(post.date, 'MMMM d, yyyy')}</span>
+                  <span className="sm:hidden">{formatDate(post.date, 'MMM d')}</span>
                 </div>
                 <div className="flex items-center">
-                  <Calendar size={16} className="mr-2" />
-                  <span>{formatDate(post.date, 'MMMM d, yyyy')}</span>
-                </div>
-                <div className="flex items-center">
-                  <Clock size={16} className="mr-2" />
-                  <span>{post.readingTime} min read</span>
+                  <Clock size={14} className="mr-1.5 sm:mr-2" />
+                  <span>{post.readingTime}m</span>
                 </div>
                 <button
                   onClick={sharePost}
                   className="flex items-center hover:text-white transition-colors"
                 >
-                  <Share2 size={16} className="mr-2" />
+                  <Share2 size={14} className="mr-1.5 sm:mr-2" />
                   <span>Share</span>
                 </button>
               </div>
-              
-              {/* Tags */}
-                  {post.tags && post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {post.tags.map((tag, index) => (
-                    <Link
-                      key={index}
-                      to={`/blog/tag/${encodeURIComponent(tag)}`}
-                      className="card-tag card-tag-hero inline-flex items-center"
-                    >
-                      <Tag size={12} className="mr-1" />
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
-              )}
             </motion.div>
           </div>
         </div>
@@ -394,7 +376,7 @@ export default function BlogPostPage() {
       
       {/* Post Content */}
       <section className="py-8 md:py-16">
-        <div className="container mx-auto px-3 md:px-6">
+        <div className="container mx-auto px-0 sm:px-6 lg:px-8 mobile-card-container">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12">
               {/* Main Content */}
@@ -404,20 +386,22 @@ export default function BlogPostPage() {
                 variants={slideInLeft}
                 className="lg:w-3/4"
               >
-                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-8 lg:p-12 border border-gray-100 dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-0 sm:p-6 md:p-8 lg:p-12 border border-gray-100 dark:border-gray-700">
                   {post.excerpt && (
-                    <div className="mb-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
-                      <p className="text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">
+                    <div className="mb-6 sm:mb-8 mx-2 sm:mx-0 p-4 sm:p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+                      <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">
                         {post.excerpt}
                       </p>
                     </div>
                   )}
                   
-                  <MarkdownRenderer 
-                    content={post.content} 
-                    baseImagePath={baseImagePath}
-                    className=""
-                  />
+                  <div className="px-2 sm:px-0">
+                    <MarkdownRenderer 
+                      content={post.content} 
+                      baseImagePath={baseImagePath}
+                      className=""
+                    />
+                  </div>
                 </div>
               </motion.article>
               
@@ -426,14 +410,16 @@ export default function BlogPostPage() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeInUp}
-                className="lg:w-1/4"
+                className="lg:w-1/4 mt-8 lg:mt-0"
               >
-                <div className="space-y-6">
-                  {/* Table of Contents */}
-                  <TableOfContents content={post.content} />
+                <div className="space-y-4 sm:space-y-6">
+                  {/* Table of Contents - Hidden on mobile */}
+                  <div className="hidden lg:block">
+                    <TableOfContents content={post.content} />
+                  </div>
                   
                   {/* Post Stats */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-lg border border-gray-200 dark:border-gray-700">
                     <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
                       Post Information
                     </h3>
@@ -452,35 +438,49 @@ export default function BlogPostPage() {
                         </span>
                         <span>{formatDate(post.date, 'MMM d, yyyy')}</span>
                       </div>
-                      {post.tags && (
-                        <div className="flex items-center justify-between">
-                          <span className="flex items-center">
-                            <Tag size={14} className="mr-2" />
-                            Tags
-                          </span>
-                          <span>{post.tags.length}</span>
-                        </div>
-                      )}
                     </div>
                   </div>
                   
                   {/* Category Info */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-lg border border-gray-200 dark:border-gray-700">
                     <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
                       Category
                     </h3>
                     <Link 
                       to={`/blog/category/${post.category}`}
-                      className="block p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                      className="block p-2.5 sm:p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
                     >
-                      <div className="font-medium text-blue-900 dark:text-blue-100">
+                      <div className="font-medium text-sm sm:text-base text-blue-900 dark:text-blue-100">
                         {categoryConfig?.name || post.category}
                       </div>
-                      <div className="text-sm text-blue-700 dark:text-blue-300 mt-1">
-                        {categoryConfig?.description}
-                      </div>
+                      {categoryConfig?.description && (
+                        <div className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 mt-1">
+                          {categoryConfig?.description}
+                        </div>
+                      )}
                     </Link>
                   </div>
+                  
+                  {/* Tags */}
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                        Tags
+                      </h3>
+                      <div className="flex flex-wrap gap-1.5">
+                        {post.tags.map((tag, index) => (
+                          <Link
+                            key={index}
+                            to={`/blog/tag/${encodeURIComponent(tag)}`}
+                            className="card-tag inline-flex items-center text-xs"
+                          >
+                            <Tag size={10} className="mr-1" />
+                            {tag}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </motion.aside>
             </div>
