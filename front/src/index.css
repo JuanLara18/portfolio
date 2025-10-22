@@ -185,11 +185,21 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   }
 
   /* Card sizing for improved readability on phones */
-  .mobile-card-container{padding-left:1rem!important;padding-right:1rem!important}
+  .mobile-card-container{padding-left:0.5rem!important;padding-right:0.5rem!important}
   /* Slightly tighter cards on phones to allow more content on screen */
   .mobile-card{margin-left:0!important;margin-right:0!important;padding:1rem!important;border-radius:.875rem!important;margin-bottom:1rem!important}
   .mobile-card-large{padding:1.25rem!important;font-size:1rem!important;line-height:1.5!important}
   .mobile-card-optimized{width:100%!important;box-sizing:border-box!important}
+
+  /* Blog content specific optimizations */
+  article .bg-white, article .dark\:bg-gray-800{padding:1rem!important}
+
+  /* Better text readability on blog posts */
+  article p, article li{font-size:1rem!important;line-height:1.65!important}
+  article h1, article h2, article h3{margin-top:1.5rem!important;margin-bottom:0.75rem!important}
+
+  /* Excerpt boxes on mobile - reduce padding */
+  article .mb-8.p-6{padding:1rem!important;margin-bottom:1.5rem!important}
 
   /* Text inside cards */
   /* Slightly smaller typography to fit more content while keeping proportions */
@@ -228,8 +238,11 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 @media (max-width:480px){
   header[class*="fixed"]{min-height:76px}
   .hero-section{padding-top:5rem!important;min-height:calc(100dvh - 3.5rem)!important;height:auto!important}
-  .mobile-card-container{padding-left:.75rem!important;padding-right:.75rem!important}
+  .mobile-card-container{padding-left:0.35rem!important;padding-right:0.35rem!important}
   .mobile-card{padding:1.125rem!important}
+
+  /* Even tighter blog content on small phones */
+  article .bg-white, article .dark\:bg-gray-800{padding:0.875rem!important}
   
   /* Ensure hero container has enough space on small phones */
   .h-\[calc\(100dvh-5\.5rem\)\] {

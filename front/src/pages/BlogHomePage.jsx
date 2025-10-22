@@ -273,8 +273,8 @@ export default function BlogHomePage() {
         <div className="absolute top-40 right-20 w-72 h-72 rounded-full bg-blue-100/50 dark:bg-blue-900/20 blur-3xl -z-10"></div>
         <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-indigo-100/30 dark:bg-indigo-900/10 blur-3xl -z-10"></div>
         
-  <div className="container mx-auto px-6 -mt-10 mobile-card-container">
-          <motion.div 
+  <div className="container mx-auto px-3 md:px-6 -mt-10 mobile-card-container">
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
@@ -373,8 +373,8 @@ export default function BlogHomePage() {
       
       {/* Posts Grid */}
       <section className="py-0 pb-16">
-        <div className="container mx-auto px-6 mobile-card-container">
-          <motion.div 
+        <div className="container mx-auto px-3 md:px-6 mobile-card-container">
+          <motion.div
             initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "0px" }}
@@ -546,8 +546,8 @@ export default function BlogHomePage() {
       
       {/* CTA Section */}
       <section className="py-16 bg-gray-900 dark:bg-gray-950">
-        <div className="container mx-auto px-6 mobile-card-container">
-          <motion.div 
+        <div className="container mx-auto px-3 md:px-6 mobile-card-container">
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px" }}
