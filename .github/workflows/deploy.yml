@@ -33,6 +33,29 @@ jobs:
       - name: Install Dependencies 📦
         run: npm ci
       
+      - name: Optimize Images 🖼️
+        run: |
+          echo "=== Checking for unoptimized images ==="
+          # Only optimize if there are new images (no .webp versions)
+          NEW_IMAGES=$(find public/images -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) ! -name "*-original.*" ! -name "*-optimized.*" | wc -l)
+          echo "Found $NEW_IMAGES images to potentially optimize"
+          
+          if [ $NEW_IMAGES -gt 0 ]; then
+            # Check if webp versions already exist
+            WEBP_COUNT=$(find public/images -type f -name "*.webp" | wc -l)
+            echo "Existing WebP images: $WEBP_COUNT"
+            
+            if [ $WEBP_COUNT -lt $NEW_IMAGES ]; then
+              echo "🔄 Optimizing images..."
+              npm run optimize-images || echo "⚠️ Optimization completed with warnings"
+              echo "✅ Image optimization complete"
+            else
+              echo "✅ Images already optimized, skipping"
+            fi
+          else
+            echo "✅ No new images to optimize"
+          fi
+      
       - name: Verify Blog Source Files 🔍
         run: |
           echo "=== Blog Source Directory Structure ==="

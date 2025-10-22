@@ -24,4 +24,9 @@ yarn-error.log*
 
 /src/data/*
 
+# Keep original images locally but don't push to repo (save space)
+# The optimized versions and WebP will be tracked
+public/images/**/*-original.*
+public/images/**/*-optimized.*
+
 package-lock.json
