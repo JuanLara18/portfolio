@@ -77,7 +77,7 @@ The Transformer consists of beautifully symmetric components:
 
 **Positional Encoding**: Since there's no inherent notion of sequence order in parallel processing, explicitly inject position information using sinusoidal functions.
 
-![Transformer Architecture](figures/transformer-architecture.png)
+![Transformer Architecture](/blog/figures/transformer-architecture.png)
 
 The beauty lies in the symmetry and modularity. Each component has a clear purpose. Each layer transforms representations in a well-defined way. The architecture feels *principled*—not a collection of tricks, but a coherent mathematical framework.
 
