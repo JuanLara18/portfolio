@@ -35,7 +35,7 @@
       "readingTime": 18
     },
     {
-      "title": "Tetris Is NP-Complete: The Hardest Problem Hiding in Plain Sight",
+      "title": "Tetris Is NP-Complete",
       "date": "2025-08-23T00:00:00.000Z",
       "excerpt": "That seemingly simple game on your phone? It harbors one of computer science's most notorious complexity classes. Discover how Tetris became a lens for understanding computational hardness—and why some problems resist even our most powerful computers.",
       "tags": [
@@ -54,7 +54,7 @@
       "readingTime": 14
     },
     {
-      "title": "Attention is All You Need: Understanding the Transformer Revolution",
+      "title": "Attention is All You Need",
       "date": "2025-01-20",
       "excerpt": "How a single elegant idea—pure attention—toppled decades of sequential thinking and sparked the AI revolution. A deep dive into the architecture that changed everything.",
       "tags": [

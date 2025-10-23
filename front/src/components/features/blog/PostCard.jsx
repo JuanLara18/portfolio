@@ -61,32 +61,32 @@ export const PostCard = ({ post }) => {
       {/* Content */}
       <div className="p-4 sm:p-6 flex-1 flex flex-col">
         <div className="flex-1">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
             <Link to={`/blog/${post.category}/${post.slug}`}>
               {post.title}
             </Link>
           </h2>
           
-          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 leading-relaxed card-description">
+          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 leading-relaxed card-description text-sm">
             {post.excerpt}
           </p>
           
           {/* Tags */}
           {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-4">
-              {post.tags.slice(0, 3).map((tag, index) => (
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {post.tags.slice(0, 2).map((tag, index) => (
                 <Link
                   key={index}
                   to={`/blog/tag/${encodeURIComponent(tag)}`}
-                  className="card-tag inline-flex items-center"
+                  className="card-tag inline-flex items-center text-xs"
                 >
-                  <Tag size={10} className="mr-1" />
+                  <Tag size={9} className="mr-1" />
                   {tag}
                 </Link>
               ))}
-              {post.tags.length > 3 && (
-                <span className="card-tag inline-flex items-center">
-                  +{post.tags.length - 3} more
+              {post.tags.length > 2 && (
+                <span className="card-tag inline-flex items-center text-xs opacity-70">
+                  +{post.tags.length - 2}
                 </span>
               )}
             </div>
