@@ -491,83 +491,83 @@ export default function LandingPage() {
           </motion.div>
           
           {/* Blog Previews */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Latest Blog Post */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
-              className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-500 hover:shadow-xl group"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-500 hover:shadow-xl group flex flex-col"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-300 mr-4">
-                  <FileText className="w-6 h-6" />
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-300 flex-shrink-0">
+                  <FileText className="w-5 h-5" />
                 </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 text-xs font-medium rounded">
-                      Latest Post
-                    </span>
-                  </div>
-                  <h4 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200 mb-1">
-                    <Link to="/blog/curiosities/tetris-np-complete" className="hover:underline">
-                      Why Tetris is NP-Complete: A Proof
+                <div className="flex-1 min-w-0">
+                  <span className="inline-block px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-300 text-[10px] font-semibold rounded uppercase tracking-wide mb-2">
+                    Latest Post
+                  </span>
+                  <h4 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
+                    <Link to="/blog/research/embeddings-geometry-of-meaning" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                      Embeddings: The Geometry of Meaning
                     </Link>
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    January 10, 2025 • 5 min read
-                  </p>
                 </div>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                A rigorous mathematical proof showing that the decision problem of Tetris survival is NP-complete, connecting a beloved game to fundamental computational complexity theory.
+              <p className="text-gray-500 dark:text-gray-400 text-[11px] mb-3 ml-[52px]">
+                October 22, 2025 • 18 min read
               </p>
-              <Link 
-                to="/blog/curiosities/tetris-np-complete" 
-                className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group"
-              >
-                Read post
-                <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </Link>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
+                How do you teach a computer what 'king' means? A deep dive into embeddings, from Word2Vec to modern transformers.
+              </p>
+              <div className="ml-[52px]">
+                <Link 
+                  to="/blog/research/embeddings-geometry-of-meaning" 
+                  className="inline-flex items-center font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300 group text-sm"
+                >
+                  Read post
+                  <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+              </div>
             </motion.div>
             
             {/* Latest Certification */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
-              className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-500 hover:shadow-xl group"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-500 hover:shadow-xl group flex flex-col"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/50 dark:text-green-300 mr-4">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/50 dark:text-green-300 flex-shrink-0">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="px-2 py-1 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-300 text-xs font-medium rounded">
-                      New Certification
-                    </span>
-                  </div>
-                  <h4 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200 mb-1">
-                    <a href="https://www.datacamp.com/certificate/AIEDA0019827293059" target="_blank" rel="noreferrer" className="hover:underline">
+                <div className="flex-1 min-w-0">
+                  <span className="inline-block px-2 py-0.5 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-300 text-[10px] font-semibold rounded uppercase tracking-wide mb-2">
+                    New Certification
+                  </span>
+                  <h4 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
+                    <a href="https://www.datacamp.com/certificate/AIEDA0019827293059" target="_blank" rel="noreferrer" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
                       AI Engineer for Developers Associate
                     </a>
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    DataCamp • July 2025
-                  </p>
                 </div>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+              <p className="text-gray-500 dark:text-gray-400 text-[11px] mb-3 ml-[52px]">
+                DataCamp • July 2025
+              </p>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
                 Advanced certification covering LLM engineering, RAG systems, and production-ready AI development practices.
               </p>
-              <a 
-                href="https://www.datacamp.com/certificate/AIEDA0019827293059"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center font-semibold text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300 group"
-              >
-                View certificate
-                <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </a>
+              <div className="ml-[52px]">
+                <a 
+                  href="https://www.datacamp.com/certificate/AIEDA0019827293059"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center font-semibold text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300 group text-sm"
+                >
+                  View certificate
+                  <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
