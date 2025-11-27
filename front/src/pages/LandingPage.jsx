@@ -253,7 +253,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  with Generative AI
+                  with AI Engineering
                 </motion.span>
               </motion.h1>
               
@@ -261,7 +261,7 @@ export default function LandingPage() {
                 variants={fadeInUp}
                 className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-4 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
               >
-                Building production-ready AI systems with LLM fine-tuning, RAG architectures, and scalable cloud deployment.
+                Architecting scalable AI systems with a focus on LLM fine-tuning, RAG pipelines, and cloud infrastructure.
               </motion.p>
               
               
@@ -373,7 +373,7 @@ export default function LandingPage() {
                 
                 {/* Enhanced terminal card with mobile optimization */}
                 <div className="relative z-10 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-500">
-                  <TypingTerminal text="const profile = {\n  name: 'Juan Lara',\n  role: 'LLM/ML Specialist @ GenomAI',\n  expertise: ['LLM', 'RAG', 'MLOps'],\n  stack: ['Python', 'PyTorch', 'AWS', 'GCP'],\n  education: [\n    'B.S. Computer Science',\n    'B.S. Mathematics'\n  ],\n  mission: 'Building next-gen AI systems'\n};" />
+                  <TypingTerminal text="const profile = {\n  name: 'Juan Lara',\n  role: 'LLM/ML Specialist @ GenomAI',\n  expertise: ['LLM', 'RAG', 'MLOps'],\n  stack: ['Python', 'PyTorch', 'LangChain', 'AWS'],\n  education: [\n    'B.S. Computer Science',\n    'B.S. Mathematics'\n  ],\n  mission: 'Engineering scalable AI solutions'\n};" />
 
                   <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3">
                     <TechIcon icon={BrainCircuit} label="GenAI" delay={0.2} />
@@ -435,7 +435,7 @@ export default function LandingPage() {
               </div>
               <div className="max-w-3xl text-left">
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  Computer Scientist & Mathematician with 3+ years developing generative AI solutions. Currently building clinical decision support systems at GenomAI and contributing to research at Harvard University.
+                  Computer Scientist & Mathematician leveraging 3+ years of experience to build advanced Generative AI solutions. Currently architecting clinical decision support systems at GenomAI and contributing to research at Harvard University.
                 </p>
                 <HoverMotion>
                   <Link to="/about" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
@@ -463,7 +463,7 @@ export default function LandingPage() {
               </div>
               <div className="max-w-3xl text-left">
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  End-to-end AI solutions from multilingual NLP libraries to scalable RAG systems. Each project emphasizes production deployment and measurable business impact.
+                  From distributed NLP libraries to scalable RAG architectures. Focused on production-grade deployment and tangible business impact.
                 </p>
                 <HoverMotion>
                   <Link to="/projects" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
@@ -506,21 +506,21 @@ export default function LandingPage() {
                     Latest Post
                   </span>
                   <h4 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
-                    <Link to="/blog/research/embeddings-geometry-of-meaning" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                      Embeddings: The Geometry of Meaning
+                    <Link to="/blog/research/the-manifold-hypothesis" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                      The Manifold Hypothesis: Why Deep Learning Works
                     </Link>
                   </h4>
                 </div>
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-[11px] mb-3 ml-[52px]">
-                October 22, 2025 • 18 min read
+                November 27, 2025 • 22 min read
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
-                How do you teach a computer what 'king' means? A deep dive into embeddings, from Word2Vec to modern transformers.
+                We train models on high-dimensional chaos, yet they learn. Why? The answer lies in geometry: the world is a crumpled sheet of paper, and intelligence is the act of smoothing it out.
               </p>
               <div className="ml-[52px]">
                 <Link 
-                  to="/blog/research/embeddings-geometry-of-meaning" 
+                  to="/blog/research/the-manifold-hypothesis" 
                   className="inline-flex items-center font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300 group text-sm"
                 >
                   Read post

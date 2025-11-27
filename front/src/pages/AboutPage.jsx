@@ -820,7 +820,7 @@ const courses = [
               variants={fadeInUp}
               className="italic text-center mb-10 text-gray-600 dark:text-gray-400"
             >
-              Core technologies and frameworks I use to power production AI systems
+              The core technologies and frameworks driving my production-grade AI systems
             </motion.p>
 
             <motion.div
@@ -1156,7 +1156,7 @@ const courses = [
               variants={fadeInUp}
               className="text-gray-300 mb-8 max-w-2xl mx-auto"
             >
-              I'm always open to discussing new projects, research opportunities, and creative collaborations. If you're looking for a Computer Scientist and Mathematician with expertise in Machine Learning and AI, let's connect!
+              Open to discussing innovative projects, research collaborations, and the frontiers of AI and computational mathematics. If you're looking for a Computer Scientist and Mathematician with expertise in Machine Learning and AI, let's connect!
             </motion.p>
             
             <motion.div 

@@ -597,10 +597,10 @@ export default function ProjectsPage() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 leading-tight"
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-                Exploring Solutions
+                Engineering Intelligent
               </span>
               <span className="block mt-1 text-gray-800 dark:text-gray-100">
-                Through Code
+                Solutions
               </span>
             </motion.h1>
             
@@ -608,7 +608,7 @@ export default function ProjectsPage() {
               variants={fadeInUp}
               className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-2 sm:px-0"
             >
-              A showcase of my work in AI, machine learning, web development, and more. Each project represents a unique challenge solved through computational thinking and innovative problem-solving.
+              A portfolio of AI, Machine Learning, and software engineering projects. Each represents a specific technical challenge solved through rigorous computational thinking.
             </motion.p>
             
             {/* Search and filter */}
