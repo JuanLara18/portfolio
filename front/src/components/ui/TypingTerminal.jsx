@@ -55,7 +55,7 @@ const TypingTerminal = ({ text }) => {
           animate={{ opacity: 1 }}
           className="text-blue-400 mr-2"
         >$</motion.span>
-        <div className="min-h-[150px]">
+        <div className="min-h-[150px] font-mono text-xs sm:text-sm md:text-base whitespace-pre-wrap break-words leading-relaxed">
           <div>
             {displayText}
             {showCursor && (

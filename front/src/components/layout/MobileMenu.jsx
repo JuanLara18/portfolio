@@ -59,20 +59,28 @@ const MobileMenu = ({ isOpen, onClose }) => {
           
 					<nav className="flex flex-col space-y-1 mb-6 sm:mb-8">
 						<Link to="/" className={getMobileLinkClass('/')} onClick={onClose}>
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-							<span>Home</span>
+							<div className="w-8 h-8 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+							</div>
+							<span className="text-base font-medium">Home</span>
 						</Link>
 						<Link to="/about" className={getMobileLinkClass('/about')} onClick={onClose}>
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0"><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 1 0-16 0"></path></svg>
-							<span>About</span>
+							<div className="w-8 h-8 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 1 0-16 0"></path></svg>
+							</div>
+							<span className="text-base font-medium">About</span>
 						</Link>
 						<Link to="/projects" className={getMobileLinkClass('/projects')} onClick={onClose}>
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg>
-							<span>Projects</span>
+							<div className="w-8 h-8 rounded-full bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg>
+							</div>
+							<span className="text-base font-medium">Projects</span>
 						</Link>
 						<Link to="/blog" className={getMobileLinkClass('/blog')} onClick={onClose}>
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2Z"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>
-							<span>Blog</span>
+							<div className="w-8 h-8 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-400">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2Z"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>
+							</div>
+							<span className="text-base font-medium">Blog</span>
 						</Link>
 					</nav>
           
@@ -80,18 +88,18 @@ const MobileMenu = ({ isOpen, onClose }) => {
 						<div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-5">
 							<h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Connect</h3>
 							<div className="grid grid-cols-3 gap-2 sm:gap-3">
-								<Link to="https://www.linkedin.com/in/julara/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target">
-									<Linkedin size={20} />
-									<span className="text-xs mt-1">LinkedIn</span>
-								</Link>
-								<Link to="https://github.com/JuanLara18" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target">
-									<Github size={20} />
-									<span className="text-xs mt-1">GitHub</span>
-								</Link>
-								<Link to="/documents/CV___EN.pdf" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target">
-									<FileText size={20} />
-									<span className="text-xs mt-1">Resume</span>
-								</Link>
+								<a href="https://www.linkedin.com/in/julara/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target border border-gray-100 dark:border-gray-800 shadow-sm">
+									<Linkedin size={20} className="text-[#0077b5]" />
+									<span className="text-xs mt-2 font-medium">LinkedIn</span>
+								</a>
+								<a href="https://github.com/JuanLara18" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target border border-gray-100 dark:border-gray-800 shadow-sm">
+									<Github size={20} className="text-gray-900 dark:text-white" />
+									<span className="text-xs mt-2 font-medium">GitHub</span>
+								</a>
+								<a href="/documents/CV___EN.pdf" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target border border-gray-100 dark:border-gray-800 shadow-sm">
+									<FileText size={20} className="text-blue-600 dark:text-blue-400" />
+									<span className="text-xs mt-2 font-medium">Resume</span>
+								</a>
 							</div>
 						</div>
 						<div className="text-center text-gray-500 dark:text-gray-400 text-xs py-3 sm:py-4">© {new Date().getFullYear()} Juan Lara<div className="mt-1 text-xs">Computer Scientist & Mathematician</div></div>
