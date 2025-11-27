@@ -198,8 +198,8 @@ export default function BlogHomePage() {
                 </div>
                 <input
                   type="text"
-                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
-                  placeholder="Search posts..."
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-shadow duration-200"
+                  placeholder="Search interesting topics..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -338,14 +338,14 @@ export default function BlogHomePage() {
             {totalPosts === 0 ? (
               <motion.div 
                 variants={fadeInUp}
-                className="text-center py-16"
+                className="text-center py-20 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700"
               >
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                  <Search size={32} className="text-gray-400" />
+                <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center shadow-sm">
+                  <Search size={40} className="text-blue-500/50 dark:text-blue-400/50" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">No posts found</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  Try adjusting your search or filters to find what you're looking for.
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">No posts found</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto leading-relaxed">
+                  We couldn't find any posts matching your search. Try using broader terms or browsing by category.
                 </p>
                 <button 
                   onClick={() => {
@@ -353,10 +353,10 @@ export default function BlogHomePage() {
                     setSelectedTag('');
                     setSearchTerm('');
                   }}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center gap-2"
+                  className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg inline-flex items-center gap-2 font-medium"
                 >
-                  <Layers size={16} />
-                  Show all posts
+                  <Layers size={18} />
+                  View All Posts
                 </button>
               </motion.div>
             ) : (

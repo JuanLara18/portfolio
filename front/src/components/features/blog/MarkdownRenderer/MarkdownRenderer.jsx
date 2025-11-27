@@ -187,7 +187,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h1: ({ children, ...props }) => (
 			<h1 
 		id={slugify(extractText(children))}
-				className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 mt-6 sm:mt-8 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2"
+				className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 mt-8 sm:mt-12 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-4 leading-tight tracking-tight"
 				{...props}
 			>
 				{children}
@@ -196,7 +196,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h2: ({ children, ...props }) => (
 			<h2 
 		id={slugify(extractText(children))}
-				className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 mt-6 sm:mt-8 text-gray-900 dark:text-gray-100"
+				className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 mt-10 sm:mt-14 text-gray-900 dark:text-gray-100 leading-snug tracking-tight"
 				{...props}
 			>
 				{children}
@@ -205,7 +205,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h3: ({ children, ...props }) => (
 			<h3 
 		id={slugify(extractText(children))}
-				className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 mt-5 sm:mt-6 text-gray-900 dark:text-gray-100"
+				className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 mt-8 sm:mt-10 text-gray-900 dark:text-gray-100 leading-snug"
 				{...props}
 			>
 				{children}
@@ -214,7 +214,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h4: ({ children, ...props }) => (
 			<h4 
 		id={slugify(extractText(children))}
-				className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 mt-4 sm:mt-5 text-gray-900 dark:text-gray-100"
+				className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 mt-6 sm:mt-8 text-gray-900 dark:text-gray-100"
 				{...props}
 			>
 				{children}
@@ -241,7 +241,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
     
 		// Enhanced paragraphs
 		p: ({ children, ...props }) => (
-			<p className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300 text-base sm:text-lg" {...props}>
+			<p className="mb-6 leading-7 sm:leading-8 text-gray-700 dark:text-gray-300 text-base sm:text-lg font-normal" {...props}>
 				{children}
 			</p>
 		),
@@ -369,12 +369,10 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		// Enhanced blockquotes
 		blockquote: ({ children, ...props }) => (
 			<blockquote 
-				className="my-6 pl-6 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 py-4 pr-4 rounded-r-lg"
+				className="my-8 pl-6 border-l-4 border-blue-500 dark:border-blue-400 py-2 italic text-lg sm:text-xl text-gray-700 dark:text-gray-300 font-serif leading-relaxed"
 				{...props}
 			>
-				<div className="text-gray-700 dark:text-gray-300 italic">
-					{children}
-				</div>
+				{children}
 			</blockquote>
 		),
     

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { 
   Calendar, 
   Clock, 
@@ -168,6 +168,23 @@ const ScrollToTop = () => {
   );
 };
 
+// Scroll progress bar component
+const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 dark:bg-blue-400 origin-left z-[100]"
+      style={{ scaleX }}
+    />
+  );
+};
+
 export default function BlogPostPage() {
   const { category, slug } = useParams();
   const navigate = useNavigate();
@@ -288,6 +305,10 @@ export default function BlogPostPage() {
         <meta property="og:title" content={`${post.title} | Juan Lara`} />
         <meta property="og:description" content={post.description || `${post.title} blog post`} />
       </Helmet>
+      
+      {/* Reading Progress Bar */}
+      <ScrollProgress />
+
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       {/* Header with Hero Image */}
   <motion.section 
