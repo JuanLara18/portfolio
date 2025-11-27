@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { TransitionProvider, Navigation as Navbar } from './components/layout';
 import LandingPage from './pages/LandingPage';
@@ -47,25 +47,9 @@ function App() {
     }
   }, [darkMode]);
 
-  // Derive a safe basename from PUBLIC_URL (path only, no origin)
-  const basename = (() => {
-    const raw = process.env.PUBLIC_URL;
-    if (!raw) return '/';
-    try {
-      // If it's an absolute URL, extract pathname; if it's a path, use as-is
-      const url = raw.startsWith('http') ? new URL(raw) : new URL(raw, window.location.origin);
-      const path = url.pathname || '/';
-      // Ensure no trailing slash except root
-      return path !== '/' && path.endsWith('/') ? path.slice(0, -1) : path || '/';
-    } catch {
-      return '/';
-    }
-  })();
-
   return (
     <HelmetProvider>
       <Router 
-        basename={basename}
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
         <TransitionProvider>
