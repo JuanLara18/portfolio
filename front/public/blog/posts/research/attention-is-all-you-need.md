@@ -490,9 +490,9 @@ From a single paper to the foundation of modern AI in less than seven years. The
 
 ### The Personal Takeaway
 
-When I first read "Attention is All You Need," I was struck by its audacity. The authors didn't incrementally improve RNNs—they proposed throwing them out entirely. That kind of bold rethinking is rare and precious.
+Reading "Attention is All You Need" reveals something profound about innovation: bold rethinking is rare and precious. The authors didn't incrementally improve RNNs—they proposed throwing them out entirely.
 
-The paper reminds me why I love this field: simple ideas, rigorously executed, can reshape entire domains. A clean mathematical formulation, scaled appropriately, can unlock capabilities we didn't know were possible.
+The paper reminds us why deep learning is compelling: simple ideas, rigorously executed, can reshape entire domains. A clean mathematical formulation, scaled appropriately, can unlock capabilities we didn't know were possible.
 
 **Attention really is all you need**—but that realization required someone brave enough to test whether everything else was unnecessary.
 

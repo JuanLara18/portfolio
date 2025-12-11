@@ -10,15 +10,15 @@ headerImage: "/blog/headers/embeddings-header.jpg"
 
 ## When Words Become Coordinates
 
-I still remember the moment embeddings clicked for me. I was staring at a visualization of Word2Vec, watching words float in a 2D projection of a 300-dimensional space. "King" and "queen" sat close together. "Man" and "woman" paralleled each other. And then I saw it: the vector from "man" to "woman" was nearly identical to the vector from "king" to "queen."
+The canonical example that makes embeddings click: visualizing Word2Vec in a 2D projection of 300-dimensional space. "King" and "queen" sit close together. "Man" and "woman" parallel each other. The striking revelation: the vector from "man" to "woman" is nearly identical to the vector from "king" to "queen."
 
-**Gender was a direction in space.**
+**Gender becomes a direction in space.**
 
-Not a label, not a category, not a rule someone programmed. A *direction*. An arrow you could follow through meaning-space. If you stood at "king" and walked in the "femininity" direction, you'd arrive at "queen." The same displacement worked for "actor" → "actress," "brother" → "sister," "he" → "she."
+Not a label, not a category, not a rule someone programmed. A *direction*. An arrow you can follow through meaning-space. Stand at "king" and walk in the "femininity" direction—you arrive at "queen." The same displacement works for "actor" → "actress," "brother" → "sister," "he" → "she."
 
-This wasn't just a clever trick. This was mathematics capturing semantics. This was geometry encoding relationships that philosophers have struggled to formalize for millennia.
+This isn't just a clever trick. This is mathematics capturing semantics. Geometry encoding relationships that philosophers have struggled to formalize for millennia.
 
-That moment changed how I thought about AI, about representation, about the nature of meaning itself.
+Understanding this changes how you think about AI, about representation, about the nature of meaning itself.
 
 ## The Problem: Computers Don't Speak Human
 

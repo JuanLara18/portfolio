@@ -13,7 +13,7 @@ estimatedWordCount: 4500
 
 ## The Impossible Math of Reality
 
-I remember the first time I actually sat down and calculated the dimensionality of a simple image. It was a moment of vertigo.
+Consider the dimensionality of a simple image—a calculation that reveals something profound.
 
 Take a humble $256 \times 256$ grayscale image. To a human, it's a face, a landscape, or a cat. To a computer, it is a vector of $65,536$ dimensions. Every pixel is an axis. Every possible image is a single point in a hypercube of dimension 65,536.
 
