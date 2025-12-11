@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { SEO } from '../components/common/SEO';
 import { 
   Calendar, 
   Clock, 
@@ -299,12 +300,21 @@ export default function BlogPostPage() {
   
   return (
     <>
-      <Helmet>
-        <title>{post.title} | Juan Lara</title>
-        <meta name="description" content={post.description || `Read ${post.title} by Juan Lara`} />
-        <meta property="og:title" content={`${post.title} | Juan Lara`} />
-        <meta property="og:description" content={post.description || `${post.title} blog post`} />
-      </Helmet>
+      <SEO
+        title={`${post.title} | Juan Lara`}
+        description={post.description || post.summary || `Read about ${post.title} - a deep dive into ${post.category}`}
+        canonical={`https://juanlara18.github.io/Portfolio/#/blog/${post.slug}`}
+        image={headerImage}
+        type="article"
+        keywords={post.tags || [post.category, 'machine learning', 'AI', 'computer science']}
+        article={{
+          publishedDate: post.date,
+          modifiedDate: post.modifiedDate || post.date,
+          tags: post.tags,
+          category: post.category,
+          wordCount: post.content?.split(' ').length
+        }}
+      />
       
       {/* Reading Progress Bar */}
       <ScrollProgress />

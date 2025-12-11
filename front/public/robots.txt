@@ -1,3 +1,10 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /static/
+
+# Sitemaps
+Sitemap: https://juanlara18.github.io/Portfolio/sitemap.xml
+
+# Crawl-delay for good behavior
+Crawl-delay: 10

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/common/SEO';
 import { variants as motionVariants, defaultViewportSettings, earlyViewportSettings } from '../utils';
 import { Link } from 'react-router-dom';
 import { 
@@ -588,13 +589,22 @@ const courses = [
   
   return (
     <>
-      <Helmet>
-        <title>About | Juan Lara</title>
-        <meta name="description" content="Learn about my background as a Computer Scientist and Mathematician with expertise in LLM/ML engineering, working at GenomAI and Harvard University." />
-        <meta property="og:title" content="About | Juan Lara" />
-        <meta property="og:description" content="Computer Scientist & Mathematician specializing in AI and ML" />
-        <meta name="keywords" content="Computer Science, Mathematics, AI Engineer, GenomAI, Harvard, Machine Learning Specialist" />
-      </Helmet>
+      <SEO
+        title="About | Juan Lara"
+        description="Computer Scientist and Mathematician with expertise in LLM/ML engineering. Research Assistant at Harvard Business School building production-ready AI solutions."
+        canonical="https://juanlara18.github.io/Portfolio/#/about"
+        keywords={[
+          'Juan Lara',
+          'Computer Science',
+          'Mathematics',
+          'AI Engineer',
+          'GenomAI',
+          'Harvard Business School',
+          'Machine Learning Specialist',
+          'Research Assistant',
+          'LLM Engineer'
+        ]}
+      />
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       
       {/* Hero Section + Scroll Indicator Container */}

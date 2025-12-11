@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/common/SEO';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Search, 
@@ -138,12 +139,22 @@ export default function BlogHomePage() {
   
   return (
     <>
-      <Helmet>
-        <title>Blog | Juan Lara</title>
-        <meta name="description" content="Articles and insights about AI, machine learning, and technology by Juan Lara." />
-        <meta property="og:title" content="Blog | Juan Lara" />
-        <meta property="og:description" content="AI & Technology blog" />
-      </Helmet>
+      <SEO
+        title="Blog | Juan Lara"
+        description="Technical articles about AI, machine learning, NLP, and computer science. Deep dives into research papers, curiosities, and practical ML engineering."
+        canonical="https://juanlara18.github.io/Portfolio/#/blog"
+        keywords={[
+          'AI blog',
+          'machine learning',
+          'deep learning',
+          'NLP',
+          'transformers',
+          'research papers',
+          'ML engineering',
+          'computer science',
+          'technical blog'
+        ]}
+      />
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       
       {/* Hero Section + Scroll Indicator Container */}

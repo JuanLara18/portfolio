@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
+import { SEO, defaultSEO } from '../components/common/SEO';
 import { variants as motionVariants, defaultViewportSettings, earlyViewportSettings } from '../utils';
 import { Github, Linkedin, Mail, ExternalLink, Code, Terminal, Database, Server, Cpu, TerminalSquare, FileCode, FileText, Braces, Layers, User, BrainCircuit } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -182,13 +183,25 @@ export default function LandingPage() {
   
   return (
     <>
-      <Helmet>
-        <title>Juan Lara</title>
-        <meta name="description" content="LLM/ML Specialist with 3+ years developing production-ready generative AI solutions. Specializing in RAG systems, LLM fine-tuning, and cloud deployment." />
-        <meta property="og:title" content="Juan Lara - LLM/ML Specialist" />
-        <meta property="og:description" content="Computer Scientist & Mathematician building AI-powered solutions" />
-        <meta name="keywords" content="LLM, RAG, MLOps, AWS, GCP, Python, AI Engineer, Machine Learning" />
-      </Helmet>
+      <SEO
+        title="Juan Lara | ML Engineer & Research Assistant"
+        description="LLM/ML Specialist with 3+ years developing production-ready generative AI solutions. Specializing in RAG systems, LLM fine-tuning, and cloud deployment at Harvard Business School."
+        keywords={[
+          'Juan Lara',
+          'LLM',
+          'RAG',
+          'MLOps',
+          'AWS',
+          'GCP',
+          'Python',
+          'AI Engineer',
+          'Machine Learning',
+          'Harvard Business School',
+          'Research Assistant',
+          'NLP',
+          'Deep Learning'
+        ]}
+      />
       <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative overflow-x-hidden">
       
       {/* Hero Section with Enhanced Technical Grid */}
