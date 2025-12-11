@@ -169,6 +169,7 @@ const staggerContainer = motionVariants.stagger();export default function BlogCa
                 <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4
                   ${displayInfo.color === 'blue' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' : ''}
                   ${displayInfo.color === 'indigo' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300' : ''}
+                  ${displayInfo.color === 'emerald' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : ''}
                 `}>
                   <IconComponent size={14} className="mr-1.5" />
                   {isCategory ? 'Category' : 'Tag'}

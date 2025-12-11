@@ -321,16 +321,31 @@ export default function BlogHomePage() {
                 };
                 const IconComponent = config.icon ? iconMap[config.icon] : BookOpen;
                 
+                const getActiveClasses = () => {
+                  if (selectedCategory !== key) {
+                    return 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent';
+                  }
+                  
+                  if (config.color === 'blue') {
+                    return 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800';
+                  }
+                  if (config.color === 'indigo') {
+                    return 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800';
+                  }
+                  if (config.color === 'emerald') {
+                    return 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800';
+                  }
+                  
+                  return 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-transparent';
+                };
+                
                 return (
                   <button
                     key={key}
                     onClick={() => setSelectedCategory(key)}
                     aria-pressed={selectedCategory === key}
                     aria-label={`Filter posts by ${config.name}`}
-                    className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-colors
-                      ${selectedCategory === key
-                        ? `bg-${config.color}-100 dark:bg-${config.color}-900/50 text-${config.color}-800 dark:text-${config.color}-200 border border-${config.color}-200 dark:border-${config.color}-800` 
-                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent'}`}
+                    className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-colors ${getActiveClasses()}`}
                   >
                     <IconComponent size={16} className="mr-2" />
                     {config.name}
