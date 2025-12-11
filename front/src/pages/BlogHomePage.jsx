@@ -8,7 +8,10 @@ import {
   BookOpen, 
   Layers,
   Tag,
-  Mail
+  Mail,
+  Brain,
+  FileText,
+  Code2
 } from 'lucide-react';
 import { loadAllPosts, getAllTags, BLOG_CONFIG } from '../utils/blogUtils';
 import { variants as motionVariants } from '../utils';
@@ -310,29 +313,30 @@ export default function BlogHomePage() {
                 <Layers size={16} className="mr-2" />
                 All Categories
               </button>
-              {Object.entries(BLOG_CONFIG.categories).map(([key, config]) => (
-                <button
-                  key={key}
-                  onClick={() => setSelectedCategory(key)}
-                  aria-pressed={selectedCategory === key}
-                  aria-label={`Filter posts by ${config.name}`}
-                  className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-colors
-                    ${selectedCategory === key
-                      ? `bg-${config.color}-100 dark:bg-${config.color}-900/50 text-${config.color}-800 dark:text-${config.color}-200 border border-${config.color}-200 dark:border-${config.color}-800` 
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent'}`}
-                >
-                  {config.icon && (
-                    <>
-                      {typeof config.icon === 'function' ? (
-                        <config.icon size={16} className="mr-2" />
-                      ) : (
-                        <BookOpen size={16} className="mr-2" />
-                      )}
-                    </>
-                  )}
-                  {config.name}
-                </button>
-              ))}
+              {Object.entries(BLOG_CONFIG.categories).map(([key, config]) => {
+                const iconMap = {
+                  'Brain': Brain,
+                  'FileText': FileText,
+                  'Code2': Code2
+                };
+                const IconComponent = config.icon ? iconMap[config.icon] : BookOpen;
+                
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setSelectedCategory(key)}
+                    aria-pressed={selectedCategory === key}
+                    aria-label={`Filter posts by ${config.name}`}
+                    className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-colors
+                      ${selectedCategory === key
+                        ? `bg-${config.color}-100 dark:bg-${config.color}-900/50 text-${config.color}-800 dark:text-${config.color}-200 border border-${config.color}-200 dark:border-${config.color}-800` 
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent'}`}
+                  >
+                    <IconComponent size={16} className="mr-2" />
+                    {config.name}
+                  </button>
+                );
+              })}
             </motion.div>
             
             {totalPosts === 0 ? (

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, Tag, ArrowRight, Brain, FileText } from 'lucide-react';
+import { Calendar, Clock, Tag, ArrowRight, Brain, FileText, Code2 } from 'lucide-react';
 import { BLOG_CONFIG, formatDate } from '../../../utils/blogUtils';
 import { variants as motionVariants } from '../../../utils';
 import { MotionCard } from '../../common';
@@ -50,9 +50,12 @@ export const PostCard = ({ post }) => {
             className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
               ${categoryConfig?.color === 'blue' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' : ''}
               ${categoryConfig?.color === 'indigo' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300' : ''}
+              ${categoryConfig?.color === 'emerald' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : ''}
             `}
           >
-            {categoryConfig?.color === 'blue' ? <Brain size={12} className="mr-1" /> : <FileText size={12} className="mr-1" />}
+            {categoryConfig?.icon === 'Brain' && <Brain size={12} className="mr-1" />}
+            {categoryConfig?.icon === 'FileText' && <FileText size={12} className="mr-1" />}
+            {categoryConfig?.icon === 'Code2' && <Code2 size={12} className="mr-1" />}
             {categoryConfig?.name || post.category}
           </span>
         </div>

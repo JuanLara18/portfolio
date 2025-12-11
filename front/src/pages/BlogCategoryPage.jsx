@@ -8,7 +8,8 @@ import {
   Layers,
   Tag,
   Brain,
-  FileText
+  FileText,
+  Code2
 } from 'lucide-react';
 import { 
   getPostsByCategory, 
@@ -62,14 +63,20 @@ const staggerContainer = motionVariants.stagger();export default function BlogCa
     loadPosts();
   }, [category, tag, isCategory, isTag]);
   
-  // Get display information
   const getDisplayInfo = () => {
     if (isCategory) {
       const categoryConfig = BLOG_CONFIG.categories[category];
+      const iconMap = {
+        'Brain': Brain,
+        'FileText': FileText,
+        'Code2': Code2
+      };
+      const icon = categoryConfig?.icon ? iconMap[categoryConfig.icon] : BookOpen;
+      
       return {
         title: categoryConfig?.name || category,
         description: categoryConfig?.description || `Posts in ${category}`,
-        icon: categoryConfig?.color === 'blue' ? Brain : FileText,
+        icon: icon,
         color: categoryConfig?.color || 'blue'
       };
     } else if (isTag) {

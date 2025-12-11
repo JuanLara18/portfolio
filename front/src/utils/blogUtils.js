@@ -6,12 +6,20 @@ export const BLOG_CONFIG = {
     curiosities: {
       name: 'Mathematical Curiosities',
       description: 'Explorations of games, puzzles, and mathematical phenomena',
-      color: 'blue'
+      color: 'blue',
+      icon: 'Brain'
     },
     research: {
       name: 'Research Notes',
       description: 'Academic papers, studies, and research insights',
-      color: 'indigo'
+      color: 'indigo',
+      icon: 'FileText'
+    },
+    'field-notes': {
+      name: 'Field Notes',
+      description: 'Practical guides and technical deep-dives from real-world ML/AI work',
+      color: 'emerald',
+      icon: 'Code2'
     }
   },
   postsPerPage: 6
