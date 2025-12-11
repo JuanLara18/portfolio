@@ -110,7 +110,7 @@ export default function BlogHomePage() {
       <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Loading blog posts...</p>
+          <p className="text-gray-600 dark:text-gray-400">Loading posts...</p>
         </div>
       </div>
     );
@@ -122,7 +122,7 @@ export default function BlogHomePage() {
         <div className="text-center max-w-md">
           <BookOpen className="mx-auto h-12 w-12 text-gray-400 mb-4" />
           <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-            Unable to Load Blog
+            Unable to Load Posts
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mb-4">{error}</p>
           <button 
@@ -186,7 +186,7 @@ export default function BlogHomePage() {
               variants={fadeInUp}
               className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto"
             >
-              Exploring mathematical curiosities, research insights, and the fascinating intersections between theory and practice.
+              Mathematical curiosities, research insights, and practical deep-dives into ML/AI.
             </motion.p>
             
             {/* Search and Filters */}
@@ -202,7 +202,7 @@ export default function BlogHomePage() {
                 <input
                   type="text"
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-shadow duration-200"
-                  placeholder="Search interesting topics..."
+                  placeholder="Search posts..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -363,8 +363,8 @@ export default function BlogHomePage() {
                   <Search size={40} className="text-blue-500/50 dark:text-blue-400/50" />
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">No posts found</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto leading-relaxed">
-                  We couldn't find any posts matching your search. Try using broader terms or browsing by category.
+                <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+                  No matches. Try different terms or browse all categories.
                 </p>
                 <button 
                   onClick={() => {
@@ -461,14 +461,14 @@ export default function BlogHomePage() {
               variants={fadeInUp}
               className="text-3xl md:text-4xl font-bold mb-6"
             >
-              Join the Conversation
+              Let's Connect
             </motion.h2>
             
             <motion.p 
               variants={fadeInUp}
               className="text-gray-300 mb-8 max-w-2xl mx-auto"
             >
-              Interested in discussing mathematical insights, AI developments, or research ideas? I'd love to hear your thoughts and explore new perspectives.
+              Questions about ML, research ideas, or just want to connect? Reach out.
             </motion.p>
             
             <motion.div 
@@ -480,7 +480,7 @@ export default function BlogHomePage() {
                 className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors flex items-center gap-2 font-medium shadow-lg"
               >
                 <Mail size={18} />
-                <span>Share Your Ideas</span>
+                <span>Get in Touch</span>
               </a>
               
               <a 
