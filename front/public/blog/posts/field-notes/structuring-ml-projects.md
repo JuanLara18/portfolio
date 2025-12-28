@@ -1,6 +1,6 @@
 ---
 title: "Structuring Machine Learning Projects: From Chaos to Production-Ready"
-date: "2025-12-28"
+date: "2025-11-11"
 excerpt: "Most ML projects die in the chaos of unversioned notebooks and dependency hell. This is the definitive guide to structuring projects that scale—from folder architecture to Git workflows, from Poetry mastery to the bridge between experimentation and production."
 tags: ["MLOps", "Python", "Project Structure", "Poetry", "Git", "Best Practices"]
 headerImage: "/blog/headers/ml-projects-header.jpg"
