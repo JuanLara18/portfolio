@@ -321,12 +321,22 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		},
     
 	// Enhanced code blocks
-	code: ({ inline, className, children, ...props }) => {
+	code: ({ className, children, ...props }) => {
+		// Detect if it's a code block or inline code
+		// In react-markdown v8+, the 'inline' prop is no longer passed
+		// Code blocks have a className with language-* or contain newlines
+		const hasLanguageClass = /language-(\w+)/.exec(className || '');
+		const content = String(children);
+		const hasNewlines = content.includes('\n');
+		
+		// It's inline if: no language class AND no newlines AND content is short
+		const isInline = !hasLanguageClass && !hasNewlines;
+		
 		// Handle inline code
-		if (inline) {
+		if (isInline) {
 			return (
 				<code 
-					className="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded text-sm font-mono border border-gray-300 dark:border-gray-600 whitespace-nowrap"
+					className="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded text-sm font-mono border border-gray-300 dark:border-gray-600"
 					{...props}
 				>
 					{children}
@@ -335,9 +345,8 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		}
 		
 		// Handle code blocks with syntax highlighting
-		const match = /language-(\w+)/.exec(className || '');
-		const language = match ? match[1] : '';
-		const value = String(children).replace(/\n$/, '');
+		const language = hasLanguageClass ? hasLanguageClass[1] : '';
+		const value = content.replace(/\n$/, '');
 		
 		// Use CodeBlock component for syntax highlighting
 		return <CodeBlock language={language} value={value} {...props} />;
