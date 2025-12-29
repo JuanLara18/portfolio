@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { TransitionProvider, Navigation as Navbar } from './components/layout';
 import LandingPage from './pages/LandingPage';
@@ -9,6 +9,17 @@ import BlogHomePage from './pages/BlogHomePage';
 import BlogPostPage from './pages/BlogPostPage';
 import BlogCategoryPage from './pages/BlogCategoryPage';
 import useNavbarHeight from './hooks/useNavbarHeight';
+
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
 
 function App() {
   // Dark mode state
@@ -52,6 +63,7 @@ function App() {
       <Router 
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
+        <ScrollToTop />
         <TransitionProvider>
         <div className="App min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
           <Navbar 

@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useRef, useId, useCallback } from 'react';
+import { memo, useState, useEffect, useRef, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
@@ -10,6 +10,31 @@ import mermaid from 'mermaid';
 import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 
+// Global cache for rendered Mermaid SVGs (limited size to prevent memory leaks)
+const mermaidCache = new Map();
+const MAX_CACHE_SIZE = 50;
+
+// Simple hash function for generating stable IDs
+const hashCode = (str) => {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(36);
+};
+
+// Add to cache with size limit
+const addToCache = (key, value) => {
+  if (mermaidCache.size >= MAX_CACHE_SIZE) {
+    // Remove oldest entry
+    const firstKey = mermaidCache.keys().next().value;
+    mermaidCache.delete(firstKey);
+  }
+  mermaidCache.set(key, value);
+};
+
 // Mermaid configuration helper
 const getMermaidConfig = (isDark) => ({
   startOnLoad: false,
@@ -17,7 +42,6 @@ const getMermaidConfig = (isDark) => ({
   securityLevel: 'loose',
   fontFamily: 'Inter, system-ui, sans-serif',
   themeVariables: isDark ? {
-    // Dark theme customizations
     primaryColor: '#3b82f6',
     primaryTextColor: '#f3f4f6',
     primaryBorderColor: '#4b5563',
@@ -33,7 +57,6 @@ const getMermaidConfig = (isDark) => ({
     edgeLabelBackground: '#374151',
     nodeTextColor: '#f3f4f6',
   } : {
-    // Light theme customizations
     primaryColor: '#3b82f6',
     primaryTextColor: '#1f2937',
     primaryBorderColor: '#d1d5db',
@@ -80,16 +103,25 @@ const ToggleSection = ({ title, children, defaultOpen = false }) => {
   );
 };
 
-// Custom hook for dark mode detection
+// Custom hook for dark mode detection with debounce
 const useDarkMode = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
   
   useEffect(() => {
-    const checkDarkMode = () => {
-      setIsDarkMode(document.documentElement.classList.contains('dark'));
-    };
+    let timeoutId;
     
-    checkDarkMode();
+    const checkDarkMode = () => {
+      // Debounce theme changes to avoid rapid re-renders
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsDarkMode(document.documentElement.classList.contains('dark'));
+      }, 100);
+    };
     
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
@@ -97,76 +129,129 @@ const useDarkMode = () => {
       attributeFilter: ['class']
     });
     
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeoutId);
+    };
   }, []);
   
   return isDarkMode;
 };
 
-// Mermaid Diagram Component with full theme support
-const MermaidDiagram = ({ chart }) => {
-  const uniqueId = useId();
+// Optimized Mermaid Diagram Component with caching and lazy loading
+const MermaidDiagram = memo(({ chart }) => {
   const containerRef = useRef(null);
+  const idRef = useRef(null);
   const [svg, setSvg] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const renderCountRef = useRef(0);
   const isDarkMode = useDarkMode();
   
-  // Generate a safe ID for mermaid (no colons allowed)
-  const mermaidId = `mermaid-${uniqueId.replace(/:/g, '-')}-${Math.random().toString(36).substr(2, 9)}`;
+  // Generate stable ID once per component instance
+  const chartHash = useMemo(() => hashCode(chart), [chart]);
   
-  const renderDiagram = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    
-    try {
-      // Reinitialize mermaid with current theme
-      mermaid.initialize(getMermaidConfig(isDarkMode));
-      
-      const { svg: renderedSvg } = await mermaid.render(mermaidId, chart);
-      setSvg(renderedSvg);
-    } catch (err) {
-      console.error('Mermaid rendering error:', err);
-      setError(err.message || 'Failed to render diagram');
-    } finally {
-      setIsLoading(false);
-    }
-  }, [chart, isDarkMode, mermaidId]);
+  // Initialize ID ref once
+  if (!idRef.current) {
+    idRef.current = `mermaid-${chartHash}-${Date.now().toString(36)}`;
+  }
   
+  // Cache key includes theme
+  const cacheKey = `${chartHash}-${isDarkMode ? 'dark' : 'light'}`;
+  
+  // Intersection Observer for lazy loading
   useEffect(() => {
-    renderDiagram();
-  }, [renderDiagram]);
+    const currentRef = containerRef.current;
+    if (!currentRef) return;
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px', threshold: 0 }
+    );
+    
+    observer.observe(currentRef);
+    
+    return () => observer.disconnect();
+  }, []);
   
-  // Fullscreen modal
-  const FullscreenModal = () => (
-    <div 
-      className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
-      onClick={() => setIsFullscreen(false)}
-    >
-      <button
-        onClick={() => setIsFullscreen(false)}
-        className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
-        aria-label="Close fullscreen"
-      >
-        <X size={24} />
-      </button>
+  // Render diagram only when visible
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    // Check cache first
+    const cached = mermaidCache.get(cacheKey);
+    if (cached) {
+      setSvg(cached);
+      setIsLoading(false);
+      return;
+    }
+    
+    let isCancelled = false;
+    renderCountRef.current += 1;
+    const currentRenderCount = renderCountRef.current;
+    
+    const renderDiagram = async () => {
+      setIsLoading(true);
+      setError(null);
+      
+      try {
+        mermaid.initialize(getMermaidConfig(isDarkMode));
+        
+        // Use unique ID for each render attempt
+        const renderId = `${idRef.current}-${currentRenderCount}`;
+        const { svg: renderedSvg } = await mermaid.render(renderId, chart);
+        
+        if (isCancelled) return;
+        
+        // Cache the result
+        addToCache(cacheKey, renderedSvg);
+        setSvg(renderedSvg);
+      } catch (err) {
+        if (isCancelled) return;
+        console.error('Mermaid rendering error:', err);
+        setError(err.message || 'Failed to render diagram');
+      } finally {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      }
+    };
+    
+    renderDiagram();
+    
+    return () => {
+      isCancelled = true;
+    };
+  }, [isVisible, cacheKey, chart, isDarkMode]);
+  
+  // Placeholder before visible
+  if (!isVisible) {
+    return (
       <div 
-        className="max-w-full max-h-full overflow-auto bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
+        ref={containerRef}
+        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 min-h-[200px]"
       >
-        <div 
-          className="mermaid-diagram-fullscreen [&_svg]:max-w-none [&_svg]:w-auto [&_svg]:h-auto"
-          dangerouslySetInnerHTML={{ __html: svg }}
-        />
+        <div className="flex items-center justify-center h-full text-gray-400 dark:text-gray-500">
+          <span className="text-sm">Diagram</span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
   
   // Loading state
-  if (isLoading) {
+  if (isLoading && !svg) {
     return (
-      <div className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div 
+        ref={containerRef}
+        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700"
+      >
         <div className="flex items-center justify-center gap-3 text-gray-500 dark:text-gray-400">
           <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
           <span className="text-sm font-medium">Rendering diagram...</span>
@@ -176,9 +261,9 @@ const MermaidDiagram = ({ chart }) => {
   }
   
   // Error state
-  if (error) {
+  if (error && !svg) {
     return (
-      <div className="my-8 p-6 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
+      <div ref={containerRef} className="my-8 p-6 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
         <div className="flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
           <div>
@@ -204,15 +289,37 @@ const MermaidDiagram = ({ chart }) => {
   
   return (
     <>
-      {isFullscreen && <FullscreenModal />}
+      {isFullscreen && (
+        <div 
+          className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+          onClick={() => setIsFullscreen(false)}
+        >
+          <button
+            onClick={() => setIsFullscreen(false)}
+            className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            aria-label="Close fullscreen"
+          >
+            <X size={24} />
+          </button>
+          <div 
+            className="max-w-full max-h-full overflow-auto bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div 
+              className="mermaid-diagram-fullscreen [&_svg]:max-w-none [&_svg]:w-auto [&_svg]:h-auto"
+              dangerouslySetInnerHTML={{ __html: svg }}
+            />
+          </div>
+        </div>
+      )}
       <div 
         ref={containerRef}
-        className="my-8 group relative bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/50 dark:to-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600"
+        className="my-8 group relative bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/50 dark:to-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden"
       >
         {/* Fullscreen button */}
         <button
           onClick={() => setIsFullscreen(true)}
-          className="absolute top-3 right-3 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
+          className="absolute top-3 right-3 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
           aria-label="View fullscreen"
           title="View fullscreen"
         >
@@ -222,14 +329,14 @@ const MermaidDiagram = ({ chart }) => {
         {/* Diagram container */}
         <div className="p-4 sm:p-6 overflow-x-auto">
           <div 
-            className="mermaid-diagram flex justify-center min-w-fit [&_svg]:max-w-full [&_svg]:h-auto [&_.node_rect]:transition-all [&_.node_rect]:duration-200"
+            className="mermaid-diagram flex justify-center min-w-fit [&_svg]:max-w-full [&_svg]:h-auto"
             dangerouslySetInnerHTML={{ __html: svg }}
           />
         </div>
       </div>
     </>
   );
-};
+}, (prevProps, nextProps) => prevProps.chart === nextProps.chart);
 
 // Enhanced Code Block with Copy Button
 const CodeBlock = ({ language, value, ...props }) => {
