@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useRef } from 'react';
+import { memo, useState, useEffect, useRef, useId, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
@@ -7,15 +7,48 @@ import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import mermaid from 'mermaid';
-import { ChevronDown, ChevronRight, Copy, Check } from 'lucide-react';
+import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 
-// Initialize Mermaid
-mermaid.initialize({ 
-  startOnLoad: false, 
-  theme: 'dark',
+// Mermaid configuration helper
+const getMermaidConfig = (isDark) => ({
+  startOnLoad: false,
+  theme: isDark ? 'dark' : 'default',
   securityLevel: 'loose',
-  fontFamily: 'Inter, system-ui, sans-serif'
+  fontFamily: 'Inter, system-ui, sans-serif',
+  themeVariables: isDark ? {
+    // Dark theme customizations
+    primaryColor: '#3b82f6',
+    primaryTextColor: '#f3f4f6',
+    primaryBorderColor: '#4b5563',
+    lineColor: '#6b7280',
+    secondaryColor: '#1f2937',
+    tertiaryColor: '#374151',
+    background: '#111827',
+    mainBkg: '#1f2937',
+    nodeBorder: '#4b5563',
+    clusterBkg: '#1f2937',
+    clusterBorder: '#4b5563',
+    titleColor: '#f9fafb',
+    edgeLabelBackground: '#374151',
+    nodeTextColor: '#f3f4f6',
+  } : {
+    // Light theme customizations
+    primaryColor: '#3b82f6',
+    primaryTextColor: '#1f2937',
+    primaryBorderColor: '#d1d5db',
+    lineColor: '#6b7280',
+    secondaryColor: '#f3f4f6',
+    tertiaryColor: '#e5e7eb',
+    background: '#ffffff',
+    mainBkg: '#f9fafb',
+    nodeBorder: '#d1d5db',
+    clusterBkg: '#f3f4f6',
+    clusterBorder: '#d1d5db',
+    titleColor: '#111827',
+    edgeLabelBackground: '#f3f4f6',
+    nodeTextColor: '#1f2937',
+  }
 });
 
 // Enhanced Toggle Component
@@ -47,51 +80,17 @@ const ToggleSection = ({ title, children, defaultOpen = false }) => {
   );
 };
 
-// Mermaid Diagram Component
-const MermaidDiagram = ({ chart }) => {
-  const ref = useRef(null);
-  const [svg, setSvg] = useState('');
-  
-  useEffect(() => {
-    const renderDiagram = async () => {
-      try {
-        const { svg } = await mermaid.render(`mermaid-${Date.now()}`, chart);
-        setSvg(svg);
-      } catch (error) {
-        console.error('Mermaid rendering error:', error);
-        setSvg('<p>Error rendering diagram</p>');
-      }
-    };
-    
-    renderDiagram();
-  }, [chart]);
-  
-  return (
-    <div className="my-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
-      <div 
-        ref={ref}
-        className="flex justify-center"
-        dangerouslySetInnerHTML={{ __html: svg }}
-      />
-    </div>
-  );
-};
-
-// Enhanced Code Block with Copy Button
-const CodeBlock = ({ language, value, ...props }) => {
-  const [copied, setCopied] = useState(false);
+// Custom hook for dark mode detection
+const useDarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   
-  // Detect dark mode
   useEffect(() => {
     const checkDarkMode = () => {
       setIsDarkMode(document.documentElement.classList.contains('dark'));
     };
     
-    // Check initially
     checkDarkMode();
     
-    // Watch for changes
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -100,6 +99,142 @@ const CodeBlock = ({ language, value, ...props }) => {
     
     return () => observer.disconnect();
   }, []);
+  
+  return isDarkMode;
+};
+
+// Mermaid Diagram Component with full theme support
+const MermaidDiagram = ({ chart }) => {
+  const uniqueId = useId();
+  const containerRef = useRef(null);
+  const [svg, setSvg] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const isDarkMode = useDarkMode();
+  
+  // Generate a safe ID for mermaid (no colons allowed)
+  const mermaidId = `mermaid-${uniqueId.replace(/:/g, '-')}-${Math.random().toString(36).substr(2, 9)}`;
+  
+  const renderDiagram = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      // Reinitialize mermaid with current theme
+      mermaid.initialize(getMermaidConfig(isDarkMode));
+      
+      const { svg: renderedSvg } = await mermaid.render(mermaidId, chart);
+      setSvg(renderedSvg);
+    } catch (err) {
+      console.error('Mermaid rendering error:', err);
+      setError(err.message || 'Failed to render diagram');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [chart, isDarkMode, mermaidId]);
+  
+  useEffect(() => {
+    renderDiagram();
+  }, [renderDiagram]);
+  
+  // Fullscreen modal
+  const FullscreenModal = () => (
+    <div 
+      className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+      onClick={() => setIsFullscreen(false)}
+    >
+      <button
+        onClick={() => setIsFullscreen(false)}
+        className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+        aria-label="Close fullscreen"
+      >
+        <X size={24} />
+      </button>
+      <div 
+        className="max-w-full max-h-full overflow-auto bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div 
+          className="mermaid-diagram-fullscreen [&_svg]:max-w-none [&_svg]:w-auto [&_svg]:h-auto"
+          dangerouslySetInnerHTML={{ __html: svg }}
+        />
+      </div>
+    </div>
+  );
+  
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-center gap-3 text-gray-500 dark:text-gray-400">
+          <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+          <span className="text-sm font-medium">Rendering diagram...</span>
+        </div>
+      </div>
+    );
+  }
+  
+  // Error state
+  if (error) {
+    return (
+      <div className="my-8 p-6 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
+        <div className="flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-medium text-red-800 dark:text-red-200">
+              Failed to render diagram
+            </p>
+            <p className="text-xs text-red-600 dark:text-red-300 mt-1 font-mono">
+              {error}
+            </p>
+            <details className="mt-3">
+              <summary className="text-xs text-red-500 dark:text-red-400 cursor-pointer hover:underline">
+                Show diagram code
+              </summary>
+              <pre className="mt-2 p-3 bg-red-100 dark:bg-red-900/30 rounded-lg text-xs overflow-x-auto text-red-800 dark:text-red-200">
+                {chart}
+              </pre>
+            </details>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  return (
+    <>
+      {isFullscreen && <FullscreenModal />}
+      <div 
+        ref={containerRef}
+        className="my-8 group relative bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/50 dark:to-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600"
+      >
+        {/* Fullscreen button */}
+        <button
+          onClick={() => setIsFullscreen(true)}
+          className="absolute top-3 right-3 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
+          aria-label="View fullscreen"
+          title="View fullscreen"
+        >
+          <Maximize2 size={16} />
+        </button>
+        
+        {/* Diagram container */}
+        <div className="p-4 sm:p-6 overflow-x-auto">
+          <div 
+            className="mermaid-diagram flex justify-center min-w-fit [&_svg]:max-w-full [&_svg]:h-auto [&_.node_rect]:transition-all [&_.node_rect]:duration-200"
+            dangerouslySetInnerHTML={{ __html: svg }}
+          />
+        </div>
+      </div>
+    </>
+  );
+};
+
+// Enhanced Code Block with Copy Button
+const CodeBlock = ({ language, value, ...props }) => {
+  const [copied, setCopied] = useState(false);
+  const isDarkMode = useDarkMode();
   
   const copyToClipboard = () => {
     navigator.clipboard.writeText(value);

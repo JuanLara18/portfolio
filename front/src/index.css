@@ -405,3 +405,127 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 /* Content helpers */
 .mobile-content-wide{max-width:100%!important;padding-left:.5rem!important;padding-right:.5rem!important}
 .mobile-hero-optimized{padding-left:.75rem!important;padding-right:.75rem!important}
+
+/* --------------------------------------------------------------------------
+   Mermaid Diagram Styles
+   Clean, professional styling for Mermaid diagrams with theme support
+   ----------------------------------------------------------------------- */
+
+/* Base diagram container styling */
+.mermaid-diagram {
+  min-width: fit-content;
+}
+
+.mermaid-diagram svg {
+  max-width: 100%;
+  height: auto;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+/* Node styling enhancements */
+.mermaid-diagram .node rect,
+.mermaid-diagram .node circle,
+.mermaid-diagram .node ellipse,
+.mermaid-diagram .node polygon {
+  transition: all 0.2s ease;
+}
+
+.mermaid-diagram .node:hover rect,
+.mermaid-diagram .node:hover circle,
+.mermaid-diagram .node:hover ellipse,
+.mermaid-diagram .node:hover polygon {
+  filter: brightness(1.1);
+}
+
+/* Edge/arrow styling */
+.mermaid-diagram .edgePath path {
+  stroke-width: 1.5px;
+}
+
+/* Label styling */
+.mermaid-diagram .edgeLabel {
+  font-size: 12px;
+}
+
+/* Cluster/subgraph styling */
+.mermaid-diagram .cluster rect {
+  rx: 8px;
+  ry: 8px;
+}
+
+/* Sequence diagram improvements */
+.mermaid-diagram .actor {
+  stroke-width: 1.5px;
+}
+
+.mermaid-diagram .messageText {
+  font-size: 13px;
+}
+
+/* Flowchart specific */
+.mermaid-diagram .flowchart-link {
+  stroke-width: 1.5px;
+}
+
+/* Fullscreen diagram styling */
+.mermaid-diagram-fullscreen svg {
+  max-width: none;
+  width: auto;
+  height: auto;
+  min-width: 600px;
+}
+
+/* Mobile optimizations for diagrams */
+@media (max-width: 768px) {
+  .mermaid-diagram {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  
+  .mermaid-diagram svg {
+    min-width: 400px;
+  }
+  
+  .mermaid-diagram .node text,
+  .mermaid-diagram .edgeLabel {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mermaid-diagram svg {
+    min-width: 300px;
+  }
+  
+  .mermaid-diagram .node text,
+  .mermaid-diagram .edgeLabel {
+    font-size: 10px !important;
+  }
+}
+
+/* Custom scrollbar for diagram container */
+.mermaid-diagram::-webkit-scrollbar {
+  height: 6px;
+}
+
+.mermaid-diagram::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mermaid-diagram::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.dark .mermaid-diagram::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.mermaid-diagram::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.dark .mermaid-diagram::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
