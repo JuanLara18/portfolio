@@ -90,20 +90,14 @@ CUDA (Compute Unified Device Architecture) is NVIDIA's parallel computing platfo
 
 When you write `tensor.cuda()` in PyTorch, you trigger a cascade:
 
-```
-Python code
-    ↓
-PyTorch Python bindings
-    ↓
-PyTorch C++ backend
-    ↓
-cuDNN / cuBLAS (optimized CUDA libraries)
-    ↓
-CUDA Runtime
-    ↓
-CUDA Driver
-    ↓
-GPU Hardware
+```mermaid
+flowchart TB
+    A[Python code] --> B[PyTorch Python bindings]
+    B --> C[PyTorch C++ backend]
+    C --> D[cuDNN / cuBLAS]
+    D --> E[CUDA Runtime]
+    E --> F[CUDA Driver]
+    F --> G[GPU Hardware]
 ```
 
 Each layer adds abstraction but also optimization. cuDNN contains hand-tuned implementations of convolutions, attention mechanisms, and other operations that would take years to write from scratch.
@@ -322,29 +316,21 @@ if __name__ == "__main__":
 
 GPU memory (VRAM) is the most constrained resource in ML. Understanding its structure helps you work within its limits.
 
-```
-┌─────────────────────────────────────────────────┐
-│                  Host (CPU) Memory              │
-│                   16-512 GB                     │
-└─────────────────────────────────────────────────┘
-                        │
-                   PCIe Bus (16-64 GB/s)
-                        │
-┌─────────────────────────────────────────────────┐
-│                  GPU Global Memory              │
-│                    8-80 GB                      │
-│  ┌─────────────────────────────────────────┐   │
-│  │            L2 Cache (4-96 MB)           │   │
-│  │  ┌───────────────────────────────────┐  │   │
-│  │  │     Shared Memory / L1 Cache      │  │   │
-│  │  │         (128-256 KB per SM)       │  │   │
-│  │  │  ┌─────────────────────────────┐  │  │   │
-│  │  │  │        Registers            │  │  │   │
-│  │  │  │     (256 KB per SM)         │  │  │   │
-│  │  │  └─────────────────────────────┘  │  │   │
-│  │  └───────────────────────────────────┘  │   │
-│  └─────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph HOST["Host (CPU) Memory: 16-512 GB"]
+        direction TB
+    end
+    
+    HOST ---|PCIe Bus: 16-64 GB/s| GPU
+    
+    subgraph GPU["GPU Global Memory: 8-80 GB"]
+        subgraph L2["L2 Cache: 4-96 MB"]
+            subgraph L1["Shared Memory / L1 Cache: 128-256 KB per SM"]
+                REG["Registers: 256 KB per SM"]
+            end
+        end
+    end
 ```
 
 Each level is faster but smaller:
@@ -872,24 +858,24 @@ print(f"Estimated memory: {total_gb:.1f} GB")
 
 ### The Decision Tree
 
-```
-Is your model < 1B parameters?
-├── Yes: Single GPU likely sufficient
-│   └── RTX 3090/4090 or A10G (24 GB) covers most cases
-│
-└── No: Consider your options
-    │
-    ├── 1B-7B parameters
-    │   ├── Training: A100 40GB (tight) or 80GB
-    │   └── Inference: Single 24GB GPU with quantization
-    │
-    ├── 7B-13B parameters
-    │   ├── Training: A100 80GB or multi-GPU
-    │   └── Inference: A100 40GB or quantized on 24GB
-    │
-    └── 13B+ parameters
-        ├── Training: Multi-GPU required (FSDP or model parallel)
-        └── Inference: Multi-GPU or aggressive quantization
+```mermaid
+flowchart TB
+    START{"Model < 1B parameters?"} -->|Yes| SINGLE["Single GPU sufficient"]
+    SINGLE --> CONSUMER["RTX 3090/4090 or A10G (24 GB)"]
+    
+    START -->|No| SIZE{"Model size?"}
+    
+    SIZE -->|1B-7B| MED["Medium models"]
+    MED --> MEDT["Training: A100 40GB or 80GB"]
+    MED --> MEDI["Inference: 24GB GPU + quantization"]
+    
+    SIZE -->|7B-13B| LARGE["Large models"]
+    LARGE --> LARGET["Training: A100 80GB or multi-GPU"]
+    LARGE --> LARGEI["Inference: A100 40GB or quantized"]
+    
+    SIZE -->|13B+| XLARGE["Very large models"]
+    XLARGE --> XLARGET["Training: Multi-GPU (FSDP/model parallel)"]
+    XLARGE --> XLARGEI["Inference: Multi-GPU or aggressive quantization"]
 ```
 
 ### When Cloud Makes Sense

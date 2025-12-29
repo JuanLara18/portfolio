@@ -611,15 +611,19 @@ Models are trained on historical data but predict on future data. When the futur
 | Prior Probability Shift | P(y) changes | Fraud rate increases |
 | Label Drift | Target distribution changes | Customer churn rate spikes |
 
-```
-Time →
-┌─────────────┬─────────────────────────────────────────────────┐
-│   Training  │                  Production                     │
-│    Data     │                                                  │
-├─────────────┼─────────────┬─────────────────────────────────────┤
-│             │  Stable     │  Drift begins        │  Failure   │
-│             │  performance│  (gradual or sudden) │  mode      │
-└─────────────┴─────────────┴─────────────────────────────────────┘
+```mermaid
+gantt
+    title Model Lifecycle and Drift
+    dateFormat X
+    axisFormat %s
+    
+    section Training
+    Training Data    :done, 0, 1
+    
+    section Production
+    Stable Performance    :active, 1, 2
+    Drift Begins          :crit, 2, 3
+    Failure Mode          :crit, 3, 4
 ```
 
 ### Detecting Data Drift
@@ -771,23 +775,29 @@ Understanding the causes helps you anticipate and prevent drift:
 
 A production ML system requires monitoring at multiple levels:
 
-```
-┌───────────────────────────────────────────────────────────────┐
-│                     Business Metrics                          │
-│         Revenue, conversion, customer satisfaction            │
-├───────────────────────────────────────────────────────────────┤
-│                     Model Metrics                             │
-│         Accuracy, precision, recall (when labels available)   │
-├───────────────────────────────────────────────────────────────┤
-│                    Prediction Metrics                         │
-│         Distribution, confidence, latency                     │
-├───────────────────────────────────────────────────────────────┤
-│                      Data Metrics                             │
-│         Feature distributions, missing values, outliers       │
-├───────────────────────────────────────────────────────────────┤
-│                   Infrastructure Metrics                      │
-│         CPU, memory, GPU utilization, request rate            │
-└───────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph BUSINESS["Business Metrics"]
+        B1["Revenue, conversion, customer satisfaction"]
+    end
+    
+    subgraph MODEL["Model Metrics"]
+        M1["Accuracy, precision, recall (when labels available)"]
+    end
+    
+    subgraph PREDICTION["Prediction Metrics"]
+        P1["Distribution, confidence, latency"]
+    end
+    
+    subgraph DATA["Data Metrics"]
+        D1["Feature distributions, missing values, outliers"]
+    end
+    
+    subgraph INFRA["Infrastructure Metrics"]
+        I1["CPU, memory, GPU utilization, request rate"]
+    end
+    
+    BUSINESS --> MODEL --> PREDICTION --> DATA --> INFRA
 ```
 
 ### Building a Monitoring Pipeline

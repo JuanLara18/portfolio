@@ -60,27 +60,17 @@ Most mature ML teams operate in hybrid mode:
 - **Data storage**: Cloud for large datasets, versioning
 - **Production**: Cloud for serving at scale
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        DEVELOPMENT                               │
-│                                                                   │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐       │
-│  │   Laptop     │───▶│ Cloud        │───▶│  Cloud GPU   │       │
-│  │   (local)    │    │ Notebook     │    │  Training    │       │
-│  └──────────────┘    └──────────────┘    └──────────────┘       │
-│                              │                    │               │
-│                              ▼                    ▼               │
-│                      ┌─────────────────────────────────┐         │
-│                      │      Cloud Storage              │         │
-│                      │   (Data, Models, Artifacts)     │         │
-│                      └─────────────────────────────────┘         │
-│                                      │                           │
-│                                      ▼                           │
-│                      ┌─────────────────────────────────┐         │
-│                      │    Production Serving           │         │
-│                      │  (Endpoints, APIs, Batch)       │         │
-│                      └─────────────────────────────────┘         │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph DEV["Development"]
+        LAPTOP["Laptop (local)"] --> NOTEBOOK["Cloud Notebook"]
+        NOTEBOOK --> GPU["Cloud GPU Training"]
+    end
+    
+    NOTEBOOK --> STORAGE["Cloud Storage<br/>Data, Models, Artifacts"]
+    GPU --> STORAGE
+    
+    STORAGE --> PROD["Production Serving<br/>Endpoints, APIs, Batch"]
 ```
 
 ## Cloud Provider Comparison: The Rosetta Stone
@@ -271,26 +261,31 @@ Vertex AI consolidates Google's ML offerings into a single platform.
 
 **Core Components:**
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         VERTEX AI                                │
-│                                                                   │
-│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐     │
-│  │   Workbench    │  │    Training    │  │   Prediction   │     │
-│  │  (Notebooks)   │  │    (Custom &   │  │  (Endpoints)   │     │
-│  │                │  │     AutoML)    │  │                │     │
-│  └────────────────┘  └────────────────┘  └────────────────┘     │
-│                                                                   │
-│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐     │
-│  │    Pipelines   │  │ Feature Store  │  │  Model         │     │
-│  │   (Kubeflow)   │  │                │  │  Registry      │     │
-│  └────────────────┘  └────────────────┘  └────────────────┘     │
-│                                                                   │
-│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐     │
-│  │  Experiments   │  │   Metadata     │  │   Monitoring   │     │
-│  │  (Tracking)    │  │   (Lineage)    │  │  (Drift, etc)  │     │
-│  └────────────────┘  └────────────────┘  └────────────────┘     │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph VERTEX["VERTEX AI"]
+        direction TB
+        subgraph ROW1[" "]
+            direction LR
+            WB["Workbench<br/>(Notebooks)"]
+            TR["Training<br/>(Custom & AutoML)"]
+            PR["Prediction<br/>(Endpoints)"]
+        end
+        
+        subgraph ROW2[" "]
+            direction LR
+            PL["Pipelines<br/>(Kubeflow)"]
+            FS["Feature Store"]
+            MR["Model Registry"]
+        end
+        
+        subgraph ROW3[" "]
+            direction LR
+            EX["Experiments<br/>(Tracking)"]
+            MD["Metadata<br/>(Lineage)"]
+            MO["Monitoring<br/>(Drift, etc)"]
+        end
+    end
 ```
 
 **Custom Training Job:**
@@ -740,140 +735,97 @@ print(f"Estimated 24-hour training cost: ${cost['total']:.2f}")
 
 Best for: Exploration, small teams, early-stage projects
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Developer Laptop                      │
-│  ┌─────────────────────────────────────────────────────┐│
-│  │  Code editing, git, local testing                   ││
-│  └─────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│            Vertex AI Workbench (Managed Notebooks)       │
-│  ┌─────────────────────────────────────────────────────┐│
-│  │  Data exploration, experimentation, prototyping     ││
-│  │  GPU access when needed                             ││
-│  └─────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│                   Cloud Storage                          │
-│  ┌─────────────────────────────────────────────────────┐│
-│  │  Data, models, notebooks (versioned)                ││
-│  └─────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph LAPTOP["Developer Laptop"]
+        L1["Code editing, git, local testing"]
+    end
+    
+    subgraph WORKBENCH["Vertex AI Workbench"]
+        W1["Data exploration, experimentation"]
+        W2["GPU access when needed"]
+    end
+    
+    subgraph STORAGE["Cloud Storage"]
+        S1["Data, models, notebooks (versioned)"]
+    end
+    
+    LAPTOP --> WORKBENCH --> STORAGE
 ```
 
 ### Pattern 2: Pipeline-Based MLOps
 
 Best for: Production systems, larger teams, reproducibility requirements
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                          Git Repository                          │
-│  ┌──────────────────────────────────────────────────────────────┤
-│  │  Code, pipeline definitions, configs                         │
-│  └──────────────────────────────────────────────────────────────┤
-└─────────────────────────────────────────────────────────────────┘
-                               │
-                    ┌──────────┴──────────┐
-                    │   Cloud Build       │
-                    │   (CI/CD)           │
-                    └──────────┬──────────┘
-                               │
-          ┌────────────────────┼────────────────────┐
-          │                    │                    │
-          ▼                    ▼                    ▼
-┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│  Container      │  │   Pipeline      │  │  Model          │
-│  Registry       │  │   Trigger       │  │  Registry       │
-└─────────────────┘  └─────────────────┘  └─────────────────┘
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Vertex AI Pipelines                           │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌────────┐│
-│  │  Data   │─▶│ Feature │─▶│  Train  │─▶│ Evaluate│─▶│ Deploy ││
-│  │  Prep   │  │  Eng    │  │         │  │         │  │        ││
-│  └─────────┘  └─────────┘  └─────────┘  └─────────┘  └────────┘│
-└─────────────────────────────────────────────────────────────────┘
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Production Serving                            │
-│  ┌─────────────────────────────────────────────────────────────┐│
-│  │  Vertex AI Endpoints (auto-scaling, monitoring)             ││
-│  └─────────────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph GIT["Git Repository"]
+        G1["Code, pipeline definitions, configs"]
+    end
+    
+    GIT --> BUILD["Cloud Build (CI/CD)"]
+    
+    BUILD --> CONTAINER["Container Registry"]
+    BUILD --> TRIGGER["Pipeline Trigger"]
+    BUILD --> MODEL["Model Registry"]
+    
+    TRIGGER --> PIPELINE
+    
+    subgraph PIPELINE["Vertex AI Pipelines"]
+        direction LR
+        P1["Data Prep"] --> P2["Feature Eng"] --> P3["Train"] --> P4["Evaluate"] --> P5["Deploy"]
+    end
+    
+    PIPELINE --> SERVING
+    
+    subgraph SERVING["Production Serving"]
+        S1["Vertex AI Endpoints (auto-scaling, monitoring)"]
+    end
 ```
 
 ### Pattern 3: Real-Time Feature Engineering
 
 Best for: Recommendation systems, fraud detection, personalization
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        Data Sources                              │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
-│  │  Events      │  │  Transactions│  │  User Data   │          │
-│  │  (Pub/Sub)   │  │  (Database)  │  │  (BigQuery)  │          │
-│  └──────────────┘  └──────────────┘  └──────────────┘          │
-└─────────────────────────────────────────────────────────────────┘
-          │                    │                    │
-          └────────────────────┼────────────────────┘
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Vertex AI Feature Store                       │
-│  ┌─────────────────────────────────────────────────────────────┐│
-│  │  Offline: Batch features (historical aggregations)          ││
-│  │  Online: Real-time features (low-latency serving)           ││
-│  └─────────────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────────────┘
-                               │
-              ┌────────────────┴────────────────┐
-              │                                  │
-              ▼                                  ▼
-┌────────────────────────┐          ┌────────────────────────┐
-│  Batch Predictions     │          │  Real-Time Predictions │
-│  (BigQuery, Dataflow)  │          │  (Vertex Endpoints)    │
-└────────────────────────┘          └────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph SOURCES["Data Sources"]
+        direction LR
+        EVENTS["Events (Pub/Sub)"]
+        TRANS["Transactions (Database)"]
+        USER["User Data (BigQuery)"]
+    end
+    
+    EVENTS --> FS
+    TRANS --> FS
+    USER --> FS
+    
+    subgraph FS["Vertex AI Feature Store"]
+        OFFLINE["Offline: Batch features (historical)"]
+        ONLINE["Online: Real-time features (low-latency)"]
+    end
+    
+    FS --> BATCH["Batch Predictions<br/>(BigQuery, Dataflow)"]
+    FS --> REALTIME["Real-Time Predictions<br/>(Vertex Endpoints)"]
 ```
 
 ### Pattern 4: Multi-Model Ensemble
 
 Best for: Complex decisions, risk-averse applications
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         API Gateway                              │
-└─────────────────────────────────────────────────────────────────┘
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Orchestration Layer                           │
-│                    (Cloud Run / Cloud Functions)                 │
-└─────────────────────────────────────────────────────────────────┘
-          │                    │                    │
-          ▼                    ▼                    ▼
-┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│  Model A        │  │  Model B        │  │  Model C        │
-│  (Fraud Score)  │  │  (Risk Score)   │  │  (Anomaly)      │
-│  Endpoint       │  │  Endpoint       │  │  Endpoint       │
-└─────────────────┘  └─────────────────┘  └─────────────────┘
-          │                    │                    │
-          └────────────────────┼────────────────────┘
-                               │
-                               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Ensemble Logic                                │
-│                    (Weighted voting, stacking)                   │
-└─────────────────────────────────────────────────────────────────┘
-                               │
-                               ▼
-                         Final Decision
+```mermaid
+flowchart TB
+    API["API Gateway"] --> ORCH["Orchestration Layer<br/>(Cloud Run / Cloud Functions)"]
+    
+    ORCH --> MA["Model A<br/>Fraud Score"]
+    ORCH --> MB["Model B<br/>Risk Score"]
+    ORCH --> MC["Model C<br/>Anomaly"]
+    
+    MA --> ENSEMBLE["Ensemble Logic<br/>(Weighted voting, stacking)"]
+    MB --> ENSEMBLE
+    MC --> ENSEMBLE
+    
+    ENSEMBLE --> DECISION["Final Decision"]
 ```
 
 ## Security and Compliance
@@ -912,24 +864,20 @@ PIPELINE_SA_ROLES = [
 
 For sensitive data, restrict API access to within your network:
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                   VPC Service Controls Perimeter                 │
-│  ┌─────────────────────────────────────────────────────────────┐│
-│  │                                                              ││
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      ││
-│  │  │ BigQuery     │  │ Cloud Storage│  │ Vertex AI    │      ││
-│  │  └──────────────┘  └──────────────┘  └──────────────┘      ││
-│  │                                                              ││
-│  │  Data cannot leave perimeter without explicit policy         ││
-│  │                                                              ││
-│  └─────────────────────────────────────────────────────────────┘│
-│                                                                   │
-│  Access only from:                                                │
-│  - Authorized VPC networks                                        │
-│  - Specific IP ranges                                             │
-│  - Approved access levels                                         │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph VPC["VPC Service Controls Perimeter"]
+        direction TB
+        subgraph SERVICES["Protected Services"]
+            direction LR
+            BQ["BigQuery"]
+            GCS["Cloud Storage"]
+            VAI["Vertex AI"]
+        end
+        NOTE["Data cannot leave perimeter without explicit policy"]
+    end
+    
+    ACCESS["Access only from:<br/>- Authorized VPC networks<br/>- Specific IP ranges<br/>- Approved access levels"] --> VPC
 ```
 
 ### Data Encryption

@@ -483,17 +483,17 @@ Fine-tuning is not magic. Success depends on:
 
 ### Choosing Fine-Tuning Strategy
 
-```
-Is your compute limited?
-├── Yes: Use parameter-efficient methods
-│   ├── LoRA (most popular, works for most models)
-│   ├── Prefix tuning (good for generation)
-│   └── Adapter layers (composable, modular)
-│
-└── No: How much data do you have?
-    ├── < 1000 examples: LoRA or full with heavy regularization
-    ├── 1000-10000 examples: Full fine-tuning viable
-    └── > 10000 examples: Full fine-tuning, consider unfreezing more layers
+```mermaid
+flowchart TB
+    START{"Compute limited?"} -->|Yes| PEFT["Parameter-efficient methods"]
+    PEFT --> LORA["LoRA: Most popular, works for most models"]
+    PEFT --> PREFIX["Prefix tuning: Good for generation"]
+    PEFT --> ADAPTER["Adapter layers: Composable, modular"]
+    
+    START -->|No| DATA{"How much data?"}
+    DATA -->|"< 1000 examples"| SMALL["LoRA or full + heavy regularization"]
+    DATA -->|"1000-10000 examples"| MEDIUM["Full fine-tuning viable"]
+    DATA -->|"> 10000 examples"| LARGE["Full fine-tuning, unfreeze more layers"]
 ```
 
 ### LoRA: The Practical Choice
