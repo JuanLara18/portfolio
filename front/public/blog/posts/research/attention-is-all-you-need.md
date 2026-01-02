@@ -515,4 +515,3 @@ The paper reminds us why deep learning is compelling: simple ideas, rigorously e
 - [Attention Mechanisms in Computer Vision](https://arxiv.org/abs/2111.07624) — Beyond NLP applications
 
 The journey from understanding to mastery requires building. Start implementing. The elegance will reveal itself through practice.
-````

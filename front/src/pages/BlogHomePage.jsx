@@ -38,7 +38,7 @@ export default function BlogHomePage() {
   const heroRef = useRef(null);
   
   // Pagination configuration
-  const POSTS_PER_PAGE = 6;
+  const POSTS_PER_PAGE = 9;
   
   // Transform values for smoother parallax effects
   const heroOpacity = useTransform(scrollY, [100, 400], [1, 0.95]);
