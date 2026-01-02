@@ -29,6 +29,7 @@ export const OptimizedImage = ({
   onLoad,
   onError,
   eager = false, // Skip lazy loading for above-the-fold images
+  objectFit = 'cover', // 'cover', 'contain', 'fill', 'none', 'scale-down'
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -134,7 +135,12 @@ export const OptimizedImage = ({
             onLoad={handleLoad}
             onError={handleError}
             className={`
-              w-full h-full object-cover
+              w-full h-full
+              ${objectFit === 'contain' ? 'object-contain' : ''}
+              ${objectFit === 'cover' ? 'object-cover' : ''}
+              ${objectFit === 'fill' ? 'object-fill' : ''}
+              ${objectFit === 'none' ? 'object-none' : ''}
+              ${objectFit === 'scale-down' ? 'object-scale-down' : ''}
               transition-opacity duration-500
               ${isLoaded ? 'opacity-100' : 'opacity-0'}
             `}

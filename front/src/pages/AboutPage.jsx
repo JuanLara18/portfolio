@@ -136,11 +136,11 @@ const ExperienceCard = ({
       
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-center mb-4 gap-4">
-          <div className="w-24 h-24 md:w-24 md:h-24 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md">
+          <div className="w-28 h-20 md:w-32 md:h-20 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md flex items-center justify-center">
             <OptimizedImage 
               src={`/images/company-logos/${logo}`} 
               alt={`${company} company logo`}
-              className="object-contain"
+              objectFit="contain"
             />
           </div>
           
@@ -211,11 +211,11 @@ const EducationCard = ({
       
       <div className="relative z-10">
         <div className="flex flex-col md:flex-row md:items-center mb-6 gap-4">
-          <div className="w-24 h-24 md:w-24 md:h-24 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md">
+          <div className="w-28 h-20 md:w-32 md:h-20 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md flex items-center justify-center">
             <OptimizedImage 
               src={`/images/institutions/${logo}`} 
               alt={`${institution} institutional logo`}
-              className="object-contain"
+              objectFit="contain"
             />
           </div>
           
@@ -289,11 +289,11 @@ const CourseCard = ({
       
       <div className="relative z-10">
         <div className="flex items-start gap-3 mb-3">
-          <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1 shadow-sm">
+          <div className="w-20 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1.5 shadow-sm flex items-center justify-center">
             <OptimizedImage 
               src={`/images/institutions/${logo}`} 
               alt={`${provider} training provider logo`}
-              className="object-contain"
+              objectFit="contain"
             />
           </div>
           
