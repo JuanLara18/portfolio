@@ -1182,8 +1182,8 @@ const courses = [
                 <span>Contact Me</span>
               </a>
               
-              <Link 
-                to="/documents/CV___EN.pdf"
+              <a 
+                href={`${process.env.PUBLIC_URL}/documents/CV___EN.pdf`}
                 target="_blank"
                 rel="noreferrer"
                 className="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2 font-medium shadow-lg"
@@ -1198,7 +1198,7 @@ const courses = [
                   <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" />
                 </svg>
                 <span>Download Resume</span>
-              </Link >
+              </a>
             </motion.div>
           </motion.div>
         </div>

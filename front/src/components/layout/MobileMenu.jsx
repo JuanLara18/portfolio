@@ -96,7 +96,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
 									<Github size={20} className="text-gray-900 dark:text-white" />
 									<span className="text-xs mt-2 font-medium">GitHub</span>
 								</a>
-								<a href="/documents/CV___EN.pdf" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target border border-gray-100 dark:border-gray-800 shadow-sm">
+								<a href={`${process.env.PUBLIC_URL}/documents/CV___EN.pdf`} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-lg transition-colors touch-target border border-gray-100 dark:border-gray-800 shadow-sm">
 									<FileText size={20} className="text-blue-600 dark:text-blue-400" />
 									<span className="text-xs mt-2 font-medium">Resume</span>
 								</a>

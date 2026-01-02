@@ -320,8 +320,8 @@ export default function LandingPage() {
                   <ExternalLink size={16} className="z-10 relative transition-transform duration-150 group-hover:translate-x-1" />
                   <div className="absolute inset-0 bg-blue-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200"></div>
                 </Link>
-                <Link 
-                  to="/documents/CV___EN.pdf" 
+                <a 
+                  href={`${process.env.PUBLIC_URL}/documents/CV___EN.pdf`}
                   className="w-full sm:w-auto px-6 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-lg group hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm relative overflow-hidden touch-target"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -340,7 +340,7 @@ export default function LandingPage() {
                   <motion.div 
                     className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-blue-300 dark:bg-blue-700 rounded-lg transition-opacity duration-300"
                   />
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
             
