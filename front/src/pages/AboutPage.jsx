@@ -362,18 +362,33 @@ export default function AboutPage() {
 // Experience data
 const experiences = [
   {
+    role: "AI Engineer",
+    company: "Falabella",
+    period: "November 2025 - Present",
+    location: "Bogotá D.C., Colombia (Hybrid)",
+    description:
+      "Develop computer vision and deep learning solutions for real-time operational monitoring, managing the full ML lifecycle from data collection and model training to production deployment preparation on GCP infrastructure.",
+    responsibilities: [
+      "Build data processing pipelines integrating OCR engines, anomaly detection models, and cloud data warehouses, enabling automated extraction and quality validation across large-scale operational datasets.",
+      "Design ML system integrations connecting modern AI capabilities with legacy enterprise platforms, implementing scalable data flows that bridge existing infrastructure with production-ready machine learning services.",
+      "Architect end-to-end solutions for logistics optimization using computer vision and deep learning techniques on Google Cloud Platform."
+    ],
+    skills: ["Computer Vision", "Deep Learning", "GCP", "OCR", "Anomaly Detection", "Data Pipelines"],
+    logo: "falabella-logo.png"
+  },
+  {
     role: "LLM/ML Specialist",
     company: "GenomAI",
-    period: "July 2025 - Present",
+    period: "June 2025 - December 2025",
     location: "Danville, USA (Remote)",
     description:
-      "Architect AI-powered clinical decision support systems integrating RAG pipelines with vector databases and LLM fine-tuning techniques to deliver real-time, evidence-based treatment recommendations for healthcare professionals.",
+      "Architected AI-powered clinical decision support systems integrating RAG pipelines with vector databases and LLM fine-tuning techniques to deliver real-time, evidence-based treatment recommendations for healthcare professionals.",
     responsibilities: [
-      "Develop HIPAA-compliant generative AI solutions using advanced prompt engineering and retrieval-augmented generation to process multimodal medical data while ensuring regulatory compliance and patient privacy protection.",
-      "Optimize inference pipelines and model deployment on cloud infrastructure, implementing efficient scaling strategies and performance monitoring to support production healthcare applications with sub-second response requirements.",
-      "Lead cross-functional collaboration with clinical teams to translate complex medical workflows into scalable AI architectures that enhance diagnostic accuracy and treatment personalization."
+      "Developed HIPAA-compliant generative AI solutions using advanced prompt engineering and retrieval-augmented generation to process multimodal medical data while ensuring regulatory compliance and patient privacy protection.",
+      "Built and optimized ML deployment pipelines with Docker containerization and CI/CD automation, implementing scalable cloud infrastructure that supports production healthcare applications with sub-second response requirements.",
+      "Led cross-functional collaboration with clinical teams to translate complex medical workflows into scalable AI architectures that enhance diagnostic accuracy and treatment personalization."
     ],
-    skills: ["LLM Fine-tuning", "RAG Systems", "Vector Databases", "HIPAA Compliance", "Healthcare AI", "Cloud Deployment"],
+    skills: ["LLM Fine-tuning", "RAG Systems", "Vector Databases", "HIPAA Compliance", "Healthcare AI", "Docker"],
     logo: "genomai-logo.png"
   },
   {
@@ -384,7 +399,7 @@ const experiences = [
     description:
       "Built end-to-end ML pipelines integrating clustering algorithms, XGBoost models, and NLP techniques to analyze large-scale organizational datasets, revealing key insights on firm learning strategies and technology adoption patterns.",
     responsibilities: [
-      "Designed mathematical frameworks for modeling organizational hierarchies and technology shocks, providing formal validation through simulation-based approaches that support upcoming academic publications.",
+      "Designed scalable data processing frameworks for modeling complex organizational systems, implementing validation pipelines and automated testing that ensured reproducibility across large-scale simulations.",
       "Automated research workflows that accelerated data-driven insight generation for firm behavior analysis, translating quantitative research into actionable recommendations for reskilling strategies.",
       "Collaborated with interdisciplinary teams to transform economic theories into scalable ML applications, ensuring research objectives align with practical business applications."
     ],
@@ -395,11 +410,11 @@ const experiences = [
     role: "Data Scientist",
     company: "Ipsos",
     period: "Feb 2024 - Jan 2025",
-    location: "Bogota, D.C., Colombia (Hybrid)",
+    location: "Bogotá D.C., Colombia (Hybrid)",
     description:
       "Engineered production-ready applications for geospatial analysis and segmentation using ML models and robust data-processing pipelines on Google Cloud Platform, enhancing operational efficiency across multiple data sources.",
     responsibilities: [
-      "Led the design and implementation of TextInsight, a Python library for automated multilingual text analysis using LLMs and advanced NetworkX visualizations, reducing text processing time from hours to under one hour and earning Total Ops Star Employee recognition across LATAM regions.",
+      "Led the design and implementation of TextInsight, a Python library for automated multilingual text analysis using LLMs and advanced NetworkX visualizations, reducing text processing time from hours to minutes and earning Total Ops Star Employee recognition across LATAM regions.",
       "Streamlined analytical workflows through automated Python pipelines, significantly reducing manual processing while enabling dynamic real-time reporting and cross-functional analytics.",
       "Integrated scalable cloud workflows with advanced data management systems, supporting large-scale batch processing and reproducible research methodologies."
     ],
@@ -411,6 +426,14 @@ const experiences = [
   
   // Education data
   const education = [
+    {
+      degree: "M.S. in Artificial Intelligence (In Progress)",
+      institution: "Universidad de los Andes",
+      period: "Jan 2026 - Nov 2027",
+      location: "Bogotá D.C.",
+      focus: "Reinforcement Learning",
+      logo: "uniandes-logo.png"
+    },
     {
       degree: "B.S. in Computer Science",
       institution: "Universidad Nacional de Colombia",
@@ -430,26 +453,7 @@ const experiences = [
       gpa: "4.7/5.0",
       certificateLink: "https://drive.google.com/file/d/1RW4Q3Kca8rfMUJpejdwlmtTTiA5YgYwU/view?usp=sharing",
       logo: "unal-logo.png"
-    },
-    // {
-    //   degree: "Technical Baccalaureate in Business Administration",
-    //   institution: "Centro Educativo los Andes",
-    //   period: "Feb 2015 - Nov 2017",
-    //   location: "Bogotá D.C.",
-    //   focus: "Entrepreneurship and Investigation",
-    //   gpa: "4.5",
-    //   logo: "school-logo.png" // You'll need to add an appropriate logo or use a placeholder
-    // },
-    // {
-    //   degree: "Technician in Maintenance of Computer Equipment",
-    //   institution: "Servicio Nacional de Aprendizaje - SENA",
-    //   period: "Nov 2015 - Dec 2016",
-    //   location: "Bogotá D.C.",
-    //   focus: "Corrective Software",
-    //   gpa: "4.6/5.0",
-    //   certificateLink: "https://drive.google.com/file/d/1beMFGTbBiNhCdUMJnjLYQfCetz7V3xCW/view",
-    //   logo: "sena-logo.png" // You'll need to add an appropriate logo or use a placeholder
-    // }
+    }
   ];
   
   // Courses/Training data
@@ -591,18 +595,19 @@ const courses = [
     <>
       <SEO
         title="About | Juan Lara"
-        description="Computer Scientist and Mathematician with expertise in LLM/ML engineering. Research Assistant at Harvard Business School building production-ready AI solutions."
+        description="AI & ML Engineer with 3+ years building production AI systems. Currently at Falabella developing computer vision solutions. M.S. in AI candidate at Universidad de los Andes."
         canonical="https://juanlara18.github.io/Portfolio/#/about"
         keywords={[
           'Juan Lara',
           'Computer Science',
           'Mathematics',
           'AI Engineer',
-          'GenomAI',
-          'Harvard Business School',
-          'Machine Learning Specialist',
-          'Research Assistant',
-          'LLM Engineer'
+          'Falabella',
+          'Computer Vision',
+          'Machine Learning',
+          'Deep Learning',
+          'MLOps',
+          'GCP'
         ]}
       />
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
@@ -726,18 +731,14 @@ const courses = [
                 className="space-y-2 xs:space-y-3 text-sm xs:text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl"
               >
                 <p className="text-sm xs:text-base sm:text-lg">
-                  <span className="font-medium text-blue-600 dark:text-blue-400">LLM/ML Specialist</span> with 3+ years developing production-ready generative AI solutions. Currently building AI-powered clinical decision support systems at <span className="font-medium text-blue-600 dark:text-blue-400">GenomAI</span>, with previous research experience at <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>.
+                  <span className="font-medium text-blue-600 dark:text-blue-400">AI & ML Engineer</span> with 3+ years building production AI systems across healthcare, retail, and research domains. Currently developing computer vision and deep learning solutions at <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>, with previous experience at <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span> and <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>.
                 </p>
 
                 <div className="py-1 border-l-2 border-blue-500/30 dark:border-blue-700/50 pl-4">
                   <p>
-                    Specializing in the complete AI engineering stack: LLM fine-tuning with PyTorch, RAG architectures using LangChain and vector databases, plus cloud deployment on GCP and AWS. My expertise bridges advanced ML techniques with robust engineering practices for scalable, production-ready solutions.
+                    Specializing in the complete AI engineering stack: computer vision, anomaly detection, LLM fine-tuning, RAG architectures, and cloud deployment on GCP. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes to deepen expertise in reinforcement learning and advanced AI systems.
                   </p>
                 </div>
-                
-                {/* <p>
-                  I am committed to transforming complex data into strategic decisions that drive organizational impact.
-                </p> */}
               </motion.div>
             </motion.div>
             
@@ -772,8 +773,8 @@ const courses = [
                   <div className="text-center space-y-3 sm:space-y-4">
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1 sm:mb-2">Juan Lara</h3>
-                      <p className="text-base sm:text-lg text-blue-600 dark:text-blue-400 font-semibold mb-1">LLM/ML Specialist</p>
-                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">GenomAI</p>
+                      <p className="text-base sm:text-lg text-blue-600 dark:text-blue-400 font-semibold mb-1">AI Engineer</p>
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Falabella</p>
                     </div>
                     
                     {/* Status badge - responsive sizing */}
@@ -1166,7 +1167,7 @@ const courses = [
               variants={fadeInUp}
               className="text-gray-300 mb-8 max-w-2xl mx-auto"
             >
-              Open to discussing innovative projects, research collaborations, and the frontiers of AI and computational mathematics. If you're looking for a Computer Scientist and Mathematician with expertise in Machine Learning and AI, let's connect!
+              Open to discussing innovative projects, research collaborations, and the frontiers of AI engineering. If you're looking for an AI Engineer with expertise in computer vision, deep learning, and production ML systems, let's connect!
             </motion.p>
             
             <motion.div 

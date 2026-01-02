@@ -184,22 +184,20 @@ export default function LandingPage() {
   return (
     <>
       <SEO
-        title="Juan Lara | ML Engineer & Research Assistant"
-        description="LLM/ML Specialist with 3+ years developing production-ready generative AI solutions. Specializing in RAG systems, LLM fine-tuning, and cloud deployment at Harvard Business School."
+        title="Juan Lara | AI & ML Engineer"
+        description="AI Engineer with 3+ years building production AI systems. Currently at Falabella developing computer vision and deep learning solutions on GCP. M.S. in AI candidate at Universidad de los Andes."
         keywords={[
           'Juan Lara',
-          'LLM',
-          'RAG',
+          'AI Engineer',
+          'Computer Vision',
+          'Deep Learning',
           'MLOps',
-          'AWS',
           'GCP',
           'Python',
-          'AI Engineer',
           'Machine Learning',
-          'Harvard Business School',
-          'Research Assistant',
-          'NLP',
-          'Deep Learning'
+          'Falabella',
+          'PyTorch',
+          'Production ML'
         ]}
       />
       <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative overflow-x-hidden">
@@ -242,7 +240,7 @@ export default function LandingPage() {
             >
               <motion.div variants={fadeInUp} className="mb-3 lg:mb-4">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 text-xs sm:text-sm font-medium mb-3 lg:mb-4 backdrop-blur-sm">
-                  <Code size={12} className="mr-1.5 sm:mr-1.5" /> LLM/ML Specialist at GenomAI
+                  <Code size={12} className="mr-1.5 sm:mr-1.5" /> AI Engineer at Falabella
                 </div>
               </motion.div>
               
@@ -274,7 +272,7 @@ export default function LandingPage() {
                 variants={fadeInUp}
                 className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-4 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
               >
-                Architecting scalable AI systems with a focus on LLM fine-tuning, RAG pipelines, and cloud infrastructure.
+                Architecting scalable AI systems with a focus on computer vision, deep learning, and cloud infrastructure on GCP.
               </motion.p>
               
               
@@ -285,12 +283,12 @@ export default function LandingPage() {
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  LLM
+                  Computer Vision
                 </HoverMotion>
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  RAG
+                  Deep Learning
                 </HoverMotion>
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300 border border-purple-200 dark:border-purple-800 backdrop-blur-sm transition-all duration-300 touch-target"
@@ -300,12 +298,12 @@ export default function LandingPage() {
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300 border border-green-200 dark:border-green-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  AWS
+                  GCP
                 </HoverMotion>
                 <HoverMotion as={motion.span}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800 backdrop-blur-sm transition-all duration-300 touch-target"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300 border border-teal-200 dark:border-teal-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  GCP
+                  PyTorch
                 </HoverMotion>
               </motion.div>
               
@@ -386,12 +384,12 @@ export default function LandingPage() {
                 
                 {/* Enhanced terminal card with mobile optimization */}
                 <div className="relative z-10 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-500">
-                  <TypingTerminal text="const profile = {\n  name: 'Juan Lara',\n  role: 'LLM/ML Specialist @ GenomAI',\n  expertise: ['LLM', 'RAG', 'MLOps'],\n  stack: ['Python', 'PyTorch', 'LangChain', 'AWS'],\n  education: [\n    'B.S. Computer Science',\n    'B.S. Mathematics'\n  ],\n  mission: 'Engineering scalable AI solutions'\n};" />
+                  <TypingTerminal text="const profile = {\n  name: 'Juan Lara',\n  role: 'AI Engineer @ Falabella',\n  expertise: ['Computer Vision', 'Deep Learning', 'MLOps'],\n  stack: ['Python', 'PyTorch', 'GCP', 'Docker'],\n  education: [\n    'M.S. Artificial Intelligence (in progress)',\n    'B.S. Computer Science',\n    'B.S. Mathematics'\n  ],\n  mission: 'Engineering scalable AI solutions'\n};" />
 
                   <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3">
-                    <TechIcon icon={BrainCircuit} label="GenAI" delay={0.2} />
-                    <TechIcon icon={Database} label="Vector DB" delay={0.4} />
-                    <TechIcon icon={Server} label="DevOps" delay={0.6} />
+                    <TechIcon icon={BrainCircuit} label="Deep Learning" delay={0.2} />
+                    <TechIcon icon={Cpu} label="Computer Vision" delay={0.4} />
+                    <TechIcon icon={Server} label="MLOps" delay={0.6} />
                   </div>
                 </div>
               </div>
@@ -448,7 +446,7 @@ export default function LandingPage() {
               </div>
               <div className="max-w-3xl text-left">
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  Computer Scientist & Mathematician leveraging 3+ years of experience to build advanced Generative AI solutions. Currently architecting clinical decision support systems at GenomAI and contributing to research at Harvard University.
+                  Computer Scientist & Mathematician leveraging 3+ years of experience to build production AI systems. Currently developing computer vision and deep learning solutions at Falabella, with previous experience at GenomAI and Harvard University.
                 </p>
                 <HoverMotion>
                   <Link to="/about" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
