@@ -1,14 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { TransitionProvider, Navigation as Navbar } from './components/layout';
-import LandingPage from './pages/LandingPage';
-import AboutPage from './pages/AboutPage';
-import ProjectsPage from './pages/ProjectsPage';
-import BlogHomePage from './pages/BlogHomePage';
-import BlogPostPage from './pages/BlogPostPage';
-import BlogCategoryPage from './pages/BlogCategoryPage';
 import useNavbarHeight from './hooks/useNavbarHeight';
+
+// Lazy-loaded pages: each page bundle is only downloaded when the user navigates to it
+const LandingPage = lazy(() => import('./pages/LandingPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const BlogHomePage = lazy(() => import('./pages/BlogHomePage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const BlogCategoryPage = lazy(() => import('./pages/BlogCategoryPage'));
+
+// Minimal loading fallback (matches the app background to avoid flash)
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 dark:border-blue-400 mx-auto mb-3"></div>
+      <p className="text-sm text-gray-500 dark:text-gray-400">Loading...</p>
+    </div>
+  </div>
+);
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -73,20 +85,22 @@ function App() {
           
           {/* Main content with dynamic top padding for navbar */}
           <div style={{ paddingTop: `${navbarHeight + 8}px` }}>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              
-              {/* Blog routes */}
-              <Route path="/blog" element={<BlogHomePage />} />
-              <Route path="/blog/category/:category" element={<BlogCategoryPage />} />
-              <Route path="/blog/tag/:tag" element={<BlogCategoryPage />} />
-              <Route path="/blog/:category/:slug" element={<BlogPostPage />} />
-              
-              {/* Fallback route redirects to home */}
-              <Route path="*" element={<LandingPage />} />
-            </Routes>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                
+                {/* Blog routes */}
+                <Route path="/blog" element={<BlogHomePage />} />
+                <Route path="/blog/category/:category" element={<BlogCategoryPage />} />
+                <Route path="/blog/tag/:tag" element={<BlogCategoryPage />} />
+                <Route path="/blog/:category/:slug" element={<BlogPostPage />} />
+                
+                {/* Fallback route redirects to home */}
+                <Route path="*" element={<LandingPage />} />
+              </Routes>
+            </Suspense>
           </div>
           {/* Footer intentionally omitted for now */}
         </div>
