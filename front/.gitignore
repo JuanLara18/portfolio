@@ -28,6 +28,7 @@ yarn-error.log*
 # The optimized versions and WebP will be tracked
 public/images/**/*-original.*
 public/images/**/*-optimized.*
-public/blog/headers/*-original.*
+public/blog/**/*-original.*
+public/blog/**/*-optimized.*
 
 package-lock.json
