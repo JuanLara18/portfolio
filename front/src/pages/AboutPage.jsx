@@ -459,6 +459,26 @@ const experiences = [
   // Courses/Training data
 const courses = [
   {
+    title: "Deep Learning Specialization",
+    provider: "DeepLearning.AI",
+    date: "January 2026",
+    description: "Five-course specialization covering neural networks, hyperparameter tuning, convolutional and recurrent networks, and sequence models for deep learning applications.",
+    certificateLink: "https://www.coursera.org/account/accomplishments/specialization/CNQ1BJKHIT2D",
+    certificateId: "CNQ1BJKHIT2D",
+    topics: ["Deep Learning", "Neural Networks", "CNNs", "RNNs"],
+    logo: "deeplearningai-logo.png"
+  },
+  {
+    title: "Machine Learning Specialization",
+    provider: "DeepLearning.AI",
+    date: "January 2026",
+    description: "Three-course specialization covering supervised and unsupervised learning, recommender systems, and reinforcement learning with practical implementations.",
+    certificateLink: "https://www.coursera.org/account/accomplishments/specialization/L7YEEUW8IR5X",
+    certificateId: "L7YEEUW8IR5X",
+    topics: ["Machine Learning", "Supervised Learning", "Unsupervised Learning", "Reinforcement Learning"],
+    logo: "deeplearningai-logo.png"
+  },
+  {
     title: "AI Engineer for Developers Associate",
     provider: "DataCamp",
     date: "July 2025",
