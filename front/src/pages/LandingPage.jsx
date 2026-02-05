@@ -517,21 +517,21 @@ export default function LandingPage() {
                     Latest Post
                   </span>
                   <h4 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
-                    <Link to="/blog/research/the-manifold-hypothesis" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                      The Manifold Hypothesis: Why Deep Learning Works
+                    <Link to="/blog/field-notes/reinforcement-learning-in-practice" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                      Reinforcement Learning in Practice: The Engineering That Makes It Work
                     </Link>
                   </h4>
                 </div>
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-[11px] mb-3 ml-[52px]">
-                November 27, 2025 • 22 min read
+                February 5, 2026 • 65 min read
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
-                We train models on high-dimensional chaos, yet they learn. Why? The answer lies in geometry: the world is a crumpled sheet of paper, and intelligence is the act of smoothing it out.
+                Theory is necessary but not sufficient. This is the engineering companion to RL—the implementation details that papers omit, the tricks that separate converging agents from wasted compute, and the deployment patterns that survive contact with reality.
               </p>
               <div className="ml-[52px]">
                 <Link 
-                  to="/blog/research/the-manifold-hypothesis" 
+                  to="/blog/field-notes/reinforcement-learning-in-practice" 
                   className="inline-flex items-center font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300 group text-sm"
                 >
                   Read post
@@ -556,21 +556,21 @@ export default function LandingPage() {
                     New Certification
                   </span>
                   <h4 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
-                    <a href="https://www.datacamp.com/certificate/AIEDA0019827293059" target="_blank" rel="noreferrer" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                      AI Engineer for Developers Associate
+                    <a href="https://www.coursera.org/account/accomplishments/specialization/CNQ1BJKHIT2D" target="_blank" rel="noreferrer" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                      Deep Learning Specialization
                     </a>
                   </h4>
                 </div>
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-[11px] mb-3 ml-[52px]">
-                DataCamp • July 2025
+                DeepLearning.AI • January 2026
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
-                Advanced certification covering LLM engineering, RAG systems, and production-ready AI development practices.
+                Five-course specialization covering neural networks, hyperparameter tuning, convolutional and recurrent networks, and sequence models for deep learning applications.
               </p>
               <div className="ml-[52px]">
                 <a 
-                  href="https://www.datacamp.com/certificate/AIEDA0019827293059"
+                  href="https://www.coursera.org/account/accomplishments/specialization/CNQ1BJKHIT2D"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center font-semibold text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300 group text-sm"
