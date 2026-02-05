@@ -25,9 +25,11 @@ export const PostCard = ({ post }) => {
   const headerImagePath = post.headerImage || `/blog/headers/default-${post.category}.jpg`;
   const fallbackPath = `/blog/headers/default.jpg`;
   
+  const postUrl = `/blog/${post.category}/${post.slug}`;
+  
   return (
     <MotionCard 
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 h-full flex flex-col group hover:shadow-xl transition-all duration-200 mobile-card"
+      className="relative bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 h-full flex flex-col group hover:shadow-xl transition-all duration-200 mobile-card"
       hover="lift"
       variants={fadeInUp}
     >
@@ -70,8 +72,9 @@ export const PostCard = ({ post }) => {
       {/* Content */}
       <div className="p-4 sm:p-6 flex-1 flex flex-col">
         <div className="flex-1">
+          {/* Title with stretched link — makes the entire card clickable */}
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
-            <Link to={`/blog/${post.category}/${post.slug}`}>
+            <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
               {post.title}
             </Link>
           </h2>
@@ -80,9 +83,9 @@ export const PostCard = ({ post }) => {
             {post.excerpt}
           </p>
           
-          {/* Tags */}
+          {/* Tags — positioned above the stretched link so they remain independently clickable */}
           {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-4">
+            <div className="relative z-10 flex flex-wrap gap-1.5 mb-4">
               {post.tags.slice(0, 2).map((tag, index) => (
                 <Link
                   key={index}
@@ -115,13 +118,10 @@ export const PostCard = ({ post }) => {
             </div>
           </div>
           
-          <Link 
-            to={`/blog/${post.category}/${post.slug}`}
-            className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group"
-          >
+          <span className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition-colors">
             <span className="mr-1">Read</span>
             <ArrowRight size={14} className="transform transition-transform group-hover:translate-x-1" />
-          </Link>
+          </span>
         </div>
       </div>
     </MotionCard>

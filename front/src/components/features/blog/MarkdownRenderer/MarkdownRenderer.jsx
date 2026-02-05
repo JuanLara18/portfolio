@@ -620,7 +620,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		// Enhanced blockquotes
 		blockquote: ({ children, ...props }) => (
 			<blockquote 
-				className="my-8 pl-6 border-l-4 border-blue-500 dark:border-blue-400 py-2 italic text-lg sm:text-xl text-gray-700 dark:text-gray-300 font-serif leading-relaxed"
+				className="my-8 pl-6 border-l-4 border-blue-500 dark:border-blue-400 py-2 italic text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed"
 				{...props}
 			>
 				{children}

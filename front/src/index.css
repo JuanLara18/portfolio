@@ -529,3 +529,17 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 .dark .mermaid-diagram::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
 }
+
+/* --------------------------------------------------------------------------
+   Table of Contents highlight effect
+   Applied when navigating to a heading via the TOC
+   ----------------------------------------------------------------------- */
+.toc-highlight {
+  background-color: rgba(59, 130, 246, 0.08);
+  border-radius: 0.25rem;
+  transition: background-color 1.5s ease;
+}
+
+.dark .toc-highlight {
+  background-color: rgba(59, 130, 246, 0.12);
+}

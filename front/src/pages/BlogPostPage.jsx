@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { SEO } from '../components/common/SEO';
 import { 
   Calendar, 
@@ -10,11 +10,10 @@ import {
   ArrowLeft, 
   Share2, 
   BookOpen,
-  User,
-  Eye,
-  Heart,
-  MessageCircle,
-  ChevronUp
+  ChevronUp,
+  List,
+  X,
+  Check
 } from 'lucide-react';
 import { getPostBySlug, BLOG_CONFIG, formatDate, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
 import { MarkdownRenderer } from '../components/features/blog';
@@ -137,6 +136,153 @@ function slugify(text) {
     .replace(/\-\-+/g, '-');
 }
 
+// Mobile Table of Contents — floating button + bottom sheet drawer (visible below lg)
+const MobileTableOfContents = ({ content }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [headings, setHeadings] = useState([]);
+  const [activeId, setActiveId] = useState('');
+
+  useEffect(() => {
+    const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+    const matches = [];
+    let match;
+    while ((match = headingRegex.exec(content)) !== null) {
+      matches.push({ level: match[1].length, text: match[2].trim(), id: slugify(match[2].trim()) });
+    }
+    setHeadings(matches);
+  }, [content]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        });
+      },
+      { rootMargin: '-20% 0% -35% 0%' }
+    );
+    headings.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+    return () => observer.disconnect();
+  }, [headings]);
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
+  const handleNavigation = (e, id) => {
+    e.preventDefault();
+    setIsOpen(false);
+    setTimeout(() => {
+      const navbarHeight = window.innerWidth < 768 ? 70 : 80;
+      scrollToElementCentered(id, { navbarHeight, updateURL: true, highlightElement: true });
+    }, 200);
+  };
+
+  if (headings.length === 0) return null;
+
+  return (
+    <>
+      {/* Floating TOC button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="lg:hidden fixed bottom-8 left-8 z-50 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-colors"
+        aria-label="Table of Contents"
+      >
+        <List size={22} />
+      </button>
+
+      {/* Bottom sheet drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <div className="lg:hidden fixed inset-0 z-[200]">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+              className="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white dark:bg-gray-800 rounded-t-2xl shadow-2xl overflow-hidden"
+            >
+              {/* Drag handle */}
+              <div className="flex justify-center pt-3 pb-1">
+                <div className="w-10 h-1 bg-gray-300 dark:bg-gray-600 rounded-full" />
+              </div>
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 pb-3 border-b border-gray-200 dark:border-gray-700">
+                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 flex items-center">
+                  <BookOpen size={18} className="mr-2" />
+                  Table of Contents
+                </h3>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  aria-label="Close"
+                >
+                  <X size={20} className="text-gray-500 dark:text-gray-400" />
+                </button>
+              </div>
+              {/* Headings list */}
+              <div className="overflow-y-auto max-h-[calc(70vh-80px)] px-6 py-4">
+                <ul className="space-y-0.5">
+                  {headings.map(({ level, text, id }) => (
+                    <li key={id}>
+                      <a
+                        href={`#${id}`}
+                        onClick={(e) => handleNavigation(e, id)}
+                        className={`block py-2 text-sm rounded-lg transition-colors duration-200 ${
+                          activeId === id
+                            ? 'text-blue-600 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-900/20'
+                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50'
+                        }`}
+                        style={{ paddingLeft: `${(level - 1) * 12 + 12}px`, paddingRight: '12px' }}
+                      >
+                        {text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+// Toast notification for copy-to-clipboard feedback
+const CopyToast = ({ show }) => (
+  <AnimatePresence>
+    {show && (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.2 }}
+        className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[100] px-4 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2"
+      >
+        <Check size={16} />
+        Link copied to clipboard
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
+
 // Scroll to top button
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -192,6 +338,7 @@ export default function BlogPostPage() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showCopyToast, setShowCopyToast] = useState(false);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
   
@@ -237,8 +384,8 @@ export default function BlogPostPage() {
       // Fallback: copy to clipboard
       try {
         await navigator.clipboard.writeText(url);
-        // You could show a toast notification here
-        alert('Link copied to clipboard!');
+        setShowCopyToast(true);
+        setTimeout(() => setShowCopyToast(false), 2500);
       } catch (err) {
         console.error('Failed to copy link:', err);
       }
@@ -396,8 +543,13 @@ export default function BlogPostPage() {
                 </div>
                 <div className="flex items-center">
                   <Clock size={14} className="mr-1.5 sm:mr-2" />
-                  <span>{post.readingTime}m</span>
+                  <span>{post.readingTime} min read</span>
                 </div>
+                {post.readingTime >= 15 && (
+                  <span className="inline-flex items-center px-2.5 py-0.5 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-medium border border-white/20">
+                    Long read
+                  </span>
+                )}
                 <button
                   onClick={sharePost}
                   className="flex items-center hover:text-white transition-colors"
@@ -414,7 +566,35 @@ export default function BlogPostPage() {
       {/* Post Content */}
       <section className="py-8 md:py-16">
         <div className="container mx-auto px-0 sm:px-6 lg:px-8 mobile-card-container">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
+            
+            {/* Mobile post meta — category & tags shown before the article on small screens */}
+            <div className="lg:hidden mb-6 px-2 sm:px-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <Link 
+                  to={`/blog/category/${post.category}`}
+                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+                    ${categoryConfig?.color === 'blue' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' : ''}
+                    ${categoryConfig?.color === 'indigo' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300' : ''}
+                    ${categoryConfig?.color === 'emerald' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : ''}
+                    ${!categoryConfig?.color ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300' : ''}
+                  `}
+                >
+                  {categoryConfig?.name || post.category}
+                </Link>
+                {post.tags && post.tags.map((tag, index) => (
+                  <Link
+                    key={index}
+                    to={`/blog/tag/${encodeURIComponent(tag)}`}
+                    className="card-tag inline-flex items-center text-xs"
+                  >
+                    <Tag size={10} className="mr-1" />
+                    {tag}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <div className="flex flex-col lg:flex-row gap-12">
               {/* Main Content */}
               <motion.article
@@ -442,21 +622,19 @@ export default function BlogPostPage() {
                 </div>
               </motion.article>
               
-              {/* Sidebar */}
+              {/* Sidebar — hidden on mobile, visible on desktop */}
               <motion.aside 
                 initial="hidden"
                 animate="visible"
                 variants={fadeInUp}
-                className="lg:w-1/4 mt-8 lg:mt-0"
+                className="hidden lg:block lg:w-1/4"
               >
-                <div className="space-y-4 sm:space-y-6">
-                  {/* Table of Contents - Hidden on mobile */}
-                  <div className="hidden lg:block">
-                    <TableOfContents content={post.content} />
-                  </div>
+                <div className="space-y-6">
+                  {/* Table of Contents */}
+                  <TableOfContents content={post.content} />
                   
                   {/* Post Stats */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
                     <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
                       Post Information
                     </h3>
@@ -479,19 +657,19 @@ export default function BlogPostPage() {
                   </div>
                   
                   {/* Category Info */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
                     <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
                       Category
                     </h3>
                     <Link 
                       to={`/blog/category/${post.category}`}
-                      className="block p-2.5 sm:p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+                      className="block p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
                     >
-                      <div className="font-medium text-sm sm:text-base text-blue-900 dark:text-blue-100">
+                      <div className="font-medium text-sm text-blue-900 dark:text-blue-100">
                         {categoryConfig?.name || post.category}
                       </div>
                       {categoryConfig?.description && (
-                        <div className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 mt-1">
+                        <div className="text-xs text-blue-700 dark:text-blue-300 mt-1">
                           {categoryConfig?.description}
                         </div>
                       )}
@@ -500,7 +678,7 @@ export default function BlogPostPage() {
                   
                   {/* Tags */}
                   {post.tags && post.tags.length > 0 && (
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
                       <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
                         Tags
                       </h3>
@@ -524,6 +702,12 @@ export default function BlogPostPage() {
           </div>
         </div>
       </section>
+      
+      {/* Mobile Table of Contents */}
+      <MobileTableOfContents content={post.content} />
+      
+      {/* Copy Toast */}
+      <CopyToast show={showCopyToast} />
       
       {/* Scroll to Top Button */}
       <ScrollToTop />

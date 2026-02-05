@@ -309,7 +309,7 @@ export default function BlogHomePage() {
             {/* Category pills for easier filtering on desktop */}
             <motion.div 
               variants={fadeInUp}
-              className="hidden lg:flex flex-wrap gap-3 mb-6"
+              className="hidden md:flex flex-wrap gap-3 mb-6"
             >
               <button
                 key="all"
