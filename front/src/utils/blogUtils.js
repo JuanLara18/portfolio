@@ -87,6 +87,16 @@ export async function getAllTags() {
   }
 }
 
+/**
+ * Get the WebP version path of an image.
+ * Replaces .jpg/.jpeg/.png extension with .webp.
+ * Returns the original path unchanged for other formats or empty strings.
+ */
+export function getWebPPath(imagePath) {
+  if (!imagePath) return '';
+  return imagePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+}
+
 export function formatDate(dateString, formatStr = 'MMMM d, yyyy') {
   try {
     const date = typeof dateString === 'string' ? parseISO(dateString) : dateString;

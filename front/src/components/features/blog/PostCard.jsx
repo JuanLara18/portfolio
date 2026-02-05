@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, Tag, ArrowRight, Brain, FileText, Code2 } from 'lucide-react';
-import { BLOG_CONFIG, formatDate } from '../../../utils/blogUtils';
+import { BLOG_CONFIG, formatDate, getWebPPath } from '../../../utils/blogUtils';
 import { variants as motionVariants } from '../../../utils';
 import { MotionCard } from '../../common';
 
@@ -33,15 +33,21 @@ export const PostCard = ({ post }) => {
     >
       {/* Header Image */}
       <div className="relative overflow-hidden aspect-[16/9]">
-        <img 
-          src={getImageUrl(headerImagePath)}
-          alt={post.title}
-          loading="lazy"
-          onError={(e) => {
-            e.target.src = getImageUrl(fallbackPath);
-          }}
-          className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-        />
+        <picture>
+          <source 
+            srcSet={getImageUrl(getWebPPath(headerImagePath))} 
+            type="image/webp" 
+          />
+          <img 
+            src={getImageUrl(headerImagePath)}
+            alt={post.title}
+            loading="lazy"
+            onError={(e) => {
+              e.target.src = getImageUrl(fallbackPath);
+            }}
+            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
         
         {/* Category badge */}

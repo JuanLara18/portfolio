@@ -16,7 +16,7 @@ import {
   MessageCircle,
   ChevronUp
 } from 'lucide-react';
-import { getPostBySlug, BLOG_CONFIG, formatDate, scrollToElementCentered } from '../utils/blogUtils';
+import { getPostBySlug, BLOG_CONFIG, formatDate, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
 import { MarkdownRenderer } from '../components/features/blog';
 import { HoverMotion } from '../components/layout';
 
@@ -328,20 +328,26 @@ export default function BlogPostPage() {
       >
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src={headerImage}
-            alt={post.title}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const fallbackByCat = withPublicUrl(`/blog/headers/default-${post.category}.jpg`);
-              const fallback = withPublicUrl('/blog/headers/default.jpg');
-              if (e.target.src !== fallbackByCat) {
-                e.target.src = fallbackByCat;
-              } else if (e.target.src !== fallback) {
-                e.target.src = fallback;
-              }
-            }}
-          />
+          <picture>
+            <source 
+              srcSet={getWebPPath(headerImage)} 
+              type="image/webp" 
+            />
+            <img 
+              src={headerImage}
+              alt={post.title}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const fallbackByCat = withPublicUrl(`/blog/headers/default-${post.category}.jpg`);
+                const fallback = withPublicUrl('/blog/headers/default.jpg');
+                if (e.target.src !== fallbackByCat) {
+                  e.target.src = fallbackByCat;
+                } else if (e.target.src !== fallback) {
+                  e.target.src = fallback;
+                }
+              }}
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
         </div>
         
