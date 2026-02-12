@@ -38,18 +38,25 @@ const slideInLeft = {
   }
 };
 
+// Strip fenced code blocks from markdown so that comments inside code
+// (e.g. Dockerfile `# ...`, bash `# ...`) are not mistaken for headings.
+function stripCodeBlocks(markdown) {
+  return markdown.replace(/```[\s\S]*?```/g, '');
+}
+
 // Table of Contents component
 const TableOfContents = ({ content }) => {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   
   useEffect(() => {
-    // Extract headings from markdown content
+    // Extract headings from markdown content (excluding code blocks)
+    const cleanContent = stripCodeBlocks(content);
     const headingRegex = /^(#{1,6})\s+(.+)$/gm;
     const matches = [];
     let match;
     
-    while ((match = headingRegex.exec(content)) !== null) {
+    while ((match = headingRegex.exec(cleanContent)) !== null) {
       const level = match[1].length;
       const text = match[2].trim();
       const id = slugify(text);
@@ -143,10 +150,11 @@ const MobileTableOfContents = ({ content }) => {
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
+    const cleanContent = stripCodeBlocks(content);
     const headingRegex = /^(#{1,6})\s+(.+)$/gm;
     const matches = [];
     let match;
-    while ((match = headingRegex.exec(content)) !== null) {
+    while ((match = headingRegex.exec(cleanContent)) !== null) {
       matches.push({ level: match[1].length, text: match[2].trim(), id: slugify(match[2].trim()) });
     }
     setHeadings(matches);
