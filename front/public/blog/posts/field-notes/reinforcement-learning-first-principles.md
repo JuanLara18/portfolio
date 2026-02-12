@@ -1,6 +1,6 @@
 ---
 title: "Reinforcement Learning: From First Principles to Open Frontiers"
-date: "2026-02-05"
+date: "2026-02-06"
 excerpt: "Most ML engineers have never truly entered the world of reinforcement learning. This is the definitive guide—from Markov Decision Processes and value functions to reward hacking, sim-to-real transfer, multi-agent chaos, and the brutal gap between papers and production systems that actually work."
 tags: ["Reinforcement Learning", "Deep RL", "MDP", "Reward Design", "Multi-Agent", "Production ML", "AI Safety"]
 headerImage: "/blog/headers/rl-header.jpg"
