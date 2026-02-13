@@ -367,13 +367,13 @@ const experiences = [
     period: "November 2025 - Present",
     location: "Bogotá D.C., Colombia (Hybrid)",
     description:
-      "Develop computer vision and deep learning solutions for real-time operational monitoring, managing the full ML lifecycle from data collection and model training to production deployment preparation on GCP infrastructure.",
+      "Develop end-to-end ML solutions for large-scale logistics operations, managing the full lifecycle from data processing and model development to production deployment on GCP infrastructure. Work spans anomaly detection, OCR pipelines, and optimization systems across millions of operational records.",
     responsibilities: [
       "Build data processing pipelines integrating OCR engines, anomaly detection models, and cloud data warehouses, enabling automated extraction and quality validation across large-scale operational datasets.",
       "Design ML system integrations connecting modern AI capabilities with legacy enterprise platforms, implementing scalable data flows that bridge existing infrastructure with production-ready machine learning services.",
-      "Architect end-to-end solutions for logistics optimization using computer vision and deep learning techniques on Google Cloud Platform."
+      "Architect end-to-end ML solutions for logistics optimization, integrating anomaly detection, document processing, and data-driven decision systems on Google Cloud Platform."
     ],
-    skills: ["Computer Vision", "Deep Learning", "GCP", "OCR", "Anomaly Detection", "Data Pipelines"],
+    skills: ["ML Systems", "Anomaly Detection", "OCR", "GCP", "Data Pipelines", "Python"],
     logo: "falabella-logo.png"
   },
   {
@@ -382,13 +382,13 @@ const experiences = [
     period: "June 2025 - December 2025",
     location: "Danville, USA (Remote)",
     description:
-      "Architected AI-powered clinical decision support systems integrating RAG pipelines with vector databases and LLM fine-tuning techniques to deliver real-time, evidence-based treatment recommendations for healthcare professionals.",
+      "Architected production AI systems integrating RAG pipelines with vector databases and LLM fine-tuning techniques, building end-to-end generative AI solutions with strict compliance requirements and real-time performance demands.",
     responsibilities: [
-      "Developed HIPAA-compliant generative AI solutions using advanced prompt engineering and retrieval-augmented generation to process multimodal medical data while ensuring regulatory compliance and patient privacy protection.",
+      "Developed compliance-grade generative AI solutions using advanced prompt engineering and retrieval-augmented generation to process multimodal data, implementing strict data governance and privacy frameworks.",
       "Built and optimized ML deployment pipelines with Docker containerization and CI/CD automation, implementing scalable cloud infrastructure that supports production healthcare applications with sub-second response requirements.",
-      "Led cross-functional collaboration with clinical teams to translate complex medical workflows into scalable AI architectures that enhance diagnostic accuracy and treatment personalization."
+      "Led cross-functional collaboration to translate complex domain workflows into scalable AI architectures, bridging subject-matter expertise with production-grade ML systems."
     ],
-    skills: ["LLM Fine-tuning", "RAG Systems", "Vector Databases", "HIPAA Compliance", "Healthcare AI", "Docker"],
+    skills: ["LLM Fine-tuning", "RAG Systems", "Vector Databases", "Compliance & Governance", "Prompt Engineering", "Docker"],
     logo: "genomai-logo.png"
   },
   {
@@ -615,19 +615,19 @@ const courses = [
     <>
       <SEO
         title="About | Juan Lara"
-        description="AI & ML Engineer with 3+ years building production AI systems. Currently at Falabella developing computer vision solutions. M.S. in AI candidate at Universidad de los Andes."
+        description="AI Engineer with a research mindset — building LLM systems, NLP pipelines, and production ML across research, healthcare, and enterprise domains. CS + Mathematics dual degree, M.S. AI candidate at Universidad de los Andes."
         canonical="https://juanlara18.github.io/Portfolio/#/about"
         keywords={[
           'Juan Lara',
           'Computer Science',
           'Mathematics',
           'AI Engineer',
-          'Falabella',
-          'Computer Vision',
-          'Machine Learning',
-          'Deep Learning',
-          'MLOps',
-          'GCP'
+          'LLM Systems',
+          'NLP',
+          'RAG',
+          'Production ML',
+          'Applied Research',
+          'GenAI'
         ]}
       />
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
@@ -742,7 +742,7 @@ const courses = [
                 variants={fadeInRight}
                 className="text-lg xs:text-xl sm:text-2xl md:text-3xl text-gray-800 dark:text-gray-200 mb-3 xs:mb-4 font-medium"
               >
-                Computer Scientist & Mathematician
+                Computer Scientist · Mathematician · AI Researcher
               </motion.h2>
               
               {/* Content paragraphs with enhanced styling */}
@@ -751,12 +751,12 @@ const courses = [
                 className="space-y-2 xs:space-y-3 text-sm xs:text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl"
               >
                 <p className="text-sm xs:text-base sm:text-lg">
-                  <span className="font-medium text-blue-600 dark:text-blue-400">AI & ML Engineer</span> with 3+ years building production AI systems across healthcare, retail, and research domains. Currently developing computer vision and deep learning solutions at <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>, with previous experience at <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span> and <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>.
+                  <span className="font-medium text-blue-600 dark:text-blue-400">AI Engineer</span> with 3+ years building production AI systems across research, healthcare, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span>, and <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>.
                 </p>
 
                 <div className="py-1 border-l-2 border-blue-500/30 dark:border-blue-700/50 pl-4">
                   <p>
-                    Specializing in the complete AI engineering stack: computer vision, anomaly detection, LLM fine-tuning, RAG architectures, and cloud deployment on GCP. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes to deepen expertise in reinforcement learning and advanced AI systems.
+                    Specializing in LLM fine-tuning, RAG architectures, NLP pipelines, and production ML systems on cloud infrastructure. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes, combining a dual foundation in Computer Science and Mathematics (4.7/5.0) with a drive to push AI research into real-world applications.
                   </p>
                 </div>
               </motion.div>
@@ -1187,7 +1187,7 @@ const courses = [
               variants={fadeInUp}
               className="text-gray-300 mb-8 max-w-2xl mx-auto"
             >
-              Open to discussing innovative projects, research collaborations, and the frontiers of AI engineering. If you're looking for an AI Engineer with expertise in computer vision, deep learning, and production ML systems, let's connect!
+              Open to research collaborations, challenging AI projects, and opportunities at the frontier of LLM systems and production ML. If you're looking for an AI Engineer who combines research rigor with hands-on engineering to build systems that work in the real world — let's connect.
             </motion.p>
             
             <motion.div 
