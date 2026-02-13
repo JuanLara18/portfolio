@@ -184,20 +184,21 @@ export default function LandingPage() {
   return (
     <>
       <SEO
-        title="Juan Lara | AI & ML Engineer"
-        description="AI Engineer with 3+ years building production AI systems. Currently at Falabella developing computer vision and deep learning solutions on GCP. M.S. in AI candidate at Universidad de los Andes."
+        title="Juan Lara | AI Engineer — Research to Production"
+        description="Research-minded AI Engineer specializing in LLM systems, NLP, and taking ML from concept to production. CS + Mathematics foundation, experience spanning Harvard research to enterprise-scale AI."
         keywords={[
           'Juan Lara',
           'AI Engineer',
-          'Computer Vision',
-          'Deep Learning',
-          'MLOps',
-          'GCP',
+          'LLM Systems',
+          'NLP',
+          'RAG',
+          'Production ML',
+          'Applied Research',
           'Python',
           'Machine Learning',
-          'Falabella',
-          'PyTorch',
-          'Production ML'
+          'GenAI',
+          'LangChain',
+          'PyTorch'
         ]}
       />
       <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative overflow-x-hidden">
@@ -240,7 +241,7 @@ export default function LandingPage() {
             >
               <motion.div variants={fadeInUp} className="mb-3 lg:mb-4">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 text-xs sm:text-sm font-medium mb-3 lg:mb-4 backdrop-blur-sm">
-                  <Code size={12} className="mr-1.5 sm:mr-1.5" /> AI Engineer at Falabella
+                  <Code size={12} className="mr-1.5 sm:mr-1.5" /> AI Engineer · Researcher
                 </div>
               </motion.div>
               
@@ -256,7 +257,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  Shaping the future
+                  From research
                 </motion.span>
                 <motion.span 
                   className="block mt-1 lg:mt-2 text-gray-800 dark:text-gray-100"
@@ -264,7 +265,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  with AI Engineering
+                  to production AI
                 </motion.span>
               </motion.h1>
               
@@ -272,7 +273,7 @@ export default function LandingPage() {
                 variants={fadeInUp}
                 className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-4 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
               >
-                Architecting scalable AI systems with a focus on computer vision, deep learning, and cloud infrastructure on GCP.
+                Research-minded AI Engineer specializing in LLM systems, NLP, and production ML. Dual background in Computer Science and Mathematics with experience from Harvard to enterprise-scale deployments.
               </motion.p>
               
               
@@ -283,27 +284,27 @@ export default function LandingPage() {
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  Computer Vision
+                  LLMs & GenAI
                 </HoverMotion>
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  Deep Learning
+                  NLP & RAG
                 </HoverMotion>
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300 border border-purple-200 dark:border-purple-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  MLOps
+                  Production ML
                 </HoverMotion>
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300 border border-green-200 dark:border-green-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  GCP
+                  Applied Research
                 </HoverMotion>
                 <HoverMotion as={motion.span}
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300 border border-teal-200 dark:border-teal-800 backdrop-blur-sm transition-all duration-300 touch-target"
                 >
-                  PyTorch
+                  Python & Cloud
                 </HoverMotion>
               </motion.div>
               
@@ -384,12 +385,12 @@ export default function LandingPage() {
                 
                 {/* Enhanced terminal card with mobile optimization */}
                 <div className="relative z-10 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-500">
-                  <TypingTerminal text="const profile = {\n  name: 'Juan Lara',\n  role: 'AI Engineer @ Falabella',\n  expertise: ['Computer Vision', 'Deep Learning', 'MLOps'],\n  stack: ['Python', 'PyTorch', 'GCP', 'Docker'],\n  education: [\n    'M.S. Artificial Intelligence (in progress)',\n    'B.S. Computer Science',\n    'B.S. Mathematics'\n  ],\n  mission: 'Engineering scalable AI solutions'\n};" />
+                  <TypingTerminal text="const profile = {\n  name: 'Juan Lara',\n  role: 'AI Engineer | Research → Production',\n  focus: ['LLM Systems', 'NLP', 'Applied Research'],\n  approach: 'Rigorous experimentation, real-world impact',\n  stack: ['Python', 'PyTorch', 'LangChain', 'GCP'],\n  education: [\n    'M.S. Artificial Intelligence (in progress)',\n    'B.S. Computer Science',\n    'B.S. Mathematics'\n  ],\n  mission: 'Building AI that works beyond the notebook'\n};" />
 
                   <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3">
-                    <TechIcon icon={BrainCircuit} label="Deep Learning" delay={0.2} />
-                    <TechIcon icon={Cpu} label="Computer Vision" delay={0.4} />
-                    <TechIcon icon={Server} label="MLOps" delay={0.6} />
+                    <TechIcon icon={BrainCircuit} label="LLM & GenAI" delay={0.2} />
+                    <TechIcon icon={Cpu} label="Applied Research" delay={0.4} />
+                    <TechIcon icon={Server} label="Production ML" delay={0.6} />
                   </div>
                 </div>
               </div>
@@ -446,7 +447,7 @@ export default function LandingPage() {
               </div>
               <div className="max-w-3xl text-left">
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  Computer Scientist & Mathematician leveraging 3+ years of experience to build production AI systems. Currently developing computer vision and deep learning solutions at Falabella, with previous experience at GenomAI and Harvard University.
+                  Computer Scientist & Mathematician with a research-driven approach to AI engineering. Building LLM systems and NLP pipelines in production, with experience spanning Harvard University, clinical AI at GenomAI, and enterprise-scale ML at Falabella.
                 </p>
                 <HoverMotion>
                   <Link to="/about" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
