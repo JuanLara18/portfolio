@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/common/SEO';
 import { variants as motionVariants, defaultViewportSettings, earlyViewportSettings } from '../utils';
@@ -315,7 +315,8 @@ const CourseCard = ({
           )}
         </div>
         
-        {description && (
+        {/* Description hidden for visual density — data preserved in course objects */}
+        {false && description && (
           <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 line-clamp-2 card-description">{description}</p>
         )}
         
@@ -351,6 +352,7 @@ const CourseCard = ({
 };
 
 export default function AboutPage() {
+  const [bioExpanded, setBioExpanded] = useState(false);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef);
@@ -740,7 +742,7 @@ const courses = [
               {/* Enhanced subtitle with better styling */}
               <motion.h2 
                 variants={fadeInRight}
-                className="text-lg xs:text-xl sm:text-2xl md:text-3xl text-gray-800 dark:text-gray-200 mb-3 xs:mb-4 font-medium"
+                className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-3 xs:mb-4 font-medium whitespace-nowrap"
               >
                 Computer Scientist · Mathematician · AI Researcher
               </motion.h2>
@@ -754,11 +756,29 @@ const courses = [
                   <span className="font-medium text-blue-600 dark:text-blue-400">AI Engineer</span> with 3+ years building production AI systems across research, healthcare, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span>, and <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>.
                 </p>
 
-                <div className="py-1 border-l-2 border-blue-500/30 dark:border-blue-700/50 pl-4">
-                  <p>
-                    Specializing in LLM fine-tuning, RAG architectures, NLP pipelines, and production ML systems on cloud infrastructure. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes, combining a dual foundation in Computer Science and Mathematics (4.7/5.0) with a drive to push AI research into real-world applications.
-                  </p>
-                </div>
+                <AnimatePresence>
+                  {bioExpanded && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="py-1 border-l-2 border-blue-500/30 dark:border-blue-700/50 pl-4">
+                        <p>
+                          Specializing in LLM fine-tuning, RAG architectures, NLP pipelines, and production ML systems on cloud infrastructure. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes, combining a dual foundation in Computer Science and Mathematics (4.7/5.0) with a drive to push AI research into real-world applications.
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <button
+                  onClick={() => setBioExpanded(!bioExpanded)}
+                  className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer"
+                >
+                  {bioExpanded ? 'Show less \u2191' : 'Read more \u2193'}
+                </button>
               </motion.div>
             </motion.div>
             
@@ -1187,7 +1207,7 @@ const courses = [
               variants={fadeInUp}
               className="text-gray-300 mb-8 max-w-2xl mx-auto"
             >
-              Open to research collaborations, challenging AI projects, and opportunities at the frontier of LLM systems and production ML. If you're looking for an AI Engineer who combines research rigor with hands-on engineering to build systems that work in the real world — let's connect.
+              Research rigor meets production engineering. Open to collaborations, challenging projects, and new opportunities — let's connect.
             </motion.p>
             
             <motion.div 

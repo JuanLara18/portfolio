@@ -447,7 +447,7 @@ export default function LandingPage() {
               </div>
               <div className="max-w-3xl text-left">
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  Computer Scientist & Mathematician with a research-driven approach to AI engineering. Building LLM systems and NLP pipelines in production, with experience spanning Harvard University, clinical AI at GenomAI, and enterprise-scale ML at Falabella.
+                  CS & Mathematics foundation. Research-driven AI engineering. Experience spanning Harvard, GenomAI, and Falabella.
                 </p>
                 <HoverMotion>
                   <Link to="/about" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
@@ -475,7 +475,7 @@ export default function LandingPage() {
               </div>
               <div className="max-w-3xl text-left">
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  From distributed NLP libraries to scalable RAG architectures. Focused on production-grade deployment and tangible business impact.
+                  NLP libraries, RAG architectures, and production ML systems — built to deliver real impact.
                 </p>
                 <HoverMotion>
                   <Link to="/projects" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
@@ -528,7 +528,7 @@ export default function LandingPage() {
                 February 5, 2026 • 65 min read
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
-                Theory is necessary but not sufficient. This is the engineering companion to RL—the implementation details that papers omit, the tricks that separate converging agents from wasted compute, and the deployment patterns that survive contact with reality.
+                The implementation details that papers omit — deployment patterns, optimization tricks, and engineering decisions that make RL actually work.
               </p>
               <div className="ml-[52px]">
                 <Link 
@@ -567,7 +567,7 @@ export default function LandingPage() {
                 DeepLearning.AI • January 2026
               </p>
               <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
-                Five-course specialization covering neural networks, hyperparameter tuning, convolutional and recurrent networks, and sequence models for deep learning applications.
+                Neural networks, CNNs, RNNs, and sequence models. Five-course specialization.
               </p>
               <div className="ml-[52px]">
                 <a 
@@ -612,7 +612,7 @@ export default function LandingPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
                   <p className="text-gray-400 mb-6">
-                    Always interested in new projects, research collaborations, and discussing innovative challenges in AI and computational mathematics.
+                    Open to research collaborations, technical challenges, and new projects in AI.
                   </p>
                   <div className="flex items-center mb-4">
                     <Mail className="text-blue-400 mr-3" size={18} />
