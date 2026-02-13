@@ -123,6 +123,7 @@ const ExperienceCard = ({
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px" });
+  const [expanded, setExpanded] = useState(false);
   
   return (
     <motion.div 
@@ -157,14 +158,32 @@ const ExperienceCard = ({
         
         <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed mobile-card-text">{description}</p>
         
-        {responsibilities && (
+        {responsibilities && responsibilities.length > 0 && (
           <div className="mb-4">
-            <h4 className="text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 font-semibold mb-2 mobile-card-subtitle">Key Responsibilities</h4>
-            <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
-              {responsibilities.map((item, index) => (
-                <li key={index} className="leading-relaxed">{item}</li>
-              ))}
-            </ul>
+            <AnimatePresence>
+              {expanded && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <h4 className="text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 font-semibold mb-2 mobile-card-subtitle">Key Responsibilities</h4>
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300 mb-2">
+                    {responsibilities.map((item, index) => (
+                      <li key={index} className="leading-relaxed">{item}</li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer"
+            >
+              {expanded ? 'Show less \u2191' : 'Key responsibilities \u2193'}
+            </button>
           </div>
         )}
         
@@ -635,12 +654,12 @@ const courses = [
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       
       {/* Hero Section + Scroll Indicator Container */}
-      <div className="h-[calc(100dvh-5.5rem)] flex flex-col">
+      <div className="min-h-[calc(100dvh-5.5rem)] lg:h-[calc(100dvh-5.5rem)] flex flex-col">
         {/* Hero Section */}
         <motion.section 
           ref={heroRef}
           style={{ opacity: heroOpacity, scale: heroScale }}
-          className="hero-section relative flex-1 flex items-center justify-center overflow-hidden pt-0"
+          className="hero-section relative flex-1 flex items-center justify-center pt-0"
         >
         {/* Enhanced background with multiple layers */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 via-blue-50/80 to-white dark:from-gray-800/90 dark:via-gray-800/70 dark:to-gray-900 -z-10"></div>

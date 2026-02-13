@@ -270,6 +270,8 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
     height: auto !important;
     min-height: calc(100dvh - 3.5rem) !important;
   }
+}
+
 /* Enhanced professional transitions and dark mode overlay fixes */
 @media (max-width: 768px) {
   /* Smooth mobile transitions - prevent jarring animations */
@@ -360,16 +362,15 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 
   /* Fix hero section height on mobile to prevent card cutoff */
   .hero-section {
-    min-height: calc(100dvh - 4rem) !important;
+    min-height: auto !important;
     height: auto !important;
   }
   
-  /* Hero container adjustments for mobile */
+  /* Hero container adjustments for mobile — allow content to grow */
   .h-\[calc\(100dvh-5\.5rem\)\] {
     height: auto !important;
     min-height: calc(100dvh - 4rem) !important;
   }
-}
 }
 
 @media (max-width:320px){
