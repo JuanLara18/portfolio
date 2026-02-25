@@ -7,12 +7,12 @@ import { easeStandard } from '../../utils';
 const getHoverStyle = (type) => {
   switch (type) {
     case 'scale':
-      return { scale: 1.02, transition: { duration: 0.3, ease: easeStandard } };
+      return { scale: 1.015, transition: { duration: 0.3, ease: easeStandard } };
     case 'liftScale':
-      return { y: -8, scale: 1.02, transition: { duration: 0.3, ease: easeStandard } };
+      return { y: -4, scale: 1.01, transition: { duration: 0.3, ease: easeStandard } };
     case 'lift':
     default:
-      return { y: -5, transition: { duration: 0.3, ease: easeStandard } };
+      return { y: -3, transition: { duration: 0.3, ease: easeStandard } };
   }
 };
 
