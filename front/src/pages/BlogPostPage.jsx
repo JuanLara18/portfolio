@@ -573,7 +573,7 @@ export default function BlogPostPage() {
       
       {/* Post Content */}
       <section className="py-8 md:py-16">
-        <div className="container mx-auto px-0 sm:px-6 lg:px-8 mobile-card-container">
+        <div className="container mx-auto px-2 sm:px-6 lg:px-8 mobile-card-container">
           <div className="max-w-6xl mx-auto">
             
             {/* Mobile post meta — category & tags shown before the article on small screens */}
@@ -611,16 +611,16 @@ export default function BlogPostPage() {
                 variants={slideInLeft}
                 className="lg:w-3/4"
               >
-                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-0 sm:p-6 md:p-8 lg:p-12 border border-gray-100 dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm sm:shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 border border-gray-100 dark:border-gray-700">
                   {post.excerpt && (
-                    <div className="mb-6 sm:mb-8 mx-2 sm:mx-0 p-4 sm:p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+                    <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
                       <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">
                         {post.excerpt}
                       </p>
                     </div>
                   )}
                   
-                  <div className="px-2 sm:px-0">
+                  <div className="px-1 sm:px-0">
                     <MarkdownRenderer 
                       content={post.content} 
                       baseImagePath={baseImagePath}

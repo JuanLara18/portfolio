@@ -205,7 +205,7 @@ export default function LandingPage() {
           className="absolute bottom-40 left-10 w-64 h-64 rounded-full bg-indigo-200/30 dark:bg-indigo-900/10 blur-3xl -z-10"
           style={{ y: bgElement2Y }}
         />
-  e      
+        
         {/* Gradient overlays for smooth fading */}
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white dark:from-gray-900 to-transparent z-0"></div>
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent z-0"></div>
@@ -326,50 +326,50 @@ export default function LandingPage() {
               {/* Decorative backgrounds */}
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-indigo-500 opacity-10 blur-2xl rounded-[3rem] z-0"></div>
               
-              <div className="relative z-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/50 dark:border-gray-700/50">
-                <h3 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 mb-6 tracking-tight px-2">
+              <div className="relative z-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl p-5 sm:p-8 rounded-[2rem] sm:rounded-3xl shadow-2xl border border-white/50 dark:border-gray-700/50">
+                <h3 className="text-xl sm:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 mb-4 sm:mb-6 tracking-tight px-1 sm:px-2">
                   Value Delivered
                 </h3>
                 
-                <div className="space-y-3">
+                <div className="space-y-2.5 sm:space-y-3">
                   {/* Item 1 */}
-                  <div className="group relative p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-blue-100 dark:hover:border-blue-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
+                  <div className="group relative p-3.5 sm:p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-blue-100 dark:hover:border-blue-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative z-10 flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-blue-100/50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <BrainCircuit size={22} strokeWidth={2} />
+                    <div className="relative z-10 flex items-center gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-100/50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <BrainCircuit size={20} strokeWidth={2} className="sm:w-[22px] sm:h-[22px]" />
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">Intelligent Systems</p>
-                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">Automating complex enterprise workflows.</p>
+                        <p className="font-bold text-gray-900 dark:text-white text-[13px] sm:text-base leading-tight">Intelligent Systems</p>
+                        <p className="text-[11px] sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 sm:mt-1 leading-snug">Automating complex enterprise workflows.</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Item 2 */}
-                  <div className="group relative p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-purple-100 dark:hover:border-purple-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
+                  <div className="group relative p-3.5 sm:p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-purple-100 dark:hover:border-purple-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-50/50 to-transparent dark:from-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative z-10 flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-purple-100/50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <Server size={22} strokeWidth={2} />
+                    <div className="relative z-10 flex items-center gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-100/50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Server size={20} strokeWidth={2} className="sm:w-[22px] sm:h-[22px]" />
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">Scalable Architecture</p>
-                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">Low-latency models deployed at scale.</p>
+                        <p className="font-bold text-gray-900 dark:text-white text-[13px] sm:text-base leading-tight">Scalable Architecture</p>
+                        <p className="text-[11px] sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 sm:mt-1 leading-snug">Low-latency models deployed at scale.</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Item 3 */}
-                  <div className="group relative p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
+                  <div className="group relative p-3.5 sm:p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-50/50 to-transparent dark:from-indigo-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative z-10 flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-indigo-100/50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <Cpu size={22} strokeWidth={2} />
+                    <div className="relative z-10 flex items-center gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-100/50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Cpu size={20} strokeWidth={2} className="sm:w-[22px] sm:h-[22px]" />
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">Applied Research</p>
-                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">Bridging theory and business solutions.</p>
+                        <p className="font-bold text-gray-900 dark:text-white text-[13px] sm:text-base leading-tight">Applied Research</p>
+                        <p className="text-[11px] sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 sm:mt-1 leading-snug">Bridging theory and business solutions.</p>
                       </div>
                     </div>
                   </div>
@@ -475,21 +475,21 @@ export default function LandingPage() {
               <Link to="/blog/field-notes/reinforcement-learning-in-practice" className="block p-5 sm:p-6 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
                   {/* Left Side: Icon & Title */}
-                  <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-900/60 dark:to-indigo-800/20 dark:text-indigo-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm">
-                      <FileText size={28} strokeWidth={1.5} />
+                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 flex-1 min-w-0 pr-5 md:pr-0">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-900/60 dark:to-indigo-800/20 dark:text-indigo-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm mt-0.5 sm:mt-0">
+                      <FileText size={22} strokeWidth={1.5} className="sm:w-[28px] sm:h-[28px]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-1">
-                        <span className="px-2.5 py-1 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 text-[10px] font-bold rounded-md uppercase tracking-wider">
+                      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 mb-1.5 sm:mb-1">
+                        <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 text-[9px] sm:text-[10px] font-bold rounded uppercase tracking-wider whitespace-nowrap">
                           Latest Post
                         </span>
-                        <span className="text-gray-400 dark:text-gray-500 text-xs font-medium flex items-center gap-1.5">
-                          February 5, 2026 <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span> 65 min read
+                        <span className="text-gray-400 dark:text-gray-500 text-[10px] sm:text-xs font-medium flex items-center gap-1.5 whitespace-nowrap">
+                          Feb 5, 2026 <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span> 65 min read
                         </span>
                       </div>
-                      <h4 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate sm:whitespace-normal sm:line-clamp-2">
-                        Reinforcement Learning in Practice: The Engineering That Makes It Work
+                      <h4 className="text-[14px] sm:text-lg font-bold text-gray-900 dark:text-white leading-snug sm:leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
+                        Reinforcement Learning in Practice
                       </h4>
                     </div>
                   </div>
@@ -505,7 +505,7 @@ export default function LandingPage() {
                   </div>
                   
                   {/* Mobile Arrow */}
-                  <div className="md:hidden absolute top-5 right-5 text-gray-400 group-hover:text-indigo-600 transition-colors">
+                  <div className="md:hidden absolute top-1/2 -translate-y-1/2 right-4 text-gray-300 dark:text-gray-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                      <span className="transform group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
                   </div>
                 </div>
@@ -522,21 +522,21 @@ export default function LandingPage() {
               <Link to="/blog/deep-dives/reinforcement-learning-first-principles" className="block p-5 sm:p-6 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
                   {/* Left Side: Icon & Title */}
-                  <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-900/60 dark:to-green-800/20 dark:text-green-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm">
-                      <BrainCircuit size={28} strokeWidth={1.5} />
+                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 flex-1 min-w-0 pr-5 md:pr-0">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-900/60 dark:to-green-800/20 dark:text-green-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm mt-0.5 sm:mt-0">
+                      <BrainCircuit size={22} strokeWidth={1.5} className="sm:w-[28px] sm:h-[28px]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-1">
-                        <span className="px-2.5 py-1 bg-green-50 dark:bg-green-900/40 text-green-600 dark:text-green-300 text-[10px] font-bold rounded-md uppercase tracking-wider">
+                      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 mb-1.5 sm:mb-1">
+                        <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-green-50 dark:bg-green-900/40 text-green-600 dark:text-green-300 text-[9px] sm:text-[10px] font-bold rounded uppercase tracking-wider whitespace-nowrap">
                           Featured Article
                         </span>
-                        <span className="text-gray-400 dark:text-gray-500 text-xs font-medium flex items-center gap-1.5">
-                          January 20, 2026 <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span> 90 min read
+                        <span className="text-gray-400 dark:text-gray-500 text-[10px] sm:text-xs font-medium flex items-center gap-1.5 whitespace-nowrap">
+                          Jan 20, 2026 <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span> 90 min read
                         </span>
                       </div>
-                      <h4 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors truncate sm:whitespace-normal sm:line-clamp-2">
-                        Reinforcement Learning: From First Principles to Open Frontiers
+                      <h4 className="text-[14px] sm:text-lg font-bold text-gray-900 dark:text-white leading-snug sm:leading-tight group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors line-clamp-2">
+                        Reinforcement Learning
                       </h4>
                     </div>
                   </div>
@@ -552,7 +552,7 @@ export default function LandingPage() {
                   </div>
                   
                   {/* Mobile Arrow */}
-                  <div className="md:hidden absolute top-5 right-5 text-gray-400 group-hover:text-green-600 transition-colors">
+                  <div className="md:hidden absolute top-1/2 -translate-y-1/2 right-4 text-gray-300 dark:text-gray-600 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                      <span className="transform group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
                   </div>
                 </div>

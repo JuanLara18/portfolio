@@ -274,7 +274,7 @@ const ProjectCard = ({ project, inView }) => {
       </div>
       
       <div className="p-4 sm:p-6">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{project.name}</h3>
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{project.name.split(':')[0]}</h3>
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 card-description">{project.description}</p>
         
         <div className="flex flex-wrap gap-1.5 mb-4 sm:mb-6">
@@ -626,7 +626,7 @@ export default function ProjectsPage() {
               </div>
               
               <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'} found
+                {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
               </div>
             </motion.div>
             
@@ -708,11 +708,11 @@ export default function ProjectsPage() {
                       <span className="font-medium text-gray-700 dark:text-gray-100">{totalProjects}</span> projects
                     </div>
                     
-                    <div className="flex items-center space-x-2">
+                    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-0">
                       <button
                         onClick={() => setCurrentPage(1)}
                         disabled={currentPage === 1}
-                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        className="hidden sm:block px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
                         First
                       </button>
@@ -722,10 +722,12 @@ export default function ProjectsPage() {
                         disabled={currentPage === 1}
                         className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        Previous
+                        Prev
                       </button>
                       
-                      <div className="px-3 text-sm text-gray-700 dark:text-gray-300">{currentPage} / {totalPages}</div>
+                      <div className="px-1 sm:px-3 text-sm text-gray-700 dark:text-gray-300 font-medium whitespace-nowrap">
+                        {currentPage} / {totalPages}
+                      </div>
                       
                       <button
                         onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
@@ -738,7 +740,7 @@ export default function ProjectsPage() {
                       <button
                         onClick={() => setCurrentPage(totalPages)}
                         disabled={currentPage === totalPages}
-                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        className="hidden sm:block px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
                         Last
                       </button>

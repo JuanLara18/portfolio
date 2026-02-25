@@ -273,20 +273,20 @@ export default function BlogHomePage() {
             {/* Results info */}
             <motion.div 
               variants={fadeInUp}
-              className="flex items-center justify-between mb-4"
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4"
             >
               <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4">
-                  <Layers className="text-blue-600 dark:text-blue-400" size={24} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-3 sm:mr-4 shrink-0">
+                  <Layers className="text-blue-600 dark:text-blue-400" size={20} />
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
                   {selectedCategory !== 'all' 
                     ? BLOG_CONFIG.categories[selectedCategory]?.name 
                     : 'All Posts'}
                 </h2>
               </div>
               
-              <div className="text-gray-600 dark:text-gray-300">
+              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                 {totalPosts > 0 && (
                   <><span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * POSTS_PER_PAGE + 1, totalPosts)}</span>
                   {' '}-{' '}
@@ -406,11 +406,11 @@ export default function BlogHomePage() {
                       <span className="font-medium text-gray-700 dark:text-gray-100">{totalPosts}</span> posts
                     </div>
                     
-                    <div className="flex items-center space-x-2">
+                    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-0">
                       <button
                         onClick={() => setCurrentPage(1)}
                         disabled={currentPage === 1}
-                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        className="hidden sm:block px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
                         First
                       </button>
@@ -420,10 +420,12 @@ export default function BlogHomePage() {
                         disabled={currentPage === 1}
                         className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        Previous
+                        Prev
                       </button>
                       
-                      <div className="px-3 text-sm text-gray-700 dark:text-gray-300">{currentPage} / {totalPages}</div>
+                      <div className="px-1 sm:px-3 text-sm text-gray-700 dark:text-gray-300 font-medium whitespace-nowrap">
+                        {currentPage} / {totalPages}
+                      </div>
                       
                       <button
                         onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
@@ -436,7 +438,7 @@ export default function BlogHomePage() {
                       <button
                         onClick={() => setCurrentPage(totalPages)}
                         disabled={currentPage === totalPages}
-                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        className="hidden sm:block px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
                         Last
                       </button>
