@@ -3,11 +3,11 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 import { Helmet } from 'react-helmet-async';
 import { SEO, defaultSEO } from '../components/common/SEO';
 import { variants as motionVariants, defaultViewportSettings, earlyViewportSettings } from '../utils';
-import { Github, Linkedin, Mail, ExternalLink, Code, Terminal, Database, Server, Cpu, TerminalSquare, FileCode, FileText, Braces, Layers, User, BrainCircuit } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code, Terminal, Database, Server, Cpu, TerminalSquare, FileCode, FileText, Braces, Layers, User, BrainCircuit, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import components from new structure
-import { TypingTerminal, TechIcon, ParticleBackground, ScrollIndicator } from '../components/ui';
+import { TechIcon, ScrollIndicator } from '../components/ui';
 import { HoverMotion } from '../components/layout';
 
 // Constantes de configuración de scroll
@@ -93,7 +93,6 @@ const scaleUp = motionVariants.scaleUp();
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
   const titleRef = useRef(null);
   const { scrollY } = useScroll();
@@ -123,25 +122,6 @@ export default function LandingPage() {
       setActiveSection('projects');
     }
   });
-  
-  // Handle mouse movement with debounce for better performance
-  useEffect(() => {
-    let timeoutId;
-    
-    const handleMouseMove = (e) => {
-      clearTimeout(timeoutId);
-      
-      timeoutId = setTimeout(() => {
-        setMousePosition({ x: e.clientX, y: e.clientY });
-      }, 10); // Slight debounce for smoother experience
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      clearTimeout(timeoutId);
-    };
-  }, []);
   
   // Enhanced scroll to content function with smooth acceleration
   const scrollToContent = () => {
@@ -213,8 +193,8 @@ export default function LandingPage() {
         }}
         className="hero-section relative min-h-[85vh] flex items-center justify-center overflow-hidden py-12"
       >
-        {/* Enhanced Particle Grid Background */}
-  <ParticleBackground mousePosition={mousePosition} />
+        {/* Clean Background */}
+        <div className="absolute inset-0 bg-white dark:bg-gray-900 -z-20"></div>
         
         {/* Floating decorative elements with parallax effect */}
         <motion.div 
@@ -225,7 +205,7 @@ export default function LandingPage() {
           className="absolute bottom-40 left-10 w-64 h-64 rounded-full bg-indigo-200/30 dark:bg-indigo-900/10 blur-3xl -z-10"
           style={{ y: bgElement2Y }}
         />
-        
+  e      
         {/* Gradient overlays for smooth fading */}
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white dark:from-gray-900 to-transparent z-0"></div>
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent z-0"></div>
@@ -241,7 +221,7 @@ export default function LandingPage() {
             >
               <motion.div variants={fadeInUp} className="mb-3 lg:mb-4">
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 text-xs sm:text-sm font-medium mb-3 lg:mb-4 backdrop-blur-sm">
-                  <Code size={12} className="mr-1.5 sm:mr-1.5" /> AI Engineer · Researcher
+                  <Code size={12} className="mr-1.5 sm:mr-1.5" /> AI Engineer
                 </div>
               </motion.div>
               
@@ -252,12 +232,12 @@ export default function LandingPage() {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight"
               >
                 <motion.span 
-                  className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 inline-block  pb-1"
+                  className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 inline-block pb-1"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  From research
+                  Bridging the gap
                 </motion.span>
                 <motion.span 
                   className="block mt-1 lg:mt-2 text-gray-800 dark:text-gray-100"
@@ -265,47 +245,36 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  to production AI
+                  from research to scalable production
                 </motion.span>
               </motion.h1>
               
               <motion.p 
                 variants={fadeInUp}
-                className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-4 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
+                className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-5 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
               >
-                Research-minded AI Engineer specializing in LLM systems, NLP, and production ML. Dual background in Computer Science and Mathematics with experience from Harvard to enterprise-scale deployments.
+                I transform complex mathematical models and AI research into robust, enterprise-grade applications. Specializing in autonomous agents, distributed systems, and driving measurable business impact through scalable ML engineering.
               </motion.p>
               
               
               <motion.div 
                 variants={fadeInUp}
-                className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6 lg:mb-8 px-2 sm:px-0"
+                className="flex flex-wrap justify-center lg:justify-start gap-2.5 mb-8 lg:mb-10 px-2 sm:px-0"
               >
-                <HoverMotion as={motion.span}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200 dark:border-blue-800 backdrop-blur-sm transition-all duration-300 touch-target"
-                >
-                  LLMs & GenAI
-                </HoverMotion>
-                <HoverMotion as={motion.span}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 backdrop-blur-sm transition-all duration-300 touch-target"
-                >
-                  NLP & RAG
-                </HoverMotion>
-                <HoverMotion as={motion.span}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300 border border-purple-200 dark:border-purple-800 backdrop-blur-sm transition-all duration-300 touch-target"
-                >
-                  Production ML
-                </HoverMotion>
-                <HoverMotion as={motion.span}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300 border border-green-200 dark:border-green-800 backdrop-blur-sm transition-all duration-300 touch-target"
-                >
-                  Applied Research
-                </HoverMotion>
-                <HoverMotion as={motion.span}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300 border border-teal-200 dark:border-teal-800 backdrop-blur-sm transition-all duration-300 touch-target"
-                >
-                  Python & Cloud
-                </HoverMotion>
+                {[
+                  'Autonomous Agents', 
+                  'Distributed Systems', 
+                  'Enterprise MLOps', 
+                  'Scalable Architecture'
+                ].map((tag, i) => (
+                  <HoverMotion as={motion.span}
+                    key={i}
+                    className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 cursor-default"
+                    y={-2}
+                  >
+                    {tag}
+                  </HoverMotion>
+                ))}
               </motion.div>
               
               {/* Enhanced CTA buttons */}
@@ -345,71 +314,69 @@ export default function LandingPage() {
               </motion.div>
             </motion.div>
             
-            {/* Enhanced Terminal Card */}
+            {/* Interactive Value Delivered Card */}
             <HoverMotion as={motion.div}
               variants={scaleUp}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-2 mt-8 lg:mt-0 px-2 sm:px-0"
+              className="lg:col-span-2 mt-8 lg:mt-0 px-2 sm:px-0 relative"
               y={-5}
               duration={0.3}
             >
-              <div className="relative">
-                {/* Simplified decorative shapes for mobile */}
-                <motion.div 
-                  className="absolute -top-6 -left-6 w-20 sm:w-32 lg:w-40 h-20 sm:h-32 lg:h-40 bg-blue-200/20 dark:bg-blue-900/10 rounded-lg z-0 hidden sm:block"
-                  initial={{ rotate: 12, scale: 0.9 }}
-                  animate={{ 
-                    rotate: [12, 15, 12, 9, 12],
-                    scale: [0.9, 1, 0.95, 1, 0.9],
-                    transition: { 
-                      duration: 10, 
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }
-                  }}
-                />
-                <motion.div 
-                  className="absolute -bottom-14 -right-14 w-60 h-60 bg-indigo-200/40 dark:bg-indigo-900/20 rounded-lg z-0"
-                  initial={{ rotate: -12, scale: 0.95 }}
-                  animate={{ 
-                    rotate: [-12, -9, -12, -15, -12],
-                    scale: [0.95, 1.05, 1, 0.98, 0.95],
-                    transition: { 
-                      duration: 12, 
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }
-                  }}
-                />
+              {/* Decorative backgrounds */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-indigo-500 opacity-10 blur-2xl rounded-[3rem] z-0"></div>
+              
+              <div className="relative z-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl p-6 sm:p-8 rounded-3xl shadow-2xl border border-white/50 dark:border-gray-700/50">
+                <h3 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 mb-6 tracking-tight px-2">
+                  Value Delivered
+                </h3>
                 
-                {/* Enhanced terminal card with mobile optimization */}
-                <div className="relative z-10 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-500">
-                  <TypingTerminal text="const profile = {\n  name: 'Juan Lara',\n  role: 'AI Engineer | Research → Production',\n  focus: ['LLM Systems', 'NLP', 'Applied Research'],\n  approach: 'Rigorous experimentation, real-world impact',\n  stack: ['Python', 'PyTorch', 'LangChain', 'GCP'],\n  education: [\n    'M.S. Artificial Intelligence (in progress)',\n    'B.S. Computer Science',\n    'B.S. Mathematics'\n  ],\n  mission: 'Building AI that works beyond the notebook'\n};" />
+                <div className="space-y-3">
+                  {/* Item 1 */}
+                  <div className="group relative p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-blue-100 dark:hover:border-blue-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-transparent dark:from-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10 flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-blue-100/50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <BrainCircuit size={22} strokeWidth={2} />
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">Intelligent Systems</p>
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">Automating complex enterprise workflows.</p>
+                      </div>
+                    </div>
+                  </div>
 
-                  <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3">
-                    <TechIcon icon={BrainCircuit} label="LLM & GenAI" delay={0.2} />
-                    <TechIcon icon={Cpu} label="Applied Research" delay={0.4} />
-                    <TechIcon icon={Server} label="Production ML" delay={0.6} />
+                  {/* Item 2 */}
+                  <div className="group relative p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-purple-100 dark:hover:border-purple-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-50/50 to-transparent dark:from-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10 flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-purple-100/50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Server size={22} strokeWidth={2} />
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">Scalable Architecture</p>
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">Low-latency models deployed at scale.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Item 3 */}
+                  <div className="group relative p-4 rounded-2xl bg-gray-50/50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-900/50 shadow-none hover:shadow-sm transition-all duration-300 cursor-default overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-50/50 to-transparent dark:from-indigo-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10 flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-indigo-100/50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Cpu size={22} strokeWidth={2} />
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">Applied Research</p>
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">Bridging theory and business solutions.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </HoverMotion>
           </div>
-          
-        {/* Subtle cursor effect for desktop only */}
-        <motion.div 
-          className="fixed w-6 h-6 rounded-full border-2 border-blue-400/30 dark:border-blue-500/30 pointer-events-none z-50 hidden md:block"
-          style={{ 
-            left: mousePosition.x - 12, 
-            top: mousePosition.y - 12,
-            opacity: scrolled ? 0 : 0.6
-          }}
-          animate={{ 
-            scale: [1, 1.2, 1],
-            transition: { duration: 1, repeat: Infinity }
-          }}
-        />
         </div>
       </motion.section>
       
@@ -421,295 +388,182 @@ export default function LandingPage() {
         />
       </div>
       
-      {/* Section Previews */}
-      <section className="py-8 sm:py-12 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mobile-card-container">
+      {/* Value Pillars Section */}
+      <section className="py-16 sm:py-24 relative overflow-hidden">
+        {/* Subtle background gradient to avoid flat colors or hard lines */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent dark:via-blue-900/10 pointer-events-none"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mobile-card-container relative z-10">
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={defaultViewportSettings} className="text-center mb-14">
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-2">Why Work With Me</motion.h2>
+          </motion.div>
+          
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={defaultViewportSettings}
             variants={previewStagger}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
           >
-            {/* About Preview */}
+            {/* Pillar 1: Research */}
             <motion.div 
-              variants={motionVariants.scrollReveal.left()}
-              className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 transform hover:-translate-y-2 mobile-smooth-transition mobile-card-large mobile-card-optimized"
+              variants={motionVariants.scrollReveal.up()}
+              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-300 mr-3">
-                  <FileCode size={18} />
-                </div>
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-800 dark:text-gray-100">Background</h3>
-                  <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400"></div>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 dark:from-blue-900/60 dark:to-blue-800/20 dark:text-blue-400 mb-6 shadow-sm transform group-hover:scale-110 transition-transform duration-500 relative z-10">
+                <BrainCircuit size={32} strokeWidth={1.5} />
               </div>
-              <div className="max-w-3xl text-left">
-                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  CS & Mathematics foundation. Research-driven AI engineering. Experience spanning Harvard, GenomAI, and Falabella.
-                </p>
-                <HoverMotion>
-                  <Link to="/about" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
-                    Learn more
-                    <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </Link>
-                </HoverMotion>
-              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Applied Research</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm relative z-10">
+                Translating SOTA mathematical models and papers into practical algorithms that solve complex problems.
+              </p>
             </motion.div>
             
-            
-            {/* Projects Preview */}
+            {/* Pillar 2: Engineering */}
             <motion.div 
-              variants={smoothCardRight}
-              className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 transform hover:-translate-y-1 mobile-smooth-transition mobile-card-large mobile-card-optimized"
+              variants={motionVariants.scrollReveal.up()}
+              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-300 mr-3">
-                  <Layers size={18} />
-                </div>
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-800 dark:text-gray-100">Featured Work</h3>
-                  <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400"></div>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-900/60 dark:to-indigo-800/20 dark:text-indigo-400 mb-6 shadow-sm transform group-hover:scale-110 transition-transform duration-500 relative z-10">
+                <Server size={32} strokeWidth={1.5} />
               </div>
-              <div className="max-w-3xl text-left">
-                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  NLP libraries, RAG architectures, and production ML systems — built to deliver real impact.
-                </p>
-                <HoverMotion>
-                  <Link to="/projects" className="inline-flex items-center font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300 group">
-                    View projects
-                    <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </Link>
-                </HoverMotion>
+              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Scalable Engineering</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm relative z-10">
+                Building robust data pipelines, optimizing inference latency, and deploying ML systems on the cloud.
+              </p>
+            </motion.div>
+
+            {/* Pillar 3: ROI */}
+            <motion.div 
+              variants={motionVariants.scrollReveal.up()}
+              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-900/60 dark:to-green-800/20 dark:text-green-400 mb-6 shadow-sm transform group-hover:scale-110 transition-transform duration-500 relative z-10">
+                <TrendingUp size={32} strokeWidth={1.5} />
               </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Business Impact</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm relative z-10">
+                Creating AI solutions that automate workflows, reduce operational costs, and deliver measurable ROI.
+              </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
       
       {/* Blog and Contact Preview */}
-      <section className="py-16 sm:py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-16 sm:py-24 bg-gradient-to-t from-gray-50 to-white dark:from-gray-900 dark:to-gray-800/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={defaultViewportSettings} className="text-center">
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-2 sm:mb-4">Recent Updates</motion.h2>
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 mb-2 sm:mb-4">Recent Updates</motion.h2>
             <motion.p 
               variants={fadeInUp}
               className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-10 text-center"
             >
-              Latest insights and professional certifications in AI and machine learning.
+              Latest insights and featured projects in AI and machine learning.
             </motion.p>
           </motion.div>
           
           {/* Blog Previews */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="max-w-4xl mx-auto flex flex-col gap-5">
             {/* Latest Blog Post */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-500 hover:shadow-xl group flex flex-col"
+              className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 overflow-hidden relative cursor-pointer"
             >
-              <div className="flex items-start gap-3 mb-3">
-                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-300 flex-shrink-0">
-                  <FileText className="w-5 h-5" />
+              <Link to="/blog/field-notes/reinforcement-learning-in-practice" className="block p-5 sm:p-6 relative z-10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
+                  {/* Left Side: Icon & Title */}
+                  <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-900/60 dark:to-indigo-800/20 dark:text-indigo-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm">
+                      <FileText size={28} strokeWidth={1.5} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-1">
+                        <span className="px-2.5 py-1 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300 text-[10px] font-bold rounded-md uppercase tracking-wider">
+                          Latest Post
+                        </span>
+                        <span className="text-gray-400 dark:text-gray-500 text-xs font-medium flex items-center gap-1.5">
+                          February 5, 2026 <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span> 65 min read
+                        </span>
+                      </div>
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate sm:whitespace-normal sm:line-clamp-2">
+                        Reinforcement Learning in Practice: The Engineering That Makes It Work
+                      </h4>
+                    </div>
+                  </div>
+                  
+                  {/* Right Side: Expanding text + Arrow on Desktop */}
+                  <div className="hidden md:flex items-center justify-end pl-4 w-1/3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0 border-l border-gray-100 dark:border-gray-700/50">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed text-right mr-4">
+                      Implementation details that papers omit — deployment patterns, optimization tricks, and engineering decisions.
+                    </p>
+                    <div className="w-8 h-8 rounded-full bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 flex-shrink-0 transform group-hover:translate-x-1 transition-transform duration-300">
+                      →
+                    </div>
+                  </div>
+                  
+                  {/* Mobile Arrow */}
+                  <div className="md:hidden absolute top-5 right-5 text-gray-400 group-hover:text-indigo-600 transition-colors">
+                     <span className="transform group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <span className="inline-block px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-300 text-[10px] font-semibold rounded uppercase tracking-wide mb-2">
-                    Latest Post
-                  </span>
-                  <h4 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
-                    <Link to="/blog/field-notes/reinforcement-learning-in-practice" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                      Reinforcement Learning in Practice: The Engineering That Makes It Work
-                    </Link>
-                  </h4>
-                </div>
-              </div>
-              <p className="text-gray-500 dark:text-gray-400 text-[11px] mb-3 ml-[52px]">
-                February 5, 2026 • 65 min read
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
-                The implementation details that papers omit — deployment patterns, optimization tricks, and engineering decisions that make RL actually work.
-              </p>
-              <div className="ml-[52px]">
-                <Link 
-                  to="/blog/field-notes/reinforcement-learning-in-practice" 
-                  className="inline-flex items-center font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-300 group text-sm"
-                >
-                  Read post
-                  <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </Link>
-              </div>
+                {/* Background hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-50/30 to-transparent dark:via-indigo-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] ease-in-out"></div>
+              </Link>
             </motion.div>
             
-            {/* Latest Certification */}
+            {/* Featured Article */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-500 hover:shadow-xl group flex flex-col"
+              className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 overflow-hidden relative cursor-pointer"
             >
-              <div className="flex items-start gap-3 mb-3">
-                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/50 dark:text-green-300 flex-shrink-0">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+              <Link to="/blog/deep-dives/reinforcement-learning-first-principles" className="block p-5 sm:p-6 relative z-10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
+                  {/* Left Side: Icon & Title */}
+                  <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-900/60 dark:to-green-800/20 dark:text-green-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm">
+                      <BrainCircuit size={28} strokeWidth={1.5} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-1">
+                        <span className="px-2.5 py-1 bg-green-50 dark:bg-green-900/40 text-green-600 dark:text-green-300 text-[10px] font-bold rounded-md uppercase tracking-wider">
+                          Featured Article
+                        </span>
+                        <span className="text-gray-400 dark:text-gray-500 text-xs font-medium flex items-center gap-1.5">
+                          January 20, 2026 <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span> 90 min read
+                        </span>
+                      </div>
+                      <h4 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors truncate sm:whitespace-normal sm:line-clamp-2">
+                        Reinforcement Learning: From First Principles to Open Frontiers
+                      </h4>
+                    </div>
+                  </div>
+                  
+                  {/* Right Side: Expanding text + Arrow on Desktop */}
+                  <div className="hidden md:flex items-center justify-end pl-4 w-1/3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0 border-l border-gray-100 dark:border-gray-700/50">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed text-right mr-4">
+                      Bridging the gap between mathematical foundations of MDPs, Bellman equations, and practical implementation.
+                    </p>
+                    <div className="w-8 h-8 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 transform group-hover:translate-x-1 transition-transform duration-300">
+                      →
+                    </div>
+                  </div>
+                  
+                  {/* Mobile Arrow */}
+                  <div className="md:hidden absolute top-5 right-5 text-gray-400 group-hover:text-green-600 transition-colors">
+                     <span className="transform group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <span className="inline-block px-2 py-0.5 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-300 text-[10px] font-semibold rounded uppercase tracking-wide mb-2">
-                    New Certification
-                  </span>
-                  <h4 className="text-base font-bold text-gray-900 dark:text-white leading-tight">
-                    <a href="https://www.coursera.org/account/accomplishments/specialization/CNQ1BJKHIT2D" target="_blank" rel="noreferrer" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                      Deep Learning Specialization
-                    </a>
-                  </h4>
-                </div>
-              </div>
-              <p className="text-gray-500 dark:text-gray-400 text-[11px] mb-3 ml-[52px]">
-                DeepLearning.AI • January 2026
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 flex-grow ml-[52px]">
-                Neural networks, CNNs, RNNs, and sequence models. Five-course specialization.
-              </p>
-              <div className="ml-[52px]">
-                <a 
-                  href="https://www.coursera.org/account/accomplishments/specialization/CNQ1BJKHIT2D"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center font-semibold text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-300 group text-sm"
-                >
-                  View certificate
-                  <span className="ml-2 transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </a>
-              </div>
+                {/* Background hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-50/30 to-transparent dark:via-green-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] ease-in-out"></div>
+              </Link>
             </motion.div>
           </div>
         </div>
       </section>
       
-      {/* Footer/Contact */}
-      <footer className="py-8 sm:py-12 bg-gray-900 text-white" id="contact">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mobile-card-container">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2 
-              variants={fadeInUp} 
-              className="text-2xl font-bold mb-8 text-center"
-            >
-              Let's Connect
-            </motion.h2>
-            
-            <HoverMotion as={motion.div}
-              className="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-xl border border-gray-700 mb-6 sm:mb-8 mobile-smooth-transition mobile-card-large"
-              y={-5}
-              duration={0.3}
-              variants={scaleUp}
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
-                <div>
-                  <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-                  <p className="text-gray-400 mb-6">
-                    Open to research collaborations, technical challenges, and new projects in AI.
-                  </p>
-                  <div className="flex items-center mb-4">
-                    <Mail className="text-blue-400 mr-3" size={18} />
-                    <span className="text-gray-300">larajuand@outlook.com</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Terminal className="text-blue-400 mr-3" size={18} />
-                    <span className="text-gray-300">Bogotá, Colombia</span>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="flex flex-col space-y-3 sm:space-y-4">
-                    <HoverMotion as={motion.a}
-                      href="https://github.com/JuanLara18" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="flex items-center px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-150 relative overflow-hidden group touch-target mobile-smooth-transition"
-                      y={-2}
-                      duration={0.2}
-                    >
-                      <Github className="mr-3 text-white" size={20} />
-                      <span>GitHub</span>
-                      <motion.div 
-                        className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent skew-x-20"
-                        animate={{ 
-                          x: ["200%", "-200%"],
-                          transition: { 
-                            repeat: Infinity, 
-                            repeatType: "loop", 
-                            duration: 2,
-                            ease: "easeInOut",
-                            repeatDelay: 0.2
-                          } 
-                        }}
-                      />
-                    </HoverMotion>
-                    <HoverMotion as={motion.a}
-                      href="https://www.linkedin.com/in/julara/" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="flex items-center px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-150 relative overflow-hidden group touch-target mobile-smooth-transition"
-                      y={-2}
-                      duration={0.2}
-                    >
-                      <Linkedin className="mr-3 text-white" size={20} />
-                      <span>LinkedIn</span>
-                      <motion.div 
-                        className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent skew-x-20"
-                        animate={{ 
-                          x: ["200%", "-200%"],
-                          transition: { 
-                            repeat: Infinity, 
-                            repeatType: "loop", 
-                            duration: 2,
-                            ease: "easeInOut",
-                            repeatDelay: 0.2
-                          } 
-                        }}
-                      />
-                    </HoverMotion>
-                    <HoverMotion as={motion.a}
-                      href="mailto:larajuand@outlook.com" 
-                      className="flex items-center px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-150 relative overflow-hidden group touch-target mobile-smooth-transition"
-                      y={-2}
-                      duration={0.2}
-                    >
-                      <Mail className="mr-3 text-white" size={20} />
-                      <span>Email</span>
-                      <motion.div 
-                        className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-r from-transparent via-white dark:via-gray-200 to-transparent skew-x-20"
-                        animate={{ 
-                          x: ["200%", "-200%"],
-                          transition: { 
-                            repeat: Infinity, 
-                            repeatType: "loop", 
-                            duration: 2,
-                            ease: "easeInOut",
-                            repeatDelay: 0.2
-                          } 
-                        }}
-                      />
-                    </HoverMotion>
-                  </div>
-                </div>
-              </div>
-            </HoverMotion>
-            
-            <motion.p 
-              variants={fadeInUp}
-              className="text-center text-gray-400 text-sm"
-            >
-              © {new Date().getFullYear()} Juan Lara. All rights reserved.
-            </motion.p>
-          </motion.div>
-        </div>
-      </footer>
       </div>
     </>
   );

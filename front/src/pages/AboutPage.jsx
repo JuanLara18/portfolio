@@ -24,7 +24,8 @@ import {
   Terminal,
   Cloud,
   Layers,
-  Box
+  Box,
+  Cpu
 } from 'lucide-react';
 import { HoverMotion } from '../components/layout';
 import { ScrollIndicator, OptimizedImage } from '../components/ui';
@@ -35,77 +36,26 @@ const fadeInRight = motionVariants.fadeInRight();
 const fadeInLeft = motionVariants.fadeInLeft();
 const staggerContainer = motionVariants.stagger();
 
-// Skill component with animated progress bar
-const SkillBar = ({ name, level, icon: Icon, color = "blue" }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  
-  // Convert level (0-5) to percentage
-  const percentage = (level / 5) * 100;
-  
+// Skill component
+const SkillItem = ({ name, icon: Icon, color = "blue" }) => {
   // Color mappings for different UI elements
   const colorClasses = {
-    blue: {
-      iconBg: "bg-blue-100 dark:bg-blue-900/30",
-      iconText: "text-blue-600 dark:text-blue-400",
-      progressBar: "bg-blue-600 dark:bg-blue-500"
-    },
-    indigo: {
-      iconBg: "bg-indigo-100 dark:bg-indigo-900/30",
-      iconText: "text-indigo-600 dark:text-indigo-400",
-      progressBar: "bg-indigo-600 dark:bg-indigo-500"
-    },
-    green: {
-      iconBg: "bg-green-100 dark:bg-green-900/30",
-      iconText: "text-green-600 dark:text-green-400",
-      progressBar: "bg-green-600 dark:bg-green-500"
-    },
-    red: {
-      iconBg: "bg-red-100 dark:bg-red-900/30",
-      iconText: "text-red-600 dark:text-red-400",
-      progressBar: "bg-red-600 dark:bg-red-500"
-    },
-    yellow: {
-      iconBg: "bg-yellow-100 dark:bg-yellow-900/30",
-      iconText: "text-yellow-600 dark:text-yellow-400",
-      progressBar: "bg-yellow-600 dark:bg-yellow-500"
-    },
-    teal: {
-      iconBg: "bg-teal-100 dark:bg-teal-900/30",
-      iconText: "text-teal-600 dark:text-teal-400",
-      progressBar: "bg-teal-600 dark:bg-teal-500"
-    },
-    orange: {
-      iconBg: "bg-orange-100 dark:bg-orange-900/30", 
-      iconText: "text-orange-600 dark:text-orange-400",
-      progressBar: "bg-orange-600 dark:bg-orange-500"
-    },
-    purple: {
-      iconBg: "bg-purple-100 dark:bg-purple-900/30",
-      iconText: "text-purple-600 dark:text-purple-400",
-      progressBar: "bg-purple-600 dark:bg-purple-500"
-    }
+    blue: "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/30",
+    indigo: "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/30",
+    green: "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800/30",
+    red: "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800/30",
+    yellow: "bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800/30",
+    teal: "bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border-teal-200 dark:border-teal-800/30",
+    orange: "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800/30",
+    purple: "bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/30"
   };
   
-  // Get color classes or fallback to blue if color is not in our mapping
   const classes = colorClasses[color] || colorClasses.blue;
   
   return (
-    <div className="mb-6" ref={ref}>
-      <div className="flex items-center mb-2">
-        <div className={`w-8 h-8 rounded-md ${classes.iconBg} flex items-center justify-center mr-3`}>
-          <Icon size={18} className={classes.iconText} />
-        </div>
-        <span className="text-gray-800 dark:text-gray-200 font-medium">{name}</span>
-      </div>
-      <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-        <motion.div 
-          className={`h-full ${classes.progressBar} rounded-full`}
-          initial={{ width: 0 }}
-          animate={{ width: isInView ? `${percentage}%` : 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        />
-      </div>
+    <div className={`flex items-center p-2 xl:p-3 rounded-lg border ${classes} transition-all duration-300 hover:shadow-sm hover:-translate-y-0.5`}>
+      <Icon className="w-4 h-4 xl:w-5 xl:h-5 mr-2 xl:mr-3 flex-shrink-0" />
+      <span className="font-medium text-[13px] lg:text-xs xl:text-sm whitespace-nowrap tracking-tight">{name}</span>
     </div>
   );
 };
@@ -119,19 +69,27 @@ const ExperienceCard = ({
   description, 
   responsibilities, 
   skills, 
-  logo 
+  logo,
+  isExpanded,
+  onToggle
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px" });
-  const [expanded, setExpanded] = useState(false);
+  const [localExpanded, setLocalExpanded] = useState(false);
+  
+  const expanded = isExpanded !== undefined ? isExpanded : localExpanded;
+  const toggle = () => {
+    if (onToggle) onToggle();
+    else setLocalExpanded(!localExpanded);
+  };
   
   return (
     <motion.div 
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-10 border border-gray-100 dark:border-gray-700 relative overflow-hidden group mobile-card-large"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 sm:p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group mobile-card-large hover:shadow-md transition-shadow"
     >
       <div className="absolute top-0 right-0 w-40 h-40 bg-blue-50/50 dark:bg-blue-900/10 rounded-full -mr-20 -mt-20 z-0 transform group-hover:scale-110 transition-transform duration-500"></div>
       
@@ -179,7 +137,7 @@ const ExperienceCard = ({
               )}
             </AnimatePresence>
             <button
-              onClick={() => setExpanded(!expanded)}
+              onClick={toggle}
               className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer"
             >
               {expanded ? 'Show less \u2191' : 'Key responsibilities \u2193'}
@@ -221,16 +179,16 @@ const EducationCard = ({
   return (
     <motion.div 
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8 border border-gray-100 dark:border-gray-700 relative overflow-hidden mobile-card-large"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-700 relative overflow-hidden mobile-card-large hover:shadow-md transition-shadow"
     >
       <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-50/50 dark:bg-blue-900/10 rounded-full -ml-20 -mb-20 z-0"></div>
       
       <div className="relative z-10">
-        <div className="flex flex-col md:flex-row md:items-center mb-6 gap-4">
-          <div className="w-28 h-20 md:w-32 md:h-20 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md flex items-center justify-center">
+        <div className="flex items-center mb-5 gap-3 sm:gap-4">
+          <div className="w-16 h-12 sm:w-20 sm:h-14 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1.5 shadow-sm flex items-center justify-center">
             <OptimizedImage 
               src={`/images/institutions/${logo}`} 
               alt={`${institution} institutional logo`}
@@ -238,13 +196,13 @@ const EducationCard = ({
             />
           </div>
           
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mobile-card-title">{degree}</h3>
-            <div className="text-lg text-blue-600 dark:text-blue-400">{institution}</div>
-            <div className="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400 mt-1 gap-2">
-              <span>{period}</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400"></span>
-              <span>{location}</span>
+          <div className="min-w-0">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mobile-card-title leading-tight mb-0.5 tracking-tight">{degree}</h3>
+            <div className="text-sm sm:text-[15px] text-blue-600 dark:text-blue-400 font-medium leading-tight tracking-tight whitespace-nowrap">{institution}</div>
+            <div className="flex flex-wrap items-center text-xs text-gray-600 dark:text-gray-400 mt-1.5 gap-1.5">
+              <span className="whitespace-nowrap">{period}</span>
+              <span className="w-1 h-1 rounded-full bg-gray-400 flex-shrink-0"></span>
+              <span className="whitespace-nowrap">{location}</span>
             </div>
           </div>
         </div>
@@ -299,9 +257,9 @@ const CourseCard = ({
   return (
     <motion.div 
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-100 dark:border-gray-700 h-full relative overflow-hidden group mobile-card"
     >
       <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-full -mr-12 -mt-12 z-0 transform group-hover:scale-110 transition-transform duration-500"></div>
@@ -317,8 +275,8 @@ const CourseCard = ({
           </div>
           
           <div>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white line-clamp-2 mobile-card-title">{title}</h3>
-            <div className="text-sm text-gray-600 dark:text-gray-400">{provider}</div>
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mobile-card-title leading-snug">{title}</h3>
+            <div className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">{provider}</div>
           </div>
         </div>
         
@@ -339,19 +297,6 @@ const CourseCard = ({
           <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 line-clamp-2 card-description">{description}</p>
         )}
         
-        {topics && topics.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            {topics.map((topic, index) => (
-              <span 
-                key={index}
-                className="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 rounded text-xs"
-              >
-                {topic}
-              </span>
-            ))}
-          </div>
-        )}
-        
         {certificateLink && (
           <div className="mt-auto pt-2">
             <a 
@@ -360,7 +305,7 @@ const CourseCard = ({
               rel="noreferrer"
               className="inline-flex items-center text-blue-600 dark:text-blue-400 text-sm hover:underline gap-1 group"
             >
-              <span>Verify Certificate {certificateId && `(ID: ${certificateId})`}</span>
+              <span>Verify Certificate</span>
               <ExternalLink size={12} className="transform group-hover:translate-x-1 transition-transform duration-150" />
             </a>
           </div>
@@ -372,6 +317,7 @@ const CourseCard = ({
 
 export default function AboutPage() {
   const [bioExpanded, setBioExpanded] = useState(false);
+  const [expandedExperienceId, setExpandedExperienceId] = useState(null);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef);
@@ -510,127 +456,37 @@ const courses = [
     logo: "datacamp-logo.png"
   },
   {
-    title: "Curso de LangChain",
-    provider: "Platzi",
-    date: "July 2025",
-    description: "Comprehensive training on LangChain framework for building applications with large language models and AI agents.",
-    certificateLink: "https://platzi.com/p/larajuan/curso/dd0e8538-8e8f-4ed9-acae-5192ba8faf18",
-    certificateId: "dd0e8538-8e8f-4ed9-acae-5192ba8faf18",
-    topics: ["LangChain", "LLM Applications", "AI Agents"],
-    logo: "platzi-logo.png"
-  },
-  {
-    title: "Curso de NLP con Python",
-    provider: "Platzi",
-    date: "July 2025",
-    description: "Training on natural language processing with Python, covering transformers and modern NLP techniques.",
-    certificateLink: "https://platzi.com/p/larajuan/curso/520eb925-05d2-4298-ae08-187d5a2bae0a",
-    certificateId: "520eb925-05d2-4298-ae08-187d5a2bae0a",
-    topics: ["NLP", "Python", "Transformers"],
-    logo: "platzi-logo.png"
-  },
-  {
-    title: "Fundamentals of MCP",
-    provider: "Hugging Face",
-    date: "May 2025",
-    description: "Training on Model Customization and Production fundamentals using Hugging Face tools and frameworks.",
-    certificateLink: "https://huggingface.co/datasets/mcp-course/certificates/resolve/main/certificates/juanlara/2025-05-01.png",
-    certificateId: "juanlara",
-    topics: ["Model Customization", "Production ML", "Hugging Face"],
-    logo: "hugging_face-logo.png"
-  },
-  {
-    title: "Bases de datos SQL",
-    provider: "Platzi",
-    date: "April 2025",
-    description: "Training on SQL database fundamentals and practical implementation.",
-    certificateLink: "https://platzi.com/p/larajuan/learning-path/13458-datos-sql/diploma/detalle/",
-    certificateId: "539844d2-3b5e-43e9-ae00-d68331327f26",
-    topics: ["SQL", "Database Design", "Data Management"],
-    logo: "platzi-logo.png"
-  },
-  {
-    title: "Artificial Intelligence Professional Certificate (CAIPC)",
+    title: "Artificial Intelligence Expert Certificate (CAIEC)",
     provider: "Certiprof",
     date: "November 2024",
-    description: "Professional-level certification in artificial intelligence covering machine learning and practical AI applications.",
-    certificateLink: "https://www.credly.com/badges/JLRKFTTLUSP-WTHHHBBCH-YQSTJTBBBR",
-    certificateId: "JLRKFTTLUSP-WTHHHBBCH-YQSTJTBBBR",
-    topics: ["AI", "Machine Learning", "Professional Certification"],
-    logo: "certiprof_CAIPC-logo.png"
+    description: "Advanced-level certification focusing on artificial intelligence concepts, methodologies, and best practices.",
+    certificateLink: "https://www.credly.com/badges/TLZVDQTVTGG-XWHHHQPTQ-RDJFLDLRK",
+    certificateId: "TLZVDQTVTGG-XWHHHQPTQ-RDJFLDLRK",
+    topics: ["AI", "Neural Networks", "Machine Learning"],
+    logo: "certiprof-partner-logo.webp"
   },
-    {
-      title: "AI Agents Fundamentals",
-      provider: "Hugging Face",
-      date: "February 2025",
-      description: "Training on foundational concepts and practical implementation of AI agents using Hugging Face tools and frameworks.",
-      certificateLink: "https://huggingface.co/datasets/agents-course/certificates/resolve/main/certificates/juanlara/2025-02-19.png",
-      certificateId: "juanlara",
-      topics: ["AI Agents", "Multi-agent Systems", "Transformers"],
-      logo: "hugging_face-logo.png"
-    },
-    {
-      title: "Artificial Intelligence Expert Certificate (CAIEC)",
-      provider: "Certiprof",
-      date: "November 2024",
-      description: "Advanced-level certification focusing on artificial intelligence concepts, methodologies, and best practices.",
-      certificateLink: "https://www.credly.com/badges/TLZVDQTVTGG-XWHHHQPTQ-RDJFLDLRK",
-      certificateId: "TLZVDQTVTGG-XWHHHQPTQ-RDJFLDLRK",
-      topics: ["AI", "Neural Networks", "Machine Learning"],
-      logo: "certiprof_CAIEC-logo.png"
-    },
-    {
-      title: "Artificial Intelligence Bootcamp",
-      provider: "Talento Tech Cymetria",
-      date: "May-October 2024",
-      duration: "159 hours",
-      description: "Intensive training in AI and machine learning, covering cutting-edge algorithms and deep learning model construction.",
-      certificateLink: "https://certificados.talentotech.co/?cert=2518458921#pdf",
-      certificateId: "2518458921",
-      topics: ["Deep Learning", "Neural Networks", "PyTorch"],
-      logo: "cymetria-logo.png"
-    },
-    {
-      title: "DevOps Certification",
-      provider: "Platzi",
-      date: "October 2024",
-      description: "Program covering Docker, Swarm, GitHub Actions, GitLab, Jenkins, Azure DevOps, and MLOps practices for continuous integration and deployment.",
-      certificateLink: "https://platzi.com/p/larajuan/learning-path/8353-cloud-devops/diploma/detalle/",
-      certificateId: "cc4cfe8a-d78a-4883-8a75-ca90931151f6",
-      topics: ["Docker", "GitHub Actions", "MLOps"],
-      logo: "platzi-logo.png"
-    },
-    {
-      title: "Algorithmic Toolbox",
-      provider: "Coursera",
-      date: "2023",
-      description: "Course focused on algorithm design and implementation techniques for solving computational problems efficiently.",
-      certificateLink: "https://www.coursera.org/account/accomplishments/certificate/8GR62BCT499V",
-      certificateId: "8GR62BCT499V",
-      topics: ["Algorithms", "Data Structures", "Problem Solving"],
-      logo: "coursera-logo.png"
-    },
-    {
-      title: "Linux and Bash for Data Engineering",
-      provider: "Coursera",
-      date: "2023",
-      description: "Practical course on Linux systems administration and Bash scripting for data engineering workflows.",
-      certificateLink: "https://www.coursera.org/account/accomplishments/certificate/CAZUJPW6D4BP",
-      certificateId: "CAZUJPW6D4BP",
-      topics: ["Linux", "Bash", "Automation"],
-      logo: "coursera-logo.png"
-    },
-    {
-      title: "Python and Pandas for Data Engineering",
-      provider: "Coursera",
-      date: "2023",
-      description: "In-depth training on Python programming and Pandas library for data manipulation and analysis in data engineering contexts.",
-      certificateLink: "https://www.coursera.org/account/accomplishments/certificate/72QS5JSBC67L",
-      certificateId: "72QS5JSBC67L",
-      topics: ["Python", "Pandas", "Data Analysis"],
-      logo: "coursera-logo.png"
-    }
-  ];
+  {
+    title: "DevOps Certification",
+    provider: "Platzi",
+    date: "October 2024",
+    description: "Program covering Docker, Swarm, GitHub Actions, GitLab, Jenkins, Azure DevOps, and MLOps practices for continuous integration and deployment.",
+    certificateLink: "https://platzi.com/p/larajuan/learning-path/8353-cloud-devops/diploma/detalle/",
+    certificateId: "cc4cfe8a-d78a-4883-8a75-ca90931151f6",
+    topics: ["Docker", "GitHub Actions", "MLOps"],
+    logo: "platzi-logo.png"
+  },
+  {
+    title: "Artificial Intelligence Bootcamp",
+    provider: "Talento Tech Cymetria",
+    date: "May-October 2024",
+    duration: "159 hours",
+    description: "Intensive training in AI and machine learning, covering cutting-edge algorithms and deep learning model construction.",
+    certificateLink: "https://certificados.talentotech.co/?cert=2518458921#pdf",
+    certificateId: "2518458921",
+    topics: ["Deep Learning", "Neural Networks", "PyTorch"],
+    logo: "cymetria-logo.png"
+  }
+];
   
   return (
     <>
@@ -653,13 +509,12 @@ const courses = [
       />
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       
-      {/* Hero Section + Scroll Indicator Container */}
-      <div className="min-h-[calc(100dvh-5.5rem)] lg:h-[calc(100dvh-5.5rem)] flex flex-col">
-        {/* Hero Section */}
+      {/* Hero Section */}
+      <div className="pt-8 pb-12 sm:pt-16 sm:pb-20 flex flex-col relative overflow-hidden">
         <motion.section 
           ref={heroRef}
           style={{ opacity: heroOpacity, scale: heroScale }}
-          className="hero-section relative flex-1 flex items-center justify-center pt-0"
+          className="relative flex-1 flex items-center justify-center pt-0"
         >
         {/* Enhanced background with multiple layers */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 via-blue-50/80 to-white dark:from-gray-800/90 dark:via-gray-800/70 dark:to-gray-900 -z-10"></div>
@@ -722,57 +577,49 @@ const courses = [
         {/* Subtle geometric patterns */}
         <div className="absolute inset-0 opacity-5 dark:opacity-10 bg-grid-pattern -z-10"></div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-2 sm:gap-4 lg:gap-6 mb-0">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12"
+          >
+            {/* Profile Image */}
+            <motion.div 
+              variants={fadeInRight}
+              className="w-40 h-48 sm:w-48 sm:h-56 md:w-56 md:h-72 flex-shrink-0 mx-auto md:mx-0"
+            >
+              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
+                <OptimizedImage 
+                  src="/images/Profile.jpeg" 
+                  alt="Juan Lara"
+                  className="object-cover w-full h-full"
+                  eager={true}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+              </div>
+            </motion.div>
+
             {/* Content Column */}
             <motion.div 
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="lg:w-3/5 text-center lg:text-left"
+              variants={fadeInRight}
+              className="flex-1 text-center md:text-left"
             >
-              {/* Enhanced badge */}
-              <motion.div variants={fadeInRight} className="mb-3">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/50 dark:to-blue-800/30 text-blue-800 dark:text-blue-300 text-sm font-medium backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/30 shadow-sm touch-target">
-                  <Code size={14} className="mr-2" /> About Me
-                </div>
-              </motion.div>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-100/50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium mb-4">
+                <Code size={14} className="mr-2" /> About Me
+              </div>
               
-              {/* Enhanced name heading with animated underline */}
-              <motion.div variants={fadeInRight} className="relative mb-2">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 leading-tight">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400">
-                    Juan Lara
-                  </span>
-                </h1>
-                <motion.div 
-                  className="h-1 w-24 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 rounded-full mx-auto lg:mx-0"
-                  animate={{ 
-                    width: ["0%", "18%", "16%"],
-                    opacity: [0, 1, 0.9]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    delay: 0.5 
-                  }}
-                />
-              </motion.div>
+              <h1 className="text-4xl sm:text-5xl font-bold mb-2 leading-tight text-gray-900 dark:text-white tracking-tight">
+                Juan Lara
+              </h1>
               
-              {/* Enhanced subtitle with better styling */}
-              <motion.h2 
-                variants={fadeInRight}
-                className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-3 xs:mb-4 font-medium whitespace-nowrap"
-              >
+              <h2 className="text-lg sm:text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-medium mb-4">
                 Computer Scientist · Mathematician · AI Researcher
-              </motion.h2>
+              </h2>
               
-              {/* Content paragraphs with enhanced styling */}
-              <motion.div 
-                variants={fadeInRight}
-                className="space-y-2 xs:space-y-3 text-sm xs:text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl"
-              >
-                <p className="text-sm xs:text-base sm:text-lg">
-                  <span className="font-medium text-blue-600 dark:text-blue-400">AI Engineer</span> with 3+ years building production AI systems across research, healthcare, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span>, and <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>.
+              <div className="space-y-4 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
+                <p>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">AI Engineer</span> with 3+ years building production AI systems across research, healthcare, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span>, and <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>.
                 </p>
 
                 <AnimatePresence>
@@ -784,101 +631,35 @@ const courses = [
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="py-1 border-l-2 border-blue-500/30 dark:border-blue-700/50 pl-4">
-                        <p>
-                          Specializing in LLM fine-tuning, RAG architectures, NLP pipelines, and production ML systems on cloud infrastructure. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes, combining a dual foundation in Computer Science and Mathematics (4.7/5.0) with a drive to push AI research into real-world applications.
-                        </p>
-                      </div>
+                      <p className="pt-2">
+                        Specializing in LLM fine-tuning, RAG architectures, NLP pipelines, and production ML systems on cloud infrastructure. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes, combining a dual foundation in Computer Science and Mathematics (4.7/5.0) with a drive to push AI research into real-world applications.
+                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
                 <button
                   onClick={() => setBioExpanded(!bioExpanded)}
-                  className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer"
+                  className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer inline-flex items-center mx-auto md:mx-0"
                 >
                   {bioExpanded ? 'Show less \u2191' : 'Read more \u2193'}
                 </button>
-              </motion.div>
-            </motion.div>
-            
-            {/* Enhanced profile card with better proportions and mobile optimization */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full lg:w-2/5 flex justify-center lg:justify-end px-4 sm:px-0"
-            >
-              <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-none">
-                {/* Modern profile card with mobile-optimized dimensions */}
-                <div className="bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-gray-100 dark:border-gray-700 backdrop-blur-sm mobile-card-optimized">
-                  {/* Profile image - responsive sizing */}
-                  <div className="relative w-36 h-36 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 mx-auto mb-4 sm:mb-6">
-                    <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-800 border-2 sm:border-4 border-white dark:border-gray-600 shadow-xl">
-                      <OptimizedImage 
-                        src="/images/Profile.jpeg" 
-                        alt="Juan Lara - Computer Scientist and Mathematician"
-                        eager={true}
-                      />
-                      {/* Subtle professional overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/5 via-transparent to-transparent dark:from-blue-900/10"></div>
-                    </div>
-                    {/* Professional status indicator - smaller on mobile */}
-                    <div className="absolute -bottom-1 sm:-bottom-2 -right-1 sm:-right-2 flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-green-500 border-2 sm:border-4 border-white dark:border-gray-800 rounded-full shadow-lg">
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Professional information - mobile optimized */}
-                  <div className="text-center space-y-3 sm:space-y-4">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1 sm:mb-2">Juan Lara</h3>
-                      <p className="text-base sm:text-lg text-blue-600 dark:text-blue-400 font-semibold mb-1">AI Engineer</p>
-                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Falabella</p>
-                    </div>
-                    
-                    {/* Status badge - responsive sizing */}
-                    <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 text-green-700 dark:text-green-400 text-xs sm:text-sm font-medium rounded-full border border-green-200 dark:border-green-800/50">
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full mr-1.5 sm:mr-2 animate-pulse"></div>
-                      Available for projects
-                    </div>
-                    
-                    {/* Quick stats - mobile optimized */}
-                    <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-4 mt-4 sm:mt-6 border-t border-gray-100 dark:border-gray-700">
-                      <div className="text-center">
-                        <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">3+</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">Years Experience</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-xl sm:text-2xl font-bold text-indigo-600 dark:text-indigo-400">16+</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">Projects</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
         
         </motion.section>
-        
-        {/* Scroll indicator */}
-        <ScrollIndicator 
-          fadeOutStart={0} 
-          fadeOutEnd={300}
-          className="hidden sm:flex flex-shrink-0"
-        />
       </div>
       
       {/* Skills Section */}
       <section className="pt-8 pb-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px" }}
             variants={staggerContainer}
-            className="max-w-4xl mx-auto"
+            className="w-full mx-auto"
           >
             <motion.h2
               variants={fadeInUp}
@@ -895,249 +676,296 @@ const courses = [
 
             <motion.div
               variants={fadeInUp}
-              className="grid gap-x-8 gap-y-8 lg:grid-cols-2"
+              className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
             >
-              {/* LLM & RAG Systems */}
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                  LLM & RAG Systems
+              {/* Generative AI & NLP */}
+              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
+                  <BrainCircuit className="mr-2 text-blue-500 flex-shrink-0" size={18} />
+                  Generative AI & NLP
                 </h3>
-                <SkillBar
-                  name="Large Language Models"
-                  level={4.5}
-                  icon={BrainCircuit}
-                  color="blue"
-                />
-                <SkillBar
-                  name="RAG & Vector Databases"
-                  level={4.5}
-                  icon={Database}
-                  color="green"
-                />
-                <SkillBar
-                  name="PEFT & Fine-tuning"
-                  level={4}
-                  icon={Code}
-                  color="indigo"
-                />
+                {/* Use grid-cols-1 to ensure text never wraps to two lines, even on small screens */}
+                <div className="grid grid-cols-1 gap-3">
+                  <SkillItem
+                    name="RAG Architectures"
+                    icon={Database}
+                    color="blue"
+                  />
+                  <SkillItem
+                    name="LLM Fine-Tuning & PEFT"
+                    icon={Code}
+                    color="indigo"
+                  />
+                  <SkillItem
+                    name="Agentic Workflows"
+                    icon={Layers}
+                    color="green"
+                  />
+                  <SkillItem
+                    name="Advanced NLP Pipelines"
+                    icon={BrainCircuit}
+                    color="purple"
+                  />
+                </div>
               </div>
 
               {/* ML Engineering & MLOps */}
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                  ML Engineering & MLOps
+              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
+                  <Server className="mr-2 text-purple-500 flex-shrink-0" size={18} />
+                  Production ML & MLOps
                 </h3>
-                <SkillBar
-                  name="ML Frameworks"
-                  level={4.3}
-                  icon={Terminal}
-                  color="purple"
-                />
-                <SkillBar
-                  name="Model Deployment"
-                  level={3.9}
-                  icon={Server}
-                  color="red"
-                />
-                <SkillBar
-                  name="CI/CD & Automation"
-                  level={3.8}
-                  icon={Github}
-                  color="orange"
-                />
-              </div>
-
-              {/* Cloud & Infrastructure */}
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                  Cloud & Infrastructure
-                </h3>
-                <SkillBar
-                  name="Cloud Platforms"
-                  level={4}
-                  icon={Cloud}
-                  color="teal"
-                />
-                <SkillBar
-                  name="Container Orchestration"
-                  level={3.5}
-                  icon={Box}
-                  color="yellow"
-                />
-                <SkillBar
-                  name="Distributed Systems"
-                  level={3.3}
-                  icon={Layers}
-                  color="indigo"
-                />
-              </div>
-
-              {/* Development & Applications */}
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                  Development & Applications
-                </h3>
-                <SkillBar
-                  name="Python & SQL"
-                  level={4.7}
-                  icon={Code}
-                  color="blue"
-                />
-                <SkillBar
-                  name="API Development"
-                  level={4.2}
-                  icon={Globe}
-                  color="green"
-                />
-                <SkillBar
-                  name="Data Visualization"
-                  level={3.9}
-                  icon={BarChart}
-                  color="purple"
-                />
-              </div>
-            </motion.div>
-
-          </motion.div>
-        </div>
-      </section>
-
-      
-      {/* Experience Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px" }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.div 
-              variants={fadeInUp}
-              className="flex items-center justify-center mb-10"
-            >
-              <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-4">
-                <Briefcase className="text-blue-600 dark:text-blue-400" size={24} />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Professional Experience</h2>
-            </motion.div>
-            
-            <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-blue-200 dark:bg-blue-800 z-0 hidden lg:block"></div>
-              
-              <div className="relative z-10">
-                {experiences.map((exp, index) => (
-                  <ExperienceCard key={index} {...exp} />
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Education Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px" }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.div 
-              variants={fadeInUp}
-              className="flex items-center justify-center mb-10"
-            >
-              <div className="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center mr-4">
-                <GraduationCap className="text-indigo-600 dark:text-indigo-400" size={24} />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Education</h2>
-            </motion.div>
-            
-            <div>
-              {education.map((edu, index) => (
-                <EducationCard key={index} {...edu} />
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Awards & Recognition Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px" }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.div 
-              variants={fadeInUp}
-              className="flex items-center justify-center mb-10"
-            >
-              <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mr-4">
-                <Award className="text-yellow-600 dark:text-yellow-400" size={24} />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Awards & Recognition</h2>
-            </motion.div>
-            
-            <motion.div 
-              variants={fadeInUp}
-              className="space-y-6"
-            >
-              <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex-shrink-0 flex items-center justify-center mr-4">
-                    <Award className="text-yellow-600 dark:text-yellow-400" size={18} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Total Ops Star Employee - LATAM</h3>
-                    <div className="text-sm text-blue-600 dark:text-blue-400 mb-2">Ipsos • April 2024</div>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      Recognized for developing TextInsight, demonstrating exceptional initiative, technical expertise, and commitment to operational excellence across Latin American operations.
-                    </p>
-                  </div>
+                <div className="grid grid-cols-1 gap-3">
+                  <SkillItem
+                    name="Model Serving & Endpoints"
+                    icon={Globe}
+                    color="purple"
+                  />
+                  <SkillItem
+                    name="CI/CD & Deployment"
+                    icon={Github}
+                    color="red"
+                  />
+                  <SkillItem
+                    name="Scalable System Architecture"
+                    icon={Box}
+                    color="orange"
+                  />
+                  <SkillItem
+                    name="Model Drift & Monitoring"
+                    icon={LineChart}
+                    color="teal"
+                  />
                 </div>
               </div>
-              
-              <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex-shrink-0 flex items-center justify-center mr-4">
-                    <Award className="text-yellow-600 dark:text-yellow-400" size={18} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Best Averages Scholarship</h3>
-                    <div className="text-sm text-blue-600 dark:text-blue-400 mb-2">Universidad Nacional de Colombia • 2018-2023</div>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      Awarded for 10 consecutive semesters to the top 15 students with highest academic performance in the program, maintaining excellence throughout my academic career.
-                    </p>
-                  </div>
+
+              {/* Cloud & Data Engineering */}
+              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
+                  <Cloud className="mr-2 text-teal-500 flex-shrink-0" size={18} />
+                  Cloud & Data Engineering
+                </h3>
+                <div className="grid grid-cols-1 gap-3">
+                  <SkillItem
+                    name="GCP & AWS"
+                    icon={Cloud}
+                    color="teal"
+                  />
+                  <SkillItem
+                    name="Distributed Computing"
+                    icon={Layers}
+                    color="indigo"
+                  />
+                  <SkillItem
+                    name="Containerization (Docker)"
+                    icon={Box}
+                    color="yellow"
+                  />
+                  <SkillItem
+                    name="ETL & Data Pipelines"
+                    icon={Database}
+                    color="blue"
+                  />
+                </div>
+              </div>
+
+              {/* Core ML & Research */}
+              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
+                  <Code className="mr-2 text-green-500 flex-shrink-0" size={18} />
+                  Core ML & Research
+                </h3>
+                <div className="grid grid-cols-1 gap-3">
+                  <SkillItem
+                    name="Deep Learning Foundations"
+                    icon={BrainCircuit}
+                    color="blue"
+                  />
+                  <SkillItem
+                    name="Mathematical Modeling"
+                    icon={BarChart}
+                    color="green"
+                  />
+                  <SkillItem
+                    name="Predictive Analytics"
+                    icon={LineChart}
+                    color="purple"
+                  />
+                  <SkillItem
+                    name="Reinforcement Learning"
+                    icon={Cpu}
+                    color="red"
+                  />
                 </div>
               </div>
             </motion.div>
+
           </motion.div>
         </div>
       </section>
+
       
-      {/* Courses & Certifications Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      {/* Unified Professional Section (Grid Layout) */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-12">
+            
+            {/* Left Column: Experience */}
+            <div className="lg:col-span-7 xl:col-span-8 space-y-12">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px" }}
+                variants={staggerContainer}
+              >
+                <motion.div variants={fadeInUp} className="flex items-center mb-8">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-4 shadow-sm">
+                    <Briefcase className="text-blue-600 dark:text-blue-400" size={20} />
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">Professional Experience</h2>
+                </motion.div>
+                
+                <div className="relative">
+                  {/* Subtle timeline line for desktop */}
+                  <div className="absolute left-[3.5rem] top-8 bottom-0 w-px bg-gradient-to-b from-blue-200 via-blue-100 to-transparent dark:from-blue-800 dark:via-blue-900/50 dark:to-transparent z-0 hidden md:block"></div>
+                  
+                  <div className="relative z-10 space-y-8">
+                    {experiences.map((exp, index) => (
+                      <ExperienceCard 
+                        key={index} 
+                        {...exp} 
+                        isExpanded={expandedExperienceId === index}
+                        onToggle={() => setExpandedExperienceId(expandedExperienceId === index ? null : index)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Education, Awards, Languages */}
+            <div className="lg:col-span-5 xl:col-span-4 space-y-12">
+              
+              {/* Education */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px" }}
+                variants={staggerContainer}
+              >
+                <motion.div variants={fadeInUp} className="flex items-center mb-6">
+                  <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center mr-4 shadow-sm">
+                    <GraduationCap className="text-indigo-600 dark:text-indigo-400" size={20} />
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Education</h2>
+                </motion.div>
+                
+                <div className="space-y-6">
+                  {education.map((edu, index) => (
+                    <EducationCard key={index} {...edu} />
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Awards */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px" }}
+                variants={staggerContainer}
+              >
+                <motion.div variants={fadeInUp} className="flex items-center mb-6">
+                  <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mr-4 shadow-sm">
+                    <Award className="text-yellow-600 dark:text-yellow-400" size={20} />
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Awards & Recognition</h2>
+                </motion.div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-all hover:shadow-md">
+                    <div className="flex items-start">
+                      <Award className="text-yellow-600 dark:text-yellow-400 mt-0.5 mr-3 flex-shrink-0" size={20} />
+                      <div className="min-w-0">
+                        <h3 className="text-base font-bold text-gray-900 dark:text-white leading-tight mb-1">Total Ops Star Employee - LATAM</h3>
+                        <div className="text-[11px] sm:text-xs font-medium text-blue-600 dark:text-blue-400 mb-2 tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">Ipsos • April 2024</div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                          Awarded for developing TextInsight and driving technical impact across LATAM.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-all hover:shadow-md">
+                    <div className="flex items-start">
+                      <Award className="text-yellow-600 dark:text-yellow-400 mt-0.5 mr-3 flex-shrink-0" size={20} />
+                      <div className="min-w-0">
+                        <h3 className="text-base font-bold text-gray-900 dark:text-white leading-tight mb-1">Best Averages Scholarship</h3>
+                        <div className="text-[11px] sm:text-xs font-medium text-blue-600 dark:text-blue-400 mb-2 tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">Universidad Nacional de Colombia • 2018-2023</div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                          Awarded 10 consecutive semesters for ranking in the top 15 students.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Languages */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px" }}
+                variants={staggerContainer}
+              >
+                <motion.div variants={fadeInUp} className="flex items-center mb-6">
+                  <div className="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mr-4 shadow-sm">
+                    <Globe className="text-teal-600 dark:text-teal-400" size={20} />
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Languages</h2>
+                </motion.div>
+                
+                <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <div className="flex gap-8">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex-shrink-0 flex items-center justify-center">
+                        <span className="text-base font-bold text-teal-700 dark:text-teal-400">ES</span>
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-bold text-gray-900 dark:text-white">Spanish</h3>
+                        <p className="text-xs text-teal-600 dark:text-teal-400">Native</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex-shrink-0 flex items-center justify-center">
+                        <span className="text-base font-bold text-teal-700 dark:text-teal-400">EN</span>
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-bold text-gray-900 dark:text-white">English</h3>
+                        <p className="text-xs text-teal-600 dark:text-teal-400">Advanced</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Training Section (Full Width) */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px" }}
             variants={staggerContainer}
-            className="max-w-5xl mx-auto"
+            className="max-w-7xl mx-auto"
           >
-            <motion.div 
-              variants={fadeInUp}
-              className="flex items-center justify-center mb-10"
-            >
-              <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-4">
+            <motion.div variants={fadeInUp} className="flex items-center justify-center mb-10">
+              <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-4 shadow-sm">
                 <BookOpen className="text-green-600 dark:text-green-400" size={24} />
               </div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Additional Training</h2>
@@ -1145,119 +973,11 @@ const courses = [
             
             <motion.div 
               variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {courses.map((course, index) => (
                 <CourseCard key={index} {...course} />
               ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Languages Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px" }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.div 
-              variants={fadeInUp}
-              className="flex items-center justify-center mb-10"
-            >
-              <div className="w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mr-4">
-                <Globe className="text-teal-600 dark:text-teal-400" size={24} />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Languages</h2>
-            </motion.div>
-            
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-100 dark:border-gray-700"
-            >
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-teal-100 dark:bg-teal-900/30 flex-shrink-0 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-teal-700 dark:text-teal-400">ES</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Spanish</h3>
-                    <p className="text-teal-600 dark:text-teal-400">Native</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-teal-100 dark:bg-teal-900/30 flex-shrink-0 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-teal-700 dark:text-teal-400">EN</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">English</h3>
-                    <p className="text-teal-600 dark:text-teal-400">Advanced</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-900 dark:bg-gray-950">
-        <div className="container mx-auto px-6 mobile-card-container">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px" }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto text-center text-white"
-          >
-            <motion.h2 
-              variants={fadeInUp}
-              className="text-3xl md:text-4xl font-bold mb-6"
-            >
-              Let's Work Together
-            </motion.h2>
-            
-            <motion.p 
-              variants={fadeInUp}
-              className="text-gray-300 mb-8 max-w-2xl mx-auto"
-            >
-              Research rigor meets production engineering. Open to collaborations, challenging projects, and new opportunities — let's connect.
-            </motion.p>
-            
-            <motion.div 
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <a 
-                href="mailto:larajuand@outlook.com"
-                className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors flex items-center gap-2 font-medium shadow-lg"
-              >
-                <Mail size={18} />
-                <span>Contact Me</span>
-              </a>
-              
-              <a 
-                href={`${process.env.PUBLIC_URL}/documents/CV___EN.pdf`}
-                target="_blank"
-                rel="noreferrer"
-                className="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2 font-medium shadow-lg"
-              >
-                <svg 
-                  className="w-5 h-5" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2"
-                >
-                  <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" />
-                </svg>
-                <span>Download Resume</span>
-              </a>
             </motion.div>
           </motion.div>
         </div>

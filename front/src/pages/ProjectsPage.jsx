@@ -43,13 +43,13 @@ const GRID_CONFIG = {
 
 // Project categories with their icons and colors
 const categories = [
-  { id: 'all', name: 'All Projects', icon: Layers, color: 'blue' },
-  { id: 'ml', name: 'Machine Learning & AI', icon: Brain, color: 'purple' },
-  { id: 'web', name: 'Web Development', icon: Globe, color: 'indigo' },
-  { id: 'data', name: 'Data Science', icon: BarChart, color: 'green' },
-  { id: 'tools', name: 'Tools & Utilities', icon: Terminal, color: 'yellow' },
-  { id: 'games', name: 'Games & Interactive', icon: Gamepad, color: 'red' },
-  { id: 'upcoming', name: 'Upcoming Projects', icon: FileText, color: 'teal' }
+  { id: 'all', name: 'All', icon: Layers, color: 'blue' },
+  { id: 'ml', name: 'AI & ML', icon: Brain, color: 'purple' },
+  { id: 'web', name: 'Web Dev', icon: Globe, color: 'indigo' },
+  { id: 'data', name: 'Data', icon: BarChart, color: 'green' },
+  { id: 'tools', name: 'Tools', icon: Terminal, color: 'yellow' },
+  { id: 'games', name: 'Games', icon: Gamepad, color: 'red' },
+  { id: 'upcoming', name: 'Upcoming', icon: FileText, color: 'teal' }
 ];
 
 // Color map for badges (light bg, dark opaque bg, and text colors)
@@ -147,24 +147,6 @@ const projects = [
   //   featured: true
   // },
   {
-    id: 7,
-    name: "QuizApp",
-    description: "A modern full-stack learning platform that enables educators to create and manage quizzes, delivering instant feedback to learners via a React frontend and Flask backend.",
-    image: "quizapp.png",
-    tags: ["flask", "reactjs", "sqlite", "quiz"],
-    github: "https://github.com/JuanLara18/QuizApp",
-    category: "web"
-  },
-  {
-    id: 8,
-    name: "Whiteboard-app",
-    description: "Collaborative whiteboard built with React, TypeScript, and WebSockets. Draw, share, and brainstorm ideas in real-time with your team.",
-    image: "whiteboard.png",
-    tags: ["react", "real-time", "typescript", "whiteboard"],
-    github: "https://github.com/JuanLara18/whiteboard-app",
-    category: "web"
-  },
-  {
     id: 9,
     name: "Cunservicios Platform",
     description: "Smart platform for managing public utility services, including bill consultation, claims processing (PQR), and payment tracking. Built with React and Python.",
@@ -173,52 +155,6 @@ const projects = [
     github: "https://github.com/JuanLara18/Cunservicios",
     category: "web",
     featured: true
-  },
-  {
-    id: 10,
-    name: "Notebook-Converter",
-    description: "Convert Jupyter Notebooks to different formats (PDF, HTML, Markdown) using a customizable and efficient command-line tool. Optimized for data scientists and researchers.",
-    image: "notebook-converter.png",
-    tags: ["automation", "jupyter-notebook"],
-    github: "https://github.com/JuanLara18/Notebook-Converter",
-    category: "tools"
-  },
-  {
-    id: 11,
-    name: "AI-Roadmap",
-    description: "A structured, project-based roadmap for learning Machine Learning & AI through hands-on projects. Each project builds on the previous, helping you progress from beginner to advanced AI concepts.",
-    image: "ai-roadmap.png",
-    tags: ["ai", "ml", "education"],
-    github: "https://github.com/JuanLara18/AI-Roadmap",
-    category: "ml"
-  },
-  {
-    id: 12,
-    name: "MadameX",
-    description: "Interactive cryptography toolkit that enables users to encrypt and decrypt messages using various algorithms, and perform cryptanalysis to break encrypted messages without the original key.",
-    image: "madamex.png",
-    tags: ["cryptography", "cryptoanalysis", "encryption-decryption"],
-    github: "https://github.com/JuanLara18/MadameX",
-    demo: "https://juanlara18.github.io/MadameX/",
-    category: "web"
-  },
-  {
-    id: 13,
-    name: "BrickBreaker",
-    description: "Classic brick breaker game built with JavaScript and p5.js. Features multiple levels, power-ups, and progressive difficulty.",
-    image: "brickbreaker.png",
-    tags: ["object-oriented-programming", "retrogames", "JavaScript"],
-    github: "https://github.com/JuanLara18/BrickBreaker",
-    category: "games"
-  },
-  {
-    id: 14,
-    name: "Tetris",
-    description: "Implementation of the classic Tetris game using JavaScript and p5 library, developed for an Object-oriented Programming course.",
-    image: "tetris.png", 
-    tags: ["object-oriented-programming", "retrogames", "JavaScript"],
-    github: "https://github.com/JuanLara18/Tetris",
-    category: "games"
   },
   // Upcoming/In-progress projects
   {
@@ -409,11 +345,13 @@ export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(9);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
   const featuredRef = useRef(null);
   const isFeaturedInView = useInView(featuredRef, { once: true, margin: "0px" });
+  
+  // Pagination configuration
+  const PROJECTS_PER_PAGE = 6;
   
   // Transform values based on scroll position
   const heroOpacity = useTransform(scrollY, [260, 800], [1, 0.98]);
@@ -548,9 +486,8 @@ export default function ProjectsPage() {
 
   // Pagination calculations
   const totalProjects = filteredProjects.length;
-  const effectivePerPage = perPage === -1 ? totalProjects || 1 : perPage;
-  const totalPages = Math.max(1, Math.ceil(totalProjects / effectivePerPage));
-  const paginatedProjects = filteredProjects.slice((currentPage - 1) * effectivePerPage, currentPage * effectivePerPage);
+  const totalPages = Math.max(1, Math.ceil(totalProjects / PROJECTS_PER_PAGE));
+  const paginatedProjects = filteredProjects.slice((currentPage - 1) * PROJECTS_PER_PAGE, currentPage * PROJECTS_PER_PAGE);
 
   // Get featured projects
   const featuredProjects = projects.filter(project => project.featured);
@@ -574,13 +511,12 @@ export default function ProjectsPage() {
       />
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       
-      {/* Hero Section + Scroll Indicator Container */}
-      <div className="h-[calc(100dvh-5.5rem)] flex flex-col">
-        {/* Hero Section */}
+      {/* Header Section */}
+      <div className="pt-8 pb-12 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 flex flex-col relative overflow-hidden">
         <motion.section 
           ref={heroRef}
           style={{ opacity: heroOpacity, scale: heroScale }}
-          className="hero-section relative flex-1 flex items-center justify-center overflow-hidden"
+          className="relative flex-1 flex items-center justify-center pt-0"
         >
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 to-white dark:from-gray-800 dark:to-gray-900 -z-10"></div>
         
@@ -603,27 +539,27 @@ export default function ProjectsPage() {
             
             <motion.h1 
               variants={fadeInUp}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 leading-tight"
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mr-2 sm:mr-3">
                 Built, Shipped,
               </span>
-              <span className="block mt-1 text-gray-800 dark:text-gray-100">
+              <span className="text-gray-800 dark:text-gray-100">
                 Learned
               </span>
             </motion.h1>
             
             <motion.p 
               variants={fadeInUp}
-              className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-2 sm:px-0"
+              className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-10 max-w-3xl mx-auto px-2 sm:px-0"
             >
-              Production systems, research tools, and open-source contributions. Each one a different problem solved.
+              Production systems, research tools, and open-source contributions.
             </motion.p>
             
             {/* Search and filter */}
             <motion.div 
               variants={fadeInUp}
-              className="flex flex-col gap-3 sm:gap-4 max-w-xl mx-auto px-2 sm:px-0"
+              className="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto px-2 sm:px-0"
             >
               <div className="relative flex-grow">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -664,13 +600,6 @@ export default function ProjectsPage() {
         </div>
         
         </motion.section>
-        
-        {/* Scroll indicator */}
-        <ScrollIndicator 
-          fadeOutStart={0} 
-          fadeOutEnd={300}
-          className="flex-shrink-0"
-        />
       </div>
       
       {/* All Projects Grid */}
@@ -688,10 +617,8 @@ export default function ProjectsPage() {
               className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4"
             >
               <div className="flex items-center">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-3 sm:mr-4">
-                  <Layers className="text-blue-600 dark:text-blue-400" size={20} />
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center">
+                  <Layers className="text-blue-600 dark:text-blue-400 mr-3" size={24} />
                   {selectedCategory !== 'all' 
                     ? categories.find(c => c.id === selectedCategory)?.name 
                     : 'All Projects'}
@@ -767,116 +694,63 @@ export default function ProjectsPage() {
                   ))}
                 </motion.div>
 
-                {/* Pagination controls (clean, subtle) */}
-                <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    Showing <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * effectivePerPage + 1, totalProjects || 0)}</span>
-                    &nbsp;–&nbsp;
-                    <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min(currentPage * effectivePerPage, totalProjects)}</span>
-                    &nbsp;of&nbsp;<span className="font-medium">{totalProjects}</span>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <label className="sr-only">Items per page</label>
-                    <select
-                      value={perPage}
-                      onChange={(e) => {
-                        const v = Number(e.target.value);
-                        setPerPage(v);
-                        setCurrentPage(1);
-                      }}
-                      className="text-sm text-gray-700 dark:text-gray-100 bg-white/5 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-2 py-1 rounded-md focus:outline-none"
-                      aria-label="Items per page"
-                    >
-                      <option value={6}>6</option>
-                      <option value={9}>9</option>
-                      <option value={12}>12</option>
-                      <option value={18}>18</option>
-                      <option value={-1}>All</option>
-                    </select>
-
-                    <div className="inline-flex items-center rounded-full bg-white/5 dark:bg-white/5 border border-gray-200 dark:border-gray-800 shadow-sm">
+                {/* Pagination controls */}
+                {totalPages > 1 && (
+                  <motion.div
+                    variants={fadeInUp}
+                    className="flex flex-col sm:flex-row items-center justify-between mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
+                  >
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-0">
+                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * PROJECTS_PER_PAGE + 1, totalProjects)}</span>
+                      {' '}-{' '}
+                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min(currentPage * PROJECTS_PER_PAGE, totalProjects)}</span>
+                      {' '}of{' '}
+                      <span className="font-medium text-gray-700 dark:text-gray-100">{totalProjects}</span> projects
+                    </div>
+                    
+                    <div className="flex items-center space-x-2">
+                      <button
+                        onClick={() => setCurrentPage(1)}
+                        disabled={currentPage === 1}
+                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      >
+                        First
+                      </button>
+                      
                       <button
                         onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                         disabled={currentPage === 1}
-                        aria-label="Previous page"
-                        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-40 disabled:pointer-events-none transition-colors"
+                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" />
-                        </svg>
+                        Previous
                       </button>
-
+                      
                       <div className="px-3 text-sm text-gray-700 dark:text-gray-300">{currentPage} / {totalPages}</div>
-
+                      
                       <button
                         onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                         disabled={currentPage === totalPages}
-                        aria-label="Next page"
-                        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-40 disabled:pointer-events-none transition-colors"
+                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 6l6 6-6 6" />
-                        </svg>
+                        Next
+                      </button>
+                      
+                      <button
+                        onClick={() => setCurrentPage(totalPages)}
+                        disabled={currentPage === totalPages}
+                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      >
+                        Last
                       </button>
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                )}
               </>
             )}
           </motion.div>
         </div>
       </section>
       
-      {/* Collaboration CTA */}
-    <section className="py-16 sm:py-24 bg-gray-900 dark:bg-gray-950 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mobile-card-container">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "0px" }}
-          variants={staggerContainer}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <motion.h2 
-            variants={fadeInUp}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
-          >
-            Let's Build Something Amazing Together
-          </motion.h2>
-          
-          <motion.p 
-            variants={fadeInUp}
-            className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 max-w-3xl mx-auto px-2 sm:px-0"
-          >
-            Have a project idea or collaboration opportunity? I'm always interested in discussing new challenges and building innovative solutions.
-          </motion.p>
-          
-          <motion.div 
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-          >
-            <Link
-              to="mailto:larajuand@outlook.com"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center gap-2 font-medium shadow-lg text-sm sm:text-base"
-            >
-              <Mail size={18} />
-              <span>Get in Touch</span>
-            </Link>
-
-            <Link
-              to="https://github.com/JuanLara18"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-medium shadow-lg text-sm sm:text-base"
-            >
-              <Github size={18} />
-              <span>View GitHub</span>
-            </Link>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
     </div>
     </>
   );
