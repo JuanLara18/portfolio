@@ -11,7 +11,7 @@
   header[class*="fixed"]{min-height:80px}
   .hero-section{padding-top:5.5rem!important}
   /* Keep consistent - no override */
-  .mobile-card{padding:.875rem!important;border-radius:.5rem!important}
+  .mobile-card{border-radius:.5rem!important}
   
   /* Profile card on very small screens */
   .mobile-card-optimized {
@@ -189,12 +189,12 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   /* .mobile-card-container uses px-4 sm:px-6 across all pages now */
   
   /* Slightly tighter cards on phones to allow more content on screen */
-  .mobile-card{margin-left:0!important;margin-right:0!important;padding:1rem!important;border-radius:.875rem!important;margin-bottom:1rem!important}
+  .mobile-card{margin-left:0!important;margin-right:0!important;border-radius:.875rem!important;margin-bottom:1rem!important}
   .mobile-card-large{padding:1.25rem!important;font-size:1rem!important;line-height:1.5!important}
   .mobile-card-optimized{width:100%!important;box-sizing:border-box!important}
 
   /* Blog content specific optimizations */
-  article .bg-white, article .dark\:bg-gray-800{padding:1.25rem!important}
+  /* Handled by Tailwind classes on the container now */
 
   /* Better text readability on blog posts */
   article p, article li{font-size:1rem!important;line-height:1.7!important}
@@ -260,10 +260,10 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   header[class*="fixed"]{min-height:76px}
   .hero-section{padding-top:5rem!important;min-height:calc(100dvh - 3.5rem)!important;height:auto!important}
   /* Keep consistent with larger mobile - use px-4 from Tailwind */
-  .mobile-card{padding:1.125rem!important}
+  .mobile-card{border-radius:.75rem!important}
 
   /* Even tighter blog content on small phones */
-  article .bg-white, article .dark\:bg-gray-800{padding:0.875rem!important}
+  /* Handled by Tailwind classes */
   
   /* Ensure hero container has enough space on small phones */
   .h-\[calc\(100dvh-5\.5rem\)\] {
@@ -377,7 +377,7 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   header[class*="fixed"]{min-height:80px}
   .hero-section{padding-top:5.5rem!important;min-height:calc(100dvh - 3rem)!important;height:auto!important}
   /* Keep consistent horizontal padding with larger screens */
-  .mobile-card{padding:.875rem!important;border-radius:.5rem!important}
+  .mobile-card{border-radius:.5rem!important}
   
   /* Profile card on very small screens - more compact but visible */
   .mobile-card-optimized {
@@ -392,7 +392,7 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   }
   
   /* Blog articles on very small screens */
-  article .bg-white, article .dark\:bg-gray-800{padding:1rem!important}
+  article .bg-white, article .dark\:bg-gray-800{padding:0.75rem 0.25rem!important}
 }
 
 /* Medium-mobile: 480–640 special case for 2-column mobile-grid-double */
