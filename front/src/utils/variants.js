@@ -1,15 +1,15 @@
 // Centralized motion variants and helpers for consistent transitions
 import { useMemo } from 'react';
 
-// Improved easing for more professional feel
+// Improved easing for more professional feel - snappier and cleaner
 export const easeStandard = [0.25, 0.1, 0.25, 1.0];
 export const easeSmooth = [0.4, 0.0, 0.2, 1.0];
 export const easeGentle = [0.25, 0.46, 0.45, 0.94];
 
 // Professional scroll-based variants with bidirectional support
 export const variants = {
-  // Enhanced fade animations with better easing
-  fadeInUp: (duration = 0.8, distance = 40, delay = 0) => ({
+  // Enhanced fade animations with better easing - reduced distance and duration for subtlety
+  fadeInUp: (duration = 0.5, distance = 20, delay = 0) => ({
     hidden: { opacity: 0, y: distance },
     visible: { 
       opacity: 1, 
@@ -22,7 +22,7 @@ export const variants = {
       } 
     }
   }),
-  fadeInDown: (duration = 0.8, distance = 40, delay = 0) => ({
+  fadeInDown: (duration = 0.5, distance = 20, delay = 0) => ({
     hidden: { opacity: 0, y: -distance },
     visible: { 
       opacity: 1, 
@@ -35,7 +35,7 @@ export const variants = {
       } 
     }
   }),
-  fadeInLeft: (duration = 0.8, distance = 50, delay = 0) => ({
+  fadeInLeft: (duration = 0.5, distance = 20, delay = 0) => ({
     hidden: { opacity: 0, x: distance },
     visible: { 
       opacity: 1, 
@@ -48,7 +48,7 @@ export const variants = {
       } 
     }
   }),
-  fadeInRight: (duration = 0.8, distance = 50, delay = 0) => ({
+  fadeInRight: (duration = 0.5, distance = 20, delay = 0) => ({
     hidden: { opacity: 0, x: -distance },
     visible: { 
       opacity: 1, 
@@ -61,9 +61,9 @@ export const variants = {
       } 
     }
   }),
-  // Smooth scale with professional timing
-  scaleUp: (duration = 0.7, delay = 0) => ({
-    hidden: { opacity: 0, scale: 0.92 },
+  // Smooth scale with professional timing - very subtle scale starting from 0.98
+  scaleUp: (duration = 0.4, delay = 0) => ({
+    hidden: { opacity: 0, scale: 0.98 },
     visible: { 
       opacity: 1, 
       scale: 1, 
@@ -76,7 +76,7 @@ export const variants = {
     }
   }),
   // Subtle fade for smooth transitions
-  simpleFade: (duration = 0.5, delay = 0) => ({
+  simpleFade: (duration = 0.4, delay = 0) => ({
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1, 
@@ -89,25 +89,25 @@ export const variants = {
   }),
   // Enhanced page transitions
   page: {
-    initial: { opacity: 0, y: 8 },
+    initial: { opacity: 0, y: 4 },
     animate: { 
       opacity: 1, 
       y: 0, 
       transition: { 
-        duration: 0.6, 
+        duration: 0.4, 
         ease: easeGentle 
       } 
     },
     exit: { 
       opacity: 0, 
       transition: { 
-        duration: 0.3, 
+        duration: 0.2, 
         ease: easeSmooth 
       } 
     }
   },
-  // Professional stagger with better timing
-  stagger: (staggerChildren = 0.12, delayChildren = 0.15) => ({
+  // Professional stagger with faster timing
+  stagger: (staggerChildren = 0.08, delayChildren = 0.1) => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -120,7 +120,7 @@ export const variants = {
   }),
   // Scroll-triggered variants for professional reveal
   scrollReveal: {
-    up: (duration = 0.8, distance = 35) => ({
+    up: (duration = 0.5, distance = 20) => ({
       hidden: { opacity: 0, y: distance },
       visible: { 
         opacity: 1, 
@@ -132,7 +132,7 @@ export const variants = {
         }
       }
     }),
-    down: (duration = 0.8, distance = 35) => ({
+    down: (duration = 0.5, distance = 20) => ({
       hidden: { opacity: 0, y: -distance },
       visible: { 
         opacity: 1, 
@@ -144,7 +144,7 @@ export const variants = {
         }
       }
     }),
-    left: (duration = 0.8, distance = 45) => ({
+    left: (duration = 0.5, distance = 20) => ({
       hidden: { opacity: 0, x: distance },
       visible: { 
         opacity: 1, 
@@ -156,7 +156,7 @@ export const variants = {
         }
       }
     }),
-    right: (duration = 0.8, distance = 45) => ({
+    right: (duration = 0.5, distance = 20) => ({
       hidden: { opacity: 0, x: -distance },
       visible: { 
         opacity: 1, 
@@ -168,8 +168,8 @@ export const variants = {
         }
       }
     }),
-    scale: (duration = 0.7) => ({
-      hidden: { opacity: 0, scale: 0.93 },
+    scale: (duration = 0.4) => ({
+      hidden: { opacity: 0, scale: 0.98 },
       visible: { 
         opacity: 1, 
         scale: 1,
