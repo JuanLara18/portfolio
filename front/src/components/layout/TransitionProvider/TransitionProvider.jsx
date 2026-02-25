@@ -184,8 +184,8 @@ export const StaggerContainer = ({
 export const HoverMotion = ({ 
 	as: Component = motion.div,
 	children, 
-	scale = 1.03, 
-	y = -3, 
+	scale = 1.02, 
+	y = -2, 
 	duration = 0.3,
 	className = "", 
 	extraWhileHover = {},
