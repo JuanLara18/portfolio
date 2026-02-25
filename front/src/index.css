@@ -93,24 +93,24 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 
 /* Enhanced card hover states */
 .card-hover-professional {
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card-hover-professional:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .dark .card-hover-professional:hover {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 /* Professional scroll reveal animations */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
 }
 
 .scroll-reveal.visible {
@@ -120,9 +120,9 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 
 .scroll-reveal-right {
   opacity: 0;
-  transform: translateX(-45px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s,
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s;
+  transform: translateX(-20px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
 }
 
 .scroll-reveal-right.visible {
@@ -132,9 +132,9 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 
 .scroll-reveal-left {
   opacity: 0;
-  transform: translateX(45px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s,
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  transform: translateX(20px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
 }
 
 .scroll-reveal-left.visible {

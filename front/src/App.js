@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { TransitionProvider, Navigation as Navbar } from './components/layout';
+import { TransitionProvider, Navigation as Navbar, Footer } from './components/layout';
 import useNavbarHeight from './hooks/useNavbarHeight';
 
 // Lazy-loaded pages: each page bundle is only downloaded when the user navigates to it
@@ -102,7 +102,7 @@ function App() {
               </Routes>
             </Suspense>
           </div>
-          {/* Footer intentionally omitted for now */}
+          <Footer />
         </div>
         </TransitionProvider>
       </Router>
