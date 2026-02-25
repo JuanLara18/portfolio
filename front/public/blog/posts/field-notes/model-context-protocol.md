@@ -53,7 +53,7 @@ The architecture is straightforward. There are three roles:
 
 ```mermaid
 flowchart LR
-    subgraph HOST["Host (e.g. Claude Desktop)"]
+    subgraph HOST["Host"]
         C1["Client 1"]
         C2["Client 2"]
         C3["Client 3"]
