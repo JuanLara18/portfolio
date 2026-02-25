@@ -75,7 +75,7 @@ export const PostCard = ({ post }) => {
           {/* Title with stretched link — makes the entire card clickable */}
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
             <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
-              {post.title}
+              {post.title.split(':')[0]}
             </Link>
           </h2>
           
