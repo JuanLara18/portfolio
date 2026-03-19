@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050b14" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="gridGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.02" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="url(#gridGrad)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="110" fill="url(#bg)" />
+  <rect width="512" height="512" rx="110" fill="url(#grid)" />
+  
+  <!-- Subtle glowing background rings for tech feel -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="256" cy="256" r="130" fill="none" stroke="#1e293b" stroke-width="2" />
+  
+  <!-- Corner nodes -->
+  <circle cx="100" cy="100" r="4" fill="#3b82f6" opacity="0.5" />
+  <circle cx="412" cy="100" r="4" fill="#3b82f6" opacity="0.5" />
+  <circle cx="100" cy="412" r="4" fill="#3b82f6" opacity="0.5" />
+  <circle cx="412" cy="412" r="4" fill="#3b82f6" opacity="0.5" />
+
+  <!-- Logo Group -->
+  <g transform="translate(126, 151)">
+    <!-- J -->
+    <path d="M 100 20 L 100 170 C 100 210, 70 230, 40 230 L 20 230" fill="none" stroke="url(#blueGrad)" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Dot on J (representing a neural node/agent) -->
+    <circle cx="100" cy="-20" r="22" fill="#60a5fa" />
+    
+    <!-- L -->
+    <path d="M 170 -20 L 170 230 L 240 230" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Tech Accent on L -->
+    <path d="M 240 210 L 240 250" fill="none" stroke="#3b82f6" stroke-width="14" stroke-linecap="round" />
+    
+    <!-- Connecting bridge (abstract circuit) -->
+    <path d="M 100 100 L 170 100" fill="none" stroke="#1e293b" stroke-width="12" />
+    <path d="M 100 100 L 135 100 L 135 120 L 170 120" fill="none" stroke="#3b82f6" stroke-width="4" />
+  </g>
+</svg>

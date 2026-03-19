@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050b14" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="gridGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.02" />
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="url(#gridGrad)" stroke-width="1"/>
+      <circle cx="60" cy="60" r="1.5" fill="#3b82f6" opacity="0.3" />
+    </pattern>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#4338ca" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  
+  <!-- Neural network nodes/connections background elements -->
+  <g opacity="0.15" stroke="#818cf8" stroke-width="2">
+    <line x1="150" y1="150" x2="350" y2="300" />
+    <line x1="350" y1="300" x2="300" y2="550" />
+    <line x1="350" y1="300" x2="700" y2="150" />
+    <line x1="700" y1="150" x2="900" y2="400" />
+    <line x1="900" y1="400" x2="1150" y2="250" />
+    <line x1="900" y1="400" x2="1050" y2="550" />
+    <line x1="700" y1="150" x2="1000" y2="80" />
+    <line x1="300" y1="550" x2="550" y2="600" />
+    <line x1="550" y1="600" x2="900" y2="400" />
+    <!-- Additional tech lines -->
+    <path d="M 800 630 L 800 500 L 950 500" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="5,5" />
+    <path d="M 0 300 L 100 300 L 100 150" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="5,5" />
+  </g>
+  <g opacity="0.3" fill="#60a5fa">
+    <circle cx="150" cy="150" r="6" />
+    <circle cx="350" cy="300" r="8" />
+    <circle cx="300" cy="550" r="6" />
+    <circle cx="700" cy="150" r="10" />
+    <circle cx="900" cy="400" r="8" />
+    <circle cx="1150" cy="250" r="6" />
+    <circle cx="1050" cy="550" r="8" />
+    <circle cx="1000" cy="80" r="5" />
+    <circle cx="550" cy="600" r="7" />
+    <circle cx="800" cy="500" r="4" />
+    <circle cx="100" cy="300" r="4" />
+  </g>
+
+  <!-- Logo container -->
+  <g transform="translate(130, 200)">
+    <!-- Outer glow / glassmorphism effect -->
+    <rect width="180" height="180" rx="40" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+    <rect width="180" height="180" rx="40" fill="url(#logo-grad)" opacity="0.1" />
+    
+    <!-- New Advanced JL Logo Scaled Down -->
+    <g transform="translate(38, 48) scale(0.4)">
+      <path d="M 100 20 L 100 170 C 100 210, 70 230, 40 230 L 20 230" fill="none" stroke="url(#blueGrad)" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="100" cy="-20" r="22" fill="#60a5fa" />
+      
+      <path d="M 170 -20 L 170 230 L 240 230" fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 240 210 L 240 250" fill="none" stroke="#3b82f6" stroke-width="14" stroke-linecap="round" />
+      
+      <path d="M 100 100 L 170 100" fill="none" stroke="#1e293b" stroke-width="12" />
+      <path d="M 100 100 L 135 100 L 135 120 L 170 120" fill="none" stroke="#3b82f6" stroke-width="4" />
+    </g>
+  </g>
+  
+  <!-- Text Content -->
+  <text x="360" y="260" font-family="Inter, -apple-system, sans-serif" font-weight="800" font-size="76" fill="#ffffff" letter-spacing="-1">Juan Lara</text>
+  
+  <text x="360" y="325" font-family="Inter, -apple-system, sans-serif" font-weight="500" font-size="34" fill="#94a3b8">AI Engineer — Research to Production</text>
+  
+  <!-- Sleek separator line -->
+  <rect x="360" y="375" width="120" height="4" fill="#3b82f6" rx="2" />
+  <rect x="490" y="375" width="20" height="4" fill="#818cf8" rx="2" />
+  
+  <!-- Selling Tags from Landing Page -->
+  <g transform="translate(360, 420)">
+    <rect x="0" y="0" width="260" height="48" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" opacity="0.8"/>
+    <text x="130" y="30" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="18" fill="#93c5fd" text-anchor="middle">Autonomous Agents</text>
+    
+    <rect x="280" y="0" width="250" height="48" rx="12" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" opacity="0.8"/>
+    <text x="405" y="30" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="18" fill="#c4b5fd" text-anchor="middle">Enterprise MLOps</text>
+    
+    <rect x="550" y="0" width="270" height="48" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="1.5" opacity="0.8"/>
+    <text x="685" y="30" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="18" fill="#6ee7b7" text-anchor="middle">Scalable Architecture</text>
+  </g>
+</svg>
