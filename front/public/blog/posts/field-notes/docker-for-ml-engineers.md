@@ -647,12 +647,37 @@ Build the container. Ship the container. Trust the container.
 
 ---
 
-## References
+## Going Deeper
 
-- [Docker Official Documentation](https://docs.docker.com/) — The authoritative reference for Docker
-- [Dockerfile Best Practices](https://docs.docker.com/build/building/best-practices/) — Official guide to writing efficient Dockerfiles
-- [Multi-Stage Builds](https://docs.docker.com/build/building/multi-stage/) — Official documentation on multi-stage patterns
-- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/) — GPU support for Docker containers
-- [Docker Compose Documentation](https://docs.docker.com/compose/) — Multi-container application orchestration
-- [Docker Security Best Practices](https://docs.docker.com/build/building/best-practices/#security) — Official security guidance
-- [OCI Runtime Specification](https://github.com/opencontainers/runtime-spec) — The open standard behind container runtimes
+**Books:**
+
+- Poulton, N. (2023). *Docker Deep Dive.* Self-published, updated annually. — The most concise and practical Docker book available. Poulton rewrites it each year to stay current. Start here before anything else.
+
+- Miell, I., & Hobson Sayers, A. (2019). *Docker in Practice.* 2nd ed. Manning. — Covers real-world patterns including multi-stage builds, secrets management, and debugging containers in production. Strong on the "why" behind each technique.
+
+- Kane, S., & Matthias, K. (2023). *Docker: Up & Running.* 3rd ed. O'Reilly. — Comprehensive coverage from fundamentals through orchestration. Best for engineers who want the full picture including networking and storage.
+
+**Videos:**
+
+- ["Docker Tutorial for Beginners"](https://www.youtube.com/watch?v=3c-iBn73dDE) by TechWorld with Nana — A 3-hour zero-to-production walkthrough that is widely regarded as the best free Docker course. Clear, methodical, with real examples throughout.
+
+- ["Docker in 100 Seconds"](https://www.youtube.com/watch?v=Gjnup-PuquQ) by Fireship — Two minutes that give you the core mental model before diving deeper. Watch this first.
+
+- ["Docker and Kubernetes: The Complete Guide"](https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/) by Stephen Grider (Udemy) — The most thorough paid course. Covers Docker from first principles through Kubernetes orchestration with hands-on projects.
+
+**Online Resources:**
+
+- [Docker Official Documentation](https://docs.docker.com/) — The authoritative reference. The "Get Started" guide and the Dockerfile reference are both worth reading cover to cover.
+- [Play with Docker](https://labs.play-with-docker.com/) — A free browser-based environment where you can experiment with Docker without installing anything. Ideal for trying commands immediately.
+- [Docker Hub](https://hub.docker.com/) — The public registry. Browse official images (python, nvidia/cuda, postgres) to understand how production base images are structured.
+- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/) — The documentation for GPU passthrough in Docker. Required reading before any GPU workload.
+
+**Key Papers and Articles:**
+
+- Merkel, D. (2014). ["Docker: Lightweight Linux Containers for Consistent Development and Deployment."](https://dl.acm.org/doi/10.5555/2600239.2600241) *Linux Journal*, 2014(239). — The original Docker paper introducing the concept of application containers as a deployment primitive.
+
+- Burns, B., et al. (2016). ["Borg, Omega, and Kubernetes."](https://queue.acm.org/detail.cfm?id=2898444) *ACM Queue*, 14(1). — Google's account of a decade of container orchestration. Explains the design decisions behind Kubernetes, which is what Docker Compose workflows grow into.
+
+**Questions to Explore:**
+
+What is the difference between a Docker image layer and a filesystem snapshot at the OS level? How does the copy-on-write mechanism work, and why does it make containers faster to start than virtual machines? What happens to your running containers when you run `docker pull` on an updated base image?

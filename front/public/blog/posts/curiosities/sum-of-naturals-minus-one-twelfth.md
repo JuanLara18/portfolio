@@ -316,36 +316,38 @@ Mathematics has this power—taking seemingly absurd claims and revealing them a
 
 ## Going Deeper
 
-**For the Mathematically Curious:**
+**Books:**
 
-- Edwards, H. M. (1974). *Riemann's Zeta Function*. Academic Press.
-  - Comprehensive treatment of the zeta function, including analytic continuation and the functional equation
+- Edwards, H.M. (1974). *Riemann's Zeta Function.* Academic Press. (Dover reprint available.) — The most mathematically thorough treatment of the zeta function, including the full derivation of analytic continuation, the functional equation, and the Riemann Hypothesis context. Demanding but complete.
 
-- Hardy, G. H. (1991). *Divergent Series*. American Mathematical Society.
-  - Classic text on methods for assigning values to divergent series
+- Hardy, G.H. (1991). *Divergent Series.* American Mathematical Society. — Hardy's own text on summation methods, written by one of the mathematicians who corresponded with Ramanujan. Covers Abel summation, Cesàro summation, and regularization from first principles. A primary source.
 
-- Apostol, T. M. (1976). *Introduction to Analytic Number Theory*. Springer.
-  - Accessible introduction covering the zeta function and its properties
+- Kanigel, R. (1991). *The Man Who Knew Infinity.* Charles Scribner's Sons. — The biography of Ramanujan. The mathematical background needed to understand his divergent series work appears throughout, but the human story—a self-taught genius corresponding with Hardy from Madras—is what makes this book extraordinary. [Adapted into a film in 2015.](https://www.imdb.com/title/tt0787524/)
 
-**For Historical Context:**
+- Apostol, T.M. (1976). *Introduction to Analytic Number Theory.* Springer. — The standard graduate textbook on the zeta function's connections to prime number theory. The proof that $\zeta(-1) = -1/12$ is here in full rigor.
 
-- Kanigel, R. (1991). *The Man Who Knew Infinity*. Charles Scribner's Sons.
-  - Biography of Ramanujan, including his work on divergent series
+**Videos:**
 
-**For Physical Applications:**
+- ["ASTOUNDING: 1 + 2 + 3 + 4 + 5 + ... = -1/12"](https://www.youtube.com/watch?v=w-I6XTVZXww) by Numberphile — The video that made this result go viral. Tony Padilla's original explanation, which generated enormous controversy and a follow-up.
 
-- Bordag, M., Klimchitskaya, G. L., Mohideen, U., & Mostepanenko, V. M. (2009). *Advances in the Casimir Effect*. Oxford University Press.
-  - Detailed treatment of the Casimir effect and zeta function regularization in physics
+- ["The Ramanujan Summation"](https://www.youtube.com/watch?v=jcKRGpMiVTw) by 3Blue1Brown (Grant Sanderson) — A careful, visual treatment that explains the difference between Ramanujan summation and conventional summation, addressing the most common misunderstandings from the Numberphile video.
 
-**For Computational Exploration:**
+- ["What is the Riemann Hypothesis?"](https://www.youtube.com/watch?v=zlm1aajH6gY) by Quanta Magazine — The zeta function's deepest application: prime number distribution. Understanding the Riemann Hypothesis gives full context to analytic continuation and why $\zeta(-1) = -1/12$ is part of a much larger story.
 
-- Implement the functional equation for $\zeta(s)$ and compute values for negative integers
-- Explore other regularization techniques (Abel summation, Cesàro summation) and compare results
-- Study the connection between the Riemann zeta function and prime numbers (Euler product formula)
+**Online Resources:**
 
-**Key Question for Contemplation:**
+- [Terrence Tao's Blog: The Euler–Maclaurin Formula, Bernoulli Numbers, the Zeta Function, and Real-Variable Analytic Continuation](https://terrytao.wordpress.com/2010/04/10/the-euler-maclaurin-formula-bernoulli-numbers-the-zeta-function-and-real-variable-analytic-continuation/) — Tao's own explanation of zeta regularization written for a mathematically prepared audience. The clearest rigorous treatment available for free.
+- [Wolfram MathWorld: Riemann Zeta Function](https://mathworld.wolfram.com/RiemannZetaFunction.html) — Concise mathematical summary with the functional equation, special values, and connections to prime number theory.
 
-What does it mean for a mathematical object to have a "value" when our naive definition breaks down? Are we discovering pre-existing truths, or inventing consistent extensions of our concepts?
+**Key Papers:**
+
+- Euler, L. (1749). "Remarques sur un beau rapport entre les séries des puissances tant directes que réciproques." — Euler's original derivation of the functional equation for what we now call the zeta function, decades before Riemann formalized it. Available in Latin and French.
+
+- Hardy, G.H., & Ramanujan, S. (1918). ["Asymptotic Formulæ in Combinatory Analysis."](https://www.jstor.org/stable/90882) *Proceedings of the London Mathematical Society*, 17(1), 75–115. — The collaboration where Ramanujan's divergent series methods produced spectacularly accurate results for partition numbers, demonstrating that his intuitions about infinite sums were not wrong—they were operating in a different framework.
+
+**Questions to Explore:**
+
+Does the Casimir effect—a measurable physical force predicted using zeta regularization—constitute empirical evidence that $1 + 2 + 3 + \cdots = -1/12$ is "true" in some physical sense? Or does it demonstrate that the regularization technique produces correct predictions without the literal sum being meaningful? And: does that distinction matter?
 
 ---
 
