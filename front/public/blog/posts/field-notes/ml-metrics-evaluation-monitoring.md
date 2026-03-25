@@ -1311,13 +1311,39 @@ Build that infrastructure.
 
 ---
 
-## References
+## Going Deeper
 
-- [Evidently AI Documentation](https://docs.evidentlyai.com/)
-- [NannyML Documentation](https://nannyml.readthedocs.io/)
-- [RAGAS: Evaluation framework for RAG](https://docs.ragas.io/)
-- [Google ML Best Practices](https://developers.google.com/machine-learning/guides/rules-of-ml)
-- [Monitoring Machine Learning Models in Production](https://christophergs.com/machine%20learning/2020/03/14/how-to-monitor-machine-learning-models/)
-- [Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift](https://arxiv.org/abs/1810.11953)
-- [A Survey on Concept Drift Adaptation](https://arxiv.org/abs/1010.4784)
+**Books:**
+
+- Zheng, A. (2015). *Evaluating Machine Learning Models.* O'Reilly (free online). — A concise, practical guide to offline evaluation—train/test splits, cross-validation, statistical testing, and the business alignment of metrics. Short enough to read in an afternoon, valuable enough to reference constantly.
+
+- Kleppmann, M. (2017). *Designing Data-Intensive Applications.* O'Reilly. — Chapters 8 and 11 on distributed systems reliability and stream processing directly apply to building robust model monitoring pipelines.
+
+- Sculley, D., et al. (2015). *Rules of Machine Learning: Best Practices for ML Engineering.* Google. — A 43-rule guide from Google engineers, many of which concern evaluation and monitoring pitfalls. [Free online.](https://developers.google.com/machine-learning/guides/rules-of-ml)
+
+**Videos:**
+
+- ["A Recipe for Training Neural Networks"](https://karpathy.github.io/2019/04/25/recipe/) by Andrej Karpathy — A legendary blog post (with companion talk) detailing how to evaluate what is actually wrong with a model. The most practical debugging framework available for deep learning.
+
+- ["ML Monitoring"](https://www.youtube.com/c/EvidentlyAI) by Evidently AI (YouTube channel) — A series of short, practical videos on drift detection, data quality monitoring, and production metrics. Directly applicable to the tools discussed in this post.
+
+- ["Beyond Accuracy: Behavioral Testing of NLP Models"](https://www.youtube.com/watch?v=VqiTtdY58Ts) by Marco Tulio Ribeiro — The CheckList paper talk. Demonstrates how test suites for linguistic capabilities catch failure modes that aggregate accuracy metrics miss entirely.
+
+**Online Resources:**
+
+- [Evidently AI Documentation](https://docs.evidentlyai.com/) — The most comprehensive open-source monitoring framework. The "reports" documentation shows exactly what drift metrics are available and how to interpret them.
+- [NannyML Documentation](https://nannyml.readthedocs.io/) — Specializes in performance estimation without ground truth labels. Their tutorial on CBPE is the clearest explanation of label-free monitoring available.
+- [Arize AI Blog](https://arize.com/blog/) — Consistently high-quality writing on production ML observability, embedding drift, and ranking metrics.
+
+**Key Papers:**
+
+- Ribeiro, M.T., Wu, T., Guestrin, C., & Singh, S. (2020). ["Beyond Accuracy: Behavioral Testing of NLP Models with CheckList."](https://arxiv.org/abs/2005.04118) *ACL 2020*. — Introduces the checklist methodology for systematic capability testing. Demonstrates that models scoring 90%+ on benchmarks fail on trivially simple capabilities.
+
+- Rabanser, S., Günnemann, S., & Lipton, Z. (2019). ["Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift."](https://arxiv.org/abs/1810.11953) *NeurIPS 2019*. — The most thorough empirical comparison of drift detection methods. Reveals which statistical tests work on tabular data and which are fooled by distribution shifts in practice.
+
+- Gama, J., et al. (2014). ["A Survey on Concept Drift Adaptation."](https://arxiv.org/abs/1010.4784) *ACM Computing Surveys*, 46(4). — The canonical survey on concept drift: types, detection algorithms, and adaptation strategies.
+
+**Questions to Explore:**
+
+When is accuracy an honest metric and when is it misleading? How do you design an evaluation framework for a model that makes rare but high-impact mistakes? What is the difference between data drift, concept drift, and model drift—and does that distinction matter for your monitoring strategy?
 

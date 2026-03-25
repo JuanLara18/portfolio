@@ -1092,13 +1092,35 @@ Build something that matters.
 
 ---
 
-## References
+## Going Deeper
 
-- [Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs)
-- [BigQuery ML Documentation](https://cloud.google.com/bigquery/docs/bqml-introduction)
-- [AWS SageMaker Documentation](https://docs.aws.amazon.com/sagemaker/)
-- [Azure Machine Learning Documentation](https://docs.microsoft.com/azure/machine-learning/)
-- [Google Cloud Architecture Center: ML](https://cloud.google.com/architecture/ml-on-gcp-best-practices)
-- [MLOps: Continuous delivery for ML](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
-- [Practitioners Guide to MLOps](https://services.google.com/fh/files/misc/practitioners_guide_to_mlops_whitepaper.pdf)
+**Books:**
+
+- Huyen, C. (2022). *Designing Machine Learning Systems.* O'Reilly. — The best single book on ML infrastructure from an engineering perspective. Covers cloud deployment, data pipelines, feature stores, and monitoring with unusual clarity and practical honesty. Required reading for any ML engineer.
+
+- Hapke, H., & Nelson, C. (2020). *Building Machine Learning Pipelines.* O'Reilly. — Focused specifically on TFX and Kubeflow but the conceptual framework applies to any pipeline system. Teaches you to think about ML systems as data pipelines, not models with wrappers.
+
+- Gift, N., & Deza, A. (2021). *Practical MLOps.* O'Reilly. — More hands-on than Huyen's book. Covers GCP, AWS, and Azure with real code examples. Good companion for engineers learning a specific cloud.
+
+**Courses:**
+
+- ["Full Stack Deep Learning"](https://fullstackdeeplearning.com/) — The most rigorous free course on production ML systems. Covers infrastructure, deployment, monitoring, and team organization. Lecture notes and videos are both excellent.
+
+- ["MLOps Zoomcamp"](https://github.com/DataTalksClub/mlops-zoomcamp) by DataTalks.Club — A free, project-based course covering experiment tracking, deployment, monitoring, and workflow orchestration with real tools (MLflow, Prefect, Grafana).
+
+**Online Resources:**
+
+- [Google Cloud Architecture: MLOps](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) — Google's reference architecture for ML systems, from level 0 (manual) through level 2 (full CI/CD). The clearest description of MLOps maturity levels available.
+- [AWS SageMaker Documentation](https://docs.aws.amazon.com/sagemaker/) — Well-structured guides with end-to-end examples.
+- [Practitioners Guide to MLOps (Google Whitepaper)](https://services.google.com/fh/files/misc/practitioners_guide_to_mlops_whitepaper.pdf) — A practical, 50-page guide from Google Cloud. Dense with useful patterns.
+
+**Key Papers:**
+
+- Sculley, D., et al. (2015). ["Hidden Technical Debt in Machine Learning Systems."](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) *NeurIPS 2015*. — The paper that coined the term "technical debt" for ML systems. The dependency problems it describes are the reason cloud ML platforms exist.
+
+- Sato, D., Wider, A., & Windheuser, C. (2019). ["Continuous Delivery for Machine Learning."](https://martinfowler.com/articles/cd4ml.html) *Martin Fowler's blog*. — The article that popularized CD4ML as a discipline. Explains the difference between CI/CD for software and CI/CD for ML.
+
+**Questions to Explore:**
+
+When does managed infrastructure like Vertex AI or SageMaker start costing more than it saves? What is the cost model of cloud GPUs for training, and how do spot/preemptible instances change that calculation? What are the failure modes of a pipeline that works in development but fails silently in production?
 

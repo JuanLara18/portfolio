@@ -396,23 +396,36 @@ Learn a simple algorithm (like the Sune). Then conjugate it with a $U$ move: $U 
 **Exercise 5: Subgroup Exploration**  
 Scramble only with $U$ and $D$ moves. Can you solve it using only $U$ and $D$ moves? You're exploring the $\langle U, D \rangle$ subgroup.
 
-## Recommended Resources
+## Going Deeper
 
 **Books:**
-- *Adventures in Group Theory: Rubik's Cube, Merlin's Machine, and Other Mathematical Toys* by David Joyner
-- *Mathematics and Rubik's Cube* by University of Sheffield Mathematics Department
 
-**Online Tools:**
-- Herbert Kociemba's Cube Explorer (optimal solver)
-- Speedsolving.com wiki (algorithm database with group theory explanations)
-- GAP (Groups, Algorithms, Programming) computer algebra system
+- Joyner, D. (2008). *Adventures in Group Theory: Rubik's Cube, Merlin's Machine, and Other Mathematical Toys.* 2nd ed. Johns Hopkins University Press. — The definitive book written specifically for this intersection. Covers group theory through the lens of puzzles, with full mathematical rigor. The Rubik's cube chapters are the most accessible introduction to abstract algebra available.
+
+- Carter, N. (2009). *Visual Group Theory.* Mathematical Association of America. — Makes abstract algebra visual through software-generated Cayley diagrams and group tables. If abstract algebra feels opaque, this book is the antidote. [The companion software](http://groupexplorer.sourceforge.net/) lets you explore groups interactively.
+
+- Dummit, D.S., & Foote, R.M. (2003). *Abstract Algebra.* 3rd ed. Wiley. — The comprehensive graduate-level reference. Overkill for understanding the cube group, but invaluable if the material here sparks a deeper interest in algebra.
 
 **Videos:**
-- "Group Theory and the Rubik's Cube" by Mathologer
-- "Why You Can't Flip One Edge" by J Perm
 
-**Academic Papers:**
-- "Las Matemáticas del Cubo de Rubik" by Raquel Izquierdo Pato
-- "God's Number is 20" by Rokicki et al. (2010)
+- ["Group Theory and the Rubik's Cube"](https://www.youtube.com/watch?v=SCnilXbxfMo) by Mathologer — The best mathematical treatment of the cube on YouTube. Covers the group structure, commutators, conjugates, and parity with beautiful animations. An hour well spent.
 
-The journey from puzzle to profound mathematics is one of discovery. Keep exploring, keep twisting, and most importantly—keep seeing the beauty in both the chaos and the order.
+- ["Why You Can't Flip One Edge"](https://www.youtube.com/watch?v=7a40O_LXPV4) by J Perm — A focused video on the parity constraint that eliminates 11/12 of all apparent configurations. Clear, short, and visually compelling.
+
+- ["Abstract Algebra — Group Theory"](https://www.youtube.com/playlist?list=PLi01XoE8jYoi3SgnnGorR_XOW3IcK-TP6) by Socratica — A well-produced lecture series that covers all the algebra you need to fully understand the cube group: groups, subgroups, homomorphisms, cosets, and Lagrange's theorem.
+
+**Online Resources:**
+
+- [GAP — Groups, Algorithms, Programming](https://www.gap-system.org/) — A free computer algebra system specialized for computational group theory. You can define the Rubik's cube group in GAP and compute its order, center, derived series, and subgroup lattice. The documentation includes Rubik's cube examples.
+- [Cube20.org](http://www.cube20.org/) — The original site announcing the proof that God's Number is 20. Explains the computational approach and the 35 CPU-years it required.
+- [Speedsolving.com Wiki](https://www.speedsolving.com/wiki/) — Extensive database of algorithms with group-theoretic explanations of why they work.
+
+**Key Papers:**
+
+- Rokicki, T., Kociemba, H., Davidson, M., & Dethridge, J. (2010). ["God's Number is 20."](http://www.cube20.org/) — The proof that every Rubik's cube position can be solved in 20 moves or fewer (half-turn metric). The most famous result in competitive cubing mathematics, achieved through a combination of group theory and distributed computation using 35 CPU-years donated by Google.
+
+- Singmaster, D. (1981). *Notes on Rubik's Magic Cube.* Enslow Publishers. — The original mathematical treatment by the person who developed the standard cube notation (R, L, U, D, F, B). Singmaster's notation is what every cuber and every algorithm uses today.
+
+**Questions to Explore:**
+
+What is the center of the Rubik's cube group—the set of elements that commute with everything—and what does it correspond to physically? How does the group change if you allow center piece rotation (which the standard model ignores)? What other physical puzzles have been analyzed with group theory, and which are harder than the Rubik's cube?

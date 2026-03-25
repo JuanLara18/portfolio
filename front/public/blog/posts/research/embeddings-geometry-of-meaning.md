@@ -628,45 +628,75 @@ Embeddings continue to evolve:
 
 But the core insight remains: **meaning has geometry, and we can learn it from data**.
 
+---
+
 ## Going Deeper
 
-**Foundational Papers:**
+Embeddings are where linguistics, linear algebra, and cognitive science meet. The resources below will take you from understanding the basic mechanism to asking deeper questions about what it means for meaning to have geometry.
 
-- Mikolov, T., et al. (2013). "Efficient Estimation of Word Representations in Vector Space." *arXiv:1301.3781*.
-  - The Word2Vec paper that started it all
+### Books Worth Reading
 
-- Pennington, J., Socher, R., & Manning, C. D. (2014). "GloVe: Global Vectors for Word Representation." *EMNLP*.
-  - Alternative to Word2Vec using global co-occurrence statistics
+**[Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/) — Dan Jurafsky & James Martin**
+The definitive NLP textbook, available free online in its third edition. The chapters on vector semantics and embeddings are the clearest pedagogical treatment anywhere — Jurafsky builds from distributional hypothesis to Word2Vec to contextual embeddings with patience and rigor. If you want to understand *why* distributional representations work before accepting that they do, read chapter 6.
 
-- Devlin, J., et al. (2019). "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding." *NAACL*.
-  - Contextual embeddings via masked language modeling
+**[Natural Language Processing with Transformers](https://www.google.com/search?q=Tunstall+Lewis+NLP+with+Transformers) — Lewis Tunstall, Leandro von Werra & Thomas Wolf**
+The Hugging Face team's practical companion to modern NLP. Excellent on how contextual embeddings (BERT, RoBERTa, etc.) are used in practice — fine-tuning, domain adaptation, sentence similarity, semantic search. The chapter on embeddings for retrieval is particularly good.
 
-- Reimers, N., & Gurevych, I. (2019). "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks." *EMNLP*.
-  - Efficient sentence embeddings from BERT
+**[Mathematics for Machine Learning](https://mml-book.github.io/) — Deisenroth, Faisal & Ong**
+Free online. Builds the linear algebra and geometry you need to reason clearly about what's happening in embedding spaces — inner products, vector norms, projections, dimensionality reduction. If the geometric intuitions in this post felt fuzzy, this book will sharpen them.
 
-**Practical Resources:**
-
-- [Gensim](https://radimrehurek.com/gensim/): Train Word2Vec, Doc2Vec, FastText in Python
-- [Sentence-Transformers](https://www.sbert.net/): State-of-the-art sentence embeddings, easy fine-tuning
-- [Hugging Face Transformers](https://huggingface.co/docs/transformers/): Access thousands of pre-trained models
-- [OpenAI Embeddings API](https://platform.openai.com/docs/guides/embeddings): Production-ready embeddings as a service
-
-**Visualization Tools:**
-
-- [Embedding Projector](https://projector.tensorflow.org/): Explore high-dimensional embeddings interactively
-- t-SNE and UMAP: Dimensionality reduction for visualization
-
-**Questions to Explore:**
-
-- How do embeddings capture polysemy (multiple word meanings)?
-- Can we make embeddings more interpretable without sacrificing performance?
-- What's the minimal training data for useful embeddings?
-- How do we evaluate embedding quality beyond downstream tasks?
+**[Representation Learning: A Review and New Perspectives](https://www.google.com/search?q=Bengio+representation+learning+review) — Yoshua Bengio et al.**
+A survey paper that functions like a short book — it frames the entire field of representation learning and situates embeddings within it. Reading this makes clear that Word2Vec wasn't a trick but part of a larger program: learning representations that make downstream tasks easier.
 
 ---
 
-Words are coordinates. Concepts are clouds. Analogies are arrows. And meaning—that elusive, philosophical abstraction—has been given shape, structure, and geometry.
+### Videos That Illuminate
 
-The map is not the territory, but sometimes the map reveals truths about the territory we couldn't see before.
+**[Word Vector Representations: word2vec](https://www.youtube.com/results?search_query=Stanford+CS224N+word2vec+lecture) — Stanford CS224N**
+Christopher Manning's lecture on word vectors from the Stanford NLP course. Manning is one of the original architects of distributional semantics and explains the intuitions with clarity born from decades of thinking about them. The progression from co-occurrence matrices to Word2Vec is handled beautifully.
 
-That's the magic of embeddings.
+**[Illustrated Word2Vec](https://www.youtube.com/results?search_query=illustrated+word2vec+explained) — Jay Alammar**
+Several video adaptations of Alammar's influential blog post exist. The visual metaphors — windows sliding over text, vectors being nudged toward each other — make the training process genuinely intuitive. Watch this alongside reading the original paper.
+
+**[Visualizing High-Dimensional Data with t-SNE](https://www.youtube.com/results?search_query=t-SNE+visualizing+high+dimensional+data) — Google Tech Talks**
+Laurens van der Maaten's original talk on t-SNE, the algorithm most commonly used to project embedding spaces into 2D for visualization. Understanding how and why t-SNE works — and what it distorts — is essential for interpreting those beautiful word cluster plots.
+
+**[Sentence Transformers and Semantic Search](https://www.youtube.com/results?search_query=sentence+transformers+semantic+search+explained) — Various**
+Several practitioners have produced clear tutorials on using sentence embeddings for semantic search. Searching for "sentence transformers semantic search" will surface recent, practical videos that bridge theory and production.
+
+---
+
+### Online Resources
+
+**[Embedding Projector](https://projector.tensorflow.org/) — Google**
+An interactive 3D visualization of word embedding spaces. Load pre-trained Word2Vec or GloVe vectors and explore the geometry firsthand — find clusters, test analogies, see how neighbors change with different projection methods. The best tool for building genuine intuition.
+
+**[Sentence-Transformers Documentation](https://www.sbert.net/) — UKP Lab**
+The canonical library for computing sentence and document embeddings. The documentation doubles as a tutorial, covering semantic similarity, semantic search, clustering, and paraphrase mining. The pre-trained model hub includes hundreds of models for different languages and domains.
+
+**[Gensim](https://radimrehurek.com/gensim/)** — The reference Python library for training Word2Vec, Doc2Vec, and FastText on custom corpora. Excellent tutorials for building domain-specific embeddings when pre-trained vectors don't cover your vocabulary.
+
+---
+
+### Papers That Matter
+
+**Mikolov, T., et al. (2013). *Efficient Estimation of Word Representations in Vector Space*. [arXiv:1301.3781](https://arxiv.org/abs/1301.3781)**
+The Word2Vec paper. Surprisingly short and readable for a paper with this much impact. The analogy arithmetic results are presented almost casually — the authors clearly knew they had something, but perhaps didn't anticipate that it would reshape the field.
+
+**Pennington, J., Socher, R., & Manning, C. D. (2014). *GloVe: Global Vectors for Word Representation*. EMNLP 2014.**
+GloVe takes a different route to similar embeddings — instead of local windows, it uses global word co-occurrence statistics. The paper is a clean demonstration that the same geometric structure emerges from different training objectives, suggesting the geometry is real rather than an artifact of the specific method.
+
+**Bojanowski, P., et al. (2017). *Enriching Word Vectors with Subword Information*. [arXiv:1607.04606](https://arxiv.org/abs/1607.04606)**
+FastText, the extension of Word2Vec that learns character n-gram embeddings. Crucial for handling morphologically rich languages and rare or unseen words. Shows that the granularity at which you represent language matters.
+
+**Reimers, N., & Gurevych, I. (2019). *Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks*. [arXiv:1908.10084](https://arxiv.org/abs/1908.10084)**
+The paper that made dense semantic search practical. Standard BERT produces embeddings that are slow to compare pairwise; Sentence-BERT uses a Siamese network architecture to produce standalone sentence vectors that can be compared with simple cosine similarity. Enabled the modern semantic search stack.
+
+**Conneau, A., et al. (2017). *Word Translation Without Parallel Data*. [arXiv:1710.04087](https://arxiv.org/abs/1710.04087)**
+A striking paper: the geometry of word embedding spaces is so consistent across languages that you can learn to map between them without ever seeing a translated pair. French vectors align with English vectors using only a small bilingual dictionary seed. A remarkable testament to how real the structure is.
+
+---
+
+### A Question to Sit With
+
+The distributional hypothesis — "you shall know a word by the company it keeps" — is a claim about meaning: that semantic content is exhausted by context of use. This is a philosophical position, not just an engineering choice. It echoes Wittgenstein's "meaning is use." But if two words always appear in identical contexts, are they truly synonymous? Can a word have meaning that never manifests in its distribution? What aspects of human meaning — private associations, sensory grounding, emotional connotation — might be permanently invisible to any model that learns from text alone?

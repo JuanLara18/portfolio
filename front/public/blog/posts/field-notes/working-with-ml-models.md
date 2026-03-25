@@ -907,13 +907,39 @@ Now pick a problem and solve it.
 
 ---
 
-## References
+## Going Deeper
 
-- [Hugging Face Documentation](https://huggingface.co/docs)
-- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) by Jay Alammar
-- [Transfer Learning in NLP](https://ruder.io/transfer-learning/) by Sebastian Ruder
-- [LoRA Paper](https://arxiv.org/abs/2106.09685) - Low-Rank Adaptation of Large Language Models
-- [PEFT Documentation](https://huggingface.co/docs/peft) - Parameter-Efficient Fine-Tuning
-- [Sentence Transformers](https://www.sbert.net/) - For embedding models
-- [Papers with Code](https://paperswithcode.com/) - State-of-the-art model tracking
+**Books:**
+
+- Tunstall, L., von Werra, L., & Wolf, T. (2022). *Natural Language Processing with Transformers.* O'Reilly. — Written by core Hugging Face engineers. The most practical book on fine-tuning transformer models, covering text classification, NER, QA, summarization, and generation. [Free on the Hugging Face website.](https://huggingface.co/learn/nlp-course/)
+
+- Huyen, C. (2022). *Designing Machine Learning Systems.* O'Reilly. — Chapters 6 and 7 on model development and evaluation are especially relevant here. The best treatment of how to think about model selection in the context of a complete system.
+
+- Raschka, S. (2022). *Machine Learning with PyTorch and Scikit-Learn.* Packt. — Comprehensive coverage of both classical and deep learning models with practical PyTorch code. Good reference for understanding what different architectures are actually doing under the hood.
+
+**Videos:**
+
+- ["Let's Build GPT: from Scratch, in Code, Slowly"](https://www.youtube.com/watch?v=kCc8FmEb1nY) by Andrej Karpathy — One of the most celebrated ML education videos ever made. Karpathy builds a character-level GPT from a blank file, making the relationship between architecture, training, and inference completely transparent.
+
+- ["The Hugging Face Course"](https://huggingface.co/learn/nlp-course/) — A free, comprehensive course covering the Transformers library from tokenization through fine-tuning and deployment. The chapter on LoRA and PEFT is excellent.
+
+- ["Stanford CS224N: NLP with Deep Learning"](https://web.stanford.edu/class/cs224n/) — The full lecture series is free on YouTube. The fine-tuning and BERT lectures directly supplement what this post covers.
+
+**Online Resources:**
+
+- [Hugging Face Hub](https://huggingface.co/models) — The most comprehensive repository of pre-trained models, datasets, and spaces. The model cards are worth reading before adopting any model.
+- [Papers with Code](https://paperswithcode.com/) — Tracks state-of-the-art results with code links. Use this to understand what performance is achievable on your task before setting expectations.
+- [Sebastian Ruder's NLP Newsletter](https://newsletter.ruder.io/) — A curated newsletter on NLP research by one of the field's best science communicators. His guide to transfer learning is still the best overview of the paradigm.
+
+**Key Papers:**
+
+- Howard, J., & Ruder, S. (2018). ["Universal Language Model Fine-Tuning for Text Classification."](https://arxiv.org/abs/1801.06146) *ACL 2018*. — The ULMFiT paper that established the modern pre-training/fine-tuning paradigm for NLP. Foundational for understanding why fine-tuning works.
+
+- Hu, E., et al. (2021). ["LoRA: Low-Rank Adaptation of Large Language Models."](https://arxiv.org/abs/2106.09685) *ICLR 2022*. — The paper behind one of the most impactful fine-tuning techniques. Clear, well-motivated, with strong empirical results.
+
+- Bommasani, R., et al. (2021). ["On the Opportunities and Risks of Foundation Models."](https://arxiv.org/abs/2108.07258) Stanford CRFM. — A 200-page report on the implications of large pre-trained models. The section on capabilities and limitations of fine-tuning is the most comprehensive available.
+
+**Questions to Explore:**
+
+When does fine-tuning a large pre-trained model outperform training a smaller model from scratch on domain-specific data? What is catastrophic forgetting, and how does LoRA mitigate it? How do you decide between parameter-efficient fine-tuning methods—LoRA, prefix tuning, prompt tuning—for a given task and compute budget?
 

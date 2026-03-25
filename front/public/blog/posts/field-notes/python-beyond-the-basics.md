@@ -1322,13 +1322,38 @@ Now go build something.
 
 ---
 
-## References and Further Reading
+## Going Deeper
 
-- [Python Data Model Documentation](https://docs.python.org/3/reference/datamodel.html) - The authoritative source on dunder methods and protocols
-- [Fluent Python, 2nd Edition](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/) by Luciano Ramalho - The definitive book on Pythonic programming
-- [Python Descriptors](https://docs.python.org/3/howto/descriptor.html) - Official guide to the descriptor protocol
-- [PEP 484](https://peps.python.org/pep-0484/) - Type Hints specification
-- [PEP 544](https://peps.python.org/pep-0544/) - Protocols: Structural subtyping
-- [PEP 703](https://peps.python.org/pep-0703/) - Making the Global Interpreter Lock Optional
-- [Real Python Advanced Tutorials](https://realpython.com/tutorials/advanced/) - Practical guides to Python internals
+**Books:**
+
+- Ramalho, L. (2022). *Fluent Python.* 2nd ed. O'Reilly. — The definitive book on Pythonic programming. Covers the data model, protocols, closures, decorators, concurrency, and metaprogramming with extraordinary depth and clarity. Every advanced Python pattern you will encounter in ML codebases is explained here.
+
+- Beazley, D., & Jones, B.K. (2013). *Python Cookbook.* 3rd ed. O'Reilly. — A curated collection of advanced recipes covering data structures, iterators, generators, metaprogramming, and concurrency. Each recipe explains *why* the solution works, not just what it is.
+
+- Percival, H., & Gregory, B. (2020). *Architecture Patterns with Python.* O'Reilly. [Free online.](https://www.cosmicpython.com/) — Covers repository patterns, dependency injection, event-driven architecture, and CQRS in Python. The design patterns that make large ML systems maintainable and testable.
+
+**Videos:**
+
+- ["Beyond PEP 8: Best Practices for Beautiful Intelligible Code"](https://www.youtube.com/watch?v=wf-BqAjZb8M) by Raymond Hettinger (PyCon 2015) — One of the most watched Python conference talks ever. Hettinger shows how to transform idiomatic but verbose code into elegant Pythonic solutions.
+
+- ["So You Want to Be a Python Expert?"](https://www.youtube.com/watch?v=cKPlPJyQrt4) by James Powell — A 2-hour deep dive into the Python data model: descriptors, context managers, decorators, and metaclasses. Dense and demanding, but one of the most rewarding Python talks available.
+
+- ["Python Concurrency from the Ground Up"](https://www.youtube.com/watch?v=MCs5OvhV9S4) by David Beazley (PyCon 2015) — Beazley live-codes a concurrent event loop in Python. Explains the GIL, threads, and async I/O by building them from scratch.
+
+**Online Resources:**
+
+- [Python Data Model Documentation](https://docs.python.org/3/reference/datamodel.html) — The authoritative specification for all dunder methods and protocols. The sections on descriptors and metaclasses are where the deep magic lives.
+- [PEP 544 — Protocols: Structural Subtyping](https://peps.python.org/pep-0544/) — The specification for `typing.Protocol`. Understanding this PEP explains why structural typing is more powerful than nominal typing for ML library design.
+- [Real Python Advanced Tutorials](https://realpython.com/tutorials/advanced/) — Well-written tutorials on decorators, context managers, generators, and other advanced features.
+- [CPython Source Code](https://github.com/python/cpython) — Reading the C implementation of Python built-ins is often the most direct way to understand how they work. The `Objects/` directory is the starting point.
+
+**Key References (PEPs):**
+
+- [PEP 484](https://peps.python.org/pep-0484/) — Type Hints. The specification that made gradual typing possible in Python.
+- [PEP 526](https://peps.python.org/pep-0526/) — Variable Annotations. The syntax for annotating variables, not just function arguments.
+- [PEP 703](https://peps.python.org/pep-0703/) — Making the GIL Optional. The proposal for removing Python's Global Interpreter Lock, which will eventually make true thread-level parallelism possible.
+
+**Questions to Explore:**
+
+What is the descriptor protocol and how does it power both `@property` and PyTorch's parameter registration? How does the GIL affect NumPy, and why is NumPy-heavy code often faster in multiple threads than pure Python code? What is the difference between `__slots__` and `__dict__`, and when does using slots matter for memory-intensive ML code?
 

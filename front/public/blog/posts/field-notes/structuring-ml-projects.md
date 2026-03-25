@@ -984,27 +984,40 @@ Every recommendation in this guide derives from a few core principles:
 
 ## Going Deeper
 
-**Project Templates:**
-- [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/) — The original and still excellent
-- [cookiecutter-ml](https://github.com/Akramz/cookiecutter-ml) — Poetry-integrated ML template
+**Books:**
 
-**Dependency Management:**
-- [Poetry Documentation](https://python-poetry.org/docs/) — Official docs, comprehensive
-- [pyproject.toml specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/) — The standard
+- Huyen, C. (2022). *Designing Machine Learning Systems.* O'Reilly. — The most practical book on structuring ML projects as engineering systems. Covers data pipelines, feature engineering, training infrastructure, deployment, and monitoring. Treats ML as a software engineering discipline, not a research activity.
 
-**Git Workflows:**
-- [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials) — Excellent visualizations
-- [Conventional Commits](https://www.conventionalcommits.org/) — Commit message standard
+- Martin, R.C. (2008). *Clean Code.* Prentice Hall. — The foundational text on software engineering practices. The principles of small functions, clear naming, and single responsibility are as applicable to ML pipelines as to any other software. Read this alongside ML-specific guides.
 
-**MLOps and Experiment Tracking:**
-- [MLflow Documentation](https://mlflow.org/docs/latest/index.html) — Getting started guides
-- [Weights and Biases Docs](https://docs.wandb.ai/) — Tutorials and best practices
-- [DVC Documentation](https://dvc.org/doc) — Data version control
+- Burkov, A. (2020). *Machine Learning Engineering.* Published by the author. — A practical field guide to the software engineering side of ML: project structure, data validation, feature stores, model versioning, and deployment patterns. Concise and opinionated.
 
-**Quality Tooling:**
-- [Ruff Documentation](https://docs.astral.sh/ruff/) — The fast linter
-- [mypy Documentation](https://mypy.readthedocs.io/) — Static type checking
-- [pre-commit](https://pre-commit.com/) — Git hooks framework
+**Courses:**
+
+- ["Full Stack Deep Learning"](https://fullstackdeeplearning.com/) — The most complete free course on production ML systems. Covers project structure, experiment tracking, CI/CD, deployment, and team organization. Taught by practitioners who have shipped production ML systems.
+
+- ["Made With ML"](https://madewithml.com/) by Goku Mohandas — A free, project-based MLOps course that takes a single project from design through production. The structure and tooling sections directly implement the patterns this post describes.
+
+- ["Stanford CS 329S: Machine Learning Systems Design"](https://mlsystems.stanford.edu/) by Chip Huyen — The full lecture notes and slides are free. Covers system design, infrastructure, and the organizational challenges of production ML.
+
+**Online Resources:**
+
+- [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/) — The original standardized ML project template. Well-documented rationale for every directory.
+- [Poetry Documentation](https://python-poetry.org/docs/) — The complete reference for dependency management. The "Basic Usage" and "Dependency groups" sections cover everything you need.
+- [Conventional Commits](https://www.conventionalcommits.org/) — The machine-readable commit message standard. Short specification, large payoff in automated changelogs and semantic versioning.
+- [pre-commit.ci](https://pre-commit.ci/) — Runs your pre-commit hooks in CI automatically. One config, consistent enforcement across local and remote.
+
+**Key Papers:**
+
+- Amershi, S., et al. (2019). ["Software Engineering for Machine Learning: A Case Study."](https://dl.acm.org/doi/10.1109/ICSE-SEIP.2019.00042) *ICSE-SEIP 2019*. — Microsoft's study of ML engineering challenges at scale. Identifies the structural and process problems that proper project organization solves.
+
+- Breck, E., et al. (2017). ["The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction."](https://research.google/pubs/pub46555/) *IEEE BigData 2017*. — Google's 28-point rubric for ML system quality. A concrete checklist for "is this project production-ready?"
+
+- Sculley, D., et al. (2015). ["Hidden Technical Debt in Machine Learning Systems."](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) *NeurIPS 2015*. — The foundational paper on ML technical debt. Every structural recommendation in this post exists to avoid the debt patterns described here.
+
+**Questions to Explore:**
+
+At what project scale does the overhead of full structure pay off vs. the overhead of maintaining it? How do you version not just code but data and models together in a way that enables reproduction six months later? What is the difference between reproducibility and replicability, and which one matters more for your project?
 
 ---
 
