@@ -1357,14 +1357,39 @@ Build something that scales.
 
 ---
 
-## References and Further Reading
+## Going Deeper
 
-- [NumPy Internals Documentation](https://numpy.org/doc/stable/reference/internals.html) — How arrays really work
-- [Apache Arrow Specification](https://arrow.apache.org/docs/format/Columnar.html) — The columnar format standard
-- [Polars User Guide](https://docs.pola.rs/user-guide/) — Modern DataFrame library
-- [DuckDB Documentation](https://duckdb.org/docs/) — In-process analytical database
-- [PyTorch Internals Blog](https://pytorch.org/blog/computational-graphs-constructed-in-pytorch/) — How autograd works
-- [torch.compile Deep Dive](https://pytorch.org/docs/stable/torch.compiler.html) — JIT compilation in PyTorch 2.0
-- [Numba Documentation](https://numba.readthedocs.io/) — JIT compilation for Python
-- [High Performance Python](https://www.oreilly.com/library/view/high-performance-python/9781492055013/) by Micha Gorelick and Ian Ozsvald
-- [Fluent Python](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/) by Luciano Ramalho
+**Books:**
+
+- Gorelick, M., & Ozsvald, I. (2020). *High Performance Python.* 3rd ed. O'Reilly. — The definitive guide to making Python fast. Chapters on NumPy memory layout, profiling, concurrency, and Cython/Numba explain the same systems this post covers, with detailed benchmarks and practical examples.
+
+- McKinney, W. (2022). *Python for Data Analysis.* 3rd ed. O'Reilly. — Written by the creator of Pandas. Covers Pandas internals, memory management, and I/O deeply. The discussion of Apache Arrow integration explains why Polars is faster.
+
+- Ramalho, L. (2022). *Fluent Python.* 2nd ed. O'Reilly. — Part IV (control flow) and Part V (data structures) explain Python's memory model, protocols, and generator machinery that makes NumPy and PyTorch interoperate cleanly with Python.
+
+**Videos:**
+
+- ["NumPy Internals"](https://www.youtube.com/watch?v=HOfIi9BsUoU) by Jake VanderPlas (SciPy) — A 30-minute talk by the author of the Python Data Science Handbook explaining strides, views, broadcasting, and memory layout with live demonstrations.
+
+- ["Making Python 100x Faster with Less Code"](https://www.youtube.com/watch?v=-eyhCTvrEtE) by Ritchie Vink (creator of Polars, PyData) — The creator of Polars explains the design decisions—lazy evaluation, columnar memory, SIMD—that make it dramatically faster than Pandas.
+
+- ["PyTorch Internals"](https://www.youtube.com/watch?v=to0-LsGmm5A) by Edward Yang (Meta) — A deep technical talk on how PyTorch's computational graph, dispatch system, and autograd engine actually work. Essential for understanding what happens when you call `.backward()`.
+
+**Online Resources:**
+
+- [NumPy Internals Documentation](https://numpy.org/doc/stable/reference/internals.html) — The official reference for array memory layout, strides, and the ndarray C structure.
+- [Polars User Guide](https://docs.pola.rs/user-guide/) — Comprehensive, well-written guide to the query optimizer, lazy evaluation, and expression API.
+- [DuckDB Documentation](https://duckdb.org/docs/) — Particularly the "Performance Guide" section, which explains how DuckDB's vectorized execution engine differs from row-based query processors.
+- [torch.compile Documentation](https://pytorch.org/docs/stable/torch.compiler.html) — The official guide to TorchDynamo, TorchInductor, and the compilation pipeline introduced in PyTorch 2.0.
+
+**Key Papers:**
+
+- Harris, C.R., et al. (2020). ["Array programming with NumPy."](https://www.nature.com/articles/s41586-020-2649-2) *Nature*, 585, 357–362. — The formal academic paper documenting NumPy's design. Explains the array protocol, broadcasting semantics, and the role of NumPy as the foundation for the Python data science ecosystem.
+
+- Paszke, A., et al. (2019). ["PyTorch: An Imperative Style, High-Performance Deep Learning Library."](https://arxiv.org/abs/1912.01703) *NeurIPS 2019*. — The PyTorch paper. Explains the design decisions behind eager execution, the autograd engine, and the operator dispatch system.
+
+- Lam, S.K., Pitrou, A., & Seibert, S. (2015). ["Numba: A LLVM-based Python JIT Compiler."](https://dl.acm.org/doi/10.1145/2833157.2833162) *LLVM-HPC 2015*. — The Numba paper explaining how LLVM compilation turns Python numeric code into machine instructions.
+
+**Questions to Explore:**
+
+What is a stride in NumPy, and how does a transpose operation work without copying data? Why does Polars' lazy API produce faster code than applying the same transformations eagerly? What is the difference between TorchScript and torch.compile, and when would you use each?

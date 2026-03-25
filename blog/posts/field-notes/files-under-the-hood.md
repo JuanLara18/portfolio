@@ -206,11 +206,37 @@ The next time you download a model, save a dataframe, or even write a simple tex
 
 ---
 
-## References
+## Going Deeper
 
-- [Apache Parquet Format](https://parquet.apache.org/docs/) — Official documentation on columnar storage architecture.
-- [Safetensors Specification](https://huggingface.co/docs/safetensors/index) — Hugging Face's guide to the format and the power of zero-copy loading.
-- [Pickle Security Vulnerabilities](https://docs.python.org/3/library/pickle.html) — Python's official warning on arbitrary code execution via the Pickle VM.
-- [GGUF (GPT-Generated Unified Format)](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md) — The llama.cpp project's documentation on LLM distribution and quantization formats.
-- [Joblib: running Python functions as pipeline jobs](https://joblib.readthedocs.io/) — Guide on persisting large NumPy arrays efficiently.
-- [The HDF5 Group](https://www.hdfgroup.org/solutions/hdf5/) — The data model, library, and file format for storing and managing data.
+**Books:**
+
+- Kerrisk, M. (2010). *The Linux Programming Interface.* No Starch Press. — The definitive guide to Linux system calls, including the complete `mmap`, file I/O, and virtual memory chapters. Chapter 49 on `mmap` alone is worth the price. Heavy but authoritative.
+
+- Kleppmann, M. (2017). *Designing Data-Intensive Applications.* O'Reilly. — Chapter 3 on storage engines explains why columnar formats like Parquet exist, what B-trees and LSM trees are, and how storage format choices affect query performance at every scale.
+
+- Gorelick, M., & Ozsvald, I. (2020). *High Performance Python.* 3rd ed. O'Reilly. — Chapters on NumPy memory layout, memory profiling, and data serialization explain the practical performance implications of format choices in Python.
+
+**Videos:**
+
+- ["How SSDs Work"](https://www.youtube.com/watch?v=5Mh3o886qpg) by Branch Education — An exceptional visual explainer on NAND flash architecture, wear leveling, and why random reads on SSDs are faster than on spinning disks. Directly relevant to understanding why memory-mapped I/O matters.
+
+- ["Apache Arrow: The Secret of Lightning Fast Analytics"](https://www.youtube.com/watch?v=Hki3BiqEIKs) by Uwe Korn (PyData) — A talk from one of the Arrow contributors explaining the columnar memory format, zero-copy reads, and why Arrow became the lingua franca for in-memory analytics.
+
+- ["Why Parquet?"](https://www.youtube.com/watch?v=1j8SdS7s_NY) by Databricks — A well-produced explanation of columnar storage, predicate pushdown, and projection pushdown with benchmarks.
+
+**Online Resources:**
+
+- [Apache Parquet Documentation](https://parquet.apache.org/docs/) — The format specification. The "File Format" section explains encoding, compression, and the row group / column chunk structure.
+- [Safetensors on Hugging Face](https://huggingface.co/docs/safetensors/) — Complete spec with the security rationale and the zero-copy loading design.
+- [GGUF Format Specification](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md) — The llama.cpp documentation with full metadata key definitions and quantization type descriptions.
+- [Python `mmap` Documentation](https://docs.python.org/3/library/mmap.html) — The standard library reference for memory-mapped file objects in Python.
+
+**Key Papers:**
+
+- Harris, C.R., et al. (2020). ["Array programming with NumPy."](https://www.nature.com/articles/s41586-020-2649-2) *Nature*, 585, 357–362. — The formal paper documenting NumPy's design philosophy, memory model, and its role as the foundation for the Python data science stack.
+
+- Zaharia, M., et al. (2016). ["Apache Spark: A Unified Engine for Big Data Processing."](https://dl.acm.org/doi/10.1145/2934664) *Communications of the ACM*, 59(11). — Explains the storage layer design that made Parquet the dominant format for large-scale analytics.
+
+**Questions to Explore:**
+
+What happens at the operating system level when you call `mmap` on a 10 GB file? What is the difference between a page fault and a cache miss in this context? Why does loading a Safetensors file scale better than loading a Pickle file as model size grows from 1 GB to 100 GB?

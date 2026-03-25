@@ -976,12 +976,40 @@ With this foundation, you can make informed decisions about hardware, precision,
 
 ---
 
-## References
+## Going Deeper
 
-- [NVIDIA CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/)
-- [PyTorch Performance Tuning Guide](https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html)
-- [Mixed Precision Training Paper](https://arxiv.org/abs/1710.03740)
-- [FSDP Tutorial](https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html)
-- [Efficient Large Language Model Training](https://huggingface.co/docs/transformers/perf_train_gpu_one)
-- [DeepSpeed Documentation](https://www.deepspeed.ai/)
+**Books:**
+
+- Hwu, W.-m., Kirk, D., & Hajj, I. (2022). *Programming Massively Parallel Processors.* 4th ed. Morgan Kaufmann. — The canonical CUDA programming textbook. Teaches GPU architecture from the memory model up through optimization strategies. Dense but necessary for anyone writing CUDA kernels.
+
+- Patterson, D., & Hennessy, J. (2019). *Computer Organization and Design: ARM Edition.* 5th ed. Morgan Kaufmann. — The foundational computer architecture textbook. Chapter on memory hierarchy explains cache coherence, DRAM bandwidth, and memory latency—concepts that directly govern GPU performance.
+
+- Raschka, S. (2022). *Machine Learning with PyTorch and Scikit-Learn.* Packt. — Practical, well-explained ML engineering with strong chapters on training efficiency and hardware utilization.
+
+**Videos:**
+
+- ["GPU Programming"](https://www.youtube.com/watch?v=86FAWCzIe_4) by NVIDIA Deep Learning Institute — Conceptual walkthrough of CUDA programming model, warps, and memory hierarchy. Free and dense with practical insight.
+
+- ["Making Deep Learning Go Brrrr From First Principles"](https://horace.io/brrr_intro.html) by Horace He — A highly cited blog post (with companion talk) that explains GPU performance bottlenecks through bandwidth and compute arithmetic. One of the most useful reads for understanding why optimizations work.
+
+- ["Andrej Karpathy: Let's Build GPT from Scratch"](https://www.youtube.com/watch?v=kCc8FmEb1nY) — Not specifically about hardware, but Karpathy's live coding session shows exactly how GPU memory constraints shape implementation decisions in practice.
+
+**Online Resources:**
+
+- [NVIDIA CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/) — The authoritative documentation. The memory model and execution model sections are essential reading.
+- [PyTorch Performance Tuning Guide](https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html) — Concise actionable tips covering dataloader optimization, mixed precision, gradient checkpointing, and profiling.
+- [Lambda Labs GPU Benchmarks](https://lambdalabs.com/gpu-benchmarks) — Up-to-date training throughput comparisons across GPU models. Useful for hardware selection decisions.
+- [Hugging Face: Efficient Training on a Single GPU](https://huggingface.co/docs/transformers/perf_train_gpu_one) — A practical guide to squeezing maximum throughput from limited hardware.
+
+**Key Papers:**
+
+- Micikevicius, P., et al. (2018). ["Mixed Precision Training."](https://arxiv.org/abs/1710.03740) *ICLR 2018*. — The paper that established FP16 training as standard practice. The loss scaling technique described here is why mixed precision doesn't destroy model convergence.
+
+- Rajbhandari, S., et al. (2020). ["ZeRO: Memory Optimizations Toward Training Trillion Parameter Models."](https://arxiv.org/abs/1910.02054) *SC 2020*. — The DeepSpeed paper. Introduces the partitioning strategy that enables models too large to fit on a single GPU to train across multiple GPUs without the communication overhead of naive model parallelism.
+
+- Shoeybi, M., et al. (2019). ["Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism."](https://arxiv.org/abs/1909.08053) — NVIDIA's approach to tensor parallelism for large language models. Together with ZeRO, defines the parallelism landscape for large-scale training.
+
+**Questions to Explore:**
+
+When is a model memory-bound vs compute-bound, and how does that distinction change your optimization strategy? What is the roofline model and how do you use it to identify bottlenecks? Why does batch size affect training throughput differently on a GPU than on a CPU?
 

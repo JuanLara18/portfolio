@@ -251,13 +251,37 @@ The bridge has been built. The question is no longer whether AI will integrate w
 
 ---
 
-## References
+## Going Deeper
 
-- [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) — Anthropic's original announcement (November 2024)
-- [MCP Specification](https://modelcontextprotocol.io/specification/latest) — The official protocol specification
-- [MCP Architecture Overview](https://modelcontextprotocol.io/docs/learn/architecture) — Technical architecture documentation
-- [Build an MCP Server](https://modelcontextprotocol.io/quickstart/server) — Official quickstart guide for Python and TypeScript
-- [MCP Joins the Agentic AI Foundation](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/) — Linux Foundation governance announcement
-- [Donating MCP and Establishing the Agentic AI Foundation](https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation) — Anthropic's foundation announcement
-- [MCP Safety Audit: LLMs with MCP Allow Major Security Exploits](https://arxiv.org/abs/2504.03767) — Security research on MCP attack vectors
-- [Model Context Protocol — Wikipedia](https://en.wikipedia.org/wiki/Model_Context_Protocol) — General overview and history
+**Books:**
+
+- Kleppmann, M. (2017). *Designing Data-Intensive Applications.* O'Reilly. — Chapter 4 on encoding and evolution explains why protocol design (schemas, versioning, backward compatibility) is hard and what the failure modes are. MCP faces all the same challenges at the API boundary layer.
+
+- Russell, S., & Norvig, P. (2020). *Artificial Intelligence: A Modern Approach.* 4th ed. Pearson. — Part V on communicating, perceiving, and acting covers the theoretical foundations of tool-using agents. Provides the conceptual grounding for why tool integration is a fundamental AI architecture problem, not just an engineering convenience.
+
+**Videos:**
+
+- ["Introducing MCP"](https://www.youtube.com/watch?v=dxqEjRJiYTY) by Anthropic — The original announcement presentation by the MCP team. Covers the motivation, architecture, and the ecosystem vision in 20 minutes.
+
+- ["Simon Willison on the Model Context Protocol"](https://www.youtube.com/watch?v=9-8O8bPEDBk) — Simon Willison (creator of Django) explores MCP from the perspective of a developer building tools. Particularly good on practical server patterns and security considerations.
+
+- ["AI Agents in Production"](https://www.youtube.com/watch?v=JDTJbJ7lhx4) by LangChain (various talks) — Covers the broader agentic AI ecosystem in which MCP is one component. Contextualizes tool use within multi-step reasoning and planning architectures.
+
+**Online Resources:**
+
+- [MCP Official Documentation](https://modelcontextprotocol.io/docs/learn/architecture) — The canonical specification and architecture documentation. The "Core Concepts" section is essential before building any server.
+- [MCP GitHub Repository](https://github.com/modelcontextprotocol) — Contains the SDKs (Python, TypeScript), reference servers, and the evolving specification.
+- [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook) — Practical recipes for building with Claude, with MCP integration examples.
+- [MCP Server Registry](https://glama.ai/mcp/servers) — A community-maintained directory of available MCP servers.
+
+**Key Papers:**
+
+- Schick, T., et al. (2023). ["Toolformer: Language Models Can Teach Themselves to Use Tools."](https://arxiv.org/abs/2302.04761) *NeurIPS 2023*. — The paper that demonstrated language models can learn when and how to call external tools via self-supervised training. Foundational for understanding the AI side of what MCP enables.
+
+- Yao, S., et al. (2022). ["ReAct: Synergizing Reasoning and Acting in Language Models."](https://arxiv.org/abs/2210.03629) *ICLR 2023*. — Introduces the ReAct framework—interleaving reasoning traces with tool-use actions. The conceptual model behind most MCP-powered agent implementations.
+
+- Patil, S., et al. (2023). ["Gorilla: Large Language Model Connected with Massive APIs."](https://arxiv.org/abs/2305.15334) *NeurIPS 2023*. — Demonstrates that LLMs can be trained to call APIs correctly with high reliability. Addresses the hallucination problem in tool-use scenarios.
+
+**Questions to Explore:**
+
+How does MCP compare to function calling in the OpenAI API—are they solving the same problem at different layers? What are the security implications of an AI assistant with MCP access to your file system and databases? How should authorization boundaries be designed for a multi-server MCP deployment where some servers have sensitive access?

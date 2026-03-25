@@ -500,18 +500,74 @@ The paper reminds us why deep learning is compelling: simple ideas, rigorously e
 
 ## Going Deeper
 
-**For Implementation**:
-- [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html) — Line-by-line walkthrough with code
-- [Transformers from Scratch](https://peterbloem.nl/blog/transformers) — Minimal PyTorch implementation
-- [Hugging Face Transformers](https://huggingface.co/docs/transformers/) — Production-ready library
+The Transformer is one of the most consequential ideas in the history of artificial intelligence. The resources below will take you from first principles to the research frontier — from the mathematics of attention to the philosophy of what it means to scale intelligence.
 
-**For Theory**:
-- Original paper: ["Attention is All You Need"](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017)
-- [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/) — Visual explanations
-- [Formal Algorithms for Transformers](https://arxiv.org/abs/2207.09238) — Mathematical deep dive
+### Books Worth Reading
 
-**For Extensions**:
-- [Efficient Transformers: A Survey](https://arxiv.org/abs/2009.06732) — Comprehensive overview of efficiency improvements
-- [Attention Mechanisms in Computer Vision](https://arxiv.org/abs/2111.07624) — Beyond NLP applications
+**[Natural Language Processing with Transformers](https://www.google.com/search?q=Tunstall+NLP+Transformers+book) — Lewis Tunstall, Leandro von Werra & Thomas Wolf**
+Written by members of the Hugging Face team, this is the definitive practical guide to working with Transformer models. It covers fine-tuning, tokenization, multi-lingual models, efficient training, and real-world deployment — grounded always in clean code. If you want to go from reading the paper to building with it, start here.
 
-The journey from understanding to mastery requires building. Start implementing. The elegance will reveal itself through practice.
+**[Understanding Deep Learning](https://www.google.com/search?q=Prince+Understanding+Deep+Learning+book) — Simon J.D. Prince**
+A modern, rigorous, free textbook covering the full sweep of deep learning including a thorough chapter on attention and Transformers. Prince writes with unusual clarity about the mathematical foundations, deriving each component from first principles. Freely available as a PDF from the author's website.
+
+**[The Little Book of Deep Learning](https://fleuret.org/public/lbdl.pdf) — François Fleuret**
+A concise and precise tour of deep learning, including a tight treatment of attention mechanisms and sequence models. Fleuret writes at high density — every sentence earns its place. Read this when you want the distilled essence without the padding.
+
+**[Deep Learning](https://www.deeplearningbook.org/) — Goodfellow, Bengio & Courville**
+The canonical textbook of the deep learning era. Predates Transformers but builds all the foundations — optimization, regularization, sequence modeling, attention — that the Transformer synthesizes. Understanding the RNN-era context that Transformers replaced makes the 2017 breakthrough more legible.
+
+---
+
+### Videos That Illuminate
+
+**[Illustrated Guide to Transformers](https://www.youtube.com/results?search_query=illustrated+guide+to+transformers+neural+network) — Michael Phi**
+One of the clearest visual walk-throughs of the Transformer architecture available. The animations are slow and deliberate enough to actually follow. An excellent companion to reading the paper — watch it first, then read, then watch again.
+
+**[Attention Is All You Need — Paper Explained](https://www.youtube.com/results?search_query=attention+is+all+you+need+paper+explained+Yannic+Kilcher) — Yannic Kilcher**
+Kilcher's paper-reading series is a community institution. He reads the attention paper section by section, explaining every equation and design choice, pausing to note what was surprising at the time and what turned out to be most important. Watching an expert read a paper is one of the best ways to learn how to read papers yourself.
+
+**[Let's Build GPT from Scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY) — Andrej Karpathy**
+Karpathy builds a decoder-only Transformer from nothing, explaining every line. This is arguably the single best practical introduction to understanding what's actually happening inside these models. Two hours of focused attention (no pun intended) will transform your intuition for how Transformers work.
+
+**[Stanford CS224N: Natural Language Processing with Deep Learning](https://www.youtube.com/results?search_query=Stanford+CS224N+2024+transformers) — Stanford University**
+The full Stanford NLP course, freely available on YouTube. The lectures on attention mechanisms and Transformer architecture are especially good, with Christopher Manning and guest lecturers placing the work in proper historical and technical context.
+
+---
+
+### Online Resources
+
+**[The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/) — Jay Alammar**
+A beloved visual essay that walks through every component of the Transformer with clear, detailed diagrams. The section on multi-head attention — showing multiple attention patterns operating simultaneously — is the clearest explanation of why multiple heads matter. Bookmark and return to repeatedly.
+
+**[The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html) — Harvard NLP**
+The paper rewritten as a living document, where every section of the original is accompanied by the PyTorch code that implements it. The code and equations live side by side, making the jump from theory to implementation seamless. One of the best examples of the "literate programming" style in AI.
+
+**[Transformers from Scratch](https://peterbloem.nl/blog/transformers) — Peter Bloem**
+A minimal, pedagogically careful implementation with thorough mathematical commentary. Where the Annotated Transformer follows the original paper exactly, Bloem's version strips away everything non-essential to focus on the core idea.
+
+**[Lilian Weng's Blog — Attention? Attention!](https://lilianweng.github.io/posts/2018-06-24-attention/)** — A comprehensive survey of attention mechanisms, their history, and variants. Weng is a senior researcher at OpenAI and writes with exceptional clarity. Her blog generally is one of the best technical resources in the field.
+
+---
+
+### Papers That Matter
+
+**Vaswani, A., et al. (2017). *Attention is All You Need*. [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)**
+The paper itself. Worth reading once to understand it, and again to appreciate how deliberately and confidently it was written. The ablation studies — showing what happens when you remove each component — are especially instructive.
+
+**Devlin, J., et al. (2019). *BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding*. [arXiv:1810.04805](https://arxiv.org/abs/1810.04805)**
+The first major application of Transformers to language understanding, showing how to pre-train encoder-only Transformers and fine-tune them for arbitrary tasks. Read after the original to see how quickly the architecture was adapted and extended.
+
+**Brown, T., et al. (2020). *Language Models are Few-Shot Learners*. [arXiv:2005.14165](https://arxiv.org/abs/2005.14165)**
+The GPT-3 paper, demonstrating that scaling decoder-only Transformers to 175 billion parameters produces emergent few-shot learning capabilities. The paper that launched the "scaling hypothesis" as a serious research agenda.
+
+**Dosovitskiy, A., et al. (2021). *An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale*. [arXiv:2010.11929](https://arxiv.org/abs/2010.11929)**
+The Vision Transformer (ViT) paper, showing that patching images and treating them as token sequences allows standard Transformers to match and exceed CNNs on vision benchmarks. A demonstration that the architecture generalizes far beyond text.
+
+**Dao, T., et al. (2022). *FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness*. [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)**
+The engineering paper that made long-context Transformers practical by rewriting the attention operation to be aware of memory hierarchy. Not conceptually complicated, but the impact has been enormous — most modern LLM training now uses FlashAttention.
+
+---
+
+### A Question to Sit With
+
+The Transformer encodes no assumptions about sequence order — positions are added as embeddings, not baked into the architecture itself. This is unusual: most sequence models treat "comes before" as fundamental. The attention mechanism treats the sequence as a *set* of positions, all equidistant, all potentially related. Does that suggest something surprising about what "sequence" really is — that the notion of linear order might be more incidental than we assumed? And if attention can learn to impose ordering from data alone, what does that imply about the relationship between structure and learning in minds more generally?
