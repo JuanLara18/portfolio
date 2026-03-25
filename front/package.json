@@ -2,7 +2,7 @@
   "name": "front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://juanlara18.github.io/Portfolio",
+  "homepage": "https://juanlara18.github.io/portfolio",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@tailwindcss/typography": "^0.5.16",

@@ -458,7 +458,7 @@ export default function BlogPostPage() {
       <SEO
         title={`${post.title} | Juan Lara`}
         description={post.description || post.summary || `Read about ${post.title} - a deep dive into ${post.category}`}
-        canonical={`https://juanlara18.github.io/Portfolio/#/blog/${post.slug}`}
+        canonical={`https://juanlara18.github.io/portfolio/#/blog/${post.slug}`}
         image={headerImage}
         type="article"
         keywords={post.tags || [post.category, 'machine learning', 'AI', 'computer science']}
