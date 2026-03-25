@@ -1,9 +1,5 @@
 <div align="center">
 
-<img src=".github/assets/preview.png" alt="Juan Lara Portfolio" width="100%" style="border-radius: 8px;" />
-
-<br/><br/>
-
 # Juan Lara — Portfolio & Blog
 
 **Computer Scientist · Applied Mathematician · ML Engineer**
@@ -13,6 +9,10 @@
 [![Deploy](https://img.shields.io/github/actions/workflow/status/JuanLara18/portfolio/deploy.yml?style=flat-square&label=Deploy&logo=github-actions&logoColor=white)](https://github.com/JuanLara18/portfolio/actions)
 
 [larajuand@outlook.com](mailto:larajuand@outlook.com) · [LinkedIn](https://www.linkedin.com/in/julara/)
+
+<br/>
+
+<img src=".github/assets/preview.png" alt="Juan Lara Portfolio" width="100%" style="border-radius: 8px;" />
 
 </div>
 
