@@ -23,7 +23,7 @@ export const SEO = ({
   author = 'Juan Lara',
   article
 }) => {
-  const siteUrl = 'https://juanlara18.github.io/Portfolio';
+  const siteUrl = 'https://juanlara18.github.io/portfolio';
   const defaultImage = `${siteUrl}/portfolio.png`;
   const pageUrl = canonical || window.location.href;
   const ogImage = image || defaultImage;

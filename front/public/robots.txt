@@ -4,7 +4,7 @@ Allow: /
 Disallow: /static/
 
 # Sitemaps
-Sitemap: https://juanlara18.github.io/Portfolio/sitemap.xml
+Sitemap: https://juanlara18.github.io/portfolio/sitemap.xml
 
 # Crawl-delay for good behavior
 Crawl-delay: 10

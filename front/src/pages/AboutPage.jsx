@@ -493,7 +493,7 @@ const courses = [
       <SEO
         title="About | Juan Lara"
         description="AI Engineer with a research mindset — building LLM systems, NLP pipelines, and production ML across research, healthcare, and enterprise domains. CS + Mathematics dual degree, M.S. AI candidate at Universidad de los Andes."
-        canonical="https://juanlara18.github.io/Portfolio/#/about"
+        canonical="https://juanlara18.github.io/portfolio/#/about"
         keywords={[
           'Juan Lara',
           'Computer Science',

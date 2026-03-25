@@ -497,7 +497,7 @@ export default function ProjectsPage() {
       <SEO
         title="Projects | Juan Lara"
         description="Portfolio of AI and machine learning projects including TextInsight, RAG systems, and production-ready generative AI solutions. Explore ML engineering work and research implementations."
-        canonical="https://juanlara18.github.io/Portfolio/#/projects"
+        canonical="https://juanlara18.github.io/portfolio/#/projects"
         keywords={[
           'AI Projects',
           'Machine Learning Portfolio',

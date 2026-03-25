@@ -142,7 +142,7 @@ export default function BlogHomePage() {
       <SEO
         title="Blog | Juan Lara"
         description="Technical articles about AI, machine learning, NLP, and computer science. Deep dives into research papers, curiosities, and practical ML engineering."
-        canonical="https://juanlara18.github.io/Portfolio/#/blog"
+        canonical="https://juanlara18.github.io/portfolio/#/blog"
         keywords={[
           'AI blog',
           'machine learning',
