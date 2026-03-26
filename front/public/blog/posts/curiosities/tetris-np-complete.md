@@ -261,66 +261,47 @@ The blocks keep falling. The problems keep coming. And now you understand why so
 
 ## Going Deeper
 
-Tetris opened a door. On the other side is one of the most beautiful and consequential branches of mathematics — complexity theory — where questions like "what can computers do in principle?" turn out to be as deep as anything in physics or philosophy. These resources will take you from falling blocks to the frontier of theoretical computer science.
+Tetris opened a door. On the other side is one of the most beautiful and consequential branches of mathematics — complexity theory — where questions like “what can computers do in principle?” turn out to be as deep as anything in physics or philosophy. These resources will take you from falling blocks to the frontier of theoretical computer science.
 
-### Books Worth Reading
+**Books:**
 
-**[Introduction to the Theory of Computation](https://www.google.com/search?q=Sipser+Introduction+Theory+of+Computation) — Michael Sipser**
-The clearest, most approachable textbook on computability and complexity ever written. Sipser explains P, NP, NP-completeness, reductions, and the P vs NP problem with a level of care that makes these ideas feel inevitable rather than arbitrary. If you want to understand why hardness proofs work the way they do — the logic behind the gadgets, the elegance of polynomial-time reductions — this is where to start. Chapter 7 covers NP-completeness in full.
+- **[Introduction to the Theory of Computation](https://www.google.com/search?q=Sipser+Introduction+Theory+of+Computation) — Michael Sipser**
+  - The clearest, most approachable textbook on computability and complexity ever written. Sipser explains P, NP, NP-completeness, reductions, and the P vs NP problem with a level of care that makes these ideas feel inevitable rather than arbitrary. Chapter 7 covers NP-completeness in full.
+- **[Computers and Intractability: A Guide to the Theory of NP-Completeness](https://www.google.com/search?q=Garey+Johnson+Computers+Intractability) — Michael Garey & David Johnson**
+  - The NP-completeness bible, published in 1979 and still authoritative. The appendix alone — a catalog of NP-complete problems spanning scheduling, graph theory, packing, games — is extraordinary. This is the book you cite when you need to prove a problem is hard.
+- **[The Algorithm Design Manual](https://www.google.com/search?q=Skiena+Algorithm+Design+Manual) — Steven Skiena**
+  - Deeply practical: here’s a problem, here’s why it’s hard, here’s what you do about it. The “War Stories” chapters — real consulting engagements where Skiena faced NP-hard problems — are some of the best writing in all of computer science.
+- **[Computational Complexity: A Modern Approach](https://www.google.com/search?q=Arora+Barak+Computational+Complexity) — Sanjeev Arora & Boaz Barak**
+  - For readers who want to go further. Covers complexity classes beyond NP — the polynomial hierarchy, randomized computation, circuit complexity, cryptographic hardness. Freely available as a draft on Arora’s website.
 
-**[Computers and Intractability: A Guide to the Theory of NP-Completeness](https://www.google.com/search?q=Garey+Johnson+Computers+Intractability) — Michael Garey & David Johnson**
-The NP-completeness bible, published in 1979 and still authoritative. Garey and Johnson proved NP-completeness for hundreds of problems and, more importantly, taught the community how to think about hardness. The appendix alone — a catalog of NP-complete problems spanning scheduling, graph theory, packing, games — is extraordinary. This is the book you cite when you need to prove a problem is hard.
+**Videos:**
 
-**[The Algorithm Design Manual](https://www.google.com/search?q=Skiena+Algorithm+Design+Manual) — Steven Skiena**
-Skiena is deeply practical: here’s a problem, here’s why it’s hard, here’s what you do about it. The "War Stories" chapters — real consulting engagements where Skiena faced NP-hard problems — are some of the best writing in all of computer science. Essential reading for anyone who needs to move from theoretical hardness to working solutions.
+- **[The P vs NP Problem](https://www.youtube.com/results?search_query=P+vs+NP+Numberphile) — Numberphile**
+  - An accessible, non-technical introduction to the million-dollar question. Uses clear analogies to explain why checking solutions is easier than finding them, and why the gap between P and NP seems real even though nobody has proven it.
+- **[P vs. NP — The Biggest Unsolved Problem in Computer Science](https://www.youtube.com/results?search_query=P+vs+NP+biggest+unsolved+problem) — Quanta Magazine / various**
+  - Several high-quality explainers from Quanta and affiliated channels connecting complexity theory to real mathematics.
+- **[Erik Demaine’s MIT Lectures on Algorithms (6.046)](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/) — MIT OpenCourseWare**
+  - Erik Demaine — the Tetris hardness paper’s lead author — teaches algorithms at MIT. His lectures on NP-completeness and reductions are precise and energetic. Watching the person who proved Tetris is hard explain how such proofs work is a special experience.
+- **[NP-Hard Problems in Puzzle Games](https://www.youtube.com/results?search_query=NP+hard+puzzle+games+Computerphile) — Computerphile**
+  - Several excellent videos on complexity theory using games as entry points. Their treatment of Minesweeper, Sudoku, and related puzzles connects abstract theory to concrete play in ways that stick.
 
-**[Computational Complexity: A Modern Approach](https://www.google.com/search?q=Arora+Barak+Computational+Complexity) — Sanjeev Arora & Boaz Barak**
-For readers who want to go further. This graduate-level textbook covers complexity classes beyond NP — the polynomial hierarchy, randomized computation, circuit complexity, cryptographic hardness — showing how rich the landscape is beyond the basics. Freely available as a draft on Arora’s website.
+**Online Resources:**
 
----
+- [Complexity Zoo](https://complexityzoo.net/) — Scott Aaronson’s comprehensive reference for complexity classes. P, NP, co-NP, PSPACE, EXPTIME, BPP, and hundreds more, each with formal definitions and known relationships.
+- [Clay Mathematics Institute — P vs NP](https://www.claymath.org/millennium/p-vs-np/) — The official problem statement for the $1,000,000 Millennium Prize. Reading it gives you an appreciation for exactly what would need to be proved and why the question resists resolution.
+- [Games and Puzzles Are Hard (Survey)](https://erikdemaine.org/papers/GamesSurvey_TCS/) — Erik Demaine maintains a running survey of complexity results for games and puzzles. Tetris, Mario, Zelda, Donkey Kong, Pokémon — the list of proven-hard games grows every year.
 
-### Videos That Illuminate
+**Papers That Started It All:**
 
-**[The P vs NP Problem](https://www.youtube.com/results?search_query=P+vs+NP+Numberphile) — Numberphile**
-An accessible, non-technical introduction to the million-dollar question. Uses clear analogies to explain why checking solutions is easier than finding them, and why the gap between P and NP seems real even though nobody has proven it. A great place to send someone who asks "wait, why does this matter?"
+- **Demaine, E. D., Hohenberger, S., & Liben-Nowell, D. (2002). *Tetris is Hard, Even to Approximate*. [arXiv:cs/0210020](https://arxiv.org/abs/cs/0210020)**
+  - The paper this post is built around. The reduction from 3-Partition is technically careful and surprisingly readable. The “even to approximate” part is the deeper result — not only can’t you solve Tetris optimally, you can’t even get within a constant factor of optimal.
+- **Kaye, R. (2000). *Minesweeper is NP-Complete*. *The Mathematical Intelligencer*, 22(2), 9–15.**
+  - A beautiful short paper. The gadgets used — wires, logic gates, signals propagated through Minesweeper grids — are elegant and memorable. A model of how recreational mathematics can produce serious theory.
+- **Walsh, T. (2014). *Candy Crush is NP-hard*. [arXiv:1403.1911](https://arxiv.org/abs/1403.1911)**
+  - A reminder that this is an active research area. Walsh’s treatment uses similar reduction machinery to Tetris and Minesweeper, proving that the genre of casual puzzle games systematically generates computationally hard problems.
+- **Cook, S. A. (1971). *The Complexity of Theorem-Proving Procedures*. STOC 1971.**
+  - The founding paper of NP-completeness, in which Cook proved that SAT is NP-complete — the first such result, and the one that set the entire framework in motion. Every NP-completeness proof since, including Tetris, traces its lineage back here.
 
-**[P vs. NP — The Biggest Unsolved Problem in Computer Science](https://www.youtube.com/results?search_query=P+vs+NP+biggest+unsolved+problem) — Quanta Magazine / various**
-Several high-quality explainers exist from Quanta and affiliated channels connecting complexity theory to real mathematics. Worth searching for recent talks; the quality of exposition has improved enormously as the field has matured.
+**A Question to Sit With:**
 
-**[Erik Demaine’s MIT Lectures on Algorithms (6.046)](https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/) — MIT OpenCourseWare**
-Erik Demaine — the Tetris hardness paper’s lead author — teaches algorithms at MIT. His lectures on NP-completeness and reductions are precise and energetic. Watching the person who proved Tetris is hard explain how such proofs work is a special experience. Free on MIT OpenCourseWare.
-
-**[NP-Hard Problems in Puzzle Games](https://www.youtube.com/results?search_query=NP+hard+puzzle+games+Computerphile) — Computerphile**
-Computerphile has produced several excellent videos on complexity theory using games as entry points. Their treatment of Minesweeper, Sudoku, and related puzzles connects abstract theory to concrete play in ways that stick.
-
----
-
-### Online Resources
-
-**[Complexity Zoo](https://complexityzoo.net/)** — Scott Aaronson’s comprehensive reference for complexity classes. P, NP, co-NP, PSPACE, EXPTIME, BPP, and hundreds more, each with formal definitions and known relationships. An invaluable reference once you start wondering what lies beyond NP.
-
-**[Clay Mathematics Institute — P vs NP](https://www.claymath.org/millennium/p-vs-np/)** — The official problem statement for the $1,000,000 Millennium Prize. Reading the formal problem statement — even if you skip the mathematics — gives you an appreciation for exactly what would need to be proved and why the question resists resolution.
-
-**[Games and Puzzles Are Hard (Survey)](https://erikdemaine.org/papers/GamesSurvey_TCS/)** — Erik Demaine maintains a running survey of complexity results for games and puzzles. Tetris, Mario, Zelda, Donkey Kong, Pokémon — the list of proven-hard games grows every year. A remarkable document showing how recreational mathematics and theoretical computer science fertilize each other.
-
----
-
-### Papers That Started It All
-
-**Demaine, E. D., Hohenberger, S., & Liben-Nowell, D. (2002). *Tetris is Hard, Even to Approximate*. [arXiv:cs/0210020](https://arxiv.org/abs/cs/0210020)**
-The paper this post is built around. The reduction from 3-Partition is technically careful and surprisingly readable for a theory paper. The "even to approximate" part is the deeper result — not only can’t you solve Tetris optimally, you can’t even get within a constant factor of optimal without solving a hard problem.
-
-**Kaye, R. (2000). *Minesweeper is NP-Complete*. *The Mathematical Intelligencer*, 22(2), 9–15.**
-A beautiful short paper showing that determining whether a Minesweeper configuration is consistent with some mine placement is NP-complete. The gadgets used — wires, logic gates, signals propagated through Minesweeper grids — are elegant and memorable. A model of how recreational mathematics can produce serious theory.
-
-**Walsh, T. (2014). *Candy Crush is NP-hard*. [arXiv:1403.1911](https://arxiv.org/abs/1403.1911)**
-A reminder that this is an active research area: hardness results for popular games get proven regularly. Walsh’s treatment of Candy Crush uses similar reduction machinery to Tetris and Minesweeper, proving that the genre of casual puzzle games systematically generates computationally hard problems.
-
-**Cook, S. A. (1971). *The Complexity of Theorem-Proving Procedures*. STOC 1971.**
-The founding paper of NP-completeness, in which Cook proved that SAT is NP-complete — the first such result, and the one that set the entire framework in motion. Every NP-completeness proof since, including Tetris, traces its lineage back here.
-
----
-
-### A Question to Sit With
-
-P vs NP is usually framed as a question about computation, but it is equally a question about the nature of creativity. If P = NP, then finding proofs would be no harder than checking them — the "aha" moment of discovery would be mechanizable. Mathematicians could be automated. Is the difficulty of *finding* answers an accident of the tools we use, or something deeper about the structure of knowledge itself? What would it mean for human ingenuity if the answer turned out to be P ≠ NP — that some forms of search are irreducibly hard?
+P vs NP is usually framed as a question about computation, but it is equally a question about the nature of creativity. If P = NP, then finding proofs would be no harder than checking them — the “aha” moment of discovery would be mechanizable. Mathematicians could be automated. Is the difficulty of *finding* answers an accident of the tools we use, or something deeper about the structure of knowledge itself? What would it mean for human ingenuity if the answer turned out to be P ≠ NP — that some forms of search are irreducibly hard?

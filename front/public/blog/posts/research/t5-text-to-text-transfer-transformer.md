@@ -297,67 +297,47 @@ That is not a small contribution. And the flan it became — instruction-tuned, 
 
 T5 sits at an unusual intersection: it is both a technical contribution and a philosophy. Understanding it fully means understanding transfer learning, the role of scale, and how the instruction-following paradigm that dominates modern AI grew out of a deceptively simple idea about text-to-text unification.
 
-### Books Worth Reading
+**Books:**
 
-**[Natural Language Processing with Transformers](https://www.google.com/search?q=Tunstall+Lewis+NLP+with+Transformers+book) — Lewis Tunstall, Leandro von Werra & Thomas Wolf**
-The Hugging Face team's practical guide covers T5 and its descendants in depth, including practical fine-tuning for text-to-text tasks. The chapters on seq2seq models and multi-task learning are directly relevant. The code is clean and immediately usable.
+- **[Natural Language Processing with Transformers](https://www.google.com/search?q=Tunstall+Lewis+NLP+with+Transformers+book) — Lewis Tunstall, Leandro von Werra & Thomas Wolf**
+  - The Hugging Face team's practical guide covers T5 and its descendants in depth, including practical fine-tuning for text-to-text tasks. The chapters on seq2seq models and multi-task learning are directly relevant. The code is clean and immediately usable.
+- **[Designing Machine Learning Systems](https://www.google.com/search?q=Chip+Huyen+Designing+Machine+Learning+Systems) — Chip Huyen**
+  - Huyen's treatment of deployment, evaluation, and the operational challenges of large language models provides essential context for understanding why the unified framework T5 proposed matters in practice — and how instruction-tuned models change the economics of deploying NLP at scale.
+- **[The Alignment Problem](https://www.google.com/search?q=Brian+Christian+The+Alignment+Problem) — Brian Christian**
+  - The shift to instruction-tuned models — which T5 planted the seed for — created a new set of alignment challenges. Christian's account reads differently after understanding how instruction tuning works: if models learn to follow descriptions of tasks, what happens when the descriptions are wrong, adversarial, or misaligned with human values?
+- **[Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/) — Dan Jurafsky & James Martin**
+  - The standard NLP reference, freely available. The chapters on machine translation and summarization provide the task-specific background that makes T5's unification of those tasks legible.
 
-**[Designing Machine Learning Systems](https://www.google.com/search?q=Chip+Huyen+Designing+Machine+Learning+Systems) — Chip Huyen**
-While not specifically about T5, Huyen's treatment of deployment, evaluation, and the operational challenges of large language models provides essential context for understanding why the unified framework T5 proposed matters in practice — and how instruction-tuned models change the economics of deploying NLP at scale.
+**Videos:**
 
-**[The Alignment Problem](https://www.google.com/search?q=Brian+Christian+The+Alignment+Problem) — Brian Christian**
-The shift to instruction-tuned models — which T5 planted the seed for — created a new set of alignment challenges. Christian's account of the history and open problems of AI alignment reads differently after understanding how instruction tuning works: if models learn to follow descriptions of tasks, what happens when the descriptions are wrong, adversarial, or misaligned with human values?
+- **[T5 Paper Explained](https://www.youtube.com/results?search_query=T5+text+to+text+transfer+transformer+paper+explained) — Yannic Kilcher**
+  - Kilcher's walkthrough pays particular attention to the ablation methodology — the part of the paper that is most important and easiest to skim — and explains why the empirical comparison between pre-training objectives matters.
+- **[FLAN: Finetuned Language Models Are Zero-Shot Learners](https://www.youtube.com/results?search_query=FLAN+finetuned+language+models+zero+shot+learners) — Various**
+  - Multiple videos explain the FLAN paper and instruction tuning in clear terms. Watching FLAN explained after understanding T5 makes the connection between the two visible.
+- **[Scaling Laws for Neural Language Models](https://www.youtube.com/results?search_query=scaling+laws+neural+language+models+explained) — Various**
+  - The formal scaling laws work (Kaplan et al., 2020) was informed in part by empirical observations in T5. Several talks explain the scaling laws clearly, helping interpret T5's scale experiments more precisely.
+- **[Stanford CS324: Large Language Models](https://stanford-cs324.github.io/winter2022/) — Stanford University**
+  - Covers T5, instruction tuning, and the pre-training paradigm in a structured way. The module on fine-tuning vs prompting is directly relevant to the T5 → Flan-T5 evolution.
 
-**[Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/) — Dan Jurafsky & James Martin**
-The standard NLP reference, freely available. The chapters on machine translation and summarization provide the task-specific background that makes T5's unification of those tasks legible. Understanding what encoder-decoder models were doing before T5 makes T5's contribution clearer.
+**Online Resources:**
 
----
+- [Hugging Face T5 Documentation](https://huggingface.co/docs/transformers/model_doc/t5) — The canonical reference for working with T5 in practice. Covers model architecture, input formatting, and links to Flan-T5 checkpoints.
+- [Google Research Blog: Exploring the Limits of Transfer Learning](https://ai.googleblog.com/2020/02/exploring-transfer-learning-with-t5.html) — The accessible companion to the paper. Explains the key ideas without the full technical machinery and includes visualizations of the text-to-text framework.
+- [Scaling, Finetuning, and FLAN-T5](https://www.promptingguide.ai/models/flan) — The Prompt Engineering Guide's coverage of Flan-T5 situates instruction tuning in the broader context of prompting.
 
-### Videos That Illuminate
+**Papers That Matter:**
 
-**[T5 Paper Explained](https://www.youtube.com/results?search_query=T5+text+to+text+transfer+transformer+paper+explained) — Yannic Kilcher**
-Kilcher's walkthrough of the T5 paper is characteristically careful. He pays particular attention to the ablation methodology — the part of the paper that is most important and easiest to skim — and explains why the empirical comparison between pre-training objectives matters.
+- **Raffel, C., et al. (2020). *Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer*. [arXiv:1910.10683](https://arxiv.org/abs/1910.10683)**
+  - The T5 paper itself. Unusually long — over 60 pages including appendices — because it reports so many ablations. Read Section 3 (experimental setup) and Section 4 (experiments) carefully. The appendix contains the full ablation tables.
+- **Wei, J., et al. (2021). *Finetuned Language Models Are Zero-Shot Learners*. [arXiv:2109.01652](https://arxiv.org/abs/2109.01652)**
+  - The FLAN paper. The core finding — that training on many tasks described as instructions improves zero-shot generalization — is presented clearly with careful baselines. Read alongside T5 to see exactly where instruction tuning builds on and departs from the original framework.
+- **Chung, H., et al. (2022). *Scaling Instruction-Finetuned Language Models*. [arXiv:2210.11416](https://arxiv.org/abs/2210.11416)**
+  - The Flan-T5 paper. Scales the instruction tuning approach to 1,800 tasks and larger models. Key finding: instruction tuning becomes increasingly valuable at scale, and chain-of-thought data is disproportionately helpful for multi-step reasoning.
+- **Wei, J., et al. (2022). *Emergent Abilities of Large Language Models*. [arXiv:2206.07682](https://arxiv.org/abs/2206.07682)**
+  - Built significantly on observations from T5 and similar scale experiments. The central claim — that certain capabilities appear discontinuously at scale thresholds — is contested but important.
+- **Kaplan, J., et al. (2020). *Scaling Laws for Neural Language Models*. [arXiv:2001.08361](https://arxiv.org/abs/2001.08361)**
+  - The foundational scaling laws paper. T5's empirical scale experiments provided evidence that the field needed formal characterization. Reading this clarifies which of T5's scale findings reflect deeper regularities and which were specific to its choices.
 
-**[FLAN: Finetuned Language Models Are Zero-Shot Learners](https://www.youtube.com/results?search_query=FLAN+finetuned+language+models+zero+shot+learners) — Various**
-Multiple videos explain the FLAN paper and instruction tuning in clear terms. Watching FLAN explained after understanding T5 makes the connection between the two visible — you can see exactly which design choices from T5 instruction tuning built on.
-
-**[Scaling Laws for Neural Language Models](https://www.youtube.com/results?search_query=scaling+laws+neural+language+models+explained) — Various**
-The formal scaling laws work (Kaplan et al., 2020) was informed in part by empirical observations in T5. Several talks explain the scaling laws clearly, and understanding them helps interpret T5's scale experiments more precisely.
-
-**[Stanford CS324: Large Language Models](https://stanford-cs324.github.io/winter2022/) — Stanford University**
-Stanford's dedicated LLM course covers T5, instruction tuning, and the pre-training paradigm in a structured way. Lecture notes are available online. The module on fine-tuning vs prompting is directly relevant to the T5 → Flan-T5 evolution.
-
----
-
-### Online Resources
-
-**[Hugging Face T5 Documentation](https://huggingface.co/docs/transformers/model_doc/t5)** — The canonical reference for working with T5 models in practice. The documentation covers the model architecture, how to format inputs for different tasks, and links to the various Flan-T5 checkpoints. The task-specific examples are particularly useful for internalizing the text-to-text framework.
-
-**[Google Research Blog: Exploring the Limits of Transfer Learning](https://ai.googleblog.com/2020/02/exploring-transfer-learning-with-t5.html)** — The accessible companion to the paper. The Google Research blog post explains the key ideas without the full technical machinery, and includes visualizations of the text-to-text framework that make the paradigm immediately intuitive.
-
-**[Scaling, Finetuning, and FLAN-T5](https://www.promptingguide.ai/models/flan)** — The Prompt Engineering Guide's coverage of Flan-T5 situates instruction tuning in the broader context of prompting. Good for understanding how Flan-T5 is actually used.
-
----
-
-### Papers That Matter
-
-**Raffel, C., et al. (2020). *Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer*. [arXiv:1910.10683](https://arxiv.org/abs/1910.10683)**
-The T5 paper itself. Unusually long for a research paper — over 60 pages including appendices — because it reports so many ablations. Read Section 3 (experimental setup) and Section 4 (experiments) carefully. The scale experiments are in Section 3.7. The conclusions are in Section 4.7. The appendix contains the full ablation tables.
-
-**Wei, J., et al. (2021). *Finetuned Language Models Are Zero-Shot Learners*. [arXiv:2109.01652](https://arxiv.org/abs/2109.01652)**
-The FLAN paper that demonstrated instruction tuning on T5. The core finding — that training on many tasks described as instructions improves zero-shot generalization to new tasks — is presented clearly with careful baselines. Read alongside T5 to see exactly where instruction tuning builds on and departs from the original framework.
-
-**Chung, H., et al. (2022). *Scaling Instruction-Finetuned Language Models*. [arXiv:2210.11416](https://arxiv.org/abs/2210.11416)**
-The Flan-T5 paper. This scales the instruction tuning approach of FLAN dramatically — 1,800 tasks, chain-of-thought examples, larger models. The key finding is that instruction tuning becomes increasingly valuable at scale, and that chain-of-thought reasoning data is disproportionately helpful for multi-step reasoning tasks.
-
-**Wei, J., et al. (2022). *Emergent Abilities of Large Language Models*. [arXiv:2206.07682](https://arxiv.org/abs/2206.07682)**
-A paper built significantly on observations from T5 and similar scale experiments. The central claim — that certain capabilities appear discontinuously at scale thresholds, rather than smoothly — is contested but important. The paper catalogs emergent abilities across model sizes, including many that only appear in models trained in the T5 tradition.
-
-**Kaplan, J., et al. (2020). *Scaling Laws for Neural Language Models*. [arXiv:2001.08361](https://arxiv.org/abs/2001.08361)**
-The foundational scaling laws paper. T5's empirical scale experiments provided evidence that the field needed formal characterization. Kaplan et al. provide that characterization, deriving precise power-law relationships between model size, dataset size, compute budget, and performance. Reading this clarifies which of T5's scale findings were specific to its choices and which reflect deeper regularities.
-
----
-
-### A Question to Sit With
+**A Question to Sit With:**
 
 The instruction tuning insight — that training on diverse task descriptions improves generalization to new tasks — raises a question about what language models are actually learning. When a Flan-T5 model follows an instruction it has never seen before, is it applying a general skill of instruction-following? Or is it pattern-matching to similar instructions seen during training? The distinction matters: a model with a genuine instruction-following capability would be qualitatively different from a sophisticated pattern-matcher. But how would you test which one you have? What evidence would distinguish a model that understands instructions from a model that has memorized enough instruction-like patterns to appear to understand them? This question — about the difference between generalization and interpolation, between understanding and retrieval — is one of the deepest open problems in language model research, and T5's legacy made it urgent.

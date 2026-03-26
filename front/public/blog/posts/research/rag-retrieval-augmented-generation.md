@@ -271,39 +271,30 @@ These are not engineering questions. They are questions about the nature of inte
 
 **The Papers:**
 
-Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., ... & Kiela, D. (2020). ["Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks."](https://arxiv.org/abs/2005.11401) *NeurIPS 2020*. — The paper itself. The writing is clear, the ablations are informative, and the framing of parametric vs. non-parametric knowledge rewards careful reading.
-
-Karpukhin, V., Oguz, B., Min, S., Lewis, P., Wu, L., Edunov, S., ... & Yih, W. (2020). ["Dense Passage Retrieval for Open-Domain Question Answering."](https://arxiv.org/abs/2004.04906) *EMNLP 2020*. — The DPR paper, the companion to RAG. Essential for understanding how the retriever works and why it outperforms sparse methods.
-
-Chen, D., Fisch, A., Weston, J., & Bordes, A. (2017). ["Reading Wikipedia to Answer Open-Domain Questions."](https://arxiv.org/abs/1704.00051) *ACL 2017*. — DrQA, the predecessor. Reading this paper first makes the progress represented by RAG much more concrete.
-
-Izacard, G., & Grave, E. (2020). ["Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering."](https://arxiv.org/abs/2007.01282) *EACL 2021*. — Fusion in Decoder (FiD), the concurrent competitor to RAG. The architectural comparison between FiD and RAG illuminates both approaches.
-
-Gao, Y., Xiong, Y., Gao, X., Jia, K., Pan, J., Bi, Y., ... & Wang, H. (2023). ["Retrieval-Augmented Generation for Large Language Models: A Survey."](https://arxiv.org/abs/2312.10997) — The most comprehensive survey of where RAG went after 2020. Covers Self-RAG, FLARE, HyDE, advanced indexing, and evaluation methods.
+- Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., ... & Kiela, D. (2020). ["Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks."](https://arxiv.org/abs/2005.11401) *NeurIPS 2020*. — The paper itself. The writing is clear, the ablations are informative, and the framing of parametric vs. non-parametric knowledge rewards careful reading.
+- Karpukhin, V., Oguz, B., Min, S., Lewis, P., Wu, L., Edunov, S., ... & Yih, W. (2020). ["Dense Passage Retrieval for Open-Domain Question Answering."](https://arxiv.org/abs/2004.04906) *EMNLP 2020*. — The DPR paper, the companion to RAG. Essential for understanding how the retriever works and why it outperforms sparse methods.
+- Chen, D., Fisch, A., Weston, J., & Bordes, A. (2017). ["Reading Wikipedia to Answer Open-Domain Questions."](https://arxiv.org/abs/1704.00051) *ACL 2017*. — DrQA, the predecessor. Reading this paper first makes the progress represented by RAG much more concrete.
+- Izacard, G., & Grave, E. (2020). ["Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering."](https://arxiv.org/abs/2007.01282) *EACL 2021*. — Fusion in Decoder (FiD), the concurrent competitor to RAG. The architectural comparison between FiD and RAG illuminates both approaches.
+- Gao, Y., Xiong, Y., Gao, X., Jia, K., Pan, J., Bi, Y., ... & Wang, H. (2023). ["Retrieval-Augmented Generation for Large Language Models: A Survey."](https://arxiv.org/abs/2312.10997) — The most comprehensive survey of where RAG went after 2020. Covers Self-RAG, FLARE, HyDE, advanced indexing, and evaluation methods.
 
 **Books:**
 
-Jurafsky, D., & Martin, J. H. *Speech and Language Processing* (3rd ed., in progress). Free draft at web.stanford.edu. Chapter 14 on information retrieval is an excellent introduction to the full spectrum from BM25 to dense retrieval.
-
-Manning, C. D., Raghavan, P., & Schütze, H. *Introduction to Information Retrieval*. Cambridge University Press, 2008. Available free online at nlp.stanford.edu/IR-book. The authoritative textbook on IR fundamentals—essential context for understanding why dense retrieval was a breakthrough.
-
-Tunstall, L., von Werra, L., & Wolf, T. *Natural Language Processing with Transformers*. O'Reilly Media, 2022. Chapter 7 covers question answering in depth, with practical code using Hugging Face.
+- Jurafsky, D., & Martin, J. H. *Speech and Language Processing* (3rd ed., in progress). Free draft at web.stanford.edu. — Chapter 14 on information retrieval is an excellent introduction to the full spectrum from BM25 to dense retrieval.
+- Manning, C. D., Raghavan, P., & Schütze, H. *Introduction to Information Retrieval*. Cambridge University Press, 2008. Available free online at nlp.stanford.edu/IR-book. — The authoritative textbook on IR fundamentals—essential context for understanding why dense retrieval was a breakthrough.
+- Tunstall, L., von Werra, L., & Wolf, T. *Natural Language Processing with Transformers*. O'Reilly Media, 2022. — Chapter 7 covers question answering in depth, with practical code using Hugging Face.
 
 **Online Resources:**
 
-The [LangChain RAG documentation](https://python.langchain.com/docs/use_cases/question_answering/) provides the most widely-used practical implementation of the RAG pattern, with extensive coverage of chunking strategies, retriever types, and evaluation approaches.
-
-The [LlamaIndex documentation](https://docs.llamaindex.ai/) offers a higher-level abstraction over RAG pipelines, with particularly good coverage of the indexing and document processing challenges that the original paper set aside.
-
-The [Pinecone Learning Center](https://www.pinecone.io/learn/) has exceptionally clear explanations of vector search and RAG architecture, aimed at practitioners rather than researchers.
+- [LangChain RAG documentation](https://python.langchain.com/docs/use_cases/question_answering/) — The most widely-used practical implementation of the RAG pattern, with extensive coverage of chunking strategies, retriever types, and evaluation approaches.
+- [LlamaIndex documentation](https://docs.llamaindex.ai/) — Higher-level abstraction over RAG pipelines, with particularly good coverage of the indexing and document processing challenges that the original paper set aside.
+- [Pinecone Learning Center](https://www.pinecone.io/learn/) — Exceptionally clear explanations of vector search and RAG architecture, aimed at practitioners rather than researchers.
 
 **Videos:**
 
-Andrej Karpathy's lecture series on neural networks, particularly his discussions of how knowledge is stored in transformer weights, provides useful context for understanding the parametric side of the parametric/non-parametric duality.
+- Andrej Karpathy's lecture series on neural networks — particularly his discussions of how knowledge is stored in transformer weights, provides useful context for understanding the parametric side of the parametric/non-parametric duality.
+- James Briggs's RAG series on YouTube (Pinecone) — covers the full implementation pipeline with clear visual explanations of the retrieval and indexing steps.
 
-James Briggs's RAG series on YouTube (Pinecone) covers the full implementation pipeline with clear visual explanations of the retrieval and indexing steps.
-
-**A question to sit with:**
+**A Question to Sit With:**
 
 The tension between parametric and non-parametric knowledge maps remarkably well onto a distinction in cognitive science: the difference between knowing something and knowing where to find it. A chess grandmaster who has memorized thousands of openings has deep parametric knowledge; a researcher who knows which textbook to consult has non-parametric access. Both are forms of intelligence. But they have different properties under change—when the world updates, the grandmaster's memorized openings may become obsolete, while the researcher simply updates the bibliography.
 

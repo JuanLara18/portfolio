@@ -488,3 +488,7 @@ What is not in debate is the practical consequence: machines that process langua
 - [Hugging Face Transformers Documentation](https://huggingface.co/docs/transformers/model_doc/bert) — The canonical library for working with BERT in practice.
 - [The Illustrated BERT](https://jalammar.github.io/illustrated-bert/) (Jay Alammar) — Exceptional visual walkthrough of the architecture and pre-training objectives.
 - [BERT Fine-Tuning Tutorial with PyTorch](https://mccormickml.com/2019/07/22/BERT-fine-tuning/) (Chris McCormick) — Thorough practical guide.
+
+**A Question to Sit With:**
+
+BERT is trained to predict masked tokens — words deliberately removed from sentences it has read in both directions. It never generates text; it only fills gaps. And yet the representations it builds are rich enough to capture syntax, coreference, semantic similarity, and domain-specific knowledge. That raises a question that the probing experiments in BERTology circle around without fully answering: is BERT *understanding* language, or doing something that produces the behavioral signatures of understanding without the underlying thing? The distinction might seem philosophical, but it has practical consequences. When BERT gets something wrong — confidently, in a way that surprises us — is it because the training objective was incomplete, or because there is something about meaning that masked prediction, however scaled, cannot reach? If you fine-tune BERT on a medical corpus and it fails on a subtle clinical inference, the failure mode matters for what you do next.
