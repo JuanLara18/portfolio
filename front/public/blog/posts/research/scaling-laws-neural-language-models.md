@@ -233,67 +233,47 @@ But the curve is real. And following it has taken us, in five years, from models
 
 Scaling laws sit at the intersection of empirical science, theory of computation, and practical AI engineering. Understanding them thoroughly means understanding the statistical physics of learning, the economics of compute, and what predictability implies about the trajectory of AI development.
 
-### Books Worth Reading
+**Books:**
 
-**[The Alignment Problem](https://www.google.com/search?q=Brian+Christian+The+Alignment+Problem+book) — Brian Christian**
-The scaling laws fundamentally changed the alignment problem: if capabilities scale predictably, then the gap between current systems and highly capable ones is a matter of resources, not breakthroughs. Christian's careful account of what AI systems learn, what they optimize for, and why alignment is hard reads differently with scaling as background context.
+- **[The Alignment Problem](https://www.google.com/search?q=Brian+Christian+The+Alignment+Problem+book) — Brian Christian**
+  - The scaling laws fundamentally changed the alignment problem: if capabilities scale predictably, then the gap between current systems and highly capable ones is a matter of resources, not breakthroughs. Christian's careful account of what AI systems learn, what they optimize for, and why alignment is hard reads differently with scaling as background context.
+- **[Human Compatible](https://www.google.com/search?q=Stuart+Russell+Human+Compatible+book) — Stuart Russell**
+  - Russell's argument for why current approaches to AI are dangerous, and what the alternative looks like, becomes sharper when read alongside scaling laws. If performance scales smoothly, the window for addressing alignment before systems become highly capable may be narrower than intuition suggests.
+- **[Deep Learning](https://www.deeplearningbook.org/) — Goodfellow, Bengio & Courville**
+  - The foundational textbook, free online. The sections on optimization, regularization, and generalization provide the technical background needed to interpret what cross-entropy loss measures and why its behavior at scale is surprising.
+- **[The Coming Wave](https://www.google.com/search?q=Mustafa+Suleyman+The+Coming+Wave+book) — Mustafa Suleyman**
+  - Co-founder of DeepMind and CEO of Microsoft AI, writes directly about the implications of scaling for society, governance, and the pace of AI development. The book is explicitly informed by the scaling dynamics that the 2020 paper documented.
 
-**[Human Compatible](https://www.google.com/search?q=Stuart+Russell+Human+Compatible+book) — Stuart Russell**
-Russell's argument for why current approaches to AI are dangerous, and what the alternative looks like, becomes sharper when read alongside scaling laws. If performance scales smoothly, the window for addressing alignment before systems become highly capable may be narrower than intuition suggests.
+**Videos:**
 
-**[Deep Learning](https://www.deeplearningbook.org/) — Goodfellow, Bengio & Courville**
-The foundational textbook, free online. The sections on optimization, regularization, and generalization provide the technical background needed to interpret what cross-entropy loss measures and why its behavior at scale is surprising.
+- **[Scaling Laws for Neural Language Models — Explained](https://www.youtube.com/results?search_query=scaling+laws+neural+language+models+Kaplan+explained) — Various**
+  - Several researchers have produced careful walkthroughs of the Kaplan et al. paper. Searching for "scaling laws Kaplan 2020" surfaces recent videos from research groups and practitioners who explain both the methodology and the practical implications clearly.
+- **[Chinchilla Paper Explained](https://www.youtube.com/results?search_query=chinchilla+scaling+laws+paper+explained) — Yannic Kilcher / Various**
+  - Kilcher's or similar walkthroughs of the Chinchilla paper provide essential context for the scaling laws, since Chinchilla refined and in some ways corrected the 2020 findings. Understanding how the two papers relate clarifies what is robust about scaling laws and what depends on methodology.
+- **[The Bitter Lesson — Rich Sutton](https://www.youtube.com/results?search_query=Rich+Sutton+bitter+lesson+AI) — Various talks**
+  - Sutton's 2019 essay (and various recorded talks about it) argued that general methods that leverage computation consistently outperform methods that try to encode human knowledge. The scaling laws paper is the most rigorous empirical validation of this thesis.
+- **[AI and Compute — Trends and Implications](https://www.youtube.com/results?search_query=AI+compute+trends+scaling+implications+OpenAI) — OpenAI / Various**
+  - OpenAI's AI and Compute blog post (and associated talks) documented the doubling time of compute used in frontier AI training. Read alongside the scaling laws, it allows you to extrapolate where the curves lead.
 
-**[The Coming Wave](https://www.google.com/search?q=Mustafa+Suleyman+The+Coming+Wave+book) — Mustafa Suleyman**
-Suleiman, co-founder of DeepMind and CEO of Microsoft AI, writes directly about the implications of scaling for society, governance, and the pace of AI development. The book is explicitly informed by the scaling dynamics that the 2020 paper documented.
+**Online Resources:**
 
----
+- [The Bitter Lesson — Rich Sutton](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) — The concise essay that stated the scaling thesis before the scaling laws paper proved it quantitatively. Essential reading. One page.
+- [AI and Compute — OpenAI Blog](https://openai.com/index/ai-and-compute/) — OpenAI's documentation of how compute used in training frontier models has grown over time. The combination of the scaling laws and this compute trajectory defines the pace of AI progress.
+- [Predictability and Surprise in Large Generative Models](https://hai.stanford.edu/sites/default/files/2022-12/Predictability_Surprise_Final_Dec2022.pdf) — Stanford HAI. A careful analysis of when scaling predicts and when it doesn't, examining the emergent abilities literature and its relationship to the smooth scaling laws.
 
-### Videos That Illuminate
+**Papers That Matter:**
 
-**[Scaling Laws for Neural Language Models — Explained](https://www.youtube.com/results?search_query=scaling+laws+neural+language+models+Kaplan+explained) — Various**
-Several researchers have produced careful walkthroughs of the Kaplan et al. paper. Searching for "scaling laws Kaplan 2020" surfaces recent videos from research groups and practitioners who explain both the methodology and the practical implications clearly.
+- **Kaplan, J., et al. (2020). *Scaling Laws for Neural Language Models*. [arXiv:2001.08361](https://arxiv.org/abs/2001.08361)**
+  - The paper itself. Sections 1, 3, and 4 are essential. The appendix contains detailed derivations. The paper is unusual for its methodological transparency — the authors explicitly describe how they fit the curves and what their confidence is in extrapolation.
+- **Hoffmann, J., et al. (2022). *Training Compute-Optimal Large Language Models (Chinchilla)*. [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)**
+  - The direct successor. Chinchilla refined the scaling laws by training models more carefully and arrived at the 20× tokens-per-parameter rule of thumb. The methodology section explains clearly why the two papers get different numbers despite studying the same phenomenon.
+- **Wei, J., et al. (2022). *Emergent Abilities of Large Language Models*. [arXiv:2206.07682](https://arxiv.org/abs/2206.07682)**
+  - Documents specific capabilities that appear to emerge discontinuously with scale. Should be read alongside the response papers (Schaeffer et al. 2023) that argue many apparent emergent abilities are artifacts of discontinuous metrics rather than discontinuous capabilities.
+- **Schaeffer, R., et al. (2023). *Are Emergent Abilities of Large Language Models a Mirage?* [arXiv:2304.15004](https://arxiv.org/abs/2304.15004)**
+  - The paper that showed many emergent abilities dissolve when you use graded metrics instead of binary ones. An important methodological corrective. Reading Wei et al. and then Schaeffer et al. gives you a clear picture of the debate.
+- **Hestness, J., et al. (2017). *Deep Learning Scaling Is Predictable, Empirically*. [arXiv:1712.00409](https://arxiv.org/abs/1712.00409)**
+  - An earlier, less comprehensive study that found power-law scaling in several settings. The 2020 Kaplan paper built on this work. Reading both shows how the earlier finding was refined into actionable predictions.
 
-**[Chinchilla Paper Explained](https://www.youtube.com/results?search_query=chinchilla+scaling+laws+paper+explained) — Yannic Kilcher / Various**
-Kilcher's or similar walkthroughs of the Chinchilla paper provide essential context for the scaling laws, since Chinchilla refined and in some ways corrected the 2020 findings. Understanding how the two papers relate clarifies what is robust about scaling laws and what depends on methodology.
-
-**[The Bitter Lesson — Rich Sutton](https://www.youtube.com/results?search_query=Rich+Sutton+bitter+lesson+AI) — Various talks**
-Sutton's 2019 essay (and various recorded talks about it) argued that general methods that leverage computation consistently outperform methods that try to encode human knowledge. The scaling laws paper is the most rigorous empirical validation of this thesis. Reading the essay and the paper together is illuminating.
-
-**[AI and Compute — Trends and Implications](https://www.youtube.com/results?search_query=AI+compute+trends+scaling+implications+OpenAI) — OpenAI / Various**
-OpenAI's AI and Compute blog post (and associated talks) documented the doubling time of compute used in frontier AI training. Read alongside the scaling laws, it allows you to extrapolate where the curves lead.
-
----
-
-### Online Resources
-
-**[The Bitter Lesson — Rich Sutton](http://www.incompleteideas.net/IncIdeas/BitterLesson.html)** — The concise essay that stated the scaling thesis before the scaling laws paper proved it quantitatively. Essential reading. One page.
-
-**[AI and Compute — OpenAI Blog](https://openai.com/index/ai-and-compute/)** — OpenAI's documentation of how compute used in training frontier models has grown over time. The combination of the scaling laws and this compute trajectory defines the pace of AI progress.
-
-**[Predictability and Surprise in Large Generative Models](https://hai.stanford.edu/sites/default/files/2022-12/Predictability_Surprise_Final_Dec2022.pdf) — Stanford HAI** — A careful analysis of when scaling predicts and when it doesn't, examining the emergent abilities literature and its relationship to the smooth scaling laws.
-
----
-
-### Papers That Matter
-
-**Kaplan, J., et al. (2020). *Scaling Laws for Neural Language Models*. [arXiv:2001.08361](https://arxiv.org/abs/2001.08361)**
-The paper itself. Sections 1 (introduction), 3 (key findings summary), and 4 (scaling laws for language modeling) are essential. The appendix contains detailed derivations. The paper is unusual for its methodological transparency — the authors explicitly describe how they fit the curves and what their confidence is in extrapolation.
-
-**Hoffmann, J., et al. (2022). *Training Compute-Optimal Large Language Models (Chinchilla)*. [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)**
-The direct successor to the 2020 paper. Chinchilla refined the scaling laws by training models more carefully and arrived at the 20× tokens-per-parameter rule of thumb. The methodology section explains clearly why the two papers get different numbers despite studying the same phenomenon.
-
-**Wei, J., et al. (2022). *Emergent Abilities of Large Language Models*. [arXiv:2206.07682](https://arxiv.org/abs/2206.07682)**
-Documents specific capabilities that appear to emerge discontinuously with scale. Should be read alongside the response papers (Schaeffer et al. 2023) that argue many apparent emergent abilities are artifacts of discontinuous metrics rather than discontinuous capabilities.
-
-**Schaeffer, R., et al. (2023). *Are Emergent Abilities of Large Language Models a Mirage?* [arXiv:2304.15004](https://arxiv.org/abs/2304.15004)**
-The paper that showed many emergent abilities dissolve when you use graded metrics instead of binary ones. An important methodological corrective to the emergent abilities paper. Reading Wei et al. and then Schaeffer et al. gives you a clear picture of the debate.
-
-**Hestness, J., et al. (2017). *Deep Learning Scaling Is Predictable, Empirically*. [arXiv:1712.00409](https://arxiv.org/abs/1712.00409)**
-An earlier, less comprehensive study that found power-law scaling in several settings. The 2020 Kaplan paper built on this work. Reading both shows how the earlier finding was refined into actionable predictions.
-
----
-
-### A Question to Sit With
+**A Question to Sit With:**
 
 The scaling laws describe cross-entropy loss — a measure of how surprised the model is by the next token. As loss decreases, the model becomes better at predicting text. But what exactly does it mean to predict text well? Predicting text requires modeling the statistics of language, but also the world that language describes: history, science, social dynamics, human motivation, causal reasoning. A model with lower loss knows more about all of these — not because it was taught them explicitly, but because they are encoded in the statistical structure of text. If this is true, then scaling loss is also scaling world-knowledge, reasoning capacity, and understanding. But "understanding" feels like it should mean something more than very accurate prediction. Does predicting text well, at sufficient scale, amount to understanding the world? Or is it an indefinitely improvable approximation that approaches understanding without ever arriving?
