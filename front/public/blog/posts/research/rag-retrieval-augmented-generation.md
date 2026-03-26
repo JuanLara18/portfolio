@@ -140,35 +140,34 @@ The tradeoff is intuitive: RAG-Sequence is better for questions where the answer
 ```mermaid
 flowchart TB
     Q["Input Question x"]
-    RET["Retriever p_η(z|x)\nDPR dual-encoder"]
+    RET["Retriever — DPR dual-encoder\n$$p_{\eta}(z|x)$$"]
     Q --> RET
-    RET --> P1["Passage z₁\n(highest relevance)"]
-    RET --> P2["Passage z₂"]
-    RET --> P3["Passage z₃"]
-    RET --> PK["Passage z_k"]
+    RET --> P1["$$z_1$$ (highest relevance)"]
+    RET --> P2["Passage $$z_2$$"]
+    RET --> PK["Passage $$z_k$$"]
+    RET --> P3["Passage $$z_3$$"]
 
     subgraph RAG_SEQ["RAG-Sequence"]
-        GEN1["BART\nGenerator\np_θ(y|x,z₁)"]
-        GEN2["BART\nGenerator\np_θ(y|x,z₂)"]
+        GEN1["BART Generator\n$$p_{\theta}(y \mid x,\, z_1)$$"]
+        GEN2["BART Generator\n$$p_{\theta}(y \mid x,\, z_2)$$"]
         GENA["..."]
-        GENK["BART\nGenerator\np_θ(y|x,z_k)"]
-        COMB["Marginalize:\nΣ p_η(z|x)·p_θ(y|x,z)"]
+        GENK["BART Generator\n$$p_{\theta}(y \mid x,\, z_k)$$"]
+        COMB["Marginalize:\n$$\sum_{z} p_{\eta}(z|x) \cdot p_{\theta}(y|x,z)$$"]
         GEN1 --> COMB
         GEN2 --> COMB
+        GENA --> COMB
         GENK --> COMB
     end
 
     subgraph RAG_TOK["RAG-Token"]
-        JOINT["BART Generator\nAttends jointly over\nall passages at each\ntoken step"]
-        TOKOUT["Token probabilities:\nΠ_i Σ_z p_η(z|x)·p_θ(y_i|x,z,y_{1:i-1})"]
+        JOINT["BART Generator\nAttends jointly over\nall passages at each token step"]
+        TOKOUT["Token probabilities:\n$$\prod_{i}\,\sum_{z} p_{\eta}(z|x) \cdot p_{\theta}(y_i \mid x, z, y_{1:i-1})$$"]
         JOINT --> TOKOUT
     end
 
     P1 --> GEN1
     P2 --> GEN2
     PK --> GENK
-    P1 --> JOINT
-    P2 --> JOINT
     P3 --> JOINT
     PK --> JOINT
 
