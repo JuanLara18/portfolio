@@ -120,7 +120,7 @@ function buildBlogData() {
   };
 
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(blogData, null, 2));
-  console.log(`✅ Built blog data with ${posts.length} posts`);
+  console.log(`[OK] Blog data written: ${posts.length} post(s) -> ${path.relative(process.cwd(), OUTPUT_FILE)}`);
   
   const byCategory = {};
   posts.forEach(post => {
@@ -131,7 +131,7 @@ function buildBlogData() {
   });
   
   Object.entries(byCategory).forEach(([category, titles]) => {
-    console.log(`  📁 ${category}: ${titles.length} posts`);
+    console.log(`  ${category}: ${titles.length} post(s)`);
   });
 }
 
