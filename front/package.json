@@ -55,7 +55,8 @@
     "prebuild": "npm run build-blog-data",
     "build-blog-data": "node scripts/build-blog-data.js",
     "preview-images": "node scripts/preview-optimization.js",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "validate-mermaid": "node scripts/validate-mermaid.js"
   },
   "browserslist": {
     "production": [

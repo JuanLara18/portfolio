@@ -412,7 +412,8 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
    Clean, professional styling for Mermaid diagrams with theme support
    ----------------------------------------------------------------------- */
 
-/* Base diagram container styling */
+/* Base diagram container — min-width lets the inner SVG expand naturally
+   while the overflow-x-auto ancestor handles scrolling for wide diagrams. */
 .mermaid-diagram {
   min-width: fit-content;
 }
@@ -421,6 +422,8 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   max-width: 100%;
   height: auto;
   font-family: 'Inter', system-ui, sans-serif !important;
+  /* Ensure SVG intrinsic size is respected for scaling */
+  display: block;
 }
 
 /* Node styling enhancements */
@@ -443,9 +446,18 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   stroke-width: 1.5px;
 }
 
-/* Label styling */
+/* Label styling — keep consistent size across diagram types */
 .mermaid-diagram .edgeLabel {
   font-size: 12px;
+}
+
+/* Ensure HTML labels (used for <br/> line breaks) render correctly */
+.mermaid-diagram .label {
+  line-height: 1.4;
+}
+
+.mermaid-diagram .label span {
+  display: inline-block;
 }
 
 /* Cluster/subgraph styling */
@@ -468,26 +480,31 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   stroke-width: 1.5px;
 }
 
-/* Fullscreen diagram styling */
+/* Gantt chart improvements */
+.mermaid-diagram .mermaid-gantt-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Fullscreen diagram styling — no width constraint, natural SVG size */
 .mermaid-diagram-fullscreen svg {
   max-width: none;
   width: auto;
   height: auto;
-  min-width: 600px;
 }
 
-/* Mobile optimizations for diagrams */
+/* Mobile optimizations for diagrams.
+   We intentionally do NOT set a min-width on the SVG here — forcing a minimum
+   width caused simple diagrams to scroll unnecessarily. Wide diagrams already
+   scroll via the overflow-x-auto wrapper. Font sizes are reduced slightly on
+   small screens to keep complex diagrams legible. */
 @media (max-width: 768px) {
   .mermaid-diagram {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
   }
-  
-  .mermaid-diagram svg {
-    min-width: 400px;
-  }
-  
+
   .mermaid-diagram .node text,
   .mermaid-diagram .edgeLabel {
     font-size: 11px !important;
@@ -495,10 +512,6 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 }
 
 @media (max-width: 480px) {
-  .mermaid-diagram svg {
-    min-width: 300px;
-  }
-  
   .mermaid-diagram .node text,
   .mermaid-diagram .edgeLabel {
     font-size: 10px !important;

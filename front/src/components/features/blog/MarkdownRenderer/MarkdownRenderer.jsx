@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useRef, useMemo } from 'react';
+import { memo, useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
@@ -28,12 +28,27 @@ const hashCode = (str) => {
 // Add to cache with size limit
 const addToCache = (key, value) => {
   if (mermaidCache.size >= MAX_CACHE_SIZE) {
-    // Remove oldest entry
     const firstKey = mermaidCache.keys().next().value;
     mermaidCache.delete(firstKey);
   }
   mermaidCache.set(key, value);
 };
+
+// Normalize Mermaid chart source before rendering.
+// Authors write literal \n (backslash + n) inside quoted node labels for line
+// breaks. Mermaid v11 with htmlLabels does not interpret that two-character
+// sequence as a newline — it must be a real <br/> tag instead. This transform
+// is safe because \n in non-label contexts (e.g. node IDs) is not valid Mermaid.
+const normalizeMermaidChart = (chart) => {
+  return chart
+    .trim()
+    .replace(/\r\n/g, '\n')    // normalize Windows line endings
+    .replace(/\\n/g, '<br/>'); // literal backslash-n in labels → HTML line break
+};
+
+// Track the last theme key to avoid calling mermaid.initialize more than once
+// per theme change, even when many diagrams render simultaneously.
+let mermaidConfigKey = null;
 
 // Mermaid configuration helper
 const getMermaidConfig = (isDark) => ({
@@ -41,6 +56,11 @@ const getMermaidConfig = (isDark) => ({
   theme: isDark ? 'dark' : 'default',
   securityLevel: 'loose',
   fontFamily: 'Inter, system-ui, sans-serif',
+  flowchart: {
+    htmlLabels: true,
+    curve: 'basis',
+    padding: 15,
+  },
   themeVariables: isDark ? {
     primaryColor: '#3b82f6',
     primaryTextColor: '#f3f4f6',
@@ -138,6 +158,303 @@ const useDarkMode = () => {
   return isDarkMode;
 };
 
+// Full-screen pan-and-zoom viewer for Mermaid diagrams
+const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
+  const [transform, setTransform] = useState({ scale: 1, x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const dragStartRef = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
+  const touchRef = useRef({ dist: 0 });
+
+  // Read SVG intrinsic size from its viewBox (most reliable source)
+  const getSvgSize = useCallback(() => {
+    const svgEl = wrapperRef.current?.querySelector('svg');
+    if (!svgEl) return { w: 800, h: 600 };
+    const vb = svgEl.getAttribute('viewBox');
+    if (vb) {
+      const parts = vb.trim().split(/[\s,]+/).map(Number);
+      if (parts.length >= 4 && parts[2] > 0 && parts[3] > 0) {
+        return { w: parts[2], h: parts[3] };
+      }
+    }
+    const rect = svgEl.getBoundingClientRect();
+    return { w: rect.width || 800, h: rect.height || 600 };
+  }, []);
+
+  // Scale and center the diagram to fill the available canvas
+  const fitToView = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const { w: svgW, h: svgH } = getSvgSize();
+    const cW = container.clientWidth;
+    const cH = container.clientHeight;
+    const pad = 80;
+    const fitScale = Math.max(
+      0.05,
+      Math.min((cW - pad * 2) / svgW, (cH - pad * 2) / svgH, 2)
+    );
+    setTransform({
+      scale: fitScale,
+      x: (cW - svgW * fitScale) / 2,
+      y: (cH - svgH * fitScale) / 2,
+    });
+  }, [getSvgSize]);
+
+  // On mount: fix SVG size from viewBox so it has explicit pixel dimensions,
+  // then fit to view
+  useEffect(() => {
+    const svgEl = wrapperRef.current?.querySelector('svg');
+    if (svgEl) {
+      const vb = svgEl.getAttribute('viewBox');
+      if (vb) {
+        const parts = vb.trim().split(/[\s,]+/).map(Number);
+        if (parts.length >= 4 && parts[2] > 0 && parts[3] > 0) {
+          svgEl.setAttribute('width', String(parts[2]));
+          svgEl.setAttribute('height', String(parts[3]));
+        }
+      }
+    }
+    // Let the browser paint the SVG before calculating fit
+    requestAnimationFrame(() => requestAnimationFrame(fitToView));
+  }, [svg, fitToView]);
+
+  // Lock body scroll while viewer is open
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+
+  // Zoom by a multiplier factor, optionally centred on canvas point (cx, cy)
+  const changeScale = useCallback((factor, cx, cy) => {
+    setTransform(t => {
+      const newScale = Math.max(0.05, Math.min(10, t.scale * factor));
+      if (cx != null && cy != null) {
+        return {
+          scale: newScale,
+          x: cx - (cx - t.x) * (newScale / t.scale),
+          y: cy - (cy - t.y) * (newScale / t.scale),
+        };
+      }
+      return { ...t, scale: newScale };
+    });
+  }, []);
+
+  // Reset to 100% centered
+  const resetTo100 = useCallback(() => {
+    const { w, h } = getSvgSize();
+    const cW = containerRef.current?.clientWidth ?? 800;
+    const cH = containerRef.current?.clientHeight ?? 600;
+    setTransform({ scale: 1, x: (cW - w) / 2, y: (cH - h) / 2 });
+  }, [getSvgSize]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      switch (e.key) {
+        case 'Escape': onClose(); break;
+        case '+': case '=': e.preventDefault(); changeScale(1.25); break;
+        case '-': case '_': e.preventDefault(); changeScale(1 / 1.25); break;
+        case 'f': case 'F': case '0': fitToView(); break;
+        case '1': resetTo100(); break;
+        default: break;
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [onClose, fitToView, resetTo100, changeScale]);
+
+  // Wheel zoom (non-passive so we can prevent page scroll)
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const onWheel = (e) => {
+      e.preventDefault();
+      const rect = container.getBoundingClientRect();
+      const cx = e.clientX - rect.left;
+      const cy = e.clientY - rect.top;
+      const factor = e.deltaY < 0 ? 1.1 : 1 / 1.1;
+      changeScale(factor, cx, cy);
+    };
+    container.addEventListener('wheel', onWheel, { passive: false });
+    return () => container.removeEventListener('wheel', onWheel);
+  }, [changeScale]);
+
+  // Mouse drag to pan
+  const onMouseDown = useCallback((e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    isDraggingRef.current = true;
+    setIsDragging(true);
+    setTransform(t => {
+      dragStartRef.current = { x: e.clientX, y: e.clientY, tx: t.x, ty: t.y };
+      return t;
+    });
+  }, []);
+
+  const onMouseMove = useCallback((e) => {
+    if (!isDraggingRef.current) return;
+    const { x, y, tx, ty } = dragStartRef.current;
+    setTransform(t => ({ ...t, x: tx + e.clientX - x, y: ty + e.clientY - y }));
+  }, []);
+
+  const onMouseUp = useCallback(() => {
+    isDraggingRef.current = false;
+    setIsDragging(false);
+  }, []);
+
+  // Touch: single-finger pan, two-finger pinch-zoom.
+  // Attached imperatively (non-passive) so e.preventDefault() can suppress page scroll.
+  const handleTouchStart = useCallback((e) => {
+    if (e.touches.length === 1) {
+      setTransform(t => {
+        dragStartRef.current = {
+          x: e.touches[0].clientX, y: e.touches[0].clientY,
+          tx: t.x, ty: t.y,
+        };
+        return t;
+      });
+    } else if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      touchRef.current.dist = Math.hypot(dx, dy);
+    }
+  }, []);
+
+  const handleTouchMove = useCallback((e) => {
+    e.preventDefault(); // works because the listener is non-passive
+    if (e.touches.length === 1) {
+      const { x, y, tx, ty } = dragStartRef.current;
+      setTransform(t => ({
+        ...t,
+        x: tx + e.touches[0].clientX - x,
+        y: ty + e.touches[0].clientY - y,
+      }));
+    } else if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const dist = Math.hypot(dx, dy);
+      const factor = touchRef.current.dist > 0 ? dist / touchRef.current.dist : 1;
+      touchRef.current.dist = dist;
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+      const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+      changeScale(factor, cx, cy);
+    }
+  }, [changeScale]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    container.addEventListener('touchstart', handleTouchStart, { passive: false });
+    container.addEventListener('touchmove', handleTouchMove, { passive: false });
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [handleTouchStart, handleTouchMove]);
+
+  // Theming helpers
+  const bg = isDarkMode ? '#0f172a' : '#f1f5f9';
+  const dotColor = isDarkMode ? '#1e293b' : '#cbd5e1';
+  const toolbarCls = isDarkMode
+    ? 'bg-gray-900 border-gray-700/80 text-gray-100'
+    : 'bg-white border-gray-200 text-gray-900';
+  const btnCls = isDarkMode
+    ? 'text-gray-300 hover:bg-white/10 hover:text-white'
+    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900';
+  const dividerCls = isDarkMode ? 'bg-gray-700' : 'bg-gray-200';
+  const zoomCls = isDarkMode ? 'text-gray-400' : 'text-gray-500';
+  const hintCls = isDarkMode ? 'text-gray-600' : 'text-gray-400';
+
+  return (
+    <div className="fixed inset-0 z-[9999] flex flex-col" aria-modal="true" role="dialog">
+      {/* ── Toolbar ── */}
+      <div className={`flex items-center justify-between px-3 py-2 border-b flex-shrink-0 ${toolbarCls}`}>
+        {/* Zoom controls */}
+        <div className="flex items-center gap-0.5">
+          <button
+            onClick={() => changeScale(1 / 1.25)}
+            className={`w-8 h-8 flex items-center justify-center rounded-md text-base font-bold transition-colors ${btnCls}`}
+            title="Zoom out (−)"
+          >−</button>
+          <span className={`text-xs font-mono tabular-nums w-12 text-center select-none ${zoomCls}`}>
+            {Math.round(transform.scale * 100)}%
+          </span>
+          <button
+            onClick={() => changeScale(1.25)}
+            className={`w-8 h-8 flex items-center justify-center rounded-md text-base font-bold transition-colors ${btnCls}`}
+            title="Zoom in (+)"
+          >+</button>
+          <div className={`w-px h-4 mx-1.5 ${dividerCls}`} />
+          <button
+            onClick={fitToView}
+            className={`px-2.5 h-7 text-xs font-medium rounded-md transition-colors ${btnCls}`}
+            title="Fit diagram to view (F)"
+          >Fit</button>
+          <button
+            onClick={resetTo100}
+            className={`px-2.5 h-7 text-xs font-medium rounded-md transition-colors ${btnCls}`}
+            title="Reset to 100% (1)"
+          >100%</button>
+        </div>
+
+        {/* Hint text */}
+        <span className={`text-xs hidden md:block ${hintCls}`}>
+          Scroll to zoom · Drag to pan · Esc to close
+        </span>
+
+        {/* Close */}
+        <button
+          onClick={onClose}
+          className={`p-2 rounded-lg transition-colors ${btnCls}`}
+          aria-label="Close fullscreen"
+          title="Close (Esc)"
+        >
+          <X size={18} />
+        </button>
+      </div>
+
+      {/* ── Canvas ── */}
+      <div
+        ref={containerRef}
+        className="flex-1 overflow-hidden relative"
+        style={{
+          backgroundColor: bg,
+          backgroundImage: `radial-gradient(circle, ${dotColor} 1px, transparent 1px)`,
+          backgroundSize: '24px 24px',
+          cursor: isDragging ? 'grabbing' : 'grab',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+        }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
+        onTouchEnd={onMouseUp}
+      >
+        <div
+          ref={wrapperRef}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`,
+            transformOrigin: '0 0',
+            willChange: 'transform',
+            lineHeight: 0,
+          }}
+          dangerouslySetInnerHTML={{ __html: svg }}
+        />
+      </div>
+    </div>
+  );
+});
+
 // Optimized Mermaid Diagram Component with caching and lazy loading
 const MermaidDiagram = memo(({ chart }) => {
   const containerRef = useRef(null);
@@ -149,16 +466,19 @@ const MermaidDiagram = memo(({ chart }) => {
   const [isVisible, setIsVisible] = useState(false);
   const renderCountRef = useRef(0);
   const isDarkMode = useDarkMode();
+
+  // Normalize source once per chart prop change
+  const normalizedChart = useMemo(() => normalizeMermaidChart(chart), [chart]);
+
+  // Generate stable ID based on normalized content
+  const chartHash = useMemo(() => hashCode(normalizedChart), [normalizedChart]);
   
-  // Generate stable ID once per component instance
-  const chartHash = useMemo(() => hashCode(chart), [chart]);
-  
-  // Initialize ID ref once
+  // Initialize ID ref once per component instance
   if (!idRef.current) {
     idRef.current = `mermaid-${chartHash}-${Date.now().toString(36)}`;
   }
   
-  // Cache key includes theme
+  // Cache key includes theme so both light/dark results are stored independently
   const cacheKey = `${chartHash}-${isDarkMode ? 'dark' : 'light'}`;
   
   // Intersection Observer for lazy loading
@@ -202,11 +522,17 @@ const MermaidDiagram = memo(({ chart }) => {
       setError(null);
       
       try {
-        mermaid.initialize(getMermaidConfig(isDarkMode));
+        // Only re-initialize when the theme actually changes so concurrent
+        // renders on the same page don't fight over global mermaid config.
+        const newConfigKey = isDarkMode ? 'dark' : 'light';
+        if (mermaidConfigKey !== newConfigKey) {
+          mermaid.initialize(getMermaidConfig(isDarkMode));
+          mermaidConfigKey = newConfigKey;
+        }
         
         // Use unique ID for each render attempt
         const renderId = `${idRef.current}-${currentRenderCount}`;
-        const { svg: renderedSvg } = await mermaid.render(renderId, chart);
+        const { svg: renderedSvg } = await mermaid.render(renderId, normalizedChart);
         
         if (isCancelled) return;
         
@@ -229,7 +555,7 @@ const MermaidDiagram = memo(({ chart }) => {
     return () => {
       isCancelled = true;
     };
-  }, [isVisible, cacheKey, chart, isDarkMode]);
+  }, [isVisible, cacheKey, normalizedChart, isDarkMode]);
   
   // Placeholder before visible
   if (!isVisible) {
@@ -278,7 +604,7 @@ const MermaidDiagram = memo(({ chart }) => {
                 Show diagram code
               </summary>
               <pre className="mt-2 p-3 bg-red-100 dark:bg-red-900/30 rounded-lg text-xs overflow-x-auto text-red-800 dark:text-red-200">
-                {chart}
+                {normalizedChart}
               </pre>
             </details>
           </div>
@@ -290,45 +616,29 @@ const MermaidDiagram = memo(({ chart }) => {
   return (
     <>
       {isFullscreen && (
-        <div 
-          className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
-          onClick={() => setIsFullscreen(false)}
-        >
-          <button
-            onClick={() => setIsFullscreen(false)}
-            className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
-            aria-label="Close fullscreen"
-          >
-            <X size={24} />
-          </button>
-          <div 
-            className="max-w-full max-h-full overflow-auto bg-white dark:bg-gray-900 rounded-xl p-6 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div 
-              className="mermaid-diagram-fullscreen [&_svg]:max-w-none [&_svg]:w-auto [&_svg]:h-auto"
-              dangerouslySetInnerHTML={{ __html: svg }}
-            />
-          </div>
-        </div>
+        <MermaidFullscreenViewer
+          svg={svg}
+          isDarkMode={isDarkMode}
+          onClose={() => setIsFullscreen(false)}
+        />
       )}
-      <div 
+      <div
         ref={containerRef}
         className="my-8 group relative bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/50 dark:to-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden"
       >
-        {/* Fullscreen button */}
+        {/* Fullscreen button — always visible on touch, hover-reveal on desktop */}
         <button
           onClick={() => setIsFullscreen(true)}
-          className="absolute top-3 right-3 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+          className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 z-10"
           aria-label="View fullscreen"
           title="View fullscreen"
         >
           <Maximize2 size={16} />
         </button>
-        
-        {/* Diagram container */}
+
+        {/* Inline diagram */}
         <div className="p-4 sm:p-6 overflow-x-auto">
-          <div 
+          <div
             className="mermaid-diagram flex justify-center min-w-fit [&_svg]:max-w-full [&_svg]:h-auto"
             dangerouslySetInnerHTML={{ __html: svg }}
           />
