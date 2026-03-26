@@ -50,7 +50,12 @@ const normalizeMermaidChart = (chart) => {
 // per theme change, even when many diagrams render simultaneously.
 let mermaidConfigKey = null;
 
-// Mermaid configuration helper
+// Mermaid configuration helper.
+// Color palette is built on the site's blue-slate identity:
+//   primary #2563eb / secondary #4338ca / dark bg #0f172a
+// Dark mode  → dark navy node fills + medium-blue borders + blue arrows.
+// Light mode → very-light-blue node fills + soft-blue borders + brand-blue arrows.
+// Both modes stay monochromatic (no rainbow), just have more contrast & depth.
 const getMermaidConfig = (isDark) => ({
   startOnLoad: false,
   theme: isDark ? 'dark' : 'default',
@@ -62,35 +67,37 @@ const getMermaidConfig = (isDark) => ({
     padding: 15,
   },
   themeVariables: isDark ? {
-    primaryColor: '#3b82f6',
-    primaryTextColor: '#f3f4f6',
-    primaryBorderColor: '#4b5563',
-    lineColor: '#6b7280',
-    secondaryColor: '#1f2937',
-    tertiaryColor: '#374151',
-    background: '#111827',
-    mainBkg: '#1f2937',
-    nodeBorder: '#4b5563',
-    clusterBkg: '#1f2937',
-    clusterBorder: '#4b5563',
-    titleColor: '#f9fafb',
-    edgeLabelBackground: '#374151',
-    nodeTextColor: '#f3f4f6',
+    // ── Dark mode: dark navy base, medium-blue accents ──
+    background:            '#0f172a', // page bg (slate-900)
+    mainBkg:               '#162033', // node fill — dark navy, not flat gray
+    nodeBorder:            '#2e4f85', // node border — visible blue, not gray
+    primaryColor:          '#1a3260', // primary-class nodes — deep blue
+    primaryBorderColor:    '#3668b8', // primary node border — more saturated
+    primaryTextColor:      '#e2e8f0', // text on primary nodes (slate-200)
+    secondaryColor:        '#101a2e', // secondary elements — darker navy
+    tertiaryColor:         '#1a2c45', // tertiary — mid navy
+    lineColor:             '#4a7fc1', // arrows — clear medium blue (much more readable)
+    clusterBkg:            '#0c1422', // subgraph fill — darker than nodes → hierarchy
+    clusterBorder:         '#243d6e', // subgraph border — subtle blue
+    titleColor:            '#e8eeff', // slightly blue-white
+    edgeLabelBackground:   '#162033', // edge labels match node bg
+    nodeTextColor:         '#dde4f0', // node text — slightly blue-tinted light
   } : {
-    primaryColor: '#3b82f6',
-    primaryTextColor: '#1f2937',
-    primaryBorderColor: '#d1d5db',
-    lineColor: '#6b7280',
-    secondaryColor: '#f3f4f6',
-    tertiaryColor: '#e5e7eb',
-    background: '#ffffff',
-    mainBkg: '#f9fafb',
-    nodeBorder: '#d1d5db',
-    clusterBkg: '#f3f4f6',
-    clusterBorder: '#d1d5db',
-    titleColor: '#111827',
-    edgeLabelBackground: '#f3f4f6',
-    nodeTextColor: '#1f2937',
+    // ── Light mode: barely-blue node fills, brand-blue borders & arrows ──
+    background:            '#ffffff',
+    mainBkg:               '#f0f5ff', // node fill — site's --bg-accent (near-white + blue)
+    nodeBorder:            '#93c5fd', // node border — blue-300 (soft but visible)
+    primaryColor:          '#dbeafe', // primary-class nodes — blue-100
+    primaryBorderColor:    '#60a5fa', // primary node border — blue-400
+    primaryTextColor:      '#1e3a8a', // text on primary nodes — blue-900 (high contrast)
+    secondaryColor:        '#edf2ff', // secondary elements — slightly deeper tint
+    tertiaryColor:         '#e5edff', // tertiary — another step deeper
+    lineColor:             '#2563eb', // arrows — site's --primary (strong, readable)
+    clusterBkg:            '#f8fafc', // subgraph fill — slate-50 (lighter than nodes)
+    clusterBorder:         '#bfdbfe', // subgraph border — blue-200
+    titleColor:            '#1e3a8a', // deep blue title — blue-900
+    edgeLabelBackground:   '#e8f0fe', // edge labels — very light blue
+    nodeTextColor:         '#0f172a', // node text — slate-900 (maximum contrast)
   }
 });
 
@@ -624,7 +631,7 @@ const MermaidDiagram = memo(({ chart }) => {
       )}
       <div
         ref={containerRef}
-        className="my-8 group relative bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/50 dark:to-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden"
+        className="my-8 group relative bg-gradient-to-br from-blue-50/40 to-slate-50 dark:from-slate-800/60 dark:to-slate-900/80 rounded-xl border border-blue-100 dark:border-slate-700/80 overflow-hidden"
       >
         {/* Fullscreen button — always visible on touch, hover-reveal on desktop */}
         <button
