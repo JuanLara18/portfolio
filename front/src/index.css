@@ -409,7 +409,8 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 
 /* --------------------------------------------------------------------------
    Mermaid Diagram Styles
-   Clean, professional styling for Mermaid diagrams with theme support
+   Blue-slate identity: nodes use the site's blue palette, not flat grays.
+   Contrast comes from color hierarchy, not heavy borders or shadows.
    ----------------------------------------------------------------------- */
 
 /* Base diagram container — min-width lets the inner SVG expand naturally
@@ -422,51 +423,65 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   max-width: 100%;
   height: auto;
   font-family: 'Inter', system-ui, sans-serif !important;
-  /* Ensure SVG intrinsic size is respected for scaling */
   display: block;
 }
 
-/* Node styling enhancements */
+/* Node borders: 1.5px gives definition without feeling heavy */
 .mermaid-diagram .node rect,
 .mermaid-diagram .node circle,
 .mermaid-diagram .node ellipse,
-.mermaid-diagram .node polygon {
-  transition: all 0.2s ease;
+.mermaid-diagram .node polygon,
+.mermaid-diagram .node path {
+  stroke-width: 1.5px;
+  transition: filter 0.15s ease;
 }
 
+/* Subtle hover brightening so nodes feel interactive */
 .mermaid-diagram .node:hover rect,
 .mermaid-diagram .node:hover circle,
 .mermaid-diagram .node:hover ellipse,
-.mermaid-diagram .node:hover polygon {
-  filter: brightness(1.1);
+.mermaid-diagram .node:hover polygon,
+.mermaid-diagram .node:hover path {
+  filter: brightness(1.08);
 }
 
-/* Edge/arrow styling */
-.mermaid-diagram .edgePath path {
+/* Cluster/subgraph: rounded corners + slightly thicker stroke = clear grouping */
+.mermaid-diagram .cluster rect {
+  stroke-width: 1.5px;
+  rx: 10px;
+  ry: 10px;
+}
+
+/* Arrows/edges: match the blue lineColor set in themeVariables */
+.mermaid-diagram .edgePath path,
+.mermaid-diagram .flowchart-link {
   stroke-width: 1.5px;
 }
 
-/* Label styling — keep consistent size across diagram types */
+/* Arrowhead markers inherit edge color automatically */
+.mermaid-diagram marker path {
+  stroke-width: 1px;
+}
+
+/* Edge labels: slightly bolder text for legibility */
 .mermaid-diagram .edgeLabel {
   font-size: 12px;
+  font-weight: 500;
 }
 
-/* Ensure HTML labels (used for <br/> line breaks) render correctly */
+/* Edge label rectangles: rounded, matching themeVariables edgeLabelBackground */
+.mermaid-diagram .edgeLabel rect {
+  rx: 4px;
+  ry: 4px;
+}
+
+/* HTML labels (used for <br/> line breaks) */
 .mermaid-diagram .label {
   line-height: 1.4;
+  text-align: center;
 }
 
-.mermaid-diagram .label span {
-  display: inline-block;
-}
-
-/* Cluster/subgraph styling */
-.mermaid-diagram .cluster rect {
-  rx: 8px;
-  ry: 8px;
-}
-
-/* Sequence diagram improvements */
+/* Sequence diagram: actors and messages share the blue identity */
 .mermaid-diagram .actor {
   stroke-width: 1.5px;
 }
@@ -475,12 +490,7 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   font-size: 13px;
 }
 
-/* Flowchart specific */
-.mermaid-diagram .flowchart-link {
-  stroke-width: 1.5px;
-}
-
-/* Gantt chart improvements */
+/* Gantt chart */
 .mermaid-diagram .mermaid-gantt-title {
   font-size: 14px;
   font-weight: 600;
