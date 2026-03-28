@@ -88,11 +88,17 @@ This curve—sometimes called the Pareto frontier—shows you the actual tradeof
 The shape of the curve matters as much as its position. A system with a steep dropoff near recall=0.99 is telling you that achieving high accuracy is expensive. A system with a flat curve that degrades gracefully is telling you that you can trade a little throughput for significantly better accuracy.
 
 ```mermaid
-graph LR
-    A["Low Recall<br/>High QPS"] -->|"Tune ef higher"| B["High Recall<br/>Lower QPS"]
+flowchart LR
+    subgraph Curve["Recall–QPS Pareto Frontier (HNSW, same index)"]
+        direction LR
+        P1["ef=32\nQPS: ~12,000\nRecall: 0.87"]
+        P2["ef=64\nQPS: ~7,500\nRecall: 0.95"]
+        P3["ef=128\nQPS: ~3,200\nRecall: 0.98"]
+        P4["ef=256\nQPS: ~1,100\nRecall: 0.99"]
+        P1 -->|"↑ ef"| P2 -->|"↑ ef"| P3 -->|"↑ ef"| P4
+    end
+    NOTE["A single-point comparison\n('System A: 8k QPS at recall 0.95')\nhides where that point\nsits on the full curve"]
 
-    style A fill:#1a1a2e,color:#e0e0e0,stroke:#4a4a8a
-    style B fill:#1a1a2e,color:#e0e0e0,stroke:#4a4a8a
 ```
 
 For HNSW—the dominant index type we will examine shortly—the curve is controlled primarily by a single search-time parameter called `ef`. Low `ef` means the index explores fewer candidate neighbors, returns results faster, but misses more of the true nearest neighbors. High `ef` means the index explores more candidates, takes longer, but approaches ground-truth accuracy. Every point on the recall–QPS curve for an HNSW-based system corresponds to a different value of `ef`.
@@ -142,6 +148,29 @@ The benchmark implication: a DiskANN-based system will look worse on pure latenc
 ## The Benchmark Landscape: Who Runs What
 
 Understanding which entity runs a benchmark and what their incentives are is not cynicism—it is epistemology.
+
+```mermaid
+flowchart TB
+    subgraph Independent["Independent / Academic"]
+        ANN["ANN-Benchmarks\nITU Copenhagen\nBias: Low"]
+    end
+    subgraph Vendor["Vendor-Run (open methodology, structural bias)"]
+        VDB["VectorDBBench\nZilliz — makes Milvus\nFavors: Milvus / Zilliz Cloud"]
+        QDB["Qdrant Benchmarks\nQdrant team\nFavors: Qdrant"]
+        WVB["Weaviate Benchmarks\nWeaviate team\nFavors: Weaviate"]
+    end
+    subgraph Scope["What each covers"]
+        ALG["Algorithms only\n(no full DB system)"]
+        E2E["Full DB: index + query\n+ cost for cloud"]
+        E2E2["Full DB: query latency\n+ memory + throughput"]
+    end
+
+    ANN --> ALG
+    VDB --> E2E
+    QDB --> E2E2
+    WVB --> E2E2
+
+```
 
 ### ANN-Benchmarks
 
@@ -282,6 +311,24 @@ Production RAG queries almost never say "find the 10 vectors most similar to my 
 Filtering and vector search interact in ways that can completely change the performance picture. The naive approach—post-filtering—finds approximate nearest neighbors first, then discards those that don't match the filter. If only 1% of your vectors match the filter, post-filtering has to retrieve 1,000 approximate neighbors to find 10 that pass, which dramatically reduces both recall and performance.
 
 The right approach—pre-filtering—applies the filter during the graph traversal, considering only filter-matching nodes. This is architecturally non-trivial and not all systems do it correctly.
+
+```mermaid
+flowchart TB
+    subgraph Post["Post-filtering (naive approach)"]
+        direction TB
+        Q1["Query vector"] --> ANN1["ANN search:\nfind top-1,000 neighbors\n(no filter applied)"]
+        ANN1 --> F1["Apply filter:\nuser_id=42"]
+        F1 --> R1["Return top-10\n⚠ If only 1% match filter:\n990 candidates wasted,\nrecall degrades badly"]
+    end
+
+    subgraph Pre["Pre-filtering (correct approach)"]
+        direction TB
+        Q2["Query vector"] --> F2["Filter the graph:\nonly traverse nodes\nwhere user_id=42"]
+        F2 --> ANN2["ANN search\nwithin filtered subgraph"]
+        ANN2 --> R2["Return top-10\n✓ Recall stays high\neven with selective filters"]
+    end
+
+```
 
 Qdrant's filterable HNSW maintains separate HNSW graphs per payload value and traverses the appropriate subgraph at query time. The result is that filtered search approaches the performance of unfiltered search when a reasonable fraction of vectors match the filter. Many other systems' filtered search degrades badly with selective filters.
 
