@@ -33,6 +33,27 @@ This is the fundamental challenge of embedding evaluation: **the notion of simil
 
 MTEB was built to measure all of them simultaneously.
 
+```mermaid
+flowchart LR
+    subgraph Offline["Offline — build once"]
+        DOCS["Documents\n(chunks)"] --> EMOD["Embedding Model"]
+        EMOD --> VEC["Vectors"] --> VDB["Vector Database\n(index)"]
+    end
+
+    subgraph Online["Online — per query"]
+        QUERY["User query"] --> EMOD2["Same Embedding Model"]
+        EMOD2 --> QVEC["Query vector"]
+        QVEC --> SEARCH["ANN Search"]
+        VDB --> SEARCH
+        SEARCH --> TOPK["Top-k chunks"]
+        TOPK --> LLM["Language Model"]
+        LLM --> ANS["Answer"]
+    end
+
+    NOTE["⭑ The embedding model decides\nwhat 'relevant' means.\nChoose it first, before\ntuning anything else."]
+
+```
+
 ---
 
 ## What MTEB Is
@@ -59,6 +80,23 @@ The eight task types, and what they actually measure:
 | **Summarization** | Score how well a summary represents a source document | Rate machine-generated summary quality |
 
 Notice the range. Bitext mining rewards a different geometric property than clustering. STS rewards symmetry and fine-grained similarity gradients. Retrieval rewards asymmetric alignment between short queries and long documents. Classification rewards linear separability, not just proximity.
+
+```mermaid
+flowchart TB
+    MTEB["MTEB\n58 datasets · 8 task types\nAggregate = arithmetic mean"]
+
+    MTEB --> RET["Retrieval\nnDCG@10 on BEIR\n⭑ Most important for RAG"]
+    MTEB --> RR["Reranking\nnDCG@10\n(re-order first-stage results)"]
+    MTEB --> STS["Semantic Textual Similarity\nSpearman on 0–5 scale\n(symmetric pairs)"]
+    MTEB --> CLS["Classification\nAccuracy via linear probe\n(linear separability)"]
+    MTEB --> CLU["Clustering\nv-measure\n(topic grouping)"]
+    MTEB --> PC["Pair Classification\nAverage Precision\n(duplicate / entailment)"]
+    MTEB --> BM["Bitext Mining\nF1 across languages\n(cross-lingual alignment)"]
+    MTEB --> SUM["Summarization\nSpearman on human scores"]
+
+    RET --> WARN["A model optimized for STS\nor Classification may score\nhigh in aggregate but\nunderperform on Retrieval"]
+
+```
 
 A model that perfectly arranges its embedding space for one task may actively harm performance on another. The MTEB aggregate score is the arithmetic mean across all of these — which means a model can rank highly overall while being mediocre on the tasks that matter for your specific application.
 
@@ -100,6 +138,23 @@ Models trained primarily on symmetric similarity tasks (STS, paraphrase detectio
 This is why retrieval-specific training makes a large difference. Models trained with contrastive learning on (query, relevant document) pairs explicitly learn the asymmetric relationship. Models fine-tuned on MSMARCO or NQ handle short queries against long documents significantly better than models of equivalent size trained only on symmetric tasks.
 
 Instruction-following embeddings — like E5-instruct, which prepend a task-specific instruction ("Represent this passage for retrieval:") before encoding — are a response to this asymmetry. The instruction shifts the model's encoding into a query-appropriate or document-appropriate mode. This works well when you control both the query and document encoding, which you do in a RAG pipeline.
+
+```mermaid
+flowchart TB
+    subgraph STS["Symmetric task — STS / Paraphrase"]
+        T1["'The cat sat on the mat'\n~50 tokens, informal"] <-->|"similar texts\nshould cluster together"| T2["'A feline rested on the rug'\n~50 tokens, informal"]
+    end
+
+    subgraph RET["Asymmetric task — Retrieval"]
+        direction LR
+        Q["Query:\n'insulin resistance treatment'\n5 tokens, keyword-style"]
+        D["Document:\n'Type 2 Diabetes Management:\nA Comprehensive Review of\nPharmacological Approaches...'\n3,800 tokens, formal prose"]
+        Q -->|"complementary,\nnot similar"| D
+    end
+
+    INSIGHT["A model trained only on symmetric tasks\nlearns the wrong geometry for retrieval.\nRetreval-specific training teaches\nqueries and documents to meet in the same space\neven when their surface forms differ completely."]
+
+```
 
 ---
 
