@@ -33,6 +33,31 @@ The third reason is that there is a fundamental disagreement about what "better"
 
 Understanding the ecosystem requires understanding these three tensions: breadth vs. depth, contamination vs. stability, capability vs. preference. Every benchmark sits somewhere in this space.
 
+```mermaid
+flowchart TB
+    ROOT["LLM Benchmarks"]
+
+    ROOT --> CAP["Capability\n(objective ground truth)"]
+    ROOT --> PREF["Human Preference\n(subjective, pairwise)"]
+    ROOT --> HOLI["Holistic\n(multi-metric)"]
+
+    CAP --> KNOW["Knowledge & Reasoning\nMMLU · MMLU-Pro · GPQA · BBH"]
+    CAP --> MATH["Mathematics\nGSM8K · MATH · AIME"]
+    CAP --> CODE["Code Generation\nHumanEval+ · SWE-bench · LiveCodeBench"]
+    CAP --> INST["Instruction Following\nIFEval · MT-Bench · AlpacaEval 2.0"]
+
+    KNOW --> STAT["Static\n(contamination risk: high)"]
+    MATH --> STAT
+    CODE --> MIX["Static + Dynamic\n(SWE-bench = real repos;\nLiveCodeBench = live contests)"]
+    INST --> STAT
+
+    PREF --> ARENA["Chatbot Arena\nHuman pairwise votes → ELO"]
+    HOLI --> HELM["HELM\nAccuracy · Calibration · Fairness · Toxicity"]
+
+    ROOT --> LIVE["Living / Anti-contamination\nLiveBench · AIME (annual)"]
+
+```
+
 ---
 
 ## The Contamination Problem: Why Numbers Alone Are Not Enough
@@ -52,6 +77,18 @@ Contamination produces predictable artifacts:
 **Decontamination is harder than it sounds.** The common approach—checking whether benchmark questions appear verbatim in training data—catches direct copies but misses paraphrases, reformulations, and questions reconstructed from answers that were in training data. Benchmarks with structured, templated questions are particularly vulnerable.
 
 The practical implication: when reading any benchmark result, ask how recently the benchmark was published, whether the model being evaluated was trained after publication, and whether harder or less-public variations show the same score. The most trustworthy benchmarks are either continuously updated with new questions or operate in domains where internet-scale contamination is structurally difficult.
+
+```mermaid
+flowchart LR
+    PUB["Benchmark\npublished"] --> WEB["Questions absorbed\ninto the internet"]
+    WEB --> TRAIN["Next model trained\non internet-scale data"]
+    TRAIN --> INFLATE["Scores inflate\n(memorization ≠ capability)"]
+    INFLATE --> SAT["Benchmark saturates\n(frontier models cluster at top)"]
+    SAT --> USELESS["Benchmark stops\ndifferentiating models"]
+    USELESS --> NEW["Community publishes\nnew, harder benchmark"]
+    NEW --> PUB
+
+```
 
 ---
 
