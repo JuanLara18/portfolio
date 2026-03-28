@@ -4,9 +4,9 @@ date: "2026-04-02"
 excerpt: "Leaderboards still matter in 2026, but not in the way benchmark charts want you to believe. This field guide explains which LLM benchmarks are now historical, which still matter at the frontier, what agentic and tool-use benchmarks changed, and how to read every score critically."
 tags: ["Benchmarks", "LLMs", "Evaluation", "Knowledge Engineering", "RAG", "Infrastructure"]
 headerImage: "/blog/headers/llm-benchmarks-header.jpg"
-readingTimeMinutes: 43
+readingTimeMinutes: 45
 slug: llm-benchmarks
-estimatedWordCount: 10600
+estimatedWordCount: 11000
 ---
 
 # LLM Benchmarks: A Field Guide to Reading the Leaderboards
@@ -118,6 +118,20 @@ The model still matters. But once you cross into agentic evaluation, the harness
 
 That is not a flaw in the benchmark. It reflects reality. Deployed systems are scaffolded. But it does mean that leaderboards increasingly measure **engineering decisions plus model capability**, not model capability in isolation.
 
+### How scores get made (the part launch posts skip)
+
+Behind every percentage is an evaluation recipe. If you cannot find that recipe in the report, treat the headline number as entertainment.
+
+**Prompting and sampling.** Most public benchmarks fix a style (often zero-shot or a small fixed few-shot), a decoding setup (temperature, top-p, max tokens), and sometimes whether the model is allowed to "think" in a scratchpad or chain-of-thought block that is trimmed before scoring. The same model can move several points when any of those knobs change.
+
+**What exactly is graded.** Multiple-choice accuracy is straightforward but sensitive to answer format and parsing. Code benchmarks grade against hidden tests or repository suites. Agent benchmarks often grade against final environment state, file contents, or pass/fail checkers. Factuality suites like `SimpleQA` grade short strings with an explicit rubric (correct, incorrect, not attempted). If you do not know the grading rubric, you do not know what the number means.
+
+**Aggregation.** A single `pass@1` number is different from best-of-N, majority vote, or verifier-reranked outputs. Reasoning models often report gains that come from allowing more inference-time search, not from a magical jump in base weights. When a chart says "o3 achieves X," ask whether X used one sample or many.
+
+**Splits and leakage discipline.** Serious benchmarks separate public train/dev material from held-out or private evaluation. Live benchmarks attach dates so you can restrict evaluation to items published after a training cutoff. Private leaderboards withhold labels so public scores cannot be trained on trivially. The design of the split is as important as the questions.
+
+If you run evaluations yourself, adopt the same discipline: pin model IDs, API versions, prompts, tool manifests, and random seeds; log full traces when you can; and report enough detail that someone else could disagree with you productively.
+
 ---
 
 ## Knowledge and Reasoning Benchmarks
@@ -135,6 +149,8 @@ It is no longer a frontier discriminator.
 
 That does not make it useless. `MMLU` still tells you whether a model has broad background competence. It is still a useful historical reference and sanity check. But by 2026, a high `MMLU` score mainly tells you that the model is not broken and is not weak in obvious ways. It does **not** tell you much about open-ended reasoning, tool use, coding in context, browsing ability, or deployment fitness.
 
+**How it is usually run:** Accuracy over the official test split, typically four-option multiple choice with one correct letter. Reports sometimes chain-of-thought in a hidden scratchpad and parse the final letter; others score a single greedy completion. Subject-wise breakdowns are part of the value—aggregate `MMLU` can hide a hole in analytic geometry or clinical knowledge.
+
 **Best current use:** baseline sanity check and subject-breadth context.  
 **Bad current use:** headline evidence that one frontier model is materially "smarter" than another.
 
@@ -145,6 +161,8 @@ That does not make it useless. `MMLU` still tells you whether a model has broad 
 **Leaderboard:** [huggingface.co/spaces/TIGER-Lab/MMLU-Pro](https://huggingface.co/spaces/TIGER-Lab/MMLU-Pro)
 
 `MMLU-Pro` improves on the original benchmark in two important ways: harder sourcing and 10-way multiple choice instead of 4-way multiple choice. That reduces guessing effects and raises the reasoning burden.
+
+**How it is usually run:** Labs typically report accuracy over the test split, sometimes with chain-of-thought elicitation before selecting an option. If you compare two models, match the prompting style. A model evaluated with "think step by step, then answer A–J" is not the same creature as one judged on a single forward pass with temperature 0.
 
 It remains a useful cross-domain knowledge-and-reasoning benchmark in 2026 because:
 
@@ -168,6 +186,8 @@ That is why `GPQA Diamond` still deserves a place in any serious 2026 benchmark 
 
 What has changed is not its design quality but its relative position. It used to feel like the sharpest frontier capability test in public discourse. Today it is one of several. Top models increasingly push into or beyond expert-human ranges on parts of `GPQA`, which means you should not read it in isolation.
 
+**How it is usually run:** `GPQA Diamond` is the commonly cited subset (hardest, filtered items). Models see a question and four options; accuracy is reported against locked test keys. Because options are subtle, guessing is near 25%—reported gains above that range are meaningful, but compare models with the same prompting and whether explanations are elicited before the final choice.
+
 **Best current use:** expert STEM reasoning.  
 **Best pairing:** `HLE`, `ARC-AGI-2`, or domain-specific evaluation.
 
@@ -184,6 +204,8 @@ There are two reasons to care about `HLE`.
 First, it restores headroom. If you want to know whether the strongest systems are still far from solving expert-level academic QA in a general sense, `HLE` is one of the best public references.
 
 Second, it has already begun evolving: the introduction of `HLE-Rolling` is itself a sign of where the field is going. Static benchmarks become targets. Once that happens, the benchmark either has to evolve or surrender its diagnostic power.
+
+**How it is usually run:** Items are presented with an automated or semi-automated grader so labs can evaluate at scale. Because the set is large and cross-disciplinary, calibration is often tracked separately—confidence and correctness can diverge, which is part of what `HLE` was built to study. The rolling fork exists precisely so the benchmark can refresh without losing the original framing.
 
 **Best current use:** very hard broad academic reasoning.  
 **Caveat:** still mostly question-answering; not a tool-use or task-completion benchmark.
@@ -218,6 +240,8 @@ First, it is one of the clearest attempts to probe fluid reasoning under distrib
 
 Second, `ARC-AGI-2` explicitly foregrounds **efficiency**. The ARC Prize team now treats cost per task as a first-class signal alongside accuracy. That is philosophically important. It is an attempt to distinguish solving by intelligent adaptation from solving by expensive search.
 
+**How it is usually run:** Tasks are few-shot: you see a handful of input–output grid pairs, then must produce the output grid for a new input. Standard competition scoring uses **pass@2** (two guesses per test case; an exact grid match on either guess counts). Splits are explicit: a public training pool, a public eval set, and held-out semi-private and private eval sets so that leaderboard tuning cannot silently overfit one fixed hidden set. Leaderboard entries are expected to declare cost when submitted, because brute-force search at scale is a different game from efficient solving.
+
 The benchmark was intentionally redesigned to be less brute-force-friendly than `ARC-AGI-1`, with better calibration across public and private splits and a more rigorous human baseline process. Early paper snapshots showed frontier systems scoring only a few percentage points on semi-private evaluation. By 2026 the live leaderboard is moving quickly enough that any static score in a blog post risks aging badly, which is itself part of the point: this is now an actively contested frontier benchmark.
 
 `ARC-AGI-2` does **not** replace `MMLU-Pro`, `GPQA`, or `SWE-bench`. It measures something different.
@@ -245,6 +269,8 @@ Math remains one of the strongest evaluation domains because correctness is usua
 
 `MATH` remains a valuable benchmark because it goes beyond arithmetic into competition-style mathematical reasoning. Level 4 and 5 problems still tell you more than `GSM8K` does.
 
+**How it is usually run:** Evaluation is typically **exact match** on the final answer after normalization—numbers, simplified expressions, or prescribed string forms—with automated symbolic checks where possible. CoT and tool-assisted setups (Python scratch work) are common in frontier reports; always check whether the reported score is "LaTeX box only" or "model + code interpreter." Small mismatches in formatting or equivalent-but-unequal representations still cause occasional false negatives, which is why tiered reporting (full set vs. hardest levels) matters.
+
 But like every static benchmark, it has become less definitive over time. In 2026, `MATH` is best treated as the bridge between older math evaluation and newer, harder math benchmarks.
 
 ### AIME: Still one of the clearest practical frontier signals
@@ -255,6 +281,8 @@ But like every static benchmark, it has become less definitive over time. In 202
 `AIME` continues to matter because it is hard, updated annually, and easy to explain. It does not have the breadth of a full benchmark suite, but it does something extremely useful: it gives you a fresh yearly snapshot of difficult mathematical reasoning with meaningful human context.
 
 That freshness is a feature, not a footnote.
+
+**How it is usually run:** Each exam is 15 problems; answers are integers from 000 to 999. Open evaluations typically fix a **year slice** and report the number correct out of 15, sometimes averaged over multiple attempts or with a reasoning budget. If you see "AIME 2025" in a chart, verify it is the same year's paper, same prompting, and whether tools or external computation were allowed.
 
 ### FrontierMath: Where the headroom still obviously exists
 
@@ -272,6 +300,8 @@ It also comes with caveats that should be stated plainly:
 - evaluations are highly scaffold-sensitive because models are typically allowed code execution and substantial reasoning budgets
 
 Those caveats do not invalidate it. They simply mean you should read `FrontierMath` as a frontier stress test, not as a consumer-friendly headline number.
+
+**How it is usually run:** The standard protocol asks the model to produce a Python `answer()` function (no parameters) that returns a typed object; a harness executes that function under time limits and checks the result. Models typically get a Python tool, a submission tool, and a generous token budget because problems are meant to require extended reasoning and experimentation. Epoch publishes methodology notes because third-party scores can differ from vendor-internal runs that use different scaffolds or subsets—always read the footnotes on the hub page you are looking at.
 
 On Epoch AI's 2026 pages, even strong models remain far from ceiling, and Tier 4 is harsher still. That is exactly what you want from a frontier benchmark.
 
@@ -293,6 +323,8 @@ This category went through the same maturation as reasoning benchmarks: the fiel
 
 That still makes them useful as coding sanity checks. It does not make them good proxies for software engineering.
 
+**How it is usually run:** The canonical metric is **pass@k**—the probability that at least one of k sampled completions passes all unit tests. Leaderboards most often cite **pass@1** (first sample only). Evaluators standardize on a fixed prompt template, stop sequences, and a pinned test harness. `HumanEval+` reruns the same problems with many more tests, which catches "lucky" implementations that satisfied the original shallow suite.
+
 ### SWE-bench and SWE-bench Verified: still the anchor for real coding work
 
 **Published by:** Jimenez et al. (Princeton / University of Chicago), 2023  
@@ -310,6 +342,8 @@ That still makes them useful as coding sanity checks. It does not make them good
 
 This family matters because it captures the difference between "can write code" and "can do software engineering in context." It also dramatizes the scaffold problem: raw models, prompted models, and agentic coding systems can differ massively on the same underlying benchmark.
 
+**How it is usually run:** Each instance is a real repository snapshot: the model (or agent) receives the issue text and codebase context, proposes a patch, and the harness applies the patch in a container and runs the project's tests. Success is binary at the instance level: either the suite passes or it does not. `Verified` adds a human audit layer so ambiguous issue text or buggy gold patches do not dominate your error budget. Multilingual and multimodal variants change the observation space but keep the same "patch + tests" ethos.
+
 **Best current use:** real coding assistants and agentic software systems.  
 **What the score is measuring:** model quality plus search, edit, test, and recovery loop quality.
 
@@ -324,6 +358,8 @@ This family matters because it captures the difference between "can write code" 
 It also broadens coding evaluation beyond one task. The project explicitly treats code generation as only one slice of coding competence and includes related tasks like self-repair and test-output prediction.
 
 If `SWE-bench` is the benchmark for real-repo engineering, `LiveCodeBench` is the benchmark for fresh coding generalization.
+
+**How it is usually run:** Problems carry **release dates**; you filter to problems strictly after a model's knowledge cutoff to approximate "unseen." The suite also spans scenarios beyond plain generation (repair, predicting test outputs, execution-sensitive tasks), so averaging across scenarios is closer to an integration test than a single LeetCode clone.
 
 **Best current coding bundle:** `SWE-bench Verified` plus `LiveCodeBench`.
 
@@ -346,6 +382,8 @@ The `Berkeley Function Calling Leaderboard` began as a function-calling benchmar
 
 Its value is clarity. If you want to know whether a model can reliably map user requests into structured tool calls, abstain when a tool is not relevant, handle multi-turn tool interactions, and survive format sensitivity, `BFCL` is one of the best public references.
 
+**How it is usually run:** Prompts are paired with tool schemas; model outputs are parsed and checked with **AST-based** (syntax-level) validators rather than loose string matching where possible. The leaderboard tracks both native function-calling APIs and prompt-only "simulate JSON tools" modes, because format sensitivity is part of what breaks production agents. Multi-turn and web-search-flavored tracks push beyond single-shot tool JSON.
+
 It is not the whole agent story, but it is the right place to start if the product depends on robust API invocation.
 
 ### tau-bench: tool use plus policy plus dialogue
@@ -357,6 +395,8 @@ It is not the whole agent story, but it is the right place to start if the produ
 `tau-bench` asks a more realistic question than "can the model call a function correctly?" It evaluates whether an agent can solve multi-turn customer-service-style tasks using tools while obeying business rules and policies.
 
 This matters because enterprise agents do not fail only by formatting JSON incorrectly. They fail by violating constraints, forgetting state across turns, choosing the wrong action sequence, or satisfying the user in a way that breaks policy. `tau-bench` gets closer to that failure surface than most other public tool-use benchmarks.
+
+**How it is usually run:** A simulated user maintains a scripted multi-turn dialogue; the agent reads and writes state through **API tools** grounded in a small domain database. Success is checked against ground-truth world state and policy rules, not against natural-language "vibes." Some variants stress multi-agent handoffs or stricter dual-control settings—the details matter when comparing published numbers.
 
 **Best current use:** tool-based assistants that must maintain state and obey rules over multiple turns.
 
@@ -375,6 +415,8 @@ The early public numbers made the point sharply: browsing alone was not enough. 
 **Best current use:** research agents, browser agents, and systems sold on "deep web research."  
 **Caveat:** it measures hard retrieval, not the full distribution of real user browsing tasks.
 
+**How it is usually run:** Questions are written as short-answer or uniquely identifiable facts; human annotators validate difficulty with search-time and failure-rate checks where possible. Authors explicitly warn that performance on `BrowseComp` may not track open-ended user queries—it is optimized for **asymmetry**: hard to find, easy to verify. The benchmark also ships a canary string so training-data filters can try to exclude it from corpora.
+
 ### GAIA: general assistants, not just search tools
 
 **Published by:** Meta, Hugging Face, and collaborators  
@@ -383,6 +425,8 @@ The early public numbers made the point sharply: browsing alone was not enough. 
 `GAIA` evaluates general AI assistants on conceptually simple but tool-demanding tasks. The original pitch is still one of the best in the benchmark literature: these are tasks average humans can often solve, yet strong AI systems struggle with them because they require orchestrating browsing, files, reasoning, and other tools coherently. In the original paper, humans reached 92% while GPT-4 with plugins was at 15%, which tells you immediately what sort of gap `GAIA` is trying to expose.
 
 That makes `GAIA` a valuable bridge benchmark. It sits between general-chat evaluation and fully interactive environments.
+
+**How it is usually run:** Tasks are multi-step and often require tools (browser, code execution, file reading). Many answers are **withheld** from the public release so an official leaderboard can score submissions without trivial leakage. Evaluation is a mix of exact checks and structured validators depending on the task. When you read `GAIA` scores, check whether they were obtained with the official tool budget and the released vs. held-out split.
 
 ### WebArena and VisualWebArena: reproducible web-agent evaluation
 
@@ -395,6 +439,8 @@ If `BrowseComp` stresses open-web research, `WebArena` stresses reproducible web
 
 This benchmark family is important for one reason above all: it lets you evaluate web agents without the reproducibility chaos of the live web.
 
+**How it is usually run:** The agent receives an observation of the current page or UI (often accessibility tree, DOM text, and/or screenshot), chooses from a finite **action space** (click, type, scroll, tab switch), and is scored on whether it reaches a goal state (URL, element content, or backend check). `VisualWebArena` forces vision-language grounding: you cannot rely on clean text alone. Because the stack is self-hosted, runs are reproducible, which is the trade you accept versus `BrowseComp`'s messy real internet.
+
 ### OSWorld: browser agents are not the whole computer
 
 **Paper:** [arxiv.org/abs/2404.07972](https://arxiv.org/abs/2404.07972)  
@@ -403,6 +449,8 @@ This benchmark family is important for one reason above all: it lets you evaluat
 `OSWorld` broadens agent evaluation from "can operate a website" to "can operate a computer." It includes open-ended tasks across browsers, desktop apps, file systems, and cross-application workflows, with execution-based evaluation.
 
 This is one of the most important environment benchmarks in 2026 because it exposes how far computer-use agents still are from human competence. The original paper reported humans above 72.36% while the best model reached only 12.24%. The project has since moved to `OSWorld-Verified`, which reflects the same trend as `SWE-bench Verified`: the field is maturing from flashy demos to cleaner evaluation.
+
+**How it is usually run:** A task specifies a start state in a real VM (browser, office apps, filesystem). The agent acts through UI primitives; when it finishes, a **checker script** inspects the environment—files, window contents, application state—and returns pass or fail. Verified runs fix known-bad instances and publish trajectories for audit, which matters when you want to argue about a five-point gain honestly.
 
 ### Terminal-Bench: agents that live in the shell
 
@@ -413,6 +461,8 @@ This is one of the most important environment benchmarks in 2026 because it expo
 This matters because terminal agents fail differently from browser agents. They need command sequencing, environment understanding, file manipulation discipline, debugging, and often better long-horizon recovery behavior than chat benchmarks reveal.
 
 The existence of `Terminal-Bench 2.0`, an in-development `3.0`, and a science-focused branch is further evidence that agentic evaluation is fragmenting into concrete deployment domains. That is healthy.
+
+**How it is usually run:** Tasks are defined as reproducible terminal sessions inside containers with written **verification** (tests, file hashes, command outputs). Success rates depend heavily on whether the agent can explore safely, recover from errors, and finish within step or token limits. The project uses explicit canary strings so builders can keep benchmark text out of training dumps—same hygiene philosophy as other live benchmarks.
 
 ### A practical taxonomy for agentic benchmarks
 
@@ -445,6 +495,8 @@ It remains useful. It is also increasingly overfit.
 
 That does not mean you should discard it. It means you should stop treating a high `IFEval` score as proof that a model generalizes well to arbitrary unseen constraints.
 
+**How it is usually run:** Each prompt carries constraints that compile to short Python checks (string length, keyword counts, bullet structure, JSON shape). The benchmark reports **prompt-level** and **instruction-level** accuracy—one prompt may contain several constraints, and partial compliance is visible in the breakdowns. Because checks are deterministic, there is no judge variance; the failure mode is instead that models memorize the small template zoo.
+
 ### IFBench: the needed correction
 
 **Published by:** Allen Institute for AI and collaborators, 2025  
@@ -455,6 +507,8 @@ That does not mean you should discard it. It means you should stop treating a hi
 That is a textbook benchmark update: not a new task, but a better measurement of the same task.
 
 If your system depends on exact formatting, constrained outputs, rewriting under instruction, or structured compliance, `IFBench` should now sit beside `IFEval`, not behind it.
+
+**How it is usually run:** `IFBench` introduces **new** constraint templates held out from training mixes, often paired with held-out user prompts, then scores with the same programmatic verification idea as `IFEval`. It explicitly tests **out-of-domain** constraint generalization, including multi-constraint prompts and multi-turn variants where rewriting must fix an earlier draft.
 
 ### SimpleQA: factuality that is actually easy to grade
 
@@ -475,11 +529,15 @@ When it was released, even strong frontier systems were nowhere near ceiling; Op
 
 `SimpleQA` is not a complete measure of factuality in long-form generation. But if you care about hallucination rate on short factual prompts, it is one of the cleanest public signals.
 
+**How it is usually run:** Questions are short and reference-backed; model answers are graded into **correct**, **incorrect**, and **not attempted** with a prompted evaluator (often a strong frontier model) against a gold answer rubric. The interesting headline is not only accuracy: you also get **calibration** analyses if the model reports confidence, because "confident but wrong" is the failure mode that breaks trust in products.
+
 ### MT-Bench and AlpacaEval 2.0: still useful, but read as judge-based preference proxies
 
 `MT-Bench` and `AlpacaEval 2.0` were pivotal in normalizing LLM-as-judge evaluation. They still matter historically and practically. `AlpacaEval 2.0` in particular corrected for verbosity bias with length-controlled win rate, which was a real methodological improvement.
 
 But in 2026, both are best treated as **judge-based proxies**, not ultimate truth. Use them as cheap reproducible complements, not replacements for human preference or task-specific evaluation.
+
+**How it is usually run:** `MT-Bench` uses pairwise multi-turn transcripts scored by a frozen judge prompt on a fixed rubric; `AlpacaEval` compares against a reference model on many one-shot instructions. Version-lock the judge model and disclose temperature— otherwise year-over-year "Elo" comparisons lie to you gently.
 
 ---
 
@@ -491,6 +549,8 @@ But in 2026, both are best treated as **judge-based proxies**, not ultimate trut
 **How it works:** [lmarena.ai/cs/how-it-works](https://lmarena.ai/cs/how-it-works)
 
 `LMArena` remains the benchmark to consult when you want to know what users actually prefer in direct head-to-head comparisons. Users submit prompts, compare two anonymous model responses, and vote. Those votes feed a Bradley-Terry-style ranking system.
+
+**How it is usually run:** Each "battle" yields a pairwise preference; accumulated battles fit a statistical model that converts win rates into **Elo-like** scores per model variant. Arena organizers publish category splits and methodology posts because aggregate Elo mixes coding, math, creative writing, and chit-chat into one number that no single product actually needs. The important detail is transparency: who voted, how often, and whether system prompts were vendor-tuned for the venue.
 
 That matters because user-facing quality is not the same as academic correctness.
 
@@ -512,6 +572,8 @@ But by 2026, you should read `LMArena` more carefully than many launch posts do:
 
 That is especially important now that model providers are increasingly optimized for public leaderboards. `HELM` is one of the better antidotes to scoreboard monoculture.
 
+**How it is usually run:** `HELM` evaluates a fixed list of scenarios with shared prompting and decoding settings, then reports a table of metrics per scenario rather than a single winner badge. Running a full `HELM` pass is intentionally expensive—that is the point. You use it when you need auditability, not a quick tweet graphic.
+
 ---
 
 ## Living Benchmarks: Built to Resist Contamination
@@ -527,6 +589,8 @@ That is especially important now that model providers are increasingly optimized
 This benchmark should be more central in benchmark discussions than it often is, because it directly solves a real problem: how to compare models fairly when their training cutoffs differ.
 
 At the start of 2026, the top public scores on `LiveBench` sat around 80 global average rather than near saturation. That is the kind of signal you want: broad, hard, refreshed, and still discriminative.
+
+**How it is usually run:** Questions are time-stamped; the public release **lags** the internal cut so newest items stay unseen longer. Each item has a deterministic correct answer (no LLM judge). The interface reports both global averages and per-pillar scores—reasoning, coding, agentic coding, math, data analysis, language, instruction following—so you can match evaluation to your product surface. When comparing two models, filter to items after both training cutoffs.
 
 **Best current use:** broad contamination-resistant comparison across categories.  
 **Best question to ask with it:** how does this model perform on questions published after its training cutoff?
