@@ -46,7 +46,7 @@ const OUTPUT_FILE = path.join(OUTPUT_DIR, 'blog-compilation.pdf');
 // ─── Style Configuration ───────────────────────────────────────────────────────
 // Change any value here to adjust the entire PDF look in one place.
 
-const M = { top: 58, bottom: 56, left: 56, right: 56 };
+const M = { top: 72, bottom: 72, left: 72, right: 72 };
 
 const F = {
   h: 'Helvetica-Bold',
@@ -59,29 +59,29 @@ const F = {
 };
 
 const S = {
-  coverTitle: 30, coverSub: 12, coverDate: 10,
-  catTitle: 22,
-  postTitle: 18, postMeta: 8.5,
-  h2: 16, h3: 13.5, h4: 12, h5: 11, h6: 10.5,
-  body: 10, code: 8.5, quote: 10, li: 10,
-  tocCat: 12, tocEntry: 9.5,
-  footer: 7,
+  coverTitle: 36, coverSub: 14, coverDate: 11,
+  catTitle: 28,
+  postTitle: 24, postMeta: 10,
+  h2: 18, h3: 15, h4: 13, h5: 11, h6: 10.5,
+  body: 11, code: 9, quote: 11, li: 11,
+  tocCat: 14, tocEntry: 11,
+  footer: 9,
 };
 
 const C = {
   dark: '#0f172a',
-  heading: '#1e293b',
-  body: '#334155',
-  muted: '#94a3b8',
+  heading: '#111827',
+  body: '#374151',
+  muted: '#6b7280',
   link: '#2563eb',
-  code: '#1e293b',
-  codeBg: '#f1f5f9',
-  codeBorder: '#94a3b8',
+  code: '#1f2937',
+  codeBg: '#f3f4f6',
+  codeBorder: '#d1d5db',
   qBorder: '#3b82f6',
-  qText: '#475569',
+  qText: '#4b5563',
   accent: '#2563eb',
   white: '#ffffff',
-  hr: '#d1d5db',
+  hr: '#e5e7eb',
 };
 
 const CATEGORIES = {
@@ -303,7 +303,7 @@ function cw(doc) {
   return doc.page.width - M.left - M.right;
 }
 
-function ensure(doc, pts = 60) {
+function ensure(doc, pts = 80) {
   if (doc.y + pts > doc.page.height - M.bottom) doc.addPage();
 }
 
@@ -318,7 +318,7 @@ function renderInline(doc, text, opts = {}) {
 
   segs.forEach((seg, i) => {
     const last = i === segs.length - 1;
-    const o = { continued: !last, width: w, lineGap: 2 };
+    const o = { continued: !last, width: w, lineGap: 5 };
     if (i === 0 && align) o.align = align;
 
     if (seg.code) {
@@ -349,18 +349,18 @@ function renderBlock(doc, token) {
     case 'heading': {
       const lvl = Math.max(2, Math.min(6, token.level));
       const size = S[`h${lvl}`] || S.body;
-      ensure(doc, size + 24);
-      doc.moveDown(0.8);
+      ensure(doc, size + 36);
+      doc.moveDown(1.5);
       doc.font(F.h).fontSize(size).fillColor(C.heading)
-        .text(stripInline(token.text), M.left, doc.y, { width: cw(doc), lineGap: 2 });
-      doc.moveDown(0.3);
+        .text(stripInline(token.text), M.left, doc.y, { width: cw(doc), lineGap: 3 });
+      doc.moveDown(0.5);
       break;
     }
 
     case 'paragraph':
       ensure(doc, 30);
       renderInline(doc, token.text);
-      doc.moveDown(0.5);
+      doc.moveDown(0.8);
       break;
 
     case 'code': {
@@ -405,24 +405,35 @@ function renderBlock(doc, token) {
         const bullet = token.ordered ? `${idx + 1}.` : '\u2022';
         const y0 = doc.y;
         doc.font(F.b).fontSize(S.li).fillColor(C.muted)
-          .text(bullet, M.left, y0, { width: 16, align: 'right' });
+          .text(bullet, M.left, y0, { width: 20, align: 'right' });
         doc.y = y0;
-        renderInline(doc, item, { size: S.li, indent: 22 });
-        doc.moveDown(0.15);
+        renderInline(doc, item, { size: S.li, indent: 30 });
+        doc.moveDown(0.3);
       });
-      doc.moveDown(0.3);
+      doc.moveDown(0.8);
       break;
     }
 
     case 'blockquote': {
-      ensure(doc, 30);
+      ensure(doc, 40);
+      doc.moveDown(0.5);
       const y0 = doc.y;
-      renderInline(doc, token.text, { size: S.quote, color: C.qText, indent: 14 });
+      renderInline(doc, token.text, { size: S.quote, color: C.qText, indent: 20 });
       const y1 = doc.y;
+      
       doc.save();
-      doc.rect(M.left, y0, 2.5, y1 - y0).fill(C.qBorder);
+      // Background
+      doc.rect(M.left, y0 - 4, cw(doc), y1 - y0 + 8).fill('#f8fafc');
+      // Left border
+      doc.rect(M.left, y0 - 4, 3, y1 - y0 + 8).fill(C.qBorder);
       doc.restore();
-      doc.moveDown(0.4);
+      
+      // Re-render text on top of background
+      doc.y = y0;
+      renderInline(doc, token.text, { size: S.quote, color: C.qText, indent: 20 });
+      
+      doc.y = y1 + 4;
+      doc.moveDown(0.8);
       break;
     }
 
@@ -592,39 +603,68 @@ function addToc(doc, tocPageIdx, entries) {
   doc.switchToPage(tocPageIdx);
   let y = M.top;
 
-  doc.font(F.h).fontSize(18).fillColor(C.heading)
+  doc.font(F.h).fontSize(20).fillColor(C.heading)
     .text('Table of Contents', M.left, y, { width: cw(doc) });
-  y = doc.y + 14;
+  y = doc.y + 24;
 
   let currentCat = '';
   for (const entry of entries) {
     if (entry.category !== currentCat) {
       currentCat = entry.category;
-      if (y + 28 > doc.page.height - M.bottom) break;
-      y += currentCat === entries[0].category ? 0 : 8;
-      doc.font(F.B).fontSize(S.tocCat).fillColor(C.heading)
+      if (y + 36 > doc.page.height - M.bottom) {
+        doc.addPage();
+        y = M.top;
+      } else {
+        y += currentCat === entries[0].category ? 0 : 16;
+      }
+      doc.font(F.B).fontSize(S.tocCat).fillColor(C.accent)
         .text(CATEGORIES.labels[currentCat] || currentCat, M.left, y);
-      y = doc.y + 4;
+      y = doc.y + 8;
     }
 
-    if (y + 14 > doc.page.height - M.bottom) break;
+    if (y + 16 > doc.page.height - M.bottom) {
+      doc.addPage();
+      y = M.top;
+    }
 
-    const titleMaxW = cw(doc) - 40;
-    const title =
-      entry.title.length > 72 ? entry.title.slice(0, 69) + '...' : entry.title;
-
-    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.body)
-      .text(title, M.left + 10, y, { width: titleMaxW });
-    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.muted)
+    const titleMaxW = cw(doc) - 60;
+    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.body);
+    
+    // Title
+    doc.text(entry.title, M.left + 10, y, { width: titleMaxW, lineBreak: false, ellipsis: true });
+    
+    // Page number
+    doc.font(F.B).fontSize(S.tocEntry).fillColor(C.muted)
       .text(`${entry.page}`, M.left + cw(doc) - 30, y, { width: 30, align: 'right' });
-    y = Math.max(doc.y, y + 13);
+      
+    // Dot leaders
+    const titleW = doc.widthOfString(entry.title.length > 70 ? entry.title.slice(0, 70) + '...' : entry.title);
+    if (titleW < titleMaxW - 10) {
+      doc.font(F.b).fontSize(S.tocEntry).fillColor(C.hr)
+        .text('. '.repeat(50), M.left + 10 + titleW + 5, y, { width: titleMaxW - titleW - 10, lineBreak: false, ellipsis: true });
+    }
+    
+    y = Math.max(doc.y, y + 16);
   }
 }
 
-function addFooters(doc) {
+function addHeadersAndFooters(doc, posts) {
   const range = doc.bufferedPageRange();
   for (let i = 1; i < range.count; i++) {
     doc.switchToPage(i);
+    
+    // Header
+    doc.save();
+    doc.moveTo(M.left, M.top - 20).lineTo(M.left + cw(doc), M.top - 20)
+      .lineWidth(0.5).strokeColor(C.hr).stroke();
+    doc.restore();
+    
+    doc.font(F.b).fontSize(S.footer).fillColor(C.muted)
+      .text('JUAN LARA', M.left, M.top - 32, { width: cw(doc) / 2, align: 'left' });
+    doc.font(F.i).fontSize(S.footer).fillColor(C.muted)
+      .text('Blog Compilation 2026', M.left + cw(doc) / 2, M.top - 32, { width: cw(doc) / 2, align: 'right' });
+
+    // Footer
     doc.font(F.b).fontSize(S.footer).fillColor(C.muted)
       .text(
         `${i}`,
@@ -699,7 +739,7 @@ function main() {
 
   // Backfill TOC and add page numbers
   addToc(doc, tocPageIdx, tocEntries);
-  addFooters(doc);
+  addHeadersAndFooters(doc, posts);
 
   const totalPages = doc.bufferedPageRange().count;
   doc.end();
