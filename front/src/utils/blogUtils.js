@@ -22,7 +22,10 @@ export const BLOG_CONFIG = {
       icon: 'Code2'
     }
   },
-  postsPerPage: 6
+  /** Mobile/tablet (< Tailwind lg): 2 cols at md, 1 col default */
+  postsPerPageMobile: 6,
+  /** Desktop (≥1024px, lg: 3-column grid) */
+  postsPerPageDesktop: 9
 };
 
 export async function loadAllPosts() {

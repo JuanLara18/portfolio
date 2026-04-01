@@ -21,7 +21,9 @@ import { PostCard } from '../components/features/blog';
 
 // Animation variants
 const fadeInUp = motionVariants.fadeInUp();
-const staggerContainer = motionVariants.stagger();export default function BlogCategoryPage() {
+const staggerContainer = motionVariants.stagger();
+
+export default function BlogCategoryPage() {
   const { category, tag } = useParams();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

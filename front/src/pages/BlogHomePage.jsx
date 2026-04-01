@@ -31,14 +31,17 @@ export default function BlogHomePage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTag, setSelectedTag] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(() =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(min-width: 1024px)').matches
+      ? BLOG_CONFIG.postsPerPageDesktop
+      : BLOG_CONFIG.postsPerPageMobile
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
-  
-  // Pagination configuration
-  const POSTS_PER_PAGE = 6;
   
   // Transform values — matched to Projects/About for visual consistency
   const heroOpacity = useTransform(scrollY, [260, 800], [1, 0.98]);
@@ -66,6 +69,17 @@ export default function BlogHomePage() {
     }
     
     loadBlogData();
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const sync = () =>
+      setPostsPerPage(
+        mq.matches ? BLOG_CONFIG.postsPerPageDesktop : BLOG_CONFIG.postsPerPageMobile
+      );
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
   }, []);
   
   // Filter posts based on search and filters
@@ -100,11 +114,17 @@ export default function BlogHomePage() {
     // Reset to first page when filters change
     setCurrentPage(1);
   }, [posts, searchTerm, selectedCategory, selectedTag]);
+
+  useEffect(() => {
+    const pages = Math.ceil(filteredPosts.length / postsPerPage);
+    if (pages === 0) return;
+    setCurrentPage((p) => Math.min(p, pages));
+  }, [postsPerPage, filteredPosts.length]);
   
   // Pagination calculations
   const totalPosts = filteredPosts.length;
-  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
-  const paginatedPosts = filteredPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+  const paginatedPosts = filteredPosts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
   
   if (loading) {
     return (
@@ -288,9 +308,9 @@ export default function BlogHomePage() {
               
               <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                 {totalPosts > 0 && (
-                  <><span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * POSTS_PER_PAGE + 1, totalPosts)}</span>
+                  <><span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * postsPerPage + 1, totalPosts)}</span>
                   {' '}-{' '}
-                  <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min(currentPage * POSTS_PER_PAGE, totalPosts)}</span>
+                  <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min(currentPage * postsPerPage, totalPosts)}</span>
                   {' '}of{' '}
                   <span className="font-medium text-gray-700 dark:text-gray-100">{totalPosts}</span> posts</>
                 )}
@@ -399,9 +419,9 @@ export default function BlogHomePage() {
                     className="flex flex-col sm:flex-row items-center justify-between mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
                   >
                     <div className="text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-0">
-                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * POSTS_PER_PAGE + 1, totalPosts)}</span>
+                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * postsPerPage + 1, totalPosts)}</span>
                       {' '}-{' '}
-                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min(currentPage * POSTS_PER_PAGE, totalPosts)}</span>
+                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min(currentPage * postsPerPage, totalPosts)}</span>
                       {' '}of{' '}
                       <span className="font-medium text-gray-700 dark:text-gray-100">{totalPosts}</span> posts
                     </div>
