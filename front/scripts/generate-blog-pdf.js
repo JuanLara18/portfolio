@@ -76,15 +76,26 @@ function sanitizeSvgXmlForSharp(svg) {
   );
 }
 
-async function rasterizeMathSvg(svgString, maxWidthPx) {
+async function rasterizeMathSvg(svgString, opts = {}) {
   const sharp = require('sharp');
+  const {
+    maxWidthPx,
+    paddingPx = 16,
+    density = 320,
+  } = opts;
   let svg = svgString.replace(/currentColor/g, '#1a1a1a');
   svg = sanitizeSvgXmlForSharp(svg);
-  svg = svg.replace(/(<svg[^>]*>)/, '$1<rect width="100%" height="100%" fill="#ffffff"/>');
-  return sharp(Buffer.from(svg, 'utf8'))
-    .resize({ width: maxWidthPx, height: null, fit: 'inside', withoutEnlargement: true })
-    .trim({ threshold: 10, background: { r: 255, g: 255, b: 255, alpha: 1 } })
-    .png({ compressionLevel: 6 })
+  return sharp(Buffer.from(svg, 'utf8'), { density })
+    .resize({ width: maxWidthPx, height: null, fit: 'inside', withoutEnlargement: false })
+    .trim({ threshold: 1, background: { r: 255, g: 255, b: 255, alpha: 0 } })
+    .extend({
+      top: paddingPx,
+      right: paddingPx,
+      bottom: paddingPx,
+      left: paddingPx,
+      background: { r: 255, g: 255, b: 255, alpha: 0 },
+    })
+    .png({ compressionLevel: 9, adaptiveFiltering: true })
     .toBuffer();
 }
 
@@ -112,7 +123,7 @@ async function prerenderMath(posts) {
     const svg = renderMathSVG(s, true);
     if (svg) {
       try {
-        displayMap.set(s, await rasterizeMathSvg(svg, 2000));
+        displayMap.set(s, await rasterizeMathSvg(svg, { maxWidthPx: 2400, paddingPx: 22, density: 240 }));
       } catch (e) {
         console.warn(`  ⚠ Display math rasterize failed: ${e.message}`);
       }
@@ -122,7 +133,7 @@ async function prerenderMath(posts) {
     const svg = renderMathSVG(s, false);
     if (svg) {
       try {
-        inlineMap.set(s, await rasterizeMathSvg(svg, 520));
+        inlineMap.set(s, await rasterizeMathSvg(svg, { maxWidthPx: 960, paddingPx: 14, density: 240 }));
       } catch (e) {
         console.warn(`  ⚠ Inline math rasterize failed: ${e.message}`);
       }
@@ -225,7 +236,7 @@ const OUTPUT_FILE = path.join(OUTPUT_DIR, 'blog-compilation.pdf');
 
 const M = { top: 72, bottom: 72, left: 72, right: 72 };
 
-const F = {
+const DEFAULT_FONTS = {
   h: 'Helvetica-Bold',
   b: 'Helvetica',
   B: 'Helvetica-Bold',
@@ -234,6 +245,96 @@ const F = {
   m: 'Courier',
   mB: 'Courier-Bold',
 };
+
+let F = { ...DEFAULT_FONTS };
+
+function fontCandidates(...parts) {
+  return parts.filter(Boolean);
+}
+
+const PDF_FONT_FILES = {
+  h: {
+    name: 'PdfHeading',
+    paths: fontCandidates(
+      process.platform === 'win32' ? path.join(process.env.WINDIR || 'C:\\Windows', 'Fonts', 'arialbd.ttf') : null,
+      process.platform === 'darwin' ? '/System/Library/Fonts/Supplemental/Arial Bold.ttf' : null,
+      '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+    ),
+  },
+  b: {
+    name: 'PdfBody',
+    paths: fontCandidates(
+      process.platform === 'win32' ? path.join(process.env.WINDIR || 'C:\\Windows', 'Fonts', 'arial.ttf') : null,
+      process.platform === 'darwin' ? '/System/Library/Fonts/Supplemental/Arial.ttf' : null,
+      '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
+    ),
+  },
+  B: {
+    name: 'PdfBodyBold',
+    paths: fontCandidates(
+      process.platform === 'win32' ? path.join(process.env.WINDIR || 'C:\\Windows', 'Fonts', 'arialbd.ttf') : null,
+      process.platform === 'darwin' ? '/System/Library/Fonts/Supplemental/Arial Bold.ttf' : null,
+      '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+    ),
+  },
+  i: {
+    name: 'PdfBodyItalic',
+    paths: fontCandidates(
+      process.platform === 'win32' ? path.join(process.env.WINDIR || 'C:\\Windows', 'Fonts', 'ariali.ttf') : null,
+      process.platform === 'darwin' ? '/System/Library/Fonts/Supplemental/Arial Italic.ttf' : null,
+      '/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf',
+    ),
+  },
+  bi: {
+    name: 'PdfBodyBoldItalic',
+    paths: fontCandidates(
+      process.platform === 'win32' ? path.join(process.env.WINDIR || 'C:\\Windows', 'Fonts', 'arialbi.ttf') : null,
+      process.platform === 'darwin' ? '/System/Library/Fonts/Supplemental/Arial Bold Italic.ttf' : null,
+      '/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf',
+    ),
+  },
+  m: {
+    name: 'PdfMono',
+    paths: fontCandidates(
+      process.platform === 'win32' ? path.join(process.env.WINDIR || 'C:\\Windows', 'Fonts', 'consola.ttf') : null,
+      process.platform === 'darwin' ? '/System/Library/Fonts/Supplemental/Courier New.ttf' : null,
+      '/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf',
+    ),
+  },
+  mB: {
+    name: 'PdfMonoBold',
+    paths: fontCandidates(
+      process.platform === 'win32' ? path.join(process.env.WINDIR || 'C:\\Windows', 'Fonts', 'consolab.ttf') : null,
+      process.platform === 'darwin' ? '/System/Library/Fonts/Supplemental/Courier New Bold.ttf' : null,
+      '/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf',
+    ),
+  },
+};
+
+function resolveExistingFontPath(paths) {
+  return paths.find((p) => fs.existsSync(p)) || null;
+}
+
+function registerPdfFonts(doc) {
+  const resolvedFonts = { ...DEFAULT_FONTS };
+  const embedded = [];
+
+  for (const [key, config] of Object.entries(PDF_FONT_FILES)) {
+    const fontPath = resolveExistingFontPath(config.paths);
+    if (!fontPath) continue;
+    doc.registerFont(config.name, fontPath);
+    resolvedFonts[key] = config.name;
+    embedded.push(path.basename(fontPath));
+  }
+
+  if (embedded.length) {
+    console.log(`  Embedded PDF fonts: ${embedded.join(', ')}`);
+  } else {
+    console.warn('  Warning: no embeddable system fonts found, falling back to PDF core fonts.');
+  }
+
+  return resolvedFonts;
+}
 
 const S = {
   coverTitle: 36, coverSub: 14, coverDate: 11,
@@ -512,7 +613,88 @@ function expandSegsWithMath(segs) {
 function segWords(seg) {
   if (seg.math) return [seg];
   if (!seg.t) return [];
-  return seg.t.split(/(\s+)/).filter((w) => w.length);
+  return seg.t
+    .split(/(\s+)/)
+    .filter((w) => w.length)
+    .map((t) => ({ ...seg, t, link: /^\s+$/.test(t) ? undefined : seg.link }));
+}
+
+function splitTextToWidth(doc, text, maxWidth) {
+  if (!text) return ['', ''];
+  if (doc.widthOfString(text) <= maxWidth) return [text, ''];
+
+  let lo = 1;
+  let hi = text.length;
+  let best = 1;
+
+  while (lo <= hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    const chunk = text.slice(0, mid);
+    if (doc.widthOfString(chunk) <= maxWidth) {
+      best = mid;
+      lo = mid + 1;
+    } else {
+      hi = mid - 1;
+    }
+  }
+
+  if (best < text.length) {
+    const ws = text.slice(0, best).match(/^.*(?=\s(?!.*\s))/);
+    if (ws && ws[0].trim()) best = ws[0].length;
+  }
+
+  return [text.slice(0, best), text.slice(best)];
+}
+
+function fitTextWithEllipsis(doc, text, maxWidth) {
+  if (!text) return '';
+  if (doc.widthOfString(text) <= maxWidth) return text;
+  let lo = 0;
+  let hi = text.length;
+  let best = '...';
+  while (lo <= hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    const candidate = `${text.slice(0, mid).trimEnd()}...`;
+    if (doc.widthOfString(candidate) <= maxWidth) {
+      best = candidate;
+      lo = mid + 1;
+    } else {
+      hi = mid - 1;
+    }
+  }
+  return best;
+}
+
+function wrapCodeLineTokens(doc, lineTokens, maxWidth) {
+  const wrapped = [[]];
+  let lineIdx = 0;
+  let lineWidth = 0;
+
+  for (const tok of lineTokens) {
+    let remaining = tok.text.replace(/\t/g, '  ');
+    while (remaining) {
+      let room = maxWidth - lineWidth;
+      if (room <= 0) {
+        wrapped.push([]);
+        lineIdx++;
+        lineWidth = 0;
+        room = maxWidth;
+      }
+
+      const [chunk, rest] = splitTextToWidth(doc, remaining, room);
+      wrapped[lineIdx].push({ ...tok, text: chunk });
+      lineWidth += doc.widthOfString(chunk);
+      remaining = rest;
+
+      if (remaining) {
+        wrapped.push([]);
+        lineIdx++;
+        lineWidth = 0;
+      }
+    }
+  }
+
+  return wrapped;
 }
 
 function measureItemWidth(doc, item, size, color) {
@@ -547,44 +729,43 @@ function drawLineItems(doc, items, x, y, size, color, maxW) {
       const buf = G_MATH_INLINE.get(it.latex);
       if (buf) {
         const info = doc.openImage(buf);
-        const h = size * 1.15;
+        const h = size * 1.5;
         const iw = (info.width / info.height) * h;
-        doc.image(buf, cx, y - size * 0.78, { width: iw, height: h });
+        doc.image(buf, cx, y - size * 0.95, { width: iw, height: h });
         cx += iw + 1;
       } else {
         doc.font(F.m).fontSize(size - 1).fillColor(C.code);
+        const itemW = measureItemWidth(doc, it, size, color);
         doc.text(`$${it.latex}$`, cx, y, {
           lineBreak: false,
           align: 'left',
           width: Math.max(40, maxW - (cx - x)),
         });
-        cx = doc.x;
+        cx += itemW;
       }
     } else if (it.code) {
       const t = it.t != null ? String(it.t) : '';
       if (!t) continue;
       doc.font(F.m).fontSize(size - 1).fillColor(C.code);
+      const itemW = measureItemWidth(doc, it, size, color);
       // No `width`: LineWrapper + inherited align (e.g. right) would shift glyphs off-page.
       doc.text(t, cx, y, { lineBreak: false, align: 'left' });
-      cx = doc.x;
+      cx += itemW;
     } else if (it.link) {
       const t = it.t != null ? String(it.t) : '';
       if (!t) continue;
       doc.font(F.b).fontSize(size).fillColor(C.link);
-      doc.text(t, cx, y, {
-        lineBreak: false,
-        align: 'left',
-        link: it.link,
-        underline: true,
-      });
-      cx = doc.x;
+      const itemW = measureItemWidth(doc, it, size, color);
+      doc.text(t, cx, y, { lineBreak: false, align: 'left' });
+      cx += itemW;
     } else {
       const t = it.t != null ? String(it.t) : '';
       if (!t) continue;
       const font = it.bold && it.italic ? F.bi : it.bold ? F.B : it.italic ? F.i : F.b;
       doc.font(font).fontSize(size).fillColor(color);
+      const itemW = measureItemWidth(doc, it, size, color);
       doc.text(t, cx, y, { lineBreak: false, align: 'left' });
-      cx = doc.x;
+      cx += itemW;
     }
   }
 }
@@ -665,12 +846,12 @@ function renderTableCellWithMath(doc, cell, x, y, maxInnerW, isHeader) {
       const buf = G_MATH_INLINE.get(p.latex);
       if (buf) {
         const info = doc.openImage(buf);
-        const h = fs * 1.12;
+        const h = fs * 1.45;
         let iw = (info.width / info.height) * h;
         const room = x + maxInnerW - cx - 2;
         if (iw > room) iw = Math.max(4, room);
         const ih = (info.height / info.width) * iw;
-        doc.image(buf, cx, y - fs * 0.72, { width: iw, height: ih });
+        doc.image(buf, cx, y - fs * 0.92, { width: iw, height: ih });
         cx += iw + 2;
       } else {
         doc.font(F.m).fontSize(fs).fillColor(C.body);
@@ -767,12 +948,12 @@ function renderBlock(doc, token) {
       } else {
         lines = display.split('\n').map(l => [{ text: l, classes: [] }]);
       }
-      // Remove trailing empty lines
-      while (lines.length && !lines[lines.length - 1].length) lines.pop();
-
       doc.font(F.m).fontSize(S.code);
+      const maxCodeW = w - pad * 2;
+      const wrappedLines = lines.flatMap((lineTokens) => wrapCodeLineTokens(doc, lineTokens, maxCodeW));
+      while (wrappedLines.length && !wrappedLines[wrappedLines.length - 1].length) wrappedLines.pop();
       const lineH = doc.currentLineHeight() + 3;
-      const boxH = (lines.length * lineH) + pad * 2;
+      const boxH = (wrappedLines.length * lineH) + pad * 2;
 
       ensure(doc, boxH + 20);
       const y0 = doc.y;
@@ -792,7 +973,7 @@ function renderBlock(doc, token) {
 
       // Code lines with GitHub-light syntax colours
       let curY = y0 + pad;
-      lines.forEach((lineTokens) => {
+      wrappedLines.forEach((lineTokens) => {
         let curX = M.left + pad;
         lineTokens.forEach((tok) => {
           let color = '#24292f'; // default: near-black body text
@@ -808,7 +989,7 @@ function renderBlock(doc, token) {
           else if (c.includes('property'))                              color = '#0550ae'; // blue
           else if (c.includes('tag'))                                   color = '#116329'; // green
           doc.font(F.m).fontSize(S.code).fillColor(color);
-          const cleanText = tok.text.replace(/\t/g, '  ');
+          const cleanText = tok.text;
           doc.text(cleanText, curX, curY, { lineBreak: false });
           curX += doc.widthOfString(cleanText);
         });
@@ -880,9 +1061,9 @@ function renderBlock(doc, token) {
       const pngBuf = G_MATH_DISPLAY.get(key);
       if (pngBuf) {
         const info = doc.openImage(pngBuf);
-        const maxW = cw(doc);
+        const maxW = cw(doc) * 0.88;
         const maxH = doc.page.height - M.top - M.bottom;
-        let drawW = maxW;
+        let drawW = Math.min(maxW, info.width);
         let drawH = (info.height / info.width) * drawW;
         if (drawH > maxH * 0.92) {
           drawH = maxH * 0.92;
@@ -1095,12 +1276,24 @@ function addPostHeader(doc, post) {
 }
 
 function addToc(doc, tocPageIdx, entries) {
-  doc.switchToPage(tocPageIdx);
+  const pageIndices = Array.isArray(tocPageIdx) ? tocPageIdx : [tocPageIdx];
+  let pageCursor = 0;
+  doc.switchToPage(pageIndices[pageCursor]);
   let y = M.top;
   const W = cw(doc);
   const pgNumW = 34;
   const indent = 12;
   const entryH = S.tocEntry + 8;  // row height
+  const titleMaxW = W - indent - pgNumW - 20;
+
+  function nextTocPage() {
+    pageCursor += 1;
+    if (pageCursor >= pageIndices.length) {
+      throw new Error('Not enough TOC pages reserved.');
+    }
+    doc.switchToPage(pageIndices[pageCursor]);
+    y = M.top;
+  }
 
   // Title
   doc.font(F.h).fontSize(20).fillColor(C.heading)
@@ -1114,7 +1307,7 @@ function addToc(doc, tocPageIdx, entries) {
       currentCat = entry.category;
       const gap = currentCat === entries[0].category ? 0 : 18;
       if (y + gap + 28 > doc.page.height - M.bottom) {
-        doc.addPage(); y = M.top;
+        nextTocPage();
       } else {
         y += gap;
       }
@@ -1129,20 +1322,19 @@ function addToc(doc, tocPageIdx, entries) {
 
     // Overflow to new page
     if (y + entryH > doc.page.height - M.bottom) {
-      doc.addPage(); y = M.top;
+      nextTocPage();
     }
 
-    const titleMaxW = W - indent - pgNumW - 20;
-    const titleStr = entry.title.length > 78 ? entry.title.slice(0, 75) + '...' : entry.title;
+    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.body);
+    const titleStr = fitTextWithEllipsis(doc, entry.title, titleMaxW);
 
     // Clickable title text → jumps to named destination in PDF
-    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.body)
-      .text(titleStr, M.left + indent, y, {
-        width: titleMaxW,
-        lineBreak: false,
-        goTo: entry.destId,
-        underline: false,
-      });
+    doc.text(titleStr, M.left + indent, y, {
+      width: titleMaxW,
+      lineBreak: false,
+      goTo: entry.destId,
+      underline: false,
+    });
 
     // Dot leaders between title and page number
     doc.font(F.b).fontSize(S.tocEntry).fillColor(C.hr);
@@ -1165,30 +1357,49 @@ function addToc(doc, tocPageIdx, entries) {
   }
 }
 
-function addHeadersAndFooters(doc) {
-  const range = doc.bufferedPageRange();
-  for (let i = 1; i < range.count; i++) {
-    doc.switchToPage(i);
-    
-    // Header
-    doc.save();
-    doc.moveTo(M.left, M.top - 20).lineTo(M.left + cw(doc), M.top - 20)
-      .lineWidth(0.5).strokeColor(C.hr).stroke();
-    doc.restore();
-    
-    doc.font(F.b).fontSize(S.footer).fillColor(C.muted)
-      .text('JUAN LARA', M.left, M.top - 32, { width: cw(doc) / 2, align: 'left' });
-    doc.font(F.i).fontSize(S.footer).fillColor(C.muted)
-      .text('Blog Compilation 2026', M.left + cw(doc) / 2, M.top - 32, { width: cw(doc) / 2, align: 'right' });
+function estimateTocPageCount(doc, entries) {
+  if (!entries.length) return 1;
+  let pages = 1;
+  let y = M.top;
+  const entryH = S.tocEntry + 8;
+  doc.font(F.h).fontSize(20);
+  y += doc.heightOfString('Table of Contents', { width: cw(doc) }) + 20;
+  let currentCat = '';
+  for (const entry of entries) {
+    if (entry.category !== currentCat) {
+      currentCat = entry.category;
+      const gap = currentCat === entries[0].category ? 0 : 18;
+      if (y + gap + 28 > doc.page.height - M.bottom) {
+        pages += 1;
+        y = M.top;
+      } else {
+        y += gap;
+      }
+      y += 26;
+    }
+    if (y + entryH > doc.page.height - M.bottom) {
+      pages += 1;
+      y = M.top;
+    }
+    y += entryH;
+  }
+  return pages;
+}
 
-    // Footer
-    doc.font(F.b).fontSize(S.footer).fillColor(C.muted)
-      .text(
-        `${i}`,
-        M.left,
-        doc.page.height - M.bottom + 20,
-        { width: cw(doc), align: 'center' },
-      );
+function addDocumentOutlines(doc, tocPageIndices, entries) {
+  const root = doc.outline;
+  root.addItem('Table of Contents', { pageNumber: tocPageIndices[0], expanded: true });
+  const categories = new Map();
+  for (const entry of entries) {
+    let categoryNode = categories.get(entry.category);
+    if (!categoryNode) {
+      categoryNode = root.addItem(CATEGORIES.labels[entry.category] || entry.category, {
+        pageNumber: entry.page,
+        expanded: true,
+      });
+      categories.set(entry.category, categoryNode);
+    }
+    categoryNode.addItem(entry.title, { pageNumber: entry.page });
   }
 }
 
@@ -1227,16 +1438,23 @@ async function main() {
       Creator: 'generate-blog-pdf.js',
     },
   });
-
+  F = registerPdfFonts(doc);
   const stream = fs.createWriteStream(OUTPUT_FILE);
   doc.pipe(stream);
 
   // Cover with image collage
   addCover(doc, posts, catCount);
 
-  // TOC placeholder page
-  doc.addPage();
-  const tocPageIdx = doc.bufferedPageRange().count - 1;
+  // Reserve TOC pages before content so they do not get appended at the end.
+  const tocSeedEntries = CATEGORIES.order.flatMap((cat) =>
+    (grouped[cat] || []).map((post) => ({ title: post.title, category: cat })),
+  );
+  const tocPageCount = estimateTocPageCount(doc, tocSeedEntries);
+  const tocPageIdx = [];
+  for (let i = 0; i < tocPageCount; i++) {
+    doc.addPage();
+    tocPageIdx.push(doc.bufferedPageRange().count - 1);
+  }
 
   // Render all posts
   const tocEntries = [];
@@ -1267,7 +1485,7 @@ async function main() {
 
   // Backfill TOC and running headers/footers
   addToc(doc, tocPageIdx, tocEntries);
-  addHeadersAndFooters(doc);
+  addDocumentOutlines(doc, tocPageIdx, tocEntries);
 
   const totalPages = doc.bufferedPageRange().count;
   doc.end();
