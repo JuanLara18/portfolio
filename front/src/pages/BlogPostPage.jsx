@@ -14,7 +14,8 @@ import {
   List,
   X,
   Check,
-  Maximize2
+  Maximize2,
+  ArrowDownUp
 } from 'lucide-react';
 import { getPostBySlug, BLOG_CONFIG, formatDate, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
 import { MarkdownRenderer } from '../components/features/blog';
@@ -370,7 +371,9 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
   );
   const [readProgress, setReadProgress] = useState(0);
   const [isDiagramFullscreen, setIsDiagramFullscreen] = useState(false);
+  const [isControlsVisible, setIsControlsVisible] = useState(true);
   const contentRef = useRef(null);
+  const lastScrollY = useRef(0);
   // Snapshot the site's dark-mode state at the moment reading mode opens.
   // We restore this on exit so the main page is never affected.
   const originalDark = useRef(document.documentElement.classList.contains('dark'));
@@ -429,6 +432,15 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
     const el = e.currentTarget;
     const max = el.scrollHeight - el.clientHeight;
     setReadProgress(max > 0 ? el.scrollTop / max : 0);
+
+    const currentScrollY = el.scrollTop;
+    if (currentScrollY > lastScrollY.current + 20 && currentScrollY > 50) {
+      setIsControlsVisible(false);
+      lastScrollY.current = currentScrollY;
+    } else if (currentScrollY < lastScrollY.current - 20 || currentScrollY < 50) {
+      setIsControlsVisible(true);
+      lastScrollY.current = currentScrollY;
+    }
   };
 
   const fontSizeMin = 14, fontSizeMax = 26;
@@ -505,9 +517,19 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
 
         {/* Line height */}
         <div className="flex items-center flex-shrink-0">
-          {mkBtn(() => setLineHeight(h => Math.max(lineHeightMin, parseFloat((h - 0.1).toFixed(1)))), lineHeight <= lineHeightMin, 'Tighter spacing', '↕−')}
+          {mkBtn(
+            () => setLineHeight(h => Math.max(lineHeightMin, parseFloat((h - 0.1).toFixed(1)))), 
+            lineHeight <= lineHeightMin, 
+            'Tighter spacing', 
+            <div className="flex items-center"><ArrowDownUp size={12} className="mr-0.5" />−</div>
+          )}
           <span className="text-xs w-9 text-center tabular-nums hidden sm:block" style={{ color: tc.text, opacity: 0.45 }}>{lineHeight}</span>
-          {mkBtn(() => setLineHeight(h => Math.min(lineHeightMax, parseFloat((h + 0.1).toFixed(1)))), lineHeight >= lineHeightMax, 'Looser spacing', '↕+')}
+          {mkBtn(
+            () => setLineHeight(h => Math.min(lineHeightMax, parseFloat((h + 0.1).toFixed(1)))), 
+            lineHeight >= lineHeightMax, 
+            'Looser spacing', 
+            <div className="flex items-center"><ArrowDownUp size={12} className="mr-0.5" />+</div>
+          )}
         </div>
 
         {sep}
@@ -616,11 +638,11 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
       {/* ── Bottom status bar ── */}
       {!isDiagramFullscreen && (
       <div
-        className="flex-shrink-0 flex items-center justify-between px-5 py-1.5 text-xs select-none"
+        className="flex-shrink-0 flex items-center justify-between px-5 py-1.5 text-xs select-none gap-2"
         style={{ borderTop: `1px solid ${tc.border}`, color: tc.text, opacity: 0.4, backgroundColor: tc.subtleBg }}
       >
-        <span>{post.title}</span>
-        <span>{Math.round(readProgress * 100)}% · {post.readingTime} min read</span>
+        <span className="truncate min-w-0 flex-1 pr-2" title={post.title}>{post.title}</span>
+        <span className="flex-shrink-0 whitespace-nowrap">{Math.round(readProgress * 100)}% · {post.readingTime} min read</span>
       </div>
       )}
     </motion.div>

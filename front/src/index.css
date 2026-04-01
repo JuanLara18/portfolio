@@ -427,9 +427,18 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 .reading-mode-active pre,
 .reading-mode-active code[class*="language-"],
 .reading-mode-active article pre,
-.reading-mode-active article code[class*="language-"] {
-  font-size: 0.84em !important;
+.reading-mode-active article code[class*="language-"],
+.reading-mode-active code:not([class*="language-"]) {
+  font-size: calc(var(--rm-font-size, 16px) * 0.85) !important;
   line-height: 1.5 !important;
+}
+
+/* Scale Mermaid diagrams proportionally in reading mode */
+.reading-mode-active .mermaid-diagram .node text,
+.reading-mode-active .mermaid-diagram .edgeLabel,
+.reading-mode-active .mermaid-diagram .messageText,
+.reading-mode-active .mermaid-diagram .mermaid-gantt-title {
+  font-size: calc(var(--rm-font-size, 16px) * 0.75) !important;
 }
 
 /* Content helpers */
