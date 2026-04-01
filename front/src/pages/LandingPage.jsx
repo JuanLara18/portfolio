@@ -407,10 +407,10 @@ export default function LandingPage() {
             {/* Pillar 1: Research */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
-              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
+              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 dark:from-blue-900/60 dark:to-blue-800/20 dark:text-blue-400 mb-6 shadow-sm transform group-hover:scale-110 transition-transform duration-500 relative z-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent opacity-0 group-hover:opacity-100 dark:from-transparent dark:to-transparent dark:group-hover:from-blue-900/12 dark:group-hover:to-transparent transition-opacity duration-500 pointer-events-none"></div>
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 dark:from-blue-950/80 dark:to-blue-950/40 dark:text-blue-400 mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10">
                 <BrainCircuit size={32} strokeWidth={1.5} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Applied Research</h3>
@@ -422,10 +422,10 @@ export default function LandingPage() {
             {/* Pillar 2: Engineering */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
-              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
+              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-900/60 dark:to-indigo-800/20 dark:text-indigo-400 mb-6 shadow-sm transform group-hover:scale-110 transition-transform duration-500 relative z-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-transparent opacity-0 group-hover:opacity-100 dark:from-transparent dark:to-transparent dark:group-hover:from-indigo-900/12 dark:group-hover:to-transparent transition-opacity duration-500 pointer-events-none"></div>
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-950/80 dark:to-indigo-950/40 dark:text-indigo-400 mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10">
                 <Server size={32} strokeWidth={1.5} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Scalable Engineering</h3>
@@ -437,10 +437,10 @@ export default function LandingPage() {
             {/* Pillar 3: ROI */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
-              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
+              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-900/60 dark:to-green-800/20 dark:text-green-400 mb-6 shadow-sm transform group-hover:scale-110 transition-transform duration-500 relative z-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50/30 to-transparent opacity-0 group-hover:opacity-100 dark:from-transparent dark:to-transparent dark:group-hover:from-green-900/12 dark:group-hover:to-transparent transition-opacity duration-500 pointer-events-none"></div>
+              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-950/80 dark:to-green-950/40 dark:text-green-400 mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10">
                 <TrendingUp size={32} strokeWidth={1.5} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Business Impact</h3>
