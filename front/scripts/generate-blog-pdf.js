@@ -27,16 +27,15 @@
 
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 const matter = require('gray-matter');
 
-let PDFDocument, SVGtoPDF, hljs, htmlEntities;
+let PDFDocument, hljs, htmlEntities;
 let mathjax, TeX, SVG, liteAdaptor, RegisterHTMLHandler;
 try {
   PDFDocument = require('pdfkit');
-  SVGtoPDF = require('svg-to-pdfkit');
   hljs = require('highlight.js');
   htmlEntities = require('html-entities');
-  
   const mj = require('mathjax-full/js/mathjax.js');
   mathjax = mj.mathjax;
   TeX = require('mathjax-full/js/input/tex.js').TeX;
@@ -44,12 +43,12 @@ try {
   liteAdaptor = require('mathjax-full/js/adaptors/liteAdaptor.js').liteAdaptor;
   RegisterHTMLHandler = require('mathjax-full/js/handlers/html.js').RegisterHTMLHandler;
 } catch (e) {
-  console.error('Missing dependencies. Run: npm install --save-dev pdfkit svg-to-pdfkit mathjax-full html-entities');
+  console.error('Missing dependencies. Run: npm install --save-dev pdfkit mathjax-full html-entities sharp');
   console.error(e);
   process.exit(1);
 }
 
-// Initialize MathJax
+// ─── MathJax init ─────────────────────────────────────────────────────────────
 const adaptor = liteAdaptor();
 RegisterHTMLHandler(adaptor);
 const texInput = new TeX({ packages: ['base', 'ams'] });
@@ -61,9 +60,158 @@ function renderMathSVG(mathStr, display) {
     const node = htmlMath.convert(mathStr, { display });
     return adaptor.innerHTML(node);
   } catch (e) {
-    console.error('MathJax error:', e);
     return null;
   }
+}
+
+// Rasterize MathJax SVG with sharp — svg-to-pdfkit mis-handles MathJax (black bars).
+let G_MATH_DISPLAY = new Map();
+let G_MATH_INLINE = new Map();
+
+function sanitizeSvgXmlForSharp(svg) {
+  // libxml2 (used by sharp/librsvg) rejects bare "&" in SVG; MathJax sometimes emits them.
+  return svg.replace(
+    /&(?!#(?:[0-9]+|[xX][0-9a-fA-F]+);|(?:amp|lt|gt|quot|apos);)/g,
+    '&amp;',
+  );
+}
+
+async function rasterizeMathSvg(svgString, maxWidthPx) {
+  const sharp = require('sharp');
+  let svg = svgString.replace(/currentColor/g, '#1a1a1a');
+  svg = sanitizeSvgXmlForSharp(svg);
+  svg = svg.replace(/(<svg[^>]*>)/, '$1<rect width="100%" height="100%" fill="#ffffff"/>');
+  return sharp(Buffer.from(svg, 'utf8'))
+    .resize({ width: maxWidthPx, height: null, fit: 'inside', withoutEnlargement: true })
+    .trim({ threshold: 10, background: { r: 255, g: 255, b: 255, alpha: 1 } })
+    .png({ compressionLevel: 6 })
+    .toBuffer();
+}
+
+async function prerenderMath(posts) {
+  const display = new Set();
+  const inline = new Set();
+  for (const post of posts) {
+    for (const t of tokenizeBlocks(post.content)) {
+      if (t.type === 'math') display.add(t.text.trim());
+    }
+    const noBlock = post.content.replace(/\$\$[\s\S]*?\$\$/g, '');
+    const re = /\$([^$]+)\$/g;
+    let m;
+    while ((m = re.exec(noBlock)) !== null) {
+      const s = m[1].trim();
+      if (s) inline.add(s);
+    }
+  }
+  const displayMap = new Map();
+  const inlineMap = new Map();
+  if (display.size || inline.size) {
+    console.log(`  Rasterizing ${display.size} display + ${inline.size} inline math expression(s)...`);
+  }
+  for (const s of display) {
+    const svg = renderMathSVG(s, true);
+    if (svg) {
+      try {
+        displayMap.set(s, await rasterizeMathSvg(svg, 2000));
+      } catch (e) {
+        console.warn(`  ⚠ Display math rasterize failed: ${e.message}`);
+      }
+    }
+  }
+  for (const s of inline) {
+    const svg = renderMathSVG(s, false);
+    if (svg) {
+      try {
+        inlineMap.set(s, await rasterizeMathSvg(svg, 520));
+      } catch (e) {
+        console.warn(`  ⚠ Inline math rasterize failed: ${e.message}`);
+      }
+    }
+  }
+  return { display: displayMap, inline: inlineMap };
+}
+
+// ─── Mermaid via Kroki.io ─────────────────────────────────────────────────────
+const MERMAID_CACHE_DIR = path.join(__dirname, '..', 'output', '.mermaid-cache');
+
+function mermaidCacheKey(code) {
+  // Simple hash for the cache filename
+  let h = 0;
+  for (let i = 0; i < code.length; i++) { h = (Math.imul(31, h) + code.charCodeAt(i)) | 0; }
+  return Math.abs(h).toString(36);
+}
+
+// Fetch a Mermaid diagram as a PNG buffer directly from Kroki's /mermaid/png endpoint.
+// Kroki renders with a headless browser, so foreignObject HTML labels render correctly.
+async function fetchMermaidPNG(code) {
+  fs.mkdirSync(MERMAID_CACHE_DIR, { recursive: true });
+  const key = mermaidCacheKey(code);
+  const pngCachePath = path.join(MERMAID_CACHE_DIR, `${key}.png`);
+
+  if (fs.existsSync(pngCachePath)) {
+    return fs.readFileSync(pngCachePath);
+  }
+
+  const body = Buffer.from(code, 'utf8');
+  return new Promise((resolve) => {
+    const req = https.request(
+      {
+        hostname: 'kroki.io',
+        path: '/mermaid/png',
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain', 'Content-Length': body.length },
+        timeout: 30000,
+      },
+      (res) => {
+        const chunks = [];
+        res.on('data', (d) => chunks.push(d));
+        res.on('end', () => {
+          if (res.statusCode === 200) {
+            const png = Buffer.concat(chunks);
+            fs.writeFileSync(pngCachePath, png);
+            resolve(png);
+          } else {
+            console.warn(`  ⚠ Kroki ${res.statusCode}: ${Buffer.concat(chunks).toString('utf8').slice(0, 120)}`);
+            resolve(null);
+          }
+        });
+      }
+    );
+    req.on('error', (e) => { console.warn(`  ⚠ Mermaid fetch failed: ${e.message}`); resolve(null); });
+    req.on('timeout', () => { req.destroy(); console.warn('  ⚠ Mermaid fetch timed out'); resolve(null); });
+    req.write(body);
+    req.end();
+  });
+}
+
+async function prerenderMermaid(posts) {
+  // cache stores PNG Buffers keyed by diagram source code
+  const cache = new Map();
+  const allCodes = [];
+  for (const post of posts) {
+    for (const token of tokenizeBlocks(post.content)) {
+      if (token.type === 'code' && token.lang === 'mermaid'
+          && !cache.has(token.text) && !allCodes.includes(token.text)) {
+        allCodes.push(token.text);
+      }
+    }
+  }
+  if (!allCodes.length) return cache;
+
+  console.log(`  Rendering ${allCodes.length} Mermaid diagram(s) via Kroki.io...`);
+  fs.mkdirSync(MERMAID_CACHE_DIR, { recursive: true });
+
+  for (const code of allCodes) {
+    // Fetch PNG directly from Kroki (handles caching internally)
+    try {
+      const png = await fetchMermaidPNG(code);
+      cache.set(code, png || null);
+    } catch (e) {
+      console.warn(`  ⚠ Mermaid fetch failed: ${e.message}`);
+      cache.set(code, null);
+    }
+  }
+  return cache;
 }
 
 // ─── Paths ─────────────────────────────────────────────────────────────────────
@@ -336,39 +484,206 @@ function ensure(doc, pts = 80) {
   if (doc.y + pts > doc.page.height - M.bottom) doc.addPage();
 }
 
-/** Render inline-formatted text at the current doc.y position. */
+/** Split `$...$` inside a styled segment (paragraphs, lists, etc.). */
+function expandSegsWithMath(segs) {
+  const out = [];
+  for (const seg of segs) {
+    if (!seg.t) continue;
+    const re = /\$([^$]+)\$/g;
+    let last = 0;
+    let m;
+    let found = false;
+    while ((m = re.exec(seg.t)) !== null) {
+      found = true;
+      if (m.index > last) {
+        const chunk = seg.t.slice(last, m.index);
+        if (chunk) out.push({ ...seg, t: chunk });
+      }
+      const lx = m[1].trim();
+      if (lx) out.push({ math: true, latex: lx });
+      last = m.index + m[0].length;
+    }
+    if (!found) out.push(seg);
+    else if (last < seg.t.length) out.push({ ...seg, t: seg.t.slice(last) });
+  }
+  return out.filter((s) => s.math || (s.t && s.t.length));
+}
+
+function segWords(seg) {
+  if (seg.math) return [seg];
+  if (!seg.t) return [];
+  return seg.t.split(/(\s+)/).filter((w) => w.length);
+}
+
+function measureItemWidth(doc, item, size, color) {
+  if (item.math) {
+    const buf = G_MATH_INLINE.get(item.latex);
+    if (!buf) {
+      doc.font(F.m).fontSize(size - 1);
+      return doc.widthOfString(`$${item.latex ?? ''}$`);
+    }
+    const info = doc.openImage(buf);
+    const h = size * 1.15;
+    return (info.width / info.height) * h + 1;
+  }
+  const chunk = item.t != null ? String(item.t) : '';
+  if (!chunk) return 0;
+  if (item.code) {
+    doc.font(F.m).fontSize(size - 1).fillColor(C.code);
+  } else if (item.link) {
+    doc.font(F.b).fontSize(size).fillColor(C.link);
+  } else {
+    const font = item.bold && item.italic ? F.bi : item.bold ? F.B : item.italic ? F.i : F.b;
+    doc.font(font).fontSize(size).fillColor(color);
+  }
+  return doc.widthOfString(chunk);
+}
+
+function drawLineItems(doc, items, x, y, size, color, maxW) {
+  let cx = x;
+  for (const it of items) {
+    if (!it) continue;
+    if (it.math) {
+      const buf = G_MATH_INLINE.get(it.latex);
+      if (buf) {
+        const info = doc.openImage(buf);
+        const h = size * 1.15;
+        const iw = (info.width / info.height) * h;
+        doc.image(buf, cx, y - size * 0.78, { width: iw, height: h });
+        cx += iw + 1;
+      } else {
+        doc.font(F.m).fontSize(size - 1).fillColor(C.code);
+        doc.text(`$${it.latex}$`, cx, y, {
+          lineBreak: false,
+          align: 'left',
+          width: Math.max(40, maxW - (cx - x)),
+        });
+        cx = doc.x;
+      }
+    } else if (it.code) {
+      const t = it.t != null ? String(it.t) : '';
+      if (!t) continue;
+      doc.font(F.m).fontSize(size - 1).fillColor(C.code);
+      // No `width`: LineWrapper + inherited align (e.g. right) would shift glyphs off-page.
+      doc.text(t, cx, y, { lineBreak: false, align: 'left' });
+      cx = doc.x;
+    } else if (it.link) {
+      const t = it.t != null ? String(it.t) : '';
+      if (!t) continue;
+      doc.font(F.b).fontSize(size).fillColor(C.link);
+      doc.text(t, cx, y, {
+        lineBreak: false,
+        align: 'left',
+        link: it.link,
+        underline: true,
+      });
+      cx = doc.x;
+    } else {
+      const t = it.t != null ? String(it.t) : '';
+      if (!t) continue;
+      const font = it.bold && it.italic ? F.bi : it.bold ? F.B : it.italic ? F.i : F.b;
+      doc.font(font).fontSize(size).fillColor(color);
+      doc.text(t, cx, y, { lineBreak: false, align: 'left' });
+      cx = doc.x;
+    }
+  }
+}
+
+/** Render inline-formatted text at the current doc.y position (incl. `$...$` via PNG). */
 function renderInline(doc, text, opts = {}) {
   const segs = tokenizeInline(text);
   if (!segs.length) return;
 
-  const { size = S.body, color = C.body, align, indent = 0 } = opts;
-  const x = M.left + indent;
-  const w = cw(doc) - indent;
+  const { size = S.body, color = C.body, indent = 0 } = opts;
+  const x0 = M.left + indent;
+  const maxW = cw(doc) - indent;
 
-  segs.forEach((seg, i) => {
-    const last = i === segs.length - 1;
-    const o = { continued: !last, width: w, lineGap: 5 };
-    if (i === 0 && align) o.align = align;
+  const expanded = expandSegsWithMath(segs);
+  const items = expanded.flatMap(segWords);
+  if (!items.length) return;
 
-    if (seg.code) {
-      doc.font(F.m).fontSize(size - 1).fillColor(C.code);
-      o.underline = false;
-    } else if (seg.link) {
-      doc.font(F.b).fontSize(size).fillColor(C.link);
-      o.link = seg.link;
-      o.underline = true;
-    } else {
-      const font = seg.bold && seg.italic ? F.bi : seg.bold ? F.B : seg.italic ? F.i : F.b;
-      doc.font(font).fontSize(size).fillColor(color);
-      o.underline = false;
+  const lines = [];
+  let cur = [];
+  let lineW = 0;
+
+  for (const it of items) {
+    if (!it) continue;
+    const w = measureItemWidth(doc, it, size, color);
+    const onlyWs = it.t != null && /^\s+$/.test(String(it.t));
+    if (onlyWs && !cur.length) continue;
+
+    if (lineW + w > maxW && cur.length) {
+      if (onlyWs) continue;
+      lines.push(cur);
+      cur = [];
+      lineW = 0;
     }
+    cur.push(it);
+    lineW += w;
+  }
+  if (cur.length) lines.push(cur);
 
-    if (i === 0) {
-      doc.text(seg.t, x, doc.y, o);
+  doc.font(F.b).fontSize(size).fillColor(color);
+  const lineHeight = doc.currentLineHeight() + 5;
+  for (const line of lines) {
+    ensure(doc, lineHeight + 8);
+    drawLineItems(doc, line, x0, doc.y, size, color, maxW);
+    doc.y += lineHeight;
+  }
+}
+
+function splitTableCellMathParts(cell) {
+  const parts = [];
+  const re = /\$([^$]+)\$/g;
+  let last = 0;
+  let m;
+  while ((m = re.exec(cell)) !== null) {
+    if (m.index > last) parts.push({ k: 't', s: cell.slice(last, m.index) });
+    parts.push({ k: 'm', latex: m[1].trim() });
+    last = m.index + m[0].length;
+  }
+  if (last < cell.length) parts.push({ k: 't', s: cell.slice(last) });
+  if (!parts.length) parts.push({ k: 't', s: cell });
+  return parts;
+}
+
+function renderTableCellWithMath(doc, cell, x, y, maxInnerW, isHeader) {
+  const fs = S.body - 0.5;
+  let cx = x;
+  for (const p of splitTableCellMathParts(cell)) {
+    if (p.k === 't') {
+      const t = stripInline(p.s);
+      if (!t) continue;
+      doc.font(isHeader ? F.B : F.b).fontSize(fs).fillColor(C.body);
+      doc.text(t, cx, y, {
+        lineBreak: false,
+        align: 'left',
+        width: Math.max(24, x + maxInnerW - cx),
+      });
+      cx = doc.x;
     } else {
-      doc.text(seg.t, o);
+      const buf = G_MATH_INLINE.get(p.latex);
+      if (buf) {
+        const info = doc.openImage(buf);
+        const h = fs * 1.12;
+        let iw = (info.width / info.height) * h;
+        const room = x + maxInnerW - cx - 2;
+        if (iw > room) iw = Math.max(4, room);
+        const ih = (info.height / info.width) * iw;
+        doc.image(buf, cx, y - fs * 0.72, { width: iw, height: ih });
+        cx += iw + 2;
+      } else {
+        doc.font(F.m).fontSize(fs).fillColor(C.body);
+        doc.text(`$${p.latex}$`, cx, y, {
+          lineBreak: false,
+          align: 'left',
+          width: Math.max(24, x + maxInnerW - cx),
+        });
+        cx = doc.x;
+      }
     }
-  });
+    if (cx > x + maxInnerW) break;
+  }
 }
 
 // ─── Block Renderers ───────────────────────────────────────────────────────────
@@ -396,18 +711,43 @@ function renderBlock(doc, token) {
       const pad = 14;
       const w = cw(doc);
       const isMermaid = token.lang === 'mermaid';
-      const display = isMermaid ? '[Mermaid diagram — see online version]' : token.text;
+      // Strip carriage returns (Windows line endings produce a visible glyph in PDFKit)
+      const display = isMermaid ? null : token.text.replace(/\r/g, '');
 
-      // Tokenize the code using highlight.js manually if available
+      if (isMermaid) {
+        const pngBuf = token._png;
+        if (pngBuf) {
+          const info = doc.openImage(pngBuf);
+          const ratio = info.height / info.width;
+          const maxPageH = doc.page.height - M.top - M.bottom;
+          let imgW = cw(doc);
+          let imgH = imgW * ratio;
+          if (imgH > maxPageH) {
+            imgH = maxPageH;
+            imgW = imgH / ratio;
+          }
+          ensure(doc, imgH + 14);
+          const y0 = doc.y;
+          const xImg = M.left + (cw(doc) - imgW) / 2;
+          doc.image(pngBuf, xImg, y0, { width: imgW, height: imgH });
+          doc.y = y0 + imgH + 14;
+        } else {
+          ensure(doc, 40);
+          doc.font(F.i).fontSize(S.body).fillColor(C.muted)
+            .text('[Mermaid diagram — available in the online version]', M.left, doc.y, { width: w, align: 'center' });
+          doc.y += 36;
+        }
+        break;
+      }
+
+      // ── Syntax-highlighted code block ──────────────────────────────────────
       let lines = [];
-      if (!isMermaid && token.lang && hljs.getLanguage(token.lang)) {
+      if (token.lang && hljs.getLanguage(token.lang)) {
         const highlighted = hljs.highlight(display, { language: token.lang }).value;
-        // Basic nested span tokenizer
         const tagRegex = /<\/?span[^>]*>|[^<]+/g;
         let match;
         let classes = [];
         let currentTokens = [];
-        
         while ((match = tagRegex.exec(highlighted)) !== null) {
           const str = match[0];
           if (str.startsWith('<span')) {
@@ -417,12 +757,8 @@ function renderBlock(doc, token) {
             classes.pop();
           } else {
             const text = htmlEntities.decode(str);
-            const linesSplit = text.split('\n');
-            linesSplit.forEach((l, idx) => {
-              if (idx > 0) {
-                lines.push(currentTokens);
-                currentTokens = [];
-              }
+            text.split('\n').forEach((l, idx) => {
+              if (idx > 0) { lines.push(currentTokens); currentTokens = []; }
               if (l) currentTokens.push({ text: l, classes: [...classes] });
             });
           }
@@ -431,64 +767,52 @@ function renderBlock(doc, token) {
       } else {
         lines = display.split('\n').map(l => [{ text: l, classes: [] }]);
       }
+      // Remove trailing empty lines
+      while (lines.length && !lines[lines.length - 1].length) lines.pop();
 
-      // Calculate total height needed
       doc.font(F.m).fontSize(S.code);
-      const lineHeight = doc.currentLineHeight() + 2;
-      const topBarH = 28;
-      const boxH = topBarH + (lines.length * lineHeight) + pad;
+      const lineH = doc.currentLineHeight() + 3;
+      const boxH = (lines.length * lineH) + pad * 2;
 
       ensure(doc, boxH + 20);
       const y0 = doc.y;
 
+      // Light background + subtle border (GitHub-style)
       doc.save();
-      // Main dark background
-      doc.roundedRect(M.left, y0, w, boxH, 6).fill('#1e1e1e');
-      // Top bar
-      doc.roundedRect(M.left, y0, w, topBarH, 6).fill('#2d2d2d');
-      // Fix bottom corners of top bar by drawing a sharp rectangle
-      doc.rect(M.left, y0 + topBarH - 6, w, 6).fill('#2d2d2d');
-      
-      // MacOS traffic lights
-      doc.circle(M.left + 20, y0 + 14, 4.5).fill('#ff5f56');
-      doc.circle(M.left + 36, y0 + 14, 4.5).fill('#ffbd2e');
-      doc.circle(M.left + 52, y0 + 14, 4.5).fill('#27c93f');
+      doc.roundedRect(M.left, y0, w, boxH, 4).fill('#f6f8fa');
+      doc.roundedRect(M.left, y0, w, boxH, 4).lineWidth(0.75).stroke('#d0d7de');
       doc.restore();
 
-      // Language label
-      if (token.lang && !isMermaid) {
-        doc.font(F.B).fontSize(7).fillColor('#858585')
-          .text(token.lang.toUpperCase(), M.left + w - pad - 60, y0 + 10, { width: 60, align: 'right' });
+      // Language label — small, right-aligned, muted
+      if (token.lang) {
+        doc.font(F.b).fontSize(7).fillColor('#57606a')
+          .text(token.lang.toLowerCase(), M.left + pad, y0 + pad * 0.6,
+                { width: w - pad * 2, align: 'right', lineBreak: false });
       }
 
-      // Render lines
-      let curY = y0 + topBarH + 8;
+      // Code lines with GitHub-light syntax colours
+      let curY = y0 + pad;
       lines.forEach((lineTokens) => {
         let curX = M.left + pad;
         lineTokens.forEach((tok) => {
-          // Very basic color mapping based on One Dark / VS Code dark theme
-          let color = '#d4d4d4'; // default
+          let color = '#24292f'; // default: near-black body text
           const c = tok.classes.join(' ');
-          if (c.includes('keyword')) color = '#c586c0';
-          else if (c.includes('string')) color = '#ce9178';
-          else if (c.includes('number')) color = '#b5cea8';
-          else if (c.includes('title.function') || c.includes('function') || c.includes('title.class.inherited')) color = '#dcdcaa';
-          else if (c.includes('comment')) color = '#6a9955';
-          else if (c.includes('title.class') || c.includes('class')) color = '#4ec9b0';
-          else if (c.includes('variable') || c.includes('attr')) color = '#9cdcfe';
-          else if (c.includes('built_in')) color = '#4ec9b0';
-          else if (c.includes('literal')) color = '#569cd6';
-          else if (c.includes('property')) color = '#9cdcfe';
-          else if (c.includes('tag')) color = '#569cd6';
-          else if (c.includes('name')) color = '#569cd6';
-          
+          if      (c.includes('keyword'))                               color = '#cf222e'; // red
+          else if (c.includes('string'))                                color = '#0a3069'; // dark blue
+          else if (c.includes('comment'))                               color = '#6e7781'; // gray
+          else if (c.includes('number') || c.includes('literal'))      color = '#0550ae'; // blue
+          else if (c.includes('title.function') || c.includes('function')) color = '#6639ba'; // purple
+          else if (c.includes('title.class') || c.includes('class'))   color = '#953800'; // brown
+          else if (c.includes('built_in'))                              color = '#0550ae'; // blue
+          else if (c.includes('variable') || c.includes('attr'))       color = '#116329'; // green
+          else if (c.includes('property'))                              color = '#0550ae'; // blue
+          else if (c.includes('tag'))                                   color = '#116329'; // green
           doc.font(F.m).fontSize(S.code).fillColor(color);
-          // If text contains tabs, replace with 2 spaces to avoid PDFKit positioning bugs
           const cleanText = tok.text.replace(/\t/g, '  ');
           doc.text(cleanText, curX, curY, { lineBreak: false });
           curX += doc.widthOfString(cleanText);
         });
-        curY += lineHeight;
+        curY += lineH;
       });
 
       doc.y = y0 + boxH + 16;
@@ -552,29 +876,24 @@ function renderBlock(doc, token) {
       break;
 
     case 'math': {
-      ensure(doc, 40);
-      const mathSVG = renderMathSVG(token.text, true);
-      if (mathSVG) {
-        // MathJax uses `ex` units for size. 1ex ≈ 6pt for a 12pt font.
-        const exToPt = 6;
-        const wMatch = mathSVG.match(/width="([^"]+)ex"/);
-        const hMatch = mathSVG.match(/height="([^"]+)ex"/);
-        const svgW = wMatch ? parseFloat(wMatch[1]) * exToPt : 100;
-        const svgH = hMatch ? parseFloat(hMatch[1]) * exToPt : 30;
-
-        ensure(doc, svgH + 20);
-        
-        // Add a slight dark background to make math pop, similar to math blocks in dark mode
+      const key = token.text.trim();
+      const pngBuf = G_MATH_DISPLAY.get(key);
+      if (pngBuf) {
+        const info = doc.openImage(pngBuf);
+        const maxW = cw(doc);
+        const maxH = doc.page.height - M.top - M.bottom;
+        let drawW = maxW;
+        let drawH = (info.height / info.width) * drawW;
+        if (drawH > maxH * 0.92) {
+          drawH = maxH * 0.92;
+          drawW = (info.width / info.height) * drawH;
+        }
+        ensure(doc, drawH + 10);
         const y0 = doc.y;
-        doc.save();
-        doc.roundedRect(M.left, y0, cw(doc), svgH + 16, 4).fill('#f8fafc');
-        doc.restore();
-
-        const xOffset = Math.max(M.left + 10, M.left + (cw(doc) - svgW) / 2);
-        SVGtoPDF(doc, mathSVG, xOffset, y0 + 8, { width: svgW, height: svgH, preserveAspectRatio: 'xMidYMin meet' });
-        doc.y = y0 + svgH + 24;
+        const x0 = M.left + (cw(doc) - drawW) / 2;
+        doc.image(pngBuf, x0, y0, { width: drawW, height: drawH });
+        doc.y = y0 + drawH + 12;
       } else {
-        // Fallback to text
         doc.font(F.m).fontSize(S.code).fillColor(C.body)
           .text(token.text, M.left + 20, doc.y, { width: cw(doc) - 40, align: 'center', lineGap: 1.5 });
         doc.moveDown(0.5);
@@ -599,14 +918,20 @@ function renderBlock(doc, token) {
         let maxH = 12;
         row.forEach((cell) => {
           doc.font(isHeader ? F.B : F.b).fontSize(S.body - 0.5);
-          const h = doc.heightOfString(stripInline(cell), { width: colW - 8 });
+          let h = doc.heightOfString(stripInline(cell), { width: colW - 8 });
+          if (cell.includes('$')) h = Math.max(h, (S.body - 0.5) * 1.35);
           if (h > maxH) maxH = h;
         });
 
-        // Render cells
         row.forEach((cell, ci) => {
-          doc.font(isHeader ? F.B : F.b).fontSize(S.body - 0.5).fillColor(C.body)
-            .text(stripInline(cell), M.left + ci * colW + 4, y0, { width: colW - 8 });
+          const xCell = M.left + ci * colW + 4;
+          const innerW = colW - 8;
+          if (cell.includes('$')) {
+            renderTableCellWithMath(doc, cell, xCell, y0, innerW, isHeader);
+          } else {
+            doc.font(isHeader ? F.B : F.b).fontSize(S.body - 0.5).fillColor(C.body)
+              .text(stripInline(cell), xCell, y0, { width: innerW });
+          }
         });
 
         doc.y = y0 + maxH + 4;
@@ -629,35 +954,77 @@ function renderBlock(doc, token) {
 
 // ─── Page Builders ─────────────────────────────────────────────────────────────
 
-function addCover(doc, totalPosts, totalCats) {
+function addCover(doc, posts, totalCats) {
   doc.addPage();
   const pw = doc.page.width;
   const ph = doc.page.height;
 
-  doc.rect(0, 0, pw, ph).fill(C.dark);
+  // ── Image grid collage ────────────────────────────────────────────────────
+  const HEADERS_DIR = path.join(__dirname, '..', 'public', 'blog', 'headers');
+  const imgPaths = posts
+    .filter(p => p.headerImage)
+    .map(p => {
+      const name = path.basename(p.headerImage);
+      const jpgName = name.replace(/\.(webp)$/, '.jpg');
+      const full = path.join(HEADERS_DIR, jpgName);
+      return fs.existsSync(full) ? full : null;
+    })
+    .filter(Boolean);
 
-  // Accent line
-  doc.rect(M.left, ph * 0.36, 60, 3).fill(C.accent);
+  if (imgPaths.length) {
+    const cols = Math.ceil(Math.sqrt(imgPaths.length * (pw / ph)));
+    const rows = Math.ceil(imgPaths.length / cols);
+    const cellW = pw / cols;
+    const cellH = ph / rows;
 
-  // Title
+    imgPaths.forEach((imgPath, idx) => {
+      const col = idx % cols;
+      const row = Math.floor(idx / cols);
+      try {
+        doc.image(imgPath, col * cellW, row * cellH, {
+          width: cellW + 1,   // +1 px to avoid hairline gaps
+          height: cellH + 1,
+          cover: [cellW + 1, cellH + 1],
+        });
+      } catch (_) { /* skip unreadable images silently */ }
+    });
+  }
+
+  // ── Dark gradient overlay ─────────────────────────────────────────────────
+  doc.save();
+  doc.rect(0, 0, pw, ph).fill('#0a0f1a');
+  doc.restore();
+  // We fake opacity via fillOpacity
+  doc.save();
+  doc.fillOpacity(0.68);
+  doc.rect(0, 0, pw, ph).fill('#0a0f1a');
+  doc.fillOpacity(1);
+  doc.restore();
+
+  // ── Text ──────────────────────────────────────────────────────────────────
+  const textY = ph * 0.36;
+
+  // Accent bar
+  doc.rect(M.left, textY, 56, 3).fill(C.accent);
+
   doc.font(F.h).fontSize(S.coverTitle).fillColor(C.white)
-    .text('Blog Compilation', M.left, ph * 0.36 + 18, { width: cw(doc) });
+    .text('Blog Compilation', M.left, textY + 18, { width: pw - M.left * 2 });
 
-  doc.moveDown(0.5);
-  doc.font(F.b).fontSize(S.coverSub).fillColor(C.muted)
+  doc.moveDown(0.6);
+  doc.font(F.b).fontSize(S.coverSub).fillColor('#94a3b8')
     .text(
       'A curated collection of technical articles on AI engineering,\nresearch, and mathematical curiosities.',
-      M.left, doc.y, { width: cw(doc), lineGap: 3 },
+      M.left, doc.y, { width: pw - M.left * 2, lineGap: 4 },
     );
 
-  doc.moveDown(2);
+  doc.moveDown(2.5);
   doc.font(F.B).fontSize(S.coverSub).fillColor(C.white).text('Juan Lara', M.left);
-  doc.font(F.b).fontSize(S.coverDate).fillColor(C.muted)
-    .text(`${totalPosts} articles  \u00B7  ${totalCats} categories`, M.left);
-
-  doc.moveDown(0.5);
+  doc.moveDown(0.4);
+  doc.font(F.b).fontSize(S.coverDate).fillColor('#64748b')
+    .text(`${posts.length} articles  \u00B7  ${totalCats} categories`, M.left);
+  doc.moveDown(0.4);
   const now = new Date();
-  doc.font(F.b).fontSize(S.coverDate).fillColor(C.muted)
+  doc.font(F.b).fontSize(S.coverDate).fillColor('#64748b')
     .text(
       `Generated ${now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
       M.left,
@@ -681,8 +1048,15 @@ function addCategoryDivider(doc, category) {
   }
 }
 
+function postDestId(post) {
+  return `post-${post.slug}`;
+}
+
 function addPostHeader(doc, post) {
   doc.addPage();
+
+  // Named destination for PDF navigation (TOC links target this)
+  doc.addNamedDestination(postDestId(post));
 
   doc.font(F.h).fontSize(S.postTitle).fillColor(C.heading)
     .text(post.title, M.left, M.top, { width: cw(doc), lineGap: 2 });
@@ -723,53 +1097,75 @@ function addPostHeader(doc, post) {
 function addToc(doc, tocPageIdx, entries) {
   doc.switchToPage(tocPageIdx);
   let y = M.top;
+  const W = cw(doc);
+  const pgNumW = 34;
+  const indent = 12;
+  const entryH = S.tocEntry + 8;  // row height
 
+  // Title
   doc.font(F.h).fontSize(20).fillColor(C.heading)
-    .text('Table of Contents', M.left, y, { width: cw(doc) });
-  y = doc.y + 24;
+    .text('Table of Contents', M.left, y, { width: W });
+  y = doc.y + 20;
 
   let currentCat = '';
   for (const entry of entries) {
+    // Category header
     if (entry.category !== currentCat) {
       currentCat = entry.category;
-      if (y + 36 > doc.page.height - M.bottom) {
-        doc.addPage();
-        y = M.top;
+      const gap = currentCat === entries[0].category ? 0 : 18;
+      if (y + gap + 28 > doc.page.height - M.bottom) {
+        doc.addPage(); y = M.top;
       } else {
-        y += currentCat === entries[0].category ? 0 : 16;
+        y += gap;
       }
-      doc.font(F.B).fontSize(S.tocCat).fillColor(C.accent)
-        .text(CATEGORIES.labels[currentCat] || currentCat, M.left, y);
+      // Category label with accent left-bar
+      doc.save();
+      doc.rect(M.left, y, 3, 18).fill(C.accent);
+      doc.restore();
+      doc.font(F.B).fontSize(S.tocCat).fillColor(C.heading)
+        .text(CATEGORIES.labels[currentCat] || currentCat, M.left + 10, y, { width: W - 10 });
       y = doc.y + 8;
     }
 
-    if (y + 16 > doc.page.height - M.bottom) {
-      doc.addPage();
-      y = M.top;
+    // Overflow to new page
+    if (y + entryH > doc.page.height - M.bottom) {
+      doc.addPage(); y = M.top;
     }
 
-    const titleMaxW = cw(doc) - 60;
-    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.body);
-    
-    // Title
-    doc.text(entry.title, M.left + 10, y, { width: titleMaxW, lineBreak: false, ellipsis: true });
-    
-    // Page number
-    doc.font(F.B).fontSize(S.tocEntry).fillColor(C.muted)
-      .text(`${entry.page}`, M.left + cw(doc) - 30, y, { width: 30, align: 'right' });
-      
-    // Dot leaders
-    const titleW = doc.widthOfString(entry.title.length > 70 ? entry.title.slice(0, 70) + '...' : entry.title);
-    if (titleW < titleMaxW - 10) {
-      doc.font(F.b).fontSize(S.tocEntry).fillColor(C.hr)
-        .text('. '.repeat(50), M.left + 10 + titleW + 5, y, { width: titleMaxW - titleW - 10, lineBreak: false, ellipsis: true });
+    const titleMaxW = W - indent - pgNumW - 20;
+    const titleStr = entry.title.length > 78 ? entry.title.slice(0, 75) + '...' : entry.title;
+
+    // Clickable title text → jumps to named destination in PDF
+    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.body)
+      .text(titleStr, M.left + indent, y, {
+        width: titleMaxW,
+        lineBreak: false,
+        goTo: entry.destId,
+        underline: false,
+      });
+
+    // Dot leaders between title and page number
+    doc.font(F.b).fontSize(S.tocEntry).fillColor(C.hr);
+    const titleRenderedW = doc.widthOfString(titleStr);
+    const dotAreaX = M.left + indent + titleRenderedW + 6;
+    const dotAreaW = W - indent - pgNumW - titleRenderedW - 16;
+    if (dotAreaW > 10) {
+      doc.text('. '.repeat(80), dotAreaX, y, { width: dotAreaW, lineBreak: false, ellipsis: true });
     }
-    
-    y = Math.max(doc.y, y + 16);
+
+    // Page number (also a link)
+    doc.font(F.B).fontSize(S.tocEntry).fillColor(C.muted)
+      .text(`${entry.page}`, M.left + W - pgNumW, y, {
+        width: pgNumW,
+        align: 'right',
+        goTo: entry.destId,
+      });
+
+    y += entryH;
   }
 }
 
-function addHeadersAndFooters(doc, posts) {
+function addHeadersAndFooters(doc) {
   const range = doc.bufferedPageRange();
   for (let i = 1; i < range.count; i++) {
     doc.switchToPage(i);
@@ -798,7 +1194,7 @@ function addHeadersAndFooters(doc, posts) {
 
 // ─── Main ──────────────────────────────────────────────────────────────────────
 
-function main() {
+async function main() {
   console.log('Loading blog posts...');
   const posts = loadPosts();
   if (!posts.length) {
@@ -809,8 +1205,13 @@ function main() {
   const grouped = {};
   for (const p of posts) (grouped[p.category] ??= []).push(p);
   const catCount = Object.keys(grouped).length;
-
   console.log(`Found ${posts.length} posts in ${catCount} categories.\n`);
+
+  const mathMaps = await prerenderMath(posts);
+  G_MATH_DISPLAY = mathMaps.display;
+  G_MATH_INLINE = mathMaps.inline;
+
+  const mermaidCache = await prerenderMermaid(posts);
 
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
@@ -830,14 +1231,14 @@ function main() {
   const stream = fs.createWriteStream(OUTPUT_FILE);
   doc.pipe(stream);
 
-  // Cover
-  addCover(doc, posts.length, catCount);
+  // Cover with image collage
+  addCover(doc, posts, catCount);
 
-  // TOC placeholder (we'll fill it later with switchToPage)
+  // TOC placeholder page
   doc.addPage();
   const tocPageIdx = doc.bufferedPageRange().count - 1;
 
-  // Render all posts grouped by category
+  // Render all posts
   const tocEntries = [];
 
   for (const cat of CATEGORIES.order) {
@@ -849,18 +1250,24 @@ function main() {
     for (const post of catPosts) {
       addPostHeader(doc, post);
       const pageNum = doc.bufferedPageRange().count - 1;
-      tocEntries.push({ title: post.title, category: cat, page: pageNum });
+      tocEntries.push({ title: post.title, category: cat, page: pageNum, destId: postDestId(post) });
 
       console.log(`  [${cat}] ${post.title}`);
 
+      // Inject pre-rendered PNG buffers into mermaid tokens
       const tokens = tokenizeBlocks(post.content);
-      for (const t of tokens) renderBlock(doc, t);
+      for (const t of tokens) {
+        if (t.type === 'code' && t.lang === 'mermaid') {
+          t._png = mermaidCache.get(t.text) || null;
+        }
+        renderBlock(doc, t);
+      }
     }
   }
 
-  // Backfill TOC and add page numbers
+  // Backfill TOC and running headers/footers
   addToc(doc, tocPageIdx, tocEntries);
-  addHeadersAndFooters(doc, posts);
+  addHeadersAndFooters(doc);
 
   const totalPages = doc.bufferedPageRange().count;
   doc.end();
@@ -872,4 +1279,4 @@ function main() {
   });
 }
 
-main();
+main().catch((e) => { console.error(e); process.exit(1); });
