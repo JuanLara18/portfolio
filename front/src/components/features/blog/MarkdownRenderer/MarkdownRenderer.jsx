@@ -46,6 +46,61 @@ const normalizeMermaidChart = (chart) => {
     .replace(/\\n/g, '<br/>'); // literal backslash-n in labels → HTML line break
 };
 
+const MERMAID_RENDER_VERSION = 'label-bounds-v1';
+const MERMAID_LABEL_VERTICAL_PADDING = 8;
+
+const appendInlineStyle = (element, styleText) => {
+  if (!element || !styleText) return;
+
+  const existingStyle = element.getAttribute('style') || '';
+  const separator = existingStyle && !existingStyle.trim().endsWith(';') ? '; ' : '';
+  element.setAttribute('style', `${existingStyle}${separator}${styleText}`);
+};
+
+// Mermaid HTML labels are rendered inside <foreignObject> with a fixed height.
+// On some browsers and fonts that box ends up a few pixels short, clipping
+// descenders or the last line. Expand only those label boxes instead of
+// changing the global flowchart layout for every diagram.
+const expandMermaidLabelBounds = (svg) => {
+  if (typeof DOMParser === 'undefined' || typeof XMLSerializer === 'undefined') {
+    return svg;
+  }
+
+  try {
+    const doc = new DOMParser().parseFromString(svg, 'image/svg+xml');
+    const root = doc.documentElement;
+    if (!root || root.querySelector('parsererror')) {
+      return svg;
+    }
+
+    root.querySelectorAll('foreignObject').forEach((foreignObject) => {
+      if (!foreignObject.querySelector('div')) return;
+
+      const height = Number.parseFloat(foreignObject.getAttribute('height') || '');
+      const y = Number.parseFloat(foreignObject.getAttribute('y') || '');
+
+      if (Number.isFinite(height)) {
+        foreignObject.setAttribute('height', `${height + MERMAID_LABEL_VERTICAL_PADDING}`);
+      }
+
+      if (Number.isFinite(y)) {
+        foreignObject.setAttribute('y', `${y - (MERMAID_LABEL_VERTICAL_PADDING / 2)}`);
+      }
+
+      appendInlineStyle(foreignObject, 'overflow: visible;');
+
+      Array.from(foreignObject.children).forEach((child) => {
+        appendInlineStyle(child, 'overflow: visible;');
+      });
+    });
+
+    return new XMLSerializer().serializeToString(root);
+  } catch (error) {
+    console.warn('Failed to adjust Mermaid label bounds:', error);
+    return svg;
+  }
+};
+
 // Track the last theme key to avoid calling mermaid.initialize more than once
 // per theme change, even when many diagrams render simultaneously.
 let mermaidConfigKey = null;
@@ -486,7 +541,7 @@ const MermaidDiagram = memo(({ chart }) => {
   }
   
   // Cache key includes theme so both light/dark results are stored independently
-  const cacheKey = `${chartHash}-${isDarkMode ? 'dark' : 'light'}`;
+  const cacheKey = `${chartHash}-${isDarkMode ? 'dark' : 'light'}-${MERMAID_RENDER_VERSION}`;
   
   // Intersection Observer for lazy loading
   useEffect(() => {
@@ -540,12 +595,13 @@ const MermaidDiagram = memo(({ chart }) => {
         // Use unique ID for each render attempt
         const renderId = `${idRef.current}-${currentRenderCount}`;
         const { svg: renderedSvg } = await mermaid.render(renderId, normalizedChart);
+        const adjustedSvg = expandMermaidLabelBounds(renderedSvg);
         
         if (isCancelled) return;
         
         // Cache the result
-        addToCache(cacheKey, renderedSvg);
-        setSvg(renderedSvg);
+        addToCache(cacheKey, adjustedSvg);
+        setSvg(adjustedSvg);
       } catch (err) {
         if (isCancelled) return;
         console.error('Mermaid rendering error:', err);
