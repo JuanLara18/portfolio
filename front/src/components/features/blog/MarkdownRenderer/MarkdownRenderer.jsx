@@ -1,4 +1,5 @@
 import { memo, useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
@@ -286,7 +287,11 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = prev; };
+    window.dispatchEvent(new CustomEvent('mermaid-fullscreen-toggle', { detail: true }));
+    return () => { 
+      document.body.style.overflow = prev;
+      window.dispatchEvent(new CustomEvent('mermaid-fullscreen-toggle', { detail: false }));
+    };
   }, []);
 
   // Zoom by a multiplier factor, optionally centred on canvas point (cx, cy)
@@ -379,10 +384,19 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
         };
         return t;
       });
+      touchRef.current.dist = 0;
     } else if (e.touches.length === 2) {
       const dx = e.touches[0].clientX - e.touches[1].clientX;
       const dy = e.touches[0].clientY - e.touches[1].clientY;
       touchRef.current.dist = Math.hypot(dx, dy);
+      setTransform(t => {
+        dragStartRef.current = {
+          x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+          y: (e.touches[0].clientY + e.touches[1].clientY) / 2,
+          tx: t.x, ty: t.y,
+        };
+        return t;
+      });
     }
   }, []);
 
@@ -399,26 +413,50 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
       const dx = e.touches[0].clientX - e.touches[1].clientX;
       const dy = e.touches[0].clientY - e.touches[1].clientY;
       const dist = Math.hypot(dx, dy);
-      const factor = touchRef.current.dist > 0 ? dist / touchRef.current.dist : 1;
+      if (touchRef.current.dist > 0) {
+        const factor = dist / touchRef.current.dist;
+        if (!containerRef.current) return;
+        const rect = containerRef.current.getBoundingClientRect();
+        const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+        const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+        changeScale(factor, cx, cy);
+      }
       touchRef.current.dist = dist;
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
-      const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
-      changeScale(factor, cx, cy);
     }
   }, [changeScale]);
+
+  const handleTouchEnd = useCallback((e) => {
+    if (e.touches.length < 2) {
+      touchRef.current.dist = 0;
+    }
+    // If one finger remains, reset pan anchor to prevent jumping
+    if (e.touches.length === 1) {
+      setTransform(t => {
+        dragStartRef.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY,
+          tx: t.x,
+          ty: t.y,
+        };
+        return t;
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
     container.addEventListener('touchstart', handleTouchStart, { passive: false });
     container.addEventListener('touchmove', handleTouchMove, { passive: false });
+    container.addEventListener('touchend', handleTouchEnd);
+    container.addEventListener('touchcancel', handleTouchEnd);
     return () => {
       container.removeEventListener('touchstart', handleTouchStart);
       container.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('touchend', handleTouchEnd);
+      container.removeEventListener('touchcancel', handleTouchEnd);
     };
-  }, [handleTouchStart, handleTouchMove]);
+  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   // Theming helpers
   const bg = isDarkMode ? '#0f172a' : '#f1f5f9';
@@ -427,13 +465,13 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
     ? 'bg-gray-900 border-gray-700/80 text-gray-100'
     : 'bg-white border-gray-200 text-gray-900';
   const btnCls = isDarkMode
-    ? 'text-gray-300 hover:bg-white/10 hover:text-white'
-    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900';
+    ? 'text-gray-300 hover:bg-white/10 hover:text-white min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0'
+    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0';
   const dividerCls = isDarkMode ? 'bg-gray-700' : 'bg-gray-200';
   const zoomCls = isDarkMode ? 'text-gray-400' : 'text-gray-500';
   const hintCls = isDarkMode ? 'text-gray-600' : 'text-gray-400';
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[9999] flex flex-col" aria-modal="true" role="dialog">
       {/* ── Toolbar ── */}
       <div className={`flex items-center justify-between px-3 py-2 border-b flex-shrink-0 ${toolbarCls}`}>
@@ -492,6 +530,7 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
           cursor: isDragging ? 'grabbing' : 'grab',
           userSelect: 'none',
           WebkitUserSelect: 'none',
+          touchAction: 'none',
         }}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
@@ -513,7 +552,8 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
           dangerouslySetInnerHTML={{ __html: svg }}
         />
       </div>
-    </div>
+    </div>,
+    document.body
   );
 });
 
