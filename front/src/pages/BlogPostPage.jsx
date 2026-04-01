@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
@@ -105,7 +105,7 @@ const TableOfContents = ({ content }) => {
   };
   
   return (
-    <nav className="sticky top-24 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+    <nav className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
       <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
         <BookOpen size={16} className="mr-2" />
         Table of Contents
@@ -659,7 +659,45 @@ export default function BlogPostPage() {
   const [isReadingMode, setIsReadingMode] = useState(false);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
-  
+  const sidebarRef = useRef(null);
+
+  // Bidirectional sticky sidebar: adjusts `top` based on scroll direction so the
+  // whole sidebar travels with the page without needing its own scrollbar.
+  useEffect(() => {
+    const el = sidebarRef.current;
+    if (!el) return;
+
+    const TOP_OFFSET = 96;   // 6rem – gap below navbar
+    const BOTTOM_GAP = 24;   // breathing room at the bottom
+    let lastY = window.scrollY;
+    let curTop = TOP_OFFSET;
+    el.style.top = `${curTop}px`;
+
+    const recalc = () => {
+      const sidebarH = el.offsetHeight;
+      const vpH = window.innerHeight;
+      const sy = window.scrollY;
+      const delta = sy - lastY;
+
+      if (sidebarH <= vpH - TOP_OFFSET - BOTTOM_GAP) {
+        curTop = TOP_OFFSET;
+      } else {
+        const minTop = vpH - sidebarH - BOTTOM_GAP;
+        curTop = Math.min(TOP_OFFSET, Math.max(minTop, curTop - delta));
+      }
+
+      el.style.top = `${curTop}px`;
+      lastY = sy;
+    };
+
+    window.addEventListener('scroll', recalc, { passive: true });
+    window.addEventListener('resize', recalc, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', recalc);
+      window.removeEventListener('resize', recalc);
+    };
+  }, [post]);
+
   // Transform values for smoother header parallax
   const headerY = useTransform(scrollY, [0, 400], [0, -60]);
   const headerOpacity = useTransform(scrollY, [0, 300], [1, 0.8]);
@@ -949,15 +987,12 @@ export default function BlogPostPage() {
               </motion.article>
               
               {/* Sidebar — hidden on mobile, visible on desktop */}
-              <motion.aside 
-                initial="hidden"
-                animate="visible"
-                variants={fadeInUp}
-                className="hidden lg:block lg:w-1/4"
+              <aside 
+                ref={sidebarRef}
+                className="hidden lg:flex lg:flex-col lg:w-1/4 lg:gap-6 sticky self-start"
               >
-                <div className="space-y-6">
-                  {/* Table of Contents */}
-                  <TableOfContents content={post.content} />
+                {/* Table of Contents */}
+                <TableOfContents content={post.content} />
                   
                   {/* Post Stats */}
                   <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -1022,8 +1057,7 @@ export default function BlogPostPage() {
                       </div>
                     </div>
                   )}
-                </div>
-              </motion.aside>
+              </aside>
             </div>
           </div>
         </div>
