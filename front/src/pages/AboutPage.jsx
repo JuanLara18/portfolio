@@ -329,6 +329,21 @@ export default function AboutPage() {
 // Experience data
 const experiences = [
   {
+    role: "Knowledge Data Engineer | AI First",
+    company: "Davivienda",
+    period: "April 2026 - Present",
+    location: "Bogotá D.C., Colombia",
+    description:
+      "Building enterprise knowledge and data foundations for an AI-first strategy—connecting trusted information, metadata, and retrieval-ready datasets with the pipelines and governance patterns that power search, analytics, and generative AI across the organization.",
+    responsibilities: [
+      "Designing knowledge and data architectures and reusable data products that support semantic discovery, retrieval workflows, and downstream ML and analytics use cases.",
+      "Engineering robust ingestion, quality, and documentation practices so knowledge assets and operational data remain fit for AI-driven products and compliance expectations.",
+      "Collaborating with product, data, and AI teams to align roadmaps on metadata, access patterns, and scalable delivery as initiatives take shape."
+    ],
+    skills: ["Knowledge Engineering", "Data Engineering", "AI-First Delivery", "Data Governance", "Python", "Enterprise Search"],
+    logo: "davivienda-logo.png"
+  },
+  {
     role: "AI Engineer",
     company: "Falabella",
     period: "November 2025 - March 2026",
@@ -620,7 +635,7 @@ const courses = [
               
               <div className="space-y-4 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
                 <p>
-                  <span className="font-medium text-gray-900 dark:text-gray-100">AI Engineer</span> with 3+ years building production AI systems across research, healthcare, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span>, and <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>.
+                  <span className="font-medium text-gray-900 dark:text-gray-100">AI Engineer</span> with 3+ years building production AI systems across research, healthcare, banking, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning <span className="font-medium text-red-600 dark:text-red-400">Davivienda</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span>, and <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>.
                 </p>
 
                 <AnimatePresence>
