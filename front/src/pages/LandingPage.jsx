@@ -461,6 +461,7 @@ export default function LandingPage() {
       {/* Blog and Contact Preview */}
       <section className="py-10 sm:py-20 bg-gradient-to-t from-gray-50 to-white dark:from-gray-900 dark:to-gray-800/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl lg:max-w-4xl mx-auto w-full">
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={defaultViewportSettings} className="text-center">
             <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 mb-2 sm:mb-4">Recent Updates</motion.h2>
             <motion.p 
@@ -479,9 +480,9 @@ export default function LandingPage() {
               className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 overflow-hidden relative cursor-pointer"
             >
               <Link to="/blog/field-notes/reinforcement-learning-in-practice" className="block p-5 sm:p-6 relative z-10">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-start gap-4 md:gap-6 lg:gap-8">
                   {/* Left Side: Icon & Title */}
-                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 flex-1 min-w-0 pr-5 md:pr-0">
+                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 min-w-0 flex-1 pr-5 md:pr-0">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-900/60 dark:to-indigo-800/20 dark:text-indigo-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm mt-0.5 sm:mt-0">
                       <FileText size={22} strokeWidth={1.5} className="sm:w-[28px] sm:h-[28px]" />
                     </div>
@@ -501,8 +502,8 @@ export default function LandingPage() {
                   </div>
                   
                   {/* Right Side: Expanding text + Arrow on Desktop */}
-                  <div className="hidden md:flex items-center justify-end pl-4 w-1/3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0 border-l border-gray-100 dark:border-gray-700/50">
-                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed text-right mr-4">
+                  <div className="hidden md:flex items-center gap-3 flex-shrink-0 min-w-0 max-w-0 overflow-hidden border-l-0 pl-0 opacity-0 transition-all duration-500 ease-out group-hover:max-w-sm group-hover:overflow-visible group-hover:border-l group-hover:border-gray-100 group-hover:pl-4 dark:group-hover:border-gray-700/50 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
                       Implementation details that papers omit — deployment patterns, optimization tricks, and engineering decisions.
                     </p>
                     <div className="w-8 h-8 rounded-full bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 flex-shrink-0 transform group-hover:translate-x-1 transition-transform duration-300">
@@ -526,9 +527,9 @@ export default function LandingPage() {
               className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 overflow-hidden relative cursor-pointer"
             >
               <Link to="/blog/deep-dives/reinforcement-learning-first-principles" className="block p-5 sm:p-6 relative z-10">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-start gap-4 md:gap-6 lg:gap-8">
                   {/* Left Side: Icon & Title */}
-                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 flex-1 min-w-0 pr-5 md:pr-0">
+                  <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 min-w-0 flex-1 pr-5 md:pr-0">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-900/60 dark:to-green-800/20 dark:text-green-400 flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500 shadow-sm mt-0.5 sm:mt-0">
                       <BrainCircuit size={22} strokeWidth={1.5} className="sm:w-[28px] sm:h-[28px]" />
                     </div>
@@ -548,8 +549,8 @@ export default function LandingPage() {
                   </div>
                   
                   {/* Right Side: Expanding text + Arrow on Desktop */}
-                  <div className="hidden md:flex items-center justify-end pl-4 w-1/3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0 border-l border-gray-100 dark:border-gray-700/50">
-                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed text-right mr-4">
+                  <div className="hidden md:flex items-center gap-3 flex-shrink-0 min-w-0 max-w-0 overflow-hidden border-l-0 pl-0 opacity-0 transition-all duration-500 ease-out group-hover:max-w-sm group-hover:overflow-visible group-hover:border-l group-hover:border-gray-100 group-hover:pl-4 dark:group-hover:border-gray-700/50 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">
                       Bridging the gap between mathematical foundations of MDPs, Bellman equations, and practical implementation.
                     </p>
                     <div className="w-8 h-8 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 transform group-hover:translate-x-1 transition-transform duration-300">
@@ -566,6 +567,7 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-50/30 to-transparent dark:via-green-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] ease-in-out"></div>
               </Link>
             </motion.div>
+          </div>
           </div>
         </div>
       </section>
