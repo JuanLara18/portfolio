@@ -534,11 +534,15 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   font-weight: 600;
 }
 
-/* Fullscreen diagram styling — no width constraint, natural SVG size */
+/* Fullscreen diagram — no width constraint, sharp vector rendering at any scale */
 .mermaid-diagram-fullscreen svg {
   max-width: none;
   width: auto;
   height: auto;
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+  /* Avoid GPU rasterization at initial size (which blurs when CSS-scaled) */
+  will-change: auto;
 }
 
 /* Mobile optimizations for diagrams.

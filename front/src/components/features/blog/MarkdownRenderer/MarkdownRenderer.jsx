@@ -256,7 +256,7 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
     const pad = 80;
     const fitScale = Math.max(
       0.05,
-      Math.min((cW - pad * 2) / svgW, (cH - pad * 2) / svgH, 2)
+      Math.min((cW - pad * 2) / svgW, (cH - pad * 2) / svgH, 10)
     );
     setTransform({
       scale: fitScale,
@@ -265,8 +265,7 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
     });
   }, [getSvgSize]);
 
-  // On mount: fix SVG size from viewBox so it has explicit pixel dimensions,
-  // then fit to view
+  // On mount: fix SVG size from viewBox so it has explicit pixel dimensions, then fit to view
   useEffect(() => {
     const svgEl = wrapperRef.current?.querySelector('svg');
     if (svgEl) {
@@ -279,7 +278,6 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
         }
       }
     }
-    // Let the browser paint the SVG before calculating fit
     requestAnimationFrame(() => requestAnimationFrame(fitToView));
   }, [svg, fitToView]);
 
@@ -540,13 +538,13 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
       >
         <div
           ref={wrapperRef}
+          className="mermaid-diagram-fullscreen"
           style={{
             position: 'absolute',
             top: 0,
             left: 0,
             transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`,
             transformOrigin: '0 0',
-            willChange: 'transform',
             lineHeight: 0,
           }}
           dangerouslySetInnerHTML={{ __html: svg }}
