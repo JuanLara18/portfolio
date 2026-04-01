@@ -52,7 +52,7 @@ try {
 const adaptor = liteAdaptor();
 RegisterHTMLHandler(adaptor);
 const texInput = new TeX({ packages: ['base', 'ams'] });
-const svgOutput = new SVG({ fontCache: 'local' });
+const svgOutput = new SVG({ fontCache: 'none' });
 const htmlMath = mathjax.document('', { InputJax: texInput, OutputJax: svgOutput });
 
 function renderMathSVG(mathStr, display) {
@@ -76,27 +76,58 @@ function sanitizeSvgXmlForSharp(svg) {
   );
 }
 
+/**
+ * MathJax SVGs use `ex` units for width/height. librsvg on Windows cannot
+ * resolve `ex` without a font context and falls back to the raw viewBox
+ * dimensions, producing images 30-50× too large. Converting to explicit `px`
+ * (1ex = 8px, the CSS default at 16px font-size) gives librsvg a concrete
+ * pixel target and produces correctly-proportioned output.
+ */
+function normalizeMathSvgDimensions(svg) {
+  const EX_TO_PX = 8;
+  return svg
+    .replace(/\bwidth="([\d.]+)ex"/, (_, w) => `width="${Math.round(parseFloat(w) * EX_TO_PX)}px"`)
+    .replace(/\bheight="([\d.]+)ex"/, (_, h) => `height="${Math.round(parseFloat(h) * EX_TO_PX)}px"`);
+}
+
 async function rasterizeMathSvg(svgString, opts = {}) {
   const sharp = require('sharp');
   const {
     maxWidthPx,
     paddingPx = 16,
     density = 320,
+    withoutEnlargement = false,
   } = opts;
   let svg = svgString.replace(/currentColor/g, '#1a1a1a');
+  // Newer librsvg honours `href` but not the legacy `xlink:href` namespace;
+  // replace so <use> glyph references resolve correctly on all platforms.
+  svg = svg.replace(/xlink:href="#/g, 'href="#');
   svg = sanitizeSvgXmlForSharp(svg);
-  return sharp(Buffer.from(svg, 'utf8'), { density })
-    .resize({ width: maxWidthPx, height: null, fit: 'inside', withoutEnlargement: false })
-    .trim({ threshold: 1, background: { r: 255, g: 255, b: 255, alpha: 0 } })
+  const pngBuf = await sharp(Buffer.from(svg, 'utf8'), { density })
+    .flatten({ background: { r: 255, g: 255, b: 255 } })
+    .resize({ width: maxWidthPx, height: null, fit: 'inside', withoutEnlargement })
+    .trim({ threshold: 10, background: { r: 255, g: 255, b: 255 } })
     .extend({
       top: paddingPx,
       right: paddingPx,
       bottom: paddingPx,
       left: paddingPx,
-      background: { r: 255, g: 255, b: 255, alpha: 0 },
+      background: { r: 255, g: 255, b: 255 },
     })
     .png({ compressionLevel: 9, adaptiveFiltering: true })
     .toBuffer();
+
+  // Reject images that signal a librsvg render failure:
+  //   • Too small: trim removed everything (SVG rendered blank).
+  //   • Too dark: librsvg filled with black (complex SVG parse failure).
+  // Both cases fall back to plain-text LaTeX in the PDF, which is better
+  // than an invisible gap or a solid black rectangle.
+  const meta = await sharp(pngBuf).metadata();
+  if ((meta.width || 0) < 8 || (meta.height || 0) < 8) return null;
+  const stats = await sharp(pngBuf).stats();
+  if (stats.channels[0].mean < 30) return null;
+
+  return pngBuf;
 }
 
 async function prerenderMath(posts) {
@@ -133,7 +164,7 @@ async function prerenderMath(posts) {
     const svg = renderMathSVG(s, false);
     if (svg) {
       try {
-        inlineMap.set(s, await rasterizeMathSvg(svg, { maxWidthPx: 960, paddingPx: 14, density: 240 }));
+        inlineMap.set(s, await rasterizeMathSvg(normalizeMathSvgDimensions(svg), { maxWidthPx: 800, paddingPx: 4, density: 320, withoutEnlargement: true }));
       } catch (e) {
         console.warn(`  ⚠ Inline math rasterize failed: ${e.message}`);
       }
@@ -705,7 +736,7 @@ function measureItemWidth(doc, item, size, color) {
       return doc.widthOfString(`$${item.latex ?? ''}$`);
     }
     const info = doc.openImage(buf);
-    const h = size * 1.15;
+    const h = size * 0.85;
     return (info.width / info.height) * h + 1;
   }
   const chunk = item.t != null ? String(item.t) : '';
@@ -729,9 +760,9 @@ function drawLineItems(doc, items, x, y, size, color, maxW) {
       const buf = G_MATH_INLINE.get(it.latex);
       if (buf) {
         const info = doc.openImage(buf);
-        const h = size * 1.5;
+        const h = size * 0.85;
         const iw = (info.width / info.height) * h;
-        doc.image(buf, cx, y - size * 0.95, { width: iw, height: h });
+        doc.image(buf, cx, y + size * 0.05, { width: iw, height: h });
         cx += iw + 1;
       } else {
         doc.font(F.m).fontSize(size - 1).fillColor(C.code);
@@ -846,12 +877,12 @@ function renderTableCellWithMath(doc, cell, x, y, maxInnerW, isHeader) {
       const buf = G_MATH_INLINE.get(p.latex);
       if (buf) {
         const info = doc.openImage(buf);
-        const h = fs * 1.45;
+        const h = fs * 0.85;
         let iw = (info.width / info.height) * h;
         const room = x + maxInnerW - cx - 2;
         if (iw > room) iw = Math.max(4, room);
         const ih = (info.height / info.width) * iw;
-        doc.image(buf, cx, y - fs * 0.92, { width: iw, height: ih });
+        doc.image(buf, cx, y + fs * 0.05, { width: iw, height: ih });
         cx += iw + 2;
       } else {
         doc.font(F.m).fontSize(fs).fillColor(C.body);
