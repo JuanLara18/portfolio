@@ -369,6 +369,7 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
     () => localStorage.getItem('rm.width') || 'normal'
   );
   const [readProgress, setReadProgress] = useState(0);
+  const [isDiagramFullscreen, setIsDiagramFullscreen] = useState(false);
   const contentRef = useRef(null);
   // Snapshot the site's dark-mode state at the moment reading mode opens.
   // We restore this on exit so the main page is never affected.
@@ -402,6 +403,13 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
         document.documentElement.classList.remove('dark');
       }
     };
+  }, []);
+
+  // Listen for diagram fullscreen toggle to hide reading mode chrome
+  useEffect(() => {
+    const handleToggle = (e) => setIsDiagramFullscreen(e.detail);
+    window.addEventListener('mermaid-fullscreen-toggle', handleToggle);
+    return () => window.removeEventListener('mermaid-fullscreen-toggle', handleToggle);
   }, []);
 
   // Lock body scroll; ESC only fires when no higher-z dialog is open (e.g. diagram viewer)
@@ -464,11 +472,12 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
       className="fixed inset-0 z-[400] flex flex-col reading-mode-active"
     >
       {/* ── Controls bar ── */}
-      <div
-        className="flex-shrink-0 flex items-center gap-0.5 px-3 sm:px-4 py-2 border-b"
-        style={{ backgroundColor: tc.subtleBg, borderColor: tc.border }}
-      >
-        {/* Close */}
+      {!isDiagramFullscreen && (
+        <div
+          className="flex-shrink-0 flex items-center gap-0.5 px-3 sm:px-4 py-2 border-b"
+          style={{ backgroundColor: tc.subtleBg, borderColor: tc.border }}
+        >
+          {/* Close */}
         <button
           onClick={onClose}
           title="Exit (Esc)"
@@ -559,14 +568,17 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
           ))}
         </div>
       </div>
+      )}
 
       {/* Progress bar */}
+      {!isDiagramFullscreen && (
       <div className="h-0.5 flex-shrink-0" style={{ backgroundColor: tc.border }}>
         <div
           className="h-full bg-blue-600 transition-[width] duration-75"
           style={{ width: `${readProgress * 100}%` }}
         />
       </div>
+      )}
 
       {/* ── Scrollable content ── */}
       <div ref={contentRef} className="flex-1 overflow-y-auto" onScroll={handleScroll}>
@@ -602,6 +614,7 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
       </div>
 
       {/* ── Bottom status bar ── */}
+      {!isDiagramFullscreen && (
       <div
         className="flex-shrink-0 flex items-center justify-between px-5 py-1.5 text-xs select-none"
         style={{ borderTop: `1px solid ${tc.border}`, color: tc.text, opacity: 0.4, backgroundColor: tc.subtleBg }}
@@ -609,6 +622,7 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
         <span>{post.title}</span>
         <span>{Math.round(readProgress * 100)}% · {post.readingTime} min read</span>
       </div>
+      )}
     </motion.div>
   );
 };
