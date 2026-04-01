@@ -210,13 +210,13 @@ export default function LandingPage() {
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white dark:from-gray-900 to-transparent z-0"></div>
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent z-0"></div>
         
-        <div className="container mx-auto px-3 sm:px-6 lg:px-8 relative z-10 -mt-8 sm:-mt-12">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-8 relative z-10 -mt-4 sm:-mt-12">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-center">
-            <motion.div 
+            <motion.div
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
-              className="lg:col-span-3 text-center lg:text-left px-2 sm:px-0"
+              className="lg:col-span-3 text-center lg:text-left"
               style={{ y: headingY }} // Counter-parallax for content
             >
               <motion.div variants={fadeInUp} className="mb-3 lg:mb-4">
@@ -226,10 +226,10 @@ export default function LandingPage() {
               </motion.div>
               
               {/* Enhanced text reveal animation with mobile optimization */}
-              <motion.h1 
+              <motion.h1
                 ref={titleRef}
                 variants={fadeInUp}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-5 leading-tight"
               >
                 <motion.span 
                   className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 inline-block pb-1"
@@ -249,27 +249,27 @@ export default function LandingPage() {
                 </motion.span>
               </motion.h1>
               
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
-                className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-5 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
+                className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-4 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
               >
                 I transform complex mathematical models and AI research into robust, enterprise-grade applications. Specializing in autonomous agents, distributed systems, and driving measurable business impact through scalable ML engineering.
               </motion.p>
               
               
-              <motion.div 
+              <motion.div
                 variants={fadeInUp}
-                className="flex flex-wrap justify-center lg:justify-start gap-2.5 mb-8 lg:mb-10 px-2 sm:px-0"
+                className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center lg:justify-start gap-2 sm:gap-2.5 mb-4 sm:mb-7 lg:mb-10"
               >
                 {[
-                  'Autonomous Agents', 
-                  'Distributed Systems', 
-                  'Enterprise MLOps', 
+                  'Autonomous Agents',
+                  'Distributed Systems',
+                  'Enterprise MLOps',
                   'Scalable Architecture'
                 ].map((tag, i) => (
                   <HoverMotion as={motion.span}
                     key={i}
-                    className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 cursor-default"
+                    className="flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 cursor-default"
                     y={-2}
                   >
                     {tag}
@@ -278,21 +278,21 @@ export default function LandingPage() {
               </motion.div>
               
               {/* Enhanced CTA buttons */}
-              <motion.div 
+              <motion.div
                 variants={fadeInUp}
-                className="flex flex-col sm:flex-row gap-3 mb-6 lg:mb-8 px-2 sm:px-0"
+                className="flex flex-row justify-center lg:justify-start gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8"
               >
-                <Link 
-                  to="/projects" 
-                  className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group shadow-lg touch-target"
+                <Link
+                  to="/projects"
+                  className="px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base whitespace-nowrap bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group shadow-lg touch-target"
                 >
                   <span className="z-10 relative">View Projects</span>
-                  <ExternalLink size={16} className="z-10 relative transition-transform duration-150 group-hover:translate-x-1" />
+                  <ExternalLink size={15} className="z-10 relative transition-transform duration-150 group-hover:translate-x-1" />
                   <div className="absolute inset-0 bg-blue-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200"></div>
                 </Link>
-                <a 
+                <a
                   href={`${process.env.PUBLIC_URL}/documents/CV___EN.pdf`}
-                  className="w-full sm:w-auto px-6 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-lg group hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm relative overflow-hidden touch-target"
+                  className="px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base whitespace-nowrap border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-lg group hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm relative overflow-hidden touch-target"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -319,7 +319,7 @@ export default function LandingPage() {
               variants={scaleUp}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-2 mt-8 lg:mt-0 px-2 sm:px-0 relative"
+              className="lg:col-span-2 mt-3 sm:mt-6 lg:mt-0 relative"
               y={-5}
               duration={0.3}
             >
@@ -389,11 +389,11 @@ export default function LandingPage() {
       </div>
       
       {/* Value Pillars Section */}
-      <section className="py-16 sm:py-24 relative overflow-hidden">
+      <section className="py-10 sm:py-20 relative overflow-hidden">
         {/* Subtle background gradient to avoid flat colors or hard lines */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent dark:via-blue-900/10 pointer-events-none"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mobile-card-container relative z-10">
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={defaultViewportSettings} className="text-center mb-14">
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={defaultViewportSettings} className="text-center mb-8 sm:mb-14">
             <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-2">Why Work With Me</motion.h2>
           </motion.div>
           
@@ -405,55 +405,61 @@ export default function LandingPage() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
           >
             {/* Pillar 1: Research */}
-            <motion.div 
+            <motion.div
               variants={motionVariants.scrollReveal.up()}
-              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
+              className="group bg-white dark:bg-gray-800 p-4 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-row sm:flex-col items-center sm:items-center text-left sm:text-center gap-4 sm:gap-0 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent opacity-0 group-hover:opacity-100 dark:from-transparent dark:to-transparent dark:group-hover:from-blue-900/12 dark:group-hover:to-transparent transition-opacity duration-500 pointer-events-none"></div>
-              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 dark:from-blue-950/80 dark:to-blue-950/40 dark:text-blue-400 mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10">
-                <BrainCircuit size={32} strokeWidth={1.5} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 dark:from-blue-950/80 dark:to-blue-950/40 dark:text-blue-400 mb-0 sm:mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10 flex-shrink-0">
+                <BrainCircuit size={24} strokeWidth={1.5} className="sm:w-8 sm:h-8" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Applied Research</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm relative z-10">
-                Translating SOTA mathematical models and papers into practical algorithms that solve complex problems.
-              </p>
+              <div className="relative z-10">
+                <h3 className="text-base sm:text-xl font-bold mb-1 sm:mb-3 text-gray-800 dark:text-gray-100">Applied Research</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
+                  Translating SOTA mathematical models and papers into practical algorithms that solve complex problems.
+                </p>
+              </div>
             </motion.div>
-            
+
             {/* Pillar 2: Engineering */}
-            <motion.div 
+            <motion.div
               variants={motionVariants.scrollReveal.up()}
-              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
+              className="group bg-white dark:bg-gray-800 p-4 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-row sm:flex-col items-center sm:items-center text-left sm:text-center gap-4 sm:gap-0 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-transparent opacity-0 group-hover:opacity-100 dark:from-transparent dark:to-transparent dark:group-hover:from-indigo-900/12 dark:group-hover:to-transparent transition-opacity duration-500 pointer-events-none"></div>
-              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-950/80 dark:to-indigo-950/40 dark:text-indigo-400 mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10">
-                <Server size={32} strokeWidth={1.5} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 dark:from-indigo-950/80 dark:to-indigo-950/40 dark:text-indigo-400 mb-0 sm:mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10 flex-shrink-0">
+                <Server size={24} strokeWidth={1.5} className="sm:w-8 sm:h-8" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Scalable Engineering</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm relative z-10">
-                Building robust data pipelines, optimizing inference latency, and deploying ML systems on the cloud.
-              </p>
+              <div className="relative z-10">
+                <h3 className="text-base sm:text-xl font-bold mb-1 sm:mb-3 text-gray-800 dark:text-gray-100">Scalable Engineering</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
+                  Building robust data pipelines, optimizing inference latency, and deploying ML systems on the cloud.
+                </p>
+              </div>
             </motion.div>
 
             {/* Pillar 3: ROI */}
-            <motion.div 
+            <motion.div
               variants={motionVariants.scrollReveal.up()}
-              className="group bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-col items-center text-center relative overflow-hidden"
+              className="group bg-white dark:bg-gray-800 p-4 sm:p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-none dark:hover:border-gray-600 transition-all duration-500 border border-gray-100 dark:border-gray-700 flex flex-row sm:flex-col items-center sm:items-center text-left sm:text-center gap-4 sm:gap-0 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-green-50/30 to-transparent opacity-0 group-hover:opacity-100 dark:from-transparent dark:to-transparent dark:group-hover:from-green-900/12 dark:group-hover:to-transparent transition-opacity duration-500 pointer-events-none"></div>
-              <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-950/80 dark:to-green-950/40 dark:text-green-400 mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10">
-                <TrendingUp size={32} strokeWidth={1.5} />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-green-100 to-green-50 text-green-600 dark:from-green-950/80 dark:to-green-950/40 dark:text-green-400 mb-0 sm:mb-6 shadow-sm dark:shadow-none transform group-hover:scale-110 transition-transform duration-500 relative z-10 flex-shrink-0">
+                <TrendingUp size={24} strokeWidth={1.5} className="sm:w-8 sm:h-8" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100 relative z-10">Business Impact</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm relative z-10">
-                Creating AI solutions that automate workflows, reduce operational costs, and deliver measurable ROI.
-              </p>
+              <div className="relative z-10">
+                <h3 className="text-base sm:text-xl font-bold mb-1 sm:mb-3 text-gray-800 dark:text-gray-100">Business Impact</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
+                  Creating AI solutions that automate workflows, reduce operational costs, and deliver measurable ROI.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
       
       {/* Blog and Contact Preview */}
-      <section className="py-16 sm:py-24 bg-gradient-to-t from-gray-50 to-white dark:from-gray-900 dark:to-gray-800/50">
+      <section className="py-10 sm:py-20 bg-gradient-to-t from-gray-50 to-white dark:from-gray-900 dark:to-gray-800/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={defaultViewportSettings} className="text-center">
             <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 mb-2 sm:mb-4">Recent Updates</motion.h2>
@@ -466,7 +472,7 @@ export default function LandingPage() {
           </motion.div>
           
           {/* Blog Previews */}
-          <div className="max-w-4xl mx-auto flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
             {/* Latest Blog Post */}
             <motion.div 
               variants={motionVariants.scrollReveal.up()}
