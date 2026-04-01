@@ -3,6 +3,7 @@ title: "Text-to-SQL: Bridging Natural Language and Structured Data"
 date: "2026-04-06"
 tags: ["text-to-sql", "nlp", "llm", "bigquery", "data-engineering", "agents"]
 category: "field-notes"
+headerImage: "/blog/headers/text-to-sql-header.jpg"
 slug: "text-to-sql"
 excerpt: "A practical deep-dive into the current state of NL→SQL systems: benchmarks, architectures, production pitfalls, and what actually works in 2026 for querying enterprise data warehouses with natural language."
 readingTimeMinutes: 20
