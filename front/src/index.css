@@ -403,6 +403,35 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 /* Small-screen typography helpers */
 @media (max-width:640px){.text-responsive{font-size:clamp(.875rem,4vw,1.125rem);line-height:1.5}.heading-responsive{font-size:clamp(1.5rem,8vw,2.5rem);line-height:1.2}}
 
+/* Reading mode — CSS custom properties propagate down the whole tree, bypassing the
+   cascade fight between explicit Tailwind classes (text-base, leading-7, sm:text-lg, etc.)
+   and inherited values. var() with !important beats every non-!important Tailwind rule. */
+.reading-mode-active p,
+.reading-mode-active li,
+.reading-mode-active article p,
+.reading-mode-active article li {
+  font-size: var(--rm-font-size, 1rem) !important;
+  line-height: var(--rm-line-height, 1.75) !important;
+}
+.reading-mode-active h1,
+.reading-mode-active h2,
+.reading-mode-active h3,
+.reading-mode-active h4,
+.reading-mode-active article h1,
+.reading-mode-active article h2,
+.reading-mode-active article h3,
+.reading-mode-active article h4 {
+  font-family: inherit !important;
+}
+/* Keep code blocks at a sensible relative size regardless of reading font-size */
+.reading-mode-active pre,
+.reading-mode-active code[class*="language-"],
+.reading-mode-active article pre,
+.reading-mode-active article code[class*="language-"] {
+  font-size: 0.84em !important;
+  line-height: 1.5 !important;
+}
+
 /* Content helpers */
 .mobile-content-wide{max-width:100%!important;padding-left:.5rem!important;padding-right:.5rem!important}
 .mobile-hero-optimized{padding-left:.75rem!important;padding-right:.75rem!important}

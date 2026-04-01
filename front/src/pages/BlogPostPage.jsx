@@ -3,17 +3,18 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { SEO } from '../components/common/SEO';
-import { 
-  Calendar, 
-  Clock, 
-  Tag, 
-  ArrowLeft, 
-  Share2, 
+import {
+  Calendar,
+  Clock,
+  Tag,
+  ArrowLeft,
+  Share2,
   BookOpen,
   ChevronUp,
   List,
   X,
-  Check
+  Check,
+  Maximize2
 } from 'lucide-react';
 import { getPostBySlug, BLOG_CONFIG, formatDate, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
 import { MarkdownRenderer } from '../components/features/blog';
@@ -340,6 +341,278 @@ const ScrollProgress = () => {
   );
 };
 
+// Reading mode theme presets
+const RM_THEMES = {
+  light: { bg: '#ffffff', text: '#111827', subtleBg: '#f9fafb', border: '#e5e7eb', dark: false },
+  sepia: { bg: '#f4ecd8', text: '#3b2c1a', subtleBg: '#ede3c8', border: '#d4b896', dark: false },
+  dark:  { bg: '#111827', text: '#f3f4f6', subtleBg: '#1f2937', border: '#374151', dark: true  },
+};
+const RM_WIDTHS = { narrow: '58ch', normal: '70ch', wide: '90ch' };
+
+// Reading mode overlay component
+const ReadingMode = ({ post, onClose, baseImagePath }) => {
+  const [fontSize, setFontSize] = useState(
+    () => parseInt(localStorage.getItem('rm.fontSize') || '18')
+  );
+  const [lineHeight, setLineHeight] = useState(
+    () => parseFloat(localStorage.getItem('rm.lineHeight') || '1.8')
+  );
+  const [fontFamily, setFontFamily] = useState(
+    () => localStorage.getItem('rm.fontFamily') || 'sans'
+  );
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('rm.theme');
+    if (saved && RM_THEMES[saved]) return saved;
+    return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  });
+  const [width, setWidth] = useState(
+    () => localStorage.getItem('rm.width') || 'normal'
+  );
+  const [readProgress, setReadProgress] = useState(0);
+  const contentRef = useRef(null);
+  // Snapshot the site's dark-mode state at the moment reading mode opens.
+  // We restore this on exit so the main page is never affected.
+  const originalDark = useRef(document.documentElement.classList.contains('dark'));
+
+  // Persist reading-mode-only settings (rm.* keys, never touches 'theme')
+  useEffect(() => { localStorage.setItem('rm.fontSize', String(fontSize)); }, [fontSize]);
+  useEffect(() => { localStorage.setItem('rm.lineHeight', String(lineHeight)); }, [lineHeight]);
+  useEffect(() => { localStorage.setItem('rm.fontFamily', fontFamily); }, [fontFamily]);
+  useEffect(() => { localStorage.setItem('rm.theme', theme); }, [theme]);
+  useEffect(() => { localStorage.setItem('rm.width', width); }, [width]);
+
+  // While reading mode is open, nudge the dark-mode class so code blocks
+  // and Mermaid diagrams render in the right palette. On unmount, always
+  // restore the original state so the main page is unaffected.
+  useEffect(() => {
+    const isDark = RM_THEMES[theme]?.dark ?? false;
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    return () => {
+      // Restore original site dark mode — never leave the main page out of sync
+      if (originalDark.current) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+  }, []);
+
+  // Lock body scroll; ESC only fires when no higher-z dialog is open (e.g. diagram viewer)
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    const handleKey = (e) => {
+      if (e.key === 'Escape' && !document.querySelector('[aria-modal="true"]')) onClose();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [onClose]);
+
+  const handleScroll = (e) => {
+    const el = e.currentTarget;
+    const max = el.scrollHeight - el.clientHeight;
+    setReadProgress(max > 0 ? el.scrollTop / max : 0);
+  };
+
+  const fontSizeMin = 14, fontSizeMax = 26;
+  const lineHeightMin = 1.4, lineHeightMax = 2.4;
+  const tc = RM_THEMES[theme] || RM_THEMES.light;
+
+  const sep = (
+    <div className="w-px h-5 flex-shrink-0 mx-0.5" style={{ backgroundColor: tc.border }} />
+  );
+
+  const mkBtn = (onClick, disabled, title, children) => (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      title={title}
+      style={{ color: tc.text }}
+      className="w-8 h-8 flex items-center justify-center rounded-lg transition-colors disabled:opacity-25 text-xs font-medium select-none hover:bg-black/[0.06]"
+    >
+      {children}
+    </button>
+  );
+
+  const excerptBg = theme === 'dark'
+    ? 'rgba(59,130,246,0.12)'
+    : theme === 'sepia'
+    ? 'rgba(139,90,43,0.10)'
+    : 'rgba(239,246,255,1)';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      style={{
+        backgroundColor: tc.bg,
+        color: tc.text,
+        '--rm-font-size': `${fontSize}px`,
+        '--rm-line-height': String(lineHeight),
+      }}
+      className="fixed inset-0 z-[400] flex flex-col reading-mode-active"
+    >
+      {/* ── Controls bar ── */}
+      <div
+        className="flex-shrink-0 flex items-center gap-0.5 px-3 sm:px-4 py-2 border-b"
+        style={{ backgroundColor: tc.subtleBg, borderColor: tc.border }}
+      >
+        {/* Close */}
+        <button
+          onClick={onClose}
+          title="Exit (Esc)"
+          aria-label="Exit reading mode"
+          style={{ color: tc.text }}
+          className="p-1.5 rounded-lg transition-colors hover:bg-black/[0.06] flex-shrink-0"
+        >
+          <X size={18} />
+        </button>
+
+        {/* Title — desktop only */}
+        <span className="flex-1 text-sm truncate px-2 min-w-0 hidden md:block" style={{ color: tc.text, opacity: 0.5 }}>
+          {post.title}
+        </span>
+        <span className="flex-1 md:hidden" />
+
+        {/* Font size */}
+        <div className="flex items-center flex-shrink-0">
+          {mkBtn(() => setFontSize(s => Math.max(fontSizeMin, s - 1)), fontSize <= fontSizeMin, 'Smaller text', 'A−')}
+          <span className="text-xs w-9 text-center tabular-nums hidden sm:block" style={{ color: tc.text, opacity: 0.45 }}>{fontSize}px</span>
+          {mkBtn(() => setFontSize(s => Math.min(fontSizeMax, s + 1)), fontSize >= fontSizeMax, 'Larger text', 'A+')}
+        </div>
+
+        {sep}
+
+        {/* Line height */}
+        <div className="flex items-center flex-shrink-0">
+          {mkBtn(() => setLineHeight(h => Math.max(lineHeightMin, parseFloat((h - 0.1).toFixed(1)))), lineHeight <= lineHeightMin, 'Tighter spacing', '↕−')}
+          <span className="text-xs w-9 text-center tabular-nums hidden sm:block" style={{ color: tc.text, opacity: 0.45 }}>{lineHeight}</span>
+          {mkBtn(() => setLineHeight(h => Math.min(lineHeightMax, parseFloat((h + 0.1).toFixed(1)))), lineHeight >= lineHeightMax, 'Looser spacing', '↕+')}
+        </div>
+
+        {sep}
+
+        {/* Font family */}
+        <button
+          onClick={() => setFontFamily(f => f === 'sans' ? 'serif' : 'sans')}
+          title="Toggle font family"
+          style={{ color: tc.text }}
+          className="px-2 h-8 rounded-lg hover:bg-black/[0.06] text-xs transition-colors flex-shrink-0 select-none"
+        >
+          {fontFamily === 'sans'
+            ? <span style={{ fontFamily: 'Georgia, serif' }}>Serif</span>
+            : <span>Sans</span>
+          }
+        </button>
+
+        {sep}
+
+        {/* Column width — desktop only */}
+        <div className="hidden sm:flex items-center gap-0.5 flex-shrink-0">
+          {['narrow', 'normal', 'wide'].map(w => (
+            <button
+              key={w}
+              onClick={() => setWidth(w)}
+              title={`${w.charAt(0).toUpperCase() + w.slice(1)} column`}
+              style={{ color: tc.text }}
+              className={`h-7 px-1.5 rounded-md text-xs transition-colors select-none ${
+                width === w ? 'font-semibold bg-black/10' : 'hover:bg-black/[0.06]'
+              }`}
+            >
+              {w === 'narrow' ? 'Nar' : w === 'normal' ? 'Std' : 'Wide'}
+            </button>
+          ))}
+        </div>
+
+        {sep}
+
+        {/* Theme: Light / Sepia / Dark */}
+        <div className="flex items-center gap-1 flex-shrink-0 px-1">
+          {[
+            { key: 'light', bg: '#ffffff', border: '#d1d5db', label: 'Light' },
+            { key: 'sepia', bg: '#f4ecd8', border: '#c4a87a', label: 'Sepia' },
+            { key: 'dark',  bg: '#111827', border: '#6b7280', label: 'Dark'  },
+          ].map(t => (
+            <button
+              key={t.key}
+              onClick={() => setTheme(t.key)}
+              title={t.label}
+              aria-label={`${t.label} theme`}
+              className="w-5 h-5 rounded-full transition-all flex-shrink-0"
+              style={{
+                backgroundColor: t.bg,
+                border: theme === t.key ? '2px solid #2563eb' : `1.5px solid ${t.border}`,
+                transform: theme === t.key ? 'scale(1.2)' : 'scale(1)',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Progress bar */}
+      <div className="h-0.5 flex-shrink-0" style={{ backgroundColor: tc.border }}>
+        <div
+          className="h-full bg-blue-600 transition-[width] duration-75"
+          style={{ width: `${readProgress * 100}%` }}
+        />
+      </div>
+
+      {/* ── Scrollable content ── */}
+      <div ref={contentRef} className="flex-1 overflow-y-auto" onScroll={handleScroll}>
+        <div
+          className="mx-auto px-5 sm:px-8 py-10 sm:py-14"
+          style={{
+            maxWidth: RM_WIDTHS[width] || RM_WIDTHS.normal,
+            fontSize: `${fontSize}px`,
+            lineHeight: lineHeight,
+            fontFamily: fontFamily === 'serif'
+              ? '"Georgia", "Palatino Linotype", Palatino, serif'
+              : 'inherit',
+          }}
+        >
+          <h1
+            className="font-bold mb-6"
+            style={{ fontSize: `${Math.round(fontSize * 1.6)}px`, lineHeight: 1.2, color: tc.text }}
+          >
+            {post.title}
+          </h1>
+
+          {post.excerpt && (
+            <div className="mb-8 p-4 rounded-lg border-l-4 border-blue-500" style={{ backgroundColor: excerptBg }}>
+              <p className="italic leading-relaxed" style={{ color: tc.text, opacity: 0.85 }}>
+                {post.excerpt}
+              </p>
+            </div>
+          )}
+
+          <MarkdownRenderer content={post.content} baseImagePath={baseImagePath} />
+          <div className="h-16" />
+        </div>
+      </div>
+
+      {/* ── Bottom status bar ── */}
+      <div
+        className="flex-shrink-0 flex items-center justify-between px-5 py-1.5 text-xs select-none"
+        style={{ borderTop: `1px solid ${tc.border}`, color: tc.text, opacity: 0.4, backgroundColor: tc.subtleBg }}
+      >
+        <span>{post.title}</span>
+        <span>{Math.round(readProgress * 100)}% · {post.readingTime} min read</span>
+      </div>
+    </motion.div>
+  );
+};
+
 export default function BlogPostPage() {
   const { category, slug } = useParams();
   const navigate = useNavigate();
@@ -347,6 +620,7 @@ export default function BlogPostPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showCopyToast, setShowCopyToast] = useState(false);
+  const [isReadingMode, setIsReadingMode] = useState(false);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
   
@@ -565,6 +839,14 @@ export default function BlogPostPage() {
                   <Share2 size={14} className="mr-1.5 sm:mr-2" />
                   <span>Share</span>
                 </button>
+                <button
+                  onClick={() => setIsReadingMode(true)}
+                  className="flex items-center hover:text-white transition-colors"
+                  title="Modo lectura"
+                >
+                  <Maximize2 size={14} className="mr-1.5 sm:mr-2" />
+                  <span className="hidden xs:inline">Read</span>
+                </button>
               </div>
             </motion.div>
           </div>
@@ -720,6 +1002,17 @@ export default function BlogPostPage() {
       {/* Scroll to Top Button */}
       <ScrollToTop />
     </div>
+
+    {/* Reading Mode overlay */}
+    <AnimatePresence>
+      {isReadingMode && (
+        <ReadingMode
+          post={post}
+          onClose={() => setIsReadingMode(false)}
+          baseImagePath={baseImagePath}
+        />
+      )}
+    </AnimatePresence>
     </>
   );
 }
