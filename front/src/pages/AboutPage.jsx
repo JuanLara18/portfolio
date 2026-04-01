@@ -331,16 +331,17 @@ const experiences = [
   {
     role: "AI Engineer",
     company: "Falabella",
-    period: "November 2025 - Present",
+    period: "November 2025 - March 2026",
     location: "Bogotá D.C., Colombia (Hybrid)",
     description:
-      "Develop end-to-end ML solutions for large-scale logistics operations, managing the full lifecycle from data processing and model development to production deployment on GCP infrastructure. Work spans anomaly detection, OCR pipelines, and optimization systems across millions of operational records.",
+      "Designed and deployed end-to-end ML solutions for logistics optimization at a large-scale distribution center (~4.6M SKUs), boosting OTD, OLT, and throughput.",
     responsibilities: [
-      "Build data processing pipelines integrating OCR engines, anomaly detection models, and cloud data warehouses, enabling automated extraction and quality validation across large-scale operational datasets.",
-      "Design ML system integrations connecting modern AI capabilities with legacy enterprise platforms, implementing scalable data flows that bridge existing infrastructure with production-ready machine learning services.",
-      "Architect end-to-end ML solutions for logistics optimization, integrating anomaly detection, document processing, and data-driven decision systems on Google Cloud Platform."
+      "Built predictive models for demand forecasting and pre-pack allocation, reducing lead times and supporting data-driven fulfillment decisions across the distribution network.",
+      "Developed a workforce planning optimization model integrated with a multi-agent reinforcement learning environment to automate optimal staffing levels, timing, and resource allocation across distribution-center areas.",
+      "Engineered an intelligent document-processing pipeline using OCR with automated ingestion into BigQuery, streamlining custody-transfer workflows and cutting manual handling overhead.",
+      "Deployed real-time anomaly detection systems on Google Cloud Platform that surface operational risks through automated monitoring and reporting for logistics stakeholders."
     ],
-    skills: ["ML Systems", "Anomaly Detection", "OCR", "GCP", "Data Pipelines", "Python"],
+    skills: ["Python", "Google Cloud Platform", "BigQuery", "Demand Forecasting", "MARL", "Anomaly Detection", "Document Intelligence"],
     logo: "falabella-logo.png"
   },
   {
