@@ -3,6 +3,7 @@ title: "LangGraph: Orchestrating Multi-Agent Workflows"
 date: "2026-04-10"
 tags: ["langgraph", "agents", "llm", "orchestration", "python", "langchain"]
 category: "field-notes"
+headerImage: "/blog/headers/langgraph-multi-agent-workflows-header.jpg"
 slug: "langgraph-multi-agent-workflows"
 excerpt: "A practical guide to LangGraph 1.x: how StateGraph works, when to use agents vs. chains, the patterns that actually work in production (Supervisor, Subgraph, HITL, Map-Reduce), and an honest comparison with alternatives."
 readingTimeMinutes: 22

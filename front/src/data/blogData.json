@@ -12,6 +12,7 @@
         "langchain"
       ],
       "category": "field-notes",
+      "headerImage": "/blog/headers/langgraph-multi-agent-workflows-header.jpg",
       "slug": "langgraph-multi-agent-workflows",
       "excerpt": "A practical guide to LangGraph 1.x: how StateGraph works, when to use agents vs. chains, the patterns that actually work in production (Supervisor, Subgraph, HITL, Map-Reduce), and an honest comparison with alternatives.",
       "readingTimeMinutes": 22,
@@ -31,6 +32,7 @@
         "agents"
       ],
       "category": "field-notes",
+      "headerImage": "/blog/headers/text-to-sql-header.jpg",
       "slug": "text-to-sql",
       "excerpt": "A practical deep-dive into the current state of NL→SQL systems: benchmarks, architectures, production pitfalls, and what actually works in 2026 for querying enterprise data warehouses with natural language.",
       "readingTimeMinutes": 20,
@@ -667,6 +669,6 @@
       "readingTime": 19
     }
   ],
-  "lastUpdated": "2026-03-28T21:24:34.089Z",
+  "lastUpdated": "2026-04-01T15:28:30.582Z",
   "totalPosts": 33
 }
