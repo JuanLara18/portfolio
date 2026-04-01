@@ -386,7 +386,7 @@ const experiences = [
       "Integrated scalable cloud workflows with advanced data management systems, supporting large-scale batch processing and reproducible research methodologies."
     ],
     skills: ["Python", "Google Cloud Platform", "TextInsight", "Geospatial Analysis", "NLP", "Data Pipelines"],
-    logo: "ipsos-logo.jpg"
+    logo: "ipsos-logo.png"
   }
 ];
 
