@@ -41,6 +41,7 @@
     "@tailwindcss/postcss": "^4.1.7",
     "autoprefixer": "^10.4.16",
     "gh-pages": "^6.3.0",
+    "pdfkit": "^0.18.0",
     "postcss": "^8.4.31",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.3.0"
@@ -56,7 +57,8 @@
     "build-blog-data": "node scripts/build-blog-data.js",
     "preview-images": "node scripts/preview-optimization.js",
     "optimize-images": "node scripts/optimize-images.js",
-    "validate-mermaid": "node scripts/validate-mermaid.js"
+    "validate-mermaid": "node scripts/validate-mermaid.js",
+    "generate-pdf": "node scripts/generate-blog-pdf.js"
   },
   "browserslist": {
     "production": [
