@@ -29,12 +29,41 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
-let PDFDocument;
+let PDFDocument, SVGtoPDF, hljs, htmlEntities;
+let mathjax, TeX, SVG, liteAdaptor, RegisterHTMLHandler;
 try {
   PDFDocument = require('pdfkit');
-} catch {
-  console.error('pdfkit is not installed. Run:  npm install --save-dev pdfkit');
+  SVGtoPDF = require('svg-to-pdfkit');
+  hljs = require('highlight.js');
+  htmlEntities = require('html-entities');
+  
+  const mj = require('mathjax-full/js/mathjax.js');
+  mathjax = mj.mathjax;
+  TeX = require('mathjax-full/js/input/tex.js').TeX;
+  SVG = require('mathjax-full/js/output/svg.js').SVG;
+  liteAdaptor = require('mathjax-full/js/adaptors/liteAdaptor.js').liteAdaptor;
+  RegisterHTMLHandler = require('mathjax-full/js/handlers/html.js').RegisterHTMLHandler;
+} catch (e) {
+  console.error('Missing dependencies. Run: npm install --save-dev pdfkit svg-to-pdfkit mathjax-full html-entities');
+  console.error(e);
   process.exit(1);
+}
+
+// Initialize MathJax
+const adaptor = liteAdaptor();
+RegisterHTMLHandler(adaptor);
+const texInput = new TeX({ packages: ['base', 'ams'] });
+const svgOutput = new SVG({ fontCache: 'local' });
+const htmlMath = mathjax.document('', { InputJax: texInput, OutputJax: svgOutput });
+
+function renderMathSVG(mathStr, display) {
+  try {
+    const node = htmlMath.convert(mathStr, { display });
+    return adaptor.innerHTML(node);
+  } catch (e) {
+    console.error('MathJax error:', e);
+    return null;
+  }
 }
 
 // ─── Paths ─────────────────────────────────────────────────────────────────────
@@ -364,37 +393,105 @@ function renderBlock(doc, token) {
       break;
 
     case 'code': {
-      ensure(doc, 40);
-      const pad = 8;
+      const pad = 14;
       const w = cw(doc);
       const isMermaid = token.lang === 'mermaid';
       const display = isMermaid ? '[Mermaid diagram — see online version]' : token.text;
 
-      doc.font(F.m).fontSize(S.code);
-      const textH = doc.heightOfString(display, { width: w - pad * 2 - 4, lineGap: 1.5 });
-      const boxH = textH + pad * 2;
+      // Tokenize the code using highlight.js manually if available
+      let lines = [];
+      if (!isMermaid && token.lang && hljs.getLanguage(token.lang)) {
+        const highlighted = hljs.highlight(display, { language: token.lang }).value;
+        // Basic nested span tokenizer
+        const tagRegex = /<\/?span[^>]*>|[^<]+/g;
+        let match;
+        let classes = [];
+        let currentTokens = [];
+        
+        while ((match = tagRegex.exec(highlighted)) !== null) {
+          const str = match[0];
+          if (str.startsWith('<span')) {
+            const clsMatch = str.match(/class="([^"]+)"/);
+            classes.push(clsMatch ? clsMatch[1] : '');
+          } else if (str === '</span>') {
+            classes.pop();
+          } else {
+            const text = htmlEntities.decode(str);
+            const linesSplit = text.split('\n');
+            linesSplit.forEach((l, idx) => {
+              if (idx > 0) {
+                lines.push(currentTokens);
+                currentTokens = [];
+              }
+              if (l) currentTokens.push({ text: l, classes: [...classes] });
+            });
+          }
+        }
+        if (currentTokens.length) lines.push(currentTokens);
+      } else {
+        lines = display.split('\n').map(l => [{ text: l, classes: [] }]);
+      }
 
-      if (doc.y + boxH + 4 > doc.page.height - M.bottom) doc.addPage();
+      // Calculate total height needed
+      doc.font(F.m).fontSize(S.code);
+      const lineHeight = doc.currentLineHeight() + 2;
+      const topBarH = 28;
+      const boxH = topBarH + (lines.length * lineHeight) + pad;
+
+      ensure(doc, boxH + 20);
       const y0 = doc.y;
 
-      // Background + left accent
       doc.save();
-      doc.roundedRect(M.left, y0, w, boxH, 3).fill(C.codeBg);
-      doc.roundedRect(M.left, y0, 3, boxH, 1.5).fill(C.codeBorder);
+      // Main dark background
+      doc.roundedRect(M.left, y0, w, boxH, 6).fill('#1e1e1e');
+      // Top bar
+      doc.roundedRect(M.left, y0, w, topBarH, 6).fill('#2d2d2d');
+      // Fix bottom corners of top bar by drawing a sharp rectangle
+      doc.rect(M.left, y0 + topBarH - 6, w, 6).fill('#2d2d2d');
+      
+      // MacOS traffic lights
+      doc.circle(M.left + 20, y0 + 14, 4.5).fill('#ff5f56');
+      doc.circle(M.left + 36, y0 + 14, 4.5).fill('#ffbd2e');
+      doc.circle(M.left + 52, y0 + 14, 4.5).fill('#27c93f');
       doc.restore();
 
       // Language label
       if (token.lang && !isMermaid) {
-        doc.font(F.m).fontSize(6.5).fillColor(C.muted)
-          .text(token.lang, M.left + w - pad - 40, y0 + 3, { width: 40, align: 'right' });
+        doc.font(F.B).fontSize(7).fillColor('#858585')
+          .text(token.lang.toUpperCase(), M.left + w - pad - 60, y0 + 10, { width: 60, align: 'right' });
       }
 
-      // Code text
-      doc.font(F.m).fontSize(S.code).fillColor(isMermaid ? C.muted : C.code)
-        .text(display, M.left + pad + 4, y0 + pad, { width: w - pad * 2 - 4, lineGap: 1.5 });
+      // Render lines
+      let curY = y0 + topBarH + 8;
+      lines.forEach((lineTokens) => {
+        let curX = M.left + pad;
+        lineTokens.forEach((tok) => {
+          // Very basic color mapping based on One Dark / VS Code dark theme
+          let color = '#d4d4d4'; // default
+          const c = tok.classes.join(' ');
+          if (c.includes('keyword')) color = '#c586c0';
+          else if (c.includes('string')) color = '#ce9178';
+          else if (c.includes('number')) color = '#b5cea8';
+          else if (c.includes('title.function') || c.includes('function') || c.includes('title.class.inherited')) color = '#dcdcaa';
+          else if (c.includes('comment')) color = '#6a9955';
+          else if (c.includes('title.class') || c.includes('class')) color = '#4ec9b0';
+          else if (c.includes('variable') || c.includes('attr')) color = '#9cdcfe';
+          else if (c.includes('built_in')) color = '#4ec9b0';
+          else if (c.includes('literal')) color = '#569cd6';
+          else if (c.includes('property')) color = '#9cdcfe';
+          else if (c.includes('tag')) color = '#569cd6';
+          else if (c.includes('name')) color = '#569cd6';
+          
+          doc.font(F.m).fontSize(S.code).fillColor(color);
+          // If text contains tabs, replace with 2 spaces to avoid PDFKit positioning bugs
+          const cleanText = tok.text.replace(/\t/g, '  ');
+          doc.text(cleanText, curX, curY, { lineBreak: false });
+          curX += doc.widthOfString(cleanText);
+        });
+        curY += lineHeight;
+      });
 
-      doc.y = y0 + boxH + 6;
-      doc.moveDown(0.3);
+      doc.y = y0 + boxH + 16;
       break;
     }
 
@@ -454,12 +551,36 @@ function renderBlock(doc, token) {
       doc.moveDown(0.5);
       break;
 
-    case 'math':
-      ensure(doc, 30);
-      doc.font(F.m).fontSize(S.code).fillColor(C.body)
-        .text(token.text, M.left + 20, doc.y, { width: cw(doc) - 40, align: 'center', lineGap: 1.5 });
-      doc.moveDown(0.5);
+    case 'math': {
+      ensure(doc, 40);
+      const mathSVG = renderMathSVG(token.text, true);
+      if (mathSVG) {
+        // MathJax uses `ex` units for size. 1ex ≈ 6pt for a 12pt font.
+        const exToPt = 6;
+        const wMatch = mathSVG.match(/width="([^"]+)ex"/);
+        const hMatch = mathSVG.match(/height="([^"]+)ex"/);
+        const svgW = wMatch ? parseFloat(wMatch[1]) * exToPt : 100;
+        const svgH = hMatch ? parseFloat(hMatch[1]) * exToPt : 30;
+
+        ensure(doc, svgH + 20);
+        
+        // Add a slight dark background to make math pop, similar to math blocks in dark mode
+        const y0 = doc.y;
+        doc.save();
+        doc.roundedRect(M.left, y0, cw(doc), svgH + 16, 4).fill('#f8fafc');
+        doc.restore();
+
+        const xOffset = Math.max(M.left + 10, M.left + (cw(doc) - svgW) / 2);
+        SVGtoPDF(doc, mathSVG, xOffset, y0 + 8, { width: svgW, height: svgH, preserveAspectRatio: 'xMidYMin meet' });
+        doc.y = y0 + svgH + 24;
+      } else {
+        // Fallback to text
+        doc.font(F.m).fontSize(S.code).fillColor(C.body)
+          .text(token.text, M.left + 20, doc.y, { width: cw(doc) - 40, align: 'center', lineGap: 1.5 });
+        doc.moveDown(0.5);
+      }
       break;
+    }
 
     case 'table': {
       ensure(doc, 40);
