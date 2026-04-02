@@ -1049,11 +1049,9 @@ GCP is not the only way to build a cloud-native knowledge pipeline. It is a reas
 
 **Videos:**
 
-- [Google Cloud Next sessions on Vertex AI (2024–2025)](https://cloud.withgoogle.com/next) — Google's annual cloud conference. The 2024 sessions introducing AlloyDB ScaNN and Vector Search 2.0 are available on YouTube and are the most accurate technical explanations of how these services work from the engineers who built them.
+- ["What is AlloyDB?"](https://www.youtube.com/watch?v=YODa-x0_3l0) by Google Cloud Tech — Concise overview of AlloyDB's architecture, how it differs from standard Cloud SQL, and where vector search fits. Good first watch before reading the AlloyDB AI documentation.
 
-- ["AlloyDB AI: Building Intelligent Applications with Integrated ML"](https://www.youtube.com/watch?v=Bnf5DdBuMEI) — Google Cloud developer channel. The live demo of `google_ml_integration` in action is more instructive than the documentation alone.
-
-- ["Building Production RAG on Google Cloud"](https://www.youtube.com/watch?v=j_CxSbMQMhk) from Google Cloud's YouTube channel — Covers the full pipeline from Document AI through embedding to retrieval and generation, with architecture diagrams.
+- ["Build AI-powered apps on Google Cloud with pgvector, LangChain & LLMs"](https://www.youtube.com/watch?v=Jl1S4ZcSY8k) from Google Cloud — Live demo of the full stack: pgvector extension setup, embedding generation inside the database, LangChain integration, and Vertex AI model calls from a Cloud Run service.
 
 **Questions to Explore:**
 

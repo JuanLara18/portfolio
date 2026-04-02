@@ -710,11 +710,9 @@ The investment is worth it. An enterprise knowledge base that respects permissio
 
 **Videos:**
 
-- ["Advanced RAG: How to Build a Production-Ready Enterprise Knowledge Base"](https://www.youtube.com/watch?v=qN_2fnOPY-M) by Jerry Liu (LlamaIndex founder) — Covers hierarchical indexing, auto-merging retrieval, and the production engineering challenges that distinguish enterprise deployments from demo systems.
+- ["5 Levels of Text Splitting"](https://youtu.be/8OJC21T2SL4) by Greg Kamradt — The definitive visual walkthrough of chunking strategies from character-level splitting to semantic and agentic approaches. Essential watch before choosing a chunking strategy for production.
 
-- [LlamaIndex's Webinar on Enterprise RAG Patterns](https://www.llamaindex.ai/blog/webinar-enterprise-rag) — The most practical walkthrough of multi-tenant knowledge bases, permission-aware retrieval with LlamaIndex, and document lifecycle management available on video.
-
-- ["Vector Search with Permissions at Scale"](https://www.youtube.com/watch?v=X5zqs11porI) from the Weaviate YouTube channel — The engineering walkthrough of ACORN and why filtered vector search at enterprise scale requires rethinking the HNSW traversal algorithm rather than applying filters as a wrapper.
+- [LlamaIndex Workshop: Improving RAG with Advanced Parsing and Metadata](https://youtu.be/V_-WNJgTvgg) — Hosted with the founders of Deasie. Covers how both parsing quality and metadata enrichment affect retrieval, with live demos of hierarchical indexing and auto-merging retrieval in LlamaIndex.
 
 **Questions to Explore:**
 

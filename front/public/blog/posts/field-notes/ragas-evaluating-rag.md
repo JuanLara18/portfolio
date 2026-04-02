@@ -619,11 +619,9 @@ Building without measuring is hope. Measuring turns it into engineering.
 
 **Videos:**
 
-- ["RAG Evaluation Deep Dive"](https://www.youtube.com/watch?v=Anr1br0lLz8) by Jared Zoneraich (Arize AI) — 45-minute walkthrough covering RAGAS metrics in detail with live implementation. One of the most practical introductions available, with real failure case analysis.
+- ["Evaluating RAG with Langfuse and RAGAS"](https://www.youtube.com/watch?v=2fqs8Nlh5UI) by Langfuse — End-to-end walkthrough of running RAGAS metrics inside a real pipeline, interpreting scores, and wiring evaluation into a continuous feedback loop. One of the most practical intros available.
 
-- [Weights & Biases RAG evaluation workshop](https://wandb.ai/site/courses) — Part of their LLM engineering course. Covers evaluation as part of a complete MLOps loop, including how to integrate RAGAS scores into experiment tracking and comparison.
-
-- ["LLM Evaluation Frameworks"](https://youtube.com/watch?v=MFH-sZbhWqs) — James Briggs's comparison of RAGAS, TruLens, and DeepEval with the same benchmark RAG system, which makes the trade-offs between frameworks concrete rather than abstract.
+- ["Building and Evaluating Advanced RAG"](https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/) — Free short course by Jerry Liu (LlamaIndex) and Anupam Datta (TruEra) on DeepLearning.AI. Covers the RAG triad (context relevance, groundedness, answer relevance) with working code you can run immediately.
 
 **Questions to Explore:**
 
