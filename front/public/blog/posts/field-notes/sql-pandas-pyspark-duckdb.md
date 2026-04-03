@@ -99,7 +99,11 @@ customers
 
 ## Part 1 — SQL
 
-BigQuery dialect throughout. The patterns translate directly to PostgreSQL, Snowflake, and DuckDB with minimal adjustments noted where they differ.
+SQL has been around since 1974 and every other tool in this post is, in some sense, trying to replicate what it does. Its defining property is that it's **declarative**: you describe the shape of the result you want, and the query optimizer decides how to compute it. You don't write loops, you don't manage memory, you don't worry about whether to scan or use an index. You say "give me the total spend per category, ordered by total descending, only for completed transactions" and the engine figures out the rest.
+
+This matters in practice because declarative code tends to be shorter, more readable, and more maintainable than the equivalent imperative code. A 10-line SQL query often replaces 40 lines of Pandas. And because modern warehouses (BigQuery, Snowflake, Redshift) push SQL computation into massively parallel columnar storage engines, a single SQL query can aggregate billions of rows faster than any single-machine Python library.
+
+The patterns below use BigQuery dialect. The core logic translates to PostgreSQL, Snowflake, and DuckDB with minimal changes — mostly around date function names and a few BigQuery-specific extensions (`QUALIFY`, `APPROX_QUANTILES`) called out in comments.
 
 ### Reads and Projections
 
@@ -142,6 +146,8 @@ WHERE REGEXP_CONTAINS(transaction_id, r'^TXN-[0-9]{8}$')
 
 ### CTEs and Subqueries
 
+A CTE (Common Table Expression) is a named, temporary result set scoped to a single query. It has the same effect as a subquery but it reads top-to-bottom instead of inside-out. The alternative — deeply nested subqueries — is technically equivalent but becomes unreadable beyond two levels. More importantly, CTEs are how dbt organizes transformation logic: each dbt model is essentially a chain of CTEs compiled into a `CREATE TABLE AS SELECT`. If you get comfortable thinking in CTEs, dbt becomes natural.
+
 ```sql
 -- CTE: prefer over subqueries for readability and reuse
 WITH completed AS (
@@ -171,6 +177,8 @@ ORDER BY customer_id, month;
 ```
 
 ### GROUP BY and Aggregation
+
+`GROUP BY` collapses multiple rows into one per group and applies aggregate functions to each group. After `GROUP BY`, individual row values no longer exist — only aggregates do. This is why you can't `SELECT` a non-grouped, non-aggregated column without an error in standard SQL. `WHERE` filters rows *before* grouping (it can't see aggregate results); `HAVING` filters *after* grouping (it can only see group-level values). Both matter: filtering early with `WHERE` reduces the data the grouping engine has to process.
 
 ```sql
 -- Standard aggregations
@@ -405,7 +413,13 @@ WHEN NOT MATCHED THEN
 
 ## Part 2 — Pandas
 
-Pandas 2.x with the Copy-on-Write (CoW) behavior enabled by default in 2.0+. Works on DataFrames in memory. Best for datasets under ~5GB per machine — beyond that, memory pressure and GIL become real problems.
+Pandas was created by Wes McKinney in 2008 while working with financial time-series data at AQR Capital. He needed something that combined the tabular data model of R's `data.frame` with Python's ecosystem. The result became the standard for in-memory data manipulation in Python.
+
+Where SQL is declarative, Pandas is **imperative**: you build the transformation step by step, chaining operations on a DataFrame object. This makes it more verbose than SQL for standard aggregations, but more flexible for complex logic that doesn't map cleanly to SQL — irregular data shapes, Python library integrations (sklearn, matplotlib, NLTK), iterative algorithms.
+
+Pandas 2.0 introduced **Copy-on-Write (CoW)** semantics, enabled by default in 2.2+. The core change: modifying a DataFrame slice no longer silently modifies the original. Operations return new DataFrames instead. This eliminates the `SettingWithCopyWarning` that confused practitioners for years and makes memory behavior predictable. The cost: code that mutated DataFrames in-place needs to be updated to use `.assign()` and chain-based patterns.
+
+The practical ceiling: Pandas loads everything into a single machine's RAM. For data over ~5GB, you start seeing memory pressure and slowdowns. DuckDB and PySpark take over beyond that threshold — but for exploration, prototyping, and datasets of manageable size, Pandas is still the fastest path from data to insight.
 
 ### Setup and Reads
 
@@ -530,6 +544,8 @@ df.groupby("category")["amount"].agg(coefficient_of_variation)
 
 ### Method Chaining
 
+Method chaining is the idiomatic Pandas pattern for multi-step transformations. Instead of assigning an intermediate variable for every operation, you pipe the DataFrame through a sequence of methods, each receiving the previous result. The key enablers: `.query()` returns a filtered DataFrame, `.assign()` adds columns and returns the DataFrame, `.groupby().agg()` returns a new DataFrame. The anti-pattern in CoW Pandas 2.x is `df["new_col"] = ...` — this works but breaks chains and triggers a warning. Keep everything in `.assign()`.
+
 ```python
 # Method chaining — readable, no intermediate variables
 result = (
@@ -580,6 +596,8 @@ pd.concat([df_a, df_b], ignore_index=True).drop_duplicates(subset="transaction_i
 ```
 
 ### Window Functions
+
+Pandas doesn't have a `OVER (PARTITION BY ...)` syntax — window function logic is assembled from three primitives: `.groupby()` for partitioning, `.sort_values()` for ordering, and `.shift()` / `.cumsum()` / `.rank()` / `.rolling()` for the computation. The imperative nature means you have to manage the sort step explicitly — in SQL the `ORDER BY` inside `OVER(...)` is declarative and the engine handles it. In Pandas, if you forget `.sort_values()` before a `.shift()`, you get silently wrong results.
 
 ```python
 # Rank per partition
@@ -710,7 +728,13 @@ df.to_sql("output_table", engine, if_exists="append", index=False, method="multi
 
 ## Part 3 — PySpark
 
-PySpark 4.0/4.1. Distributed across a cluster. The right tool when data exceeds single-node memory or when you need distributed writes at scale. Overhead — cluster startup, shuffle — makes it overkill for anything under a few hundred GB.
+PySpark is a Python API wrapping Apache Spark, a distributed computation engine that runs on a cluster of machines. Understanding this distinction is important: when you write `df.filter(F.col("status") == "completed")`, you are not filtering data. You are adding a step to a **logical plan** — a description of what you want to compute. Nothing executes until you call an action (`.count()`, `.show()`, `.write`). At that point, Spark's Catalyst optimizer compiles the logical plan into a physical execution plan, partitions the data across executor nodes, and runs the computation in parallel.
+
+This lazy evaluation model is what makes Spark powerful and also what makes it unintuitive at first. A DataFrame with 20 transformation steps applied to it is not 20 operations of compute — it's a 20-step plan that hasn't run yet. Calling `.cache()` materializes the DataFrame at that point so the plan isn't rerun from scratch on every action. Forgetting to cache a DataFrame that's used multiple times is one of the most common sources of unexpected slowness.
+
+PySpark 4.0 introduced **Spark Connect**, a client-server protocol that decouples the PySpark client from the Spark cluster. You can now run PySpark code locally and connect to a remote cluster without installing Spark locally. It also defaults to ANSI SQL mode (stricter type coercions, closer to standard SQL behavior) and ships full Python 3.11/3.12 support with faster startup times.
+
+The right moment to reach for PySpark: data that genuinely doesn't fit on one machine (hundreds of GB to petabytes), distributed writes to large Iceberg or Delta tables, Spark Structured Streaming, or workflows already running on Databricks or Dataproc where Spark is the native execution engine.
 
 ### Setup and Reads
 
@@ -877,6 +901,8 @@ df = df.withColumn("rolling_7_avg", F.avg("amount").over(w_rolling))
 
 ### Joins
 
+Joins in Spark are the most expensive operation in most pipelines — they require a **shuffle**: redistributing data across the network so that rows with the same join key land on the same executor. For a 500GB transactions table joined to a 50GB customers table, Spark has to physically move data across machines. The broadcast join avoids this entirely: Spark ships the small table to every executor so each executor can do the join locally. The rule of thumb is to broadcast any table under ~100MB (configurable via `spark.sql.autoBroadcastJoinThreshold`). Forgetting to broadcast when joining a large table to a small lookup table is one of the most common and avoidable performance mistakes in Spark.
+
 ```python
 # Standard joins
 df_txn.join(df_cust, on="customer_id", how="inner")
@@ -927,6 +953,12 @@ df.withColumn("numeric_id", F.regexp_extract("transaction_id", r"TXN-(\d+)", 1))
 
 ### UDFs
 
+When Spark's built-in `F.*` functions can't express your logic, you write a UDF. The problem: a regular Python UDF forces Spark to serialize each row from the JVM into a Python object (via Pickle), execute your Python function, then deserialize the result back into the JVM. For a billion rows, that's a billion serialization round-trips. In practice, a UDF that would take 5 minutes with vectorized operations can take 90 minutes as a regular Python UDF.
+
+The solution is a **Pandas UDF** (also called a vectorized UDF): instead of receiving one row at a time, your function receives an entire column as a Pandas Series. Spark batches thousands of rows at a time, transfers the batch via Apache Arrow (zero-copy), runs your function on the batch, and transfers the result back. The overhead shifts from per-row to per-batch — a 100–1000× difference for typical column operations.
+
+Use regular UDFs only for operations you genuinely can't vectorize. Use Pandas UDFs everywhere else.
+
 ```python
 # Regular UDF — slow (Python ↔ JVM serialization per row)
 @F.udf(returnType=T.StringType())
@@ -952,6 +984,12 @@ df.withColumn("risk_flag", classify_txn_vectorized("status", "amount"))
 ```
 
 ### Partitioning and Performance
+
+A Spark DataFrame is divided into **partitions** — fixed chunks of data that each executor processes independently. Getting the partition count right matters: too few partitions means some executors sit idle while others process large chunks; too many means excessive task scheduling overhead and small files on write. The default of 200 shuffle partitions (`spark.sql.shuffle.partitions`) is appropriate for medium-scale workloads but too high for small data (200 empty tasks) and too low for very large data.
+
+**AQE (Adaptive Query Execution)**, enabled via `spark.sql.adaptive.enabled = true`, solves this at runtime: Spark collects statistics at each shuffle boundary and automatically adjusts the number of post-shuffle partitions based on actual data size. For most workloads, enabling AQE and letting it manage partitions is better than manual tuning. AQE also handles **skew joins** (where one partition has far more data than others) and **dynamic partition pruning** automatically.
+
+`repartition()` reshuffles data with a full network shuffle — expensive but necessary before joining two large DataFrames on the same key, so matching keys land on the same executor. `coalesce()` reduces partitions without shuffling — cheap and correct for writing the final output as fewer files.
 
 ```python
 # Check current partition count (affects parallelism and shuffle)
@@ -1007,9 +1045,15 @@ df.write.format("delta").mode("overwrite").save("gs://bucket/delta/transactions/
 
 ## Part 4 — DuckDB
 
-DuckDB 1.4+ (2025 LTS). An in-process analytical database: no server, no cluster, no configuration. Install with `pip install duckdb`. Speaks standard SQL. Reads Parquet, CSV, JSON, Arrow, and Pandas DataFrames natively.
+DuckDB started as a research project at CWI Amsterdam in 2019. The researchers asked a simple question: why does every analytical database require a server? Client-server databases (PostgreSQL, MySQL, SQL Server) were designed for concurrent multi-user OLTP access — many clients, many small queries, row-by-row operations. For analytical workloads — one user, a few complex queries, column-by-column scans — the server is pure overhead.
 
-The benchmark reality: for datasets up to 1TB with OLAP query patterns (aggregation, joins, filtering on Parquet), DuckDB on a single machine consistently matches or beats Spark on a cluster. The cluster adds network overhead, shuffle management, and JVM costs that DuckDB avoids entirely.
+Their answer: run the analytical engine **in-process**, embedded inside the calling application. No server to start, no port to configure, no network round-trip. When Python calls DuckDB, DuckDB runs inside the same process with direct memory access.
+
+The execution model is columnar-vectorized: DuckDB reads Parquet files column by column using SIMD CPU instructions, processes data in batches of thousands of rows per vectorized operation, and never materializes the full dataset in memory unless necessary. This is the same execution model as enterprise OLAP databases (Snowflake, Redshift, BigQuery) — just without the distributed infrastructure around it.
+
+The benchmark reality: for datasets under 500GB on OLAP workloads (aggregation, joins, filtering over Parquet files), DuckDB on a single modern machine consistently matches or outperforms Spark on a cluster. The reason is simple: a cluster adds network shuffle, JVM/Python serialization, cluster startup (2–5 minutes on Dataproc/EMR), and orchestration overhead. DuckDB starts in milliseconds, scans at 3–4 GB/s from SSD or GCS, and has zero shuffle cost for operations that fit in memory. For single-machine data, the distributed overhead is the bottleneck, not the computation.
+
+DuckDB 1.4 LTS (2025) — `pip install duckdb`. No JVM, no Hadoop, no YARN. Just SQL.
 
 ### Core Usage
 
@@ -1039,6 +1083,8 @@ con.sql("""
 ```
 
 ### SQL on Pandas DataFrames
+
+This is DuckDB's most powerful integration point. When you reference a Pandas DataFrame by name in a DuckDB SQL query, DuckDB reads the Arrow representation of that DataFrame **without copying the data**. Both DuckDB and Pandas 2.x speak Apache Arrow as their internal format, so the handoff is zero-cost. The pattern lets you use Pandas for what it's good at (reading from APIs, complex row-level mutations, matplotlib integration) and DuckDB for what it's good at (aggregation, joins, window functions) — in the same process, without serialization overhead between them.
 
 ```python
 # DuckDB can query a Pandas DataFrame directly by name — zero copy via Arrow
@@ -1126,7 +1172,13 @@ The rule: **reach for DuckDB first. Only upgrade to Spark when the data or the w
 
 ## Part 5 — Contrasts
 
-The same seven operations across all four tools. Read this section with the specific operation in mind — which syntax you prefer is secondary to understanding what each tool is actually doing.
+The same seven operations across all four tools.
+
+Each tool solves the same problem differently because each tool is optimized for a different context. SQL hands the problem to a query optimizer that rewrites it into an efficient execution plan — you never see the computation. Pandas gives you explicit control over every step — you sequence the operations. DuckDB compiles your SQL into a vectorized plan that runs column-by-column in batches on a single machine. PySpark serializes your transformations into a DAG that gets distributed across a cluster.
+
+Syntax differences are superficial. The real question when reading these side by side: *where is the computation running, and what does the engine need from you to run it efficiently?* SQL and DuckDB need good query structure (filter early, join on indexed/partitioned columns). Pandas needs good use of vectorization (avoid `apply` when a `.str` accessor or `np.where` can do it). PySpark needs good partitioning and broadcast hints — otherwise the engine can't distribute the work efficiently.
+
+Read this section with that question in mind, not just as a syntax reference.
 
 ### 1. Filter and Select
 
