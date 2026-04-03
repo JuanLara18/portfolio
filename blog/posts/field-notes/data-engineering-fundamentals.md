@@ -133,6 +133,29 @@ If your fraud detection system needs to block a transaction in 200ms, you need s
 
 In December 2025, Spark 4.1 released a **Real-Time Mode** for Structured Streaming that targets millisecond latency — previously Flink's exclusive domain. The gap between the two engines has narrowed significantly.
 
+What changes a decision about batch vs. streaming is latency — but latency requirements vary enormously by use case. Positioning them makes the choice more concrete than any rule of thumb:
+
+```mermaid
+quadrantChart
+    title Batch vs Streaming by Latency Need and Complexity Cost
+    x-axis Low Operational Complexity --> High Operational Complexity
+    y-axis Hours of Acceptable Latency --> Milliseconds of Required Latency
+    quadrant-1 Streaming justified
+    quadrant-2 Over-engineered
+    quadrant-3 Batch is fine
+    quadrant-4 Batch is fine
+    Fraud detection: [0.85, 0.92]
+    Transaction alerts: [0.75, 0.80]
+    Live leaderboard: [0.70, 0.72]
+    Doc indexing < 5min: [0.55, 0.60]
+    Daily reporting: [0.20, 0.12]
+    ML training pipeline: [0.25, 0.08]
+    Knowledge base refresh: [0.30, 0.20]
+    Regulatory report: [0.15, 0.05]
+```
+
+Most use cases live in the bottom half — batch is the right answer. Streaming is justified when a human or automated system must act on data within seconds, and that action is impossible if the data arrives later.
+
 ### The Lambda Architecture and Why Teams Abandon It
 
 The Lambda Architecture maintains two parallel pipelines: a batch layer for accuracy and a speed layer for low latency, with a serving layer that merges them. It sounds elegant in a slide deck. In practice, it means maintaining two codebases that must produce identical results but use different APIs, different semantics, and diverge over time as they're maintained by different people.
@@ -213,6 +236,26 @@ results = vector_db.query(
 ---
 
 ## The Lakehouse: When Lakes and Warehouses Merged
+
+```mermaid
+timeline
+    title From Data Warehouse to AI-Ready Lakehouse
+    1990s : Data Warehouse era — Teradata, Oracle
+         : Structured data only, expensive storage, proprietary formats
+    2006  : Hadoop / HDFS — cheap distributed storage at scale
+         : Schema-on-read, but slow and operationally complex
+    2012  : Data Lake on cloud storage — S3, GCS with Parquet
+         : Cheap and flexible but ungoverned — the "data swamp" problem
+    2016  : Cloud Data Warehouse — BigQuery, Redshift, Snowflake
+         : Fast SQL on structured data, but duplicate storage costs
+    2019  : Delta Lake (Databricks) — ACID on object storage
+         : Lakehouse pattern emerges: warehouse features on lake economics
+    2021  : Apache Iceberg gains traction — multi-engine open standard
+    2023  : Lakehouse becomes the dominant architecture
+         : Iceberg, Delta, Hudi coexist; BigLake, AWS Glue native support
+    2024  : AI data stack layer added — vector stores, embedding pipelines
+         : Lakehouse extends to unstructured data and LLM context serving
+```
 
 For a decade, organizations ran two parallel data systems. The **data warehouse** (Teradata, then BigQuery, Redshift, Snowflake) provided fast, structured, governed analytics over a managed schema. The **data lake** (S3 or GCS with Parquet files) provided cheap, flexible, schema-on-read storage for everything that didn't fit the warehouse — unstructured data, ML training data, logs.
 
@@ -620,6 +663,29 @@ Everything covered so far about data quality applies to analytics and ML. For AI
 **Metadata completeness is retrieval quality.** A vector with no `source_date` metadata can't be filtered by recency. A vector with no `department` metadata can't be scoped to permission-appropriate results. For RAG pipelines, metadata is not decorative — it is part of the retrieval contract.
 
 **Freshness has a semantic component.** A stale row in a dashboard shows wrong numbers. A stale document in a RAG pipeline gives confident, specific, wrong answers. The business impact is categorically different.
+
+The lifecycle of a document in an AI knowledge pipeline has more states than a row in a relational table — and each transition can fail silently:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Received : document uploaded / CDC event
+
+    Received --> QualityChecked : ingestion pipeline runs
+    QualityChecked --> Rejected : fails validation\n(too short, garbled OCR, missing metadata)
+    QualityChecked --> Chunked : passes validation
+
+    Chunked --> Embedded : chunking pipeline completes
+    Embedded --> Indexed : vectors written to store
+
+    Indexed --> Stale : source document updated\nor TTL exceeded
+    Stale --> Embedded : reindex triggered\n(event-driven or scheduled)
+
+    Indexed --> Archived : document deleted at source\nor retention policy
+    Rejected --> [*]
+    Archived --> [*]
+
+    note right of Stale : Most silent failure mode —\nindex still serves queries\nwith outdated content
+```
 
 ```python
 # Data quality validation for an embedding pipeline
