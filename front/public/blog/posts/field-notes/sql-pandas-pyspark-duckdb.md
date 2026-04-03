@@ -23,6 +23,21 @@ Four tools. Four different answers to the same question: how do you transform da
 
 This is a reference post. Minimal prose, maximum code. Every pattern you'll reach for, across all four tools.
 
+```mermaid
+timeline
+    title Evolution of the Four Tools
+    2008 : Pandas 0.1 — Wes McKinney at AQR Capital
+    2010 : Pandas 1.0 — becomes the Python DataFrame standard
+    2014 : Apache Spark 1.0 — PySpark API released
+    2016 : Spark 2.0 — DataFrame API replaces RDD as default
+    2019 : DuckDB 0.1 — CWI Amsterdam research paper
+    2021 : Spark 3.0 — AQE, vectorized execution improvements
+    2022 : DuckDB 0.5 — Arrow integration, Pandas zero-copy
+    2023 : Pandas 2.0 — Copy-on-Write semantics
+    2024 : DuckDB 1.0 — first stable LTS release
+    2025 : Spark 4.0 — Spark Connect, ANSI SQL default · DuckDB 1.4 LTS
+```
+
 ---
 
 ## Where Each Tool Lives
@@ -736,6 +751,28 @@ PySpark 4.0 introduced **Spark Connect**, a client-server protocol that decouple
 
 The right moment to reach for PySpark: data that genuinely doesn't fit on one machine (hundreds of GB to petabytes), distributed writes to large Iceberg or Delta tables, Spark Structured Streaming, or workflows already running on Databricks or Dataproc where Spark is the native execution engine.
 
+The lazy evaluation lifecycle — from Python call to cluster output:
+
+```mermaid
+sequenceDiagram
+    participant P as Python / Driver
+    participant C as Catalyst Optimizer
+    participant E as Executors (cluster)
+    participant S as Storage (GCS / HDFS)
+
+    P->>C: df.filter(...).groupBy(...).agg(...)
+    Note over P,C: No data moves. A logical plan is built.
+    P->>C: df.write.parquet(...) ← action triggers execution
+    C->>C: Optimize logical plan
+    Note over C: Predicate pushdown, join reordering,<br/>broadcast detection, AQE partitioning
+    C->>E: Physical plan: scan → filter → shuffle → aggregate
+    E->>S: Read only needed partitions (partition pruning)
+    S-->>E: Column chunks (Parquet, columnar)
+    E->>E: Execute in parallel across nodes
+    E->>S: Write output partitions
+    S-->>P: Done — action completes
+```
+
 ### Setup and Reads
 
 ```python
@@ -1167,6 +1204,21 @@ con.sql("COPY (SELECT * FROM result) TO 'output.parquet' (FORMAT PARQUET, COMPRE
 | Cost model | Free (compute you already have) | Cluster cost per hour |
 
 The rule: **reach for DuckDB first. Only upgrade to Spark when the data or the write pattern requires a cluster.**
+
+The performance crossover — where each tool wins on a TPC-H style OLAP workload:
+
+```mermaid
+xychart-beta
+    title "Approximate query time by dataset size (single aggregation + join, seconds)"
+    x-axis ["100 MB", "1 GB", "10 GB", "100 GB", "500 GB", "1 TB"]
+    y-axis "Time (seconds)" 0 --> 300
+    line "Pandas" [0.3, 4, 45, 500, 2000, 9000]
+    line "DuckDB" [0.1, 0.6, 5, 38, 180, 420]
+    line "PySpark (local)" [8, 12, 25, 95, 380, 850]
+    line "PySpark (10-node cluster)" [15, 16, 18, 28, 55, 110]
+```
+
+Pandas falls off at 10 GB as memory pressure dominates. DuckDB stays competitive through 500 GB on a modern machine. PySpark local has cluster startup overhead that makes it slower than DuckDB until data is large enough to justify distribution. A 10-node cluster only becomes worthwhile beyond ~100 GB — and that's ignoring the cluster cost.
 
 ---
 
