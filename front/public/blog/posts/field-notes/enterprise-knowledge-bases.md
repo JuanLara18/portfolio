@@ -250,6 +250,23 @@ The decision is not which strategy is best in absolute terms—it is which combi
 
 In practice, mature enterprise knowledge bases layer these strategies by document type rather than applying a single approach uniformly.
 
+```mermaid
+quadrantChart
+    title Chunking Strategies: Retrieval Precision vs Implementation Cost
+    x-axis Low Implementation Cost --> High Implementation Cost
+    y-axis Low Retrieval Precision --> High Retrieval Precision
+    quadrant-1 High precision, high cost
+    quadrant-2 Best ROI
+    quadrant-3 Baseline — start here
+    quadrant-4 Costly, limited gain
+    Fixed-size: [0.10, 0.28]
+    Hierarchical Auto-Merging: [0.38, 0.62]
+    Late Chunking: [0.45, 0.70]
+    Contextual Retrieval: [0.55, 0.75]
+    Proposition Chunking: [0.80, 0.88]
+    RAPTOR: [0.85, 0.72]
+```
+
 ## Enterprise Metadata Architecture
 
 Metadata is the infrastructure that makes retrieval controllable. Without it, you can retrieve by semantic similarity only. With it, you can restrict retrieval by department, date range, document type, sensitivity level, regulatory scope, and—critically—the permission set of the querying user.
@@ -271,6 +288,54 @@ A production enterprise metadata schema spans several categories:
 **Content structure** captures where within the document a chunk lives: `chunk_index`, `total_chunks`, `page_number`, `section_heading`, `parent_section`. These fields are essential for attribution and for the hierarchical chunking merge logic.
 
 **Semantic enrichment** captures automatically extracted meaning: `summary` (brief LLM-generated summary of the chunk's content), `keywords`, `entities`, `topics`, `language`.
+
+The relationships between these metadata entities — and how they map to what gets stored in the vector index alongside each embedding:
+
+```mermaid
+erDiagram
+    DOCUMENT {
+        string document_id PK
+        string source_system
+        string canonical_url
+        date created_date
+        date last_modified_date
+        string sensitivity_label
+        string document_type
+        string department
+        string[] allowed_groups
+        string acl_hash
+    }
+    CHUNK {
+        string chunk_id PK
+        string document_id FK
+        int chunk_index
+        int total_chunks
+        string section_heading
+        int page_number
+        string content
+        vector embedding
+        string[] allowed_groups
+        string sensitivity_label
+    }
+    ENRICHED_METADATA {
+        string chunk_id FK
+        string summary
+        string[] keywords
+        string[] entities
+        string[] topics
+        string language
+        float quality_score
+    }
+    IDENTITY_GROUP {
+        string group_id PK
+        string group_name
+        string[] member_user_ids
+    }
+
+    DOCUMENT ||--o{ CHUNK : "split into"
+    CHUNK ||--o| ENRICHED_METADATA : "enriched by"
+    CHUNK }o--o{ IDENTITY_GROUP : "visible to"
+```
 
 ### LLM-Enriched Metadata
 
@@ -406,6 +471,27 @@ The September 2025 Microsoft paper "Enterprise AI Must Enforce Participant-Aware
 **Security trimming** is the term Microsoft coined in SharePoint's enterprise search era for filtering query results to exclude documents the querying user is not authorized to see. The terminology has carried over to enterprise RAG.
 
 The canonical security trimming pattern has two parts: **indexing-time ACL storage** and **query-time permission enforcement**.
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant API as RAG API
+    participant IAM as Identity Provider\n(Entra ID / IAM)
+    participant VS as Vector Store
+    participant LLM as LLM
+
+    U->>API: query("What is the bonus policy?")
+    API->>IAM: resolve_groups(user_token)
+    IAM-->>API: ["hr-team", "managers-co", "all-staff"]
+    API->>VS: search(query_embedding,\n  filter={allowed_groups: {$overlap: user_groups}},\n  top_k=5)
+    Note over VS: Only chunks where allowed_groups<br/>intersects user_groups are candidates
+    VS-->>API: [chunk_1, chunk_2, chunk_3]
+    API->>API: post-filter: re-verify chunk ACLs\nagainst current user_groups
+    Note over API: Handles stale ACLs in the index —<br/>re-verification catches permission changes<br/>since last re-index
+    API->>LLM: generate(query + verified_chunks)
+    LLM-->>API: grounded_response
+    API-->>U: answer + source citations
+```
 
 At indexing time, each document's ACL is resolved to a list of group identifiers and stored as filterable metadata alongside the embeddings:
 
