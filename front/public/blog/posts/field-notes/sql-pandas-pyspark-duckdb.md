@@ -25,6 +25,54 @@ This is a reference post. Minimal prose, maximum code. Every pattern you'll reac
 
 ---
 
+## Where Each Tool Lives
+
+The four tools aren't competing for the same job. They sit at different points in a data pipeline, reading from and writing to the same underlying storage layer.
+
+```mermaid
+flowchart LR
+    subgraph S["Storage"]
+        direction TB
+        DB[(Warehouse\nBigQuery · Postgres · AlloyDB)]
+        FS[File System\nGCS · S3 · local\nParquet · CSV · JSON]
+    end
+
+    subgraph T["Transformation"]
+        direction TB
+        SQL["SQL\nIn-database\nDeclarative"]
+        DK["DuckDB\nIn-process\nSQL on files"]
+        PD["Pandas\nIn-memory\nPython imperative"]
+        SP["PySpark\nCluster\nDistributed DAG"]
+    end
+
+    subgraph O["Consumers"]
+        direction TB
+        BI[BI / Dashboards]
+        ML[ML / Features]
+        AG[Agents / RAG]
+    end
+
+    DB -->|in-database query| SQL
+    DB -->|JDBC connector| PD
+    FS --> DK
+    FS --> PD
+    FS --> SP
+
+    SQL -->|CREATE TABLE AS| DB
+    DK -->|COPY TO| FS
+    PD -->|to_parquet| FS
+    SP -->|write.parquet| FS
+    SP -->|write.bigquery| DB
+
+    DB --> BI
+    DB --> ML
+    DB --> AG
+```
+
+The practical implication: SQL runs where the data already lives (no movement). Pandas and DuckDB pull data to the local machine. PySpark distributes both the data and the compute across nodes. Choose based on where your data lives and how much of it there is.
+
+---
+
 ## The Dataset
 
 Two tables used throughout. All examples reference these schemas.
@@ -160,6 +208,26 @@ GROUP BY customer_id;
 
 ### Window Functions
 
+Window functions compute a value for each row using a set of related rows — without collapsing them into a single output row the way GROUP BY does. Three clauses define the window: `PARTITION BY` splits the table into independent groups, `ORDER BY` defines the row sequence within each group, and `ROWS/RANGE BETWEEN` sets the frame (which rows contribute to each calculation).
+
+```mermaid
+flowchart TD
+    T["Full table — all rows, unordered"]
+    T -->|"PARTITION BY customer_id"| P
+
+    subgraph P["Independent sub-tables — computation never crosses this boundary"]
+        direction LR
+        PA["CUST-A partition\namounts: 100 · 200 · 50"]
+        PB["CUST-B partition\namounts: 300 · 150 · 400 · 75"]
+    end
+
+    PA -->|"ORDER BY created_at"| OA["CUST-A sorted\n50 → 100 → 200"]
+    PB -->|"ORDER BY created_at"| OB["CUST-B sorted\n75 → 150 → 300 → 400"]
+
+    OA -->|"ROWS BETWEEN UNBOUNDED PRECEDING\nAND CURRENT ROW\nrunning total"| FA["50 · 150 · 350"]
+    OB -->|"Same frame"| FB["75 · 225 · 525 · 925"]
+```
+
 ```sql
 -- ROW_NUMBER — pick latest transaction per customer
 SELECT * FROM (
@@ -213,6 +281,19 @@ FROM `project.dataset.transactions`;
 ```
 
 ### Joins
+
+The six join types answer different questions about which rows to keep. Given `transactions` (left) and `customers` (right), with CUST-C in transactions but not in customers, and CUST-D in customers but not in transactions:
+
+| Join type | TXN-001 (CUST-A matched) | TXN-003 (CUST-C no match) | CUST-D (no matching txn) |
+|-----------|:---:|:---:|:---:|
+| `INNER` | ✓ | — | — |
+| `LEFT` | ✓ | ✓ (nulls on right) | — |
+| `RIGHT` | ✓ | — | ✓ (nulls on left) |
+| `FULL OUTER` | ✓ | ✓ (nulls on right) | ✓ (nulls on left) |
+| `LEFT ANTI` | — | ✓ | — |
+| `LEFT SEMI` | ✓ | — | — |
+
+`LEFT ANTI` answers "which transactions have no customer record?" — the classic data quality check. `LEFT SEMI` answers "which transactions have a known customer?" without pulling the customer columns.
 
 ```sql
 -- INNER JOIN
@@ -1277,26 +1358,33 @@ duckdb.sql("""
 
 ---
 
-### The Data Size Decision
+### The Decision Flowchart
 
-```
-Data size:
-├── < 1GB    → Pandas (always)
-├── 1–50GB   → DuckDB or Pandas (DuckDB preferred for SQL-style aggregations)
-├── 50–500GB → DuckDB on a large machine, OR PySpark if you already have a cluster
-└── > 500GB  → PySpark (or BigQuery/Snowflake if data lives there)
+Three questions narrow down the right tool for any given task.
 
-Query type:
-├── Declarative, in-database → SQL (always, if data is there)
-├── Complex Python logic      → Pandas (small) or Pandas UDF in Spark (large)
-├── OLAP on files             → DuckDB
-└── Distributed writes        → PySpark
+```mermaid
+flowchart TD
+    A["New transformation task"] --> B{"Data already\nlives in a database?"}
 
-Team context:
-├── dbt stack          → SQL + dbt
-├── Databricks/Spark   → PySpark + Delta Lake
-├── GCP / BigQuery     → SQL + dbt + DuckDB for local dev
-└── Notebook-first     → Pandas → DuckDB → Spark (as data grows)
+    B -->|Yes| SQL["SQL / dbt\nPush compute to\nwhere the data lives"]
+    B -->|No| D{"Data size?"}
+
+    D -->|"< 5 GB"| PD["Pandas\nSimplest path,\ninteractive"]
+    D -->|"5 GB – 500 GB"| F{"Query style?"}
+    D -->|"> 500 GB"| G{"Need streaming?"}
+
+    F -->|"SQL-style aggregations\non Parquet / files"| DK["DuckDB\nIn-process,\nno cluster needed"]
+    F -->|"Complex Python logic\nML pipelines"| PDL["Pandas on a\nbig machine"]
+
+    G -->|Yes| SKS["PySpark\nStructured Streaming"]
+    G -->|No| SKB["PySpark batch\nor BigQuery"]
+
+    style SQL fill:#1e3a8a,color:#fff
+    style PD fill:#14532d,color:#fff
+    style PDL fill:#14532d,color:#fff
+    style DK fill:#78350f,color:#fff
+    style SKS fill:#4c1d95,color:#fff
+    style SKB fill:#4c1d95,color:#fff
 ```
 
 ---
