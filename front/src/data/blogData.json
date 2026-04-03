@@ -13,7 +13,7 @@
         "BigQuery",
         "Python"
       ],
-      "headerImage": "/blog/headers/python-header.webp",
+      "headerImage": "/blog/headers/data-python-header.webp",
       "readingTimeMinutes": 42,
       "slug": "sql-pandas-pyspark-duckdb",
       "estimatedWordCount": 9500,
@@ -784,6 +784,6 @@
       "readingTime": 19
     }
   ],
-  "lastUpdated": "2026-04-03T00:28:34.526Z",
+  "lastUpdated": "2026-04-03T00:30:28.517Z",
   "totalPosts": 38
 }
