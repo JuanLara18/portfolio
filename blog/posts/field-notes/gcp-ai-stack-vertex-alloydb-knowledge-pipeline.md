@@ -19,6 +19,25 @@ None of this disqualifies GCP for RAG systems. But if you are reading this post 
 
 This post covers the full GCP AI stack for knowledge retrieval: Vertex AI RAG Engine, AlloyDB with pgvector and ScaNN, Document AI for document parsing, Vertex AI Pipelines and Eventarc for orchestration, Cloud Run for serving, Dataflow for large-scale ingestion, and the gcloud CLI commands that tie it together. Every section includes both capabilities and genuine limitations.
 
+```mermaid
+timeline
+    title GCP AI Stack for Knowledge Retrieval — Key Milestones
+    2019 : AlloyDB announced — PostgreSQL-compatible managed DB
+    2021 : Vertex AI general availability
+         : Document AI v1 GA for document parsing
+    2022 : pgvector support in Cloud SQL and AlloyDB
+         : Vertex AI Vector Search (formerly Matching Engine) GA
+    2023 : AlloyDB AI preview — google_ml_integration extension
+         : Vertex AI RAG Engine enters Preview
+         : gemini-embedding-001 released (3072-dim, MRL support)
+    2024 : AlloyDB ScaNN index GA — 10× faster filtered search than HNSW
+         : Vertex AI RAG Engine GA in europe-west3/4
+         : BigQuery Vector Search GA
+    2025 : Vertex AI RAG Engine allowlist for us-central1/us-east1
+         : AlloyDB Omni available for on-premise and GKE deployments
+         : gemini-embedding-2 Preview — improved multilingual quality
+```
+
 ---
 
 ## Part 1: Vertex AI RAG Engine
@@ -177,6 +196,32 @@ Grounding in Vertex AI is a broader concept than the RAG Engine. Google offers e
 The Google Search grounding mode is particularly worth understanding: grounding requests are billed separately from generation tokens. A single conversation turn may trigger multiple search queries depending on the model's reasoning, and each query is billed. For high-volume applications, this cost stacks quickly.
 
 Fine-tuned Gemini models cannot use Vertex AI RAG Engine. If your production deployment relies on a fine-tuned model, you need a different retrieval integration path.
+
+A query through the full RAG Engine stack — from user input to grounded response:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant CR as Cloud Run API
+    participant RE as Vertex AI RAG Engine
+    participant SP as RagManagedDb (Spanner)
+    participant GE as Gemini Embedding API
+    participant GM as Gemini Generation
+
+    U->>CR: POST /query {"question": "What is our refund policy?"}
+    CR->>RE: retrieve_contexts(query, corpus_id, top_k=5)
+    RE->>GE: embed(query_text) → 768-dim vector
+    GE-->>RE: query_embedding
+    RE->>SP: ANN search + hybrid sparse/dense (alpha=0.5)
+    SP-->>RE: top-5 chunks + similarity scores
+    RE-->>CR: contexts [chunk_1 ... chunk_5]
+    CR->>GM: generate(prompt + contexts, tools=rag_store)
+    Note over GM: Gemini grounds response against retrieved chunks
+    GM-->>CR: grounded_response + citations
+    CR-->>U: {"answer": "...", "sources": [...]}
+
+    Note over RE,SP: This round-trip adds 1–30 seconds depending on<br/>corpus size and Spanner tier. No SLA on retrieval latency.
+```
 
 ### When NOT to Use Vertex AI RAG Engine
 
@@ -972,6 +1017,16 @@ For a team operating a production RAG system at moderate scale (5 million docume
 - **Total: ~$650-750/month** (before engineering overhead)
 
 The managed path's premium buys you: reduced operational burden, Google-managed reliability, and faster time-to-production. The self-hosted path requires maintaining a Kubernetes cluster and operating a vector database. The self-managed AlloyDB path is the middle ground—managed infrastructure with lower ongoing cost than the full RAG Engine stack.
+
+```mermaid
+xychart-beta
+    title "Monthly infrastructure cost at production scale (5M chunks, 1,000 QPS peak)"
+    x-axis ["Vertex AI RAG Engine\n(Managed)", "AlloyDB + Cloud Run\n(Self-managed)", "Qdrant on GKE\n(Self-hosted)"]
+    y-axis "USD / month" 0 --> 5500
+    bar [4750, 1750, 700]
+```
+
+The $4,050 delta between fully managed and self-hosted is the cost of not operating a Kubernetes cluster or a vector database. Whether that trade is worth it depends entirely on your team's operational capacity — not on technical superiority of the managed path.
 
 ### Workloads That Should Not Use These GCP Services
 
