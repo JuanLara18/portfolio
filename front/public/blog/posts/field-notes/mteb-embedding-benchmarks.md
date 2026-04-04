@@ -227,6 +227,28 @@ A snapshot of the embedding models that have consistently performed well across 
 
 **Reading these numbers carefully:** The difference between 0.56 and 0.59 nDCG@10 on BEIR is an average across 15+ datasets spanning completely different domains. On your specific domain, the difference may be larger in either direction. These numbers are starting points for selection, not final verdicts.
 
+The quality-vs-speed tradeoff cuts across both open-weight and proprietary models — the right choice depends heavily on where your workload sits:
+
+```mermaid
+quadrantChart
+    title Embedding Models: Retrieval Quality vs Inference Speed
+    x-axis Slower Inference --> Faster Inference
+    y-axis Lower MTEB Retrieval --> Higher MTEB Retrieval
+    quadrant-1 High quality, fast
+    quadrant-2 High quality, slow
+    quadrant-3 Lower quality, slow
+    quadrant-4 Lower quality, fast
+    E5-mistral-7b: [0.18, 0.92]
+    Voyage-large-2-instruct: [0.30, 0.88]
+    text-embedding-3-large: [0.45, 0.85]
+    Cohere Embed v3: [0.48, 0.83]
+    BGE-M3: [0.38, 0.82]
+    BGE-large-en-v1.5: [0.62, 0.72]
+    text-embedding-3-small: [0.70, 0.70]
+    GTE-large: [0.65, 0.70]
+    all-MiniLM-L6-v2: [0.95, 0.38]
+```
+
 ---
 
 ## What MTEB Does Not Measure
@@ -344,6 +366,18 @@ doc_embedding = model.encode(doc_prefix + document)
 **Step 6: Re-evaluate latency and cost at your expected production throughput.**
 
 Measure actual inference time on your hardware for your batch sizes. If query encoding is on the critical path, this number matters more than MTEB quality differences of 1–2 points.
+
+```mermaid
+flowchart TD
+    S1[Define primary task\nretrieval / classification / dedup / multilingual] --> S2
+    S2[Identify constraints\nlatency · storage · on-prem vs API] --> S3
+    S3[Shortlist 3 models\nfrom relevant MTEB subtab] --> S4
+    S4[Evaluate on domain data\n50–200 real query-doc pairs] --> S5{Score acceptable?}
+    S5 -->|Yes| S6[Check instruction prefixes\nimplement query / doc asymmetry]
+    S5 -->|No — all models weak| FT[Consider fine-tuning\ncontrastive learning on triplets]
+    S6 --> S7[Measure latency at\nproduction throughput]
+    S7 --> DONE[Ship it]
+```
 
 ---
 
