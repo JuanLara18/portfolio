@@ -187,6 +187,58 @@ function mermaidCacheKey(code) {
   return Math.abs(h).toString(36);
 }
 
+/** Kroki SVG is rasterized with sharp/librsvg, which does not paint Mermaid's default HTML labels (`foreignObject`). */
+const PDF_MERMAID_INIT = '%%{init: {"htmlLabels": false}}%%\n';
+
+/**
+ * Mermaid source sent to Kroki for PDF: force SVG `<text>` labels so librsvg keeps them.
+ * If the block already sets `htmlLabels: false`, leaves it unchanged. If it starts with
+ * `%%{init: { ... }}%%`, merges `"htmlLabels": false` into that object when missing.
+ */
+function toKrokiMermaidSource(code) {
+  const s = code.replace(/^\uFEFF/, '');
+  if (/\bhtmlLabels\s*:\s*false\b/.test(s.slice(0, 1200))) return code;
+
+  const lead = s.match(/^\s*/)[0];
+  const trimmed = s.slice(lead.length);
+  if (!trimmed.startsWith('%%{init:')) {
+    return lead + PDF_MERMAID_INIT + trimmed;
+  }
+
+  const initStart = lead.length;
+  const brace0 = s.indexOf('{', initStart);
+  if (brace0 === -1) return lead + PDF_MERMAID_INIT + trimmed;
+
+  let depth = 0;
+  let inStr = false;
+  let strQ = '';
+  for (let i = brace0; i < s.length; i++) {
+    const c = s[i];
+    if (inStr) {
+      if (c === '\\' && i + 1 < s.length) { i++; continue; }
+      if (c === strQ) inStr = false;
+      continue;
+    }
+    if (c === '"' || c === "'") {
+      inStr = true;
+      strQ = c;
+      continue;
+    }
+    if (c === '{') depth++;
+    else if (c === '}') {
+      depth--;
+      if (depth === 0) {
+        const inner = s.slice(brace0 + 1, i);
+        if (/\bhtmlLabels\s*:/.test(inner)) return code;
+        const t = inner.trim();
+        const insert = !t || t.endsWith(',') ? '"htmlLabels": false' : ', "htmlLabels": false';
+        return `${s.slice(0, i)}${insert}${s.slice(i)}`;
+      }
+    }
+  }
+  return lead + PDF_MERMAID_INIT + trimmed;
+}
+
 function krokiPost(pathname, body) {
   return new Promise((resolve) => {
     const req = https.request(
@@ -228,18 +280,19 @@ async function rasterizeMermaidSvgToPng(svgBuf) {
 
 /**
  * High-res Mermaid: Kroki SVG → sharp raster at elevated DPI, then PDFKit downscales (nicer than default Kroki PNG).
- * Falls back to Kroki PNG if SVG/raster fails. Cache `-hi.png` invalidates older `${key}.png` caches.
+ * Falls back to Kroki PNG if SVG/raster fails. `-hi-v2` bumps cache when Kroki payload changes (e.g. htmlLabels fix).
  */
 async function fetchMermaidPNG(code) {
   fs.mkdirSync(MERMAID_CACHE_DIR, { recursive: true });
   const key = mermaidCacheKey(code);
-  const pngCachePath = path.join(MERMAID_CACHE_DIR, `${key}-hi.png`);
+  const pngCachePath = path.join(MERMAID_CACHE_DIR, `${key}-hi-v2.png`);
 
   if (fs.existsSync(pngCachePath)) {
     return fs.readFileSync(pngCachePath);
   }
 
-  const body = Buffer.from(code, 'utf8');
+  const krokiSource = toKrokiMermaidSource(code);
+  const body = Buffer.from(krokiSource, 'utf8');
   const { statusCode, body: resp } = await krokiPost('/mermaid/svg', body);
   if (statusCode === 200 && resp.length) {
     try {
@@ -282,7 +335,7 @@ async function prerenderMermaid(posts) {
   fs.mkdirSync(MERMAID_CACHE_DIR, { recursive: true });
 
   for (const code of allCodes) {
-    // Kroki SVG → high-DPI PNG (cached under `${key}-hi.png`)
+    // Kroki SVG → high-DPI PNG (cached under `${key}-hi-v2.png`)
     try {
       const png = await fetchMermaidPNG(code);
       cache.set(code, png || null);
