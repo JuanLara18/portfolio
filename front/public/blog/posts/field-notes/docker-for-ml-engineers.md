@@ -582,6 +582,27 @@ jobs:
 
 Every push to main that changes the serving code builds a new image, tags it with the commit hash, and pushes it to a container registry. Deployment becomes pulling the new image and restarting the container. Rollback becomes pulling the previous image.
 
+The full flow — from code change to inference — shows how the three containers interact only through volumes and the registry:
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant CI as CI/CD
+    participant Train as Training Container
+    participant Vol as Volume (model artifact)
+    participant Reg as Container Registry
+    participant Serve as Serving Container
+    participant User as End User
+    Dev->>CI: git push (serving change)
+    CI->>Reg: build + push serving:abc123f
+    Dev->>Train: docker run train.Dockerfile
+    Train->>Vol: save model.pkl
+    Vol-->>Serve: mount /models/model.pkl
+    Reg-->>Serve: pull serving:abc123f
+    User->>Serve: POST /predict {input}
+    Serve-->>User: {prediction}
+```
+
 ## Essential Commands: The Reference
 
 ```bash
