@@ -89,6 +89,16 @@ Let $D_1$ be the random variable representing the first significant digit of a n
 
 $$P(D_1 = d) = \log_{10}\left(1 + \frac{1}{d}\right), \quad d \in \{1, 2, \ldots, 9\}$$
 
+The resulting distribution is heavily skewed toward small digits:
+
+```mermaid
+xychart-beta
+    title "Benford's Law: Expected First-Digit Frequency (%)"
+    x-axis ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    y-axis "Probability (%)" 0 --> 35
+    bar [30.1, 17.6, 12.5, 9.7, 7.9, 6.7, 5.8, 5.1, 4.6]
+```
+
 This generalizes to the first *two* digits. The probability that the first two digits are $d_1 d_2$ (e.g., 31) is:
 
 $$P(D_1 D_2 = d) = \log_{10}\left(1 + \frac{1}{d}\right), \quad d \in \{10, 11, \ldots, 99\}$$
