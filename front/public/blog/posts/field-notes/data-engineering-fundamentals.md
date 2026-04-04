@@ -147,7 +147,7 @@ quadrantChart
     Fraud detection: [0.85, 0.92]
     Transaction alerts: [0.75, 0.80]
     Live leaderboard: [0.70, 0.72]
-    Doc indexing < 5min: [0.55, 0.60]
+    Doc indexing under 5min: [0.55, 0.60]
     Daily reporting: [0.20, 0.12]
     ML training pipeline: [0.25, 0.08]
     Knowledge base refresh: [0.30, 0.20]
