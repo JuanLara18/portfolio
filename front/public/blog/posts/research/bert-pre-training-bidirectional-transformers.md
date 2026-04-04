@@ -411,6 +411,30 @@ BERT's release triggered a wave of follow-up work that refined, extended, and sp
 | ALBERT-xxlarge | 235M | 90.9 | Parameter sharing + factorization |
 | DeBERTa-xxlarge | 1.5B | 92.8 | Disentangled attention |
 
+The progression from BERT to DeBERTa is almost entirely architectural refinement — more data, better objectives, smarter attention — without changing the core bidirectional insight:
+
+```mermaid
+xychart-beta
+    title "GLUE Score by Model (higher = better, human ~87)"
+    x-axis ["BERT-base", "BERT-large", "DistilBERT", "RoBERTa", "ALBERT-xxl", "DeBERTa-xxl"]
+    y-axis "GLUE Score" 70 --> 95
+    bar [79.6, 80.4, 77.0, 88.5, 90.9, 92.8]
+```
+
+```mermaid
+timeline
+    title The BERT Family: 2018–2022
+    2018 : BERT (Devlin et al., Google) — bidirectional MLM + NSP
+    2019 : RoBERTa (Facebook) — remove NSP, more data, longer training
+         : DistilBERT (Hugging Face) — knowledge distillation, 60% smaller
+         : ALBERT (Google) — parameter sharing + factorized embeddings
+         : XLM-RoBERTa (Facebook) — 100-language multilingual BERT
+    2020 : DeBERTa (Microsoft) — disentangled attention (content + position)
+    2021 : DeBERTa v3 — replaced MLM with ELECTRA-style replaced-token detection
+    2022 : DeBERTa holds GLUE/SuperGLUE top positions
+         : Encoder-only models still dominant for classification and NER
+```
+
 ## The Deeper Lesson: Pre-Training as Compression
 
 There is a way to think about BERT that connects it to something more fundamental than "better NLP benchmark scores."
