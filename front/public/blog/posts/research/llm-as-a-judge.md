@@ -1,5 +1,5 @@
 ---
-title: "LLM-as-a-Judge: Using Language Models to Evaluate Language Models"
+title: "LLM as a Judge: Using Language Models to Evaluate Language Models"
 date: "2026-08-11"
 excerpt: "Evaluating open-ended AI output at scale is one of the hardest unsolved problems in the field. Human evaluation is the gold standard but doesn't scale. Classical metrics like BLEU and ROUGE miss what matters. LLM-as-a-Judge — using a stronger model to evaluate another — achieves over 80% agreement with human raters and is reshaping how the field measures quality, trains reward models, and builds evaluation pipelines."
 tags: ["LLM Evaluation", "Research", "RLHF", "LLM-as-a-Judge", "Prometheus", "Alignment", "AI Engineering"]
@@ -9,7 +9,7 @@ slug: llm-as-a-judge
 estimatedWordCount: 6200
 ---
 
-# LLM-as-a-Judge: Using Language Models to Evaluate Language Models
+# LLM as a Judge: Using Language Models to Evaluate Language Models
 
 Imagine you've built two RAG systems to answer customer support questions. You want to know which one is better. You sample 500 query-response pairs from each and start reading them. Forty minutes in, you've read fifty pairs, your eyes are glazing over, and you realize you've subtly shifted your standards since you started — the responses you're calling "good" now would have been "adequate" in the first batch. Two weeks later, after recruiting three more annotators and mediating their disagreements, you have labels for 500 pairs. By the time you have 10,000 pairs, you've spent more on human annotation than you spent training the models.
 
@@ -417,17 +417,17 @@ Different evaluation scenarios call for different judge configurations. The diag
 
 ```mermaid
 quadrantChart
-    title Judge Strategy: Cost vs Reliability
+    title Judge Strategy Cost vs Reliability
     x-axis Lower Reliability --> Higher Reliability
     y-axis Lower Cost --> Higher Cost
-    GPT-4o absolute: [0.80, 0.85]
-    GPT-4o pairwise with swap: [0.90, 0.95]
-    Prometheus 2 7B local: [0.65, 0.10]
-    Prometheus 2 8x7B local: [0.75, 0.18]
-    Claude 3.5 Sonnet: [0.82, 0.75]
-    RAGAS automated: [0.70, 0.20]
-    Human expert panel: [0.95, 1.0]
-    Crowdsource human: [0.70, 0.55]
+    GPT4o Absolute: [0.80, 0.85]
+    GPT4o Pairwise: [0.90, 0.95]
+    Prometheus 7B: [0.65, 0.10]
+    Prometheus 8x7B: [0.75, 0.18]
+    Claude Sonnet: [0.82, 0.75]
+    RAGAS: [0.70, 0.20]
+    Expert Panel: [0.95, 0.99]
+    Crowdsource: [0.70, 0.55]
 ```
 
 The practical decision matrix:
