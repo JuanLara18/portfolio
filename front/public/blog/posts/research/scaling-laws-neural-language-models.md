@@ -151,6 +151,16 @@ The Chinchilla team fit new scaling laws using a different methodology (training
 
 Chinchilla (70B parameters, 1.4T tokens) significantly outperformed Gopher (280B parameters, 300B tokens) despite being 4× smaller. The prediction of the 2020 scaling laws — that models were being trained suboptimally — was confirmed.
 
+The contrast in token-to-parameter ratios is stark — the pre-Chinchilla models were trained on dramatically fewer tokens than optimal:
+
+```mermaid
+xychart-beta
+    title "Token-to-Parameter Ratio (Chinchilla rule: ~20×)"
+    x-axis ["GPT-3 (175B)", "Gopher (280B)", "Chinchilla (70B)", "Llama 2 (70B)"]
+    y-axis "Tokens / Parameters ratio" 0 --> 30
+    bar [1.7, 1.1, 20, 28]
+```
+
 The Chinchilla result restructured priorities across the field. Frontier labs shifted focus toward data pipelines, data quality, and long training runs. The race to maximize parameter count gave way to a more nuanced view of the parameter-to-token ratio as the key design variable.
 
 ## What Power Laws Are Saying About Difficulty
@@ -184,6 +194,24 @@ The extrapolations proved accurate.
 GPT-3, trained at roughly $3 \times 10^{23}$ FLOPs, performed approximately where the scaling curves predicted. GPT-4, while its training details are not public, is consistent with the scaling law predictions extended further. Llama 2 and 3, Mistral, Gemini — the frontier models of 2023 and 2024 — follow the trajectories the 2020 paper described.
 
 This is the unusual achievement of the scaling laws paper: it made predictions about systems that didn't yet exist, and the systems, when they were built, confirmed the predictions. This is what scientific laws are supposed to do.
+
+```mermaid
+timeline
+    title Scaling Laws: Prediction and Confirmation
+    2020 : Kaplan et al. — Scaling Laws paper
+         : Power laws measured up to ~10²² FLOPs
+         : GPT-3 (175B, 300B tokens) — follows predicted curve
+    2022 : Chinchilla paper — compute-optimal training
+         : Wei et al. — Emergent Abilities paper
+         : Hoffmann et al. refine optimal N/D ratio (~20×)
+    2023 : LLaMA (Meta) — open weights, Chinchilla-optimal ratios
+         : GPT-4 — frontier consistent with law extrapolations
+         : Scaling laws extended to data quality and instruction tuning
+    2024 : Llama 3 (400B+), Gemini 1.5 — frontier models on curve
+         : Compute budgets reach ~10²⁵ FLOPs
+    2025 : Scaling plateaus debated — data wall hypothesis
+         : Test-time compute scaling (o1, o3) as new axis
+```
 
 The predictive success had a practical consequence. Labs with access to the scaling laws could estimate, *before* training, what performance a given model would achieve. This transformed the economics of large-scale training. Instead of training a large model and discovering its capabilities after enormous compute expenditure, you could extrapolate from smaller experiments. The smaller models became pilots for the larger ones.
 
