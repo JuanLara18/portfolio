@@ -77,6 +77,20 @@ CPUs often win at:
 
 A common mistake is moving *everything* to GPU. Data augmentation, tokenization, and complex preprocessing often run faster on CPU with proper parallelization.
 
+The GPU architectures available to ML practitioners today are the product of two decades of rapid iteration. The milestones below show how each generation unlocked a new class of ML ambitions.
+
+```mermaid
+timeline
+    2007 : CUDA 1.0 — NVIDIA opens GPU compute to general programs beyond graphics
+    2012 : AlexNet wins ImageNet — GPUs proven decisive for deep learning; GPU demand surges
+    2014 : cuDNN 1.0 — hand-tuned deep learning primitives make CNNs practical at scale
+    2017 : V100 / NVLink — 900 GB/s GPU-to-GPU bandwidth enables multi-GPU training
+    2020 : A100 / Ampere — 80 GB VRAM and BF16 support redefine large-model training
+    2022 : H100 / Hopper — Transformer Engine with FP8, 4× A100 throughput for LLMs
+    2023 : Flash Attention 2 / PagedAttention — software catches up to hardware advances
+    2024 : Blackwell B200 — NVLink Switch for 72-GPU clusters targeting trillion-parameter models
+```
+
 ## CUDA: The Bridge Between Python and Silicon
 
 ### What CUDA Actually Is
@@ -876,6 +890,28 @@ flowchart TB
     SIZE -->|13B+| XLARGE["Very large models"]
     XLARGE --> XLARGET["Training: Multi-GPU (FSDP/model parallel)"]
     XLARGE --> XLARGEI["Inference: Multi-GPU or aggressive quantization"]
+```
+
+Choosing the right hardware for a given task means balancing two axes: how much VRAM you actually need versus what you are willing to spend. The chart below maps common options so you can see the trade-offs at a glance—the sweet spot for solo researchers and small teams is usually the top-left quadrant.
+
+```mermaid
+quadrantChart
+    title GPU Hardware: Cost vs VRAM Capacity
+    x-axis Low Cost --> High Cost
+    y-axis Low VRAM --> High VRAM
+
+    quadrant-1 High VRAM, expensive
+    quadrant-2 Best value
+    quadrant-3 Limited capability
+    quadrant-4 Pricey, modest VRAM
+
+    RTX 3090 24GB: [0.15, 0.30]
+    RTX 4090 24GB: [0.22, 0.32]
+    A10G 24GB cloud: [0.32, 0.30]
+    A100 40GB cloud: [0.52, 0.52]
+    A100 80GB cloud: [0.62, 0.80]
+    H100 SXM5 cloud: [0.80, 0.82]
+    8x A100 cluster: [0.95, 0.95]
 ```
 
 ### When Cloud Makes Sense
