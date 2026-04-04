@@ -407,6 +407,11 @@ function registerPdfFonts(doc) {
 
 const S = {
   coverTitle: 36, coverSub: 14, coverDate: 11,
+  coverEyebrow: 8.5,
+  coverHeadline: 38,
+  coverLead: 12.5,
+  coverAuthor: 15,
+  coverChip: 7.5,
   catTitle: 28,
   postTitle: 24, postMeta: 10,
   h2: 18, h3: 15, h4: 13, h5: 11, h6: 10.5,
@@ -1204,80 +1209,203 @@ function renderBlock(doc, token) {
 
 // ─── Page Builders ─────────────────────────────────────────────────────────────
 
+const COVER_HEADERS_DIR = path.join(__dirname, '..', 'public', 'blog', 'headers');
+
+function collectCoverHeaderPaths(posts) {
+  const imgPaths = [];
+  for (const p of posts) {
+    if (!p.headerImage) continue;
+    const name = path.basename(p.headerImage);
+    const jpgName = name.replace(/\.(webp)$/, '.jpg');
+    const full = path.join(COVER_HEADERS_DIR, jpgName);
+    if (fs.existsSync(full)) imgPaths.push(full);
+  }
+  return imgPaths;
+}
+
+function drawCoverImageCell(doc, imgPath, x, y, w, h) {
+  if (w < 2 || h < 2) return;
+  try {
+    doc.image(imgPath, x, y, {
+      width: w + 1,
+      height: h + 1,
+      cover: [w + 1, h + 1],
+    });
+  } catch (_) { /* skip corrupt / unsupported files */ }
+}
+
+/**
+ * Editorial collage: hero band + mosaic (n≥4), or structured grids for fewer headers.
+ * Gutters keep a slight magazine-style separation between tiles.
+ */
+function drawCoverCollage(doc, pw, ph, imgPaths) {
+  const n = imgPaths.length;
+  if (!n) return;
+
+  const g = 3; // gutter (pt)
+
+  if (n === 1) {
+    drawCoverImageCell(doc, imgPaths[0], 0, 0, pw, ph);
+    return;
+  }
+
+  if (n === 2) {
+    const half = (pw - g) / 2;
+    drawCoverImageCell(doc, imgPaths[0], 0, 0, half, ph);
+    drawCoverImageCell(doc, imgPaths[1], half + g, 0, half, ph);
+    return;
+  }
+
+  if (n === 3) {
+    const topH = (ph - g) / 2;
+    const halfW = (pw - g) / 2;
+    drawCoverImageCell(doc, imgPaths[0], 0, 0, halfW, topH);
+    drawCoverImageCell(doc, imgPaths[1], halfW + g, 0, halfW, topH);
+    drawCoverImageCell(doc, imgPaths[2], 0, topH + g, pw, topH);
+    return;
+  }
+
+  // n >= 4 — full-width hero + lower mosaic (cycles through remaining headers)
+  const heroH = Math.round(ph * 0.44);
+  drawCoverImageCell(doc, imgPaths[0], 0, 0, pw, heroH);
+
+  const galleryTop = heroH + g;
+  const galleryH = ph - galleryTop;
+  const rest = n - 1;
+  const cols = Math.min(7, Math.max(3, Math.ceil(Math.sqrt(rest * (pw / Math.max(galleryH, 1)) * 1.15))));
+  const rows = Math.ceil(rest / cols);
+  const cellW = (pw - g * (cols - 1)) / cols;
+  const cellH = (galleryH - g * (rows - 1)) / rows;
+
+  let cell = 0;
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const imgIdx = 1 + (cell % rest);
+      const x = col * (cellW + g);
+      const y = galleryTop + row * (cellH + g);
+      drawCoverImageCell(doc, imgPaths[imgIdx], x, y, cellW, cellH);
+      cell += 1;
+    }
+  }
+}
+
+/** Cinematic scrim: keeps collage visible on the right, deepens contrast for type on the left. */
+function drawCoverAtmosphericOverlay(doc, pw, ph) {
+  const g1 = doc.linearGradient(0, 0, 0, ph)
+    .stop(0, '#0f172a', 0.38)
+    .stop(0.5, '#1e293b', 0.52)
+    .stop(1, '#020617', 0.72);
+  doc.rect(0, 0, pw, ph).fill(g1);
+
+  const g2 = doc.linearGradient(0, 0, pw, 0)
+    .stop(0, '#020617', 0.78)
+    .stop(0.38, '#020617', 0.42)
+    .stop(0.72, '#020617', 0.12)
+    .stop(1, '#020617', 0);
+  doc.rect(0, 0, pw, ph).fill(g2);
+
+  const g3 = doc.linearGradient(0, ph * 0.78, 0, ph)
+    .stop(0, '#020617', 0)
+    .stop(1, '#020617', 0.55);
+  doc.rect(0, ph * 0.78, pw, ph * 0.22).fill(g3);
+}
+
+function drawCoverCategoryChips(doc, x, y) {
+  const labels = [
+    CATEGORIES.labels['field-notes'] || 'Field Notes',
+    CATEGORIES.labels.research || 'Research',
+    CATEGORIES.labels.curiosities || 'Curiosities',
+  ];
+  doc.font(F.B).fontSize(S.coverChip);
+  let cx = x;
+  for (const lab of labels) {
+    const padX = 10;
+    const padY = 5;
+    const tw = doc.widthOfString(lab);
+    const bw = tw + padX * 2;
+    const bh = 20;
+    doc.save();
+    doc.fillOpacity(0.2);
+    doc.roundedRect(cx, y, bw, bh, 6).fill('#ffffff');
+    doc.restore();
+    doc.font(F.B).fontSize(S.coverChip).fillColor('#e2e8f0')
+      .text(lab, cx + padX, y + padY, { lineBreak: false, width: tw + 2 });
+    cx += bw + 10;
+  }
+}
+
 function addCover(doc, posts, totalCats) {
   doc.addPage();
   const pw = doc.page.width;
   const ph = doc.page.height;
+  const textW = Math.min(400, pw - M.left - M.right);
 
-  // ── Image grid collage ────────────────────────────────────────────────────
-  const HEADERS_DIR = path.join(__dirname, '..', 'public', 'blog', 'headers');
-  const imgPaths = posts
-    .filter(p => p.headerImage)
-    .map(p => {
-      const name = path.basename(p.headerImage);
-      const jpgName = name.replace(/\.(webp)$/, '.jpg');
-      const full = path.join(HEADERS_DIR, jpgName);
-      return fs.existsSync(full) ? full : null;
-    })
-    .filter(Boolean);
+  const imgPaths = collectCoverHeaderPaths(posts);
+  drawCoverCollage(doc, pw, ph, imgPaths);
 
-  if (imgPaths.length) {
-    const cols = Math.ceil(Math.sqrt(imgPaths.length * (pw / ph)));
-    const rows = Math.ceil(imgPaths.length / cols);
-    const cellW = pw / cols;
-    const cellH = ph / rows;
-
-    imgPaths.forEach((imgPath, idx) => {
-      const col = idx % cols;
-      const row = Math.floor(idx / cols);
-      try {
-        doc.image(imgPath, col * cellW, row * cellH, {
-          width: cellW + 1,   // +1 px to avoid hairline gaps
-          height: cellH + 1,
-          cover: [cellW + 1, cellH + 1],
-        });
-      } catch (_) { /* skip unreadable images silently */ }
-    });
+  if (!imgPaths.length) {
+    const fallback = doc.linearGradient(0, 0, pw, ph)
+      .stop(0, '#0f172a', 1)
+      .stop(0.55, '#1e3a5f', 1)
+      .stop(1, '#020617', 1);
+    doc.rect(0, 0, pw, ph).fill(fallback);
   }
 
-  // ── Dark gradient overlay ─────────────────────────────────────────────────
-  doc.save();
-  doc.rect(0, 0, pw, ph).fill('#0a0f1a');
-  doc.restore();
-  // We fake opacity via fillOpacity
-  doc.save();
-  doc.fillOpacity(0.68);
-  doc.rect(0, 0, pw, ph).fill('#0a0f1a');
-  doc.fillOpacity(1);
-  doc.restore();
+  drawCoverAtmosphericOverlay(doc, pw, ph);
 
-  // ── Text ──────────────────────────────────────────────────────────────────
-  const textY = ph * 0.36;
+  // Masthead rule
+  doc.rect(0, 32, pw, 3).fill(C.accent);
 
-  // Accent bar
-  doc.rect(M.left, textY, 56, 3).fill(C.accent);
+  const textY = ph * 0.26;
+  let y = textY;
 
-  doc.font(F.h).fontSize(S.coverTitle).fillColor(C.white)
-    .text('Blog Compilation', M.left, textY + 18, { width: pw - M.left * 2 });
+  doc.font(F.B).fontSize(S.coverEyebrow).fillColor('#93c5fd')
+    .text('AI ENGINEERING  ·  RESEARCH  ·  MATHEMATICAL DEPTH', M.left, y, { width: textW + 40, lineGap: 2 });
+  y = doc.y + 14;
 
-  doc.moveDown(0.6);
-  doc.font(F.b).fontSize(S.coverSub).fillColor('#94a3b8')
+  doc.rect(M.left, y, 88, 3).fill(C.accent);
+  y += 16;
+
+  doc.font(F.h).fontSize(S.coverHeadline).fillColor('#f8fafc')
+    .text('Ideas that reward close reading.', M.left, y, { width: textW, lineGap: 4 });
+  y = doc.y + 6;
+  doc.font(F.h).fontSize(S.coverHeadline).fillColor('#e2e8f0')
+    .text('One volume. Yours to keep.', M.left, y, { width: textW, lineGap: 4 });
+  y = doc.y + 20;
+
+  doc.font(F.b).fontSize(S.coverLead).fillColor('#cbd5e1')
     .text(
-      'A curated collection of technical articles on AI engineering,\nresearch, and mathematical curiosities.',
-      M.left, doc.y, { width: pw - M.left * 2, lineGap: 4 },
-    );
-
-  doc.moveDown(2.5);
-  doc.font(F.B).fontSize(S.coverSub).fillColor(C.white).text('Juan Lara', M.left);
-  doc.moveDown(0.4);
-  doc.font(F.b).fontSize(S.coverDate).fillColor('#64748b')
-    .text(`${posts.length} articles  \u00B7  ${totalCats} categories`, M.left);
-  doc.moveDown(0.4);
-  const now = new Date();
-  doc.font(F.b).fontSize(S.coverDate).fillColor('#64748b')
-    .text(
-      `Generated ${now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      'A hand-picked library of long-form writing on building AI systems, reading the papers that shaped the field, and the curiosities that make the math memorable — compiled for focused, offline study.',
       M.left,
+      y,
+      { width: textW, lineGap: 5, align: 'left' },
+    );
+  y = doc.y + 22;
+
+  drawCoverCategoryChips(doc, M.left, y);
+  y += 34;
+
+  doc.font(F.B).fontSize(S.coverAuthor).fillColor('#ffffff')
+    .text('Juan Lara', M.left, y, { width: textW });
+  y = doc.y + 6;
+  doc.font(F.b).fontSize(S.coverSub).fillColor('#94a3b8')
+    .text('Author & curator', M.left, y, { width: textW });
+
+  const now = new Date();
+  const bottomY = ph - M.bottom - 36;
+  doc.font(F.b).fontSize(S.coverDate).fillColor('#64748b')
+    .text(
+      `${posts.length} articles  ·  ${totalCats} sections  ·  print-ready compilation`,
+      M.left,
+      bottomY,
+      { width: pw - M.left * 2 },
+    );
+  doc.font(F.b).fontSize(S.coverDate - 0.5).fillColor('#475569')
+    .text(
+      `Edition ${now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      M.left,
+      bottomY + 14,
+      { width: pw - M.left * 2 },
     );
 }
 
