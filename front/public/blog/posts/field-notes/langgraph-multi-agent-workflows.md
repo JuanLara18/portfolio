@@ -275,6 +275,24 @@ def routing_node(state: AgentState) -> Command:
     return Command(goto="general_agent")
 ```
 
+The full HITL cycle — from initial invocation through pause, human review, and resumption — involves three distinct actors across two separate API calls:
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant G as LangGraph
+    participant H as Human Reviewer
+    C->>G: invoke(initial_state)
+    G->>G: run nodes...
+    G->>G: interrupt() reached — checkpoint saved
+    G-->>C: InterruptEvent(payload)
+    C->>H: show draft + approval UI
+    H-->>C: approved=True / feedback
+    C->>G: invoke(Command(resume={approved: True}))
+    G->>G: resume from checkpoint
+    G-->>C: final result
+```
+
 ---
 
 ## Multi-Agent Patterns
@@ -402,6 +420,22 @@ Map-Reduce is particularly useful for:
 - Analyzing multiple retrieved documents in parallel
 - Running the same agent on multiple inputs and combining results
 - Batch evaluation tasks
+
+The fan-out/fan-in shape is what makes this pattern distinct from the Supervisor — the number of parallel branches isn't known until runtime:
+
+```mermaid
+flowchart LR
+    Q[User Question] --> FO[fan_out_node]
+    FO -->|doc 1| A1[analyze_document]
+    FO -->|doc 2| A2[analyze_document]
+    FO -->|doc N| A3[analyze_document]
+    A1 --> AGG[aggregate_node]
+    A2 --> AGG
+    A3 --> AGG
+    AGG --> ANS[Final Answer]
+    style FO fill:#4a90d9,color:#fff
+    style AGG fill:#4a90d9,color:#fff
+```
 
 ### Pattern 4: Multi-Agent Network (Handoff)
 
@@ -543,6 +577,23 @@ Semantic Kernel is more of a framework for integrating LLMs into applications (p
 | Production debugging | LangSmith | Limited | Limited | Limited |
 | .NET support | No | No | Yes | Best |
 | Open-source | Yes | Yes | Yes | Yes |
+
+The choice usually comes down to two dimensions: how much control you need over execution flow, and how quickly you need something running:
+
+```mermaid
+quadrantChart
+    title Agent Framework: Control vs Prototyping Speed
+    x-axis Slower to Prototype --> Faster to Prototype
+    y-axis Less Execution Control --> More Execution Control
+    quadrant-1 Most control, slower
+    quadrant-2 Control + fast
+    quadrant-3 Limited control, slower
+    quadrant-4 Limited control, fast
+    LangGraph: [0.30, 0.90]
+    AutoGen: [0.50, 0.60]
+    CrewAI: [0.82, 0.35]
+    Semantic Kernel: [0.25, 0.55]
+```
 
 ---
 
