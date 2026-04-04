@@ -1,213 +1,287 @@
 ---
 title: "Fine-tuning Gemma 4: When Prompting Isn't Enough"
 date: "2026-06-09"
-excerpt: "Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the practical guide — when to fine-tune vs prompt-engineer vs RAG, how LoRA and QLoRA make adaptation possible on consumer hardware, and a complete working example with Gemma 4 E4B that runs on an RTX 3060."
+excerpt: "Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the deep guide — understanding the family, choosing the right variant for your hardware, why full fine-tuning is economically indefensible, how LoRA and QLoRA make adaptation practical on consumer GPUs, and a complete working recipe with Gemma 4 E4B from dataset to deployed adapter."
 tags: ["Fine-tuning", "Gemma 4", "LoRA", "QLoRA", "PEFT", "LLMs", "Hugging Face"]
 headerImage: "/blog/headers/fine-tune-gemma-header.jpg"
-readingTimeMinutes: 23
+readingTimeMinutes: 28
 slug: fine-tuning-gemma4-lora-qlora
-estimatedWordCount: 5500
+estimatedWordCount: 7000
 ---
 
 # Fine-tuning Gemma 4: When Prompting Isn't Enough
 
 You've been there. You built a production pipeline around a foundation model. You crafted your system prompt carefully — tone, format, examples. It works about 80% of the time. But that remaining 20% is a problem: the model slips back into its default voice, ignores the output schema you specified, or confidently uses the wrong terminology for your industry. You add more examples to the prompt. The cost goes up. The 20% shrinks but doesn't disappear.
 
-This is where fine-tuning enters the picture.
+This is the ceiling of prompting — and it's real.
 
-The question is rarely "should I fine-tune?" as a philosophical choice. It's a practical decision: is the gap between what the model does by default and what your use case needs small enough to close with prompting, or large enough that you need to change the weights? When the gap is structural — it's about how the model represents your domain, not just what instructions you give it — prompting has a ceiling.
+The question isn't "should I fine-tune?" as a philosophical stance. It's a practical judgment call: is the gap between what the model does by default and what your use case needs small enough to close with instructions, or structural enough that you need to change the weights? When the problem is behavioral — the model needs to internalize a domain, a voice, a schema — prompting has a ceiling that no amount of prompt engineering can break through.
 
-On April 2, 2026, Google DeepMind released Gemma 4: four model sizes, Apache 2.0 license, multimodal by default, and day-one fine-tuning support. It's the most capable open model family available for adaptation today, and it's going to be the thread running through everything in this post. We'll use Gemma 4's E4B variant as the primary example — the size that runs comfortably on a single consumer GPU with QLoRA. If you have a bigger machine, the same code scales to the 31B.
+On April 2, 2026, Google DeepMind released Gemma 4: four architecturally distinct models under a single family name, all under Apache 2.0, all multimodal, all with day-one adaptation tooling. It's the most capable open model available for fine-tuning today, and it gives us a natural way to explore what fine-tuning really means — not as an abstract process, but as a concrete set of decisions about models, hardware, data, and trade-offs.
 
----
-
-## Who Gemma 4 Is
-
-Gemma 4 is unusual in that it ships four genuinely different architectures under the same family name — not just the same model at different scales.
-
-The two smaller variants, **E2B** and **E4B**, use a technique Google calls Per-Layer Embeddings (PLE). Instead of a single token embedding at the input, secondary embeddings are injected throughout the decoder layers, giving the model representational depth that you'd normally only find in a much larger model. The E4B has 4.5 billion effective parameters but behaves more like an 8B model on benchmarks. It handles images and audio. It fits in 8–10GB of VRAM with QLoRA.
-
-The two larger variants are architecturally distinct. The **26B-A4B** is a Mixture-of-Experts model: 25 billion total parameters, but only 3.8 billion activate per inference step, routed by a learned gating mechanism. The **31B** is a conventional dense model. Both handle images and video up to 60 seconds.
-
-What matters practically is the benchmark leap. Gemma 3, released a year ago, scored 20.8% on AIME 2026 mathematical reasoning. Gemma 4's 31B scores 89.2% on the same benchmark. On BigBench Extra Hard: Gemma 3 at 19.3%, Gemma 4 31B at 74.4%. This isn't incremental improvement — it reflects the reasoning and chain-of-thought training techniques developed alongside Gemini 3, distilled into an open model.
-
-| Variant | Active Params | Context | Modalities | QLoRA VRAM |
-|---|---|---|---|---|
-| E2B | 2.3B | 128K | Text, image, audio | ~4GB |
-| E4B | 4.5B | 128K | Text, image, audio | ~8GB |
-| 26B-A4B | 3.8B active | 256K | Text, image, video | ~20GB |
-| 31B | 30.7B | 256K | Text, image, video | ~40GB |
-
-Apache 2.0 means you can fine-tune, deploy, and sell applications built on Gemma 4 without royalties, user count caps, or special licensing agreements. That makes it one of the most genuinely open frontier-class models available.
+This post is that concrete guide. We'll work through the Gemma 4 family in enough depth to make the variant choice deliberate, then go through LoRA and QLoRA with the level of detail that lets you reason about what you're actually doing — not just copy-paste the code and hope.
 
 ---
 
-## Three Legitimate Reasons to Fine-tune
+## The Gemma 4 Family: Four Models, Not Just Four Sizes
 
-Fine-tuning has a reputation for being over-applied. Let's be specific about when it actually helps.
+Most model families release a single architecture at multiple scales: the same transformer, just bigger. Gemma 4 isn't that. Google DeepMind released four variants that differ architecturally, not just in parameter count. Understanding these differences isn't academic — they directly determine which fine-tuning approach is viable on your hardware.
 
-**Style and format consistency.** Foundation models are trained on the entire internet, which means their default voice is the average of all human writing. If your product needs consistently formal medical summaries, consistently casual customer support responses, or JSON output that never deviates from a specific schema — fine-tuning on examples of that exact style works better than system prompts because the model internalizes the pattern rather than following an instruction it can forget.
+### E2B and E4B: Per-Layer Embeddings
 
-**Domain vocabulary and grounding.** Models learn from public data. If your domain uses technical terminology that's sparse in public corpora — specialized legal citations, proprietary product codes, internal company nomenclature — the model will either hallucinate plausible-sounding alternatives or ignore the terminology entirely. Fine-tuning on domain documents bakes the vocabulary into the weights.
+The two smaller variants use a technique Google calls **Per-Layer Embeddings (PLE)**. In a standard transformer, each token gets a single embedding at the input and that representation is refined through successive layers. PLE injects a secondary, lighter embedding signal throughout the decoder stack, not just at the input.
 
-**Task-specific behavior.** Some tasks require a level of structural adherence that prompt engineering can't reliably achieve at high volume: extracting specific fields from messy documents into typed schemas, generating code in an internal DSL, following a multi-step reasoning format consistently. When the task has a clear input-output structure and you have hundreds of labeled examples, fine-tuning converges on that structure where prompting drifts.
+The effect is that these models develop richer intermediate representations than their parameter count would suggest. The E4B (4.5 billion effective parameters) consistently scores on benchmarks closer to an 8B model than to a 4B one. On LiveCodeBench v6, the E4B scores 52% — comparable to models twice its size from one year ago.
 
-What fine-tuning is *not* a solution for: knowledge retrieval. If the model doesn't know a fact, fine-tuning on examples won't reliably teach it that fact — it teaches patterns, not facts. That's what RAG is for. The two approaches are complementary, not competing: RAG for dynamic factual grounding, fine-tuning for behavioral adaptation.
+Both variants support **128K context**, images, and audio. The audio encoder uses a USM-style conformer supporting speech recognition up to 30 seconds. The vision encoder uses learned 2D position encoding that scales with image resolution. This multimodal capability is available out of the box and can also be fine-tuned.
+
+For most teams doing fine-tuning, **E4B is the starting point**. It's the smallest variant that's genuinely powerful enough to absorb domain adaptation without the quality floor becoming a problem. E2B is the right choice when your deployment target is genuinely resource-constrained: the E2B fits under 1.5 GB with 2-bit quantization and runs on Raspberry Pi 5 at 7.6 decode tokens/sec. That's a remarkable capability for edge deployment, but it's a different use case.
+
+### 26B-A4B: Mixture-of-Experts
+
+The third variant is a **Mixture-of-Experts (MoE)** model with 25.2 billion total parameters but only 3.8 billion active per forward pass. A learned router at each layer decides which of the experts (subnetworks) to activate for a given token. The remaining experts are dormant — their weights are in memory but don't contribute computations.
+
+This creates an interesting trade-off. Memory footprint corresponds to total parameters (you need all 25.2B weights loaded), but inference compute scales with active parameters. For inference-heavy workloads, the 26B-A4B can match or exceed the 31B dense model's quality while using less GPU compute per token — once the model is loaded.
+
+For **fine-tuning**, MoE models require care. The router mechanism is sensitive to weight distribution, and 4-bit quantization noise can perturb routing decisions unpredictably. The practical recommendation: use 16-bit LoRA (not QLoRA) for the 26B-A4B when possible. If memory forces QLoRA, start with conservative ranks (r=8) and validate that routing behavior hasn't changed by checking whether the same prompts still activate similar expert patterns before and after training.
+
+Context window: **256K tokens**, plus image and video (up to 60 seconds at 1fps) support.
+
+### 31B Dense: The Flagship
+
+The 31B variant is a conventional dense transformer — every parameter participates in every forward pass. It achieves the highest quality across benchmarks: 89.2% on AIME 2026 mathematical reasoning (compared to Gemma 3's 20.8%), 80.0% on LiveCodeBench v6, 84.3% on GPQA scientific reasoning. It also supports 256K context, images, and video.
+
+At full precision, the 31B requires ~62GB of VRAM just for weights. QLoRA reduces this to ~40GB — still requiring an RTX 4090 (24GB) multi-GPU setup or a dedicated training instance. This is the right model when you need the highest quality and have the hardware budget for it, or when you're running inference at scale and want the best output per token.
+
+### The Complete Hardware Picture
+
+Before choosing a variant, be honest about your hardware:
+
+| Variant | Inference VRAM | QLoRA Training | Minimum GPU |
+|---|---|---|---|
+| E2B | ~3GB | ~4–5GB | GTX 1660 / RTX 3050 |
+| E4B | ~8GB | ~8–10GB | RTX 3060 12GB |
+| 26B-A4B | ~20GB | ~22–26GB | RTX 3090 / A100 40GB |
+| 31B | ~32GB | ~38–42GB | 2× RTX 4090 / A100 80GB |
+
+These are practical estimates for QLoRA at 4-bit precision. CPU inference is possible for E2B and E4B via GGUF (Ollama), but meaningful fine-tuning requires GPU VRAM. The VRAM numbers assume `max_seq_length=2048`; longer sequences increase KV cache requirements proportionally.
 
 ---
 
-## Why Full Fine-tuning Is Out of Reach
+## When Fine-tuning Is the Right Call
 
-When we say "fine-tune a model," we mean: adjust the weights based on gradient descent on your training data. Conceptually simple. Computationally brutal.
+Fine-tuning has a reputation for being over-applied. Let's be specific about when it actually changes outcomes.
 
-Gemma 4's E4B has approximately 8 billion total parameters. Each parameter stored in 16-bit floating point takes 2 bytes. The weights alone: ~16 GB. But during training you also need:
+**Style and format consistency at scale.** A foundation model's default voice is the statistical average of its training data — which was the entire internet. If your product requires consistently formal medical language, or JSON output that never deviates from a specific schema, or responses that always lead with a structured summary before elaborating — system prompts can get you 80% of the way. Fine-tuning gets you to 98%.
 
-- **Gradients:** same size as the weights — another ~16 GB
-- **Optimizer states:** Adam keeps two momentum terms per parameter — another ~32 GB
-- **Activations:** batch size × sequence length × hidden dimension × number of layers
+The key word is *scale*. With 100 requests a day, you can inspect outputs and catch regressions. With 100,000 requests a day, format failures become invisible until a downstream system breaks. Fine-tuning reduces the variance, not just the mean.
 
-A reasonable estimate for full fine-tuning of the E4B: 80–100 GB of GPU memory. That's 2–3 H100s. For the 31B, you're in 8×H100 territory.
+**Domain vocabulary that the model doesn't have.** Public pre-training data is sparse on proprietary terminology — internal codenames, specialized legal citations, niche technical jargon, company-specific product names. When the base model encounters a term it's uncertain about, it hallucinates plausible-sounding substitutes. Fine-tuning on domain documents moves that vocabulary from "uncertain" to "known." You're not teaching the model facts; you're shifting its prior over a specific vocabulary.
 
-This is the compute regime of well-funded research labs, not individual practitioners or small teams. For most use cases, full fine-tuning is not the right tool — not because it's theoretically wrong, but because it's economically indefensible.
+**Task-specific structure adherence.** Some tasks require output formats complex enough that prompting alone doesn't reliably produce them at volume: extracting fields from messy documents into a typed schema, generating code in an internal DSL, following a multi-step reasoning format across thousands of varied inputs. When the task has a clear input-output structure and you have labeled examples, fine-tuning converges on that structure in a way that generalizes better than in-context examples.
+
+**When fine-tuning won't help.** If the model doesn't know a fact, training on examples of that fact won't reliably teach it. LLMs learn *patterns*, not *knowledge* — or rather, knowledge is encoded implicitly through patterns. Fine-tuning on Q&A pairs does work to some degree, but it's brittle: the model may learn to produce the right answer for inputs that closely resemble training examples while hallucinating on variants it hasn't seen. For factual grounding, RAG (Retrieval Augmented Generation) is more reliable because it doesn't require encoding knowledge into weights. Fine-tuning and RAG are complementary: fine-tuning shapes behavior, RAG shapes knowledge.
 
 ---
 
-## LoRA: The Insight That Changed Everything
+## Why Full Fine-tuning Is a Non-starter for Most Teams
 
-Low-Rank Adaptation (LoRA) starts from an observation about how pre-trained model weights behave when fine-tuned. When you take a large pre-trained weight matrix and fine-tune it on a downstream task, the resulting update — the change to the weights — has low intrinsic rank. Most of the gradient update lives in a small subspace.
+When engineers say "fine-tune the model," they sometimes mean: run gradient descent on all the parameters with your training data. This works, and for some research contexts it's the right approach. For most production teams, it's economically indefensible.
 
-If the update is low-rank, you don't have to store or compute the full update. You can approximate it as the product of two much smaller matrices:
+The memory arithmetic is brutal. The E4B has approximately 8 billion total parameters. At 16-bit (BF16) precision, that's 16 bytes per parameter, or ~16 GB just for the weights.
 
-$$W_{\text{adapted}} = W_0 + \Delta W = W_0 + BA$$
+But during training, you need three additional copies of that memory:
 
-Where $W_0 \in \mathbb{R}^{d \times d}$ is the frozen pre-trained weight, $B \in \mathbb{R}^{d \times r}$ and $A \in \mathbb{R}^{r \times d}$ are the trainable low-rank matrices, and $r \ll d$ is the rank — typically 8 to 64, compared to dimensions of 4,096 to 16,384.
+**Gradients:** The backward pass computes a gradient for every parameter — the same size as the weights. Another ~16 GB.
 
-The diagram below shows what this looks like in the forward pass — the frozen path and the trainable LoRA path running in parallel:
+**Optimizer states:** Adam maintains two momentum statistics (first and second moment) for every parameter. Another ~32 GB.
+
+**Activations:** During the forward pass, intermediate layer outputs must be stored for use in the backward pass. For a single training example with 2048 tokens and 32 layers, this is batch_size × sequence_length × hidden_dim × num_layers × 2 bytes. At batch_size=1, sequence_length=2048, hidden_dim=3584 (E4B), 32 layers: roughly 7 GB.
+
+Add it up: ~71 GB minimum for the E4B with full fine-tuning. That's two H100 80GB GPUs for a comfortable margin. For the 31B, you're in 4–8× A100 territory.
+
+Cloud costs for this: running 8× A100 80GB on AWS (p4d.24xlarge) costs ~$30/hour. A fine-tuning run that takes 10 hours costs $300. If you need to iterate — adjust hyperparameters, fix data quality issues, retrain — costs multiply quickly.
+
+This isn't a reason to give up on fine-tuning. It's a reason to use the methods that make full fine-tuning unnecessary.
+
+---
+
+## LoRA: The Elegant Approximation
+
+Low-Rank Adaptation (LoRA) starts from an empirical observation about how pre-trained weights change during fine-tuning. When you run gradient descent on all parameters for a downstream task, the update matrix $\Delta W = W_{\text{fine-tuned}} - W_0$ has surprisingly low intrinsic rank. Most of the information in the update lives in a small number of dimensions.
+
+If the update is low-rank, you don't need to store or compute the full matrix. You can approximate:
+
+$$\Delta W \approx BA, \quad B \in \mathbb{R}^{d \times r}, \quad A \in \mathbb{R}^{r \times d}, \quad r \ll d$$
+
+The adapted weight is then $W_{\text{adapted}} = W_0 + BA$. During training, $W_0$ is frozen, and only $B$ and $A$ are updated. At initialization, $B$ is zeroed and $A$ is random, so $BA = 0$ and the model starts from the exact pre-trained state.
 
 ```mermaid
 flowchart LR
-    X["Input x"] --> W0["W₀\nfrozen\npretrained weights"]
-    X --> A["A matrix\nr × d_in\nrandom init"]
-    A --> B["B matrix\nd_out × r\nzero init at start"]
-    W0 --> SUM["W₀x + BAx"]
+    X["Input x"] --> W0["W₀ frozen pretrained"]
+    X --> A["A: r × d_in random init"]
+    A --> B["B: d_out × r zero init"]
+    W0 --> SUM["Output = W₀x + BAx"]
     B --> SUM
-    SUM --> OUT["Output h"]
+    SUM --> OUT["h"]
     style W0 fill:#888,color:#fff
     style A fill:#4a90d9,color:#fff
     style B fill:#4a90d9,color:#fff
+    style SUM fill:#5ba05b,color:#fff
 ```
 
-The frozen path produces the pre-trained output. The trainable path — A then B — produces a small correction. At initialization, B is zeroed out, so the LoRA adapter starts by producing nothing, and the model begins training from exactly the pre-trained state. This is intentional: it means fine-tuning starts from a stable baseline rather than from random noise added to the weights.
+The parameter count comparison makes the efficiency concrete. A single weight matrix in the E4B has dimensions approximately 3584 × 3584 = ~12.8M parameters. A LoRA adapter with rank 16 applied to that same matrix: 2 × 16 × 3584 = ~115K parameters — less than 1% of the original. For the full E4B with 32 layers and 7 adapted weight matrices per layer, the total trainable parameters are roughly 26M — about 0.3% of the full model.
 
-The parameter count for a LoRA adapter with rank 16 applied to all 7 weight matrices in one transformer layer: roughly 2 × 16 × 4096 × 7 ≈ 900K parameters per layer. For a full E4B model with 32 layers, that's ~30 million trainable parameters — about 0.4% of the full model. Training that 0.4% takes a fraction of the memory and compute of training everything.
+### Rank: The Most Consequential Hyperparameter
 
-At inference time, you can either apply adapters on-the-fly (good for serving multiple tasks from one base model) or merge them: $W_{\text{merged}} = W_0 + BA$. The merged model is identical in size to the original and adds zero inference overhead.
+Rank $r$ controls the expressiveness of the LoRA adapter. Higher rank means more trainable parameters and the ability to capture more complex adaptations. Lower rank means fewer parameters, faster training, and smaller adapters — but a tighter constraint on what the model can learn.
+
+| Rank | Trainable Params (E4B) | What It Can Express |
+|---|---|---|
+| r=4 | ~13M | Style and tone shifts, simple format changes |
+| r=8 | ~26M | Format adherence, vocabulary narrowing |
+| r=16 | ~52M | Domain adaptation, task-specific behavior |
+| r=32 | ~104M | Complex behavior changes, multi-task adaptation |
+| r=64 | ~208M | Near-full fine-tuning expressiveness for small tasks |
+
+The conventional starting point is r=16. Empirically, many tasks plateau around r=16 — going higher doesn't measurably improve quality but does increase memory and training time. The exceptions: highly specialized domains where the model needs to develop vocabulary that's genuinely absent from pre-training data (r=32–64 can help) and simple style tasks where r=4–8 is sufficient.
+
+### Alpha: The Scaling Factor
+
+LoRA includes a scaling term $\alpha$ that scales the adapter output: the effective contribution is $\frac{\alpha}{r} \cdot BA$. This controls the relative magnitude of the adapter updates versus the frozen base.
+
+The common heuristic is to set `alpha = r`, which makes the scaling factor 1.0. Some practitioners use `alpha = 2r` (scaling factor 2.0) to give the adapter more influence early in training, then reduce it later. What you should avoid: very high alpha values (like alpha=128 with r=16) can destabilize training by letting early random adapter activations overwhelm the frozen weights.
+
+In practice: start with `alpha = r`. Only tune this if convergence is slow or training is unstable.
 
 ---
 
-## QLoRA: LoRA on a Diet
+## QLoRA: The Access Revolution
 
-LoRA dramatically reduces the number of trainable parameters. But the frozen base model still needs to live in GPU memory during training. For the E4B at 16-bit precision, that's ~16 GB before the adapters even arrive.
+LoRA made fine-tuning parameter-efficient. QLoRA made it memory-efficient. The combination is what put a functional frontier model on an RTX 3060.
 
-QLoRA (Quantized LoRA) addresses this by quantizing the frozen base weights to 4-bit precision — specifically using a format called NF4 (NormalFloat 4), which is designed for weights that follow a roughly normal distribution. The quantization reduces the frozen model to ~4 GB for the E4B. LoRA adapters are trained on top in 16-bit precision, so gradient computation stays accurate. The base weights stay frozen and quantized throughout training.
+The core idea: during LoRA training, the frozen base weights must remain in GPU memory, but they never need to be updated — only read. If you can reduce their memory footprint without meaningfully degrading the gradient computation, you free up VRAM for the trainable adapters and activations.
 
-The practical result: fine-tuning the E4B goes from requiring ~80 GB of VRAM to requiring ~8–10 GB. An RTX 3060 12GB can handle it. An RTX 4070 is comfortable. An RTX 4090 runs it with room to spare.
+QLoRA (Quantized LoRA, Dettmers et al. 2023) accomplishes this with three innovations:
 
-The accuracy cost of QLoRA vs full-precision LoRA is real but small — typically 0.5–2% on task-specific benchmarks. For most production use cases, this trade-off is completely acceptable.
+**NF4 (NormalFloat 4).** Standard quantization divides the float range into equal-sized bins. NF4 divides the range into bins of equal probability under a standard normal distribution, which better matches the actual distribution of pre-trained neural network weights. The quantization error at the tails (where values are rare) is worse than in the middle of the distribution, but since pre-trained weights are typically near-zero, this error is low on average. NF4 reduces memory from 2 bytes/parameter (BF16) to 0.5 bytes/parameter — a 4× compression.
+
+**Double quantization.** Quantization requires storing quantization constants (scale and offset) for each block of quantized weights. These constants themselves take memory. Double quantization quantizes those constants too, further reducing memory by about 0.37 bits per parameter on average — small individually, but meaningful across billions of parameters.
+
+**Paged optimizers.** Adam's optimizer states are only needed during the backward pass, not the forward pass. paged optimizers use GPU-to-CPU memory transfer (via NVLink or PCIe) to evict optimizer states to CPU RAM when not in use and page them back when needed. This handles the occasional memory spikes during gradient accumulation that would otherwise cause OOM crashes.
+
+The combined effect on the E4B: from ~71 GB for full fine-tuning to ~8–10 GB for QLoRA. An RTX 3060 12GB can handle it with some headroom.
+
+**The accuracy cost.** NF4 quantization is not lossless. The accuracy difference between QLoRA and full-precision LoRA is typically 0.5–2% on downstream task benchmarks. For most production use cases, this is fully acceptable. For tasks where 1% matters — competitive benchmarks, extremely high-stakes classification — you'll want to validate empirically rather than assume.
 
 ---
 
 ## Fine-tuning Gemma 4 E4B: The Complete Recipe
 
-The fastest path to fine-tuning Gemma 4 today is **Unsloth**, which provides optimized kernels for Gemma 4's architecture. You'll also need the Hugging Face ecosystem: `transformers`, `peft`, `trl`, `datasets`.
+Unsloth is the recommended toolchain for Gemma 4 fine-tuning. It provides optimized CUDA kernels for Gemma 4's architecture (including the PLE attention path) and handles the quantization setup automatically.
 
 ```bash
 pip install unsloth transformers peft trl datasets bitsandbytes
 ```
 
-### Loading the Model with QLoRA
+### Step 1: Loading the Model
 
 ```python
 from unsloth import FastLanguageModel
 import torch
 
-# E4B instruction-tuned variant, loaded in 16-bit (Unsloth manages quantization internally)
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="google/gemma-4-E4B-it",
+    model_name="google/gemma-4-E4B-it",  # Instruction-tuned base
     max_seq_length=2048,
-    load_in_4bit=False,    # Unsloth handles quantization via load_in_16bit
-    load_in_16bit=True,
-    full_finetuning=False, # LoRA mode
+    load_in_16bit=True,   # Unsloth handles 4-bit internally via its optimized path
+    full_finetuning=False,
 )
 ```
 
-### Attaching the LoRA Adapters
+The instruction-tuned variant (`-it` suffix) is almost always the right starting point for fine-tuning. It already has SFT and alignment applied. You're adapting an assistant, not training one from scratch.
+
+### Step 2: Attaching the LoRA Adapters
 
 ```python
 model = FastLanguageModel.get_peft_model(
     model,
-    r=16,                  # Rank: 8 for minimal, 16 for general tasks, 64 for specialized domains
-    lora_alpha=16,         # Scaling factor — keep equal to r for a clean 1× scale
-    lora_dropout=0,        # Dropout on adapter layers (0 works well for most tasks)
+    r=16,
+    lora_alpha=16,
+    lora_dropout=0,      # 0 works for most tasks; add 0.05 only if severe overfitting
     bias="none",
     target_modules=[
-        "q_proj", "k_proj", "v_proj", "o_proj",  # Attention
-        "gate_proj", "up_proj", "down_proj",       # MLP feedforward
+        "q_proj", "k_proj", "v_proj", "o_proj",   # Attention projections
+        "gate_proj", "up_proj", "down_proj",        # MLP feedforward
     ],
-    use_gradient_checkpointing="unsloth",  # Saves ~30% additional VRAM
+    use_gradient_checkpointing="unsloth",  # Saves ~30% additional VRAM vs standard
     random_state=42,
     max_seq_length=2048,
 )
+
+# Sanity check: how many parameters are we actually training?
+trainable, total = model.get_nb_trainable_parameters()
+print(f"Trainable: {trainable:,} / {total:,} = {100*trainable/total:.2f}%")
+# Expected: ~26M / ~8B = ~0.32%
 ```
 
-With `r=16` and these 7 modules, you're training approximately 0.2% of the model's parameters. Everything else stays frozen.
+### Step 3: Data Preparation
 
-### Preparing Your Dataset
-
-The most common pattern is **supervised fine-tuning (SFT)**: you have input-output pairs, and you train the model to produce the output given the input. Format your data using Gemma 4's chat template:
+This is where most fine-tuning projects succeed or fail, and it receives far less attention than the model architecture.
 
 ```python
 from datasets import Dataset
 
-# Your task: converting unstructured clinical notes to structured JSON
+# Format: list of conversations in Gemma 4's expected chat format
 examples = [
     {
         "messages": [
             {
                 "role": "system",
-                "content": "Extract structured data from clinical notes. Return valid JSON only."
+                "content": "Extract structured fields from clinical notes. Return valid JSON."
             },
             {
                 "role": "user",
-                "content": "Patient presents with chest pain radiating to left arm, diaphoresis, onset 2 hours ago. BP 140/90, HR 102."
+                "content": "Patient: 58M. Presents with chest pain radiating to left arm, "
+                           "diaphoresis, onset ~2h ago. BP 142/91, HR 104, RR 18, SpO2 97%."
             },
             {
                 "role": "assistant",
-                "content": '{"symptoms": ["chest pain", "diaphoresis"], "radiation": "left arm", "onset_hours": 2, "vitals": {"bp": "140/90", "hr": 102}}'
+                "content": '{"chief_complaint": "chest pain", "radiation": ["left arm"], '
+                           '"associated": ["diaphoresis"], "onset_hours": 2, '
+                           '"vitals": {"bp_systolic": 142, "bp_diastolic": 91, '
+                           '"hr": 104, "rr": 18, "spo2": 97}}'
             }
         ]
     },
-    # ... hundreds more examples
+    # Hundreds more examples with the same structure
 ]
 
 dataset = Dataset.from_list(examples)
 
-def format_with_template(example):
-    # Apply Gemma 4's chat template — consistency at training time is critical
-    # because the same template must be used at inference
-    text = tokenizer.apply_chat_template(
-        example["messages"],
-        tokenize=False,
-        add_generation_prompt=False,
-    )
-    return {"text": text}
+def apply_template(example):
+    # CRITICAL: use the same template at training and inference
+    # Inconsistency here is one of the most common sources of quality regression
+    return {
+        "text": tokenizer.apply_chat_template(
+            example["messages"],
+            tokenize=False,
+            add_generation_prompt=False,
+        )
+    }
 
-dataset = dataset.map(format_with_template)
+dataset = dataset.map(apply_template, remove_columns=["messages"])
+dataset = dataset.train_test_split(test_size=0.1)  # Always hold out validation data
 ```
 
-Consistency in the chat template is not optional. If you format training data differently from inference prompts, the model will produce degraded output. Apply `tokenizer.apply_chat_template()` everywhere.
+**What makes good training data:**
+- **Diversity**: 200 examples covering many variations of the task beats 200 examples of the same pattern
+- **Consistency**: the same field names, the same JSON structure, the same formatting — every time
+- **Length balance**: don't have 90% short examples and 10% long ones; the model will learn the length distribution
+- **Clean labels**: a single wrong output in training can introduce a systematic error that's hard to debug
 
-### Training
+The absolute minimum for a narrow task is around 50–100 high-quality examples. Most teams benefit from 500–2,000. Beyond 10,000, quality matters more than quantity.
+
+### Step 4: Training
 
 ```python
 from trl import SFTTrainer, SFTConfig
@@ -215,166 +289,239 @@ from trl import SFTTrainer, SFTConfig
 trainer = SFTTrainer(
     model=model,
     tokenizer=tokenizer,
-    train_dataset=dataset,
+    train_dataset=dataset["train"],
+    eval_dataset=dataset["test"],
     args=SFTConfig(
         per_device_train_batch_size=1,
-        gradient_accumulation_steps=4,   # Effective batch size = 4
-        warmup_steps=10,
-        num_train_epochs=3,              # Watch validation loss — stop when it rises
-        learning_rate=2e-4,              # LoRA-specific LR; much higher than full fine-tuning
-        optim="adamw_8bit",              # Memory-efficient optimizer
+        gradient_accumulation_steps=4,    # Effective batch size = 4; increase for stability
+        warmup_ratio=0.03,                # Warm up for 3% of steps before full LR
+        num_train_epochs=3,
+        learning_rate=2e-4,               # LoRA-specific; full fine-tuning uses 1e-5
+        optim="adamw_8bit",
+        weight_decay=0.01,                # Light L2 regularization
+        lr_scheduler_type="cosine",       # Cosine decay is more stable than linear
         bf16=torch.cuda.is_bf16_supported(),
         fp16=not torch.cuda.is_bf16_supported(),
         logging_steps=10,
-        output_dir="gemma4-clinical-ft",
+        eval_steps=50,
+        save_steps=100,
+        output_dir="gemma4-e4b-clinical",
         dataset_text_field="text",
         max_seq_length=2048,
+        load_best_model_at_end=True,      # Load the checkpoint with best eval loss
+        metric_for_best_model="eval_loss",
     ),
 )
 
-trainer.train()
+trainer_stats = trainer.train()
 ```
 
-A few hyperparameters that matter more than the rest:
+**Why these hyperparameters:**
+- `learning_rate=2e-4`: LoRA adapters start from zero and need a higher learning rate than full fine-tuning. The recommended range is 1e-4 to 5e-4.
+- `cosine` scheduler: produces smoother convergence than linear decay and handles the "plateau before the final drop" more gracefully
+- `load_best_model_at_end=True`: saves you from the common mistake of using the last checkpoint, which is often slightly overfit compared to the best eval checkpoint
 
-- **Learning rate 2e-4** is LoRA-specific. Full fine-tuning uses 1e-5 to 5e-5. LoRA adapters start at zero and need a larger step size to converge.
-- **Gradient accumulation** lets you simulate a larger batch size without the memory cost. Steps=4 with batch=1 behaves like a batch of 4.
-- **3 epochs** is a starting point. Watch validation loss. Overfitting in LoRA often looks like training loss going down while generations start repeating phrases or losing diversity.
-
-### Saving and Deploying
+### Step 5: Saving and Deploying the Adapter
 
 ```python
-# Save only the LoRA adapters (small — a few hundred MB)
+# Save only the LoRA adapters — typically 50–300 MB
 model.save_pretrained("gemma4-clinical-adapters")
 tokenizer.save_pretrained("gemma4-clinical-adapters")
 
-# Or merge and save the full model (if you want one artifact to deploy)
+# OR merge adapters into the base model (one clean artifact, no special loading)
 model.save_pretrained_merged(
     "gemma4-clinical-merged",
     tokenizer,
     save_method="merged_16bit",
 )
 
-# Or export to GGUF for llama.cpp / Ollama deployment
+# OR export to GGUF for Ollama deployment (quantized for efficiency)
 model.save_pretrained_gguf(
     "gemma4-clinical-gguf",
     tokenizer,
-    quantization_method="q4_k_m",  # 4-bit quantized, good quality/size balance
+    quantization_method="q4_k_m",   # 4-bit mixed, good balance
 )
 ```
 
-The adapter-only save is ~100–300 MB. The merged model is the same size as the original. For most deployment scenarios, the merged model is simpler — one artifact, no special loading code.
+**Three deployment patterns, three trade-offs:**
+
+The adapter-only save keeps the base model and adapter separate. Loading requires the base model plus the adapter, and you can swap adapters at runtime — useful if you're serving multiple fine-tuned variants from the same base. The adapter file is small (50–300 MB) but the base model (~8 GB) must always be loaded.
+
+The merged save produces a single model artifact with the adapters baked in. Loading is simple, inference is identical to the base model, and you don't need the adapter file at runtime. The trade-off: the merged model is the same size as the original, and once merged you can't separate the adapter back out.
+
+The GGUF export produces a quantized binary compatible with Ollama and llama.cpp. Ideal for local deployment and teams already using Ollama from the previous post in this series. The quantization introduces a small additional quality loss on top of QLoRA's existing loss.
 
 ---
 
 ## Which Layers to Target
 
-The `target_modules` choice is not arbitrary. Different weight matrices contribute differently depending on your task.
+The `target_modules` list is not arbitrary — different weight matrices contribute differently to different types of adaptation.
 
-**Attention projections** (`q_proj`, `k_proj`, `v_proj`, `o_proj`) control how the model attends to context. These are the most universally effective modules to adapt — they influence behavior across all task types.
+**Attention projections** (`q_proj`, `k_proj`, `v_proj`, `o_proj`) control what the model attends to and how it routes information across the context. These are the most universally important modules for behavioral adaptation — they influence how the model selects and combines information for any type of output.
 
-**MLP projections** (`gate_proj`, `up_proj`, `down_proj`) are where much of the factual recall and generation style lives. Including them usually gives better format and vocabulary adaptation at a modest memory cost.
+**MLP projections** (`gate_proj`, `up_proj`, `down_proj`) are where vocabulary encoding and factual associations live in the feedforward layers. Including them improves format adherence and domain vocabulary adaptation at the cost of slightly more memory.
 
-The baseline recommendation — all 7 modules at `r=16` — covers the vast majority of use cases. Where to deviate:
+**When to include all 7 modules:** general domain adaptation, format learning, vocabulary shifting — which is most tasks.
 
-- **Style/tone adaptation only, tight memory budget:** drop the MLP projections. Attention alone handles most behavioral changes.
-- **Specialized vocabulary or domain knowledge:** include MLP projections. The feedforward layers encode more of the factual content.
-- **Multimodal fine-tuning (adapting image understanding):** include vision layers explicitly. With Unsloth's `FastVisionModel`, you control this separately:
+**When to drop the MLP projections:** pure style or tone adaptation where you're not changing vocabulary. Cuts memory by 30% with minimal quality loss for style tasks.
+
+**For Gemma 4's MoE variant (26B-A4B):** the routing matrices (`router.weight`) should generally *not* be fine-tuned. The routing mechanism is learned during pre-training to be stable, and fine-tuning it can shift expert specialization in ways that are hard to predict. Stick to the standard 7 attention and MLP projections.
+
+---
+
+## Fine-tuning Gemma 4 for Vision
+
+Gemma 4 E2B and E4B support images and audio. Fine-tuning these modalities follows the same LoRA pattern but with explicit control over which components of the model to adapt.
 
 ```python
-# For multimodal fine-tuning of Gemma 4 E2B/E4B
+from unsloth import FastVisionModel
+from unsloth.trainer import UnslothVisionDataCollator
+
+model, tokenizer = FastVisionModel.from_pretrained(
+    "google/gemma-4-E4B-it",
+    max_seq_length=2048,
+    load_in_16bit=True,
+)
+
 model = FastVisionModel.get_peft_model(
     model,
-    finetune_vision_layers=True,      # Adapt the vision encoder too
-    finetune_language_layers=True,
+    finetune_vision_layers=False,      # Keep vision encoder frozen initially
+    finetune_language_layers=True,     # Adapt language decoder to vision features
     finetune_attention_modules=True,
     finetune_mlp_modules=True,
     r=16,
     lora_alpha=16,
+    lora_dropout=0,
+    bias="none",
 )
 ```
 
-For the MoE variants (26B-A4B), use 16-bit LoRA rather than QLoRA if memory allows. The routing mechanism in MoE models is sensitive to weight precision, and the 4-bit quantization noise can affect which expert gets selected.
+**Why freeze the vision encoder initially.** Gemma 4's vision encoder is a pre-trained component that already understands spatial relationships, image structure, and visual features. For most fine-tuning tasks (adapting the language output for specific image types), you don't need to retrain it — you need to teach the language decoder to use its outputs differently. Fine-tuning the vision encoder as well doubles the adapter parameter count and often degrades performance by disturbing the pre-trained visual representations.
+
+The exception: domain-specific visual inputs where the pre-trained encoder has poor coverage — medical imaging, satellite imagery, industrial inspection images where the visual vocabulary is genuinely different from the pre-training distribution. In these cases, `finetune_vision_layers=True` and a lower rank (r=8) is a reasonable approach.
+
+**Training data for vision.** Images must come before text in the conversation structure. This is not optional — it's how Gemma 4's attention was trained:
+
+```python
+vision_examples = [
+    {
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image", "image": pil_image},  # Image first
+                    {"type": "text", "text": "Identify the defect in this circuit board."}
+                ]
+            },
+            {
+                "role": "assistant",
+                "content": "The capacitor at position C14 shows visible electrolyte leakage..."
+            }
+        ]
+    }
+]
+```
+
+The `UnslothVisionDataCollator` handles batching multi-modal inputs correctly, including the `mm_token_type_ids` field that Gemma 4 requires even for text-only training batches.
 
 ---
 
-## The Decision Before the Code
+## Evaluating Fine-tuning: What "Working" Actually Means
 
-Fine-tuning is not always the right answer. The following positions these approaches honestly against each other:
+Training loss declining is necessary but not sufficient. A model can learn to overfit the formatting of your training data while failing to generalize to new inputs that pattern-match differently. Real evaluation requires human judgment combined with structured testing.
+
+**Loss curves are your first signal.** A healthy training run has both training and validation loss decreasing, with validation loss slightly higher but tracking training loss closely. The moment validation loss flattens while training loss continues dropping, you're entering overfit territory. Stop training, or at minimum use `load_best_model_at_end=True` so you automatically revert to the best checkpoint.
+
+What overfitting looks like in generated text (not just in numbers):
+- Outputs that reproduce phrases from training examples verbatim
+- Correct structure on examples similar to training data, wrong structure on slightly different inputs
+- Reduced diversity: the model produces similar-looking outputs even for very different inputs
+- Loss of general reasoning: the model can't handle natural follow-up questions because it's learned to pattern-match to specific input shapes
+
+**Qualitative sampling is irreplaceable.** Every 50–100 training steps, run the model on a held-out set of prompts and read the outputs carefully. Look for:
+
+```python
+# Evaluation during training: spot-check a few held-out examples
+eval_prompts = [
+    "Patient: 67F, shortness of breath, onset 1 week, worsening at night...",
+    "42M, fell from ladder, right wrist pain, limited range of motion...",
+    "19F, severe headache, sensitivity to light, neck stiffness...",
+]
+
+# Run the fine-tuned model
+model.eval()
+for prompt in eval_prompts:
+    inputs = tokenizer.apply_chat_template(
+        [{"role": "user", "content": prompt}],
+        return_tensors="pt",
+        add_generation_prompt=True,
+    ).to(model.device)
+
+    with torch.no_grad():
+        output = model.generate(inputs, max_new_tokens=256, temperature=0.1)
+    print(tokenizer.decode(output[0][inputs.shape[1]:], skip_special_tokens=True))
+    print("---")
+```
+
+**Before/after comparison is your baseline.** Run the same evaluation prompts on both the base `google/gemma-4-E4B-it` and your fine-tuned model. If the improvement isn't immediately visible when you read the outputs, the fine-tuning hasn't worked. You shouldn't need to squint.
+
+**Regression testing.** Fine-tuning can narrow the model's capabilities. If your application also relies on general reasoning beyond the fine-tuned task, test that too. LoRA substantially reduces catastrophic forgetting because the base weights are frozen — but the adapter can still shift behavior in ways you didn't intend. A five-minute check on general capability benchmarks (can the model still answer general knowledge questions sensibly?) is worth the time.
+
+---
+
+## The Adaptation Landscape: Choosing What to Use
 
 ```mermaid
 quadrantChart
-    title Adaptation Methods: Infrastructure Cost vs Task Fit
+    title Adaptation Methods: Infrastructure Cost vs Task Specificity
     x-axis Low Infrastructure Cost --> High Infrastructure Cost
     y-axis Low Task Specificity --> High Task Specificity
     quadrant-1 Expensive but precise
-    quadrant-2 High fit, manageable cost
-    quadrant-3 Quick and broad
-    quadrant-4 High cost, diminishing returns
+    quadrant-2 High fit at manageable cost
+    quadrant-3 Broad and cheap
+    quadrant-4 Costly but underspecified
     Prompt Engineering: [0.05, 0.30]
-    Few-Shot Examples: [0.10, 0.48]
-    RAG: [0.30, 0.60]
+    Few-Shot in Context: [0.10, 0.48]
+    RAG: [0.28, 0.60]
     QLoRA E4B: [0.40, 0.82]
-    LoRA E4B 16bit: [0.50, 0.84]
+    LoRA E4B 16bit: [0.52, 0.84]
     Full Fine-tuning E4B: [0.68, 0.87]
     Full Fine-tuning 31B: [0.95, 0.92]
 ```
 
-The sweet spot for most production teams is QLoRA on E4B or a comparable model. You get task-specific behavior at a cost that's viable outside hyperscaler compute budgets.
+For most production teams, QLoRA on E4B represents the best balance: task-specific behavior, manageable infrastructure, and a 0.5–2% quality gap compared to full precision that's acceptable for most applications.
 
 ---
 
-## Did It Work? Evaluating Fine-tuning
-
-Training loss going down is necessary but not sufficient. You need to evaluate whether the model actually behaves better on your task.
-
-**Loss curves first.** Plot training and validation loss side by side. Good fine-tuning: both curves decrease, validation slightly higher than training. Overfitting: training keeps decreasing, validation flattens or rises. If this happens, reduce epochs or increase LoRA dropout slightly.
-
-**Qualitative sampling during training.** Every N steps, run the model on a held-out set of prompts and read the outputs. This catches issues that loss won't reveal: the model producing valid-but-wrong JSON, using the right schema structure but wrong field names, or generating fluent text that misses the task entirely.
-
-**Before/after comparison.** Use the same evaluation prompts on the base model and your fine-tuned model. If the improvement isn't obvious on the examples you care about, the fine-tuning may not have converged on the right behavior.
-
-**Regression on general capability.** Fine-tuning can degrade general capabilities — this is catastrophic forgetting, where adapting weights for your narrow task reduces performance on unrelated tasks. If your application also relies on general reasoning, test that too. LoRA significantly reduces this risk compared to full fine-tuning because the base weights stay frozen, but it doesn't eliminate it.
-
-A practical checklist:
-- [ ] Validation loss lower than base after training
-- [ ] Generated outputs match expected format/schema consistently
-- [ ] Model uses correct domain terminology
-- [ ] Performance on general capability benchmarks hasn't degraded significantly
-- [ ] No repetition loops or degenerate outputs in 50+ sampled generations
-
----
-
-## The Moment LoRA Became Routine
-
-One more thing worth appreciating: the accessibility of this workflow is recent.
+## From LoRA to Production: The Timeline
 
 ```mermaid
 timeline
-    2021 : LoRA paper by Hu et al. at Microsoft — rank decomposition for transformer adaptation
-    2022 : PEFT library released by Hugging Face — unified API for all adapter methods
-    2023 : QLoRA paper by Dettmers et al. — 65B fine-tuning on one GPU for the first time
-    2024 : TRL and Unsloth mature — SFT and DPO as commodity workflows
-    2026 : Gemma 4 ships Apache 2.0 — frontier-class model with day-one adaptation tooling
+    2021 : LoRA paper by Hu et al. at Microsoft — low-rank approximation for adapters
+    2022 : PEFT library by Hugging Face — unified API for adapter methods
+    2023 : QLoRA by Dettmers et al. — 65B fine-tuning on a single GPU becomes real
+    2023 : Unsloth released — 2x faster fine-tuning with optimized kernels
+    2025 : DoRA, GaLore — adapters get even more parameter-efficient
+    2026 : Gemma 4 ships Apache 2.0 — frontier model with day-one adapter tooling
 ```
 
-The LoRA paper is from 2021. QLoRA is 2023. What you're reading now is a workflow that didn't exist in its current form three years ago. The idea that you could take a model scoring 89.2% on AIME 2026, load it on a consumer GPU, and adapt it to your domain in a few hours — that's not how AI deployment worked for most of the field's history.
+The LoRA paper is from 2021. QLoRA is 2023. What you're doing today — taking a model scoring 89.2% on AIME 2026 and adapting it to your domain on consumer hardware in a few hours — did not exist as a practical workflow three years ago.
 
-The tooling (Unsloth, PEFT, TRL) has caught up quickly. The limiting factor today is not compute, for most tasks. It's training data quality, evaluation rigor, and being honest about when fine-tuning actually helps versus when a better prompt would suffice.
+The bottleneck has shifted from compute to judgment. Do you have enough quality training examples? Are you measuring the right things in evaluation? Are you being honest about when fine-tuning actually helps versus when the problem is somewhere else in the stack?
 
 ---
 
 ## Honest Limitations
 
-**Data quality dominates everything.** Fine-tuning amplifies patterns in your training data. Inconsistent formatting, wrong labels, or sloppy examples will be faithfully learned. 200 high-quality examples will outperform 10,000 noisy ones. Before spending time on hyperparameter tuning, spend time cleaning your training set.
+**Data quality is everything.** Fine-tuning amplifies the patterns in your training data, including the bad ones. Inconsistent formatting, wrong labels, and noisy examples will be learned. A dataset of 200 carefully reviewed, diverse examples will produce a better model than 5,000 examples assembled quickly. Spend more time on data than on hyperparameter tuning.
 
-**Fine-tuning doesn't teach knowledge.** If Gemma 4 doesn't know something factually, fine-tuning on examples won't reliably fix that. It teaches input-output patterns, not factual recall. For knowledge grounding, you still want RAG or, at minimum, providing that information in the context.
+**Fine-tuning teaches patterns, not facts.** If the model hallucinates medical terminology because it doesn't know the term, fine-tuning on correct usage helps — but if it hallucinates specific factual claims (a dosage, a lab value, a procedure), fine-tuning on examples won't make it reliably correct on unseen facts. Use RAG to ground facts; use fine-tuning to shape behavior.
 
-**Catastrophic forgetting is real, just less severe with LoRA.** The more specialized your fine-tuning data, the more the model may lose general capability. Test with a broader eval set, not just your task.
+**Catastrophic forgetting is real, even with LoRA.** LoRA significantly reduces forgetting compared to full fine-tuning because the base weights are frozen. But the adapter still modifies behavior. A model fine-tuned on clinical note extraction may become less capable at general reasoning tasks. Always test capabilities outside your fine-tuning domain before deploying.
 
-**The E4B is the right size for most adaptation tasks.** The 31B is technically more capable, but fine-tuning it requires serious hardware and the improvement over E4B for most narrow tasks is marginal. Start small, validate the workflow, scale up only if the gap justifies it.
+**The E4B is the right starting point; resist premature scaling.** The 31B is better, but the marginal quality improvement for a narrowly defined task often doesn't justify the hardware cost. Fine-tune the E4B, measure whether the task performance meets your requirements, and only move to 26B-A4B or 31B if there's a documented gap.
 
-**Serving fine-tuned models adds complexity.** A merged fine-tuned model is one artifact but loses the flexibility of applying different adapters to the same base. Adapter-based serving (loading adapters on-demand) is more flexible but requires more infrastructure. Think about this before you commit to a deployment architecture.
+**Adapter serving adds operational complexity.** Saving just the LoRA adapters is elegant in theory — one base model, multiple adapters, efficient memory usage. In production, adapter switching adds latency, you need to manage which adapter goes with which request, and the base model must stay warm in memory. For most teams, the simplicity of merged model deployment outweighs the efficiency of adapter-based serving.
 
 ---
 
@@ -382,31 +529,33 @@ The tooling (Unsloth, PEFT, TRL) has caught up quickly. The limiting factor toda
 
 **Books:**
 - Tunstall, L., von Werra, L. & Wolf, T. (2022). *Natural Language Processing with Transformers.* O'Reilly Media.
-  - Chapter 9 on fine-tuning is the clearest practical treatment of the standard workflow. Written before QLoRA but the conceptual foundations are solid.
+  - Chapter 9 on fine-tuning covers the full workflow. Written before QLoRA, but the conceptual foundations are the same. The transfer learning framing (chapters 1–3) is valuable context.
 - Raschka, S. (2024). *Build a Large Language Model From Scratch.* Manning.
-  - Builds a GPT-style model from the ground up and then fine-tunes it. Exceptional for building intuition about what the weights actually represent before you start adapting them.
+  - Builds a GPT-style model from scratch and fine-tunes it. Exceptional for understanding what the weights actually represent before you start adapting them. Chapter 7 on fine-tuning is directly applicable.
+- Pereiro, P. (2024). *LLM Engineer's Handbook.* Packt Publishing.
+  - Chapter 6 on fine-tuning covers production deployment considerations including multi-adapter serving and version management.
 
 **Online Resources:**
-- [PEFT Documentation](https://huggingface.co/docs/peft) — The Hugging Face PEFT library docs cover LoRA, QLoRA, IA³, and other adapter methods with working code. The LoRA conceptual guide is one of the better write-ups available.
-- [Unsloth Gemma 4 Fine-tuning Guide](https://unsloth.ai/docs/models/gemma-4/train) — Day-one documentation for Gemma 4 with Unsloth. Covers text-only and multimodal SFT, saving to GGUF, and common memory issues.
-- [Google AI for Developers: Fine-tune Gemma with QLoRA](https://ai.google.dev/gemma/docs/core/huggingface_text_finetune_qlora) — Google's official guide, covering both text and vision fine-tuning for the Gemma family.
-- [TRL Documentation](https://huggingface.co/docs/trl) — SFTTrainer, DPOTrainer, and other supervised and reinforcement learning tools. The SFTTrainer examples are directly applicable to Gemma 4.
+- [PEFT Documentation](https://huggingface.co/docs/peft) — The canonical reference for LoRA, QLoRA, and related methods. The LoRA conceptual guide and the config reference are essential reading.
+- [Unsloth Gemma 4 Fine-tuning Guide](https://unsloth.ai/docs/models/gemma-4/train) — Covers text-only and multimodal SFT for Gemma 4, with notes on architecture-specific quirks and memory optimization.
+- [Google AI for Developers: Fine-tune Gemma with QLoRA](https://ai.google.dev/gemma/docs/core/huggingface_text_finetune_qlora) — Google's official fine-tuning guide for the Gemma family, covering text and vision tasks with both HuggingFace and Unsloth toolchains.
+- [TRL Documentation](https://huggingface.co/docs/trl) — SFTTrainer, DPOTrainer, reward model training. The SFTConfig reference is useful for understanding every training argument.
 
 **Videos:**
-- [Fine-tuning LLMs with PEFT and LoRA](https://www.youtube.com/watch?v=Us5ZFp16PaU) by Hugging Face — Walks through the full PEFT workflow with practical examples, covering LoRA config choices and adapter saving.
-- [QLoRA: Efficient Finetuning of Quantized LLMs](https://www.youtube.com/watch?v=y9PHWGOa8HA) by Tim Dettmers — The QLoRA author explaining the core ideas, including the NF4 quantization motivation and the 65B-on-one-GPU result.
+- [Fine-tuning LLMs with PEFT and LoRA](https://www.youtube.com/watch?v=Us5ZFp16PaU) by Hugging Face — Full PEFT workflow walkthrough with practical LoRA configuration guidance and adapter saving.
+- [QLoRA: Efficient Finetuning of Quantized LLMs](https://www.youtube.com/watch?v=y9PHWGOa8HA) by Tim Dettmers — The QLoRA author explaining NF4 quantization, double quantization, and the 65B-on-one-GPU result that changed what was considered possible.
 
 **Academic Papers:**
 - Hu, E. et al. (2022). ["LoRA: Low-Rank Adaptation of Large Language Models."](https://arxiv.org/abs/2106.09685) *ICLR 2022*.
-  - The original paper. Section 4 on the rank analysis is particularly valuable — it empirically validates that fine-tuning updates are low-rank, which is the entire justification for the method.
+  - Read Section 4 on the rank analysis. It empirically shows that fine-tuning updates are low-rank — which is the entire theoretical justification for the method.
 - Dettmers, T. et al. (2023). ["QLoRA: Efficient Finetuning of Quantized LLMs."](https://arxiv.org/abs/2305.14314) *NeurIPS 2023*.
-  - Introduces NF4 quantization, double quantization, and paged optimizers. The ablation section on which components matter most is directly useful for practitioners making hardware trade-offs.
+  - The NF4 quantization design, double quantization, and paged optimizer sections are directly applicable to practitioner decisions. The ablation study on what matters most is essential.
 - Liu, S. et al. (2024). ["DoRA: Weight-Decomposed Low-Rank Adaptation."](https://arxiv.org/abs/2402.09353) *ICML 2024*.
-  - Decomposes weight updates into magnitude and direction components. Often outperforms LoRA with the same parameter budget, particularly on language generation tasks.
+  - Decomposes weight updates into magnitude and direction. Often outperforms LoRA at the same parameter budget for generation tasks.
 
 **Questions to Explore:**
-- If LoRA works because fine-tuning updates are low-rank, does that imply something fundamental about the geometry of skill transfer between pre-training and downstream tasks? Is there a theoretical explanation, or is it empirical coincidence?
-- Gemma 4 E4B's Per-Layer Embeddings architecture is different from standard transformer weight matrices. Does the low-rank hypothesis apply equally to PLE embeddings, or are they structured differently enough that LoRA adapts them less efficiently?
-- Fine-tuning data quality dominates outcome, but what does "quality" mean precisely? Are there quantifiable signals — perplexity of the training data under the base model, diversity metrics, label consistency — that predict whether a dataset will produce a good fine-tuned model?
-- The fine-tuned model and the base model are now different artifacts. How do you handle model updates? When Google releases Gemma 5, your fine-tuned Gemma 4 adapters don't transfer — you need to re-run fine-tuning. Is there a principled way to make adapter training more reusable across base model versions?
-- Serving multiple LoRA adapters from a single base model is theoretically efficient. In practice, adapter switching adds latency and the engineering complexity is significant. At what scale does multi-adapter serving actually become economically superior to running separate merged models?
+- LoRA works because fine-tuning updates have low intrinsic rank. But this observation was made on full fine-tuning of models trained on diverse data. Does the low-rank property still hold when fine-tuning on very narrow, specialized datasets — and if not, how would you know?
+- Gemma 4's PLE architecture injects embeddings throughout the decoder layers. The standard LoRA target modules assume a specific set of weight matrices. Are there Gemma 4-specific matrices (the PLE projection weights) that would benefit from LoRA adaptation but aren't currently targeted by default configs?
+- When you fine-tune an instruction-tuned model (the `-it` variants), you're adapting a model that's already undergone RLHF or DPO alignment. The adapter modifies the same weights that encode alignment behavior. Is there a principled way to fine-tune for domain behavior without risking alignment regression?
+- The standard approach serves one merged adapter per deployment. But organizations often have multiple use cases (clinical extraction, administrative summaries, coding assistance) all built on the same base model. What's the production architecture for serving dozens of adapters from a single base model efficiently?
+- Fine-tuning data quality is universally acknowledged as the critical factor, but "quality" remains poorly defined. Is high perplexity of training examples under the base model (meaning the examples are surprising to the base model) a useful signal for which examples will contribute most to learning?
