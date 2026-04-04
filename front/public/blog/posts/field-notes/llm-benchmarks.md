@@ -478,6 +478,28 @@ If you only remember one thing from this section, make it this mapping:
 | `OSWorld` | computer-use across apps and OS workflows | desktop/computer-use agents |
 | `Terminal-Bench` | terminal task completion | CLI and code-operating agents |
 
+Plotting these on two axes — how authentic the environment is versus how complex and multi-step the task — reveals the coverage gaps clearly:
+
+```mermaid
+quadrantChart
+    title Agentic Benchmarks: Task Complexity vs Environment Authenticity
+    x-axis Synthetic / Constrained --> Real / Open Environment
+    y-axis Single-step / Structured --> Multi-step / Open-ended
+    quadrant-1 Most realistic + complex
+    quadrant-2 Complex, simulated
+    quadrant-3 Structured, simulated
+    quadrant-4 Realistic, simple
+    BFCL: [0.20, 0.20]
+    IFEval: [0.15, 0.18]
+    tau-bench: [0.35, 0.65]
+    GAIA: [0.55, 0.72]
+    WebArena: [0.55, 0.60]
+    VisualWebArena: [0.60, 0.65]
+    BrowseComp: [0.80, 0.85]
+    OSWorld: [0.75, 0.78]
+    Terminal-Bench: [0.65, 0.70]
+```
+
 ---
 
 ## Instruction Following and Factuality
@@ -577,6 +599,27 @@ That is especially important now that model providers are increasingly optimized
 ---
 
 ## Living Benchmarks: Built to Resist Contamination
+
+The need for living benchmarks is clearest when you trace how quickly past "hard" benchmarks became saturated:
+
+```mermaid
+timeline
+    title LLM Benchmark Evolution
+    2020 : MMLU — broad knowledge (57% → 91% in 4 years)
+    2021 : HumanEval, BIG-bench, MATH
+    2022 : HELM (holistic profiles), BEIR (retrieval)
+         : Chatbot Arena (human preference)
+    2023 : GPQA Diamond (expert science)
+         : SWE-bench (real GitHub issues)
+         : IFEval (verifiable instruction following)
+    2024 : ARC-AGI (novel generalization)
+         : LiveBench (rolling, contamination-resistant)
+         : BFCL (structured tool calling)
+    2025 : HLE (Humanity's Last Exam)
+         : ARC-AGI-2, FrontierMath
+         : Spider 2.0 (enterprise SQL)
+         : Terminal-Bench, BrowseComp
+```
 
 ### LiveBench
 
