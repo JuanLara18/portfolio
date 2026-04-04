@@ -213,6 +213,25 @@ Explicitly separates the group into:
 
 This separation is only possible because orientation and permutation form different subspaces of the cube group.
 
+The state diagram below maps the CFOP solving stages as a sequence of transitions through progressively smaller subgroups—each step reducing the search space until only the identity remains.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Scrambled: random twists
+
+    Scrambled: Scrambled (full 43 quintillion state space)
+    Cross: Bottom cross solved (enter cross subgroup)
+    F2L: First two layers complete (F2L subgroup)
+    OLL: All top pieces oriented (oriented subgroup)
+    PLL: All pieces permuted (identity)
+
+    Scrambled --> Cross: solve 4 bottom edges
+    Cross --> F2L: insert corner-edge pairs
+    F2L --> OLL: orient all top-layer pieces
+    OLL --> PLL: permute to solved position
+    PLL --> [*]: cube solved
+```
+
 ## God's Number: The Diameter of the Universe
 
 ### Twenty Moves to Anywhere
@@ -235,6 +254,19 @@ God's Number is the diameter of this graph. Finding it required:
 - Exploiting symmetry to reduce computation
 - Thousands of hours of CPU time on Google's computers
 - A 2010 breakthrough by Davidson, Dethridge, Kociemba, and Rokicki
+
+The path from toy to theorem spans nearly four decades of incremental mathematical and computational progress.
+
+```mermaid
+timeline
+    1974 : Ernő Rubik invents the cube — original goal was to explain 3D geometric structure to students
+    1980 : Global commercial release — 100 million cubes sold in three years; speedsolving begins
+    1981 : Singmaster's notation published — F R U B L D give group theory a common language
+    1982 : First World Championship — Minh Thai solves in 22.95 seconds; optimal solving studied
+    1992 : Kociemba's two-phase algorithm — exploits coset structure to solve in under 30 moves
+    2010 : God's Number proved to be 20 — Davidson, Dethridge, Kociemba, Rokicki verify all cosets
+    2016 : World record 4.22 seconds — human speed approaches the mathematical lower bound
+```
 
 ### The Superflip: An Antipode
 
