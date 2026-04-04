@@ -1,5 +1,5 @@
 ---
-title: "Running AI PoCs That Actually Decide Something"
+title: "Enterprise AI PoCs: From Vendor Demos to Decisions You Can Defend"
 date: "2026-08-04"
 excerpt: "Most AI proofs of concept are designed to impress, not to inform. They test vendor demos against ideal data, measure metrics that don't match business objectives, and end with a slide deck that recommends the option the team already preferred. Here's a rigorous framework for running PoCs that produce defensible, production-aligned decisions — covering vector database evaluation, RAG quality measurement, text-to-SQL agents, and what changes when you're working in a regulated environment."
 tags: ["AI Engineering", "PoC", "RAG", "Vector Databases", "Enterprise", "Evaluation", "LLM", "Data Engineering"]
@@ -9,7 +9,7 @@ slug: ai-poc-enterprise-evaluation
 estimatedWordCount: 6500
 ---
 
-# Running AI PoCs That Actually Decide Something
+# Enterprise AI PoCs: From Vendor Demos to Decisions You Can Defend
 
 There is a particular kind of meeting that happens in large organizations six months after an AI proof of concept concludes. Someone asks: "Based on this PoC, which system should we go with?" And the room goes quiet, because the PoC didn't actually answer that question. It demonstrated that the technology worked under favorable conditions. It did not determine whether it would work under real conditions, at real scale, operated by real people, in a regulatory environment that wasn't designed with AI in mind.
 
@@ -80,13 +80,28 @@ The diagram below shows the three archetypes and their primary risk. Note that t
 ```mermaid
 flowchart TD
     Q["What kind of data are you making queryable?"]
-    Q -->|"Structured tables\nSQL-queryable schemas"| A["Archetype 1\nStructured Data Agent\nText-to-SQL"]
-    Q -->|"Documents, manuals,\npolicies, free text"| B["Archetype 2\nKnowledge Base\nRAG"]
-    Q -->|"Both: user needs\nfacts AND procedures"| C["Archetype 3\nHybrid Agent\n360 Assistant"]
+    Q -->|"Structured tables
+SQL-queryable schemas"| A["Archetype 1
+Structured Data Agent
+Text-to-SQL"]
+    Q -->|"Documents, manuals,
+policies, free text"| B["Archetype 2
+Knowledge Base
+RAG"]
+    Q -->|"Both: user needs
+facts AND procedures"| C["Archetype 3
+Hybrid Agent
+360 Assistant"]
 
-    A --> A1["Primary risk\nWrong SQL produces wrong\nanswer without error"]
-    B --> B1["Primary risk\nHallucination or missing\ncontext across documents"]
-    C --> C1["Primary risk\nRouting error sends query\nto wrong system silently"]
+    A --> A1["Primary risk
+Wrong SQL produces wrong
+answer without error"]
+    B --> B1["Primary risk
+Hallucination or missing
+context across documents"]
+    C --> C1["Primary risk
+Routing error sends query
+to wrong system silently"]
 ```
 
 ### Archetype 1: Structured Data Agent (Text-to-SQL)
