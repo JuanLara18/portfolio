@@ -27,6 +27,21 @@ This post strips away the magic. We will explore what actually happens when you 
 
 This is the machinery behind the machine learning.
 
+The libraries covered here did not appear overnight—each solved a concrete bottleneck that its predecessor could not handle. The timeline below traces the key releases that built the stack you use today.
+
+```mermaid
+timeline
+    2006 : NumPy 1.0 — contiguous array protocol and BLAS bindings for scientific Python
+    2008 : Pandas 0.1 — labeled DataFrames bringing R-style analysis to Python
+    2012 : Numba 0.1 — LLVM JIT compiler turning NumPy loops into native machine code
+    2016 : Apache Arrow 0.1 — language-independent columnar memory format ends serialization hell
+    2016 : PyTorch 0.1 — eager autograd and dynamic computation graphs for research
+    2018 : JAX — XLA-backed NumPy with composable functional transforms (grad, jit, vmap)
+    2019 : DuckDB — in-process OLAP SQL engine requiring zero server setup
+    2020 : Polars — Rust DataFrame engine built on Arrow, full parallelism by default
+    2023 : PyTorch 2.0 torch.compile and Pandas 2.0 Arrow backend reshape production stacks
+```
+
 ---
 
 ## Part I: NumPy—The Foundation of Scientific Python
@@ -914,6 +929,33 @@ print(f"dz/dx: {x.grad}")  # tensor([12.]) = 6 * 2
 The gradient computation uses the chain rule:
 $$\frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx} = 3 \cdot 2x = 6x$$
 
+The sequence below shows what actually happens inside PyTorch when you run a forward pass and then call `.backward()`—the autograd tape records each operation during the forward pass so the backward pass can replay it in reverse.
+
+```mermaid
+sequenceDiagram
+    participant PY as Python
+    participant DISP as Dispatcher
+    participant CPP as C++ Kernel
+    participant TAPE as Autograd Tape
+    participant GRAD as .grad attribute
+
+    PY->>DISP: z = x ** 2
+    DISP->>CPP: pow_forward(x, exponent=2)
+    CPP-->>TAPE: record PowBackward(saved: x)
+    CPP-->>PY: return z tensor
+
+    PY->>DISP: loss = z * 3
+    DISP->>CPP: mul_forward(z, 3)
+    CPP-->>TAPE: record MulBackward(saved: 3)
+    CPP-->>PY: return loss tensor
+
+    PY->>TAPE: loss.backward()
+    TAPE->>CPP: mul_backward(grad=1.0, saved=3)
+    CPP-->>TAPE: upstream grad = 3.0
+    TAPE->>CPP: pow_backward(grad=3.0, saved=x)
+    CPP-->>GRAD: x.grad += 2x * 3.0
+```
+
 ### 6.4 torch.compile: The JIT Revolution
 
 PyTorch 2.0 introduced `torch.compile`, which JIT-compiles models for significant speedups:
@@ -1320,6 +1362,28 @@ flowchart TB
 - [ ] Measure after each change
 
 ---
+
+The quadrant below maps each library by raw throughput versus how much friction it adds—helping you pick the right tool for the job without benchmarking everything yourself.
+
+```mermaid
+quadrantChart
+    title Data Libraries: Throughput vs Ease of Use
+    x-axis Low Throughput --> High Throughput
+    y-axis Hard to Use --> Easy to Use
+
+    quadrant-1 High-value sweet spot
+    quadrant-2 Power tools
+    quadrant-3 Avoid
+    quadrant-4 Fast but complex
+
+    Pandas: [0.38, 0.88]
+    NumPy: [0.58, 0.72]
+    DuckDB: [0.72, 0.78]
+    Polars: [0.80, 0.62]
+    JAX: [0.85, 0.32]
+    Numba: [0.90, 0.28]
+    PySpark: [0.82, 0.18]
+```
 
 ## Quick Reference: Library Comparison
 

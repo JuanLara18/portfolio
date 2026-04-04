@@ -58,7 +58,16 @@ Hardy, despite initial skepticism about some of Ramanujan's more unorthodox clai
 
 What Ramanujan intuited—and what modern mathematics would formalize rigorously—is that divergent series can have **meaningful values** when interpreted through the right lens.
 
-The key is the **Riemann zeta function**.
+The key is the **Riemann zeta function**. But to appreciate the result, it helps to see the intellectual journey that made it possible—from Euler's finite closed forms to the experimental confirmation in a physics lab.
+
+```mermaid
+timeline
+    1740s : Euler solves the Basel problem — proves 1+1/4+1/9+⋯ = π²/6, showing infinite sums can have elegant finite values
+    1859 : Riemann extends ζ(s) to the complex plane — analytic continuation reaches values the original sum formula cannot
+    1913 : Ramanujan's letter to Hardy — assigns −1/12 to 1+2+3+⋯ via his summation framework
+    1948 : Casimir predicts and measures vacuum force — zeta regularization gives a finite, measurable physical result
+    1970s : Bosonic string theory — the critical dimension of 26 follows directly from ζ(−1) = −1/12
+```
 
 ## The Zeta Function: Gateway to Deeper Summation
 
@@ -140,6 +149,24 @@ $$\zeta(s) = 2^s \pi^{s-1} \sin\left(\frac{\pi s}{2}\right) \Gamma(1-s) \zeta(1-
 This equation relates $\zeta(s)$ to $\zeta(1-s)$, creating symmetry and enabling the analytic continuation. It's through relationships like this that we can rigorously assign values like $\zeta(-1) = -\frac{1}{12}$.
 
 The mathematics here is deep—entire courses on complex analysis and analytic number theory are built on understanding these structures.
+
+What makes the result philosophically striking is that multiple independent regularization methods—developed from entirely different starting points—all converge on the same answer.
+
+```mermaid
+flowchart TD
+    SUM["1 + 2 + 3 + 4 + ⋯"]
+
+    SUM --> ZR["Zeta Regularization\nAnalytically continue ζ(s)\nto s = −1"]
+    SUM --> RS["Ramanujan Summation\nSubtract integral from partial sum\nlimit as N → ∞"]
+    SUM --> CR["Cutoff Regularization\nIntroduce e^(−εn), compute finite part\nthen take ε → 0"]
+
+    ZR --> VAL["−1/12"]
+    RS --> VAL
+    CR --> VAL
+
+    style VAL fill:#4a90d9,color:#fff
+    style SUM fill:#f5f5f5,stroke:#999
+```
 
 ## Where It Matters: The Physics Connection
 

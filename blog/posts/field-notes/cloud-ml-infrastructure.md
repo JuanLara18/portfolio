@@ -828,6 +828,25 @@ flowchart TB
     ENSEMBLE --> DECISION["Final Decision"]
 ```
 
+The four patterns span a wide range of operational complexity. The quadrant below maps them by how complex they are to build and maintain versus how far they can scale—helping you match a pattern to your team's current maturity.
+
+```mermaid
+quadrantChart
+    title Cloud ML Patterns: Complexity vs Scalability
+    x-axis Low Complexity --> High Complexity
+    y-axis Low Scalability --> High Scalability
+
+    quadrant-1 Enterprise grade
+    quadrant-2 Scalable but demanding
+    quadrant-3 Prototype zone
+    quadrant-4 Hard with limited upside
+
+    Notebook-Centric: [0.15, 0.22]
+    Pipeline-Based MLOps: [0.62, 0.80]
+    Real-Time Feature Engineering: [0.80, 0.90]
+    Multi-Model Ensemble: [0.85, 0.72]
+```
+
 ## Security and Compliance
 
 ### IAM: Who Can Do What
@@ -1013,6 +1032,24 @@ def ml_pipeline():
     
     with dsl.Condition(metrics.outputs["accuracy"] > 0.95):
         deploy_model(model)
+```
+
+Each stage unlocks the next only when the previous one is stable—skip ahead and you pay with operational debt. The state diagram below shows the progression and the rollback path that every team eventually needs.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Stage1: First project
+
+    Stage1: Stage 1 · Storage and Notebooks
+    Stage2: Stage 2 · Custom Training and CI
+    Stage3: Stage 3 · Endpoints and Monitoring
+    Stage4: Stage 4 · Pipelines and Feature Store
+
+    Stage1 --> Stage2: Model validated, experiments repeatable
+    Stage2 --> Stage3: Results worth serving in production
+    Stage3 --> Stage4: Production stable, team and scope growing
+    Stage4 --> Stage3: Roll back to simpler serving on incident
+    Stage3 --> Stage2: Return to research phase on data shift
 ```
 
 ## Common Mistakes and How to Avoid Them

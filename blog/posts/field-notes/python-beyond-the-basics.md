@@ -193,6 +193,23 @@ The MRO follows two rules:
 
 Understanding the MRO is essential when working with frameworks like PyTorch or TensorFlow that use deep class hierarchies. When you subclass `nn.Module` and mix in other classes, the MRO determines which methods get called.
 
+For the diamond hierarchy `D(B, C)` where both `B` and `C` inherit from `A`, the MRO walks left-to-right depth-first but merges duplicates so `A` appears only once at the end—that is the C3 linearization in action.
+
+```mermaid
+flowchart LR
+    obj["object"]
+    A --> obj
+    B --> A
+    C --> A
+    D --> B
+    D --> C
+
+    MRO["MRO: D → B → C → A → object"]
+
+    style D fill:#4a90d9,color:#fff
+    style MRO fill:#f5f5f5,stroke:#aaa
+```
+
 ### super(): More Complex Than You Think
 
 `super()` does not simply call the parent class. It calls the **next class in the MRO**. This distinction matters enormously in multiple inheritance.
@@ -952,6 +969,28 @@ Python 3.12 introduced experimental support for disabling the GIL (PEP 703). Pyt
 
 This is still experimental. Libraries like NumPy and PyTorch need to be rebuilt to support it. But it signals a future where Python can fully utilize multi-core CPUs without the GIL.
 
+The right concurrency tool depends on whether your bottleneck is I/O or CPU, and how much inter-process overhead you can tolerate. The quadrant below maps the main options so the choice is immediate.
+
+```mermaid
+quadrantChart
+    title Python Concurrency: Task Type vs Implementation Complexity
+    x-axis Low Complexity --> High Complexity
+    y-axis I/O Bound --> CPU Bound
+
+    quadrant-1 Parallel compute
+    quadrant-2 Heavy machinery
+    quadrant-3 Simple async
+    quadrant-4 Threads for I/O
+
+    asyncio: [0.25, 0.12]
+    threading: [0.30, 0.25]
+    concurrent.futures ThreadPool: [0.35, 0.20]
+    concurrent.futures ProcessPool: [0.55, 0.75]
+    multiprocessing: [0.65, 0.80]
+    Dask: [0.80, 0.85]
+    Ray: [0.85, 0.88]
+```
+
 ## Memory Management: Understanding What Python Does
 
 ### Reference Counting
@@ -988,6 +1027,28 @@ import gc
 
 gc.collect()  # Force garbage collection
 gc.disable()  # Disable automatic collection (use carefully)
+```
+
+The diagram below shows the full lifecycle of a Python object—reference counting handles the fast path, and the cyclic GC catches the cases that slip through.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Alive: Object created, refcount = 1
+
+    Alive: Alive (refcount ≥ 1)
+    Alive --> Alive: New reference added (refcount++)
+    Alive --> Alive: Reference dropped but refcount > 0
+    Alive --> Freed: Last reference dropped (refcount → 0)
+    Alive --> InCycle: Part of reference cycle
+
+    InCycle: In Cycle (refcount > 0 but unreachable)
+    InCycle --> FreedByCGC: Cyclic GC scan detects unreachable cycle
+
+    Freed: Freed by reference counting
+    FreedByCGC: Freed by cyclic GC
+
+    Freed --> [*]
+    FreedByCGC --> [*]
 ```
 
 ### Common Memory Leaks in Python
