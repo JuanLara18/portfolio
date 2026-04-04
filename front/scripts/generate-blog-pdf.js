@@ -175,6 +175,10 @@ async function prerenderMath(posts) {
 
 // ─── Mermaid via Kroki.io ─────────────────────────────────────────────────────
 const MERMAID_CACHE_DIR = path.join(__dirname, '..', 'output', '.mermaid-cache');
+/** Rasterized PNG max width (px); ~3× typical PDF column width at 72 dpi for sharper downscale in PDFKit. */
+const MERMAID_RASTER_MAX_WIDTH_PX = 2800;
+/** Input DPI for SVG→PNG (sharp/librsvg); higher yields crisper curves/text when scaled into the PDF. */
+const MERMAID_RASTER_DENSITY = 260;
 
 function mermaidCacheKey(code) {
   // Simple hash for the cache filename
@@ -183,47 +187,81 @@ function mermaidCacheKey(code) {
   return Math.abs(h).toString(36);
 }
 
-// Fetch a Mermaid diagram as a PNG buffer directly from Kroki's /mermaid/png endpoint.
-// Kroki renders with a headless browser, so foreignObject HTML labels render correctly.
+function krokiPost(pathname, body) {
+  return new Promise((resolve) => {
+    const req = https.request(
+      {
+        hostname: 'kroki.io',
+        path: pathname,
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain', 'Content-Length': body.length },
+        timeout: 45000,
+      },
+      (res) => {
+        const chunks = [];
+        res.on('data', (d) => chunks.push(d));
+        res.on('end', () => resolve({ statusCode: res.statusCode, body: Buffer.concat(chunks) }));
+      },
+    );
+    req.on('error', (e) => { console.warn(`  ⚠ Mermaid fetch failed: ${e.message}`); resolve({ statusCode: 0, body: Buffer.alloc(0) }); });
+    req.on('timeout', () => { req.destroy(); console.warn('  ⚠ Mermaid fetch timed out'); resolve({ statusCode: 0, body: Buffer.alloc(0) }); });
+    req.write(body);
+    req.end();
+  });
+}
+
+async function rasterizeMermaidSvgToPng(svgBuf) {
+  const sharp = require('sharp');
+  let svgStr = svgBuf.toString('utf8');
+  svgStr = sanitizeSvgXmlForSharp(svgStr);
+  svgStr = svgStr.replace(/xlink:href="#/g, 'href="#');
+  return sharp(Buffer.from(svgStr, 'utf8'), { density: MERMAID_RASTER_DENSITY })
+    .resize({
+      width: MERMAID_RASTER_MAX_WIDTH_PX,
+      height: null,
+      fit: 'inside',
+      withoutEnlargement: false,
+    })
+    .png({ compressionLevel: 6, adaptiveFiltering: true })
+    .toBuffer();
+}
+
+/**
+ * High-res Mermaid: Kroki SVG → sharp raster at elevated DPI, then PDFKit downscales (nicer than default Kroki PNG).
+ * Falls back to Kroki PNG if SVG/raster fails. Cache `-hi.png` invalidates older `${key}.png` caches.
+ */
 async function fetchMermaidPNG(code) {
   fs.mkdirSync(MERMAID_CACHE_DIR, { recursive: true });
   const key = mermaidCacheKey(code);
-  const pngCachePath = path.join(MERMAID_CACHE_DIR, `${key}.png`);
+  const pngCachePath = path.join(MERMAID_CACHE_DIR, `${key}-hi.png`);
 
   if (fs.existsSync(pngCachePath)) {
     return fs.readFileSync(pngCachePath);
   }
 
   const body = Buffer.from(code, 'utf8');
-  return new Promise((resolve) => {
-    const req = https.request(
-      {
-        hostname: 'kroki.io',
-        path: '/mermaid/png',
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain', 'Content-Length': body.length },
-        timeout: 30000,
-      },
-      (res) => {
-        const chunks = [];
-        res.on('data', (d) => chunks.push(d));
-        res.on('end', () => {
-          if (res.statusCode === 200) {
-            const png = Buffer.concat(chunks);
-            fs.writeFileSync(pngCachePath, png);
-            resolve(png);
-          } else {
-            console.warn(`  ⚠ Kroki ${res.statusCode}: ${Buffer.concat(chunks).toString('utf8').slice(0, 120)}`);
-            resolve(null);
-          }
-        });
-      }
-    );
-    req.on('error', (e) => { console.warn(`  ⚠ Mermaid fetch failed: ${e.message}`); resolve(null); });
-    req.on('timeout', () => { req.destroy(); console.warn('  ⚠ Mermaid fetch timed out'); resolve(null); });
-    req.write(body);
-    req.end();
-  });
+  const { statusCode, body: resp } = await krokiPost('/mermaid/svg', body);
+  if (statusCode === 200 && resp.length) {
+    try {
+      const png = await rasterizeMermaidSvgToPng(resp);
+      fs.writeFileSync(pngCachePath, png);
+      return png;
+    } catch (e) {
+      console.warn(`  ⚠ Mermaid SVG rasterize failed (${e.message}); falling back to Kroki PNG`);
+    }
+  } else if (statusCode !== 200) {
+    console.warn(`  ⚠ Kroki SVG ${statusCode}: ${resp.toString('utf8').slice(0, 120)}`);
+  }
+
+  const pngFallback = await krokiPost('/mermaid/png', body);
+  if (pngFallback.statusCode === 200 && pngFallback.body.length) {
+    fs.writeFileSync(pngCachePath, pngFallback.body);
+    return pngFallback.body;
+  }
+  if (pngFallback.statusCode !== 200) {
+    console.warn(`  ⚠ Kroki PNG ${pngFallback.statusCode}: ${pngFallback.body.toString('utf8').slice(0, 120)}`);
+  }
+  return null;
 }
 
 async function prerenderMermaid(posts) {
@@ -244,7 +282,7 @@ async function prerenderMermaid(posts) {
   fs.mkdirSync(MERMAID_CACHE_DIR, { recursive: true });
 
   for (const code of allCodes) {
-    // Fetch PNG directly from Kroki (handles caching internally)
+    // Kroki SVG → high-DPI PNG (cached under `${key}-hi.png`)
     try {
       const png = await fetchMermaidPNG(code);
       cache.set(code, png || null);
