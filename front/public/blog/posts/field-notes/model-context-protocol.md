@@ -205,6 +205,22 @@ The adoption timeline reveals how quickly the industry converged:
 - **Mid 2025**: OpenAI announces MCP support for ChatGPT. Google follows with Gemini integration. Microsoft integrates into Copilot and VS Code. MCP is no longer Anthropic's protocol—it is the industry's protocol.
 - **December 2025**: Anthropic donates MCP to the **Agentic AI Foundation**, a directed fund under the Linux Foundation. The foundation is co-founded by Anthropic, Block, and OpenAI, with governance support from Google, Microsoft, AWS, Cloudflare, and Bloomberg.
 
+```mermaid
+timeline
+    title MCP: From Protocol to Standard
+    Nov 2024 : Anthropic launches MCP — open source
+             : Block, Apollo, Zed, Replit adopt early
+    Early 2025 : 1,000+ public MCP servers
+               : SDKs stable in Python and TypeScript
+               : GitHub, Slack, PostgreSQL servers ship
+    Mid 2025 : OpenAI adds MCP to ChatGPT
+             : Google Gemini and Microsoft Copilot support
+             : VS Code native integration
+    Dec 2025 : MCP donated to Linux Foundation (Agentic AI Foundation)
+             : Co-governed by Anthropic, OpenAI, Google, Microsoft, AWS
+             : 10,000+ servers — 97M monthly SDK downloads
+```
+
 That last point deserves emphasis. MCP now sits alongside Kubernetes, PyTorch, and Node.js under Linux Foundation stewardship. The governance is vendor-neutral. The technical direction remains with the existing maintainers. The message is clear: no single company owns this standard.
 
 For ML engineers specifically, the implications are significant. MCP servers already exist for MLflow, Weights & Biases, Hugging Face, cloud storage services, and database systems. The integration patterns that used to require weeks of custom development—connecting your model to your experiment tracker, your data warehouse, your deployment pipeline—are becoming standardized, composable, and reusable.
