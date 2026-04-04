@@ -97,6 +97,26 @@ For an input sequence $X = [x_1, x_2, \ldots, x_n]$, we compute:
 
 This formula is deceptively simple, but it encodes something profound.
 
+The sequence below shows how attention flows for a single token: it projects itself into Q, K, and V, computes similarities against every other token's key, weights the values by those similarities, and produces a new context-aware representation.
+
+```mermaid
+sequenceDiagram
+    participant TOK as Token "it"
+    participant Q as Query (W_Q)
+    participant K as Keys (all tokens)
+    participant S as Softmax scores
+    participant V as Values (W_V)
+    participant OUT as Output vector
+
+    TOK->>Q: project: q = x · W_Q
+    TOK->>K: project all: K = X · W_K
+    Q->>S: dot products q · kᵢ / √d_k for each i
+    S->>S: softmax → attention weights α
+    TOK->>V: project all: V = X · W_V
+    S->>OUT: weighted sum: Σ αᵢ · vᵢ
+    OUT-->>TOK: context-aware representation
+```
+
 ### Intuition: A Database Query Analogy
 
 Think of self-attention as a differentiable database lookup:
@@ -325,6 +345,18 @@ By 2022 and 2023, the architecture was everywhere: **DALL-E** generating images 
 This proliferation wasn't inevitable. Many researchers expected that specialized architectures would outperform a general-purpose approach in each specific domain. What the evidence showed instead was that generality and scale, combined with the right inductive bias (attention), outperformed specialization. The Transformer's willingness to make minimal assumptions about structure turned out to be a feature, not a limitation. It could learn whatever structure the data contained.
 
 In less than seven years, a single paper went from arXiv preprint to the architectural foundation of the most capable AI systems ever built. That is the actual speed of paradigm shifts.
+
+```mermaid
+timeline
+    2017 : Attention Is All You Need — Transformer introduced, RNNs displaced for sequence tasks
+    2018 : BERT and GPT — encoder and decoder variants establish pre-train/fine-tune paradigm
+    2019 : GPT-2 / XLNet / RoBERTa — scale and training data matter as much as architecture
+    2020 : GPT-3 — 175B parameters, few-shot learning emerges from scale alone
+    2020 : ViT / AlphaFold 2 — attention conquers computer vision and protein structure prediction
+    2022 : InstructGPT / ChatGPT — RLHF alignment turns raw capability into usable products
+    2023 : GPT-4 / Claude / Gemini — multimodal, long-context, instruction-following at scale
+    2024 : Reasoning models — test-time compute adds a new scaling dimension beyond training
+```
 
 ## Bringing It to Life: Implementation Deep Dive
 
