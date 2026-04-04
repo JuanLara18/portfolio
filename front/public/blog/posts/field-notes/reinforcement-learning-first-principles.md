@@ -468,6 +468,28 @@ Choosing an algorithm is a decision with real consequences. Here is the framewor
 
 Start with the simplest algorithm that handles your problem structure. Upgrade only when you have evidence that the simple approach is insufficient. Every added complexity is a new surface for bugs.
 
+The algorithm landscape mapped across two practical axes — how many environment interactions the algorithm needs, and how stable and debuggable it is:
+
+```mermaid
+quadrantChart
+    title RL Algorithms: Sample Efficiency vs Ease of Use
+    x-axis Harder to Use / Debug --> Easier to Use / Debug
+    y-axis Lower Sample Efficiency --> Higher Sample Efficiency
+    quadrant-1 Most practical
+    quadrant-2 Powerful but complex
+    quadrant-3 Avoid in production
+    quadrant-4 Simple baselines
+    REINFORCE: [0.35, 0.15]
+    DQN: [0.55, 0.45]
+    Rainbow: [0.40, 0.62]
+    A2C: [0.62, 0.40]
+    PPO: [0.80, 0.55]
+    SAC: [0.55, 0.78]
+    TD3: [0.50, 0.72]
+    Dreamer: [0.25, 0.85]
+    MBPO: [0.30, 0.80]
+```
+
 ### 4.7 Dos and Don'ts: Algorithm Selection
 
 | Do | Don't |
