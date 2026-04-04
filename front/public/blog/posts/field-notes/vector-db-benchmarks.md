@@ -298,6 +298,25 @@ Chroma is a lightweight, Python-native vector database designed primarily for de
 
 Chroma has not published comprehensive production benchmarks, which is itself informative. It is not designed for production scale. For development, for local experimentation, for systems with under 100K vectors that will never grow: Chroma is fine. For any serious production deployment: choose something else.
 
+Placing these systems on a common map makes the engineering tradeoffs visible:
+
+```mermaid
+quadrantChart
+    title Vector Databases: Operational Complexity vs Performance at Scale
+    x-axis Low Operational Complexity --> High Operational Complexity
+    y-axis Lower Performance / Scale --> Higher Performance / Scale
+    quadrant-1 High perf, high ops — enterprise self-managed
+    quadrant-2 High perf, low ops — ideal but rare
+    quadrant-3 Lower perf, low ops — dev / prototype
+    quadrant-4 Lower perf, high ops — avoid
+    Chroma: [0.08, 0.15]
+    Pinecone: [0.12, 0.65]
+    pgvector: [0.25, 0.42]
+    Qdrant: [0.55, 0.88]
+    Weaviate: [0.65, 0.72]
+    Milvus: [0.88, 0.92]
+```
+
 ---
 
 ## What Benchmarks Don't Measure
