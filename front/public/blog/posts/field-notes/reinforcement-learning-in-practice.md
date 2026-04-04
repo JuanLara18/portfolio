@@ -1316,6 +1316,23 @@ At each stage, compare not just the primary metric (reward, revenue, throughput)
 
 If any metric degrades beyond the threshold, roll back immediately.
 
+The full RL agent lifecycle — from an untrained policy to production and back — looks like this:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Training : initialize policy
+    Training --> Converged : reward plateau + stable losses
+    Training --> Diverged : reward collapse / NaN
+    Diverged --> Training : fix hyperparams, restart
+    Converged --> Staging : gradual rollout (5% → 25% → 50%)
+    Staging --> Production : all metrics pass
+    Staging --> Training : metrics fail — retrain
+    Production --> Monitoring : continuous evaluation
+    Monitoring --> Production : metrics stable
+    Monitoring --> Training : distribution shift detected
+    Production --> [*] : deprecated
+```
+
 ### 7.5 Dos and Don'ts: Deployment
 
 | Do | Don't |
