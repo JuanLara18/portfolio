@@ -460,6 +460,25 @@ After thorough evaluation of existing models, decide:
 - Domain-specific vocabulary or patterns
 - Consistency/reliability matters
 
+The five main approaches differ substantially in cost, expertise required, and the ceiling of achievable performance:
+
+```mermaid
+quadrantChart
+    title ML Approaches: Cost/Complexity vs Performance Ceiling
+    x-axis Lower Cost / Complexity --> Higher Cost / Complexity
+    y-axis Lower Performance Ceiling --> Higher Performance Ceiling
+    quadrant-1 Best ROI potential
+    quadrant-2 Specialized investment
+    quadrant-3 Quick wins
+    quadrant-4 Expensive, uncertain
+    Zero-shot Pretrained: [0.08, 0.45]
+    Prompt Engineering: [0.15, 0.55]
+    RAG: [0.28, 0.68]
+    Fine-tuning (LoRA): [0.52, 0.80]
+    Full Fine-tuning: [0.72, 0.85]
+    Train from Scratch: [0.95, 0.95]
+```
+
 ## Fine-Tuning: When and How
 
 ### Preparing for Fine-Tuning
