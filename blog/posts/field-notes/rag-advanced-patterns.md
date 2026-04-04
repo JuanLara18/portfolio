@@ -504,6 +504,29 @@ crag_chain = (
 
 CRAG's verification step costs approximately 100-200ms per document evaluated, depending on model speed. For systems where hallucination from bad retrieval is a serious risk — medical, legal, financial — the tradeoff is clearly worth it.
 
+The three branches of the confidence decision are clearest as a sequence:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant R as Retriever
+    participant E as Evaluator
+    participant W as Web Search
+    participant G as Generator
+    U->>R: query
+    R-->>E: top-k docs
+    E->>E: score each doc (0–1)
+    alt avg_score > 0.7
+        E->>G: all docs (high confidence)
+    else avg_score 0.4–0.7
+        E->>G: filtered docs only (moderate)
+    else avg_score < 0.4
+        E->>W: reformulated query
+        W-->>G: web results + flag: uncertain
+    end
+    G-->>U: answer
+```
+
 ## GraphRAG
 
 Standard RAG treats your document corpus as a collection of independent passages. Each chunk is retrieved in isolation. The connections between entities, the patterns that emerge across many documents, the thematic structure of a large corpus — all of this is invisible to the retriever.
@@ -750,6 +773,29 @@ Fine-tune for style and behavior; use RAG for knowledge. A concrete example: fin
 | Inference latency | Retrieval overhead acceptable | Every millisecond counts |
 | Update cost | Must update continuously | Periodic re-training is fine |
 | Initial setup cost | Low | High (labeled data, training runs) |
+
+The same decision logic applies inside the RAG technique space. As complexity increases, so does the potential quality gain — but the relationship is not linear, and some techniques give much more per unit of engineering effort:
+
+```mermaid
+quadrantChart
+    title RAG Techniques: Implementation Complexity vs Quality Gain
+    x-axis Lower Complexity --> Higher Complexity
+    y-axis Lower Quality Gain --> Higher Quality Gain
+    quadrant-1 High gain, high effort
+    quadrant-2 High gain, low effort
+    quadrant-3 Low gain, low effort
+    quadrant-4 Low gain, high effort
+    Naive RAG: [0.08, 0.22]
+    Parent-Document: [0.28, 0.52]
+    HyDE: [0.38, 0.63]
+    Ensemble Retrieval: [0.42, 0.55]
+    Query Decomposition: [0.48, 0.60]
+    Contextual Retrieval: [0.50, 0.72]
+    CRAG: [0.68, 0.75]
+    Self-RAG: [0.72, 0.72]
+    GraphRAG: [0.90, 0.82]
+    Agentic RAG: [0.92, 0.90]
+```
 
 ## LangChain and LlamaIndex: Production Patterns
 

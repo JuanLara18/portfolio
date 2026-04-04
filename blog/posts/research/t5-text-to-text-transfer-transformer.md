@@ -173,6 +173,14 @@ These numbers are less interesting than the fact that a *single model* achieved 
 
 The gains on SuperGLUE were particularly striking. SuperGLUE was designed as a harder successor to GLUE, specifically because BERT and similar models had reached near-human performance on GLUE. T5 didn't just match human performance — on several SuperGLUE subtasks, it exceeded it.
 
+```mermaid
+xychart-beta
+    title "GLUE Benchmark Score (higher is better, human ~87)"
+    x-axis ["BERT-Large", "XLNet-Large", "T5-11B"]
+    y-axis "GLUE Score" 75 --> 95
+    bar [80.5, 90.2, 90.3]
+```
+
 ## What the Paper Was Really Saying
 
 Beyond the results, T5 was making an argument.
@@ -234,6 +242,24 @@ What T5 and the instruction tuning work following it established is now the foun
 **Scale and instruction tuning interact**: Small models fine-tuned on instructions don't benefit nearly as much as large models. Below a certain parameter threshold, instruction tuning doesn't transfer — the model lacks the capacity to generalize from instruction descriptions to new tasks. This sets a meaningful floor on how small an "instruction-following" model can usefully be.
 
 These are not footnotes to the T5 story. They are the story. T5 itself was primarily an empirical study, methodologically careful but limited in its ambition to understand the design space of 2019. The instruction tuning work turned T5 into the foundation of a new paradigm for deploying language models.
+
+```mermaid
+timeline
+    title From T5 to the Instruction-Following Paradigm
+    2018 : BERT — masked language model, encoder-only
+    2019 : GPT-2 — decoder-only, generative pre-training
+         : T5 — unified text-to-text framework (published 2019, NeurIPS 2020)
+    2020 : GPT-3 — 175B parameters, few-shot in-context learning
+         : T5 (Raffel et al.) officially published
+    2021 : FLAN — instruction tuning across 62 tasks
+         : T0 — zero-shot multitask prompted model
+    2022 : InstructGPT — RLHF over GPT-3
+         : Flan-T5 — T5 + massive instruction tuning
+         : Chinchilla — compute-optimal scaling
+    2022 : ChatGPT — RLHF + instruction tuning goes mainstream
+    2023 : LLaMA, Claude, Gemini — instruction-following as default
+         : GPT-4, Flan-UL2 — multimodal + long-context extensions
+```
 
 ## The Scaling Picture
 

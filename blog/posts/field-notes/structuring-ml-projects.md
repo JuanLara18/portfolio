@@ -134,6 +134,30 @@ This organization enforces several principles that are easy to state but hard to
 
 **Scalability**: The structure accommodates growth. A project that starts with one model and one dataset can expand to dozens of models and data sources without restructuring.
 
+The data flow through this structure follows a one-way pipeline — raw data never gets modified, transformations are reproducible, and artifacts live outside source control:
+
+```mermaid
+flowchart LR
+    subgraph DATA["data/"]
+        R[raw/\nimmutable] --> I[interim/\ntransformed]
+        I --> P[processed/\nmodel-ready]
+        EX[external/\nthird-party]
+    end
+    subgraph SRC["src/"]
+        MD[data/\nmake_dataset.py] --> BF[features/\nbuild_features.py]
+        BF --> TR[models/\ntrain.py]
+        TR --> EV[models/\nevaluate.py]
+    end
+    subgraph OUT["outputs/"]
+        M[models/\nartifacts]
+        REP[reports/\nfigures]
+    end
+    R --> MD
+    P --> TR
+    TR --> M
+    EV --> REP
+```
+
 ## Poetry: Modern Dependency Management
 
 ### Why Poetry Over pip

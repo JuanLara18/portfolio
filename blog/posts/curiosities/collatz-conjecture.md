@@ -65,6 +65,24 @@ Sequence: [27, 82, 41, 124, 62, 31, 94, 47, 142, 71, 214, 107, 322, 161, 484, 24
 
 The number 27 is small. It fits on a napkin. But its Collatz journey is absurdly volatile—soaring to 9232 before finally submitting to the inevitable descent to 1. This contrast between the simplicity of the input and the chaos of the trajectory is the essence of why the conjecture is so difficult.
 
+A simpler starting value like 10 makes the oscillation visible:
+
+```mermaid
+flowchart LR
+    N10[10] -->|÷2| N5[5]
+    N5 -->|×3+1| N16[16]
+    N16 -->|÷2| N8[8]
+    N8 -->|÷2| N4[4]
+    N4 -->|÷2| N2[2]
+    N2 -->|÷2| N1[1]
+    style N10 fill:#4a90d9,color:#fff
+    style N5 fill:#e06c00,color:#fff
+    style N16 fill:#e06c00,color:#fff
+    style N1 fill:#2d6a4f,color:#fff
+```
+
+Even this short path — 6 steps — shows the pattern: odd numbers jump up, even numbers halve back down. The conjecture says every number eventually lands on 1.
+
 ## A Brief History of Obsession
 
 ### Lothar Collatz (1937)
@@ -121,6 +139,18 @@ For any starting value $n$, the Collatz sequence can exhibit exactly one of thre
 3. **Divergence**: The sequence grows without bound, heading to infinity. No divergent trajectory has ever been observed.
 
 The conjecture asserts that behavior (1) is the only possibility. Disproving the conjecture would require finding a single example of behavior (2) or (3). The fact that no such example has been found after checking $2.95 \times 10^{20}$ numbers is strong *evidence* but not *proof*.
+
+```mermaid
+flowchart TD
+    START["Start: positive integer n"] --> ITER["Apply Collatz iteration"]
+    ITER --> Q{What happens?}
+    Q -->|"reaches 1"| CONV["Convergence\n1 → 4 → 2 → 1 cycle"]
+    Q -->|"enters cycle ≠ 1"| CYCLE["Non-trivial Cycle\n(never observed)\nMin length > 186 billion"]
+    Q -->|"grows forever"| DIV["Divergence\n(never observed)"]
+    style CONV fill:#2d6a4f,color:#fff
+    style CYCLE fill:#b7161b,color:#fff
+    style DIV fill:#b7161b,color:#fff
+```
 
 ## The Stopping Time: Measuring the Journey
 

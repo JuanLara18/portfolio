@@ -185,6 +185,16 @@ On **Natural Questions**, one of the most rigorous open-domain QA benchmarks (dr
 
 On **TriviaQA**, a dataset of trivia questions with answers verifiable against Wikipedia, RAG-Token scored 56.8 exact match, outperforming the previous best by over 5 points. On **WebQuestions**, a benchmark of questions about Freebase entities, RAG again set the state of the art.
 
+The numbers made the argument visceral:
+
+```mermaid
+xychart-beta
+    title "Natural Questions — Exact Match Score (higher is better)"
+    x-axis ["T5 (parametric only)", "REALM (retrieval-aug)", "RAG-Token"]
+    y-axis "Exact Match (%)" 0 --> 55
+    bar [29.8, 41.5, 44.5]
+```
+
 The pattern was consistent: tasks requiring specific, verifiable facts about the world were where RAG's advantage was largest. Parametric models learn to estimate which facts are plausible given the patterns in their training data. RAG learns to find the actual fact and read it. For knowledge-intensive tasks, finding and reading beats estimating.
 
 Beyond question answering, the paper tested RAG on several other knowledge-intensive tasks that reveal different properties. For **Jeopardy! question generation**—given an answer like "The capital of France," generate the corresponding question "What is Paris?"—RAG produced generations that human evaluators rated as more factual and more specific than a parametric BART baseline. The retrieval grounded the generation in specific factual context rather than generating from statistical priors alone.
@@ -220,6 +230,24 @@ There is also a deeper question about faithfulness that the paper does not fully
 The evaluation methodology for retrieval quality also remained unsettled. The paper evaluates the end-to-end answer quality, which conflates retrieval quality with generation quality. If the system gets a question wrong, is it because the retriever returned irrelevant passages, or because the generator failed to use the right passage, or because the relevant information simply wasn't in the index? Disentangling these failure modes requires additional instrumentation that was not part of the original framework.
 
 What followed the original RAG paper was an extraordinarily productive research program addressing these gaps. **Self-RAG** (2023) introduced a mechanism for the model to assess its own retrieved passages—generating "reflection tokens" that evaluate relevance and support before incorporating evidence. **FLARE** (2023, Forward-Looking Active REtrieval) proposed dynamic retrieval: instead of retrieving once at the start of generation, the model retrieves new passages whenever it encounters uncertainty during generation. **HyDE** (Hypothetical Document Embeddings, 2022) addressed the query-passage mismatch by first generating a hypothetical answer to the question, then using the embedding of that hypothetical answer as the retrieval query—matching the embedding space more closely to passage-style text. **GraphRAG** (2024) replaced flat passage retrieval with knowledge graph traversal, enabling multi-hop reasoning across entities and relationships. Each of these was a direct response to a limitation visible in the original RAG architecture.
+
+```mermaid
+timeline
+    title RAG Research: From Paper to Production
+    2020 : Lewis et al. — RAG paper (NeurIPS)
+         : DPR (Karpukhin et al.) — dense passage retrieval
+    2022 : HyDE — hypothetical document embeddings
+         : FiD (Izacard & Grave) — fusion in decoder variant
+    2023 : Self-RAG — adaptive retrieval with reflection tokens
+         : FLARE — forward-looking active retrieval
+         : LlamaIndex & LangChain — RAG as productized framework
+         : RAGAS — automated evaluation framework
+    2024 : GraphRAG (Microsoft) — knowledge graph traversal
+         : Contextual Retrieval (Anthropic) — chunk-level context injection
+         : Late Chunking — token-level pooling
+    2025 : Agentic RAG — LLM-controlled retrieval loops
+         : RAPTOR, HoneyBee ACORN — hierarchical + filtered indexing
+```
 
 The field that the RAG paper helped create has moved very fast. But the core architectural pattern—retrieve, then generate, marginalize over evidence—has proven remarkably stable. The implementations have grown sophisticated; the fundamental insight has remained.
 

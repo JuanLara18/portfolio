@@ -145,6 +145,20 @@ Let's trace this:
 
 **The composition $f = f_L \circ f_{L-1} \circ \cdots \circ f_1$ is the learned homeomorphism.**
 
+Each layer performs one local straightening of the manifold — the network is a pipeline of topological deformations:
+
+```mermaid
+flowchart LR
+    I["Raw Data\n(crumpled manifold\nin pixel space)"]
+    H1["Hidden Layer 1\nLinear warp +\nnonlinearity"]
+    H2["Hidden Layer 2\nFurther untangling"]
+    HL["...more layers..."]
+    O["Output Space\nClasses linearly\nseparable"]
+    I -->|"stretch & fold"| H1 -->|"bend & rotate"| H2 -->|"..."| HL -->|"flatten"| O
+    style I fill:#4a90d9,color:#fff
+    style O fill:#2d6a4f,color:#fff
+```
+
 ### Why Depth Matters
 
 This explains why deep networks outperform shallow ones. You can't untangle a complex knot in a single move. You need a sequence of small, simple deformations.

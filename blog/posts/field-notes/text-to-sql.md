@@ -84,6 +84,23 @@ EX is better than Exact Match (EM) because there are often multiple correct SQL 
 
 VES (Valid Efficiency Score) attempts to incorporate query efficiency, but it's harder to compute on cloud warehouses with variable cost structures like BigQuery.
 
+These four benchmarks occupy very different positions in the complexity/fidelity space — understanding where your production problem falls tells you which number to trust:
+
+```mermaid
+quadrantChart
+    title Text-to-SQL Benchmarks: SQL Complexity vs Real-World Fidelity
+    x-axis Low SQL Complexity --> High SQL Complexity
+    y-axis Low Real-World Fidelity --> High Real-World Fidelity
+    quadrant-1 Hard + realistic
+    quadrant-2 Hard + academic
+    quadrant-3 Simple + academic
+    quadrant-4 Simple + realistic
+    Spider 1.0: [0.22, 0.18]
+    BIRD: [0.55, 0.52]
+    Spider 2.0: [0.88, 0.82]
+    LiveSQLBench: [0.68, 0.92]
+```
+
 ---
 
 ## System Architectures: What Actually Works
@@ -145,6 +162,29 @@ graph TD
 ```
 
 Each agent has a focused context window and a specific task. The correction agent receives the error message from failed execution and attempts targeted fixes — this is far more effective than asking the generator to self-correct without structured feedback.
+
+The interaction between agents — especially the error feedback loop — is clearer as a sequence than as a graph:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant IR as Info Retrieval
+    participant SL as Schema Linker
+    participant QG as Query Generator
+    participant EX as Executor
+    participant QC as Query Corrector
+    U->>IR: natural language question
+    IR->>SL: relevant metadata
+    SL->>QG: filtered schema + evidence
+    QG->>EX: generated SQL
+    EX-->>QG: ✓ valid result
+    QG-->>U: answer
+    note over EX,QC: on execution error
+    EX->>QC: SQL + error message
+    QC->>EX: corrected SQL
+    EX-->>QC: ✓ valid result
+    QC-->>U: answer
+```
 
 ### LangGraph SQL Agent: The Production Pattern
 
@@ -575,6 +615,22 @@ The systems that succeed in production share a common pattern: they're deployed 
 ## Current State of the Field (Early 2026)
 
 The honest summary: text-to-SQL has made dramatic progress, and the remaining gap is mostly in enterprise complexity, not simple queries.
+
+```mermaid
+timeline
+    title Text-to-SQL: From Research to Enterprise
+    2018 : Spider 1.0 (Yu et al.) — cross-domain benchmark
+         : Best systems score ~18%
+    2021 : RAT-SQL, BRIDGE — attention-based schema linking
+         : Best systems reach ~70% on Spider
+    2023 : BIRD benchmark
+         : GPT-4 + few-shot prompting exceeds fine-tuned models
+    2024 : CHESS (UC Berkeley) — 71.1% BIRD, no fine-tuning
+         : Spider 1.0 effectively saturated (~91%)
+    2025 : Spider 2.0 (ICLR Oral) — enterprise SQL, ~36% ceiling
+         : Arctic-Text2SQL-R1 (RL-based, open source)
+         : LiveSQLBench — contamination-free evaluation
+```
 
 **What works well**:
 - Simple to medium SQL on well-documented schemas
