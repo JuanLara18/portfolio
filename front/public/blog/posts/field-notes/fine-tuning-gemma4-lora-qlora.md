@@ -3,7 +3,7 @@ title: "Fine-tuning Gemma 4: When Prompting Isn't Enough"
 date: "2026-06-09"
 excerpt: "Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the practical guide — when to fine-tune vs prompt-engineer vs RAG, how LoRA and QLoRA make adaptation possible on consumer hardware, and a complete working example with Gemma 4 E4B that runs on an RTX 3060."
 tags: ["Fine-tuning", "Gemma 4", "LoRA", "QLoRA", "PEFT", "LLMs", "Hugging Face"]
-headerImage: "/blog/headers/models-header.jpg"
+headerImage: "/blog/headers/fine-tune-gemma-header.jpg"
 readingTimeMinutes: 23
 slug: fine-tuning-gemma4-lora-qlora
 estimatedWordCount: 5500
