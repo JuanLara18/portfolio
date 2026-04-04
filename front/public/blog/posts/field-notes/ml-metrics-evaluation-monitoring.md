@@ -1179,6 +1179,25 @@ class CanaryRelease:
             self.canary_traffic = min(1.0, self.canary_traffic + increment)
 ```
 
+Deployment strategies differ on two key axes — how much production traffic risk you're willing to take, and how quickly you can get statistically significant validation:
+
+```mermaid
+quadrantChart
+    title Deployment Strategies: Production Risk vs Validation Speed
+    x-axis Slower Validation --> Faster Validation
+    y-axis Lower Production Risk --> Higher Production Risk
+    quadrant-1 Fast but risky
+    quadrant-2 Slow and safe
+    quadrant-3 Slow but safe
+    quadrant-4 Fast and risky
+    Shadow Mode: [0.15, 0.08]
+    Champion-Challenger: [0.25, 0.25]
+    Canary Release: [0.55, 0.35]
+    A/B Test: [0.45, 0.42]
+    Blue-Green: [0.82, 0.68]
+    Immediate Full Rollout: [0.95, 0.92]
+```
+
 ## Part VI: When to Retrain
 
 ### Triggers for Retraining
