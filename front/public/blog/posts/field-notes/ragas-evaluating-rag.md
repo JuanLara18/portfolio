@@ -430,6 +430,26 @@ These are not reasons to reject LLM-as-judge evaluation. They are reasons to tre
 
 The right posture is: RAGAS scores are the most practical scalable signal available for RAG quality, and they are dramatically better than no evaluation or BLEU/ROUGE. They are not infallible. Use them to identify large failures and track trends, not to make binary pass/fail decisions based on small score differences.
 
+The seven bias types differ significantly in how easy they are to catch and how much damage they do before you notice. Some—like self-consistency failure—are detectable with a simple two-run comparison. Others—like verbosity bias—are structurally dangerous precisely because the failures they hide (fluent confabulations) look like high-quality outputs:
+
+```mermaid
+quadrantChart
+    title LLM-as-Judge Bias: Impact vs Detectability
+    x-axis Easy to Detect --> Hard to Detect
+    y-axis Low Score Impact --> High Score Impact
+    quadrant-1 High risk, subtle
+    quadrant-2 High risk, catchable
+    quadrant-3 Low risk, catchable
+    quadrant-4 Low risk, subtle
+    Verbosity Bias: [0.78, 0.88]
+    Position Bias: [0.65, 0.80]
+    Evaluation Model Gap: [0.52, 0.76]
+    Self-Enhancement: [0.55, 0.68]
+    Domain Calibration: [0.62, 0.63]
+    Citation Bias: [0.82, 0.58]
+    Self-Consistency: [0.22, 0.50]
+```
+
 ## Custom Metrics and AspectCritic
 
 RAGAS's built-in metrics cover the core dimensions. For domain-specific quality requirements, the framework supports custom metrics through AspectCritic—a mechanism for defining arbitrary evaluation criteria in natural language.
@@ -487,6 +507,26 @@ RAGAS is not the only framework for RAG evaluation, and understanding the altern
 
 The practical pattern that has emerged in 2025 for mature RAG deployments is to combine RAGAS for offline benchmark evaluation and testset generation, Phoenix or Langfuse for production tracing and monitoring, and DeepEval or RAGAS for CI/CD regression gates. No single tool does all three well enough to justify building exclusively around it.
 
+Where each framework sits in this landscape — how oriented toward offline development versus live production, and how much of the evaluation it can automate — makes the choice clearer:
+
+```mermaid
+quadrantChart
+    title RAG Evaluation Frameworks: Focus vs Automation
+    x-axis Offline / Development --> Production / Monitoring
+    y-axis Lower Automation --> Higher Automation
+    quadrant-1 Production + automated
+    quadrant-2 Dev + automated
+    quadrant-3 Dev + manual
+    quadrant-4 Production + manual
+    RAGAS: [0.20, 0.85]
+    DeepEval: [0.28, 0.90]
+    ARES: [0.22, 0.52]
+    TruLens: [0.55, 0.75]
+    Langfuse: [0.78, 0.72]
+    Phoenix: [0.82, 0.60]
+    Braintrust: [0.88, 0.65]
+```
+
 **RAGAS's own expansion** into agentic evaluation is worth noting separately. Version 0.2 introduced `MultiTurnSample` for conversational and agentic workflows; the 0.3.x series added `ToolCallF1`, `ToolCallAccuracy`, `AgentGoalAccuracy`, and `TopicAdherence` metrics. The library is explicitly positioning beyond RAG toward general LLM application evaluation—which is simultaneously its greatest strength (one framework covering the full stack) and its main architectural challenge (maintaining coherent metric semantics across very different task types).
 
 ## Continuous Evaluation: Making It Actually Useful
@@ -500,6 +540,19 @@ The evaluation lifecycle for a RAG system has three phases:
 **Pre-deployment regression** runs the full metric suite against your regression test set before any significant change goes to production. Establish threshold policies: a deployment that drops faithfulness below 0.75 or context recall below 0.80 is blocked pending investigation. These thresholds should be informed by your domain's risk tolerance—medical or legal applications warrant stricter thresholds than internal productivity tools.
 
 **Production monitoring** samples production queries (with appropriate anonymization), runs them through your RAG pipeline with evaluation enabled, and tracks metric trends over time. This is where you catch the subtle degradations: as your knowledge base grows and documents are added or updated, the retriever's behavior on existing query types can drift. Faithfulness can drop as the document corpus introduces contradictory information. Context precision can degrade as the index grows and more irrelevant documents compete with relevant ones. Without production monitoring, you learn about these degradations from user complaints.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Development
+    Development --> RegressionGate : change ready
+    RegressionGate --> Production : metrics pass thresholds
+    RegressionGate --> Development : metrics fail — investigate
+    Production --> Monitoring : continuous sampling
+    Monitoring --> Production : scores stable
+    Monitoring --> Incident : score drops below threshold
+    Incident --> Development : root cause identified
+    Incident --> Monitoring : transient — no action needed
+```
 
 ```python
 import json
