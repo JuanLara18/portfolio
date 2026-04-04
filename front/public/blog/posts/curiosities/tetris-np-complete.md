@@ -76,6 +76,26 @@ Before we dive deeper, let's establish our vocabulary. Complexity theory has pre
 
 A crucial point: **NP doesn't mean "hard to verify"—it means easy to verify but potentially hard to find**. The asymmetry is what makes these problems fascinating. Checking a solution: fast. Finding one: potentially requiring exponential search.
 
+The diagram below shows how the classes nest: P sits inside NP, NP-complete problems are the hardest problems *within* NP, and NP-hard extends the notion of hardness even to problems where solutions may not be verifiable in polynomial time.
+
+```mermaid
+flowchart TD
+    subgraph NPH["NP-hard (at least as hard as NP-complete)"]
+        subgraph NP["NP (verifiable in polynomial time)"]
+            subgraph P["P (solvable in polynomial time)"]
+                P1["Sorting\nShortest path\nLinear programming"]
+            end
+            NPC["NP-complete\nTetris · Sudoku · SAT\nKnapsack · 3-SAT"]
+        end
+        HARD["NP-hard but not NP\nHalting problem\nOptimization variants"]
+    end
+
+    style P fill:#c8e6c9,stroke:#388e3c
+    style NP fill:#fff9c4,stroke:#f9a825
+    style NPH fill:#ffccbc,stroke:#e64a19
+    style NPC fill:#ffe0b2,stroke:#ef6c00
+```
+
 For a rigorous treatment, see the Clay Mathematics Institute's description of the P vs NP problem [6].
 
 ## The Proof: How Tetris Encodes Hardness
@@ -132,7 +152,17 @@ Tetris isn't alone. Many familiar games harbor computational hardness:
 | **Candy Crush**       | NP-hard          | Combinatorial optimization | Walsh (2014) [3] |
 | **Sokoban**           | PSPACE-complete  | Planning with reversibility | Culberson (1997) |
 
-The casual puzzles hiding fundamental complexity aren't exceptions—they're the rule.
+The casual puzzles hiding fundamental complexity aren't exceptions—they're the rule. The timeline of these proofs shows how quickly the field matured once the right proof technique became clear.
+
+```mermaid
+timeline
+    1997 : Sokoban proved PSPACE-complete — box-pushing puzzle requires planning with reversible moves
+    2000 : Minesweeper proved NP-complete — logical deduction under uncertainty encodes SAT
+    2002 : Tetris proved NP-complete — Demaine et al. reduce 3-Partition to offline Tetris
+    2003 : Sudoku proved NP-complete — Yato and Seta show n×n Sudoku is NP-complete
+    2012 : Super Mario Bros proved NP-hard — level-clearing generalizes to NP-hard decision problems
+    2014 : Candy Crush proved NP-hard — Walsh shows match-3 optimization is NP-hard
+```
 
 ## Anatomy of a Reduction: The Deep Dive
 
