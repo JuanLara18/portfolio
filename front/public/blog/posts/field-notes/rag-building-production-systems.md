@@ -342,6 +342,25 @@ The "lost in the middle" risk is worth taking seriously. Liu et al. (2023) showe
 
 Measure this on your data. Build a small evaluation dataset (50–100 question-answer pairs), vary chunk size from 128 to 1024, and measure retrieval recall (does the correct chunk appear in top-k?) at each size. The optimal chunk size is domain-specific and the measurement takes an afternoon.
 
+Chunking strategies form a progression: as semantic coherence increases, so does implementation complexity. The sweet spot for most teams is structure-aware chunking or semantic chunking before reaching for parent-document or contextual approaches:
+
+```mermaid
+quadrantChart
+    title Chunking Strategies: Semantic Coherence vs Implementation Complexity
+    x-axis Lower Semantic Coherence --> Higher Semantic Coherence
+    y-axis Lower Implementation Complexity --> Higher Implementation Complexity
+    quadrant-1 Best quality, most work
+    quadrant-2 Good quality, simple
+    quadrant-3 Baseline
+    quadrant-4 Hard to build, mediocre results
+    Fixed-size: [0.22, 0.08]
+    Recursive Split: [0.40, 0.12]
+    Structure-Aware: [0.60, 0.35]
+    Semantic Chunking: [0.72, 0.52]
+    Parent-Document: [0.68, 0.58]
+    Contextual Retrieval: [0.85, 0.80]
+```
+
 ## Embedding Models: The Semantic Lens
 
 The embedding model determines what "similar" means in your system. Two chunks that are close in embedding space will be retrieved together. The model you choose defines the semantic lens through which your retrieval sees documents and queries.
@@ -704,6 +723,25 @@ The trade-off is complexity. Weaviate has more moving parts to configure and a s
 | **Ops overhead** | None | Low | None | Low | Medium |
 | **Cost model** | Free | Open source + cloud | Per query/vector | Infrastructure | Open source + cloud |
 | **Best for** | Dev / small prod | Production systems | Zero infra teams | Postgres shops | SaaS, complex schemas |
+
+The operational overhead vs scale/performance tradeoff places each option in a distinct position:
+
+```mermaid
+quadrantChart
+    title Vector Databases: Ops Overhead vs Scale & Features
+    x-axis Low Operational Overhead --> High Operational Overhead
+    y-axis Smaller Scale / Simpler --> Larger Scale / Feature-Rich
+    quadrant-1 Enterprise-grade, self-managed
+    quadrant-2 Managed, full-featured
+    quadrant-3 Dev / prototype
+    quadrant-4 High effort, moderate gain
+    Chroma: [0.05, 0.18]
+    Pinecone: [0.10, 0.72]
+    pgvector-Supabase: [0.22, 0.50]
+    Qdrant Cloud: [0.20, 0.82]
+    Qdrant self-hosted: [0.62, 0.88]
+    Weaviate: [0.68, 0.72]
+```
 
 ## Retrieval: Dense, Sparse, and Hybrid
 
