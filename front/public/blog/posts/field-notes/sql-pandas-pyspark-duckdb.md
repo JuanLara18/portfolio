@@ -234,21 +234,22 @@ GROUP BY customer_id;
 Window functions compute a value for each row using a set of related rows — without collapsing them into a single output row the way GROUP BY does. Three clauses define the window: `PARTITION BY` splits the table into independent groups, `ORDER BY` defines the row sequence within each group, and `ROWS/RANGE BETWEEN` sets the frame (which rows contribute to each calculation).
 
 ```mermaid
+%%{init: {"flowchart": {"htmlLabels": true, "nodeSpacing": 48, "rankSpacing": 56, "padding": 12}}}%%
 flowchart TD
     T["Full table — all rows, unordered"]
-    T -->|"PARTITION BY customer_id"| P
+    T -->|PARTITION BY customer_id| P
 
-    subgraph P["Independent sub-tables — computation never crosses this boundary"]
+    subgraph P["Partitions by customer_id<br/>Each group is computed in isolation"]
         direction LR
-        PA["CUST-A partition\namounts: 100 · 200 · 50"]
-        PB["CUST-B partition\namounts: 300 · 150 · 400 · 75"]
+        PA["CUST-A<br/>amounts (row order): 100 · 200 · 50"]
+        PB["CUST-B<br/>amounts (row order): 300 · 150 · 400 · 75"]
     end
 
-    PA -->|"ORDER BY created_at"| OA["CUST-A sorted\n50 → 100 → 200"]
-    PB -->|"ORDER BY created_at"| OB["CUST-B sorted\n75 → 150 → 300 → 400"]
+    PA -->|ORDER BY created_at| OA["CUST-A sorted<br/>50 → 100 → 200"]
+    PB -->|ORDER BY created_at| OB["CUST-B sorted<br/>75 → 150 → 300 → 400"]
 
-    OA -->|"ROWS BETWEEN UNBOUNDED PRECEDING\nAND CURRENT ROW\nrunning total"| FA["50 · 150 · 350"]
-    OB -->|"Same frame"| FB["75 · 225 · 525 · 925"]
+    OA -->|ROWS BETWEEN UNBOUNDED PRECEDING<br/>AND CURRENT ROW · running total| FA["50 · 150 · 350"]
+    OB -->|Same frame| FB["75 · 225 · 525 · 925"]
 ```
 
 ```sql
