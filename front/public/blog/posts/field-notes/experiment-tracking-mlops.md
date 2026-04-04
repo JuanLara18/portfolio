@@ -308,6 +308,19 @@ predictions = model.predict(new_data)
 
 When you promote a new model to Production, the serving code picks it up automatically on next load. Rollback is a single API call.
 
+The model lifecycle through the registry follows a clear state machine — every version moves through these stages, and at each point there is a decision about whether to advance or archive:
+
+```mermaid
+stateDiagram-v2
+    [*] --> None : model registered
+    None --> Staging : promote to staging
+    Staging --> Production : validation passes
+    Staging --> Archived : validation fails
+    Production --> Archived : new version promoted
+    Production --> Staging : rollback needed
+    Archived --> [*]
+```
+
 ## Weights & Biases: The Collaboration Layer
 
 Weights & Biases (W&B) started as a richer experiment tracking tool and has evolved into a complete ML platform. Where MLflow prioritizes self-hosting and open-source, W&B prioritizes user experience, collaboration, and breadth of capability.
@@ -727,6 +740,24 @@ The combinations that work well in practice:
 **DVC + W&B**: DVC for pipeline and data versioning; W&B for rich dashboards and team visibility. The `dvc exp run` command can be wrapped to also log to W&B, giving you both lineage tracking and collaborative dashboards.
 
 **MLflow + Autologging**: For teams that want tracking with minimal code changes. Enable autologging per framework and add a Model Registry workflow. This covers 80% of the value with 20% of the implementation effort.
+
+The decision between tools comes down to two axes — how much infrastructure control you need versus how much you value team collaboration and out-of-the-box visualization:
+
+```mermaid
+quadrantChart
+    title ML Experiment Tracking: Infrastructure Control vs Collaboration
+    x-axis Lower Infrastructure Control --> Higher Infrastructure Control
+    y-axis Lower Team Collaboration --> Higher Team Collaboration
+    quadrant-1 Self-managed + collaborative
+    quadrant-2 Managed + collaborative
+    quadrant-3 Managed + individual
+    quadrant-4 Self-managed + individual
+    Trackio: [0.20, 0.55]
+    Weights and Biases: [0.38, 0.88]
+    Neptune: [0.55, 0.72]
+    DVC: [0.82, 0.40]
+    MLflow: [0.88, 0.55]
+```
 
 ## Building a Tracking Discipline
 
