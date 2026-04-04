@@ -257,7 +257,7 @@ quadrantChart
     y-axis Low Retrieval Precision --> High Retrieval Precision
     quadrant-1 High precision, high cost
     quadrant-2 Best ROI
-    quadrant-3 Baseline — start here
+    quadrant-3 Baseline, start here
     quadrant-4 Costly, limited gain
     Fixed-size: [0.10, 0.28]
     Hierarchical Auto-Merging: [0.38, 0.62]
