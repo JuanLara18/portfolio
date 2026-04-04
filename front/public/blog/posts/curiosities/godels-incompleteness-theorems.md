@@ -29,6 +29,19 @@ Many of the greatest minds of the early 20th century worked toward this goal. Th
 
 In 1931, Kurt Gödel—a quiet, 25-year-old logician from Vienna—destroyed the dream.
 
+```mermaid
+timeline
+    title The Collapse of Hilbert's Program
+    1900 : Hilbert's 23 Problems — mathematics as a complete, decidable system
+    1903 : Russell's Paradox — crisis in set theory foundations
+    1910 : Principia Mathematica (Russell & Whitehead) — formal foundations attempt
+    1920 : Hilbert formalizes the program — consistency, completeness, decidability
+    1931 : Gödel — First and Second Incompleteness Theorems (completeness is impossible)
+    1936 : Turing — Halting Problem (decidability is impossible)
+         : Church — Lambda calculus, undecidability of predicate logic
+    1963 : Cohen — Independence of Continuum Hypothesis from ZFC
+```
+
 ## The Language of Formal Systems
 
 Before we can understand what Gödel proved, we need to understand the stage on which the proof takes place: **formal systems**.
@@ -144,6 +157,20 @@ If Peano Arithmetic (or any sufficiently powerful consistent formal system) is c
 3. $G$ is **true** (in the standard model of natural numbers, because $G$ says "I am not provable," and indeed it is not).
 
 There exists a true arithmetic statement that the system **can never prove**. The system is **incomplete**.
+
+The dilemma has only two exits, and both destroy something we want:
+
+```mermaid
+flowchart TD
+    ASSUME["Assume: system is consistent"] --> G["Consider the Gödel sentence G:\n'This statement is not provable'"]
+    G --> Q{Is G provable?}
+    Q -->|"Yes — G is provable"| CASE1["G is proved, but G says it isn't\n→ System proves a falsehood\n→ INCONSISTENT ✗"]
+    Q -->|"No — G is not provable"| CASE2["G says it's not provable — and it's right\n→ G is TRUE but unprovable\n→ INCOMPLETE ✗"]
+    CASE2 --> ALSO["Also: ¬G is not provable either\n(system can't refute it)\n→ G is undecidable"]
+    style CASE1 fill:#b7161b,color:#fff
+    style CASE2 fill:#2d6a4f,color:#fff
+    style ALSO fill:#2d6a4f,color:#fff
+```
 
 ### The Formal Statement
 
