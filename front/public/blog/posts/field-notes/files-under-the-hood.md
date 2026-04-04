@@ -196,6 +196,26 @@ We have moved from the lowest-level OS abstraction of a file to the cutting edge
 | **Local LLM Distribution** | `GGUF` | Built-in quantization, C++ native, extensible metadata. | Raw `.bin` files (lack metadata and structure). |
 | **Scientific Arrays / Bio** | `HDF5` | Standard for physics/bio, supports partial heterogeneous reading. | Writing custom binary formats from scratch. |
 
+```mermaid
+quadrantChart
+    title File Formats: Human Readability vs I/O Performance
+    x-axis Human Readable --> Machine Optimized
+    y-axis Lower Performance --> Higher Performance
+    quadrant-1 Best for machines
+    quadrant-2 Best of both worlds
+    quadrant-3 Avoid in production
+    quadrant-4 High perf, readable
+    CSV: [0.88, 0.08]
+    JSON: [0.82, 0.18]
+    YAML: [0.80, 0.15]
+    Pickle: [0.40, 0.48]
+    HDF5: [0.30, 0.70]
+    Joblib: [0.28, 0.65]
+    Parquet: [0.18, 0.88]
+    GGUF: [0.12, 0.82]
+    Safetensors: [0.10, 0.92]
+```
+
 ## The End of the File
 
 The "file" remains an illusion—a 1D array of bytes mapped to silicon by the OS. But our ability to structure the bytes within that illusion has defined the limits of computing at every era. 
