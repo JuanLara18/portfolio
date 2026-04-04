@@ -22,7 +22,7 @@
  *   - Render LaTeX math via KaTeX → SVG → PDFKit .svg()
  *   - Render Mermaid diagrams via headless browser → SVG
  *   - Use custom fonts (Inter, JetBrains Mono) via .registerFont()
- *   - Two-pass TOC for multi-page table of contents
+ *   - TOC page count via simulateTocPageCount (mirrors addToc layout)
  */
 
 const fs = require('fs');
@@ -1376,9 +1376,9 @@ function addToc(doc, tocPageIdx, entries) {
       doc.text('. '.repeat(80), dotAreaX, y, { width: dotAreaW, lineBreak: false, ellipsis: true });
     }
 
-    // Page number (also a link)
+    // Page number (1-based for readers; outline/goTo still use 0-based index)
     doc.font(F.B).fontSize(S.tocEntry).fillColor(C.muted)
-      .text(`${entry.page}`, M.left + W - pgNumW, y, {
+      .text(`${entry.page + 1}`, M.left + W - pgNumW, y, {
         width: pgNumW,
         align: 'right',
         goTo: entry.destId,
@@ -1388,29 +1388,42 @@ function addToc(doc, tocPageIdx, entries) {
   }
 }
 
-function estimateTocPageCount(doc, entries) {
+/**
+ * Counts TOC pages using the same vertical rules as addToc (fonts, gaps, entry row height).
+ * Continuation pages start at M.top with no repeated "Table of Contents" title.
+ */
+function simulateTocPageCount(doc, entries) {
   if (!entries.length) return 1;
   let pages = 1;
   let y = M.top;
+  const W = cw(doc);
   const entryH = S.tocEntry + 8;
+  const bottomLimit = doc.page.height - M.bottom;
+
+  function nextTocPage() {
+    pages += 1;
+    y = M.top;
+  }
+
   doc.font(F.h).fontSize(20);
-  y += doc.heightOfString('Table of Contents', { width: cw(doc) }) + 20;
+  y += doc.heightOfString('Table of Contents', { width: W }) + 20;
+
   let currentCat = '';
   for (const entry of entries) {
     if (entry.category !== currentCat) {
       currentCat = entry.category;
       const gap = currentCat === entries[0].category ? 0 : 18;
-      if (y + gap + 28 > doc.page.height - M.bottom) {
-        pages += 1;
-        y = M.top;
+      if (y + gap + 28 > bottomLimit) {
+        nextTocPage();
       } else {
         y += gap;
       }
-      y += 26;
+      const catLabel = CATEGORIES.labels[currentCat] || currentCat;
+      doc.font(F.B).fontSize(S.tocCat);
+      y += doc.heightOfString(catLabel, { width: W - 10 }) + 8;
     }
-    if (y + entryH > doc.page.height - M.bottom) {
-      pages += 1;
-      y = M.top;
+    if (y + entryH > bottomLimit) {
+      nextTocPage();
     }
     y += entryH;
   }
@@ -1480,7 +1493,7 @@ async function main() {
   const tocSeedEntries = CATEGORIES.order.flatMap((cat) =>
     (grouped[cat] || []).map((post) => ({ title: post.title, category: cat })),
   );
-  const tocPageCount = estimateTocPageCount(doc, tocSeedEntries);
+  const tocPageCount = simulateTocPageCount(doc, tocSeedEntries);
   const tocPageIdx = [];
   for (let i = 0; i < tocPageCount; i++) {
     doc.addPage();
@@ -1514,7 +1527,7 @@ async function main() {
     }
   }
 
-  // Backfill TOC and running headers/footers
+  // Backfill TOC and PDF outlines (bookmarks)
   addToc(doc, tocPageIdx, tocEntries);
   addDocumentOutlines(doc, tocPageIdx, tocEntries);
 
