@@ -156,6 +156,19 @@ This was the problem that contextual embeddings were built to solve.
 
 ## The Turn Toward Context
 
+The move from static to contextual embeddings unfolded in a rapid sequence of breakthroughs across just five years—each model addressing the exact limitation its predecessor exposed.
+
+```mermaid
+timeline
+    2013 : Word2Vec — static word vectors from co-occurrence prediction; king−man+woman≈queen
+    2014 : GloVe — global co-occurrence matrix factorization; explicit word-pair statistics
+    2016 : FastText — subword character n-grams handle morphology and out-of-vocabulary words
+    2018 : ELMo — bidirectional language model produces different vectors per sentence context
+    2018 : BERT — full bidirectional self-attention across all tokens; 11 NLP benchmarks at once
+    2019 : Sentence-BERT — Siamese BERT for sentence-level vectors comparable with cosine similarity
+    2022 : text-embedding-ada-002 — large-scale production embedding, foundation of most RAG stacks
+```
+
 ELMo, published in 2018, was the first widely adopted approach to contextual embeddings. The key idea: rather than learning a fixed vector per word, train a deep bidirectional language model and use its internal representations — which are computed fresh for each input sentence — as embeddings. The same word processed in different sentences would produce different vectors.
 
 This worked. The ELMo vectors for "bank" in a sentence about finance genuinely differed from those in a sentence about rivers. The model had learned to distinguish senses through context.
@@ -211,6 +224,28 @@ sim_13 = cosine_similarity(embeddings[0], embeddings[2])  # ~0.12
 ```
 
 This architecture — encode once, compare with cosine similarity, store in a vector database — is the foundation of every modern RAG pipeline and semantic search system. The model family that followed Sentence-BERT, now collectively called **sentence transformers** or **bi-encoders**, made dense retrieval practical at scale.
+
+Choosing the right embedding approach means navigating two axes simultaneously: how contextual the representation is (static vs. fully context-sensitive) and what unit it operates at (individual token vs. full sentence or document).
+
+```mermaid
+quadrantChart
+    title Embedding Models: Static vs Contextual × Token vs Sentence Level
+    x-axis Static Representation --> Contextual Representation
+    y-axis Token / Word Level --> Sentence / Document Level
+
+    quadrant-1 Production retrieval
+    quadrant-2 Token analysis
+    quadrant-3 Classic NLP
+    quadrant-4 Subword analysis
+
+    Word2Vec: [0.08, 0.18]
+    GloVe: [0.12, 0.15]
+    FastText: [0.18, 0.22]
+    ELMo token: [0.60, 0.20]
+    BERT token: [0.80, 0.22]
+    Sentence-BERT: [0.78, 0.78]
+    text-embedding-ada-002: [0.88, 0.85]
+```
 
 The modern landscape of sentence embedding models (E5, BGE, Cohere Embed, OpenAI text-embedding-3, GTE, Nomic Embed) differs from Word2Vec in almost every way: architecture, training data, dimensionality, and use case. But they all encode the same fundamental bet — that meaning can be usefully approximated by position in a vector space, and that the right training objective will produce a space where that position predicts the things we care about.
 
