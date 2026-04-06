@@ -393,7 +393,19 @@ alpha_optimizer.step()
 
 Note that we optimize `log_alpha`, not `alpha` directly. This ensures $\alpha$ stays positive without requiring a constrained optimization. This is the same pattern used throughout deep learning—optimizing in log-space when a parameter must be positive. We saw this principle in the Python post when discussing the `__init__` patterns that prevent invalid states.
 
-### 1.6 Dos and Don'ts: Implementation
+### 1.6 When to Use TorchRL
+
+SB3 and CleanRL cover the algorithms above for most use cases. For production systems that need tighter PyTorch integration — or for anyone implementing RL for LLMs — **TorchRL v0.10.0** (the official PyTorch RL library) is worth knowing.
+
+TorchRL's design philosophy differs from SB3: instead of providing ready-made algorithm objects, it provides composable primitives — collectors, replay buffers, loss modules — that you assemble. This gives you more control at the cost of more boilerplate. The practical cases where it wins:
+
+- **LLM training with RL**: TorchRL v0.10.0 includes native implementations of GRPO and DAPO (the algorithms behind DeepSeek-R1 and similar reasoning models), plus a vLLM integration for high-throughput LLM rollouts.
+- **Custom rollout pipelines**: When your environment is not Gymnasium-compatible, TorchRL's `EnvBase` abstraction and `DataCollector` handle async multi-process collection without requiring your env to fit the standard API.
+- **GPU-native RL**: TorchRL's `TensorDict`-based data model keeps transitions on-device through the entire pipeline, avoiding the CPU-GPU round trips that dominate standard replay buffer implementations.
+
+For standard robotics and games, SB3 and CleanRL will get you further faster. For RL at LLM scale or when you need low-level PyTorch control, TorchRL is the right foundation.
+
+### 1.7 Dos and Don'ts: Implementation
 
 | Do | Don't |
 |-----|-------|
@@ -586,6 +598,8 @@ The speedup from pinned memory is 2-3x for large transfers. For small transfers 
 
 ---
 
+With the compute bottlenecks addressed — vectorized environments feeding the GPU, memory managed for your observation type, data transfers batched and pinned — the remaining failures are almost always algorithmic details. Not the algorithm itself, but the dozens of choices inside it: how observations are normalized, how rewards are scaled, what the network architecture looks like, what hyperparameters to start with. These are the decisions that papers omit and practitioners learn by trial and failure.
+
 ## Part III: The Tricks That Separate Success from Failure
 
 ### 3.1 Observation Normalization
@@ -729,7 +743,34 @@ scheduler = torch.optim.lr_scheduler.LambdaLR(
 
 PPO benefits from linear annealing. DQN and SAC typically use a fixed learning rate. The intuition: PPO's on-policy nature means the data distribution changes continuously, and a shrinking learning rate helps the policy settle as training progresses.
 
-### 3.5 The Exploration-Exploitation Schedule
+### 3.5 Hyperparameter Quick Reference
+
+Every practitioner eventually builds a mental table of "what does this algorithm need?" This is that table — default values from the SB3 source code, the CleanRL implementations, and the original papers. Use these as your starting point, not your endpoint.
+
+| Hyperparameter | PPO | SAC | DQN |
+|---|---|---|---|
+| Learning rate | 3e-4 (linear anneal) | 3e-4 (fixed) | 1e-4 (fixed) |
+| Discount factor $\gamma$ | 0.99 | 0.99 | 0.99 |
+| Batch size | 64 per minibatch | 256 | 32 |
+| Buffer capacity | — (on-policy) | 1,000,000 | 1,000,000 |
+| Network size | 64 hidden (shared) | 256 hidden (separate) | 64 hidden |
+| Activation | Tanh | ReLU | ReLU |
+| Gradient clip (max norm) | 0.5 | 1.0 | 10.0 |
+| Entropy coeff | 0.0 (tunable) | auto | — |
+| Target update | — | soft $\tau = 0.005$ | hard every 1000 steps |
+| GAE lambda | 0.95 | — | — |
+| Clip epsilon | 0.2 | — | — |
+| Epochs per rollout | 10 | — | — |
+| Target entropy | — | $-\dim(\mathcal{A})$ | — |
+
+A few notes on reading this table:
+- **PPO batch size** is the minibatch size within each epoch, not the rollout length. The rollout collects `n_steps × n_envs` transitions, then iterates over them in minibatches.
+- **DQN gradient clip** is 10.0, not 0.5 — DQN's TD loss is more stable than PPO's policy gradient, so it tolerates larger updates.
+- **SAC's separate networks** means actor and critic each have their own 256-unit MLP. PPO typically shares a backbone between actor and critic heads.
+
+When your results diverge from these defaults without explanation, check that you have not accidentally applied one algorithm's defaults to another.
+
+### 3.6 The Exploration-Exploitation Schedule
 
 Every RL algorithm must balance exploration (trying new things) with exploitation (using what it has learned). The schedule for this balance is algorithm-specific but universally important.
 
@@ -1376,33 +1417,39 @@ If the answer is no, you know where to start.
 
 ---
 
-## References and Further Reading
+## Going Deeper
 
-**Implementation References:**
-- [CleanRL](https://github.com/vwxyzjn/cleanrl) — Single-file, annotated implementations. The best way to understand algorithms line by line.
-- [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) — Production-quality implementations with consistent API.
-- [The 37 Implementation Details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) — Huang et al., the definitive guide to PPO implementation.
-- [Spinning Up Docs](https://spinningup.openai.com/en/latest/spinningup/keypapers.html) — Curated list of key RL papers with context.
+**Books:**
+- Lapan, M. (2020). *Deep Reinforcement Learning Hands-On.* Packt.
+  - The most implementation-focused RL book available. Works through DQN, PPO, SAC, and model-based methods with PyTorch code you can run. Chapters 8–10 on continuous control directly parallel Part I here.
+- Sutton, R. & Barto, A. (2018). *Reinforcement Learning: An Introduction.* MIT Press (2nd ed.).
+  - Chapters 6 (TD learning) and 9 (function approximation) provide the theoretical grounding for why the implementation details in Part I are necessary. The deadly triad in Chapter 11 explains the instability every DQN practitioner encounters.
+- Raschka, S. (2024). *Build a Large Language Model From Scratch.* Manning.
+  - Chapter 7 covers preference alignment with working code. The connection between LLM post-training (RLHF, DPO) and the RL engineering covered here is made concrete — the same PPO implementation that trains game-playing agents trains instruction-following LLMs.
+- Morales, M. (2020). *Grokking Deep Reinforcement Learning.* Manning.
+  - Strong focus on the intuition behind each implementation decision. Particularly good on replay buffers, advantage estimation, and the trade-offs between on-policy and off-policy methods.
 
-**Engineering and Performance:**
-- [EnvPool](https://github.com/sail-sg/envpool) — C++-based vectorized environments, 10-100x faster than Python Gymnasium.
-- [Sample Factory](https://github.com/alex-petrenko/sample-factory) — High-throughput RL framework optimized for single-machine performance.
-- [TorchRL](https://pytorch.org/rl/) — PyTorch-native RL primitives, composable and GPU-accelerated.
-- [NVIDIA Isaac Gym](https://developer.nvidia.com/isaac-gym) — GPU-accelerated physics simulation for massively parallel RL.
+**Online Resources:**
+- [CleanRL](https://github.com/vwxyzjn/cleanrl) — Single-file, annotated implementations of PPO, SAC, DQN, TD3, and more. The best way to understand exactly what code runs each algorithm. Read these alongside the papers.
+- [The 37 Implementation Details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) by Huang et al. — The canonical reference for every detail the PPO paper omits. Advantage normalization scope, orthogonal initialization, entropy scheduling — this post is required reading.
+- [Open RL Benchmark](https://github.com/openrlbenchmark/openrlbenchmark) — 25,000+ tracked experiment runs across algorithms and environments. Use it to verify your implementation is behaving as expected before concluding your changes help.
+- [Debugging RL, Without the Agonizing Pain](https://andyljones.com/posts/rl-debugging.html) by Andy Jones — The most useful practical debugging guide in the field. The four-level diagnostic hierarchy directly informed the debugging section of this post.
 
-**Debugging and Diagnostics:**
-- [Debugging RL, Without the Agonizing Pain](https://andyljones.com/posts/rl-debugging.html) — Andy Jones, practical debugging guide.
-- [Deep RL Doesn't Work Yet](https://www.alexirpan.com/2018/02/14/rl-hard.html) — Alex Irpan, the honest state of deep RL.
-- [Weights & Biases RL Guide](https://docs.wandb.ai/guides/integrations/stable-baselines-3) — W&B integration with SB3.
+**Videos:**
+- [CS285: Deep Reinforcement Learning](http://rail.eecs.berkeley.edu/deeprlcourse/) by Sergey Levine — Lecture 5 on policy gradients and Lecture 8 on model-based RL have the best treatment of why each implementation choice exists. Lecture recordings available on YouTube.
+- [CleanRL Technical Walkthrough](https://www.youtube.com/watch?v=MEt6rrxH8W4) by Shengyi Huang — Walks through the CleanRL PPO implementation in detail, explaining each of the 37 implementation details with code. One of the few videos that is actually implementation-focused rather than algorithm-focused.
 
-**Deployment:**
-- [ONNX Runtime](https://onnxruntime.ai/) — Cross-platform, high-performance inference.
-- [TorchScript Documentation](https://pytorch.org/docs/stable/jit.html) — PyTorch model export.
-- [Ray Serve](https://docs.ray.io/en/latest/serve/) — Scalable model serving, integrates with RLlib.
+**Academic Papers:**
+- Huang, S. et al. (2022). ["The 37 Implementation Details of Proximal Policy Optimization."](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) *ICLR Blog Track 2022*.
+  - Empirically validates which implementation details matter and which do not. The finding that advantage normalization scope, learning rate annealing, and orthogonal initialization collectively account for most of PPO's variance reduction is directly actionable.
+- Andrychowicz, M. et al. (2017). ["Hindsight Experience Replay."](https://arxiv.org/abs/1707.01495) *NeurIPS 2017*.
+  - The HER paper from section 5.3. The key insight — that failed trajectories contain dense learning signal if you relabel goals — is elegant and consistently effective for manipulation tasks.
+- Dulac-Arnold, G. et al. (2021). ["Challenges of Real-World Reinforcement Learning: Definitions, Benchmarks and Analysis."](https://arxiv.org/abs/1904.12901) *Machine Learning*, 110, 2419–2468.
+  - A systematic taxonomy of why RL that works in simulation fails in production. Every section in Part VII on deployment traces to one of the challenges catalogued here.
 
-**Previous Posts in This Series:**
-- *Python Beyond the Basics* — The language patterns behind RL implementations.
-- *Computational Resources for ML* — GPU architecture, CUDA, and memory hierarchies that govern RL performance.
-- *ML Libraries Under the Hood* — NumPy, PyTorch internals, and the tensor operations RL depends on.
-- *Cloud Infrastructure for ML* — Scaling RL training and deploying policies at scale.
-- *Reinforcement Learning: From First Principles* — The theoretical foundation this post builds on.
+**Questions to Explore:**
+- Most RL implementation advice — gradient clipping values, network sizes, learning rates — comes from empirical trial and error rather than principled derivation. Is there a theoretical framework that could derive these values from first principles, or is RL engineering fundamentally empirical?
+- The replay buffer is the central data structure in off-policy RL. Uniform sampling, prioritized sampling, n-step returns, and hindsight relabeling are all different ways to extract information from the same buffer. Is there a principled way to combine these, or does combining them always require manual tuning of their relative contributions?
+- GPU utilization in RL is typically 3–15% because the environment runs on CPU. As GPU-accelerated simulators (Isaac Lab, Brax) become the norm, does the entire optimization playbook for RL change? Which of the GPU patterns covered here become irrelevant and which become more important?
+- The deployment patterns for RL policies — safety wrappers, gradual rollout, fallback policies — mirror the deployment patterns for supervised models but with higher stakes. Is there a formalization of "deployment risk" for RL policies that could guide these decisions systematically rather than heuristically?
+- The section on TorchRL shows that GRPO (designed for LLM training) is now in the same library as DQN (designed for Atari). As RL becomes the common foundation for both game-playing agents and instruction-following language models, which abstractions will converge and which will remain domain-specific?
