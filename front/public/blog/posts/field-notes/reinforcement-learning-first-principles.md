@@ -35,6 +35,25 @@ Let us begin.
 
 ---
 
+Reinforcement learning did not arrive fully formed. It grew through decades of incremental breakthroughs, each one revealing a new frontier. The timeline below maps the key moments — from the first theoretical results to the systems that, today, produce emergent reasoning in language models.
+
+```mermaid
+timeline
+    1992 : TD-Gammon, Tesauro, backgammon at expert level via TD learning
+    1999 : Potential-based reward shaping, Ng et al., theory for safe reward design
+    2013 : DQN on Atari, Mnih et al., deep RL scales to pixels for the first time
+    2016 : AlphaGo, Silver et al., RL plus MCTS defeats world champion at Go
+    2017 : PPO paper, Schulman et al., the workhorse algorithm used everywhere today
+    2018 : SAC, Haarnoja et al., entropy-regularized RL for continuous control
+    2019 : OpenAI Five defeats Dota 2 professionals using PPO at scale
+    2022 : InstructGPT, Ouyang et al., RLHF aligns a language model to human intent
+    2025 : DeepSeek-R1, GRPO plus RLVR, emergent reasoning without human labels
+```
+
+Each milestone introduced a concept this post covers in depth. Understanding where an idea came from helps you understand why it was designed the way it was.
+
+---
+
 ## Part I: The Mathematical Machinery
 
 ### 1.1 The Markov Decision Process
@@ -503,6 +522,8 @@ quadrantChart
 
 ---
 
+Knowing which algorithm to use is the first battle. The second is recognizing that the standard MDP formulation — single agent, single objective, fully observable state — is a simplification that most real problems do not satisfy. Part V climbs the ladder from that simplification toward the structures you will actually encounter.
+
 ## Part V: The Complexity Ladder
 
 ### 5.1 Tabular → Deep RL: When the Table Breaks
@@ -585,7 +606,7 @@ Practical approaches:
 
 - **Frame stacking**: Concatenate the last $k$ observations as input. This provides limited history. It is crude but works for simple partial observability (e.g., inferring velocity from consecutive positions).
 - **Recurrent policies**: Use an LSTM or GRU that maintains a hidden state across timesteps. The hidden state implicitly encodes a belief over the unobserved state. This is the most common approach in deep RL.
-- **Transformer policies**: Use attention over a window of past observations. This is increasingly popular as transformer architectures prove effective in sequential decision-making.
+- **Transformer policies**: Use attention over a window of past observations. Decision Transformer (Chen et al., 2021) reframes the policy as a sequence model — conditioning on past states, actions, and desired return — and showed competitive performance with TD-trained agents in offline settings. DeepMind's Gato (2022) extends this to a single transformer trained across hundreds of tasks and modalities. The appeal: transformers handle variable-length histories naturally. The limitation: they are memory-heavy and slow to evaluate compared to a simple MLP, so for real-time control the latency cost must be justified.
 
 **The practical consequence**: If your problem is partially observable and you use a feedforward policy (MLP), the policy is fundamentally limited—it cannot reason about hidden state. Adding memory (recurrence or attention) is not optional in POMDPs; it is necessary for optimal behavior.
 
@@ -747,7 +768,23 @@ The challenge is equally enormous. The agent will encounter state-action pairs d
 
 Offline RL is the most production-relevant advance in recent RL research. If you have logged data from human experts or a previous system, offline RL lets you improve upon it without any online interaction. But temper your expectations: the quality of the dataset fundamentally limits the quality of the learned policy.
 
-### 6.7 Dos and Don'ts: The Hard Problems
+### 6.7 RL Beyond Traditional Domains: The LLM Connection
+
+Everything in this post — MDPs, reward design, policy optimization, value functions — was developed in the context of games and robotics. But the same mathematics now powers a different kind of agent: large language models trained to reason.
+
+When OpenAI trained InstructGPT (2022), the "environment" was a human annotator reading model responses. The "reward" was their preference score. The "policy" was the language model. PPO was the optimization algorithm. The MDP formulation held perfectly — the state was the conversation history, the action was the next token, and the reward arrived at the end of the response.
+
+More recently, DeepSeek-R1 (arXiv 2501.12948, 2025) took this further. Instead of human preference labels, it used **RLVR (Reinforcement Learning with Verifiable Rewards)**: for mathematics and code, the reward is binary and exact — did the model produce the correct answer? Did the unit tests pass? This eliminates the reward model entirely. And instead of PPO's critic network, it used **GRPO (Group Relative Policy Optimization)**: sample multiple responses per prompt, use within-group return ranking as the advantage estimate. The result was emergent step-by-step reasoning — chain-of-thought, self-correction, verification — not programmed, but arising from optimization pressure.
+
+The implications for everything in this post:
+
+- **Reward design is still the hardest part.** RLVR works for domains with verifiable correctness. Nuanced judgment, creativity, safety — these lack formal verifiers. The alignment research community is actively working on this.
+- **The exploration-exploitation tension applies.** LLMs explore by sampling diverse reasoning paths; they exploit by converging to confident (but potentially wrong) solutions. Entropy regularization and temperature scheduling are the RL tools that manage this.
+- **Reward hacking is a live problem.** Models trained to maximize human preference scores learn verbosity bias, formatting tricks, and sycophancy — exactly the reward hacking patterns from section 2.3, manifested in language.
+
+The RL concepts here are not historical context. They are the machinery running inside every instruction-tuned model you use today. The companion post on RLHF, DPO, and alignment traces this in full detail.
+
+### 6.8 Dos and Don'ts: The Hard Problems
 
 | Do | Don't |
 |-----|-------|
@@ -841,34 +878,41 @@ Build the foundation. Then build the agent.
 
 ---
 
-## References and Further Reading
+## Going Deeper
 
-**Textbooks:**
-- [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html) by Sutton & Barto — The definitive textbook. Free online. Read Chapters 1-6 before touching any code.
-- [Algorithms for Decision Making](https://algorithmsbook.com/) by Kochenderfer et al. — Broader scope including planning and multi-agent. Excellent mathematical rigor.
+**Books:**
+- Sutton, R. & Barto, A. (2018). *Reinforcement Learning: An Introduction.* MIT Press (2nd ed.). Free at incompleteideas.net.
+  - The canonical text. Chapters 1–6 cover tabular methods with full convergence proofs. Chapter 13 on policy gradients is the theoretical ancestor of PPO. Read this before the papers — it builds the intuition that papers assume you have.
+- Kochenderfer, M., Wheeler, T., & Wray, K. (2022). *Algorithms for Decision Making.* MIT Press. Free at algorithmsbook.com.
+  - Broader scope than Sutton & Barto — includes POMDPs, multi-agent games, constrained MDPs, and approximate methods in the same mathematical language. Essential if your problem violates the standard MDP assumptions.
+- Lapan, M. (2020). *Deep Reinforcement Learning Hands-On.* Packt.
+  - The most practical book in the field. Works through DQN, policy gradients, actor-critic methods, and model-based RL with real PyTorch implementations. The multi-agent and continuous control chapters directly connect to Part IV here.
+- Albrecht, S., Christianos, F., & Schäfer, L. (2024). *Multi-Agent Reinforcement Learning: Foundations and Modern Approaches.* MIT Press. Free at marl-book.com.
+  - The definitive MARL text. Covers Nash equilibria, value decomposition (QMIX), centralized training with decentralized execution, and the theory behind why independent learning sometimes works and sometimes catastrophically fails.
 
-**Courses:**
-- [David Silver's RL Course](https://www.davidsilver.uk/teaching/) — The classic lecture series from DeepMind.
-- [Sergey Levine's Deep RL Course (CS 285)](http://rail.eecs.berkeley.edu/deeprlcourse/) — The best resource for deep RL specifically.
-- [Spinning Up in Deep RL](https://spinningup.openai.com/) by OpenAI — Practical introduction with clean implementations.
+**Online Resources:**
+- [Spinning Up in Deep RL](https://spinningup.openai.com/) by OpenAI — The best structured introduction. Clean implementations of PPO, SAC, VPG, and DDPG; a curated key papers list with context; and an essay on what makes RL hard. Start here before diving into implementations.
+- [Open RL Benchmark](https://github.com/openrlbenchmark/openrlbenchmark) — 25,000+ tracked runs across major algorithms and environments. Before concluding your implementation is broken, check whether your reward curves match the benchmark distribution for your algorithm and environment.
+- [The 37 Implementation Details of PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/) by Huang et al. — Every detail the PPO paper omits. Advantage normalization scope, network initialization, entropy coefficient — this is what separates a converging implementation from one that silently fails.
+- [Deep RL Doesn't Work Yet](https://www.alexirpan.com/2018/02/14/rl-hard.html) by Alex Irpan — The honest essay on why deep RL is harder than it looks in papers. Read this before starting any non-trivial RL project. The critique is from 2018 but the structural problems it identifies remain largely unsolved.
 
-**Libraries:**
-- [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) — Reliable implementations of PPO, SAC, DQN, and more.
-- [CleanRL](https://github.com/vwxyzjn/cleanrl) — Single-file implementations for understanding algorithms.
-- [RLlib (Ray)](https://docs.ray.io/en/latest/rllib/) — Scalable, production-oriented RL library.
-- [Gymnasium](https://gymnasium.farama.org/) — The standard environment interface.
-- [PettingZoo](https://pettingzoo.farama.org/) — Multi-agent extension of Gymnasium.
+**Videos:**
+- [UCL Course on Reinforcement Learning](https://www.davidsilver.uk/teaching/) by David Silver — The classic lecture series from the AlphaGo lead researcher. The lectures on value functions (Lecture 3–4) and policy gradients (Lecture 7) are particularly rigorous. Video recordings linked from the course page.
+- [CS285: Deep Reinforcement Learning](http://rail.eecs.berkeley.edu/deeprlcourse/) by Sergey Levine — The best resource for deep RL specifically. Levine's treatment of model-based methods, offline RL, and the connection between imitation learning and RL is unmatched. Lecture recordings on YouTube.
 
-**Key Papers:**
-- Mnih et al., [Human-level control through deep reinforcement learning](https://www.nature.com/articles/nature14236) (2015) — DQN.
-- Schulman et al., [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347) (2017) — PPO.
-- Haarnoja et al., [Soft Actor-Critic](https://arxiv.org/abs/1801.01290) (2018) — SAC.
-- Schrittwieser et al., [Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model](https://arxiv.org/abs/1911.08265) (2020) — MuZero.
-- Levine et al., [Offline Reinforcement Learning: Tutorial, Review, and Perspectives](https://arxiv.org/abs/2005.01643) (2020) — Offline RL survey.
-- Henderson et al., [Deep Reinforcement Learning that Matters](https://arxiv.org/abs/1709.06560) (2018) — The reproducibility wake-up call.
-- Ng, Harada, Russell, [Policy invariance under reward transformations](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/NgHaradaRussell-shaping-ICML1999.pdf) (1999) — Potential-based reward shaping.
-- Amodei et al., [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565) (2016) — Safety in RL systems.
+**Academic Papers:**
+- Mnih, V. et al. (2015). ["Human-level control through deep reinforcement learning."](https://www.nature.com/articles/nature14236) *Nature*, 518, 529–533.
+  - The DQN paper. Target networks and experience replay are introduced here. The key result is not the Atari scores — it is the demonstration that a single architecture and algorithm can learn to play 49 different games from raw pixels.
+- Henderson, P. et al. (2018). ["Deep Reinforcement Learning that Matters."](https://arxiv.org/abs/1709.06560) *AAAI 2018*.
+  - The reproducibility paper. Demonstrates that hyperparameter choices, random seeds, and code-level implementation details produce reward curves whose distributions barely overlap. Required reading before you publish or trust any single-seed RL result.
+- Ng, A., Harada, D., & Russell, S. (1999). ["Policy invariance under reward transformations."](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/NgHaradaRussell-shaping-ICML1999.pdf) *ICML 1999*.
+  - The reward shaping theory paper. The potential-based shaping guarantee is the only mathematically clean result in reward design. Everything in section 2.2 about when shaping is safe traces back to this proof.
+- DeepSeek-AI. (2025). ["DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning."](https://arxiv.org/abs/2501.12948) *arXiv 2501.12948*.
+  - The GRPO and RLVR paper that demonstrated emergent chain-of-thought reasoning through pure RL with verifiable rewards. Section 3.7 on the LLM connection directly references this work. The GRPO algorithm eliminates the critic model; the RLVR approach eliminates the reward model.
 
-**Production RL:**
-- [Challenges of Real-World Reinforcement Learning](https://arxiv.org/abs/1904.12901) — Dulac-Arnold et al., the gap between benchmarks and reality.
-- [An Introduction to Deep Reinforcement Learning](https://arxiv.org/abs/1811.12560) — Comprehensive survey by François-Lavet et al.
+**Questions to Explore:**
+- The reward hypothesis states that any goal can be expressed as the maximization of a scalar reward signal. Are there genuinely inexpressible goals — not just hard to specify, but provably impossible to capture in scalar form — and what would it take to prove it?
+- Multi-agent RL breaks the stationarity assumption that most convergence guarantees depend on. Is there a fundamentally different theoretical framework that handles non-stationarity natively, or does some form of stationarity always need to be assumed, even approximately?
+- The sample efficiency gap between RL and supervised learning spans orders of magnitude. Is this gap a fundamental consequence of learning from interaction rather than demonstration — or is it an engineering gap waiting to be closed by better algorithms, architectures, or inductive biases?
+- Safe RL currently relies on predefined cost functions or manually specified shields. In open-ended environments where the full space of possible harms is unknown in advance, what would a sufficiently general safety framework look like? Can safety constraints be learned rather than specified?
+- RLVR works for domains with formal verifiers. Most valuable tasks — nuanced judgment, creative quality, ethical reasoning — lack ground truth. Is approximate verification (ensemble judges, compositional checks, formal methods applied to parts) a viable path, or does RLVR have a fundamental domain boundary?
