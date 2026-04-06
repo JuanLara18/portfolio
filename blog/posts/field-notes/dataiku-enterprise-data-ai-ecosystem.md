@@ -38,7 +38,8 @@ The enterprise data + AI platform category — Dataiku, Databricks, Domino, Vert
 
 This is how the landscape evolved to reach its current shape:
 
-```timeline
+```mermaid
+timeline
     2015 : Dataiku DSS 1.0 released. Visual data prep meets code-first analysis in one interface.
     2017 : Amazon SageMaker launches. AWS bets on fully managed ML infrastructure.
     2018 : Databricks Unified Analytics Platform. Apache Spark meets managed ML notebooks.
@@ -79,7 +80,8 @@ Most toolchains can't say this. Databricks requires SQL or PySpark. Jupyter note
 
 Here's how a typical Dataiku project flows from raw data to monitored production:
 
-```flowchart LR
+```mermaid
+flowchart LR
     A[Raw Data Sources] --> B[Flow: Visual Recipes]
     B --> C[Lab: Python Modeling]
     C --> D[Model Evaluation Store]
@@ -176,7 +178,8 @@ This is an honest limitation, not a disqualifying one. Most enterprise ML use ca
 
 Understanding how Dataiku manages project lifecycle helps clarify what the governance model actually enforces and where the guardrails are architectural rather than procedural.
 
-```stateDiagram-v2
+```mermaid
+stateDiagram-v2
     [*] --> Development
     Development --> Evaluation : model trained
     Evaluation --> PendingApproval : metrics pass threshold
@@ -266,7 +269,8 @@ Databricks holds the #1 position in Gartner's 2025 Magic Quadrant for Data Scien
 
 Here's how each platform positions on governance maturity versus engineering power:
 
-```quadrantChart
+```mermaid
+quadrantChart
     title Enterprise AI Platforms: Governance vs Engineering Power
     x-axis Low Engineering Power --> High Engineering Power
     y-axis Low Governance Maturity --> High Governance Maturity
@@ -291,7 +295,8 @@ The quadrant reveals the market logic: Dataiku and Domino compete for the high-g
 
 Dataiku is typically not a replacement for your entire data stack. It's a collaboration and governance layer that integrates with existing infrastructure rather than replacing it.
 
-```flowchart LR
+```mermaid
+flowchart LR
     subgraph Sources
         S1[(Snowflake)]
         S2[(BigQuery)]
