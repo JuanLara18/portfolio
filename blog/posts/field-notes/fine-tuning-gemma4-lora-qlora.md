@@ -4,9 +4,9 @@ date: "2026-06-09"
 excerpt: "Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the deep guide — understanding the family, choosing the right variant for your hardware, why full fine-tuning is economically indefensible, how LoRA and QLoRA make adaptation practical on consumer GPUs, and a complete working recipe with Gemma 4 E4B from dataset to deployed adapter."
 tags: ["Fine-tuning", "Gemma 4", "LoRA", "QLoRA", "PEFT", "LLMs", "Hugging Face"]
 headerImage: "/blog/headers/fine-tune-gemma-header.jpg"
-readingTimeMinutes: 28
+readingTimeMinutes: 35
 slug: fine-tuning-gemma4-lora-qlora
-estimatedWordCount: 7000
+estimatedWordCount: 9000
 ---
 
 # Fine-tuning Gemma 4: When Prompting Isn't Enough
@@ -65,6 +65,46 @@ Before choosing a variant, be honest about your hardware:
 | 31B | ~32GB | ~38–42GB | 2× RTX 4090 / A100 80GB |
 
 These are practical estimates for QLoRA at 4-bit precision. CPU inference is possible for E2B and E4B via GGUF (Ollama), but meaningful fine-tuning requires GPU VRAM. The VRAM numbers assume `max_seq_length=2048`; longer sequences increase KV cache requirements proportionally.
+
+### Where to Run: Local, Cloud, or Free
+
+The code in this post runs identically on your local machine, a rented cloud GPU, or a free notebook. There is no difference in the recipe — only in who owns the hardware. This is worth stating explicitly because many guides leave the impression that fine-tuning requires expensive cloud infrastructure. It doesn't. QLoRA on the E4B fits on a 12GB consumer GPU.
+
+**Free options (no cost at all).**
+
+| Platform | GPU | VRAM | Weekly Limit | Supports |
+|---|---|---|---|---|
+| Google Colab Free | T4 | 16 GB | ~12h sessions, variable | E2B, E4B (QLoRA) |
+| Kaggle Notebooks | T4 × 2 | 16 GB each | 30h/week GPU | E2B, E4B (QLoRA) |
+
+Unsloth provides [pre-built Colab notebooks](https://unsloth.ai/docs/models/gemma-4/train) for every Gemma 4 variant — text, vision, and audio — that work on the free tier. You can go from zero to a trained adapter without installing anything locally. For a first fine-tuning experiment, this is the lowest-friction path.
+
+**Low-cost cloud ($0.10–$1.30/hour).**
+
+If you need more VRAM (for the 26B-A4B or 31B), longer sessions, or faster iteration, renting a GPU by the hour is the next step:
+
+| Provider | GPU | VRAM | $/hour | Supports |
+|---|---|---|---|---|
+| Colab Pro | A100 | 40 GB | ~$0.12 (via $12/mo plan) | All variants |
+| RunPod (community) | A30 | 24 GB | ~$0.11 | E2B, E4B, 26B-A4B |
+| RunPod (community) | A100 80GB | 80 GB | ~$0.79 | All variants |
+| Vast.ai | A100 80GB | 80 GB | ~$0.70 | All variants |
+| Lambda Labs | A100 80GB | 80 GB | ~$1.29 | All variants |
+
+RunPod and Vast.ai offer the best price-to-VRAM ratio for one-off fine-tuning runs. Colab Pro at $12/month is the simplest upgrade if you're already comfortable with Colab. Lambda Labs has higher prices but excellent reliability and multi-GPU configurations for the 31B.
+
+**Local hardware.**
+
+If you own a discrete NVIDIA GPU with enough VRAM, you can run the entire workflow on your own machine — no internet required after downloading the model. The relevant tiers:
+
+- **GTX 1660 / RTX 3050 (6–8 GB):** E2B QLoRA only. Tight but functional.
+- **RTX 3060 12GB / RTX 4060 Ti 16GB:** E4B QLoRA with headroom. This is the sweet spot for local fine-tuning.
+- **RTX 3090 / RTX 4090 (24 GB):** E4B at 16-bit LoRA, or 26B-A4B with QLoRA.
+- **2× RTX 4090 or A100 80GB:** 31B QLoRA.
+
+Local fine-tuning requires a working CUDA installation (CUDA 12.1+ recommended), Python 3.10+, and the packages listed in the recipe below. On Windows, WSL2 with Ubuntu is the most reliable path. On Linux and macOS (Apple Silicon via MPS for inference only — training requires NVIDIA GPUs), the setup is straightforward.
+
+The practical recommendation: start with a **free Colab notebook** to validate that your data and hyperparameters work. Once the recipe is stable, move to local hardware or a rented GPU for longer runs and iteration.
 
 ---
 
@@ -178,11 +218,62 @@ The combined effect on the E4B: from ~71 GB for full fine-tuning to ~8–10 GB f
 
 ## Fine-tuning Gemma 4 E4B: The Complete Recipe
 
-Unsloth is the recommended toolchain for Gemma 4 fine-tuning. It provides optimized CUDA kernels for Gemma 4's architecture (including the PLE attention path) and handles the quantization setup automatically.
+### Step 0: Getting the Model
+
+Gemma 4 is released under **Apache 2.0** with no gating on Hugging Face — no access request, no waitlist, no approval delay. You can download the weights immediately.
+
+**What you need installed** before anything else: Python 3.10+, a CUDA-capable GPU with drivers installed, and pip. On Windows, WSL2 with Ubuntu is recommended. On Colab or Kaggle, everything is pre-installed.
+
+**Install the toolchain:**
 
 ```bash
 pip install unsloth transformers peft trl datasets bitsandbytes
 ```
+
+Unsloth is the recommended toolchain for Gemma 4 fine-tuning. It provides optimized CUDA kernels for Gemma 4's architecture (including the PLE attention path), trains ~1.5× faster with ~60% less VRAM than standard Hugging Face training, and handles the quantization setup automatically.
+
+**How the model download works.** When you call `FastLanguageModel.from_pretrained("google/gemma-4-E4B-it")` in Step 1, Hugging Face's `transformers` library downloads the model weights automatically (~8 GB for E4B) and caches them in `~/.cache/huggingface/hub/`. Subsequent runs load from cache — no re-download. On Colab or Kaggle, this takes 3–5 minutes on a good connection.
+
+If you prefer to download the model separately (useful for offline environments, shared servers, or to verify the download before training):
+
+```bash
+pip install huggingface-hub
+huggingface-cli download google/gemma-4-E4B-it
+```
+
+**Try the model before fine-tuning.** Before investing time in training data and hyperparameters, run the base model to understand its default behavior on your task. This gives you a concrete baseline to compare against after fine-tuning.
+
+The quickest path is [Ollama](https://ollama.com/download):
+
+```bash
+ollama pull gemma4:e4b          # Downloads ~9.6 GB (4-bit quantized)
+ollama run gemma4:e4b
+```
+
+This drops you into an interactive chat. Send it a few examples of your target task — you'll immediately see where the base model falls short and what fine-tuning needs to fix.
+
+For a programmatic baseline with Hugging Face Transformers (no Unsloth required):
+
+```python
+from transformers import pipeline
+import torch
+
+pipe = pipeline(
+    "text-generation",
+    model="google/gemma-4-E4B-it",
+    device_map="auto",
+    torch_dtype=torch.bfloat16,
+)
+
+messages = [
+    {"role": "user", "content": "Patient: 58M. Chest pain radiating to left arm, "
+                                 "diaphoresis, onset ~2h ago. BP 142/91, HR 104."},
+]
+output = pipe(messages, max_new_tokens=256)
+print(output[0]["generated_text"][-1]["content"])
+```
+
+Save these baseline outputs. You'll compare them against the fine-tuned model's outputs later.
 
 ### Step 1: Loading the Model
 
@@ -469,6 +560,113 @@ for prompt in eval_prompts:
 
 ---
 
+## Testing Your Fine-Tuned Model
+
+Training is done. You have saved artifacts from Step 5 — adapter files, a merged model, or a GGUF. Now you need to verify that the model actually works outside of training metrics. This section covers three practical paths: loading the adapter in Python, testing via Ollama, and running a structured before/after comparison.
+
+### Loading the Adapter for Inference
+
+If you saved adapter-only files (`model.save_pretrained("gemma4-clinical-adapters")`), load them back with Unsloth:
+
+```python
+from unsloth import FastLanguageModel
+
+model, tokenizer = FastLanguageModel.from_pretrained(
+    "gemma4-clinical-adapters",
+    max_seq_length=2048,
+    load_in_16bit=True,
+)
+FastLanguageModel.for_inference(model)
+
+messages = [
+    {"role": "user", "content": "Patient: 45F, persistent dry cough for 3 weeks, "
+                                 "no fever, non-smoker. SpO2 98%, lungs clear on auscultation."}
+]
+inputs = tokenizer.apply_chat_template(
+    messages, return_tensors="pt", add_generation_prompt=True
+).to(model.device)
+
+output = model.generate(inputs, max_new_tokens=512, use_cache=False)
+print(tokenizer.decode(output[0][inputs.shape[1]:], skip_special_tokens=True))
+```
+
+`FastLanguageModel.for_inference(model)` enables Unsloth's optimized inference path and handles the `use_cache` issue described in the gotchas section below. The `use_cache=False` flag is a safety net — Gemma 4 E4B shares KV state across layers, and cached generation can produce corrupted output without Unsloth's patches.
+
+If you saved a merged model instead, load it the same way but point to the merged directory — no adapter stitching needed:
+
+```python
+model, tokenizer = FastLanguageModel.from_pretrained(
+    "gemma4-clinical-merged",
+    max_seq_length=2048,
+    load_in_16bit=True,
+)
+FastLanguageModel.for_inference(model)
+```
+
+### Testing with Ollama (GGUF Flow)
+
+If you exported to GGUF in Step 5, you can test the fine-tuned model through Ollama — the same interface you might already use for local inference. This is the fastest way to get an interactive chat session with your adapter.
+
+Create a `Modelfile` that points to your exported GGUF:
+
+```dockerfile
+FROM ./gemma4-clinical-gguf/unsloth.Q4_K_M.gguf
+SYSTEM "Extract structured fields from clinical notes. Return valid JSON."
+PARAMETER temperature 0.1
+PARAMETER num_ctx 2048
+```
+
+Register and run it:
+
+```bash
+ollama create gemma4-clinical -f Modelfile
+ollama run gemma4-clinical "Patient: 58M. Chest pain radiating to left arm, diaphoresis, onset ~2h ago."
+```
+
+This gives you a local, self-contained deployment of your fine-tuned model. No Python environment required, no GPU needed for inference (CPU works for E4B GGUF at ~10–15 tokens/sec), and you can share the GGUF file with teammates who just need to run `ollama create` and `ollama run`.
+
+### Before/After Comparison
+
+The most convincing test is a side-by-side: the same prompts, run against both the base model and your fine-tuned version. This script automates it:
+
+```python
+from unsloth import FastLanguageModel
+import torch
+
+test_prompts = [
+    "Patient: 67F, shortness of breath, onset 1 week, worsening at night, bilateral ankle edema.",
+    "42M, fell from ladder, right wrist pain, limited range of motion, visible deformity.",
+    "19F, severe headache, sensitivity to light, neck stiffness, fever 38.9C.",
+]
+
+def generate(model, tokenizer, prompt):
+    FastLanguageModel.for_inference(model)
+    inputs = tokenizer.apply_chat_template(
+        [{"role": "user", "content": prompt}],
+        return_tensors="pt", add_generation_prompt=True,
+    ).to(model.device)
+    with torch.no_grad():
+        out = model.generate(inputs, max_new_tokens=256, temperature=0.1, use_cache=False)
+    return tokenizer.decode(out[0][inputs.shape[1]:], skip_special_tokens=True)
+
+base_model, base_tok = FastLanguageModel.from_pretrained(
+    "google/gemma-4-E4B-it", max_seq_length=2048, load_in_16bit=True,
+)
+ft_model, ft_tok = FastLanguageModel.from_pretrained(
+    "gemma4-clinical-adapters", max_seq_length=2048, load_in_16bit=True,
+)
+
+for prompt in test_prompts:
+    print(f"PROMPT: {prompt}\n")
+    print(f"BASE:\n{generate(base_model, base_tok, prompt)}\n")
+    print(f"FINE-TUNED:\n{generate(ft_model, ft_tok, prompt)}\n")
+    print("=" * 80)
+```
+
+What to look for: the base model will likely produce free-form text with useful content but inconsistent structure. The fine-tuned model should produce output that matches your training format — in this example, structured JSON with consistent field names. If the difference isn't immediately obvious, the fine-tuning hasn't worked well enough and you should revisit your training data before adjusting hyperparameters.
+
+---
+
 ## The Adaptation Landscape: Choosing What to Use
 
 ```mermaid
@@ -508,6 +706,22 @@ timeline
 The LoRA paper is from 2021. QLoRA is 2023. What you're doing today — taking a model scoring 89.2% on AIME 2026 and adapting it to your domain on consumer hardware in a few hours — did not exist as a practical workflow three years ago.
 
 The bottleneck has shifted from compute to judgment. Do you have enough quality training examples? Are you measuring the right things in evaluation? Are you being honest about when fine-tuning actually helps versus when the problem is somewhere else in the stack?
+
+---
+
+## Known Gotchas
+
+These are specific to Gemma 4 and the current toolchain. They'll save you debugging time.
+
+**`use_cache=True` produces garbage on E2B and E4B.** Gemma 4's smaller variants share KV state across layers (`num_kv_shared_layers=18` on E4B). Standard Hugging Face cache assumes independent KV per layer, so cached generation produces corrupted attention and meaningless output. Fix: use `use_cache=False` in `model.generate()`, or use `FastLanguageModel.for_inference(model)` which patches this automatically. This does not affect the 26B-A4B or 31B variants.
+
+**Training loss of 13–15 is normal for E4B multimodal.** The multimodal architecture produces higher raw loss values than text-only models — this is a known artifact of how the loss is computed across modalities, not a training failure. If loss exceeds 100, that typically indicates a gradient accumulation configuration error (check that `gradient_accumulation_steps` divides your dataset size evenly).
+
+**Transformers from source may be required without Unsloth.** If you use Hugging Face Transformers directly (without Unsloth), the `Gemma4ForConditionalGeneration` class and related layer types like `Gemma4ClippableLinear` require installing `transformers` from the main branch: `pip install git+https://github.com/huggingface/transformers.git`. Unsloth bundles its own patched implementations, so this only matters if you're working outside the Unsloth ecosystem.
+
+**First run downloads ~8 GB (E4B).** The model download happens silently inside `from_pretrained()`. On Colab or Kaggle, expect 3–5 minutes. On a slow connection, this can exceed session timeouts. If you're on unreliable internet, pre-download with `huggingface-cli download google/gemma-4-E4B-it` before starting the training script.
+
+**Colab free tier sessions disconnect.** Google Colab's free tier kills idle sessions and has variable GPU availability. For training runs longer than 1–2 hours, save checkpoints frequently (`save_steps=100` in the recipe) so you can resume. Kaggle's 30h/week limit is more predictable but still finite — plan your iterations.
 
 ---
 
