@@ -12,7 +12,7 @@
         "Architectures",
         "Research Paper"
       ],
-      "headerImage": "/blog/headers/models-header.jpg",
+      "headerImage": "/blog/headers/mamba-header.jpg",
       "readingTimeMinutes": 29,
       "slug": "mamba-selective-state-spaces",
       "estimatedWordCount": 6100,
@@ -94,7 +94,7 @@
         "MLOps",
         "Guardrails"
       ],
-      "headerImage": "/blog/headers/data-cloud-header.jpg",
+      "headerImage": "/blog/headers/enterprise-stack-header.jpg",
       "readingTimeMinutes": 28,
       "slug": "enterprise-ai-platform-selection",
       "estimatedWordCount": 4982,
@@ -114,7 +114,7 @@
         "Knowledge Bases",
         "Semantic Web"
       ],
-      "headerImage": "/blog/headers/enterprise-kb-header.jpg",
+      "headerImage": "/blog/headers/ontology-header.jpg",
       "readingTimeMinutes": 25,
       "slug": "ontologies-building-knowledge-bases",
       "estimatedWordCount": 5153,
@@ -582,7 +582,7 @@
         "Access Control",
         "Knowledge Graphs"
       ],
-      "headerImage": "/blog/headers/enterprise-stack-header.jpg",
+      "headerImage": "/blog/headers/enterprise-kb-header.jpg",
       "readingTimeMinutes": 50,
       "slug": "enterprise-knowledge-bases",
       "estimatedWordCount": 8800,
@@ -1283,6 +1283,6 @@
       "readingTime": 20
     }
   ],
-  "lastUpdated": "2026-04-10T23:29:20.349Z",
+  "lastUpdated": "2026-04-10T23:39:38.025Z",
   "totalPosts": 62
 }
