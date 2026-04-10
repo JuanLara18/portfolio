@@ -305,10 +305,10 @@ quadrantChart
     title Vector Databases: Operational Complexity vs Performance at Scale
     x-axis Low Operational Complexity --> High Operational Complexity
     y-axis Lower Performance / Scale --> Higher Performance / Scale
-    quadrant-1 High perf, high ops (enterprise self-managed)
-    quadrant-2 High perf, low ops (ideal)
-    quadrant-3 Lower perf, low ops (dev/prototype)
-    quadrant-4 Lower perf, high ops (avoid)
+    quadrant-1 High perf, high ops
+    quadrant-2 High perf, low ops
+    quadrant-3 Lower perf, low ops
+    quadrant-4 Lower perf, high ops
     Chroma: [0.08, 0.15]
     Pinecone: [0.12, 0.65]
     pgvector: [0.25, 0.42]
