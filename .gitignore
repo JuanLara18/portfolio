@@ -107,3 +107,5 @@ pnpm-lock.yaml
 .nuxt
 .vercel
 .serverless
+
+.claude/*
