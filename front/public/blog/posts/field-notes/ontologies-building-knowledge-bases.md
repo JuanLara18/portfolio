@@ -3,7 +3,7 @@ title: "Ontologies: The Blueprint Behind Every Knowledge Base That Actually Work
 date: "2026-10-15"
 excerpt: "Ontologies turn chaotic data into structured knowledge. Learn how to design, build, and deploy ontology-driven knowledge bases — from RDF triples to production-ready systems that power RAG, search, and enterprise AI."
 tags: ["Ontology Engineering", "Knowledge Graphs", "OWL", "RDF", "Knowledge Bases", "Semantic Web"]
-headerImage: "/blog/headers/enterprise-kb-header.jpg"
+headerImage: "/blog/headers/ontology-header.jpg"
 readingTimeMinutes: 25
 slug: ontologies-building-knowledge-bases
 estimatedWordCount: 5153

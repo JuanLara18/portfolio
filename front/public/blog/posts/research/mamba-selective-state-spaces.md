@@ -3,7 +3,7 @@ title: "Mamba: The Paper That Asked If Attention Was Really All You Need"
 date: "2026-11-19"
 excerpt: "A line-by-line walkthrough of Gu and Dao's 2023 Mamba paper: what state space models are, where they came from, why S4 nearly worked, the single insight that made them competitive with Transformers, and the hardware-aware trick that made them fast. Written to be understood, not just cited."
 tags: ["Mamba", "State Space Models", "Sequence Modeling", "Deep Learning Theory", "Architectures", "Research Paper"]
-headerImage: "/blog/headers/models-header.jpg"
+headerImage: "/blog/headers/mamba-header.jpg"
 readingTimeMinutes: 29
 slug: mamba-selective-state-spaces
 estimatedWordCount: 6100
