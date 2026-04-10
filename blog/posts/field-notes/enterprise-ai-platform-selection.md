@@ -3,7 +3,7 @@ title: "Enterprise AI Stack: A Decision Framework That Outlasts the Hype Cycle"
 date: "2026-10-22"
 excerpt: "Choosing between No-Code, Low-Code, and custom AI platforms shouldn't require a PhD in vendor marketing. This framework breaks the decision into six durable axes — scope, gateway, guardrails, observability, contingency, and interface — so your team picks the right stack for each use case, not just the loudest one."
 tags: ["Enterprise AI", "AI Architecture", "Platform Selection", "AI Gateway", "MLOps", "Guardrails"]
-headerImage: "/blog/headers/data-cloud-header.jpg"
+headerImage: "/blog/headers/enterprise-stack-header.jpg"
 readingTimeMinutes: 28
 slug: enterprise-ai-platform-selection
 estimatedWordCount: 4982
