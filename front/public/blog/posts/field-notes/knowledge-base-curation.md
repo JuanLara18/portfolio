@@ -3,7 +3,7 @@ title: "Curating Knowledge Bases: The Unglamorous Work That Makes RAG Actually W
 date: "2026-11-05"
 excerpt: "Everyone talks about chunking strategies and embedding models. Nobody talks about what happens before — the document triage, token budget math, metadata enrichment, deduplication, and freshness policies that determine whether your knowledge base is an asset or a liability. This post covers the full curation lifecycle."
 tags: ["Knowledge Bases", "RAG", "Data Curation", "Embeddings", "Chunking", "Document Processing", "Metadata"]
-headerImage: "/blog/headers/enterprise-kb-header.jpg"
+headerImage: "/blog/headers/curation-header.jpg"
 readingTimeMinutes: 26
 slug: knowledge-base-curation
 estimatedWordCount: 5545
