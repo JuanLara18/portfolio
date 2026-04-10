@@ -3,10 +3,10 @@ title: "Curating Knowledge Bases: The Unglamorous Work That Makes RAG Actually W
 date: "2026-11-05"
 excerpt: "Everyone talks about chunking strategies and embedding models. Nobody talks about what happens before — the document triage, token budget math, metadata enrichment, deduplication, and freshness policies that determine whether your knowledge base is an asset or a liability. This post covers the full curation lifecycle."
 tags: ["Knowledge Bases", "RAG", "Data Curation", "Embeddings", "Chunking", "Document Processing", "Metadata"]
-headerImage: "/blog/headers/enterprise-kb-header.jpg"
+headerImage: "/blog/headers/curation-header.jpg"
 readingTimeMinutes: 26
 slug: knowledge-base-curation
-estimatedWordCount: 6000
+estimatedWordCount: 5545
 ---
 
 # Curating Knowledge Bases: The Unglamorous Work That Makes RAG Actually Work
@@ -192,6 +192,44 @@ if not result["fits"]:
 ```
 
 **The rule:** your chunk size (in tokens) must always be strictly smaller than your embedding model's context window. If you're using `text-embedding-3-small` (8,191 tokens), your chunks should be at most 7,500 tokens to leave a safety margin — and in practice, 512-1,024 tokens is where most benchmarks show optimal retrieval performance.
+
+### Why Chunk Boundaries Matter More Than Chunk Size
+
+Token budgets tell you the *maximum* size. But where you cut matters more than how much you cut. A chunk that splits a sentence in half produces two fragments — neither of which makes sense to the embedding model.
+
+Consider this passage from an HR policy:
+
+> *Employees who have completed their probationary period of 90 days are entitled to 15 days of annual leave per calendar year, prorated for partial years. Employees who have not yet completed probation are entitled to 5 days.*
+
+If your chunker splits after "prorated for partial years," the second chunk starts with "Employees who have not yet completed probation are entitled to 5 days." Without the first sentence's context, this chunk retrieves incorrectly for queries like "how many vacation days do new employees get?" — it answers 5 days but doesn't explain the probation condition.
+
+**Boundary strategies, ranked by effectiveness:**
+
+| Strategy | How It Works | Best For |
+|----------|-------------|----------|
+| **Recursive character splitting** | Split on paragraphs, then sentences, then words | General-purpose default |
+| **Semantic splitting** | Use an embedding model to detect topic shifts within a document | Long-form documents with multiple topics |
+| **Section-aware splitting** | Respect document structure (headers, numbered sections) | Technical documentation, policies |
+| **Sliding window** | Fixed-size chunks with N% overlap between consecutive chunks | Dense documents where context bleeds across boundaries |
+
+The sliding window approach deserves special attention. A 10-20% overlap means that the boundary content appears in two chunks — increasing your storage by 10-20%, but ensuring that sentences split by a boundary are still complete in at least one chunk. For most production systems, **512-token chunks with 50-token overlaps** strike the right balance between completeness and storage cost.
+
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=512,
+    chunk_overlap=50,
+    separators=["\n\n", "\n", ". ", " "],  # paragraph > newline > sentence > word
+    length_function=lambda t: len(tiktoken.encoding_for_model(
+        "text-embedding-3-small"
+    ).encode(t)),
+)
+
+chunks = splitter.split_text(document_text)
+```
+
+Note the `length_function` override: by default, LangChain counts *characters*, not tokens. Without this fix, your "512-token" chunks might actually be 600+ tokens, pushing them past the embedding model's limit.
 
 ### The Cohere Trap
 
@@ -543,6 +581,150 @@ def quality_gate(chunk: dict, existing_embeddings=None) -> tuple[bool, list[str]
 ```
 
 Run this on every chunk before embedding. Log the rejections. Review them weekly to calibrate thresholds — if you're rejecting 30% of your chunks, either your extraction pipeline is broken or your thresholds are too aggressive.
+
+## Format-Aware Extraction: Not All Documents Are Created Equal
+
+Before chunking or metadata enrichment can happen, you need clean text. And "clean text" is deceptively hard to get from enterprise documents.
+
+### The Format Problem
+
+Different document formats break in different ways:
+
+| Format | Common Failures | Mitigation |
+|--------|----------------|------------|
+| **PDF (digital)** | Tables lose structure, headers repeat on every page, footnotes mix into body text | Use layout-aware extractors (PyMuPDF, Unstructured.io) that detect tables and headers separately |
+| **PDF (scanned)** | OCR errors, especially on low-quality scans. Handwriting is unreliable. | Run OCR quality checks; reject pages with confidence below 70% |
+| **DOCX/Word** | Track changes and comments get extracted as content. Embedded images are invisible. | Strip revisions programmatically; extract image captions if available |
+| **PowerPoint** | Speaker notes vs. slide text ambiguity. Diagrams are invisible. | Extract both slide text and notes; tag which is which in metadata |
+| **Spreadsheets** | Rows become meaningless without headers. Formulas export as static values. | Convert to markdown tables preserving headers; note formula presence |
+| **HTML/Confluence** | Navigation, sidebars, and templates pollute the content. Macros render as placeholders. | Use readability-style extraction; expand macros before extracting |
+
+The critical insight: **extraction quality sets a ceiling on retrieval quality.** A perfectly chunked, perfectly embedded chunk of garbage text is still garbage. Teams that skip extraction quality in favor of sophisticated retrieval architectures are optimizing the wrong layer.
+
+### A Practical Extraction Pipeline
+
+```python
+from pathlib import Path
+
+
+def extract_document(path: Path) -> dict:
+    """Route documents to format-specific extractors."""
+    suffix = path.suffix.lower()
+
+    extractors = {
+        ".pdf": extract_pdf,        # PyMuPDF with table detection
+        ".docx": extract_docx,      # python-docx, strip tracked changes
+        ".pptx": extract_pptx,      # slide text + speaker notes
+        ".xlsx": extract_spreadsheet,  # markdown tables with headers
+        ".html": extract_html,      # readability extraction
+        ".md": extract_markdown,    # already clean, just read
+    }
+
+    extractor = extractors.get(suffix)
+    if not extractor:
+        return {"text": "", "quality": 0.0, "error": f"Unsupported format: {suffix}"}
+
+    result = extractor(path)
+
+    # Post-extraction quality check
+    result["extractability_score"] = score_extraction_quality(result["text"])
+
+    if result["extractability_score"] < 0.5:
+        result["flag"] = "LOW_QUALITY_EXTRACTION"
+
+    return result
+
+
+def score_extraction_quality(text: str) -> float:
+    """Score 0-1 based on text cleanliness."""
+    if not text.strip():
+        return 0.0
+
+    checks = []
+
+    # Garbled character ratio
+    garbled = sum(1 for c in text if ord(c) > 127 and not c.isalpha())
+    checks.append(1.0 - min(garbled / max(len(text), 1), 1.0))
+
+    # Sentence completeness (ends with proper punctuation)
+    sentences = [s.strip() for s in text.split(".") if s.strip()]
+    if sentences:
+        complete = sum(1 for s in sentences if len(s.split()) >= 3)
+        checks.append(complete / len(sentences))
+
+    # Word length distribution (garbled text has unusual word lengths)
+    words = text.split()
+    if words:
+        avg_len = sum(len(w) for w in words) / len(words)
+        checks.append(1.0 if 3 < avg_len < 12 else 0.5)
+
+    return sum(checks) / len(checks) if checks else 0.0
+```
+
+The extraction pipeline should run *once* and cache its results. Re-extracting from source on every ingestion cycle wastes compute and introduces inconsistency if the extractor is updated between runs.
+
+## Monitoring Curation Health in Production
+
+Curation isn't done when you deploy. A knowledge base without monitoring is a knowledge base that silently decays. You need three categories of metrics:
+
+### Coverage Metrics
+
+Track what percentage of your organization's knowledge is actually in the knowledge base:
+
+- **Source coverage**: How many of your document sources (SharePoint sites, Confluence spaces, S3 buckets) are connected to the ingestion pipeline?
+- **Document coverage**: Of the documents in connected sources, what percentage has been indexed? What percentage was excluded at triage, and why?
+- **Temporal coverage**: What's the distribution of `last_verified` dates? If 40% of your corpus was last verified more than a year ago, you have a freshness problem.
+
+### Quality Metrics
+
+Monitor the health of what's already indexed:
+
+- **Freshness ratio**: Percentage of chunks in FRESH status (target: above 80%)
+- **Duplicate ratio**: Percentage of chunks flagged as near-duplicates (target: below 5%)
+- **Quality gate rejection rate**: Percentage of incoming chunks rejected by the quality gate. A sudden spike means either the source quality dropped or the extraction pipeline broke.
+- **Average chunk token count**: If this drifts significantly, something changed in the chunking configuration or the document characteristics.
+
+### Retrieval-Linked Metrics
+
+The most important metrics tie curation to actual retrieval quality:
+
+- **Empty retrieval rate**: How often does a query return zero relevant results? This signals coverage gaps — the knowledge base doesn't contain what users are asking about.
+- **Stale retrieval rate**: How often does a query return chunks in STALE status? Rising stale retrieval means users are getting outdated information.
+- **Conflict retrieval rate**: How often does a query return contradictory chunks? This signals unresolved conflicts in the corpus.
+- **User feedback signals**: If your RAG system has a thumbs-up/thumbs-down mechanism, correlate negative feedback with chunk metadata. You'll find patterns — "all the bad answers come from chunks extracted from scanned PDFs" — that point directly at curation failures.
+
+```python
+def curation_health_report(knowledge_base) -> dict:
+    """Generate a curation health dashboard."""
+    chunks = knowledge_base.get_all_chunks()
+    total = len(chunks)
+
+    fresh = sum(1 for c in chunks
+                if classify_freshness(c["last_verified"], c["doc_type"]) == "FRESH")
+    stale = sum(1 for c in chunks
+                if classify_freshness(c["last_verified"], c["doc_type"]) == "STALE")
+
+    report = {
+        "total_chunks": total,
+        "freshness_ratio": fresh / total,
+        "staleness_ratio": stale / total,
+        "avg_token_count": sum(c["token_count"] for c in chunks) / total,
+        "low_quality_count": sum(1 for c in chunks
+                                 if c.get("extractability_score", 1) < 0.5),
+    }
+
+    # Health verdict
+    if report["freshness_ratio"] >= 0.8 and report["low_quality_count"] / total < 0.05:
+        report["status"] = "HEALTHY"
+    elif report["freshness_ratio"] >= 0.6:
+        report["status"] = "DEGRADED"
+    else:
+        report["status"] = "CRITICAL"
+
+    return report
+```
+
+Run this report weekly. Pipe it to Slack, email, or your team's dashboard. The moment someone asks "is our knowledge base reliable?" you should have numbers, not anecdotes.
 
 ## The Curation Checklist
 

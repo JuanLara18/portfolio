@@ -3,7 +3,7 @@ title: "Enterprise Knowledge Bases: From RAG Pipelines to Agent-Ready Context En
 date: "2026-04-21"
 excerpt: "Building knowledge bases that serve both humans and AI agents requires more than chunking and vector search. This guide covers the complete architecture — from knowledge engineering and domain ontologies through chunking hierarchies and permission-aware retrieval to the unified context engines and MCP-based tool interfaces that make enterprise knowledge agent-ready."
 tags: ["Knowledge Bases", "RAG", "AI Agents", "Knowledge Engineering", "Enterprise AI", "MCP", "Context Engine", "Chunking", "Access Control", "Knowledge Graphs"]
-headerImage: "/blog/headers/enterprise-kb-header.jpg"
+headerImage: "/blog/headers/enterprise-stack-header.jpg"
 readingTimeMinutes: 50
 slug: enterprise-knowledge-bases
 estimatedWordCount: 8800
