@@ -30,7 +30,7 @@ Personal site built to share research, algorithmic analysis, and mathematical pr
 | Audio | edge-tts (EN/ES voices) · Ollama + gemma4 for ES translation |
 | Deploy | GitHub Actions → GitHub Pages |
 
-## Blog — 67 posts across 3 categories
+## Writing
 
 **Curiosities** — Mathematical results that break intuition
 `Collatz Conjecture` · `Gödel's Incompleteness` · `Tetris is NP-Complete` · `1+2+3+... = -1/12`
@@ -38,7 +38,7 @@ Personal site built to share research, algorithmic analysis, and mathematical pr
 **Field Notes** — Engineering & ML in practice
 `Docker` · `Reinforcement Learning` · `ML Infrastructure` · `Production LLMs`
 
-**Research** — Paper breakdowns
+**Research** — Close reads of foundational ML papers
 `Attention Is All You Need` · `The Manifold Hypothesis` · `Embeddings: Geometry of Meaning`
 
 ## Run locally
