@@ -80,15 +80,28 @@ function sanitizeSvgXmlForSharp(svg) {
  * MathJax SVGs use `ex` units for width/height. librsvg on Windows cannot
  * resolve `ex` without a font context and falls back to the raw viewBox
  * dimensions, producing images 30-50× too large. Converting to explicit `px`
- * (1ex = 8px, the CSS default at 16px font-size) gives librsvg a concrete
- * pixel target and produces correctly-proportioned output.
+ * gives librsvg a concrete pixel target and produces correctly-proportioned
+ * output whose *intrinsic* pixel size maps predictably to PDF points — that
+ * predictability is what lets every equation render at a consistent visual
+ * size regardless of width or complexity.
+ *
+ * `exToPx` is calibrated so that after rasterization at `MATH_DENSITY`, the
+ * PDF renderer can scale by a fixed pt-per-px factor (`MATH_PT_PER_PX`) and
+ * have display math sit at ~13pt visual height and inline math at ~10pt.
  */
-function normalizeMathSvgDimensions(svg) {
-  const EX_TO_PX = 8;
+function normalizeMathSvgDimensions(svg, exToPx = 8) {
   return svg
-    .replace(/\bwidth="([\d.]+)ex"/, (_, w) => `width="${Math.round(parseFloat(w) * EX_TO_PX)}px"`)
-    .replace(/\bheight="([\d.]+)ex"/, (_, h) => `height="${Math.round(parseFloat(h) * EX_TO_PX)}px"`);
+    .replace(/\bwidth="([\d.]+)ex"/, (_, w) => `width="${Math.round(parseFloat(w) * exToPx)}px"`)
+    .replace(/\bheight="([\d.]+)ex"/, (_, h) => `height="${Math.round(parseFloat(h) * exToPx)}px"`);
 }
+
+// Shared math rasterization constants. Changing `MATH_DENSITY` re-calibrates
+// the whole pipeline: the renderer multiplies `info.width` by `MATH_PT_PER_PX`
+// to get PDF points, so density and pt-per-px must stay consistent.
+const MATH_DENSITY = 320;
+const MATH_PT_PER_PX = 72 / MATH_DENSITY; // = 0.225
+const MATH_DISPLAY_EX_TO_PX = 7;  // display math visual em
+const MATH_INLINE_EX_TO_PX = 5;   // inline math visual em (slightly under body)
 
 async function rasterizeMathSvg(svgString, opts = {}) {
   const sharp = require('sharp');
@@ -154,7 +167,15 @@ async function prerenderMath(posts) {
     const svg = renderMathSVG(s, true);
     if (svg) {
       try {
-        displayMap.set(s, await rasterizeMathSvg(svg, { maxWidthPx: 2400, paddingPx: 22, density: 240 }));
+        // Normalize ex→px with display-calibrated scale, then rasterize at
+        // fixed density with no width cap and no enlargement so the PNG's
+        // intrinsic pixel size stays proportional to the equation itself.
+        const normalized = normalizeMathSvgDimensions(svg, MATH_DISPLAY_EX_TO_PX);
+        displayMap.set(s, await rasterizeMathSvg(normalized, {
+          paddingPx: 8,
+          density: MATH_DENSITY,
+          withoutEnlargement: true,
+        }));
       } catch (e) {
         console.warn(`  ⚠ Display math rasterize failed: ${e.message}`);
       }
@@ -164,7 +185,12 @@ async function prerenderMath(posts) {
     const svg = renderMathSVG(s, false);
     if (svg) {
       try {
-        inlineMap.set(s, await rasterizeMathSvg(normalizeMathSvgDimensions(svg), { maxWidthPx: 800, paddingPx: 4, density: 320, withoutEnlargement: true }));
+        const normalized = normalizeMathSvgDimensions(svg, MATH_INLINE_EX_TO_PX);
+        inlineMap.set(s, await rasterizeMathSvg(normalized, {
+          paddingPx: 4,
+          density: MATH_DENSITY,
+          withoutEnlargement: true,
+        }));
       } catch (e) {
         console.warn(`  ⚠ Inline math rasterize failed: ${e.message}`);
       }
@@ -351,7 +377,43 @@ async function prerenderMermaid(posts) {
 
 const BLOG_DIR = path.join(__dirname, '..', 'public', 'blog', 'posts');
 const OUTPUT_DIR = path.join(__dirname, '..', 'output');
-const OUTPUT_FILE = path.join(OUTPUT_DIR, 'blog-compilation.pdf');
+
+// ─── CLI flags ────────────────────────────────────────────────────────────────
+// --sample              render a curated 3-post set that exercises every renderer
+// --posts=a,b,c         render only posts whose slug matches any of the given ids
+// --limit=N             keep at most N posts per category (after other filters)
+// Output filename switches to blog-compilation-sample.pdf when any filter is active
+// so the full compilation is never overwritten by a quick iteration.
+
+function parseCliFlags(argv) {
+  const flags = { sample: false, posts: null, limit: null };
+  for (const arg of argv.slice(2)) {
+    if (arg === '--sample') flags.sample = true;
+    else if (arg.startsWith('--posts=')) {
+      flags.posts = arg.slice('--posts='.length).split(',').map((s) => s.trim()).filter(Boolean);
+    } else if (arg.startsWith('--limit=')) {
+      const n = parseInt(arg.slice('--limit='.length), 10);
+      if (Number.isFinite(n) && n > 0) flags.limit = n;
+    }
+  }
+  return flags;
+}
+
+// Curated sample: one post per category, each covering a different mix of
+// renderers (math, mermaid, code, tables) so a single fast run validates the
+// whole pipeline without touching the other ~60 posts.
+const SAMPLE_SLUGS = new Set([
+  'benfords-law',              // curiosities: math + mermaid + code + tables
+  'lakehouse-architecture',    // field-notes: mermaid-heavy + code + tables
+  'attention-is-all-you-need', // research: math + mermaid + code + tables
+]);
+
+const CLI = parseCliFlags(process.argv);
+const IS_FILTERED = CLI.sample || CLI.posts || CLI.limit;
+const OUTPUT_FILE = path.join(
+  OUTPUT_DIR,
+  IS_FILTERED ? 'blog-compilation-sample.pdf' : 'blog-compilation.pdf',
+);
 
 // ─── Style Configuration ───────────────────────────────────────────────────────
 // Change any value here to adjust the entire PDF look in one place.
@@ -668,27 +730,47 @@ function tokenizeBlocks(md) {
 
 // ─── Inline Tokenizer ──────────────────────────────────────────────────────────
 
-function tokenizeInline(text) {
-  text = text.replace(/<[^>]+>/g, ''); // strip HTML tags
+// Recursive so that nested markdown (e.g. `**[link](url)**` — a link inside
+// bold, which shows up constantly in "Going Deeper" reading lists) keeps its
+// outer formatting flags while still parsing the inner link. The single-pass
+// version captured the inner text as a plain bold segment, so brackets and
+// URLs bled into the document verbatim.
+function parseInlineSegs(text, base) {
   const re =
     /!\[([^\]]*)\]\([^)]+\)|\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`|\[([^\]]+)\]\(([^)]+)\)/g;
-  const segs = [];
+  const out = [];
   let last = 0;
   let m;
-
   while ((m = re.exec(text)) !== null) {
-    if (m.index > last) segs.push({ t: text.slice(last, m.index) });
-    if (m[1] != null)    segs.push({ t: `[Image: ${m[1] || 'figure'}]`, italic: true });
-    else if (m[2])       segs.push({ t: m[2], bold: true, italic: true });
-    else if (m[3])       segs.push({ t: m[3], bold: true });
-    else if (m[4])       segs.push({ t: m[4], italic: true });
-    else if (m[5])       segs.push({ t: m[5], code: true });
-    else if (m[6])       segs.push({ t: m[6], link: m[7] });
+    if (m.index > last) out.push({ ...base, t: text.slice(last, m.index) });
+    if (m[1] != null) {
+      out.push({ ...base, t: `[Image: ${m[1] || 'figure'}]`, italic: true });
+    } else if (m[2]) {
+      out.push(...parseInlineSegs(m[2], { ...base, bold: true, italic: true }));
+    } else if (m[3]) {
+      out.push(...parseInlineSegs(m[3], { ...base, bold: true }));
+    } else if (m[4]) {
+      out.push(...parseInlineSegs(m[4], { ...base, italic: true }));
+    } else if (m[5]) {
+      out.push({ ...base, t: m[5], code: true });
+    } else if (m[6]) {
+      // `m[7]` captures everything between `(…)` including an optional
+      // `"title"` trailer — keep only the URL so the link annotation doesn't
+      // get the title glued onto it.
+      const rawUrl = (m[7] || '').trim();
+      const url = rawUrl.split(/\s+/)[0].replace(/[<>]/g, '');
+      // Link text itself may contain formatting; recurse and attach `link`.
+      out.push(...parseInlineSegs(m[6], { ...base, link: url }));
+    }
     last = m.index + m[0].length;
   }
-  if (last < text.length) segs.push({ t: text.slice(last) });
+  if (last < text.length) out.push({ ...base, t: text.slice(last) });
+  return out;
+}
 
-  return segs.filter((s) => s.t);
+function tokenizeInline(text) {
+  text = text.replace(/<[^>]+>/g, ''); // strip HTML tags
+  return parseInlineSegs(text, {}).filter((s) => s.t && s.t.length);
 }
 
 function stripInline(text) {
@@ -839,11 +921,11 @@ function measureItemWidth(doc, item, size, color) {
   if (!chunk) return 0;
   if (item.code) {
     doc.font(F.m).fontSize(size - 1).fillColor(C.code);
-  } else if (item.link) {
-    doc.font(F.b).fontSize(size).fillColor(C.link);
   } else {
+    // Link items can still be bold / italic (e.g. `**[link](url)**`), so
+    // resolve the font from flags first and only override the colour.
     const font = item.bold && item.italic ? F.bi : item.bold ? F.B : item.italic ? F.i : F.b;
-    doc.font(font).fontSize(size).fillColor(color);
+    doc.font(font).fontSize(size).fillColor(item.link ? C.link : color);
   }
   return doc.widthOfString(chunk);
 }
@@ -881,9 +963,25 @@ function drawLineItems(doc, items, x, y, size, color, maxW) {
     } else if (it.link) {
       const t = it.t != null ? String(it.t) : '';
       if (!t) continue;
-      doc.font(F.b).fontSize(size).fillColor(C.link);
+      const font = it.bold && it.italic ? F.bi : it.bold ? F.B : it.italic ? F.i : F.b;
+      doc.font(font).fontSize(size).fillColor(C.link);
       const itemW = measureItemWidth(doc, it, size, color);
       doc.text(t, cx, y, { lineBreak: false, align: 'left' });
+      // Attach a clickable annotation + underline for actually navigable
+      // URLs only; relative / anchor links stay blue text so a PDF reader
+      // doesn't try (and fail) to resolve them. `doc.link`/`doc.underline`
+      // take an explicit rect so the annotation bounds are always defined —
+      // passing `link:` through `doc.text({lineBreak:false})` leaves the
+      // annotation rect as NaN inside PDFKit.
+      if (/^(https?:|mailto:|tel:)/i.test(it.link)) {
+        const linkH = doc.currentLineHeight();
+        doc.link(cx, y, itemW, linkH, it.link);
+        doc.save();
+        doc.moveTo(cx, y + linkH - 1)
+          .lineTo(cx + itemW, y + linkH - 1)
+          .lineWidth(0.5).strokeColor(C.link).stroke();
+        doc.restore();
+      }
       cx += itemW;
     } else {
       const t = it.t != null ? String(it.t) : '';
@@ -1080,57 +1178,100 @@ function renderBlock(doc, token) {
       const wrappedLines = lines.flatMap((lineTokens) => wrapCodeLineTokens(doc, lineTokens, maxCodeW));
       while (wrappedLines.length && !wrappedLines[wrappedLines.length - 1].length) wrappedLines.pop();
       const lineH = doc.currentLineHeight() + 3;
-      const boxH = (wrappedLines.length * lineH) + pad * 2;
 
-      ensure(doc, boxH + 20);
-      const y0 = doc.y;
+      // Draw one chunk of pre-wrapped code lines into a rounded box at (y0).
+      // Returns the bottom y of the box so the caller can advance doc.y.
+      const drawCodeChunk = (chunk, y0, { showLangLabel, continuedFrom, continuesBelow }) => {
+        const chunkBoxH = chunk.length * lineH + pad * 2;
 
-      // Light background + subtle border (GitHub-style)
-      doc.save();
-      doc.roundedRect(M.left, y0, w, boxH, 4).fill('#f6f8fa');
-      doc.roundedRect(M.left, y0, w, boxH, 4).lineWidth(0.75).stroke('#d0d7de');
-      doc.restore();
+        doc.save();
+        doc.roundedRect(M.left, y0, w, chunkBoxH, 4).fill('#f6f8fa');
+        doc.roundedRect(M.left, y0, w, chunkBoxH, 4).lineWidth(0.75).stroke('#d0d7de');
+        doc.restore();
 
-      // Language label — small, right-aligned, muted
-      if (token.lang) {
-        doc.font(F.b).fontSize(7).fillColor('#57606a')
-          .text(token.lang.toLowerCase(), M.left + pad, y0 + pad * 0.6,
-                { width: w - pad * 2, align: 'right', lineBreak: false });
-      }
+        // Language label on the first chunk, "continued" marker on later ones.
+        if (showLangLabel && token.lang) {
+          doc.font(F.b).fontSize(7).fillColor('#57606a')
+            .text(token.lang.toLowerCase(), M.left + pad, y0 + pad * 0.6,
+                  { width: w - pad * 2, align: 'right', lineBreak: false });
+        } else if (continuedFrom) {
+          doc.font(F.i).fontSize(7).fillColor('#57606a')
+            .text('… continued', M.left + pad, y0 + pad * 0.6,
+                  { width: w - pad * 2, align: 'right', lineBreak: false });
+        }
 
-      // Code lines with GitHub-light syntax colours
-      let curY = y0 + pad;
-      wrappedLines.forEach((lineTokens) => {
-        let curX = M.left + pad;
-        lineTokens.forEach((tok) => {
-          let color = '#24292f'; // default: near-black body text
-          const c = tok.classes.join(' ');
-          if      (c.includes('keyword'))                               color = '#cf222e'; // red
-          else if (c.includes('string'))                                color = '#0a3069'; // dark blue
-          else if (c.includes('comment'))                               color = '#6e7781'; // gray
-          else if (c.includes('number') || c.includes('literal'))      color = '#0550ae'; // blue
-          else if (c.includes('title.function') || c.includes('function')) color = '#6639ba'; // purple
-          else if (c.includes('title.class') || c.includes('class'))   color = '#953800'; // brown
-          else if (c.includes('built_in'))                              color = '#0550ae'; // blue
-          else if (c.includes('variable') || c.includes('attr'))       color = '#116329'; // green
-          else if (c.includes('property'))                              color = '#0550ae'; // blue
-          else if (c.includes('tag'))                                   color = '#116329'; // green
-          doc.font(F.m).fontSize(S.code).fillColor(color);
-          const cleanText = tok.text;
-          doc.text(cleanText, curX, curY, { lineBreak: false });
-          curX += doc.widthOfString(cleanText);
+        let curY = y0 + pad;
+        chunk.forEach((lineTokens) => {
+          let curX = M.left + pad;
+          lineTokens.forEach((tok) => {
+            let color = '#24292f';
+            const c = tok.classes.join(' ');
+            if      (c.includes('keyword'))                                  color = '#cf222e';
+            else if (c.includes('string'))                                   color = '#0a3069';
+            else if (c.includes('comment'))                                  color = '#6e7781';
+            else if (c.includes('number') || c.includes('literal'))         color = '#0550ae';
+            else if (c.includes('title.function') || c.includes('function')) color = '#6639ba';
+            else if (c.includes('title.class') || c.includes('class'))      color = '#953800';
+            else if (c.includes('built_in'))                                 color = '#0550ae';
+            else if (c.includes('variable') || c.includes('attr'))          color = '#116329';
+            else if (c.includes('property'))                                 color = '#0550ae';
+            else if (c.includes('tag'))                                      color = '#116329';
+            doc.font(F.m).fontSize(S.code).fillColor(color);
+            doc.text(tok.text, curX, curY, { lineBreak: false });
+            curX += doc.widthOfString(tok.text);
+          });
+          curY += lineH;
         });
-        curY += lineH;
-      });
 
-      doc.y = y0 + boxH + 16;
+        // "continues →" marker overlaid on the bottom-right of the box
+        // so the reader knows more code follows on the next page.
+        if (continuesBelow) {
+          doc.font(F.i).fontSize(7).fillColor('#57606a')
+            .text('continues →', M.left + pad, y0 + chunkBoxH - pad * 0.9,
+                  { width: w - pad * 2, align: 'right', lineBreak: false });
+        }
+
+        return y0 + chunkBoxH;
+      };
+
+      // Paginate: on each iteration, fit as many lines as possible into the
+      // remaining page, draw that chunk, then (if anything left) add a page.
+      let remaining = wrappedLines;
+      let isFirstChunk = true;
+      while (remaining.length) {
+        ensure(doc, lineH * 3 + pad * 2 + 20); // need room for at least a few lines
+        const availableH = (doc.page.height - M.bottom) - doc.y;
+        const fitsLines = Math.max(1, Math.floor((availableH - pad * 2 - 6) / lineH));
+        const take = Math.min(remaining.length, fitsLines);
+        const chunk = remaining.slice(0, take);
+        remaining = remaining.slice(take);
+
+        const y0 = doc.y;
+        const bottom = drawCodeChunk(chunk, y0, {
+          showLangLabel: isFirstChunk,
+          continuedFrom: !isFirstChunk,
+          continuesBelow: remaining.length > 0,
+        });
+        doc.y = bottom + (remaining.length ? 0 : 16);
+        isFirstChunk = false;
+        if (remaining.length) doc.addPage();
+      }
       break;
     }
 
     case 'list': {
-      ensure(doc, 30);
+      // Measure line height with the list font *before* the first ensure so
+      // we know how much room a single text line needs. Reserving just the
+      // bullet line was the old bug: the bullet would draw near the bottom,
+      // then renderInline's per-line ensure would page-break, orphaning the
+      // bullet on the previous page with the text starting on the next.
+      doc.font(F.b).fontSize(S.li);
+      const lineH = doc.currentLineHeight() + 5; // matches renderInline's metric
+      const minItemH = lineH + 8;                // bullet + first line + slack
+
+      ensure(doc, minItemH);
       token.items.forEach((item, idx) => {
-        ensure(doc, 16);
+        ensure(doc, minItemH);
         const bullet = token.ordered ? `${idx + 1}.` : '\u2022';
         const y0 = doc.y;
         doc.font(F.b).fontSize(S.li).fillColor(C.muted)
@@ -1188,15 +1329,22 @@ function renderBlock(doc, token) {
       const pngBuf = G_MATH_DISPLAY.get(key);
       if (pngBuf) {
         const info = doc.openImage(pngBuf);
-        const maxW = cw(doc) * 0.88;
-        const maxH = doc.page.height - M.top - M.bottom;
-        let drawW = Math.min(maxW, info.width);
-        let drawH = (info.height / info.width) * drawW;
-        if (drawH > maxH * 0.92) {
-          drawH = maxH * 0.92;
-          drawW = (info.width / info.height) * drawH;
+        // Scale by a fixed pt-per-px factor so every equation renders at the
+        // same visual em size (short and tall equations stay proportional).
+        // Only shrink — never enlarge — if the natural size overflows.
+        let drawW = info.width * MATH_PT_PER_PX;
+        let drawH = info.height * MATH_PT_PER_PX;
+        const maxW = cw(doc) * 0.92;
+        const maxH = (doc.page.height - M.top - M.bottom) * 0.92;
+        if (drawW > maxW) {
+          const k = maxW / drawW;
+          drawW *= k; drawH *= k;
         }
-        ensure(doc, drawH + 10);
+        if (drawH > maxH) {
+          const k = maxH / drawH;
+          drawW *= k; drawH *= k;
+        }
+        ensure(doc, drawH + 14);
         const y0 = doc.y;
         const x0 = M.left + (cw(doc) - drawW) / 2;
         doc.image(pngBuf, x0, y0, { width: drawW, height: drawH });
@@ -1342,124 +1490,77 @@ function drawCoverCollage(doc, pw, ph, imgPaths) {
   }
 }
 
-/** Cinematic scrim: keeps collage visible on the right, deepens contrast for type on the left. */
+/**
+ * Editorial scrim: heavy deep-navy wash so the collage reads as abstract
+ * texture, plus a subtle left-side shadow that anchors the type column
+ * without the directional-light noise of the old 3-gradient version.
+ */
 function drawCoverAtmosphericOverlay(doc, pw, ph) {
-  const g1 = doc.linearGradient(0, 0, 0, ph)
-    .stop(0, '#0f172a', 0.38)
-    .stop(0.5, '#1e293b', 0.52)
-    .stop(1, '#020617', 0.72);
-  doc.rect(0, 0, pw, ph).fill(g1);
+  // Main tonal wash — top slightly lighter than bottom for depth.
+  const wash = doc.linearGradient(0, 0, 0, ph)
+    .stop(0, '#0b1220', 0.86)
+    .stop(1, '#020617', 0.94);
+  doc.rect(0, 0, pw, ph).fill(wash);
 
-  const g2 = doc.linearGradient(0, 0, pw, 0)
-    .stop(0, '#020617', 0.78)
-    .stop(0.38, '#020617', 0.42)
-    .stop(0.72, '#020617', 0.12)
+  // Soft left-column shadow to seat the typography without forcing a hard edge.
+  const shadow = doc.linearGradient(0, 0, pw * 0.55, 0)
+    .stop(0, '#020617', 0.45)
     .stop(1, '#020617', 0);
-  doc.rect(0, 0, pw, ph).fill(g2);
-
-  const g3 = doc.linearGradient(0, ph * 0.78, 0, ph)
-    .stop(0, '#020617', 0)
-    .stop(1, '#020617', 0.55);
-  doc.rect(0, ph * 0.78, pw, ph * 0.22).fill(g3);
+  doc.rect(0, 0, pw * 0.55, ph).fill(shadow);
 }
 
-function drawCoverCategoryChips(doc, x, y) {
-  const labels = [
-    CATEGORIES.labels['field-notes'] || 'Field Notes',
-    CATEGORIES.labels.research || 'Research',
-    CATEGORIES.labels.curiosities || 'Curiosities',
-  ];
-  doc.font(F.B).fontSize(S.coverChip);
-  let cx = x;
-  for (const lab of labels) {
-    const padX = 10;
-    const padY = 5;
-    const tw = doc.widthOfString(lab);
-    const bw = tw + padX * 2;
-    const bh = 20;
-    doc.save();
-    doc.fillOpacity(0.2);
-    doc.roundedRect(cx, y, bw, bh, 6).fill('#ffffff');
-    doc.restore();
-    doc.font(F.B).fontSize(S.coverChip).fillColor('#e2e8f0')
-      .text(lab, cx + padX, y + padY, { lineBreak: false, width: tw + 2 });
-    cx += bw + 10;
-  }
-}
-
-function addCover(doc, posts, totalCats) {
+function addCover(doc, posts, _totalCats) {
   doc.addPage();
   const pw = doc.page.width;
   const ph = doc.page.height;
-  const textW = Math.min(400, pw - M.left - M.right);
 
+  // ── Background ──
   const imgPaths = collectCoverHeaderPaths(posts);
-  drawCoverCollage(doc, pw, ph, imgPaths);
-
-  if (!imgPaths.length) {
+  if (imgPaths.length) {
+    drawCoverCollage(doc, pw, ph, imgPaths);
+  } else {
     const fallback = doc.linearGradient(0, 0, pw, ph)
       .stop(0, '#0f172a', 1)
-      .stop(0.55, '#1e3a5f', 1)
       .stop(1, '#020617', 1);
     doc.rect(0, 0, pw, ph).fill(fallback);
   }
-
   drawCoverAtmosphericOverlay(doc, pw, ph);
 
-  // Masthead rule
-  doc.rect(0, 32, pw, 3).fill(C.accent);
+  // ── Top marker: hairline + year label ──
+  const year = new Date().getFullYear();
+  doc.save();
+  doc.moveTo(M.left, 56).lineTo(M.left + 32, 56)
+    .lineWidth(1).strokeColor('#3b82f6').stroke();
+  doc.restore();
+  doc.font(F.B).fontSize(9).fillColor('#93c5fd')
+    .text(`${year}`, M.left, 66, { width: 200, lineBreak: false, characterSpacing: 2 });
 
-  const textY = ph * 0.26;
-  let y = textY;
+  // ── Title block (lower-third, left-aligned) ──
+  // The title sits near the bottom so the upper 60% of the page reads as
+  // pure atmosphere. Three elements only: title, rule, author.
+  const titleW = Math.min(420, pw - M.left * 2);
+  const blockTop = ph * 0.56;
 
-  doc.font(F.B).fontSize(S.coverEyebrow).fillColor('#93c5fd')
-    .text('AI ENGINEERING  ·  RESEARCH  ·  MATHEMATICAL DEPTH', M.left, y, { width: textW + 40, lineGap: 2 });
-  y = doc.y + 14;
+  doc.font(F.h).fontSize(54).fillColor('#f8fafc')
+    .text('Selected', M.left, blockTop, { width: titleW, lineBreak: false });
+  doc.font(F.h).fontSize(54).fillColor('#f8fafc')
+    .text('Writings', M.left, doc.y - 4, { width: titleW, lineBreak: false });
 
-  doc.rect(M.left, y, 88, 3).fill(C.accent);
-  y += 16;
+  const ruleY = doc.y + 22;
+  doc.save();
+  doc.moveTo(M.left, ruleY).lineTo(M.left + 56, ruleY)
+    .lineWidth(1.5).strokeColor('#3b82f6').stroke();
+  doc.restore();
 
-  doc.font(F.h).fontSize(S.coverHeadline).fillColor('#f8fafc')
-    .text('Ideas that reward close reading.', M.left, y, { width: textW, lineGap: 4 });
-  y = doc.y + 6;
-  doc.font(F.h).fontSize(S.coverHeadline).fillColor('#e2e8f0')
-    .text('One volume. Yours to keep.', M.left, y, { width: textW, lineGap: 4 });
-  y = doc.y + 20;
+  doc.font(F.B).fontSize(14).fillColor('#e2e8f0')
+    .text('Juan Lara', M.left, ruleY + 14, { width: titleW, lineBreak: false });
 
-  doc.font(F.b).fontSize(S.coverLead).fillColor('#cbd5e1')
-    .text(
-      'A hand-picked library of long-form writing on building AI systems, reading the papers that shaped the field, and the curiosities that make the math memorable — compiled for focused, offline study.',
-      M.left,
-      y,
-      { width: textW, lineGap: 5, align: 'left' },
-    );
-  y = doc.y + 22;
-
-  drawCoverCategoryChips(doc, M.left, y);
-  y += 34;
-
-  doc.font(F.B).fontSize(S.coverAuthor).fillColor('#ffffff')
-    .text('Juan Lara', M.left, y, { width: textW });
-  y = doc.y + 6;
-  doc.font(F.b).fontSize(S.coverSub).fillColor('#94a3b8')
-    .text('Author & curator', M.left, y, { width: textW });
-
-  const now = new Date();
-  const bottomY = ph - M.bottom - 36;
-  doc.font(F.b).fontSize(S.coverDate).fillColor('#64748b')
-    .text(
-      `${posts.length} articles  ·  ${totalCats} sections  ·  print-ready compilation`,
-      M.left,
-      bottomY,
-      { width: pw - M.left * 2 },
-    );
-  doc.font(F.b).fontSize(S.coverDate - 0.5).fillColor('#475569')
-    .text(
-      `Edition ${now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
-      M.left,
-      bottomY + 14,
-      { width: pw - M.left * 2 },
-    );
+  // ── Bottom edition marker — tiny, muted, unobtrusive ──
+  const bottomY = ph - M.bottom - 6;
+  doc.font(F.B).fontSize(8).fillColor('#64748b')
+    .text(`EDITION ${year}  ·  ${posts.length} ARTICLES`, M.left, bottomY, {
+      width: pw - M.left * 2, lineBreak: false, characterSpacing: 1.5,
+    });
 }
 
 function addCategoryDivider(doc, category) {
@@ -1670,9 +1771,31 @@ function addDocumentOutlines(doc, tocPageIndices, entries) {
 
 async function main() {
   console.log('Loading blog posts...');
-  const posts = loadPosts();
+  let posts = loadPosts();
   if (!posts.length) {
     console.error('No posts found in', BLOG_DIR);
+    process.exit(1);
+  }
+
+  if (CLI.sample) {
+    posts = posts.filter((p) => SAMPLE_SLUGS.has(p.slug));
+    console.log(`  --sample: kept ${posts.length} curated post(s)`);
+  }
+  if (CLI.posts) {
+    const wanted = new Set(CLI.posts);
+    posts = posts.filter((p) => wanted.has(p.slug));
+    console.log(`  --posts: kept ${posts.length} matching post(s)`);
+  }
+  if (CLI.limit) {
+    const perCat = {};
+    posts = posts.filter((p) => {
+      perCat[p.category] = (perCat[p.category] || 0) + 1;
+      return perCat[p.category] <= CLI.limit;
+    });
+    console.log(`  --limit: capped to ${CLI.limit} post(s) per category`);
+  }
+  if (!posts.length) {
+    console.error('No posts matched the active filters.');
     process.exit(1);
   }
 
