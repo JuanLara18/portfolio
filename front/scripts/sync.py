@@ -121,6 +121,9 @@ def optimize_images() -> None:
 
 # ---------- step 5 & 6: audio generation ----------
 
+_ollama_started_by_us = False
+
+
 def generate_audio(lang: str, extra: list[str]) -> None:
     cmd = [sys.executable, "-u", "scripts/generate_blog_audio.py", "--lang", lang, *extra]
     run(cmd)
@@ -142,6 +145,7 @@ def _spawn_detached(cmd: list[str], log_path: Path) -> subprocess.Popen:
 
 def ensure_ollama() -> bool:
     """Return True iff Ollama is reachable (starting it if needed)."""
+    global _ollama_started_by_us
     sys.path.insert(0, str(SCRIPT_DIR))
     from translate_ollama import ping_ollama, wait_for_ollama
 
@@ -161,9 +165,26 @@ def ensure_ollama() -> bool:
         return False
     if wait_for_ollama(30):
         info("ollama ready")
+        _ollama_started_by_us = True
         return True
     warn("ollama did not become ready in 30s — skipping Spanish audio")
     return False
+
+
+def stop_ollama_if_started() -> None:
+    """Kill Ollama iff sync.py was the one that launched it this run."""
+    if not _ollama_started_by_us:
+        return
+    info("stopping ollama serve (started by sync)")
+    if os.name == "nt":
+        subprocess.run(
+            ["taskkill", "/F", "/IM", "ollama.exe"],
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    else:
+        subprocess.run(["pkill", "-f", "ollama serve"], check=False)
 
 
 # ---------- step 7: upload audio to R2 ----------
@@ -208,8 +229,7 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
-def main() -> int:
-    args = parse_args()
+def _main_impl(args: argparse.Namespace) -> int:
     total = 3 if args.check else 8
 
     step(1, total, "discovering posts")
@@ -282,6 +302,14 @@ def main() -> int:
 
     print("\nOK: sync complete")
     return 0
+
+
+def main() -> int:
+    args = parse_args()
+    try:
+        return _main_impl(args)
+    finally:
+        stop_ollama_if_started()
 
 
 if __name__ == "__main__":
