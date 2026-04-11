@@ -12,12 +12,16 @@ from __future__ import annotations
 import json
 import os
 import re
+import socket
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434/api/generate")
 DEFAULT_MODEL = os.environ.get("OLLAMA_MODEL", "gemma4:latest")
+CALL_TIMEOUT_SEC = int(os.environ.get("OLLAMA_CALL_TIMEOUT", "600"))
+MAX_RETRIES = int(os.environ.get("OLLAMA_MAX_RETRIES", "4"))
 
 # Keep ~3500 chars per chunk — small enough for consistent rule-following on 7-8B models.
 MAX_CHUNK_CHARS = 3500
@@ -43,6 +47,31 @@ class OllamaError(RuntimeError):
     pass
 
 
+def _ollama_host_port() -> tuple[str, int]:
+    parsed = urllib.parse.urlparse(OLLAMA_URL)
+    return parsed.hostname or "localhost", parsed.port or 11434
+
+
+def ping_ollama(timeout: float = 2.0) -> bool:
+    """Fast TCP check — returns True iff Ollama is accepting connections."""
+    host, port = _ollama_host_port()
+    try:
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except OSError:
+        return False
+
+
+def wait_for_ollama(total_timeout: float = 30.0, interval: float = 1.0) -> bool:
+    """Block until Ollama responds or timeout elapses. Returns True on success."""
+    deadline = time.time() + total_timeout
+    while time.time() < deadline:
+        if ping_ollama():
+            return True
+        time.sleep(interval)
+    return False
+
+
 def _call_ollama(prompt: str, *, model: str, system: str, temperature: float = 0.2) -> str:
     payload = {
         "model": model,
@@ -55,20 +84,36 @@ def _call_ollama(prompt: str, *, model: str, system: str, temperature: float = 0
             "top_p": 0.9,
         },
     }
-    req = urllib.request.Request(
-        OLLAMA_URL,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=600) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        raise OllamaError(f"Ollama HTTP {e.code}: {body}") from e
-    except urllib.error.URLError as e:
-        raise OllamaError(f"Cannot reach Ollama at {OLLAMA_URL}: {e}") from e
-    return data.get("response", "").strip()
+    data_bytes = json.dumps(payload).encode("utf-8")
+    last_err: Exception | None = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        # Fail-fast if Ollama isn't even listening — skip the long urlopen path.
+        if not ping_ollama(timeout=3.0):
+            last_err = OllamaError(f"Ollama not reachable at {OLLAMA_URL} (pre-check failed)")
+        else:
+            req = urllib.request.Request(
+                OLLAMA_URL,
+                data=data_bytes,
+                headers={"Content-Type": "application/json"},
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=CALL_TIMEOUT_SEC) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                return data.get("response", "").strip()
+            except urllib.error.HTTPError as e:
+                body = e.read().decode("utf-8", errors="replace")
+                last_err = OllamaError(f"Ollama HTTP {e.code}: {body}")
+            except (urllib.error.URLError, TimeoutError, socket.timeout, OSError) as e:
+                last_err = OllamaError(f"Ollama call failed: {e}")
+        if attempt < MAX_RETRIES:
+            backoff = min(30, 2 ** attempt)
+            print(
+                f"    ollama attempt {attempt}/{MAX_RETRIES} failed ({last_err}); "
+                f"retrying in {backoff}s",
+                flush=True,
+            )
+            time.sleep(backoff)
+    raise OllamaError(f"Ollama failed after {MAX_RETRIES} attempts: {last_err}") from last_err
 
 
 def _split_into_chunks(text: str, max_chars: int = MAX_CHUNK_CHARS) -> list[str]:
