@@ -1,0 +1,13 @@
+{
+  "slug": "benfords-law",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "d7a063cf0c56686dfea7cdb37a631f74521c7113641d964040fd9883371410d5",
+  "sourceHash": "b636d1f1ce459a20c4641c692c371b7dfe9331f5c3580160e2f6c6a7a635f7ff",
+  "durationSec": 1004.136,
+  "byteSize": 6024816,
+  "narrationWordCount": 2572,
+  "audioUrl": "/blog/audio-es/curiosities/benfords-law.mp3",
+  "translationModel": "gemma4:latest"
+}

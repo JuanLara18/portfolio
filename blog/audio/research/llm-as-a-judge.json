@@ -1,0 +1,10 @@
+{
+  "slug": "llm-as-a-judge",
+  "category": "research",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "4fb79d900428a9dcc42b2dfd6d6596c9e3d445944221774545cf8ddf7aca5976",
+  "durationSec": 1578.144,
+  "byteSize": 9468864,
+  "narrationWordCount": 3436,
+  "audioUrl": "/blog/audio/research/llm-as-a-judge.mp3"
+}

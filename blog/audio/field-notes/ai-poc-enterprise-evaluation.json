@@ -1,0 +1,13 @@
+{
+  "slug": "ai-poc-enterprise-evaluation",
+  "category": "field-notes",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "520e1faec6b58ab49d11132c91e2418829d546cf062d69ce83db5827d458b4b4",
+  "sourceHash": "520e1faec6b58ab49d11132c91e2418829d546cf062d69ce83db5827d458b4b4",
+  "durationSec": 1561.272,
+  "byteSize": 9367632,
+  "narrationWordCount": 3553,
+  "audioUrl": "/blog/audio/field-notes/ai-poc-enterprise-evaluation.mp3",
+  "translationModel": ""
+}
