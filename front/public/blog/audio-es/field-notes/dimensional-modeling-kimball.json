@@ -1,0 +1,13 @@
+{
+  "slug": "dimensional-modeling-kimball",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "877a170ec59b263beeb2267127e61bca42bfea5a0af073578c9b8b4af1d4d4b9",
+  "sourceHash": "bebf0846d64e1ab93302265b59829ea9b1f1478bf3141f5e1819e868208edcc3",
+  "durationSec": 1388.208,
+  "byteSize": 8329248,
+  "narrationWordCount": 3567,
+  "audioUrl": "/blog/audio-es/field-notes/dimensional-modeling-kimball.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "sum-of-naturals-minus-one-twelfth",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a5a91f6d8684e66275f18f2e448194151f02b26aee0d4db8e18740bed4300a1c",
+  "sourceHash": "680268fdaef2056d914166b41c6563b13decb78df94eb86b59398a2453f19172",
+  "durationSec": 876.576,
+  "byteSize": 5259456,
+  "narrationWordCount": 2127,
+  "audioUrl": "/blog/audio-es/curiosities/sum-of-naturals-minus-one-twelfth.mp3",
+  "translationModel": "gemma4:latest"
+}

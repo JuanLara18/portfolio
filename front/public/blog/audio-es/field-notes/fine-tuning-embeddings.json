@@ -1,0 +1,13 @@
+{
+  "slug": "fine-tuning-embeddings",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1d75be19564fdda3daf3bc036c29788810e305a212717ed7c3df19c7a9821442",
+  "sourceHash": "4bdb70b913ec3bde6a7eed0a476bcdb799b6d1e518c22e074c2c4d8ee08e6954",
+  "durationSec": 1661.328,
+  "byteSize": 9967968,
+  "narrationWordCount": 4468,
+  "audioUrl": "/blog/audio-es/field-notes/fine-tuning-embeddings.mp3",
+  "translationModel": "gemma4:latest"
+}

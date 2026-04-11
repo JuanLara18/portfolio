@@ -1,0 +1,13 @@
+{
+  "slug": "git-and-github-complete-guide",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "445af03b8005debc64df06ba049f3c6c9b70ecd731ceecaaca3941ad30582dc2",
+  "sourceHash": "3295448ee3937ad80e6a9683049359d433b522d5002c85736385c916b39518c4",
+  "durationSec": 3101.76,
+  "byteSize": 18610560,
+  "narrationWordCount": 8190,
+  "audioUrl": "/blog/audio-es/field-notes/git-and-github-complete-guide.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "knowledge-graphs-practice",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "70b0dda38cd0493ba21489a7e1f0059692085cc6cb982d1dc2d2222cf8cb06bb",
+  "sourceHash": "08e2af026702dbf8cd8c98ab9b5c4153fdf91c9aa6d3f65cfb9f67be7208a0ec",
+  "durationSec": 1355.616,
+  "byteSize": 8133696,
+  "narrationWordCount": 3239,
+  "audioUrl": "/blog/audio-es/field-notes/knowledge-graphs-practice.mp3",
+  "translationModel": "gemma4:latest"
+}

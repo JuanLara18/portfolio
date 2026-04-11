@@ -1,0 +1,13 @@
+{
+  "slug": "local-llm-inference-tools",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "be3e0956fff6dd5c8a87c7c520c8d78bae294cea9586dd0fdd6fe6038bea4d82",
+  "sourceHash": "f5ab9dee3bd98c305f13cf951b4d04e8122b47a5b8ac9e9144d914dc140e95d6",
+  "durationSec": 827.328,
+  "byteSize": 4963968,
+  "narrationWordCount": 2179,
+  "audioUrl": "/blog/audio-es/field-notes/local-llm-inference-tools.mp3",
+  "translationModel": "gemma4:latest"
+}

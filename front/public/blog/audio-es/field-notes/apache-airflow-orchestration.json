@@ -1,0 +1,13 @@
+{
+  "slug": "apache-airflow-orchestration",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "363f90c7ec8f2b9fb0e18793b3c58878077fb5b732277fa5907a83f72707a3a3",
+  "sourceHash": "66f1654ff739d9af1d64d2832f26635074f9b1315c29939e8d235308df2296a6",
+  "durationSec": 1540.44,
+  "byteSize": 9242640,
+  "narrationWordCount": 4309,
+  "audioUrl": "/blog/audio-es/field-notes/apache-airflow-orchestration.mp3",
+  "translationModel": "gemma4:latest"
+}

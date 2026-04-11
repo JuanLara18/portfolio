@@ -1,0 +1,13 @@
+{
+  "slug": "tetris-np-complete",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "553cb8deb3bede67cf16b9217705342c67318228147990f23ab6ab38ca73a9de",
+  "sourceHash": "c67cd2753e6df35df0451aac7e78962d6f15d0591eb35d121ce78b2532c031e9",
+  "durationSec": 1165.296,
+  "byteSize": 6991776,
+  "narrationWordCount": 2724,
+  "audioUrl": "/blog/audio-es/curiosities/tetris-np-complete.mp3",
+  "translationModel": "gemma4:latest"
+}

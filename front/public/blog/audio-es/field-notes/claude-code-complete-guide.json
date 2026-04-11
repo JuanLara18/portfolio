@@ -1,0 +1,13 @@
+{
+  "slug": "claude-code-complete-guide",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "088a76d773d7b1c647241cc164493a60fad499d68b1860bbc3623a1184c32309",
+  "sourceHash": "295d234fd37511d1a03dadcfd920ac67fce7a8f9abe1e190f1d2ab0319a7dbce",
+  "durationSec": 1288.176,
+  "byteSize": 7729056,
+  "narrationWordCount": 3178,
+  "audioUrl": "/blog/audio-es/field-notes/claude-code-complete-guide.mp3",
+  "translationModel": "gemma4:latest"
+}

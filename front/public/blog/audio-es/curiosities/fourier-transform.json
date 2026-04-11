@@ -1,0 +1,13 @@
+{
+  "slug": "fourier-transform",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a0ca2fd59b095c33f3c9af3585f923d253da00b17510fcc772a551c332f481d7",
+  "sourceHash": "8186d9b47fdf21dc924c2c1e78c94fea0afeb0f23d7f6d35910da1caf354c638",
+  "durationSec": 1410.864,
+  "byteSize": 8465184,
+  "narrationWordCount": 3809,
+  "audioUrl": "/blog/audio-es/curiosities/fourier-transform.mp3",
+  "translationModel": "gemma4:latest"
+}

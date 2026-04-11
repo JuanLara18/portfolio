@@ -1,0 +1,13 @@
+{
+  "slug": "data-engineering-fundamentals",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "3926304976675bdb41f092e379eda768ad4cc1adf4a7be56900add04f4c3a6e4",
+  "sourceHash": "43eced846e5f7617f8c96ff01f8467eb9e2af9b7c070636e9adb55ba13d1d41f",
+  "durationSec": 2065.464,
+  "byteSize": 12392784,
+  "narrationWordCount": 5280,
+  "audioUrl": "/blog/audio-es/field-notes/data-engineering-fundamentals.mp3",
+  "translationModel": "gemma4:latest"
+}

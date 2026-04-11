@@ -1,0 +1,13 @@
+{
+  "slug": "llm-benchmarks",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "93581f35d3d4f9e8bc7349dc19a97317ca52a54360e37bdfd57478c63edcaf58",
+  "sourceHash": "eb683f4bc553613a958d9caa1ec1ff4b69872ac90981c4261c99e9a2ff933262",
+  "durationSec": 3720.024,
+  "byteSize": 22320144,
+  "narrationWordCount": 9106,
+  "audioUrl": "/blog/audio-es/field-notes/llm-benchmarks.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "docker-for-ml-engineers",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "14d02bc7aa444f54179805febddb18603d2eb2090f1ec74f60089160438c7111",
+  "sourceHash": "15d18a79d636b2551be663d2c429409f12dc84ccde663729d6a595c3a42bfed5",
+  "durationSec": 1244.304,
+  "byteSize": 7465824,
+  "narrationWordCount": 3095,
+  "audioUrl": "/blog/audio-es/field-notes/docker-for-ml-engineers.mp3",
+  "translationModel": "gemma4:latest"
+}

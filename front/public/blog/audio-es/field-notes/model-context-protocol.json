@@ -1,0 +1,13 @@
+{
+  "slug": "model-context-protocol",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "79aa7773218a993ef2abb2a12341c3b1b647348c6296cbff32351265416d07ab",
+  "sourceHash": "5f7ead53e1f94baeea7c0525947c9935d8988cadcd1c06b3e583fb604931d71c",
+  "durationSec": 1306.776,
+  "byteSize": 7840656,
+  "narrationWordCount": 3369,
+  "audioUrl": "/blog/audio-es/field-notes/model-context-protocol.mp3",
+  "translationModel": "gemma4:latest"
+}

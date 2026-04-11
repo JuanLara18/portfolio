@@ -1,0 +1,13 @@
+{
+  "slug": "fine-tuning-gemma4-lora-qlora",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "cce09dd0a5e60d2950e40d039787d4d68dc23d3dc36080b5c22369da296c59d9",
+  "sourceHash": "506486e33023f6cdc490cf8a9291268a15c627b3265d1512933a3ed02fb1bae0",
+  "durationSec": 2358.048,
+  "byteSize": 14148288,
+  "narrationWordCount": 5982,
+  "audioUrl": "/blog/audio-es/field-notes/fine-tuning-gemma4-lora-qlora.mp3",
+  "translationModel": "gemma4:latest"
+}

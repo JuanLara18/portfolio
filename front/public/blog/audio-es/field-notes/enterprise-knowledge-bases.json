@@ -1,0 +1,13 @@
+{
+  "slug": "enterprise-knowledge-bases",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "afa9c29c7c8bf51d6aaa8c845b1e503121086774676a76ffb779bde1d273c490",
+  "sourceHash": "1335cac39f9288a40b5e60888d0b727e6627a7236f4457b1f85d892a03400353",
+  "durationSec": 3030.672,
+  "byteSize": 18184032,
+  "narrationWordCount": 7969,
+  "audioUrl": "/blog/audio-es/field-notes/enterprise-knowledge-bases.mp3",
+  "translationModel": "gemma4:latest"
+}

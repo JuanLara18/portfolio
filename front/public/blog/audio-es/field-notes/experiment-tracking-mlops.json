@@ -1,0 +1,13 @@
+{
+  "slug": "experiment-tracking-mlops",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e353457c8278b3304d3a9fa6b22a22b38cc9e552ea5dbd615f0df6db5cb71f9c",
+  "sourceHash": "b0a6f33f8b73e2f3185d57357f0cc1c98571cdbb712456fca2a915de198edfae",
+  "durationSec": 1268.976,
+  "byteSize": 7613856,
+  "narrationWordCount": 3179,
+  "audioUrl": "/blog/audio-es/field-notes/experiment-tracking-mlops.mp3",
+  "translationModel": "gemma4:latest"
+}

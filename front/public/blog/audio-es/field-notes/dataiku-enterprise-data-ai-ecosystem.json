@@ -1,0 +1,13 @@
+{
+  "slug": "dataiku-enterprise-data-ai-ecosystem",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "322f03ad96eccf16c3f9be613a6475ca46a5aea28dfd88c4bed96cd9a724e3ba",
+  "sourceHash": "8bfcf9def72db2e9c58c3aaff31102b3d91fcf99586b7ef473b07a5ce78f2a43",
+  "durationSec": 1681.2,
+  "byteSize": 10087200,
+  "narrationWordCount": 4546,
+  "audioUrl": "/blog/audio-es/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3",
+  "translationModel": "gemma4:latest"
+}

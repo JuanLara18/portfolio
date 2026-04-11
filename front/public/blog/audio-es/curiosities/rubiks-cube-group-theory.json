@@ -1,0 +1,13 @@
+{
+  "slug": "rubiks-cube-group-theory",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e3c249c869bf3b10f3641921a9669c379ac5e68a8446dc859091dce5c5c5ca9d",
+  "sourceHash": "5fdf1675429aa116e13fc3c2a6cf82e2b022b69b5ec1098fbfa3b56ea2fae145",
+  "durationSec": 1329.864,
+  "byteSize": 7979184,
+  "narrationWordCount": 3258,
+  "audioUrl": "/blog/audio-es/curiosities/rubiks-cube-group-theory.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "mcp-production-enterprise",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "88b8f6446cff3d6d45ddd9d8aefd23448d5320e18f25645e94fd84df29899d02",
+  "sourceHash": "ae3ec80f4449020e3071ab1bb6be2f6631ccad9e09a45a609c5baa3a7857f3fd",
+  "durationSec": 689.544,
+  "byteSize": 4137264,
+  "narrationWordCount": 1786,
+  "audioUrl": "/blog/audio-es/field-notes/mcp-production-enterprise.mp3",
+  "translationModel": "gemma4:latest"
+}

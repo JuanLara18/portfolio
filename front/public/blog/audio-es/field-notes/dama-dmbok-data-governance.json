@@ -1,0 +1,13 @@
+{
+  "slug": "dama-dmbok-data-governance",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "022122c3a002724bfa7cf35923507d94821e1762a07d6dadfe75b5229b050d61",
+  "sourceHash": "7ac389b1482c364725f67d336f2a498e392d31faacb88ce4a6ebdd6b07407885",
+  "durationSec": 1660.848,
+  "byteSize": 9965088,
+  "narrationWordCount": 4391,
+  "audioUrl": "/blog/audio-es/field-notes/dama-dmbok-data-governance.mp3",
+  "translationModel": "gemma4:latest"
+}

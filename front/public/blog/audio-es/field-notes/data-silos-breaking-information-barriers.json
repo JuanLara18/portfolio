@@ -1,0 +1,13 @@
+{
+  "slug": "data-silos-breaking-information-barriers",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "50fa5a947bd51c828ddacca3d59b9197a024613608b19048482e75aa1fe253ed",
+  "sourceHash": "c9b17b92579025031e9ddf0150b205af4241288336283500d64791a90a9056f4",
+  "durationSec": 1616.424,
+  "byteSize": 9698544,
+  "narrationWordCount": 4292,
+  "audioUrl": "/blog/audio-es/field-notes/data-silos-breaking-information-barriers.mp3",
+  "translationModel": "gemma4:latest"
+}

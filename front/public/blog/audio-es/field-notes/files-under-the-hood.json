@@ -1,0 +1,13 @@
+{
+  "slug": "files-under-the-hood",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "884bf6614dedb777422a57eab056888acde8055b19f2a7544226679d21058acc",
+  "sourceHash": "e6c56b50ca17a0d970ecdb3715989ed952467e07fca0a9c07e1b6e910626c533",
+  "durationSec": 1078.008,
+  "byteSize": 6468048,
+  "narrationWordCount": 2778,
+  "audioUrl": "/blog/audio-es/field-notes/files-under-the-hood.mp3",
+  "translationModel": "gemma4:latest"
+}
