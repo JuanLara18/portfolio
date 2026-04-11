@@ -76,6 +76,8 @@ jobs:
         run: npm run build
         env:
           CI: false
+          AUDIO_BASE_URL_EN: https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio
+          AUDIO_BASE_URL_ES: https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es
       
       - name: Verify Blog Data Generation 📊
         run: |
