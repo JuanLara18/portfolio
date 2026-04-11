@@ -9,6 +9,30 @@ const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'blogData.json');
 const AUDIO_MANIFEST_EN = path.join(__dirname, '..', 'public', 'blog', 'audio', 'manifest.json');
 const AUDIO_MANIFEST_ES = path.join(__dirname, '..', 'public', 'blog', 'audio-es', 'manifest-es.json');
 
+// Load front/.env.local so local builds can read AUDIO_BASE_URL_* without
+// needing to export them into the shell. No-op if the file or dotenv is absent.
+try {
+  const envPath = path.join(__dirname, '..', '.env.local');
+  if (fs.existsSync(envPath)) {
+    require('dotenv').config({ path: envPath });
+  }
+} catch (_) {
+  // dotenv is optional; if it's not installed just fall back to process.env
+}
+
+const AUDIO_BASE_URL_EN = process.env.AUDIO_BASE_URL_EN || '';
+const AUDIO_BASE_URL_ES = process.env.AUDIO_BASE_URL_ES || '';
+
+// Rewrite an audio URL from its local form (/blog/audio/cat/slug.mp3) to an
+// absolute CDN URL when a base is configured. If no base is set, the URL is
+// returned unchanged so local development continues to work with the files
+// served from public/blog/audio/.
+function rewriteAudioUrl(url, base) {
+  if (!url || !base) return url;
+  const rel = url.replace(/^\/blog\/(audio|audio-es)\//, '');
+  return base.replace(/\/$/, '') + '/' + rel;
+}
+
 function loadManifest(manifestPath) {
   try {
     if (!fs.existsSync(manifestPath)) return {};
@@ -118,12 +142,15 @@ function buildBlogData() {
   let matchedEn = 0;
   let matchedEs = 0;
 
-  const toEntry = (meta) => ({
-    url: meta.audioUrl,
-    durationSec: meta.durationSec,
-    byteSize: meta.byteSize,
-    voice: meta.voice,
-  });
+  const toEntry = (meta, lang) => {
+    const base = lang === 'en' ? AUDIO_BASE_URL_EN : AUDIO_BASE_URL_ES;
+    return {
+      url: rewriteAudioUrl(meta.audioUrl, base),
+      durationSec: meta.durationSec,
+      byteSize: meta.byteSize,
+      voice: meta.voice,
+    };
+  };
 
   for (const postInfo of postFiles) {
     const postData = processMarkdownFile(postInfo.fullPath, postInfo.category, postInfo.filename);
@@ -135,11 +162,11 @@ function buildBlogData() {
       if (metaEn || metaEs) {
         postData.audio = {};
         if (metaEn) {
-          postData.audio.en = toEntry(metaEn);
+          postData.audio.en = toEntry(metaEn, 'en');
           matchedEn += 1;
         }
         if (metaEs) {
-          postData.audio.es = toEntry(metaEs);
+          postData.audio.es = toEntry(metaEs, 'es');
           matchedEs += 1;
         }
       }
