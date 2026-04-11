@@ -96,7 +96,7 @@ export default function AudioPlayer({ audio }) {
     setDuration(current?.durationSec || 0);
     setIsReady(false);
     el.load();
-  }, [current?.url]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [current]);
 
   if (!current?.url) return null;
 
