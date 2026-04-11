@@ -1,10 +1,13 @@
 {
   "slug": "ml-libraries-under-the-hood",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "eb3fba6a30c13980d1bcd8fec63c4fb365b22833fafaf90cb332c92929265392",
-  "durationSec": 1562.112,
-  "byteSize": 9372672,
-  "narrationWordCount": 3178,
-  "audioUrl": "/blog/audio/field-notes/ml-libraries-under-the-hood.mp3"
+  "hash": "d741873d6cbf221ded724acbfe2e76a50b2bc48239ec8eee94a6b407c88b01ec",
+  "sourceHash": "d741873d6cbf221ded724acbfe2e76a50b2bc48239ec8eee94a6b407c88b01ec",
+  "durationSec": 1560.456,
+  "byteSize": 9362736,
+  "narrationWordCount": 3174,
+  "audioUrl": "/blog/audio/field-notes/ml-libraries-under-the-hood.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "ragas-evaluating-rag",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "af3a92910aa6494f76432b8e2f72eceb76e1fb090adff3ab5008d57d1829c8cc",
-  "durationSec": 2577.096,
-  "byteSize": 15462576,
-  "narrationWordCount": 5796,
-  "audioUrl": "/blog/audio/field-notes/ragas-evaluating-rag.mp3"
+  "hash": "cf38802866a5817a89f3e319ae65ec14e5270198ae76aeb243c923abf8eba37e",
+  "sourceHash": "cf38802866a5817a89f3e319ae65ec14e5270198ae76aeb243c923abf8eba37e",
+  "durationSec": 2572.704,
+  "byteSize": 15436224,
+  "narrationWordCount": 5788,
+  "audioUrl": "/blog/audio/field-notes/ragas-evaluating-rag.mp3",
+  "translationModel": ""
 }

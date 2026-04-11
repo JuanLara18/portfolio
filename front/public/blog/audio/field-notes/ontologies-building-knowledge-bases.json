@@ -1,10 +1,13 @@
 {
   "slug": "ontologies-building-knowledge-bases",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "0a5989465550e8f81bf0120588321dd72139b02d578a8acbc2d578b10184a114",
-  "durationSec": 1470.72,
-  "byteSize": 8824320,
-  "narrationWordCount": 3163,
-  "audioUrl": "/blog/audio/field-notes/ontologies-building-knowledge-bases.mp3"
+  "hash": "8d3d01c2fcace1bb626234dcbc62eeb40e2260d4f33bc0a6a2f4296a19fdb437",
+  "sourceHash": "8d3d01c2fcace1bb626234dcbc62eeb40e2260d4f33bc0a6a2f4296a19fdb437",
+  "durationSec": 1471.656,
+  "byteSize": 8829936,
+  "narrationWordCount": 3160,
+  "audioUrl": "/blog/audio/field-notes/ontologies-building-knowledge-bases.mp3",
+  "translationModel": ""
 }

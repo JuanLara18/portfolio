@@ -1,10 +1,13 @@
 {
   "slug": "fine-tuning-gemma4-lora-qlora",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "9260ab7e4722ad496b237ec3236777b220a74c2bf096ba4a3195d41ebf4d848b",
-  "durationSec": 2400.864,
-  "byteSize": 14405184,
-  "narrationWordCount": 5247,
-  "audioUrl": "/blog/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3"
+  "hash": "506486e33023f6cdc490cf8a9291268a15c627b3265d1512933a3ed02fb1bae0",
+  "sourceHash": "506486e33023f6cdc490cf8a9291268a15c627b3265d1512933a3ed02fb1bae0",
+  "durationSec": 2392.848,
+  "byteSize": 14357088,
+  "narrationWordCount": 5225,
+  "audioUrl": "/blog/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "mteb-embedding-benchmarks",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "9c69ba05a186099f99c2c0f3db5cd367050d4b363d1ff18281a824432e186753",
-  "durationSec": 1437.192,
-  "byteSize": 8623152,
+  "hash": "897e51941d5bae2c62fa1c4ecb2f82954dd46279d550f80bdbdf397b8998ba4c",
+  "sourceHash": "897e51941d5bae2c62fa1c4ecb2f82954dd46279d550f80bdbdf397b8998ba4c",
+  "durationSec": 1437.048,
+  "byteSize": 8622288,
   "narrationWordCount": 3104,
-  "audioUrl": "/blog/audio/field-notes/mteb-embedding-benchmarks.mp3"
+  "audioUrl": "/blog/audio/field-notes/mteb-embedding-benchmarks.mp3",
+  "translationModel": ""
 }
