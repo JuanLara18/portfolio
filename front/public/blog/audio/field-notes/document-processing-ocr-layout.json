@@ -1,0 +1,13 @@
+{
+  "slug": "document-processing-ocr-layout",
+  "category": "field-notes",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "5e2fe972a00dce3f9fe831163cdd87225b23b8e2dba3050b58879c2b483aea07",
+  "sourceHash": "5e2fe972a00dce3f9fe831163cdd87225b23b8e2dba3050b58879c2b483aea07",
+  "durationSec": 1726.392,
+  "byteSize": 10358352,
+  "narrationWordCount": 3329,
+  "audioUrl": "/blog/audio/field-notes/document-processing-ocr-layout.mp3",
+  "translationModel": ""
+}
