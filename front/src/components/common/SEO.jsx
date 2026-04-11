@@ -120,8 +120,8 @@ export const SEO = ({
  * Default SEO configuration for the entire site
  */
 export const defaultSEO = {
-  title: 'Juan Lara | ML Engineer & Research Assistant',
-  description: 'Research Assistant at Harvard Business School specializing in Machine Learning, AI Agents, and NLP. Explore my portfolio of projects, research, and technical blog.',
+  title: 'Juan Lara | AI Engineer — Research to Production',
+  description: 'Research-minded AI Engineer specializing in LLM systems, NLP, and taking ML from concept to production. CS + Mathematics foundation, experience spanning Harvard research to enterprise-scale AI.',
   keywords: [
     'Juan Lara',
     'Machine Learning',
