@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/common/SEO';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   ArrowLeft, 
@@ -129,12 +129,10 @@ export default function BlogCategoryPage() {
   
   return (
     <>
-      <Helmet>
-        <title>{displayInfo.title} | Juan Lara</title>
-        <meta name="description" content={`Browse ${displayInfo.title} posts by Juan Lara`} />
-        <meta property="og:title" content={`${displayInfo.title} | Juan Lara`} />
-        <meta property="og:description" content={`${displayInfo.title} blog posts`} />
-      </Helmet>
+      <SEO
+        title={`${displayInfo.title} | Juan Lara`}
+        description={`Browse ${displayInfo.title} posts by Juan Lara — writing on machine learning, AI agents, NLP, and data engineering.`}
+      />
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       {/* Hero Section */}
       <motion.section 
