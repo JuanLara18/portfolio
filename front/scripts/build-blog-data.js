@@ -6,6 +6,19 @@ const matter = require('gray-matter');
 
 const BLOG_DIR = path.join(__dirname, '..', 'public', 'blog', 'posts');
 const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'blogData.json');
+const AUDIO_MANIFEST_EN = path.join(__dirname, '..', 'public', 'blog', 'audio', 'manifest.json');
+const AUDIO_MANIFEST_ES = path.join(__dirname, '..', 'public', 'blog', 'audio-es', 'manifest-es.json');
+
+function loadManifest(manifestPath) {
+  try {
+    if (!fs.existsSync(manifestPath)) return {};
+    const raw = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    return raw.posts || {};
+  } catch (err) {
+    console.warn(`Could not load audio manifest ${manifestPath}:`, err.message);
+    return {};
+  }
+}
 
 function scanDirectory(dir, basePath = '') {
   const items = [];
@@ -99,17 +112,44 @@ function buildBlogData() {
   }
 
   const postFiles = scanDirectory(BLOG_DIR);
+  const audioEn = loadManifest(AUDIO_MANIFEST_EN);
+  const audioEs = loadManifest(AUDIO_MANIFEST_ES);
   const posts = [];
+  let matchedEn = 0;
+  let matchedEs = 0;
+
+  const toEntry = (meta) => ({
+    url: meta.audioUrl,
+    durationSec: meta.durationSec,
+    byteSize: meta.byteSize,
+    voice: meta.voice,
+  });
 
   for (const postInfo of postFiles) {
     const postData = processMarkdownFile(postInfo.fullPath, postInfo.category, postInfo.filename);
-    
+
     if (postData && postData.title && postData.date) {
+      const audioKey = `${postData.category}/${postData.slug}`;
+      const metaEn = audioEn[audioKey];
+      const metaEs = audioEs[audioKey];
+      if (metaEn || metaEs) {
+        postData.audio = {};
+        if (metaEn) {
+          postData.audio.en = toEntry(metaEn);
+          matchedEn += 1;
+        }
+        if (metaEs) {
+          postData.audio.es = toEntry(metaEs);
+          matchedEs += 1;
+        }
+      }
       posts.push(postData);
     } else {
       console.warn(`Skipping post ${postInfo.filename} - missing required fields`);
     }
   }
+
+  console.log(`  audio matched: EN ${matchedEn}/${posts.length}, ES ${matchedEs}/${posts.length}`);
 
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
