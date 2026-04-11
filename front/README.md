@@ -43,8 +43,15 @@ front/
 | `npm run generate-pdf` | Render all posts into `output/blog-compilation.pdf` |
 
 For the full tooling reference — the Python audio pipeline, Ollama setup for
-Spanish narration, edge cases, and troubleshooting — see
-[`scripts/README.md`](scripts/README.md).
+Spanish narration, Cloudflare R2 audio hosting, edge cases, and troubleshooting
+— see [`scripts/README.md`](scripts/README.md).
+
+## Environment variables
+
+The audio pipeline reads configuration from `front/.env.local` (git-ignored).
+Copy `front/.env.example` to `front/.env.local` and fill in the values when
+you're ready to enable R2 uploads. Without those variables, audio is served
+from `public/blog/audio{,-es}/` locally — no setup required for development.
 
 ## Adding or updating a blog post
 
