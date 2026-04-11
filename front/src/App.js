@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { TransitionProvider, Navigation as Navbar, Footer } from './components/layout';
@@ -22,14 +22,18 @@ const PageLoader = () => (
   </div>
 );
 
-// Scroll to top on route change
+// Scroll to top on route change.
+// useLayoutEffect fires synchronously before paint so the new page never renders
+// at the previous scroll position. `behavior: 'instant'` overrides the global
+// `scroll-behavior: smooth` in index.css, which would otherwise animate the jump
+// and look like "the page didn't load until I scrolled a bit" — especially on mobile.
 function ScrollToTop() {
   const { pathname } = useLocation();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
-  
+
   return null;
 }
 

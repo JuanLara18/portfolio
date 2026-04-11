@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
@@ -702,18 +702,33 @@ export default function BlogPostPage() {
   const headerY = useTransform(scrollY, [0, 400], [0, -60]);
   const headerOpacity = useTransform(scrollY, [0, 300], [1, 0.8]);
   
+  // Safety net: force instant scroll-to-top synchronously whenever the post identity
+  // changes. The global ScrollToTop in App.js already handles route changes, but the
+  // lazy-loaded BlogPostPage bundle plus the async post fetch can cause a layout shift
+  // after the initial scroll reset, leaving users a few hundred pixels down on mobile.
+  // `behavior: 'instant'` bypasses the global `scroll-behavior: smooth` rule.
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [category, slug]);
+
   useEffect(() => {
     async function loadPost() {
       try {
         setLoading(true);
         const postData = await getPostBySlug(category, slug);
-        
+
         if (!postData) {
           setError('Post not found');
           return;
         }
-        
+
         setPost(postData);
+        // Once the content has actually rendered, ensure the viewport is at the top.
+        // The async fetch resolves after paint, so a second reset catches any shift
+        // caused by markdown/hero image rendering.
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        });
       } catch (err) {
         setError('Failed to load post. Please try again later.');
         console.error('Error loading post:', err);
@@ -721,7 +736,7 @@ export default function BlogPostPage() {
         setLoading(false);
       }
     }
-    
+
     loadPost();
   }, [category, slug]);
   
