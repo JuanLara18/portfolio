@@ -1,10 +1,13 @@
 {
   "slug": "rag-building-production-systems",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "0246e2c43601c19e1f7e0de1c1153530b17157455e3f8d541b6da48ed4f52f46",
-  "durationSec": 2071.896,
-  "byteSize": 12431376,
-  "narrationWordCount": 4684,
-  "audioUrl": "/blog/audio/field-notes/rag-building-production-systems.mp3"
+  "hash": "7b5a829327a0313ac0b99dcc092e9ee4e112beae6de0ceeef78cbc236604209f",
+  "sourceHash": "7b5a829327a0313ac0b99dcc092e9ee4e112beae6de0ceeef78cbc236604209f",
+  "durationSec": 2068.728,
+  "byteSize": 12412368,
+  "narrationWordCount": 4683,
+  "audioUrl": "/blog/audio/field-notes/rag-building-production-systems.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "files-under-the-hood",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "e9ddbfb657e15169c9091257c1f56c684de33560b4f0d2eb860df6a5d886bdf7",
-  "durationSec": 1107.24,
-  "byteSize": 6643440,
-  "narrationWordCount": 2529,
-  "audioUrl": "/blog/audio/field-notes/files-under-the-hood.mp3"
+  "hash": "e6c56b50ca17a0d970ecdb3715989ed952467e07fca0a9c07e1b6e910626c533",
+  "sourceHash": "e6c56b50ca17a0d970ecdb3715989ed952467e07fca0a9c07e1b6e910626c533",
+  "durationSec": 1107.192,
+  "byteSize": 6643152,
+  "narrationWordCount": 2514,
+  "audioUrl": "/blog/audio/field-notes/files-under-the-hood.mp3",
+  "translationModel": ""
 }

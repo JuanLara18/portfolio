@@ -1,10 +1,13 @@
 {
   "slug": "llamaindex-langchain-llm-frameworks",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "6fa5990e646b90536dcf752d8bdb96d3c1ed5544641b23ea45d09f66fd9d8981",
-  "durationSec": 1130.4,
-  "byteSize": 6782400,
+  "hash": "6c91cf0d6ccb3a3ae2f7ba85aaa1a6b9907a517e1824959044931e02d4f6b5dc",
+  "sourceHash": "6c91cf0d6ccb3a3ae2f7ba85aaa1a6b9907a517e1824959044931e02d4f6b5dc",
+  "durationSec": 1132.44,
+  "byteSize": 6794640,
   "narrationWordCount": 2432,
-  "audioUrl": "/blog/audio/field-notes/llamaindex-langchain-llm-frameworks.mp3"
+  "audioUrl": "/blog/audio/field-notes/llamaindex-langchain-llm-frameworks.mp3",
+  "translationModel": ""
 }

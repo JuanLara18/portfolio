@@ -1,10 +1,13 @@
 {
   "slug": "mcp-production-enterprise",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "d2028d3a955dbb2138ac6743ffb9439d3136d65d86b4948b034232de1079b707",
-  "durationSec": 666.048,
-  "byteSize": 3996288,
+  "hash": "ae3ec80f4449020e3071ab1bb6be2f6631ccad9e09a45a609c5baa3a7857f3fd",
+  "sourceHash": "ae3ec80f4449020e3071ab1bb6be2f6631ccad9e09a45a609c5baa3a7857f3fd",
+  "durationSec": 666.936,
+  "byteSize": 4001616,
   "narrationWordCount": 1569,
-  "audioUrl": "/blog/audio/field-notes/mcp-production-enterprise.mp3"
+  "audioUrl": "/blog/audio/field-notes/mcp-production-enterprise.mp3",
+  "translationModel": ""
 }

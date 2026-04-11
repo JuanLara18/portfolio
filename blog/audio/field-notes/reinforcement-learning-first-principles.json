@@ -1,10 +1,13 @@
 {
   "slug": "reinforcement-learning-first-principles",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "6513cde7e795c66bb3948db186ea1ff2614c67d49fe6730da79d3293c126021d",
-  "durationSec": 4032.456,
-  "byteSize": 24194736,
-  "narrationWordCount": 8757,
-  "audioUrl": "/blog/audio/field-notes/reinforcement-learning-first-principles.mp3"
+  "hash": "ab5d644d35b2a666349bf07273033d867a2ba70187a3c80bce45846f1458b2f9",
+  "sourceHash": "ab5d644d35b2a666349bf07273033d867a2ba70187a3c80bce45846f1458b2f9",
+  "durationSec": 3998.832,
+  "byteSize": 23992992,
+  "narrationWordCount": 8674,
+  "audioUrl": "/blog/audio/field-notes/reinforcement-learning-first-principles.mp3",
+  "translationModel": ""
 }
