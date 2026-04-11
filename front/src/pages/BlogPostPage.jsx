@@ -18,7 +18,7 @@ import {
   ArrowDownUp
 } from 'lucide-react';
 import { getPostBySlug, BLOG_CONFIG, formatDate, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
-import { MarkdownRenderer } from '../components/features/blog';
+import { MarkdownRenderer, AudioPlayer } from '../components/features/blog';
 import { HoverMotion } from '../components/layout';
 
 // Animation variants
@@ -968,6 +968,8 @@ export default function BlogPostPage() {
                 className="lg:w-3/4"
               >
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm sm:shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 border border-gray-100 dark:border-gray-700">
+                  {post.audio && <AudioPlayer audio={post.audio} />}
+
                   {post.excerpt && (
                     <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
                       <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">
