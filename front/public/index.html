@@ -6,25 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#1a227d" />
     
+    <!-- SPA routing on GitHub Pages: decode the ?/path encoded by 404.html so
+         the browser URL matches what the user originally requested before React
+         Router boots. Must run before the bundle loads. -->
+    <script>
+      (function (l) {
+        // Legacy HashRouter URLs (#/blog/...) — rewrite to clean paths.
+        if (l.hash && l.hash.indexOf('#/') === 0) {
+          var clean = l.hash.slice(1);
+          var base = l.pathname.replace(/\/$/, '');
+          window.history.replaceState(null, '', base + clean + l.search);
+        }
+        // 404.html redirect decoder (rafgraph/spa-github-pages technique).
+        if (l.search && l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, '',
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location));
+    </script>
+
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="ObmsJHmff6hApcBGM_Qjief8ysmK4jesIwILpXXMScU" />
-    
+
     <!-- Primary Meta Tags -->
     <title>Juan Lara | Portfolio</title>
     <meta name="title" content="Juan Lara | Portfolio">
     <meta name="description" content="Research Assistant at Harvard Business School specializing in Machine Learning, AI Agents, and NLP. View my portfolio of projects and research interests.">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://juanlara.dev/">
+    <meta property="og:url" content="https://juanlara18.github.io/portfolio/">
     <meta property="og:title" content="Juan Lara | Portfolio">
     <meta property="og:description" content="Research Assistant at Harvard Business School specializing in Machine Learning, AI Agents, and NLP. View my portfolio of projects and research interests.">
     <meta property="og:image" content="%PUBLIC_URL%/portfolio.png">
-    
+    <meta property="og:site_name" content="Juan Lara Portfolio">
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://juanlara.dev/">
-    <meta property="twitter:title" content="Juan Lara | Computer Scientist & Applied Mathematician">
+    <meta property="twitter:url" content="https://juanlara18.github.io/portfolio/">
+    <meta property="twitter:title" content="Juan Lara | Portfolio">
     <meta property="twitter:description" content="Research Assistant at Harvard Business School specializing in Machine Learning, AI Agents, and NLP. View my portfolio of projects and research interests.">
     <meta property="twitter:image" content="%PUBLIC_URL%/portfolio.png">
     

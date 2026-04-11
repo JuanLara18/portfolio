@@ -1,5 +1,5 @@
 import { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { TransitionProvider, Navigation as Navbar, Footer } from './components/layout';
 import useNavbarHeight from './hooks/useNavbarHeight';
@@ -76,7 +76,8 @@ function App() {
 
   return (
     <HelmetProvider>
-      <Router 
+      <Router
+        basename={process.env.PUBLIC_URL || '/'}
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
         <ScrollToTop />

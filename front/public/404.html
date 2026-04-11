@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Juan Lara | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <script>
+      // Single-Page Apps on GitHub Pages.
+      // https://github.com/rafgraph/spa-github-pages
+      // Redirects a deep link like /portfolio/blog/foo/bar to
+      // /portfolio/?/blog/foo/bar so index.html can decode and route it.
+      // Keep pathSegmentsToKeep aligned with the depth of the deploy path
+      // (/portfolio/ → 1 segment).
+      (function () {
+        var pathSegmentsToKeep = 1;
+        var l = window.location;
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      }());
+    </script>
+  </head>
+  <body></body>
+</html>
