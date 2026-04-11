@@ -29,9 +29,26 @@ jobs:
           node-version: 18
           cache: 'npm'
           cache-dependency-path: 'front/package-lock.json'
-      
+
+      - name: Setup Python Environment 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Python TTS Dependencies 🗣️
+        run: pip install edge-tts==7.2.8 mutagen==1.47.0
+
       - name: Install Dependencies 📦
         run: npm ci
+
+      - name: Generate Missing Blog Audio 🎧
+        working-directory: ./front
+        run: |
+          echo "=== Checking blog audio cache ==="
+          python scripts/generate_blog_audio.py --concurrency 4
+        env:
+          PYTHONUNBUFFERED: '1'
       
       - name: Optimize Images 🖼️
         run: |
