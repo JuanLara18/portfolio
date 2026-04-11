@@ -418,12 +418,14 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
   // Lock body scroll; ESC only fires when no higher-z dialog is open (e.g. diagram viewer)
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    window.dispatchEvent(new CustomEvent('reading-mode-toggle', { detail: true }));
     const handleKey = (e) => {
       if (e.key === 'Escape' && !document.querySelector('[aria-modal="true"]')) onClose();
     };
     window.addEventListener('keydown', handleKey);
     return () => {
       document.body.style.overflow = '';
+      window.dispatchEvent(new CustomEvent('reading-mode-toggle', { detail: false }));
       window.removeEventListener('keydown', handleKey);
     };
   }, [onClose]);
