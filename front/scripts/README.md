@@ -15,12 +15,13 @@ for troubleshooting or surgical edits.
 
 | Script | npm alias | Purpose |
 |---|---|---|
-| `sync.py` | `sync` / `sync:fast` / `sync:check` | **Main entry point.** Clean orphans → validate Mermaid → optimize images → generate EN+ES audio → rebuild blog data |
+| `sync.py` | `sync` / `sync:fast` / `sync:check` | **Main entry point.** Clean orphans → validate Mermaid → optimize images → generate EN+ES audio → upload to R2 → rebuild blog data |
 | `build-blog-data.js` | (auto via `prebuild`) | Scan `public/blog/posts/` and emit `src/data/blogData.json` |
 | `optimize-images.js` | `optimize-images` | WebP + size-capped variants (idempotent) |
 | `validate-mermaid.js` | `validate-mermaid` | Lint Mermaid fences against the renderer's v11 normalization |
 | `generate-blog-pdf.js` | `generate-pdf` | Compile all posts into `output/blog-compilation.pdf` |
 | `generate_blog_audio.py` | — | Render narrated MP3s per post (EN or ES). Normally called via `sync` |
+| `upload_audio.py` | — | Idempotent S3-compatible upload of MP3s to Cloudflare R2 |
 | `translate_ollama.py` | — | Ollama client used by the ES audio path |
 | `md_to_speech.py` | — | Markdown → narration-ready text preprocessor |
 
@@ -49,9 +50,10 @@ npm run sync -- --dry-run
 | 4 | Optimize images | Idempotent; warnings don't block |
 | 5 | English audio | `generate_blog_audio.py --lang en` (hash cache) |
 | 6 | Spanish audio | Auto-starts `ollama serve` if needed; if Ollama isn't installed, **warns and skips** instead of failing. Hash cache applies |
-| 7 | Rebuild blog data | Writes `src/data/blogData.json` so local `npm start` sees the fresh state |
+| 7 | Upload to R2 | Pushes new/changed MP3s to the Cloudflare R2 bucket. Skipped with a warning if no credentials are configured. See § R2 setup below |
+| 8 | Rebuild blog data | Writes `src/data/blogData.json` with absolute audio URLs (if `AUDIO_BASE_URL_*` set) so local `npm start` sees the fresh state |
 
-Steps 1–3 run in `--check`. All seven run in the full pipeline.
+Steps 1–3 run in `--check`. All eight run in the full pipeline.
 
 ### Exit codes
 
@@ -146,8 +148,9 @@ front/public/blog/
     └── <category>/<slug>.{mp3,json,narration.json}
 ```
 
-All of the above is committed to the repo — audio is **not** regenerated on
-deploy. CI only validates consistency via `sync:check`.
+JSON sidecars and manifests are committed to the repo. MP3 bytes are hosted
+on Cloudflare R2 (see § Audio hosting below) — CI never regenerates or uploads
+audio; it only validates consistency via `sync:check`.
 
 ### Troubleshooting
 
@@ -167,6 +170,97 @@ per post). The job is resumable — interrupting and restarting skips everything
 already done via the hash cache.
 
 **I only want to iterate on text and skip ES.** Use `npm run sync:fast`.
+
+---
+
+## Audio hosting: Cloudflare R2
+
+MP3 audio files are the only asset that grows without bound as posts are added.
+To keep the git repository small and stay under the 1 GB GitHub Pages deploy
+cap, audio lives in a **Cloudflare R2** bucket (S3-compatible object storage
+with zero egress charges) rather than in `public/`. The repo only commits
+JSON sidecars and manifests — everything needed to _describe_ an audio track,
+without the bytes.
+
+The split:
+
+- **In repo:** `public/blog/audio/<cat>/<slug>.json`, `manifest.json`,
+  `.narration.json` (ES translation cache), and the markdown itself.
+- **In R2:** `audio/<cat>/<slug>.mp3` and `audio-es/<cat>/<slug>.mp3`.
+
+At build time, `build-blog-data.js` reads `AUDIO_BASE_URL_EN` /
+`AUDIO_BASE_URL_ES` from the environment (or `front/.env.local`) and rewrites
+the `audioUrl` entries in `blogData.json` to absolute CDN URLs. The
+`AudioPlayer` component already passes absolute URLs through unchanged, so no
+frontend changes are required.
+
+**Local fallback.** If the env vars are unset, URLs stay relative
+(`/blog/audio/...`) and the site serves MP3s from `public/` as before. This
+keeps development friction-free before you set up R2 — you only need the
+bucket once you're ready to deploy at scale.
+
+### One-time setup
+
+1. **Create a Cloudflare account** (free) and enable R2 from the dashboard
+   sidebar. R2 requires adding a payment method, but the free tier covers 10 GB
+   storage and unlimited egress — enough for thousands of posts.
+2. **Create a bucket.** Pick any name (e.g. `juanlara-portfolio-audio`).
+   Region: _Automatic_.
+3. **Enable public access.** Bucket → _Settings_ → _Public access_ → _Allow
+   public access_ → _Connect domain_ or copy the `pub-xxxxxxxxxxxxxxxx.r2.dev`
+   URL. Your audio URLs will be `https://<public-host>/audio/...`.
+4. **Create an API token.** Cloudflare dashboard → _R2_ → _Manage R2 API
+   Tokens_ → _Create API Token_. Permissions: _Object Read & Write_. Scope:
+   the bucket you just created. Save the access key ID and secret — you can't
+   view the secret again after leaving the page.
+5. **Fill in `front/.env.local`** (copy `front/.env.example` if you haven't
+   already):
+   ```ini
+   R2_ACCOUNT_ID=<your cloudflare account id>
+   R2_ACCESS_KEY_ID=<token access key id>
+   R2_SECRET_ACCESS_KEY=<token secret>
+   R2_BUCKET=<bucket name>
+   AUDIO_BASE_URL_EN=https://pub-xxxxxxxxxxxxxxxx.r2.dev/audio
+   AUDIO_BASE_URL_ES=https://pub-xxxxxxxxxxxxxxxx.r2.dev/audio-es
+   ```
+6. **Install Python deps** if you haven't:
+   ```bash
+   pip install -r front/scripts/requirements-audio.txt
+   ```
+7. **Run `npm run sync`.** Step 7 uploads every MP3 to the bucket, step 8
+   rebuilds `blogData.json` with absolute CDN URLs. Re-runs only upload changed
+   files (MD5 vs. remote ETag).
+
+### Direct upload (without running the whole pipeline)
+
+```bash
+python scripts/upload_audio.py               # upload EN + ES
+python scripts/upload_audio.py --lang en     # one language
+python scripts/upload_audio.py --dry-run     # list what would upload
+```
+
+### Removing local MP3s from the repo (after you've verified R2 works)
+
+Once the bucket is populated and the deployed site successfully loads audio
+from R2, you can stop tracking MP3s in git to shrink the working tree and
+future clones. This is a one-time operation:
+
+```bash
+# From the repo root, remove MP3s from the index (keep local files):
+git rm --cached front/public/blog/audio/**/*.mp3
+git rm --cached front/public/blog/audio-es/**/*.mp3
+
+# Add a gitignore rule so they don't come back:
+echo "public/blog/audio/**/*.mp3" >> front/.gitignore
+echo "public/blog/audio-es/**/*.mp3" >> front/.gitignore
+
+git commit -m "chore: stop tracking audio MP3s (now hosted on R2)"
+```
+
+JSON sidecars and manifests stay in the repo — they're tiny and
+`build-blog-data.js` needs them. Cleaning the **git history** of old MP3 blobs
+(`git filter-repo`) is a separate, destructive step best done only if repo
+clone size becomes painful.
 
 ---
 
