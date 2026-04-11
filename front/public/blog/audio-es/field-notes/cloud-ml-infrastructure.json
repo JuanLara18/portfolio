@@ -1,0 +1,13 @@
+{
+  "slug": "cloud-ml-infrastructure",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "253e0bbc085d29e20dd50c743f4ad1238897a03f6075110fca45f9c50e57a097",
+  "sourceHash": "13611e306387d2d732e25d08e49b1eb303043e1019c810686144103430b01a30",
+  "durationSec": 695.904,
+  "byteSize": 4175424,
+  "narrationWordCount": 1543,
+  "audioUrl": "/blog/audio-es/field-notes/cloud-ml-infrastructure.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "apache-spark-ecosystem-guide",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "ebab3a1d99aa5a16558d6c29bbd5b214ffe5de8ec8260500b674e6dbe47a2468",
+  "sourceHash": "0b776ecc204f75844b6f2f2fd91ed71d6088081ea0237fa3d2c6f3152b0562ae",
+  "durationSec": 1433.568,
+  "byteSize": 8601408,
+  "narrationWordCount": 3909,
+  "audioUrl": "/blog/audio-es/field-notes/apache-spark-ecosystem-guide.mp3",
+  "translationModel": "gemma4:latest"
+}

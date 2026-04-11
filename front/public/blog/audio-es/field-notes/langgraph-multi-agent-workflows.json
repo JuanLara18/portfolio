@@ -1,0 +1,13 @@
+{
+  "slug": "langgraph-multi-agent-workflows",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "25e52da74583050d45b878477d0a8d87df310b8b119086ea651aa8726ff205e5",
+  "sourceHash": "8794bf8a97e59851331f56d9136ae3278dd33657961f2659d68281540c5cea93",
+  "durationSec": 866.544,
+  "byteSize": 5199264,
+  "narrationWordCount": 2142,
+  "audioUrl": "/blog/audio-es/field-notes/langgraph-multi-agent-workflows.mp3",
+  "translationModel": "gemma4:latest"
+}

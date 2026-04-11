@@ -1,0 +1,13 @@
+{
+  "slug": "dbt-analytics-engineering",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "da3b80e82922b38292f5ab39f91dc262264353504017dc876df4f18a332192f1",
+  "sourceHash": "e9285c6487ee0cb7309f85d5e817c7aab8964a8df05f0b7af91ff60a600e4051",
+  "durationSec": 849.792,
+  "byteSize": 5098752,
+  "narrationWordCount": 2157,
+  "audioUrl": "/blog/audio-es/field-notes/dbt-analytics-engineering.mp3",
+  "translationModel": "gemma4:latest"
+}

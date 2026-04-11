@@ -1,0 +1,13 @@
+{
+  "slug": "ml-metrics-evaluation-monitoring",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "5d0ef2d0e1d8999de660f5adb8cc62f72cac183e9b8964ec746c1a36fdd31ada",
+  "sourceHash": "845faa27b444abdcaf62564bdd01639fab11a8fea59c51d8aaf8fc0c478b6e6a",
+  "durationSec": 756.144,
+  "byteSize": 4536864,
+  "narrationWordCount": 1689,
+  "audioUrl": "/blog/audio-es/field-notes/ml-metrics-evaluation-monitoring.mp3",
+  "translationModel": "gemma4:latest"
+}

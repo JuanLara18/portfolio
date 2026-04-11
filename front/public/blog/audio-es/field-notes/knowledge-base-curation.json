@@ -1,0 +1,13 @@
+{
+  "slug": "knowledge-base-curation",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1769592d4508d57b66bdcf3b5635e3dd3cd1c6d7f44d56c8bd05a1a00d6dd961",
+  "sourceHash": "aca3892c9b0219c1f29e791c44bea019c8dd7497975f6896dcf135e766275fdc",
+  "durationSec": 1426.224,
+  "byteSize": 8557344,
+  "narrationWordCount": 3577,
+  "audioUrl": "/blog/audio-es/field-notes/knowledge-base-curation.mp3",
+  "translationModel": "gemma4:latest"
+}
