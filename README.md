@@ -52,24 +52,25 @@ npm start
 
 The blog manifest (`blogData.json`) is generated automatically before each build via `prebuild`.
 
-## Adding a post
+## Adding or updating a post
 
-Create a `.md` file in `front/public/blog/posts/<category>/` with YAML frontmatter, then commit and push — GitHub Actions handles the rest.
+1. Create or edit `front/public/blog/posts/<category>/<slug>.md` with YAML frontmatter.
+2. Run the content pipeline — one command handles orphan cleanup, Mermaid validation, image optimization, EN+ES audio generation, and blog data rebuild:
+   ```bash
+   cd front
+   npm run sync              # full pipeline
+   npm run sync:fast         # skip Spanish audio (quick text iteration)
+   ```
+3. Commit everything and push. GitHub Actions runs `sync:check` before each deploy to catch inconsistencies early.
 
-To also generate narrated audio (EN + ES) for the new post, run the one-shot
-wrapper (requires Python + Ollama for Spanish — see scripts README):
-
-```bash
-./front/scripts/generate_audio.sh          # bash / WSL / git-bash
-.\front\scripts\generate_audio.ps1         # Windows PowerShell
-```
+Requires Python 3.10+ for the audio pipeline. Ollama is optional — if not installed, Spanish audio is skipped with a warning.
 
 ## Tooling
 
-All build-time scripts (blog data generation, image optimization, Mermaid
-validation, PDF export, audio narration pipeline) are documented in
-[`front/scripts/README.md`](front/scripts/README.md). For a dev-oriented
-walkthrough of the React app, see [`front/README.md`](front/README.md).
+All build-time scripts — content orchestrator (`sync.py`), blog data generation,
+image optimization, Mermaid validation, PDF export, audio narration pipeline —
+are documented in [`front/scripts/README.md`](front/scripts/README.md). For a
+dev-oriented walkthrough of the React app, see [`front/README.md`](front/README.md).
 
 ## License
 
