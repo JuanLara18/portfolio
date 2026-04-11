@@ -1,0 +1,13 @@
+{
+  "slug": "collatz-conjecture",
+  "category": "curiosities",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "6012a34c35a82ae0fcabb789a4e7201fb750114f54ec0c46325cc164a640d65e",
+  "sourceHash": "6012a34c35a82ae0fcabb789a4e7201fb750114f54ec0c46325cc164a640d65e",
+  "durationSec": 1030.056,
+  "byteSize": 6180336,
+  "narrationWordCount": 2348,
+  "audioUrl": "/blog/audio/curiosities/collatz-conjecture.mp3",
+  "translationModel": ""
+}

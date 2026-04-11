@@ -1,0 +1,636 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "generatedAt": 1775871445,
+  "posts": {
+    "curiosities/benfords-law": {
+      "slug": "benfords-law",
+      "category": "curiosities",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "b636d1f1ce459a20c4641c692c371b7dfe9331f5c3580160e2f6c6a7a635f7ff",
+      "durationSec": 981.984,
+      "byteSize": 5891904,
+      "narrationWordCount": 2191,
+      "audioUrl": "/blog/audio/curiosities/benfords-law.mp3"
+    },
+    "curiosities/collatz-conjecture": {
+      "slug": "collatz-conjecture",
+      "category": "curiosities",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "5ab00156565c81a2f54a4ce14ed6a5ac1290174227472ee15dacafb938dff727",
+      "durationSec": 1048.68,
+      "byteSize": 6292080,
+      "narrationWordCount": 2400,
+      "audioUrl": "/blog/audio/curiosities/collatz-conjecture.mp3"
+    },
+    "curiosities/fourier-transform": {
+      "slug": "fourier-transform",
+      "category": "curiosities",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "69c4e95e3df4e12f494ed5084a88d59e17a1dbaee46406efddb2fbc3ab8da398",
+      "durationSec": 1526.64,
+      "byteSize": 9159840,
+      "narrationWordCount": 3469,
+      "audioUrl": "/blog/audio/curiosities/fourier-transform.mp3"
+    },
+    "curiosities/godels-incompleteness-theorems": {
+      "slug": "godels-incompleteness-theorems",
+      "category": "curiosities",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c42da6eeed266e61318964140e5e85a6cf2045b630ae4fcf0c60b2b564dd40d0",
+      "durationSec": 1479.216,
+      "byteSize": 8875296,
+      "narrationWordCount": 3318,
+      "audioUrl": "/blog/audio/curiosities/godels-incompleteness-theorems.mp3"
+    },
+    "curiosities/rubiks-cube-group-theory": {
+      "slug": "rubiks-cube-group-theory",
+      "category": "curiosities",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c483a3c21f27e6604f846e1c798e6a335e0d31f615db2aa43e7fc4c9ec6ad01e",
+      "durationSec": 1309.824,
+      "byteSize": 7858944,
+      "narrationWordCount": 2843,
+      "audioUrl": "/blog/audio/curiosities/rubiks-cube-group-theory.mp3"
+    },
+    "curiosities/sum-of-naturals-minus-one-twelfth": {
+      "slug": "sum-of-naturals-minus-one-twelfth",
+      "category": "curiosities",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "4f3a75eefd3d2f3ff791ab518b79357d0b24ad7d6ff4609caaa60f17ed4831c0",
+      "durationSec": 891.84,
+      "byteSize": 5351040,
+      "narrationWordCount": 1908,
+      "audioUrl": "/blog/audio/curiosities/sum-of-naturals-minus-one-twelfth.mp3"
+    },
+    "curiosities/tetris-np-complete": {
+      "slug": "tetris-np-complete",
+      "category": "curiosities",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "5373599f6c29b147e39e5230381f992deec83421f87b928ef04f4f56c57efad0",
+      "durationSec": 1132.584,
+      "byteSize": 6795504,
+      "narrationWordCount": 2358,
+      "audioUrl": "/blog/audio/curiosities/tetris-np-complete.mp3"
+    },
+    "field-notes/ai-poc-enterprise-evaluation": {
+      "slug": "ai-poc-enterprise-evaluation",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "d2f13d7596803aab7aa830968f5be441ba2dd0ece60450044f2ed14e9ee5a5a7",
+      "durationSec": 1562.664,
+      "byteSize": 9375984,
+      "narrationWordCount": 3554,
+      "audioUrl": "/blog/audio/field-notes/ai-poc-enterprise-evaluation.mp3"
+    },
+    "field-notes/apache-spark-ecosystem-guide": {
+      "slug": "apache-spark-ecosystem-guide",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8597c3c24468ebaf88e56d6f56efc559ba820a634be8d6045438c62abc29ae48",
+      "durationSec": 1441.896,
+      "byteSize": 8651376,
+      "narrationWordCount": 3312,
+      "audioUrl": "/blog/audio/field-notes/apache-spark-ecosystem-guide.mp3"
+    },
+    "field-notes/cloud-ml-infrastructure": {
+      "slug": "cloud-ml-infrastructure",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "13611e306387d2d732e25d08e49b1eb303043e1019c810686144103430b01a30",
+      "durationSec": 631.704,
+      "byteSize": 3790224,
+      "narrationWordCount": 1310,
+      "audioUrl": "/blog/audio/field-notes/cloud-ml-infrastructure.mp3"
+    },
+    "field-notes/computational-resources-ml": {
+      "slug": "computational-resources-ml",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8727fbd566cf9e1111421990a1f96d5b533675434291dc3dc12cbb70f9123c9e",
+      "durationSec": 1203.312,
+      "byteSize": 7219872,
+      "narrationWordCount": 2465,
+      "audioUrl": "/blog/audio/field-notes/computational-resources-ml.mp3"
+    },
+    "field-notes/dama-dmbok-data-governance": {
+      "slug": "dama-dmbok-data-governance",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "28bbcbe5868cfcf81c2a2c2f6572b8a7aa3536e32a6b2435f5b215f5c0598f75",
+      "durationSec": 1645.68,
+      "byteSize": 9874080,
+      "narrationWordCount": 3707,
+      "audioUrl": "/blog/audio/field-notes/dama-dmbok-data-governance.mp3"
+    },
+    "field-notes/data-engineering-fundamentals": {
+      "slug": "data-engineering-fundamentals",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "fefb7e6fe6362eafd45b3d6231dfe719e56a2570d97203c8098ce21759bf26d2",
+      "durationSec": 2028.072,
+      "byteSize": 12168432,
+      "narrationWordCount": 4487,
+      "audioUrl": "/blog/audio/field-notes/data-engineering-fundamentals.mp3"
+    },
+    "field-notes/data-silos-breaking-information-barriers": {
+      "slug": "data-silos-breaking-information-barriers",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c9b17b92579025031e9ddf0150b205af4241288336283500d64791a90a9056f4",
+      "durationSec": 1595.784,
+      "byteSize": 9574704,
+      "narrationWordCount": 3698,
+      "audioUrl": "/blog/audio/field-notes/data-silos-breaking-information-barriers.mp3"
+    },
+    "field-notes/dataiku-enterprise-data-ai-ecosystem": {
+      "slug": "dataiku-enterprise-data-ai-ecosystem",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "f859c7f84d55081327dbe9c355d250d011e5ce348adccc402607a02736325b0a",
+      "durationSec": 1701.672,
+      "byteSize": 10210032,
+      "narrationWordCount": 3816,
+      "audioUrl": "/blog/audio/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3"
+    },
+    "field-notes/dbt-analytics-engineering": {
+      "slug": "dbt-analytics-engineering",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "e891efbc962c526d3844e0415b4245a4ce53c6d4863a6f947a33cdb08e4a0b3f",
+      "durationSec": 843.672,
+      "byteSize": 5062032,
+      "narrationWordCount": 1920,
+      "audioUrl": "/blog/audio/field-notes/dbt-analytics-engineering.mp3"
+    },
+    "field-notes/dimensional-modeling-kimball": {
+      "slug": "dimensional-modeling-kimball",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "172170716e05b1746d6c849f90b8f008768b1768a0c7dbc98b7a5f4c44ebf3fb",
+      "durationSec": 1330.224,
+      "byteSize": 7981344,
+      "narrationWordCount": 3082,
+      "audioUrl": "/blog/audio/field-notes/dimensional-modeling-kimball.mp3"
+    },
+    "field-notes/docker-for-ml-engineers": {
+      "slug": "docker-for-ml-engineers",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "aabadb7c00db5102706423bb8359cc4ba46bf55b36af7bac4c57e8e80369d5fa",
+      "durationSec": 1229.256,
+      "byteSize": 7375536,
+      "narrationWordCount": 2752,
+      "audioUrl": "/blog/audio/field-notes/docker-for-ml-engineers.mp3"
+    },
+    "field-notes/document-processing-ocr-layout": {
+      "slug": "document-processing-ocr-layout",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "a1f8563253428edd4956bf12e1d05613d22a53f3bb1169bf73f52669b914fb65",
+      "durationSec": 1726.464,
+      "byteSize": 10358784,
+      "narrationWordCount": 3332,
+      "audioUrl": "/blog/audio/field-notes/document-processing-ocr-layout.mp3"
+    },
+    "field-notes/elevenlabs-voice-ai-engineering": {
+      "slug": "elevenlabs-voice-ai-engineering",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "30a40580d67b3f027b950912a123290bf031df63782b38617bf5f542ba3f9771",
+      "durationSec": 1456.752,
+      "byteSize": 8740512,
+      "narrationWordCount": 3986,
+      "audioUrl": "/blog/audio/field-notes/elevenlabs-voice-ai-engineering.mp3"
+    },
+    "field-notes/enterprise-ai-platform-selection": {
+      "slug": "enterprise-ai-platform-selection",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "4d201871e58e32a8b0e4a5eb51d9d86cb7c398dbacf5f32fe318f6fe22ced2eb",
+      "durationSec": 1359.48,
+      "byteSize": 8156880,
+      "narrationWordCount": 2942,
+      "audioUrl": "/blog/audio/field-notes/enterprise-ai-platform-selection.mp3"
+    },
+    "field-notes/enterprise-knowledge-bases": {
+      "slug": "enterprise-knowledge-bases",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "a4e66dc120c4884aad134689ddf463d4182b88e1078185ac572b277c2027449e",
+      "durationSec": 3071.976,
+      "byteSize": 18431856,
+      "narrationWordCount": 6523,
+      "audioUrl": "/blog/audio/field-notes/enterprise-knowledge-bases.mp3"
+    },
+    "field-notes/experiment-tracking-mlops": {
+      "slug": "experiment-tracking-mlops",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "acd2456cbcaad1bcedbdc3f51cce2ca66eafe318fd9d92ffffaceaabe8ddc39e",
+      "durationSec": 1232.448,
+      "byteSize": 7394688,
+      "narrationWordCount": 2786,
+      "audioUrl": "/blog/audio/field-notes/experiment-tracking-mlops.mp3"
+    },
+    "field-notes/files-under-the-hood": {
+      "slug": "files-under-the-hood",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "e9ddbfb657e15169c9091257c1f56c684de33560b4f0d2eb860df6a5d886bdf7",
+      "durationSec": 1107.24,
+      "byteSize": 6643440,
+      "narrationWordCount": 2529,
+      "audioUrl": "/blog/audio/field-notes/files-under-the-hood.mp3"
+    },
+    "field-notes/fine-tuning-embeddings": {
+      "slug": "fine-tuning-embeddings",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "f35dde505e4e1e69990a3c16ae13b2dcf7d4d633c814a5c0e218e41ca75c44db",
+      "durationSec": 1632.12,
+      "byteSize": 9792720,
+      "narrationWordCount": 4045,
+      "audioUrl": "/blog/audio/field-notes/fine-tuning-embeddings.mp3"
+    },
+    "field-notes/fine-tuning-gemma4-lora-qlora": {
+      "slug": "fine-tuning-gemma4-lora-qlora",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "9260ab7e4722ad496b237ec3236777b220a74c2bf096ba4a3195d41ebf4d848b",
+      "durationSec": 2400.864,
+      "byteSize": 14405184,
+      "narrationWordCount": 5247,
+      "audioUrl": "/blog/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3"
+    },
+    "field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline": {
+      "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "0113f2d92b6a9b18ad11b0567b00ef99613c2fd4fad00d9d82b6f556a121e5eb",
+      "durationSec": 2758.968,
+      "byteSize": 16553808,
+      "narrationWordCount": 5314,
+      "audioUrl": "/blog/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3"
+    },
+    "field-notes/knowledge-base-curation": {
+      "slug": "knowledge-base-curation",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "44e8a8f84d3a6012a2a19cf4b42539f6c65eb1e2ace8883eb7f0ff3d8f4027c0",
+      "durationSec": 1362.816,
+      "byteSize": 8176896,
+      "narrationWordCount": 3052,
+      "audioUrl": "/blog/audio/field-notes/knowledge-base-curation.mp3"
+    },
+    "field-notes/knowledge-graphs-practice": {
+      "slug": "knowledge-graphs-practice",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8073edce6605285b4c86b1f0703c649b6978ffc13fa864a33e2a1c0448dcf515",
+      "durationSec": 1304.16,
+      "byteSize": 7824960,
+      "narrationWordCount": 2749,
+      "audioUrl": "/blog/audio/field-notes/knowledge-graphs-practice.mp3"
+    },
+    "field-notes/lakehouse-architecture": {
+      "slug": "lakehouse-architecture",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "e8d2a44df2e218880a99780cbbb8702644bceec95941959dc17f81d6d1266eb3",
+      "durationSec": 1224.864,
+      "byteSize": 7349184,
+      "narrationWordCount": 2870,
+      "audioUrl": "/blog/audio/field-notes/lakehouse-architecture.mp3"
+    },
+    "field-notes/langgraph-multi-agent-workflows": {
+      "slug": "langgraph-multi-agent-workflows",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "7aec44eb64fa4fa70c51f2aa7511bf475f0b1d54e2005d0ef4fc297bb31b0320",
+      "durationSec": 844.392,
+      "byteSize": 5066352,
+      "narrationWordCount": 1837,
+      "audioUrl": "/blog/audio/field-notes/langgraph-multi-agent-workflows.mp3"
+    },
+    "field-notes/llamaindex-langchain-llm-frameworks": {
+      "slug": "llamaindex-langchain-llm-frameworks",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "6fa5990e646b90536dcf752d8bdb96d3c1ed5544641b23ea45d09f66fd9d8981",
+      "durationSec": 1130.4,
+      "byteSize": 6782400,
+      "narrationWordCount": 2432,
+      "audioUrl": "/blog/audio/field-notes/llamaindex-langchain-llm-frameworks.mp3"
+    },
+    "field-notes/llm-benchmarks": {
+      "slug": "llm-benchmarks",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "ece7e5df7259847171499b01542ea8f183e1b0e6cfdc6f3feb54e3c7b2cc39a5",
+      "durationSec": 3694.392,
+      "byteSize": 22166352,
+      "narrationWordCount": 7593,
+      "audioUrl": "/blog/audio/field-notes/llm-benchmarks.mp3"
+    },
+    "field-notes/local-llm-inference-tools": {
+      "slug": "local-llm-inference-tools",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8d3b693cf2bc5d76b6882a9a8320e9e5ce806fcc4b243efa3b59f194e0cf1249",
+      "durationSec": 829.296,
+      "byteSize": 4975776,
+      "narrationWordCount": 1908,
+      "audioUrl": "/blog/audio/field-notes/local-llm-inference-tools.mp3"
+    },
+    "field-notes/mcp-production-enterprise": {
+      "slug": "mcp-production-enterprise",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "d2028d3a955dbb2138ac6743ffb9439d3136d65d86b4948b034232de1079b707",
+      "durationSec": 666.048,
+      "byteSize": 3996288,
+      "narrationWordCount": 1569,
+      "audioUrl": "/blog/audio/field-notes/mcp-production-enterprise.mp3"
+    },
+    "field-notes/ml-libraries-under-the-hood": {
+      "slug": "ml-libraries-under-the-hood",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "eb3fba6a30c13980d1bcd8fec63c4fb365b22833fafaf90cb332c92929265392",
+      "durationSec": 1562.112,
+      "byteSize": 9372672,
+      "narrationWordCount": 3178,
+      "audioUrl": "/blog/audio/field-notes/ml-libraries-under-the-hood.mp3"
+    },
+    "field-notes/ml-metrics-evaluation-monitoring": {
+      "slug": "ml-metrics-evaluation-monitoring",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "dea46ae76a35bcd4bba6e42ae944393e94af34e5b82baf5dbeb0ea3aa2de8a31",
+      "durationSec": 684.36,
+      "byteSize": 4106160,
+      "narrationWordCount": 1466,
+      "audioUrl": "/blog/audio/field-notes/ml-metrics-evaluation-monitoring.mp3"
+    },
+    "field-notes/model-context-protocol": {
+      "slug": "model-context-protocol",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "fa33dd11052a4245cb49a6d0e9280f82a838daa33361dcd9a64a048a4511fd90",
+      "durationSec": 1290.048,
+      "byteSize": 7740288,
+      "narrationWordCount": 2919,
+      "audioUrl": "/blog/audio/field-notes/model-context-protocol.mp3"
+    },
+    "field-notes/mteb-embedding-benchmarks": {
+      "slug": "mteb-embedding-benchmarks",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "9c69ba05a186099f99c2c0f3db5cd367050d4b363d1ff18281a824432e186753",
+      "durationSec": 1437.192,
+      "byteSize": 8623152,
+      "narrationWordCount": 3104,
+      "audioUrl": "/blog/audio/field-notes/mteb-embedding-benchmarks.mp3"
+    },
+    "field-notes/ontologies-building-knowledge-bases": {
+      "slug": "ontologies-building-knowledge-bases",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "0a5989465550e8f81bf0120588321dd72139b02d578a8acbc2d578b10184a114",
+      "durationSec": 1470.72,
+      "byteSize": 8824320,
+      "narrationWordCount": 3163,
+      "audioUrl": "/blog/audio/field-notes/ontologies-building-knowledge-bases.mp3"
+    },
+    "field-notes/python-beyond-the-basics": {
+      "slug": "python-beyond-the-basics",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "e8a6fe903099f39dd275a71094105d9c3a059dad32277c4d6c0c18d63d9a61f3",
+      "durationSec": 1727.04,
+      "byteSize": 10362240,
+      "narrationWordCount": 4009,
+      "audioUrl": "/blog/audio/field-notes/python-beyond-the-basics.mp3"
+    },
+    "field-notes/pytorch-tensorflow-deep-learning-frameworks": {
+      "slug": "pytorch-tensorflow-deep-learning-frameworks",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "f831594af5c3e2c8044f7dbf44208f0be8b5b5778338fade74377b22ab8a4d07",
+      "durationSec": 1595.616,
+      "byteSize": 9573696,
+      "narrationWordCount": 3261,
+      "audioUrl": "/blog/audio/field-notes/pytorch-tensorflow-deep-learning-frameworks.mp3"
+    },
+    "field-notes/rag-advanced-patterns": {
+      "slug": "rag-advanced-patterns",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "dc9f4fcca90052cf0d03623f34f1c874b8b60a4cff77d74c68926f86f6f934e6",
+      "durationSec": 1969.92,
+      "byteSize": 11819520,
+      "narrationWordCount": 4402,
+      "audioUrl": "/blog/audio/field-notes/rag-advanced-patterns.mp3"
+    },
+    "field-notes/rag-building-production-systems": {
+      "slug": "rag-building-production-systems",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "0246e2c43601c19e1f7e0de1c1153530b17157455e3f8d541b6da48ed4f52f46",
+      "durationSec": 2071.896,
+      "byteSize": 12431376,
+      "narrationWordCount": 4684,
+      "audioUrl": "/blog/audio/field-notes/rag-building-production-systems.mp3"
+    },
+    "field-notes/ragas-evaluating-rag": {
+      "slug": "ragas-evaluating-rag",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "af3a92910aa6494f76432b8e2f72eceb76e1fb090adff3ab5008d57d1829c8cc",
+      "durationSec": 2577.096,
+      "byteSize": 15462576,
+      "narrationWordCount": 5796,
+      "audioUrl": "/blog/audio/field-notes/ragas-evaluating-rag.mp3"
+    },
+    "field-notes/reinforcement-learning-first-principles": {
+      "slug": "reinforcement-learning-first-principles",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "6513cde7e795c66bb3948db186ea1ff2614c67d49fe6730da79d3293c126021d",
+      "durationSec": 4032.456,
+      "byteSize": 24194736,
+      "narrationWordCount": 8757,
+      "audioUrl": "/blog/audio/field-notes/reinforcement-learning-first-principles.mp3"
+    },
+    "field-notes/reinforcement-learning-in-practice": {
+      "slug": "reinforcement-learning-in-practice",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "dcccfb2c76c96bd030dc5bfb4d538ab6782840444432e89e467a33267b0cac54",
+      "durationSec": 2750.688,
+      "byteSize": 16504128,
+      "narrationWordCount": 5915,
+      "audioUrl": "/blog/audio/field-notes/reinforcement-learning-in-practice.mp3"
+    },
+    "field-notes/rlhf-dpo-alignment": {
+      "slug": "rlhf-dpo-alignment",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c0ba024cac49383f06355807e0e77a66cceba02e6127e8e197f4ebc19c0a3d1a",
+      "durationSec": 1983.144,
+      "byteSize": 11898864,
+      "narrationWordCount": 4500,
+      "audioUrl": "/blog/audio/field-notes/rlhf-dpo-alignment.mp3"
+    },
+    "field-notes/software-engineering-classics": {
+      "slug": "software-engineering-classics",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "1129167903610b3cc4d961c4992298d7cb6c4854fd32f3b8d6a260c578367b07",
+      "durationSec": 1374.744,
+      "byteSize": 8248464,
+      "narrationWordCount": 3307,
+      "audioUrl": "/blog/audio/field-notes/software-engineering-classics.mp3"
+    },
+    "field-notes/sql-pandas-pyspark-duckdb": {
+      "slug": "sql-pandas-pyspark-duckdb",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "4d0268e7229033e5ea2294d7b81562b721617499f36edf1094d4c25165c22324",
+      "durationSec": 1393.608,
+      "byteSize": 8361648,
+      "narrationWordCount": 3192,
+      "audioUrl": "/blog/audio/field-notes/sql-pandas-pyspark-duckdb.mp3"
+    },
+    "field-notes/structuring-ml-projects": {
+      "slug": "structuring-ml-projects",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "fbc6c8ed2cfac80d90fdeb35ec461850358fc588aa45abbdc54472dca09706ca",
+      "durationSec": 1295.616,
+      "byteSize": 7773696,
+      "narrationWordCount": 2573,
+      "audioUrl": "/blog/audio/field-notes/structuring-ml-projects.mp3"
+    },
+    "field-notes/text-to-sql": {
+      "slug": "text-to-sql",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "08d0c95cdcf14a9446d458e7981d4e29616a00871c0d7e69310e5f610c783f8b",
+      "durationSec": 1140.96,
+      "byteSize": 6845760,
+      "narrationWordCount": 2338,
+      "audioUrl": "/blog/audio/field-notes/text-to-sql.mp3"
+    },
+    "field-notes/vector-db-benchmarks": {
+      "slug": "vector-db-benchmarks",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8246efb7a58b63413e18a1b6f4538be322926d71e90f5d4132b2ab6ec5fadf43",
+      "durationSec": 2468.616,
+      "byteSize": 14811696,
+      "narrationWordCount": 5329,
+      "audioUrl": "/blog/audio/field-notes/vector-db-benchmarks.mp3"
+    },
+    "field-notes/working-with-ml-models": {
+      "slug": "working-with-ml-models",
+      "category": "field-notes",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "28fceb8fb845d4510b34f56d326daaf045d0124fa5d2fe87fc038927fe740a9f",
+      "durationSec": 957.216,
+      "byteSize": 5743296,
+      "narrationWordCount": 1915,
+      "audioUrl": "/blog/audio/field-notes/working-with-ml-models.mp3"
+    },
+    "research/attention-is-all-you-need": {
+      "slug": "attention-is-all-you-need",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "0c102b2f9fd782a1e546eb1196357fa76196f6bd833a430f50532288dd6be198",
+      "durationSec": 1635.36,
+      "byteSize": 9812160,
+      "narrationWordCount": 3380,
+      "audioUrl": "/blog/audio/research/attention-is-all-you-need.mp3"
+    },
+    "research/bert-pre-training-bidirectional-transformers": {
+      "slug": "bert-pre-training-bidirectional-transformers",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "a367c3967ab0ca4766024e3745468261345ace091af6a3d978c0e068001168d8",
+      "durationSec": 2084.616,
+      "byteSize": 12507696,
+      "narrationWordCount": 4479,
+      "audioUrl": "/blog/audio/research/bert-pre-training-bidirectional-transformers.mp3"
+    },
+    "research/embeddings-geometry-of-meaning": {
+      "slug": "embeddings-geometry-of-meaning",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "bff740abe8c5bd3364cb7c778813e68932faaa784cacfa45ed70f0848e54cf1d",
+      "durationSec": 1354.704,
+      "byteSize": 8128224,
+      "narrationWordCount": 3153,
+      "audioUrl": "/blog/audio/research/embeddings-geometry-of-meaning.mp3"
+    },
+    "research/llm-as-a-judge": {
+      "slug": "llm-as-a-judge",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "4fb79d900428a9dcc42b2dfd6d6596c9e3d445944221774545cf8ddf7aca5976",
+      "durationSec": 1578.144,
+      "byteSize": 9468864,
+      "narrationWordCount": 3436,
+      "audioUrl": "/blog/audio/research/llm-as-a-judge.mp3"
+    },
+    "research/mamba-selective-state-spaces": {
+      "slug": "mamba-selective-state-spaces",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "7c0ff57ff30e7481be920842cc1621d943077bcaaae7ed7c9073da269461ddb4",
+      "durationSec": 1837.992,
+      "byteSize": 11027952,
+      "narrationWordCount": 4480,
+      "audioUrl": "/blog/audio/research/mamba-selective-state-spaces.mp3"
+    },
+    "research/rag-retrieval-augmented-generation": {
+      "slug": "rag-retrieval-augmented-generation",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "4c97de13e2cd54a00c523a0a8294287035037adb4a4bcca0f8983b5d55b5368c",
+      "durationSec": 2126.52,
+      "byteSize": 12759120,
+      "narrationWordCount": 4770,
+      "audioUrl": "/blog/audio/research/rag-retrieval-augmented-generation.mp3"
+    },
+    "research/scaling-laws-neural-language-models": {
+      "slug": "scaling-laws-neural-language-models",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "fbc7b0b469fc04d1e51c77f834b70926be63c599276e689231b71477579fe7c7",
+      "durationSec": 1324.344,
+      "byteSize": 7946064,
+      "narrationWordCount": 3116,
+      "audioUrl": "/blog/audio/research/scaling-laws-neural-language-models.mp3"
+    },
+    "research/t5-text-to-text-transfer-transformer": {
+      "slug": "t5-text-to-text-transfer-transformer",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "2116353392a0513190e9af1e7dd034f7bdfc4977f6c0b8d1f60284be8a945692",
+      "durationSec": 1628.328,
+      "byteSize": 9769968,
+      "narrationWordCount": 3628,
+      "audioUrl": "/blog/audio/research/t5-text-to-text-transfer-transformer.mp3"
+    },
+    "research/the-manifold-hypothesis": {
+      "slug": "the-manifold-hypothesis",
+      "category": "research",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "14c89625c44aa0c980ae130e64d10f102c8d7aebd475958b2e94ad4bf881e30d",
+      "durationSec": 1610.04,
+      "byteSize": 9660240,
+      "narrationWordCount": 3501,
+      "audioUrl": "/blog/audio/research/the-manifold-hypothesis.mp3"
+    }
+  }
+}

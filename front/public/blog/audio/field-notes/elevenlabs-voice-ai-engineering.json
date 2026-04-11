@@ -1,0 +1,13 @@
+{
+  "slug": "elevenlabs-voice-ai-engineering",
+  "category": "field-notes",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "d7cd53278548281298c720e527eb9badc2c3e1bba9c6e4596f2f58d5bbe54669",
+  "sourceHash": "d7cd53278548281298c720e527eb9badc2c3e1bba9c6e4596f2f58d5bbe54669",
+  "durationSec": 1710.048,
+  "byteSize": 10260288,
+  "narrationWordCount": 3983,
+  "audioUrl": "/blog/audio/field-notes/elevenlabs-voice-ai-engineering.mp3",
+  "translationModel": ""
+}
