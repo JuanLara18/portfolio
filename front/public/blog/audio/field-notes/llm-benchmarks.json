@@ -1,10 +1,13 @@
 {
   "slug": "llm-benchmarks",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "ece7e5df7259847171499b01542ea8f183e1b0e6cfdc6f3feb54e3c7b2cc39a5",
-  "durationSec": 3694.392,
-  "byteSize": 22166352,
+  "hash": "eb683f4bc553613a958d9caa1ec1ff4b69872ac90981c4261c99e9a2ff933262",
+  "sourceHash": "eb683f4bc553613a958d9caa1ec1ff4b69872ac90981c4261c99e9a2ff933262",
+  "durationSec": 3692.976,
+  "byteSize": 22157856,
   "narrationWordCount": 7593,
-  "audioUrl": "/blog/audio/field-notes/llm-benchmarks.mp3"
+  "audioUrl": "/blog/audio/field-notes/llm-benchmarks.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "reinforcement-learning-in-practice",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "dcccfb2c76c96bd030dc5bfb4d538ab6782840444432e89e467a33267b0cac54",
-  "durationSec": 2750.688,
-  "byteSize": 16504128,
-  "narrationWordCount": 5915,
-  "audioUrl": "/blog/audio/field-notes/reinforcement-learning-in-practice.mp3"
+  "hash": "c9df7608bf225dc721cf1be508e1e2ec11dd1a6635699c80ccfdb9344e4a9eea",
+  "sourceHash": "c9df7608bf225dc721cf1be508e1e2ec11dd1a6635699c80ccfdb9344e4a9eea",
+  "durationSec": 2734.608,
+  "byteSize": 16407648,
+  "narrationWordCount": 5873,
+  "audioUrl": "/blog/audio/field-notes/reinforcement-learning-in-practice.mp3",
+  "translationModel": ""
 }

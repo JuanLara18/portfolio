@@ -1,10 +1,13 @@
 {
   "slug": "attention-is-all-you-need",
   "category": "research",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "0c102b2f9fd782a1e546eb1196357fa76196f6bd833a430f50532288dd6be198",
-  "durationSec": 1635.36,
-  "byteSize": 9812160,
-  "narrationWordCount": 3380,
-  "audioUrl": "/blog/audio/research/attention-is-all-you-need.mp3"
+  "hash": "6ed0a696e689e76e407b8d9d16edd48041d52f3e7b30932ce650621f0c254647",
+  "sourceHash": "6ed0a696e689e76e407b8d9d16edd48041d52f3e7b30932ce650621f0c254647",
+  "durationSec": 1617.144,
+  "byteSize": 9702864,
+  "narrationWordCount": 3350,
+  "audioUrl": "/blog/audio/research/attention-is-all-you-need.mp3",
+  "translationModel": ""
 }

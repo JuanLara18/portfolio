@@ -1,10 +1,13 @@
 {
   "slug": "python-beyond-the-basics",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "e8a6fe903099f39dd275a71094105d9c3a059dad32277c4d6c0c18d63d9a61f3",
-  "durationSec": 1727.04,
-  "byteSize": 10362240,
-  "narrationWordCount": 4009,
-  "audioUrl": "/blog/audio/field-notes/python-beyond-the-basics.mp3"
+  "hash": "c2a83e46958e8bea93bb7d99b0d2883efcff50302c81c8242a8f0f0529ae400e",
+  "sourceHash": "c2a83e46958e8bea93bb7d99b0d2883efcff50302c81c8242a8f0f0529ae400e",
+  "durationSec": 1724.472,
+  "byteSize": 10346832,
+  "narrationWordCount": 3977,
+  "audioUrl": "/blog/audio/field-notes/python-beyond-the-basics.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "scaling-laws-neural-language-models",
   "category": "research",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "fbc7b0b469fc04d1e51c77f834b70926be63c599276e689231b71477579fe7c7",
-  "durationSec": 1324.344,
-  "byteSize": 7946064,
-  "narrationWordCount": 3116,
-  "audioUrl": "/blog/audio/research/scaling-laws-neural-language-models.mp3"
+  "hash": "da76adf153cedf373c5ae937ea3cddc0e073aab573fe48e73a50a7ca93081be9",
+  "sourceHash": "da76adf153cedf373c5ae937ea3cddc0e073aab573fe48e73a50a7ca93081be9",
+  "durationSec": 1317.384,
+  "byteSize": 7904304,
+  "narrationWordCount": 3094,
+  "audioUrl": "/blog/audio/research/scaling-laws-neural-language-models.mp3",
+  "translationModel": ""
 }

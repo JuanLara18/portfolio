@@ -1,10 +1,13 @@
 {
   "slug": "model-context-protocol",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "fa33dd11052a4245cb49a6d0e9280f82a838daa33361dcd9a64a048a4511fd90",
-  "durationSec": 1290.048,
-  "byteSize": 7740288,
-  "narrationWordCount": 2919,
-  "audioUrl": "/blog/audio/field-notes/model-context-protocol.mp3"
+  "hash": "5f7ead53e1f94baeea7c0525947c9935d8988cadcd1c06b3e583fb604931d71c",
+  "sourceHash": "5f7ead53e1f94baeea7c0525947c9935d8988cadcd1c06b3e583fb604931d71c",
+  "durationSec": 1291.824,
+  "byteSize": 7750944,
+  "narrationWordCount": 2914,
+  "audioUrl": "/blog/audio/field-notes/model-context-protocol.mp3",
+  "translationModel": ""
 }

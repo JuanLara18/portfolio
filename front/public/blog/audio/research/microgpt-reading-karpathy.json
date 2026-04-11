@@ -1,0 +1,13 @@
+{
+  "slug": "microgpt-reading-karpathy",
+  "category": "research",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "3c42db9d0d4aa7e7affb6054a23388c19ed6787b7a45bc21d37384e13ed6a48e",
+  "sourceHash": "3c42db9d0d4aa7e7affb6054a23388c19ed6787b7a45bc21d37384e13ed6a48e",
+  "durationSec": 2250.408,
+  "byteSize": 13502448,
+  "narrationWordCount": 5306,
+  "audioUrl": "/blog/audio/research/microgpt-reading-karpathy.mp3",
+  "translationModel": ""
+}

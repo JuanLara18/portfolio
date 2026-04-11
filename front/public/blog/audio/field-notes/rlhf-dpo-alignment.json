@@ -1,10 +1,13 @@
 {
   "slug": "rlhf-dpo-alignment",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "c0ba024cac49383f06355807e0e77a66cceba02e6127e8e197f4ebc19c0a3d1a",
-  "durationSec": 1983.144,
-  "byteSize": 11898864,
-  "narrationWordCount": 4500,
-  "audioUrl": "/blog/audio/field-notes/rlhf-dpo-alignment.mp3"
+  "hash": "62834d57f56e7f492624f0016e446db2ce535d621d90dba5a121d1064d7c4121",
+  "sourceHash": "62834d57f56e7f492624f0016e446db2ce535d621d90dba5a121d1064d7c4121",
+  "durationSec": 1962.408,
+  "byteSize": 11774448,
+  "narrationWordCount": 4458,
+  "audioUrl": "/blog/audio/field-notes/rlhf-dpo-alignment.mp3",
+  "translationModel": ""
 }

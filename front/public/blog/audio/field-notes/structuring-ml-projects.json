@@ -1,10 +1,13 @@
 {
   "slug": "structuring-ml-projects",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "fbc6c8ed2cfac80d90fdeb35ec461850358fc588aa45abbdc54472dca09706ca",
-  "durationSec": 1295.616,
-  "byteSize": 7773696,
-  "narrationWordCount": 2573,
-  "audioUrl": "/blog/audio/field-notes/structuring-ml-projects.mp3"
+  "hash": "6ae7539a049541195e8345a4cf2ee021cc01904dbcf97fcb70dfdc75f30eee2d",
+  "sourceHash": "6ae7539a049541195e8345a4cf2ee021cc01904dbcf97fcb70dfdc75f30eee2d",
+  "durationSec": 1296.936,
+  "byteSize": 7781616,
+  "narrationWordCount": 2562,
+  "audioUrl": "/blog/audio/field-notes/structuring-ml-projects.mp3",
+  "translationModel": ""
 }

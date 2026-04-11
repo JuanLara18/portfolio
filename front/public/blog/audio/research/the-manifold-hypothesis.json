@@ -1,10 +1,13 @@
 {
   "slug": "the-manifold-hypothesis",
   "category": "research",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "14c89625c44aa0c980ae130e64d10f102c8d7aebd475958b2e94ad4bf881e30d",
-  "durationSec": 1610.04,
-  "byteSize": 9660240,
-  "narrationWordCount": 3501,
-  "audioUrl": "/blog/audio/research/the-manifold-hypothesis.mp3"
+  "hash": "c22cfff70ee4d8b6c59c64fe848f507b1ca7145346fc788609d74e6b562af5f3",
+  "sourceHash": "c22cfff70ee4d8b6c59c64fe848f507b1ca7145346fc788609d74e6b562af5f3",
+  "durationSec": 1562.328,
+  "byteSize": 9373968,
+  "narrationWordCount": 3417,
+  "audioUrl": "/blog/audio/research/the-manifold-hypothesis.mp3",
+  "translationModel": ""
 }

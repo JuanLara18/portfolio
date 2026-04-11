@@ -1,10 +1,13 @@
 {
   "slug": "working-with-ml-models",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
   "hash": "28fceb8fb845d4510b34f56d326daaf045d0124fa5d2fe87fc038927fe740a9f",
-  "durationSec": 957.216,
-  "byteSize": 5743296,
+  "sourceHash": "28fceb8fb845d4510b34f56d326daaf045d0124fa5d2fe87fc038927fe740a9f",
+  "durationSec": 959.16,
+  "byteSize": 5754960,
   "narrationWordCount": 1915,
-  "audioUrl": "/blog/audio/field-notes/working-with-ml-models.mp3"
+  "audioUrl": "/blog/audio/field-notes/working-with-ml-models.mp3",
+  "translationModel": ""
 }

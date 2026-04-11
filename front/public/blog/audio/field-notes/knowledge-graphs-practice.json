@@ -1,10 +1,13 @@
 {
   "slug": "knowledge-graphs-practice",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "8073edce6605285b4c86b1f0703c649b6978ffc13fa864a33e2a1c0448dcf515",
-  "durationSec": 1304.16,
-  "byteSize": 7824960,
-  "narrationWordCount": 2749,
-  "audioUrl": "/blog/audio/field-notes/knowledge-graphs-practice.mp3"
+  "hash": "08e2af026702dbf8cd8c98ab9b5c4153fdf91c9aa6d3f65cfb9f67be7208a0ec",
+  "sourceHash": "08e2af026702dbf8cd8c98ab9b5c4153fdf91c9aa6d3f65cfb9f67be7208a0ec",
+  "durationSec": 1304.136,
+  "byteSize": 7824816,
+  "narrationWordCount": 2743,
+  "audioUrl": "/blog/audio/field-notes/knowledge-graphs-practice.mp3",
+  "translationModel": ""
 }

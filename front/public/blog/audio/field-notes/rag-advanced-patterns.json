@@ -1,10 +1,13 @@
 {
   "slug": "rag-advanced-patterns",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "dc9f4fcca90052cf0d03623f34f1c874b8b60a4cff77d74c68926f86f6f934e6",
-  "durationSec": 1969.92,
-  "byteSize": 11819520,
-  "narrationWordCount": 4402,
-  "audioUrl": "/blog/audio/field-notes/rag-advanced-patterns.mp3"
+  "hash": "5f4f465808a0042f0a7075ba1940e233f453ddb74311cb94ac79b685c8fa0fe1",
+  "sourceHash": "5f4f465808a0042f0a7075ba1940e233f453ddb74311cb94ac79b685c8fa0fe1",
+  "durationSec": 1965.504,
+  "byteSize": 11793024,
+  "narrationWordCount": 4401,
+  "audioUrl": "/blog/audio/field-notes/rag-advanced-patterns.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "software-engineering-classics",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "1129167903610b3cc4d961c4992298d7cb6c4854fd32f3b8d6a260c578367b07",
-  "durationSec": 1374.744,
-  "byteSize": 8248464,
-  "narrationWordCount": 3307,
-  "audioUrl": "/blog/audio/field-notes/software-engineering-classics.mp3"
+  "hash": "d101dfb554b6dafd11ac22f48b27d192e022db2e35ccb64d584338292ca6db81",
+  "sourceHash": "d101dfb554b6dafd11ac22f48b27d192e022db2e35ccb64d584338292ca6db81",
+  "durationSec": 1373.424,
+  "byteSize": 8240544,
+  "narrationWordCount": 3306,
+  "audioUrl": "/blog/audio/field-notes/software-engineering-classics.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "t5-text-to-text-transfer-transformer",
   "category": "research",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
   "hash": "2116353392a0513190e9af1e7dd034f7bdfc4977f6c0b8d1f60284be8a945692",
-  "durationSec": 1628.328,
-  "byteSize": 9769968,
+  "sourceHash": "2116353392a0513190e9af1e7dd034f7bdfc4977f6c0b8d1f60284be8a945692",
+  "durationSec": 1627.8,
+  "byteSize": 9766800,
   "narrationWordCount": 3628,
-  "audioUrl": "/blog/audio/research/t5-text-to-text-transfer-transformer.mp3"
+  "audioUrl": "/blog/audio/research/t5-text-to-text-transfer-transformer.mp3",
+  "translationModel": ""
 }

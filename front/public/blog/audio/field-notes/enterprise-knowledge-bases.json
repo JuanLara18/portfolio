@@ -1,10 +1,13 @@
 {
   "slug": "enterprise-knowledge-bases",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "a4e66dc120c4884aad134689ddf463d4182b88e1078185ac572b277c2027449e",
-  "durationSec": 3071.976,
-  "byteSize": 18431856,
-  "narrationWordCount": 6523,
-  "audioUrl": "/blog/audio/field-notes/enterprise-knowledge-bases.mp3"
+  "hash": "1335cac39f9288a40b5e60888d0b727e6627a7236f4457b1f85d892a03400353",
+  "sourceHash": "1335cac39f9288a40b5e60888d0b727e6627a7236f4457b1f85d892a03400353",
+  "durationSec": 3070.032,
+  "byteSize": 18420192,
+  "narrationWordCount": 6511,
+  "audioUrl": "/blog/audio/field-notes/enterprise-knowledge-bases.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "vector-db-benchmarks",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "8246efb7a58b63413e18a1b6f4538be322926d71e90f5d4132b2ab6ec5fadf43",
-  "durationSec": 2468.616,
-  "byteSize": 14811696,
+  "hash": "88d9059c315ca4620d13c2e4aab8482245dae55478ac2713aabbee29c247b26d",
+  "sourceHash": "88d9059c315ca4620d13c2e4aab8482245dae55478ac2713aabbee29c247b26d",
+  "durationSec": 2468.52,
+  "byteSize": 14811120,
   "narrationWordCount": 5329,
-  "audioUrl": "/blog/audio/field-notes/vector-db-benchmarks.mp3"
+  "audioUrl": "/blog/audio/field-notes/vector-db-benchmarks.mp3",
+  "translationModel": ""
 }

@@ -1,10 +1,13 @@
 {
   "slug": "mamba-selective-state-spaces",
   "category": "research",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "7c0ff57ff30e7481be920842cc1621d943077bcaaae7ed7c9073da269461ddb4",
-  "durationSec": 1837.992,
-  "byteSize": 11027952,
-  "narrationWordCount": 4480,
-  "audioUrl": "/blog/audio/research/mamba-selective-state-spaces.mp3"
+  "hash": "38a5c83a9baa16c2973452954afb5e3addbdcbedad9d713c088d9c8002fa4e4a",
+  "sourceHash": "38a5c83a9baa16c2973452954afb5e3addbdcbedad9d713c088d9c8002fa4e4a",
+  "durationSec": 1791.48,
+  "byteSize": 10748880,
+  "narrationWordCount": 4358,
+  "audioUrl": "/blog/audio/research/mamba-selective-state-spaces.mp3",
+  "translationModel": ""
 }

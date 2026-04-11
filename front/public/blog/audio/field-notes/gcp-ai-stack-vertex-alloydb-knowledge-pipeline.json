@@ -1,10 +1,13 @@
 {
   "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "0113f2d92b6a9b18ad11b0567b00ef99613c2fd4fad00d9d82b6f556a121e5eb",
-  "durationSec": 2758.968,
-  "byteSize": 16553808,
-  "narrationWordCount": 5314,
-  "audioUrl": "/blog/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3"
+  "hash": "6adcbd1cb713c2a2d18736aba687bb1714f55e8eb398045be2483a65ce783bc0",
+  "sourceHash": "6adcbd1cb713c2a2d18736aba687bb1714f55e8eb398045be2483a65ce783bc0",
+  "durationSec": 2749.272,
+  "byteSize": 16495632,
+  "narrationWordCount": 5300,
+  "audioUrl": "/blog/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3",
+  "translationModel": ""
 }

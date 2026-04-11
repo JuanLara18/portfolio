@@ -1,10 +1,13 @@
 {
   "slug": "fine-tuning-embeddings",
   "category": "field-notes",
+  "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "f35dde505e4e1e69990a3c16ae13b2dcf7d4d633c814a5c0e218e41ca75c44db",
-  "durationSec": 1632.12,
-  "byteSize": 9792720,
-  "narrationWordCount": 4045,
-  "audioUrl": "/blog/audio/field-notes/fine-tuning-embeddings.mp3"
+  "hash": "4bdb70b913ec3bde6a7eed0a476bcdb799b6d1e518c22e074c2c4d8ee08e6954",
+  "sourceHash": "4bdb70b913ec3bde6a7eed0a476bcdb799b6d1e518c22e074c2c4d8ee08e6954",
+  "durationSec": 1625.256,
+  "byteSize": 9751536,
+  "narrationWordCount": 4020,
+  "audioUrl": "/blog/audio/field-notes/fine-tuning-embeddings.mp3",
+  "translationModel": ""
 }
