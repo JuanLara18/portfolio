@@ -34,4 +34,7 @@ public/blog/**/*-optimized.*
 # Generated PDF output
 /output/
 
+# Audio generation scratch (voice samples, translation experiments, bulk run logs)
+scripts/audio-experiments/
+
 package-lock.json
