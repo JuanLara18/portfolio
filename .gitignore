@@ -48,6 +48,7 @@ build
 
 # Agent files - do not commit
 AGENTS.md
+tokens.md
 
 # Environment files
 .env
