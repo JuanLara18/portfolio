@@ -62,7 +62,9 @@
     "optimize-images": "node scripts/optimize-images.js",
     "validate-mermaid": "node scripts/validate-mermaid.js",
     "generate-pdf": "node scripts/generate-blog-pdf.js",
-    "generate-audio": "python scripts/generate_blog_audio.py"
+    "sync": "python scripts/sync.py",
+    "sync:fast": "python scripts/sync.py --fast",
+    "sync:check": "python scripts/sync.py --check"
   },
   "browserslist": {
     "production": [
