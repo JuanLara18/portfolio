@@ -1,0 +1,13 @@
+{
+  "slug": "godels-incompleteness-theorems",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "ded8a26ce9f538ffd130f9dd55094b0534619f71155235e1507df663e6672cf0",
+  "sourceHash": "929479f1547521a8e00aa84077dd1a83e222f8f7b4eaf41829a852c914a8810a",
+  "durationSec": 1429.296,
+  "byteSize": 8575776,
+  "narrationWordCount": 3611,
+  "audioUrl": "/blog/audio-es/curiosities/godels-incompleteness-theorems.mp3",
+  "translationModel": "gemma4:latest"
+}

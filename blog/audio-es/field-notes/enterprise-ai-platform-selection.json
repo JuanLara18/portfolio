@@ -1,0 +1,13 @@
+{
+  "slug": "enterprise-ai-platform-selection",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "5ff18efa0ad82e89b5894746149200a4d1ba0e3b2bfdc14a6cb98788832623d5",
+  "sourceHash": "66b84a4b6fb82c5d45d6ed9c012bfa11d3a6cdd47ed08daad369bb3e210aa828",
+  "durationSec": 1376.136,
+  "byteSize": 8256816,
+  "narrationWordCount": 3420,
+  "audioUrl": "/blog/audio-es/field-notes/enterprise-ai-platform-selection.mp3",
+  "translationModel": "gemma4:latest"
+}

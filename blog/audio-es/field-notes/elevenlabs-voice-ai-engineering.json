@@ -1,0 +1,13 @@
+{
+  "slug": "elevenlabs-voice-ai-engineering",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "c7ea7a94739751cbf053908a8a2a32957d3b892f8c6019ea18b997c5093750bf",
+  "sourceHash": "d7cd53278548281298c720e527eb9badc2c3e1bba9c6e4596f2f58d5bbe54669",
+  "durationSec": 1740.576,
+  "byteSize": 10443456,
+  "narrationWordCount": 4584,
+  "audioUrl": "/blog/audio-es/field-notes/elevenlabs-voice-ai-engineering.mp3",
+  "translationModel": "gemma4:latest"
+}

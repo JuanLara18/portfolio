@@ -1,0 +1,13 @@
+{
+  "slug": "lakehouse-architecture",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "58dfd903a026b8a2ec4f60dcdfd26b06b443b759326d2a62e8d0385f5dc3cff6",
+  "sourceHash": "d7d8e4e1648eceb9a915c340b5cbb1a0fd4f8419c6403eabd5be1fcdcf4ed840",
+  "durationSec": 1237.512,
+  "byteSize": 7425072,
+  "narrationWordCount": 3276,
+  "audioUrl": "/blog/audio-es/field-notes/lakehouse-architecture.mp3",
+  "translationModel": "gemma4:latest"
+}

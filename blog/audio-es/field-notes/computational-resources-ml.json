@@ -1,0 +1,13 @@
+{
+  "slug": "computational-resources-ml",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "bf0a6ec2a60f611bbaae77ab0684b20bd2780501b0ff05eed40a56857471bb7f",
+  "sourceHash": "7ccf2dc70836f93342434025d4837fa2ed8961a511aef61dca1e81b9372906af",
+  "durationSec": 1256.016,
+  "byteSize": 7536096,
+  "narrationWordCount": 2890,
+  "audioUrl": "/blog/audio-es/field-notes/computational-resources-ml.mp3",
+  "translationModel": "gemma4:latest"
+}
