@@ -15,6 +15,7 @@ Usage (from front/ or via npm):
     python scripts/sync.py --only <slug>
     python scripts/sync.py --force
     python scripts/sync.py --dry-run
+    python scripts/sync.py --skip-upload  # skip R2 upload (offline runs)
 
 Exit codes:
     0 — all steps succeeded
@@ -165,7 +166,22 @@ def ensure_ollama() -> bool:
     return False
 
 
-# ---------- step 7: blog data ----------
+# ---------- step 7: upload audio to R2 ----------
+
+def upload_audio_to_r2() -> bool:
+    """Return True if the upload ran, False if skipped (no credentials)."""
+    sys.path.insert(0, str(SCRIPT_DIR))
+    import upload_audio  # noqa: E402
+
+    if not upload_audio.has_credentials():
+        warn("R2 credentials not configured — skipping upload (see scripts/README.md)")
+        return False
+    for lang in ("en", "es"):
+        upload_audio.upload_lang(lang, verbose=True)
+    return True
+
+
+# ---------- step 8: blog data ----------
 
 def build_blog_data() -> None:
     run(["node", "scripts/build-blog-data.js"])
@@ -184,12 +200,17 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--dry-run", action="store_true", help="Preview actions without changing files")
     p.add_argument("--only", help="Scope audio regeneration to a single post slug")
     p.add_argument("--force", action="store_true", help="Bypass the audio hash cache")
+    p.add_argument(
+        "--skip-upload",
+        action="store_true",
+        help="Skip uploading audio to R2 even if credentials are configured",
+    )
     return p.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    total = 3 if args.check else 7
+    total = 3 if args.check else 8
 
     step(1, total, "discovering posts")
     canonical = discover_posts()
@@ -247,7 +268,13 @@ def main() -> int:
         elif ensure_ollama():
             generate_audio("es", audio_extra)
 
-    step(7, total, "rebuilding blog data manifest")
+    step(7, total, "uploading audio to R2")
+    if args.dry_run or args.skip_upload:
+        info("(skipped)")
+    else:
+        upload_audio_to_r2()
+
+    step(8, total, "rebuilding blog data manifest")
     if args.dry_run:
         info("(dry-run)")
     else:
