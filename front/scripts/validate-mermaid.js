@@ -106,6 +106,7 @@ function run() {
   const files = scanDirectory(POSTS_DIR);
   let totalDiagrams = 0;
   let totalIssues = 0;
+  let totalErrors = 0;
   let totalWarnings = 0;
 
   console.log(`\nMermaid diagram validator — scanning ${files.length} markdown files\n`);
@@ -130,9 +131,17 @@ function run() {
         }
         console.log(`  Diagram #${idx + 1} (${raw.trim().split('\n')[0]}):`);
         issues.forEach(issue => {
-          const prefix = issue.severity === 'warning' ? '  [WARN] ' : '  [INFO] ';
+          let prefix;
+          if (issue.severity === 'error') {
+            prefix = '  [ERROR] ';
+            totalErrors++;
+          } else if (issue.severity === 'warning') {
+            prefix = '  [WARN] ';
+            totalWarnings++;
+          } else {
+            prefix = '  [INFO] ';
+          }
           console.log(`${prefix}${issue.message}`);
-          if (issue.severity === 'warning') totalWarnings++;
         });
         totalIssues += issues.length;
       }
@@ -145,13 +154,18 @@ function run() {
   console.log(`\nSummary:`);
   console.log(`  Files scanned : ${files.length}`);
   console.log(`  Diagrams found: ${totalDiagrams}`);
-  console.log(`  Issues found  : ${totalIssues} (${totalWarnings} warnings, ${totalIssues - totalWarnings} info)`);
+  console.log(
+    `  Issues found  : ${totalIssues} ` +
+      `(${totalErrors} errors, ${totalWarnings} warnings, ${totalIssues - totalErrors - totalWarnings} info)`
+  );
 
-  if (totalWarnings > 0) {
-    console.log('\n[WARN] Validation finished with warnings. Review the messages above.');
+  if (totalErrors > 0) {
+    console.log('\n[FAIL] Validation found blocking errors. Fix them before deploying.');
     process.exit(1);
+  } else if (totalWarnings > 0) {
+    console.log('\n[WARN] Validation finished with warnings (non-blocking). Review when possible.');
   } else {
-    console.log('\n[OK] No warnings. Diagrams appear compatible with Mermaid v11.');
+    console.log('\n[OK] No issues. Diagrams appear compatible with Mermaid v11.');
   }
 }
 
