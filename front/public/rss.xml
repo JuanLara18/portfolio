@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Juan Lara — Writing</title>
+    <link>https://juanlara18.github.io/portfolio/blog</link>
+    <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Dec 2026 00:00:00 GMT</lastBuildDate>
+    <generator>build-rss.js</generator>
+  <item>
+    <title>Reading microgpt: What Karpathy&apos;s 200-Line LLM Teaches You That PyTorch Hides</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy</guid>
+    <pubDate>Thu, 24 Dec 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[In February 2026, Andrej Karpathy published a 199-line Python file that trains and runs a GPT end-to-end. No PyTorch, no NumPy, no dependencies — just a Value class, a transformer, Adam, and a loop. This is the culmination of a decade of simplification work, and reading it line by line is the best introduction to what LLMs actually are. Here's the full tour.]]></description>
+    <category>research</category>
+    <category>Karpathy</category>
+    <category>LLM</category>
+    <category>Transformers</category>
+    <category>Autograd</category>
+    <category>Educational</category>
+    <category>GPT</category>
+    <category>Minimalism</category>
+    <category>From Scratch</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/microgpt-reading-karpathy.mp3" length="13502448" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Claude Code: The Complete Guide to Becoming a Power User of the AI That Codes With You</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide</guid>
+    <pubDate>Thu, 17 Dec 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most developers use Claude Code like a smarter autocomplete. A small minority treat it as what it actually is — a programmable agent that reads files, runs commands, spawns helpers, and iterates until your task is done. This is the complete mental model, every subsystem that matters, and how to actually become an expert.]]></description>
+    <category>field-notes</category>
+    <category>Claude Code</category>
+    <category>Anthropic</category>
+    <category>AI Coding</category>
+    <category>Developer Tools</category>
+    <category>Agentic Coding</category>
+    <category>MCP</category>
+    <category>CLI</category>
+    <category>Productivity</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/claude-code-complete-guide.mp3" length="7310592" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Git and GitHub: The Complete Mental Model for Working with Code</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide</guid>
+    <pubDate>Thu, 10 Dec 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Git is the single most-used piece of software in the entire profession, and most engineers use maybe 15% of it from muscle memory. This is the full guide — how Git actually stores your code, every command that matters and what it really does, how to recover from the disasters, branching strategies, GitHub's model on top of Git, Actions, organizations, and the gotchas you will hit. Long because it has to be.]]></description>
+    <category>field-notes</category>
+    <category>Git</category>
+    <category>GitHub</category>
+    <category>Version Control</category>
+    <category>GitHub Actions</category>
+    <category>CI/CD</category>
+    <category>Developer Tools</category>
+    <category>Collaboration</category>
+    <category>DevOps</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/git-and-github-complete-guide.mp3" length="17275824" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Apache Airflow: The Orchestrator That Runs the Data World</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration</guid>
+    <pubDate>Thu, 03 Dec 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A working engineer's guide to Airflow in the 3.x era — what it actually is, how the scheduler and executors fit together, when to use TaskFlow vs classic operators, why Assets and DAG versioning changed the mental model, and the honest tradeoffs against Prefect and Dagster. Written for people who need to ship pipelines, not slide-deck architects.]]></description>
+    <category>field-notes</category>
+    <category>Apache Airflow</category>
+    <category>Data Engineering</category>
+    <category>Orchestration</category>
+    <category>DAGs</category>
+    <category>Workflow Automation</category>
+    <category>TaskFlow</category>
+    <category>Kubernetes</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/apache-airflow-orchestration.mp3" length="9184320" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Fine-Tuning Embeddings: What You Gain, What You Need, and How to Actually Do It</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings</guid>
+    <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Off-the-shelf embeddings are the default, but in specialized domains they leave 5-15 points of retrieval quality on the table. This is the full playbook for when to fine-tune, what training data looks like, which loss function to pick, how hard negative mining changes everything, and how to ship the result without breaking your vector index.]]></description>
+    <category>field-notes</category>
+    <category>Embeddings</category>
+    <category>Fine-Tuning</category>
+    <category>Sentence Transformers</category>
+    <category>RAG</category>
+    <category>Information Retrieval</category>
+    <category>Contrastive Learning</category>
+    <category>Hard Negative Mining</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/fine-tuning-embeddings.mp3" length="9751536" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Mamba: The Paper That Asked If Attention Was Really All You Need</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces</guid>
+    <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A line-by-line walkthrough of Gu and Dao's 2023 Mamba paper: what state space models are, where they came from, why S4 nearly worked, the single insight that made them competitive with Transformers, and the hardware-aware trick that made them fast. Written to be understood, not just cited.]]></description>
+    <category>research</category>
+    <category>Mamba</category>
+    <category>State Space Models</category>
+    <category>Sequence Modeling</category>
+    <category>Deep Learning Theory</category>
+    <category>Architectures</category>
+    <category>Research Paper</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/mamba-selective-state-spaces.mp3" length="10748880" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>ElevenLabs in Production: How Neural Voice Synthesis Actually Works</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering</guid>
+    <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A technical walkthrough of ElevenLabs — how the models are built, how to wire them into a real application with streaming and WebSockets, and the ethical, operational, and cost considerations you need to think about before shipping a voice feature.]]></description>
+    <category>field-notes</category>
+    <category>ElevenLabs</category>
+    <category>Text-to-Speech</category>
+    <category>Voice AI</category>
+    <category>Generative Audio</category>
+    <category>Streaming APIs</category>
+    <category>Voice Cloning</category>
+    <category>AI Ethics</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/elevenlabs-voice-ai-engineering.mp3" length="10260288" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Curating Knowledge Bases: The Unglamorous Work That Makes RAG Actually Work</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation</guid>
+    <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Everyone talks about chunking strategies and embedding models. Nobody talks about what happens before — the document triage, token budget math, metadata enrichment, deduplication, and freshness policies that determine whether your knowledge base is an asset or a liability. This post covers the full curation lifecycle.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Bases</category>
+    <category>RAG</category>
+    <category>Data Curation</category>
+    <category>Embeddings</category>
+    <category>Chunking</category>
+    <category>Document Processing</category>
+    <category>Metadata</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-base-curation.mp3" length="8168976" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Knowledge Graphs in Practice: From Documents to Queryable Intelligence</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice</guid>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Ontologies give you the blueprint. Knowledge graphs give you the building. This post walks through the full construction pipeline — extracting entities with LLMs, building graphs in Neo4j, querying with Cypher, and wiring it all into GraphRAG — with working Python code at every step.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>Neo4j</category>
+    <category>GraphRAG</category>
+    <category>Cypher</category>
+    <category>Entity Extraction</category>
+    <category>LLM</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-graphs-practice.mp3" length="7824816" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Enterprise AI Stack: A Decision Framework That Outlasts the Hype Cycle</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection</guid>
+    <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Choosing between No-Code, Low-Code, and custom AI platforms shouldn't require a PhD in vendor marketing. This framework breaks the decision into six durable axes — scope, gateway, guardrails, observability, contingency, and interface — so your team picks the right stack for each use case, not just the loudest one.]]></description>
+    <category>field-notes</category>
+    <category>Enterprise AI</category>
+    <category>AI Architecture</category>
+    <category>Platform Selection</category>
+    <category>AI Gateway</category>
+    <category>MLOps</category>
+    <category>Guardrails</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-ai-platform-selection.mp3" length="8153280" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Ontologies: The Blueprint Behind Every Knowledge Base That Actually Works</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases</guid>
+    <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Ontologies turn chaotic data into structured knowledge. Learn how to design, build, and deploy ontology-driven knowledge bases — from RDF triples to production-ready systems that power RAG, search, and enterprise AI.]]></description>
+    <category>field-notes</category>
+    <category>Ontology Engineering</category>
+    <category>Knowledge Graphs</category>
+    <category>OWL</category>
+    <category>RDF</category>
+    <category>Knowledge Bases</category>
+    <category>Semantic Web</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ontologies-building-knowledge-bases.mp3" length="8829936" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Data Silos: The Silent Tax on Every Decision Your Company Makes</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers</guid>
+    <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Data silos are more than a technical inconvenience — they're a structural tax on every decision your organization makes. This post unpacks why silos form, why naïve centralization fails, and how to build a federation strategy that actually works, with cloud-native patterns on AWS and GCP.]]></description>
+    <category>field-notes</category>
+    <category>Data Engineering</category>
+    <category>Data Architecture</category>
+    <category>Enterprise Data</category>
+    <category>AWS</category>
+    <category>GCP</category>
+    <category>Data Mesh</category>
+    <category>Knowledge Management</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/data-silos-breaking-information-barriers.mp3" length="9581760" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>DAMA DMBOK: The Data Governance Framework Every Data Engineer Should Know</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance</guid>
+    <pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[DAMA DMBOK is the industry standard framework for data governance, but most engineers encounter it as a wall of jargon. This guide breaks down all 11 knowledge areas with clear definitions, real narrative, and applies them to a bank building an AI-powered knowledge base from scratch.]]></description>
+    <category>field-notes</category>
+    <category>Data Governance</category>
+    <category>DAMA DMBOK</category>
+    <category>Data Quality</category>
+    <category>Metadata Management</category>
+    <category>Knowledge Base</category>
+    <category>Banking Data</category>
+    <category>Data Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dama-dmbok-data-governance.mp3" length="9863424" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Apache Spark: From a PhD Paper to the Backbone of the Modern Data Stack</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide</guid>
+    <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Apache Spark started as a 2010 Berkeley paper asking a deceptively simple question: what if we didn't have to write to disk between every computation step? Fifteen years later, it powers data pipelines across most of the Fortune 500. Here's the full story — the engine, the language, the ecosystem, and the honest trade-offs.]]></description>
+    <category>field-notes</category>
+    <category>Apache Spark</category>
+    <category>Data Engineering</category>
+    <category>PySpark</category>
+    <category>Scala</category>
+    <category>Distributed Computing</category>
+    <category>Big Data</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/apache-spark-ecosystem-guide.mp3" length="8653680" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Dataiku and the Enterprise AI Ecosystem: What Platforms Solve, What They Don&apos;t, and When to Use One</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem</guid>
+    <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A practical look at Dataiku DSS in the context of the broader enterprise data + AI landscape: the real problems it solves, where it falls short, the honest trade-offs against alternatives, and frameworks for deciding if it's the right tool for your team.]]></description>
+    <category>field-notes</category>
+    <category>Dataiku</category>
+    <category>Enterprise AI</category>
+    <category>MLOps</category>
+    <category>AI Governance</category>
+    <category>Data Science Platforms</category>
+    <category>Make vs Buy</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3" length="10192752" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Document Processing: OCR, Layout Detection, and the Path to Clean Text</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout</guid>
+    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Before you can retrieve from a document, you have to read it. That sounds trivial until you face a rotated scan, a two-column PDF, a table that spans pages, or a PPTX with embedded charts. This is the complete guide to document processing: image preprocessing, OCR engines, layout detection, full-pipeline parsers, table extraction, cloud APIs, vision LLMs, and benchmarks — with a routing pattern you can deploy today.]]></description>
+    <category>field-notes</category>
+    <category>Document Processing</category>
+    <category>OCR</category>
+    <category>Layout Detection</category>
+    <category>Docling</category>
+    <category>PaddleOCR</category>
+    <category>Document AI</category>
+    <category>RAG</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/document-processing-ocr-layout.mp3" length="10358352" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>LLM as a Judge: Using Language Models to Evaluate Language Models</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge</guid>
+    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Evaluating open-ended AI output at scale is one of the hardest unsolved problems in the field. Human evaluation is the gold standard but doesn't scale. Classical metrics like BLEU and ROUGE miss what matters. LLM-as-a-Judge — using a stronger model to evaluate another — achieves over 80% agreement with human raters and is reshaping how the field measures quality, trains reward models, and builds evaluation pipelines.]]></description>
+    <category>research</category>
+    <category>LLM Evaluation</category>
+    <category>Research</category>
+    <category>RLHF</category>
+    <category>LLM-as-a-Judge</category>
+    <category>Prometheus</category>
+    <category>Alignment</category>
+    <category>AI Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/llm-as-a-judge.mp3" length="9478800" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Enterprise AI PoCs: From Vendor Demos to Decisions You Can Defend</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation</guid>
+    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most AI proofs of concept are designed to impress, not to inform. They test vendor demos against ideal data, measure metrics that don't match business objectives, and end with a slide deck that recommends the option the team already preferred. Here's a rigorous framework for running PoCs that produce defensible, production-aligned decisions — covering vector database evaluation, RAG quality measurement, text-to-SQL agents, and what changes when you're working in a regulated environment.]]></description>
+    <category>field-notes</category>
+    <category>AI Engineering</category>
+    <category>PoC</category>
+    <category>RAG</category>
+    <category>Vector Databases</category>
+    <category>Enterprise</category>
+    <category>Evaluation</category>
+    <category>LLM</category>
+    <category>Data Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ai-poc-enterprise-evaluation.mp3" length="9367632" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Building Enterprise MCP Servers: From Prototype to Production</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise</guid>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[The existing MCP post explains the concept. This one is about building servers that survive contact with a real company: authentication with OAuth 2.1, per-tool authorization scopes, audit logging, middleware, multi-tenant isolation, gateway patterns, and deployment strategies that don't require every developer to run their own Python process.]]></description>
+    <category>field-notes</category>
+    <category>MCP</category>
+    <category>AI Engineering</category>
+    <category>Python</category>
+    <category>OAuth</category>
+    <category>Enterprise</category>
+    <category>Agents</category>
+    <category>FastMCP</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/mcp-production-enterprise.mp3" length="4001616" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Fourier Transform: Every Signal Is a Sum of Sine Waves</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform</guid>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[An idea Lagrange called 'impossible' in 1807 now underlies JPEG compression, MRI machines, audio equalizers, and diffusion models. Here's where the Fourier transform comes from, why the formula looks the way it does, and why this 200-year-old insight keeps showing up at the center of modern machine learning.]]></description>
+    <category>curiosities</category>
+    <category>Mathematics</category>
+    <category>Signal Processing</category>
+    <category>Fourier Transform</category>
+    <category>FFT</category>
+    <category>Deep Learning</category>
+    <category>Linear Algebra</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/fourier-transform.mp3" length="8778528" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>PyTorch, TensorFlow, and JAX: The Deep Learning Framework Landscape in 2026</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks</guid>
+    <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[PyTorch dominates research, TensorFlow still rules mobile and edge deployment, and JAX is quietly rewriting the rules for large-scale training. A complete guide to all three — their architecture, strengths, production patterns, and when to choose each.]]></description>
+    <category>field-notes</category>
+    <category>PyTorch</category>
+    <category>TensorFlow</category>
+    <category>JAX</category>
+    <category>Deep Learning</category>
+    <category>ML Engineering</category>
+    <category>Distributed Training</category>
+    <category>Python</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/pytorch-tensorflow-deep-learning-frameworks.mp3" length="9570672" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Books That Shaped Software: Clean Code, Design Patterns, and Architecture</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics</guid>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Clean Code, the Gang of Four, Hexagonal Architecture — these books sit on every senior engineer's shelf. But reading them uncritically in 2026 is almost as dangerous as not reading them at all. Here's what they got right, where they lead you astray, and how the ideas evolved into the architecture patterns we actually use.]]></description>
+    <category>field-notes</category>
+    <category>Software Architecture</category>
+    <category>Clean Code</category>
+    <category>Design Patterns</category>
+    <category>Hexagonal Architecture</category>
+    <category>SOLID</category>
+    <category>Python</category>
+    <category>Software Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/software-engineering-classics.mp3" length="8240544" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>LlamaIndex vs LangChain: Choosing Your LLM Framework in 2026</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks</guid>
+    <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Both LlamaIndex and LangChain can build a RAG pipeline. Both can run agents. Both have grown toward each other's territory. The question is no longer 'which can do it' but 'which mental model fits your problem.' This is the honest comparison — what each framework is actually designed for, where each excels without fighting the defaults, and how the broader ecosystem of DSPy, Haystack, CrewAI, and Pydantic AI each answer a different question.]]></description>
+    <category>field-notes</category>
+    <category>LlamaIndex</category>
+    <category>LangChain</category>
+    <category>LLM Frameworks</category>
+    <category>RAG</category>
+    <category>AI Engineering</category>
+    <category>Agents</category>
+    <category>LangGraph</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llamaindex-langchain-llm-frameworks.mp3" length="6794640" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The AI Engineer&apos;s Inference Toolkit: Ollama, vLLM, LM Studio, and Docker</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools</guid>
+    <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every AI engineer eventually needs to run models locally — for privacy, cost control, latency, or just to avoid depending on an API that might break at 2am. This is the practical guide to the three tools that matter: LM Studio for exploration, Ollama for development, and vLLM for production. With complete Docker Compose setups and proof-of-concept patterns.]]></description>
+    <category>field-notes</category>
+    <category>Local LLMs</category>
+    <category>Ollama</category>
+    <category>vLLM</category>
+    <category>LM Studio</category>
+    <category>Docker</category>
+    <category>AI Engineering</category>
+    <category>LLM Serving</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/local-llm-inference-tools.mp3" length="4959216" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>RLHF, DPO, and the Art of Teaching Models to Behave</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment</guid>
+    <pubDate>Tue, 16 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Pre-training produces a model that's brilliant at predicting text. Alignment turns it into a model that's actually useful — and safe. This is the deep guide to RLHF, DPO, and their 2025-2026 successors: how the reward model works, why PPO is unstable, how DPO eliminates the need for it, what SimPO, KTO, ORPO, and GRPO each solve, and what all of this means when you're building on top of aligned models.]]></description>
+    <category>field-notes</category>
+    <category>RLHF</category>
+    <category>DPO</category>
+    <category>LLM Alignment</category>
+    <category>InstructGPT</category>
+    <category>GRPO</category>
+    <category>Post-training</category>
+    <category>Machine Learning</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/rlhf-dpo-alignment.mp3" length="11774448" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Fine-tuning Gemma 4: When Prompting Isn&apos;t Enough</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora</guid>
+    <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the deep guide — understanding the family, choosing the right variant for your hardware, why full fine-tuning is economically indefensible, how LoRA and QLoRA make adaptation practical on consumer GPUs, and a complete working recipe with Gemma 4 E4B from dataset to deployed adapter.]]></description>
+    <category>field-notes</category>
+    <category>Fine-tuning</category>
+    <category>Gemma 4</category>
+    <category>LoRA</category>
+    <category>QLoRA</category>
+    <category>PEFT</category>
+    <category>LLMs</category>
+    <category>Hugging Face</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3" length="14357088" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Lakehouse Architecture: How Open Table Formats Fixed the Data Lake&apos;s Original Sin</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture</guid>
+    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Data lakes promised cheap, flexible analytics — and delivered corrupt reads, GDPR nightmares, and query engines flying blind. The lakehouse pattern fixes this by layering ACID transactions, schema enforcement, and row-level operations directly onto object storage. This is the story of how Apache Iceberg, Delta Lake, and Apache Hudi changed what's possible — and when to use each.]]></description>
+    <category>field-notes</category>
+    <category>Data Engineering</category>
+    <category>Apache Iceberg</category>
+    <category>Delta Lake</category>
+    <category>Apache Hudi</category>
+    <category>Lakehouse Architecture</category>
+    <category>Data Architecture</category>
+    <category>Object Storage</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/lakehouse-architecture.mp3" length="7364448" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>dbt: The Analytics Engineering Tool That Turned SQL into Software</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering</guid>
+    <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every data team reaches the same crisis point: SQL transformations scattered across notebooks, dashboards, and ad-hoc scripts, with no one sure which version is correct. dbt solves this by bringing software engineering practices — version control, testing, documentation, modularity — to the SQL layer. This is a complete guide to building reliable analytical pipelines with dbt.]]></description>
+    <category>field-notes</category>
+    <category>dbt</category>
+    <category>Analytics Engineering</category>
+    <category>Data Engineering</category>
+    <category>SQL</category>
+    <category>Data Warehouse</category>
+    <category>Data Transformation</category>
+    <category>dbt-utils</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dbt-analytics-engineering.mp3" length="5079024" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Dimensional Modeling: The Kimball Method for Analytical Data Warehouses</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball</guid>
+    <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Your pipeline is clean, your data is accurate, and your BI dashboard still takes 45 seconds to load. The problem is rarely the data — it's the model. This is a complete guide to Kimball's dimensional modeling: star schemas, grain declaration, SCD types, the bus matrix, and how to implement all of it in dbt.]]></description>
+    <category>field-notes</category>
+    <category>Data Engineering</category>
+    <category>Dimensional Modeling</category>
+    <category>Kimball</category>
+    <category>Star Schema</category>
+    <category>dbt</category>
+    <category>Data Warehouse</category>
+    <category>Analytics Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dimensional-modeling-kimball.mp3" length="8002944" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>SQL, Pandas, PySpark, and DuckDB: The Data Engineer&apos;s Complete Reference</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb</guid>
+    <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Four tools, one mental model. SQL for declarative in-database logic. Pandas for in-memory exploration. PySpark for distributed scale. DuckDB for the vast middle ground that doesn't need a cluster. Every pattern you need, side by side, with clear rules for when to reach for each.]]></description>
+    <category>field-notes</category>
+    <category>SQL</category>
+    <category>Pandas</category>
+    <category>PySpark</category>
+    <category>DuckDB</category>
+    <category>Data Engineering</category>
+    <category>BigQuery</category>
+    <category>Python</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/sql-pandas-pyspark-duckdb.mp3" length="8364096" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Data Engineering Fundamentals: The Mental Model Every Engineer Needs</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals</guid>
+    <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Data engineering is not about moving files from A to B. It's about building reliable, scalable, observable systems that make data trustworthy — for analysts, ML models, and increasingly, AI agents. This post dismantles the buzzwords and builds the mental model from first principles.]]></description>
+    <category>field-notes</category>
+    <category>Data Engineering</category>
+    <category>ETL</category>
+    <category>Data Lakehouse</category>
+    <category>Distributed Systems</category>
+    <category>Apache Iceberg</category>
+    <category>Data Quality</category>
+    <category>Modern Data Stack</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/data-engineering-fundamentals.mp3" length="12182688" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>GCP AI Stack: Vertex AI, AlloyDB, and the Cloud-Native Knowledge Pipeline</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline</guid>
+    <pubDate>Sat, 25 Apr 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Google Cloud's AI infrastructure has matured rapidly: the Vertex AI RAG Engine is GA, AlloyDB now ships a custom ScaNN vector index, and a full cloud-native knowledge pipeline is within reach from CLI alone. But the real costs, regional constraints, and architectural trade-offs are rarely discussed honestly. This post covers what the stack actually looks like in 2025-2026, where it delivers, and where it quietly disappoints.]]></description>
+    <category>field-notes</category>
+    <category>GCP</category>
+    <category>Vertex AI</category>
+    <category>AlloyDB</category>
+    <category>RAG</category>
+    <category>Vector Search</category>
+    <category>Knowledge Pipeline</category>
+    <category>Cloud Architecture</category>
+    <category>Document AI</category>
+    <category>MLOps</category>
+    <category>pgvector</category>
+    <category>ScaNN</category>
+    <category>CLI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3" length="16495632" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Enterprise Knowledge Bases: From RAG Pipelines to Agent-Ready Context Engines</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases</guid>
+    <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Building knowledge bases that serve both humans and AI agents requires more than chunking and vector search. This guide covers the complete architecture — from knowledge engineering and domain ontologies through chunking hierarchies and permission-aware retrieval to the unified context engines and MCP-based tool interfaces that make enterprise knowledge agent-ready.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Bases</category>
+    <category>RAG</category>
+    <category>AI Agents</category>
+    <category>Knowledge Engineering</category>
+    <category>Enterprise AI</category>
+    <category>MCP</category>
+    <category>Context Engine</category>
+    <category>Chunking</category>
+    <category>Access Control</category>
+    <category>Knowledge Graphs</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-knowledge-bases.mp3" length="18420192" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>RAGAS: Evaluating RAG End-to-End</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag</guid>
+    <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Building a RAG system is only half the problem. The other half — knowing whether it actually works, understanding exactly where it fails, and having a reliable signal to improve it — is arguably harder. RAGAS offers a framework for decomposing RAG quality into measurable, interpretable dimensions. This is how it works, why it matters, and what it still can't tell you.]]></description>
+    <category>field-notes</category>
+    <category>RAG</category>
+    <category>RAGAS</category>
+    <category>Evaluation</category>
+    <category>LLM-as-Judge</category>
+    <category>MLOps</category>
+    <category>Production ML</category>
+    <category>NLP</category>
+    <category>Metrics</category>
+    <category>LLMs</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ragas-evaluating-rag.mp3" length="15436224" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>LangGraph: Orchestrating Multi-Agent Workflows</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows</guid>
+    <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A practical guide to LangGraph 1.x: how StateGraph works, when to use agents vs. chains, the patterns that actually work in production (Supervisor, Subgraph, HITL, Map-Reduce), and an honest comparison with alternatives.]]></description>
+    <category>field-notes</category>
+    <category>langgraph</category>
+    <category>agents</category>
+    <category>llm</category>
+    <category>orchestration</category>
+    <category>python</category>
+    <category>langchain</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/langgraph-multi-agent-workflows.mp3" length="5044320" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Text-to-SQL: Bridging Natural Language and Structured Data</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql</guid>
+    <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A practical deep-dive into the current state of NL→SQL systems: benchmarks, architectures, production pitfalls, and what actually works in 2026 for querying enterprise data warehouses with natural language.]]></description>
+    <category>field-notes</category>
+    <category>text-to-sql</category>
+    <category>nlp</category>
+    <category>llm</category>
+    <category>bigquery</category>
+    <category>data-engineering</category>
+    <category>agents</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/text-to-sql.mp3" length="6836832" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>MTEB: Choosing the Right Embedding Model for Your Task</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks</guid>
+    <pubDate>Sat, 04 Apr 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[The top model on the MTEB leaderboard is not automatically the right model for your RAG system. MTEB covers eight distinct task types, and a model that dominates retrieval may be mediocre at clustering or reranking. This is a complete guide to what MTEB measures, how to read it critically, and how to match an embedding model to the actual work it needs to do.]]></description>
+    <category>field-notes</category>
+    <category>Benchmarks</category>
+    <category>Embeddings</category>
+    <category>RAG</category>
+    <category>MTEB</category>
+    <category>Knowledge Engineering</category>
+    <category>Semantic Search</category>
+    <category>Infrastructure</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/mteb-embedding-benchmarks.mp3" length="8622288" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>LLM Benchmarks: A Field Guide to Reading the Leaderboards</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks</guid>
+    <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Leaderboards still matter in 2026, but not in the way benchmark charts want you to believe. This field guide explains which LLM benchmarks are now historical, which still matter at the frontier, what agentic and tool-use benchmarks changed, and how to read every score critically.]]></description>
+    <category>field-notes</category>
+    <category>Benchmarks</category>
+    <category>LLMs</category>
+    <category>Evaluation</category>
+    <category>Knowledge Engineering</category>
+    <category>RAG</category>
+    <category>Infrastructure</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llm-benchmarks.mp3" length="22157856" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Advanced RAG: From Naive Retrieval to Systems That Actually Work</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns</guid>
+    <pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Naive RAG — chunk documents, embed them, retrieve the top-k, stuff into the prompt — works in demos. In production, it fails in predictable, fixable ways. This post covers the patterns that separate brittle prototypes from reliable systems: query transformation, advanced retrieval strategies, re-ranking, agentic RAG, GraphRAG, and how to decide when RAG is the wrong answer entirely.]]></description>
+    <category>field-notes</category>
+    <category>RAG</category>
+    <category>Advanced RAG</category>
+    <category>LangChain</category>
+    <category>LlamaIndex</category>
+    <category>GraphRAG</category>
+    <category>Agentic AI</category>
+    <category>NLP</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>LLMs</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/rag-advanced-patterns.mp3" length="11793024" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Building RAG Systems: Pipelines, Chunking, and Vector Search</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems</guid>
+    <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A language model that can look things up is more useful than one that can't. But building a RAG system that actually works in production requires understanding dozens of decisions that the research paper glossed over: how to split documents, which embeddings to use, which vector database to run, how to retrieve well. This is the complete practical guide to the first half of the RAG stack.]]></description>
+    <category>field-notes</category>
+    <category>RAG</category>
+    <category>Vector Databases</category>
+    <category>Embeddings</category>
+    <category>LangChain</category>
+    <category>LlamaIndex</category>
+    <category>NLP</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>Information Retrieval</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/rag-building-production-systems.mp3" length="12412368" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>RAG: How Language Models Learned to Look Things Up</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation</guid>
+    <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Language models are powerful but trapped. They know only what they saw during training—a snapshot of the world that freezes the moment training ends. RAG broke this constraint. By combining a neural retriever with a neural generator, it gave language models the ability to consult external knowledge at inference time. This is the story of the original paper, the idea it introduced, and why it changed how we think about what language models can be.]]></description>
+    <category>research</category>
+    <category>Deep Learning</category>
+    <category>NLP</category>
+    <category>RAG</category>
+    <category>Retrieval</category>
+    <category>Question Answering</category>
+    <category>Research Papers</category>
+    <category>Language Models</category>
+    <category>Knowledge</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/rag-retrieval-augmented-generation.mp3" length="12741984" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Vector Database Benchmarks: Reading the Numbers That Actually Matter</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks</guid>
+    <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A chart says Qdrant handles 10,000 queries per second. Another says Pinecone wins at recall. Both are correct. Neither tells you what you actually need to know. This is how to read vector database benchmarks critically, what the numbers hide, and how to make decisions that hold up in production.]]></description>
+    <category>field-notes</category>
+    <category>Vector Databases</category>
+    <category>Benchmarks</category>
+    <category>RAG</category>
+    <category>Knowledge Engineering</category>
+    <category>Infrastructure</category>
+    <category>Open Source</category>
+    <category>Production ML</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/vector-db-benchmarks.mp3" length="14811120" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Scaling Laws: The Equations That Predicted the Future of AI</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models</guid>
+    <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[In early 2020, a team at OpenAI published a set of equations that described how language model performance grows with compute, data, and parameters. They weren't speculating. They had measured it. The curves fit. And the implications were so consequential that much of the subsequent history of AI can be read as their logical extension.]]></description>
+    <category>research</category>
+    <category>Deep Learning</category>
+    <category>Scaling Laws</category>
+    <category>Language Models</category>
+    <category>Research Papers</category>
+    <category>Compute</category>
+    <category>Training</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/scaling-laws-neural-language-models.mp3" length="7904304" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>T5: The Unification of Language</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer</guid>
+    <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[In 2019, a Google team asked a deceptively simple question: what if every NLP task were just a text prediction problem? The answer — T5 — didn't just win benchmarks. It proposed a new way of thinking about what language models are for, and planted the seed of the instruction-following revolution that followed.]]></description>
+    <category>research</category>
+    <category>Deep Learning</category>
+    <category>NLP</category>
+    <category>T5</category>
+    <category>Transformers</category>
+    <category>Pre-training</category>
+    <category>Transfer Learning</category>
+    <category>Research Papers</category>
+    <category>Language Models</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/t5-text-to-text-transfer-transformer.mp3" length="9766800" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Experiment Tracking in MLOps: Never Lose a Good Run Again</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops</guid>
+    <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every ML engineer has had the same nightmare: a model that performed brilliantly last week, and no record of how to reproduce it. Experiment tracking is the discipline that makes that nightmare impossible. This is the complete guide—from what needs to be tracked and why, to deep dives into MLflow, Weights & Biases, Trackio, Neptune, and DVC, with production-grade patterns for teams that need to move fast without losing their work.]]></description>
+    <category>field-notes</category>
+    <category>MLOps</category>
+    <category>Experiment Tracking</category>
+    <category>MLflow</category>
+    <category>Weights &amp; Biases</category>
+    <category>DVC</category>
+    <category>Machine Learning</category>
+    <category>Reproducibility</category>
+    <category>Production ML</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/experiment-tracking-mlops.mp3" length="7405920" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>BERT: How Machines Learned to Read in Both Directions</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers</guid>
+    <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[In October 2018, a Google research team released a model that simultaneously broke eleven NLP benchmarks—some by enormous margins. BERT didn't just improve the state of the art; it redefined what 'understanding language' could mean for a machine. This is the complete story: the problem it solved, the elegant training objectives that made it possible, what it actually learned, and why it changed everything that came after.]]></description>
+    <category>research</category>
+    <category>Deep Learning</category>
+    <category>NLP</category>
+    <category>BERT</category>
+    <category>Transformers</category>
+    <category>Pre-training</category>
+    <category>Research Papers</category>
+    <category>Language Models</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/bert-pre-training-bidirectional-transformers.mp3" length="12481488" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Collatz Conjecture: The Simplest Problem No One Can Solve</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture</guid>
+    <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Take any positive integer. If it is even, divide by two. If it is odd, multiply by three and add one. Repeat. No matter what number you start with, you always seem to reach 1. This has been verified for numbers up to 2^68, tested by the brightest minds in mathematics for nearly a century, and yet no one can prove it. This is the Collatz Conjecture—a problem so simple a child can understand it, and so deep it may be beyond contemporary mathematics.]]></description>
+    <category>curiosities</category>
+    <category>Collatz</category>
+    <category>Mathematics</category>
+    <category>Number Theory</category>
+    <category>Dynamical Systems</category>
+    <category>Open Problems</category>
+    <category>Conjecture</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/collatz-conjecture.mp3" length="6180336" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Gödel&apos;s Incompleteness Theorems: The Day Mathematics Discovered Its Own Limits</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems</guid>
+    <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[In 1931, a 25-year-old Austrian logician proved that mathematics cannot fully know itself. Kurt Gödel showed that any consistent formal system powerful enough to express arithmetic contains true statements that it can never prove. This is the story of that proof, the machinery behind it, and why its consequences still reverberate through mathematics, computer science, and philosophy.]]></description>
+    <category>curiosities</category>
+    <category>Gödel</category>
+    <category>Logic</category>
+    <category>Incompleteness</category>
+    <category>Mathematics</category>
+    <category>Formal Systems</category>
+    <category>Set Theory</category>
+    <category>Computability</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/godels-incompleteness-theorems.mp3" length="8725248" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Files Under the Hood: From Bits to Tensors</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood</guid>
+    <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[We use files every day, but rarely stop to think about what they actually are. From the OS abstraction of a file to columnar storage like Parquet, all the way to modern AI tensor formats like Safetensors and GGUF, this is a deep dive into the evolution of how we persist memory to disk.]]></description>
+    <category>field-notes</category>
+    <category>Files</category>
+    <category>Computer Science</category>
+    <category>Data Engineering</category>
+    <category>Machine Learning</category>
+    <category>Software Engineering</category>
+    <category>Systems</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/files-under-the-hood.mp3" length="6643152" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Benford&apos;s Law: The Strange Dominance of the Number One</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law</guid>
+    <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[If you pick a random number from any real-world dataset—populations, stock prices, river lengths, tax returns—the first digit is far more likely to be a 1 than a 9. This is not a coincidence. It is a deep mathematical truth about how quantities grow, and it has become one of the most powerful forensic tools in the fight against fraud.]]></description>
+    <category>curiosities</category>
+    <category>Benford&apos;s Law</category>
+    <category>Mathematics</category>
+    <category>Data Science</category>
+    <category>Fraud Detection</category>
+    <category>Probability</category>
+    <category>Statistics</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/benfords-law.mp3" length="5843808" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Docker for Machine Learning Engineers: From &apos;Works on My Machine&apos; to Works Everywhere</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers</guid>
+    <pubDate>Fri, 13 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every ML engineer has shipped a model that worked perfectly—until it ran on someone else's machine. Docker eliminates that failure mode entirely. This is the complete guide to containerization for ML: what Docker is, why it exists, how to write production-grade Dockerfiles, and how to go from a trained model to a portable, reproducible, deployable artifact.]]></description>
+    <category>field-notes</category>
+    <category>Docker</category>
+    <category>Containers</category>
+    <category>MLOps</category>
+    <category>Deployment</category>
+    <category>DevOps</category>
+    <category>Production ML</category>
+    <category>Infrastructure</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/docker-for-ml-engineers.mp3" length="7349472" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Model Context Protocol: How AI Learned to Use Tools</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol</guid>
+    <pubDate>Thu, 12 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[AI models are powerful, but they are blind. They cannot read your files, query your database, or call your APIs—unless someone builds the bridge. The Model Context Protocol is that bridge: an open standard that gives AI a universal way to interact with the world. This is the story of MCP, how it works, and why it matters.]]></description>
+    <category>field-notes</category>
+    <category>MCP</category>
+    <category>AI Agents</category>
+    <category>LLM</category>
+    <category>Protocols</category>
+    <category>Software Engineering</category>
+    <category>Tools</category>
+    <category>FastMCP</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/model-context-protocol.mp3" length="7750944" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Reinforcement Learning in Practice: The Engineering That Makes It Work</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice</guid>
+    <pubDate>Sat, 07 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Theory is necessary but not sufficient. This is the engineering companion to RL—the implementation details that papers omit, the GPU patterns that supervised learning never taught you, the tricks that separate converging agents from wasted compute, and the deployment patterns that survive contact with reality.]]></description>
+    <category>field-notes</category>
+    <category>Reinforcement Learning</category>
+    <category>Deep RL</category>
+    <category>PyTorch</category>
+    <category>CUDA</category>
+    <category>PPO</category>
+    <category>DQN</category>
+    <category>Engineering</category>
+    <category>Production ML</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/reinforcement-learning-in-practice.mp3" length="16407648" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Reinforcement Learning: From First Principles to Open Frontiers</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles</guid>
+    <pubDate>Thu, 05 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most ML engineers have never truly entered the world of reinforcement learning. This is the definitive guide—from Markov Decision Processes and value functions to reward hacking, sim-to-real transfer, multi-agent chaos, and the brutal gap between papers and production systems that actually work.]]></description>
+    <category>field-notes</category>
+    <category>Reinforcement Learning</category>
+    <category>Deep RL</category>
+    <category>MDP</category>
+    <category>Reward Design</category>
+    <category>Multi-Agent</category>
+    <category>Production ML</category>
+    <category>AI Safety</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/reinforcement-learning-first-principles.mp3" length="23992992" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Machine Learning Libraries Under the Hood: The Definitive Deep Dive</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood</guid>
+    <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Abstractions are convenient until they break. This is an exhaustive journey through the silicon and software of the ML stack—from NumPy's memory layout and SIMD vectorization to the zero-copy revolution of Apache Arrow, the modern dominance of Polars, and the JIT compilers that turn Python into machine code.]]></description>
+    <category>field-notes</category>
+    <category>Python</category>
+    <category>NumPy</category>
+    <category>Apache Arrow</category>
+    <category>Polars</category>
+    <category>PyTorch</category>
+    <category>Performance</category>
+    <category>High-Performance Computing</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-libraries-under-the-hood.mp3" length="9362736" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Cloud Infrastructure for Machine Learning: From Local to Global Scale</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure</guid>
+    <pubDate>Wed, 31 Dec 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[The cloud is not just bigger computers—it is an entirely different way of building ML systems. This guide covers when to move to cloud, which services to use, how to avoid cost disasters, and the architectural patterns that separate successful cloud ML projects from expensive failures.]]></description>
+    <category>field-notes</category>
+    <category>Cloud</category>
+    <category>GCP</category>
+    <category>AWS</category>
+    <category>Azure</category>
+    <category>MLOps</category>
+    <category>Infrastructure</category>
+    <category>Vertex AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/cloud-ml-infrastructure.mp3" length="3791088" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Metrics, Evaluation, and Monitoring: Ensuring ML Models Actually Work</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring</guid>
+    <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[A model that works in a notebook is not a model that works. This guide covers the complete lifecycle of model evaluation—from choosing the right metrics to detecting drift in production, from offline evaluation to real-time monitoring systems that catch failures before users do.]]></description>
+    <category>field-notes</category>
+    <category>Machine Learning</category>
+    <category>Metrics</category>
+    <category>Evaluation</category>
+    <category>Monitoring</category>
+    <category>MLOps</category>
+    <category>Production</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-metrics-evaluation-monitoring.mp3" length="4107744" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Working with ML Models: From Hugging Face to Custom Training</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models</guid>
+    <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[The art of machine learning is knowing when to use what already exists and when to build your own. This guide covers the complete spectrum—from selecting pre-trained models and understanding licenses to fine-tuning strategies and the decision to train from scratch.]]></description>
+    <category>field-notes</category>
+    <category>Machine Learning</category>
+    <category>Hugging Face</category>
+    <category>Transfer Learning</category>
+    <category>Fine-tuning</category>
+    <category>Models</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/working-with-ml-models.mp3" length="5754960" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Computational Resources for Machine Learning: From Silicon to Tensors</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml</guid>
+    <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[Before you train a single model, you need to understand what is actually running your code. This is the definitive guide to computational resources in ML—GPUs, CUDA, memory hierarchies, data types, and the art of knowing when your hardware is the bottleneck.]]></description>
+    <category>field-notes</category>
+    <category>GPU</category>
+    <category>CUDA</category>
+    <category>Hardware</category>
+    <category>Performance</category>
+    <category>MLOps</category>
+    <category>Resources</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/computational-resources-ml.mp3" length="7225776" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Manifold Hypothesis: Why Deep Learning Works</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis</guid>
+    <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[We train models on high-dimensional chaos, yet they learn. Why? The answer lies in geometry: the world is a crumpled sheet of paper, and intelligence is the act of smoothing it out.]]></description>
+    <category>research</category>
+    <category>Deep Learning</category>
+    <category>Geometry</category>
+    <category>Topology</category>
+    <category>Mathematics</category>
+    <category>Research</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/the-manifold-hypothesis.mp3" length="9373968" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Python Beyond the Basics: The Language Behind the Language</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics</guid>
+    <pubDate>Fri, 21 Nov 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[Everyone writes Python. Few truly understand it. This is a deep dive into the mechanisms that separate elegant, maintainable code from the sprawling chaos that haunts production systems—from the data model to metaclasses, from decorators to the GIL.]]></description>
+    <category>field-notes</category>
+    <category>Python</category>
+    <category>Best Practices</category>
+    <category>OOP</category>
+    <category>Advanced Python</category>
+    <category>Software Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/python-beyond-the-basics.mp3" length="10346832" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Structuring Machine Learning Projects: From Chaos to Production-Ready</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects</guid>
+    <pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most ML projects die in the chaos of unversioned notebooks and dependency hell. This is the definitive guide to structuring projects that scale—from folder architecture to Git workflows, from Poetry mastery to the bridge between experimentation and production.]]></description>
+    <category>field-notes</category>
+    <category>MLOps</category>
+    <category>Python</category>
+    <category>Project Structure</category>
+    <category>Poetry</category>
+    <category>Git</category>
+    <category>Best Practices</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/structuring-ml-projects.mp3" length="7781616" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>1+2+3+4+... = -1/12: From Magic Trick to Deep Truth</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth</guid>
+    <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[A viral equation that seems impossible. Then the revelation: it's a glimpse into how mathematics transcends intuition. The journey from viral paradox to zeta function truth.]]></description>
+    <category>curiosities</category>
+    <category>Complex Analysis</category>
+    <category>Number Theory</category>
+    <category>Zeta Function</category>
+    <category>Series</category>
+    <category>Ramanujan</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/sum-of-naturals-minus-one-twelfth.mp3" length="5257440" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Embeddings: The Geometry of Meaning</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning</guid>
+    <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[How do you teach a computer what 'king' means? You don't explain—you show it where 'king' lives in a space where meaning has coordinates. A deep dive into embeddings, from Word2Vec to modern sentence transformers, and why representing concepts as vectors changed everything.]]></description>
+    <category>research</category>
+    <category>Deep Learning</category>
+    <category>NLP</category>
+    <category>Embeddings</category>
+    <category>Word2Vec</category>
+    <category>Representation Learning</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/embeddings-geometry-of-meaning.mp3" length="8123616" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Tetris Is NP-Complete: The Hardest Problem Hiding in Plain Sight</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete</guid>
+    <pubDate>Sat, 23 Aug 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[That seemingly simple game on your phone? It harbors one of computer science's most notorious complexity classes. Discover how Tetris became a lens for understanding computational hardness—and why some problems resist even our most powerful computers.]]></description>
+    <category>curiosities</category>
+    <category>Tetris</category>
+    <category>ComplexityTheory</category>
+    <category>NPCompleteness</category>
+    <category>Algorithms</category>
+    <category>Games</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/tetris-np-complete.mp3" length="6754896" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Attention is All You Need: Understanding the Transformer Revolution</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need</guid>
+    <pubDate>Mon, 20 Jan 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[How a single elegant idea—pure attention—toppled decades of sequential thinking and sparked the AI revolution. A deep dive into the architecture that changed everything.]]></description>
+    <category>research</category>
+    <category>Deep Learning</category>
+    <category>NLP</category>
+    <category>Transformers</category>
+    <category>Attention</category>
+    <category>Research Papers</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/attention-is-all-you-need.mp3" length="9702864" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Solving the Rubik&apos;s Cube Using Group Theory</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory</guid>
+    <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[What if I told you that every time you twist a Rubik's cube, you're exploring one of mathematics' most elegant structures? Discover how group theory transforms a childhood puzzle into a profound mathematical journey.]]></description>
+    <category>curiosities</category>
+    <category>Group Theory</category>
+    <category>Mathematics</category>
+    <category>Puzzles</category>
+    <category>Algorithms</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/rubiks-cube-group-theory.mp3" length="7718400" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  </channel>
+</rss>

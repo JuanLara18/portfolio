@@ -822,18 +822,27 @@ export default function BlogPostPage() {
     <>
       <SEO
         title={`${post.title} | Juan Lara`}
-        description={post.description || post.summary || `Read about ${post.title} - a deep dive into ${post.category}`}
-        canonical={`https://juanlara18.github.io/portfolio/#/blog/${post.slug}`}
-        image={headerImage}
+        description={post.excerpt || post.description || `Read about ${post.title} — a deep dive into ${post.category}.`}
+        canonical={`https://juanlara18.github.io/portfolio/blog/${post.category}/${post.slug}`}
+        image={headerImage.startsWith('http') ? headerImage : `https://juanlara18.github.io${headerImage}`}
         type="article"
         keywords={post.tags || [post.category, 'machine learning', 'AI', 'computer science']}
         article={{
           publishedDate: post.date,
           modifiedDate: post.modifiedDate || post.date,
           tags: post.tags,
-          category: post.category,
-          wordCount: post.content?.split(' ').length
+          category: categoryConfig?.name || post.category,
+          wordCount: post.estimatedWordCount || post.content?.split(/\s+/).length,
+          readingTimeSec: post.readingTime ? post.readingTime * 60 : undefined,
+          audioUrl: post.audio?.en?.url,
+          audioDurationSec: post.audio?.en?.durationSec,
         }}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://juanlara18.github.io/portfolio/' },
+          { name: 'Writing', url: 'https://juanlara18.github.io/portfolio/blog' },
+          { name: categoryConfig?.name || post.category, url: `https://juanlara18.github.io/portfolio/blog/category/${post.category}` },
+          { name: post.title, url: `https://juanlara18.github.io/portfolio/blog/${post.category}/${post.slug}` },
+        ]}
       />
       
       {/* Reading Progress Bar */}
