@@ -2,7 +2,7 @@
 title: "Terraform: Infrastructure as Code from Zero to Production"
 date: "2027-03-04"
 excerpt: "Clicking through a cloud console works until it doesn't. Terraform lets you describe your entire infrastructure in code — versioned, reviewable, reproducible. This is the complete guide: HCL syntax, providers, state management, modules, production workflows, and the hard-won patterns that keep teams from breaking things at 2 AM."
-tags: ["Terraform", "Infrastructure as Code", "DevOps", "Cloud", "HCL", "AWS", "GCP"]
+tags: ["Terraform", "Infrastructure as Code", "DevOps", "Cloud Computing", "AWS", "GCP", "Infrastructure", "Automation", "Deployment", "Best Practices"]
 headerImage: "/blog/headers/lego-bricks-header.jpg"
 readingTimeMinutes: 25
 slug: terraform-infrastructure-as-code

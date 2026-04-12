@@ -2,7 +2,7 @@
 title: "LlamaIndex vs LangChain: Choosing Your LLM Framework in 2026"
 date: "2026-06-30"
 excerpt: "Both LlamaIndex and LangChain can build a RAG pipeline. Both can run agents. Both have grown toward each other's territory. The question is no longer 'which can do it' but 'which mental model fits your problem.' This is the honest comparison — what each framework is actually designed for, where each excels without fighting the defaults, and how the broader ecosystem of DSPy, Haystack, CrewAI, and Pydantic AI each answer a different question."
-tags: ["LlamaIndex", "LangChain", "LLM Frameworks", "RAG", "AI Engineering", "Agents", "LangGraph"]
+tags: ["LlamaIndex", "LangChain", "LLM Frameworks", "RAG", "AI Engineering", "Agents", "LangGraph", "Production ML", "Embeddings", "LLMs"]
 headerImage: "/blog/headers/llama-header.jpg"
 readingTimeMinutes: 26
 slug: llamaindex-langchain-llm-frameworks

@@ -2,7 +2,7 @@
 title: "LLM Benchmarks: A Field Guide to Reading the Leaderboards"
 date: "2026-04-02"
 excerpt: "Leaderboards still matter in 2026, but not in the way benchmark charts want you to believe. This field guide explains which LLM benchmarks are now historical, which still matter at the frontier, what agentic and tool-use benchmarks changed, and how to read every score critically."
-tags: ["Benchmarks", "LLMs", "Evaluation", "Knowledge Engineering", "RAG", "Infrastructure"]
+tags: ["Benchmarks", "LLMs", "Evaluation", "Knowledge Engineering", "RAG", "AI Engineering", "NLP", "Deep Learning", "Research Papers"]
 headerImage: "/blog/headers/llm-benchmarks-header.jpg"
 readingTimeMinutes: 45
 slug: llm-benchmarks

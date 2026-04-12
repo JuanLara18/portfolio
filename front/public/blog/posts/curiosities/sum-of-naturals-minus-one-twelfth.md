@@ -2,7 +2,7 @@
 title: "1+2+3+4+... = -1/12: From Magic Trick to Deep Truth"
 date: "2025-10-22"
 excerpt: "A viral equation that seems impossible. Then the revelation: it's a glimpse into how mathematics transcends intuition. The journey from viral paradox to zeta function truth."
-tags: ["Complex Analysis", "Number Theory", "Zeta Function", "Series", "Ramanujan"]
+tags: ["Mathematics", "Number Theory", "Complex Analysis", "Series", "Foundations of Mathematics", "Deep Learning", "Neural Network Theory"]
 headerImage: "/blog/headers/zeta-header.jpg"
 ---
 

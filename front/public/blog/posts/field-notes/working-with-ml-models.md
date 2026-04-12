@@ -2,7 +2,7 @@
 title: "Working with ML Models: From Hugging Face to Custom Training"
 date: "2025-12-11"
 excerpt: "The art of machine learning is knowing when to use what already exists and when to build your own. This guide covers the complete spectrum—from selecting pre-trained models and understanding licenses to fine-tuning strategies and the decision to train from scratch."
-tags: ["Machine Learning", "Hugging Face", "Transfer Learning", "Fine-tuning", "Models"]
+tags: ["Machine Learning", "Hugging Face", "Transfer Learning", "Fine-Tuning", "Deep Learning", "PyTorch", "Pre-Training", "NLP", "LLMs"]
 headerImage: "/blog/headers/models-header.jpg"
 readingTimeMinutes: 42
 slug: working-with-ml-models

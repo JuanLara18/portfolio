@@ -2,7 +2,7 @@
 title: "LLM as a Judge: Using Language Models to Evaluate Language Models"
 date: "2026-08-11"
 excerpt: "Evaluating open-ended AI output at scale is one of the hardest unsolved problems in the field. Human evaluation is the gold standard but doesn't scale. Classical metrics like BLEU and ROUGE miss what matters. LLM-as-a-Judge — using a stronger model to evaluate another — achieves over 80% agreement with human raters and is reshaping how the field measures quality, trains reward models, and builds evaluation pipelines."
-tags: ["LLM Evaluation", "Research", "RLHF", "LLM-as-a-Judge", "Prometheus", "Alignment", "AI Engineering"]
+tags: ["Evaluation", "LLMs", "RLHF", "AI Engineering", "Research Papers", "Alignment", "Benchmarks", "NLP", "Deep Learning", "Production ML"]
 headerImage: "/blog/headers/judge-header.jpg"
 readingTimeMinutes: 28
 slug: llm-as-a-judge

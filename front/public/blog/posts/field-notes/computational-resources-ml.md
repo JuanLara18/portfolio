@@ -2,7 +2,7 @@
 title: "Computational Resources for Machine Learning: From Silicon to Tensors"
 date: "2025-12-01"
 excerpt: "Before you train a single model, you need to understand what is actually running your code. This is the definitive guide to computational resources in ML—GPUs, CUDA, memory hierarchies, data types, and the art of knowing when your hardware is the bottleneck."
-tags: ["GPU", "CUDA", "Hardware", "Performance", "MLOps", "Resources"]
+tags: ["GPU", "CUDA", "Hardware", "Performance", "MLOps", "Deep Learning", "Distributed Computing", "Infrastructure", "Cloud Computing", "PyTorch"]
 headerImage: "/blog/headers/resources-header.jpg"
 readingTimeMinutes: 40
 slug: computational-resources-ml

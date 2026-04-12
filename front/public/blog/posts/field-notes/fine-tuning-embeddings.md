@@ -2,7 +2,7 @@
 title: "Fine-Tuning Embeddings: What You Gain, What You Need, and How to Actually Do It"
 date: "2026-11-26"
 excerpt: "Off-the-shelf embeddings are the default, but in specialized domains they leave 5-15 points of retrieval quality on the table. This is the full playbook for when to fine-tune, what training data looks like, which loss function to pick, how hard negative mining changes everything, and how to ship the result without breaking your vector index."
-tags: ["Embeddings", "Fine-Tuning", "Sentence Transformers", "RAG", "Information Retrieval", "Contrastive Learning", "Hard Negative Mining"]
+tags: ["Embeddings", "Fine-Tuning", "RAG", "NLP", "Deep Learning", "Contrastive Learning", "Information Retrieval", "Hugging Face", "PyTorch", "LLMs"]
 headerImage: "/blog/headers/fine-tuning-embeddings-header.jpg"
 readingTimeMinutes: 26
 slug: fine-tuning-embeddings

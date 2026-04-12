@@ -2,7 +2,7 @@
 title: "RAGAS: Evaluating RAG End-to-End"
 date: "2026-04-14"
 excerpt: "Building a RAG system is only half the problem. The other half — knowing whether it actually works, understanding exactly where it fails, and having a reliable signal to improve it — is arguably harder. RAGAS offers a framework for decomposing RAG quality into measurable, interpretable dimensions. This is how it works, why it matters, and what it still can't tell you."
-tags: ["RAG", "RAGAS", "Evaluation", "LLM-as-Judge", "MLOps", "Production ML", "NLP", "Metrics", "LLMs"]
+tags: ["RAG", "Evaluation", "MLOps", "Production ML", "NLP", "Metrics", "LLMs", "Benchmarks", "AI Engineering", "Testing"]
 headerImage: "/blog/headers/ragas-evaluation-header.jpg"
 readingTimeMinutes: 32
 slug: ragas-evaluating-rag

@@ -2,7 +2,7 @@
 title: "The Hash as an Engineering Tool: Content Addressing, Caches, and the Quiet Primitive Behind Modern Systems"
 date: "2027-01-07"
 excerpt: "Hashes are not just a crypto topic. They are the quiet primitive behind Git, Docker, Bazel, IPFS, rsync, Bitcoin, CDNs, backup systems, and half the distributed systems you interact with every day. This is a tour of the hash as an everyday engineering tool — content-addressable storage, build caches, chunk deduplication, Merkle trees, consistent hashing, bloom filters, and the fingerprinting tricks that make modern infrastructure feel like magic."
-tags: ["Hashing", "Content-Addressing", "Git", "Caching", "Merkle-Trees", "Distributed-Systems", "Systems"]
+tags: ["Hashing", "Distributed Systems", "Git", "Caching", "Computer Science", "Data Structures", "Systems Design", "Software Engineering", "Algorithms", "Version Control"]
 headerImage: "/blog/headers/wax-seal-header.jpg"
 readingTimeMinutes: 27
 slug: content-addressable-hash-as-engineering-tool

@@ -2,7 +2,7 @@
 title: "Experiment Tracking in MLOps: Never Lose a Good Run Again"
 date: "2026-03-25"
 excerpt: "Every ML engineer has had the same nightmare: a model that performed brilliantly last week, and no record of how to reproduce it. Experiment tracking is the discipline that makes that nightmare impossible. This is the complete guide—from what needs to be tracked and why, to deep dives into MLflow, Weights & Biases, Trackio, Neptune, and DVC, with production-grade patterns for teams that need to move fast without losing their work."
-tags: ["MLOps", "Experiment Tracking", "MLflow", "Weights & Biases", "DVC", "Machine Learning", "Reproducibility", "Production ML"]
+tags: ["MLOps", "Experiment Tracking", "MLflow", "Weights & Biases", "Machine Learning", "Reproducibility", "Production ML", "Best Practices", "Deep Learning"]
 headerImage: "/blog/headers/experiment-tracking-header.jpg"
 readingTimeMinutes: 28
 slug: experiment-tracking-mlops

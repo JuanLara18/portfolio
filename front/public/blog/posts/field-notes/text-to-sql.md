@@ -1,7 +1,7 @@
 ---
 title: "Text-to-SQL: Bridging Natural Language and Structured Data"
 date: "2026-04-06"
-tags: ["text-to-sql", "nlp", "llm", "bigquery", "data-engineering", "agents"]
+tags: ["Text-to-SQL", "NLP", "LLMs", "BigQuery", "Data Engineering", "Agents", "SQL", "AI Engineering", "Evaluation", "Data Pipelines"]
 category: "field-notes"
 headerImage: "/blog/headers/text-to-sql-header.jpg"
 slug: "text-to-sql"

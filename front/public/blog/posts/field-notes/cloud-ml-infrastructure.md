@@ -2,7 +2,7 @@
 title: "Cloud Infrastructure for Machine Learning: From Local to Global Scale"
 date: "2025-12-31"
 excerpt: "The cloud is not just bigger computers—it is an entirely different way of building ML systems. This guide covers when to move to cloud, which services to use, how to avoid cost disasters, and the architectural patterns that separate successful cloud ML projects from expensive failures."
-tags: ["Cloud", "GCP", "AWS", "Azure", "MLOps", "Infrastructure", "Vertex AI"]
+tags: ["Cloud Computing", "GCP", "AWS", "MLOps", "Infrastructure", "Vertex AI", "GPU", "Distributed Computing", "Kubernetes", "Machine Learning"]
 headerImage: "/blog/headers/cloud-header.jpg"
 readingTimeMinutes: 50
 slug: cloud-ml-infrastructure
