@@ -1,0 +1,13 @@
+{
+  "slug": "vector-db-benchmarks",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "575a56f565e5b5e0d69fd75e673b8abccc258c974f7a9fd97d2fbe080b85a11a",
+  "sourceHash": "88d9059c315ca4620d13c2e4aab8482245dae55478ac2713aabbee29c247b26d",
+  "durationSec": 2448.0,
+  "byteSize": 14688000,
+  "narrationWordCount": 6313,
+  "audioUrl": "/blog/audio-es/field-notes/vector-db-benchmarks.mp3",
+  "translationModel": "gemma4:latest"
+}

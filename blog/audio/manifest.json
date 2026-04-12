@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1775962183,
+  "generatedAt": 1775968218,
   "posts": {
     "curiosities/benfords-law": {
       "slug": "benfords-law",
@@ -417,6 +417,19 @@
       "byteSize": 7824816,
       "narrationWordCount": 2743,
       "audioUrl": "/blog/audio/field-notes/knowledge-graphs-practice.mp3",
+      "translationModel": ""
+    },
+    "field-notes/kubernetes-minimum-subset-ml": {
+      "slug": "kubernetes-minimum-subset-ml",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "e0da95315c2422030475f77aa923a377d815211d9f8e7bfb7c1ce65ef0cdf3ab",
+      "sourceHash": "e0da95315c2422030475f77aa923a377d815211d9f8e7bfb7c1ce65ef0cdf3ab",
+      "durationSec": 1894.2,
+      "byteSize": 11365200,
+      "narrationWordCount": 4267,
+      "audioUrl": "/blog/audio/field-notes/kubernetes-minimum-subset-ml.mp3",
       "translationModel": ""
     },
     "field-notes/lakehouse-architecture": {
