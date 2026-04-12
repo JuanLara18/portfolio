@@ -13,3 +13,5 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `lego-bricks-header.jpg` — Photo by Nenad Stojkovic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Playing_with_Lego_bricks.jpg) (CC BY 2.0)
 - `fiber-optic-header.jpg` — Photo by Hustvedt, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fiber_optic_illuminated.jpg) (CC BY-SA 3.0)
 - `observatory-telescope-header.jpg` — Photo by ESO/Y. Beletsky, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:VISTA-_the_Visible_and_Infrared_Survey_Telescope_for_Astronomy_(eso0949d).jpg) (CC BY 4.0)
+- `branching-coral-header.jpg` — Photo by Ritiks, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Barren_Island_feather_star_and_branching_coral.jpg) (CC BY-SA 4.0)
+- `spider-web-dew-header.jpg` — Photo by Luc Viatour, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spider_web_Luc_Viatour.jpg) (CC BY-SA 3.0)

@@ -9,8 +9,49 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Apr 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>PageRank: The Eigenvector That Launched Google</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</guid>
+    <pubDate>Thu, 01 Apr 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[An algorithm most engineers have heard of but few understand mathematically. Starting from the original problem of ranking web pages without reading them, we build the random surfer model, derive PageRank as the dominant eigenvector of a stochastic transition matrix, and trace how one linear algebra insight became worth hundreds of billions of dollars.]]></description>
+    <category>curiosities</category>
+    <category>Algorithms</category>
+    <category>Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Graph Theory</category>
+    <category>Information Retrieval</category>
+    <category>Knowledge Graphs</category>
+    <category>Computer Science</category>
+    <category>Search Algorithms</category>
+    <category>Probability</category>
+    <category>Data Structures</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/pagerank-eigenvectors.mp3" length="7720992" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Graph Neural Networks: Learning on Structured Data</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</guid>
+    <pubDate>Thu, 25 Mar 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Your data has structure that tabular models ignore. Graph Neural Networks learn directly from nodes, edges, and neighborhoods — turning social networks into recommendations, molecules into property predictions, and transaction graphs into fraud detectors. This post covers message passing, GCN, GAT, GraphSAGE, and production deployment with PyTorch Geometric.]]></description>
+    <category>field-notes</category>
+    <category>Deep Learning</category>
+    <category>Machine Learning</category>
+    <category>Neural Network Theory</category>
+    <category>PyTorch</category>
+    <category>Knowledge Graphs</category>
+    <category>Embeddings</category>
+    <category>Representation Learning</category>
+    <category>Algorithms</category>
+    <category>Graph Theory</category>
+    <category>Fraud Detection</category>
+    <category>Attention</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/graph-neural-networks-learning-structured-data.mp3" length="11632896" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Vertex AI: The Complete GCP ML Platform from the CLI</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</link>
@@ -22,9 +63,12 @@
     <category>GCP</category>
     <category>MLOps</category>
     <category>Machine Learning</category>
-    <category>Google Cloud</category>
+    <category>Cloud Computing</category>
     <category>CLI</category>
-    <category>Gemini</category>
+    <category>AI Engineering</category>
+    <category>Production ML</category>
+    <category>Deep Learning</category>
+    <category>Deployment</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/vertex-ai-gcp-ml-platform-cli.mp3" length="11141424" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -36,12 +80,14 @@
     <description><![CDATA[Every application you build runs on a network. This is the definitive guide to the concepts that make it work: the OSI model layer by layer, TCP/IP internals, IP addressing and subnetting, DNS resolution, HTTP and TLS, routing, NAT, DHCP, VPNs, network security, and the troubleshooting toolkit every engineer should master.]]></description>
     <category>field-notes</category>
     <category>Networking</category>
-    <category>TCP/IP</category>
-    <category>DNS</category>
-    <category>HTTP</category>
-    <category>Network Security</category>
-    <category>OSI Model</category>
     <category>Infrastructure</category>
+    <category>Protocols</category>
+    <category>Computer Science</category>
+    <category>Systems Design</category>
+    <category>Cloud Computing</category>
+    <category>Security</category>
+    <category>Distributed Systems</category>
+    <category>Software Engineering</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/network-fundamentals-every-concept.mp3" length="15347808" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -55,10 +101,13 @@
     <category>Terraform</category>
     <category>Infrastructure as Code</category>
     <category>DevOps</category>
-    <category>Cloud</category>
-    <category>HCL</category>
+    <category>Cloud Computing</category>
     <category>AWS</category>
     <category>GCP</category>
+    <category>Infrastructure</category>
+    <category>Automation</category>
+    <category>Deployment</category>
+    <category>Best Practices</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/terraform-infrastructure-as-code.mp3" length="9761616" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -69,12 +118,14 @@
     <pubDate>Thu, 25 Feb 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Claude Shannon estimated 10^120 possible chess games in 1950 — a number so large it dwarfs the atoms in the observable universe. The game tree is formally EXPTIME-complete. And yet a laptop running Stockfish will crush every grandmaster alive. The reconciliation is one of the most elegant ideas in computer science: you don't need to search the whole tree.]]></description>
     <category>curiosities</category>
-    <category>Chess</category>
-    <category>Game-Theory</category>
-    <category>Computer-Science</category>
+    <category>Mathematics</category>
+    <category>Game Theory</category>
     <category>Combinatorics</category>
-    <category>AI</category>
-    <category>History-of-Computing</category>
+    <category>Algorithms</category>
+    <category>Computational Complexity</category>
+    <category>Computer Science</category>
+    <category>Search Algorithms</category>
+    <category>Optimization</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/shannon-number-chess-game-tree.mp3" length="9605664" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -86,11 +137,15 @@
     <description><![CDATA[The request 'show me churn by region last quarter' is actually three hard problems: understanding what churn means in your organization, generating correct SQL over your semantic layer, and choosing the right visualization. This post designs an MCP server that solves all three, grounding every step against a curated semantic layer so the LLM never hallucinates a metric or invents a column.]]></description>
     <category>field-notes</category>
     <category>MCP</category>
-    <category>Power-BI</category>
     <category>Text-to-SQL</category>
     <category>RAG</category>
-    <category>LLM-Tools</category>
-    <category>Business-Intelligence</category>
+    <category>LLMs</category>
+    <category>Business Intelligence</category>
+    <category>NLP</category>
+    <category>Agents</category>
+    <category>AI Engineering</category>
+    <category>SQL</category>
+    <category>Tool Use</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3" length="8247456" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -106,7 +161,11 @@
     <category>DevOps</category>
     <category>GPU</category>
     <category>Orchestration</category>
-    <category>Cloud</category>
+    <category>Cloud Computing</category>
+    <category>Infrastructure</category>
+    <category>Containers</category>
+    <category>Production ML</category>
+    <category>Docker</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/kubernetes-minimum-subset-ml.mp3" length="11365200" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -117,12 +176,16 @@
     <pubDate>Thu, 04 Feb 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The promise of multimodal embeddings is seductive: encode text, images, audio, and video into a single vector space and let cosine similarity do the rest. The reality is messier. Cross-modal retrieval breaks in subtle ways because different modalities occupy different submanifolds, and naive top-k returns nonsense. This is the full story — from CLIP to SigLIP to ImageBind, the modality gap that haunts production systems, and the retrieval patterns that actually work.]]></description>
     <category>field-notes</category>
-    <category>Multimodal</category>
     <category>Embeddings</category>
+    <category>Multimodal</category>
     <category>CLIP</category>
-    <category>Retrieval</category>
-    <category>Vector-Search</category>
-    <category>Representation-Learning</category>
+    <category>Vector Databases</category>
+    <category>Deep Learning</category>
+    <category>Information Retrieval</category>
+    <category>Representation Learning</category>
+    <category>NLP</category>
+    <category>Benchmarks</category>
+    <category>LLMs</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/multimodal-embeddings-metric-problem.mp3" length="11503008" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -134,11 +197,13 @@
     <description><![CDATA[Bash is half duct tape, half landmine. This is the narrow slice of shell that ML and data engineers actually leverage every day -- pipe composition, safe scripting, parallelism, modern replacements, JSON wrangling -- and the honest decision point for switching to Python.]]></description>
     <category>field-notes</category>
     <category>Bash</category>
-    <category>Shell</category>
+    <category>CLI</category>
     <category>DevOps</category>
-    <category>ML-Engineering</category>
     <category>Productivity</category>
-    <category>Command-Line</category>
+    <category>Developer Tools</category>
+    <category>Linux</category>
+    <category>Automation</category>
+    <category>Software Engineering</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/bash-daily-driver-ml-engineer.mp3" length="7273872" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -153,8 +218,12 @@
     <category>LLMs</category>
     <category>RAG</category>
     <category>Performance</category>
-    <category>Cost-Optimization</category>
-    <category>Distributed-Systems</category>
+    <category>Distributed Systems</category>
+    <category>Production ML</category>
+    <category>Infrastructure</category>
+    <category>Cost Optimization</category>
+    <category>Embeddings</category>
+    <category>Systems Design</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llm-caching-four-layers.mp3" length="9101088" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -167,11 +236,14 @@
     <category>field-notes</category>
     <category>Agents</category>
     <category>LLMs</category>
-    <category>ReAct</category>
-    <category>Tool-Use</category>
+    <category>Production ML</category>
     <category>Multi-Agent</category>
     <category>MCP</category>
     <category>Observability</category>
+    <category>AI Engineering</category>
+    <category>Tool Use</category>
+    <category>Software Engineering</category>
+    <category>Deployment</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/production-llm-agents-patterns.mp3" length="10246176" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -183,12 +255,15 @@
     <description><![CDATA[Hashes are not just a crypto topic. They are the quiet primitive behind Git, Docker, Bazel, IPFS, rsync, Bitcoin, CDNs, backup systems, and half the distributed systems you interact with every day. This is a tour of the hash as an everyday engineering tool — content-addressable storage, build caches, chunk deduplication, Merkle trees, consistent hashing, bloom filters, and the fingerprinting tricks that make modern infrastructure feel like magic.]]></description>
     <category>field-notes</category>
     <category>Hashing</category>
-    <category>Content-Addressing</category>
+    <category>Distributed Systems</category>
     <category>Git</category>
     <category>Caching</category>
-    <category>Merkle-Trees</category>
-    <category>Distributed-Systems</category>
-    <category>Systems</category>
+    <category>Computer Science</category>
+    <category>Data Structures</category>
+    <category>Systems Design</category>
+    <category>Software Engineering</category>
+    <category>Algorithms</category>
+    <category>Version Control</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/content-addressable-hash-as-engineering-tool.mp3" length="10525392" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -201,11 +276,14 @@
     <category>research</category>
     <category>Interpretability</category>
     <category>Alignment</category>
-    <category>Claude</category>
-    <category>Mechanistic Interpretability</category>
-    <category>Steering Vectors</category>
     <category>Anthropic</category>
-    <category>Safety</category>
+    <category>Mechanistic Interpretability</category>
+    <category>LLMs</category>
+    <category>AI Safety</category>
+    <category>Research Papers</category>
+    <category>Deep Learning</category>
+    <category>Neural Network Theory</category>
+    <category>NLP</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/emotion-concepts-in-llms.mp3" length="9339696" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -216,14 +294,15 @@
     <pubDate>Thu, 24 Dec 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In February 2026, Andrej Karpathy published a 199-line Python file that trains and runs a GPT end-to-end. No PyTorch, no NumPy, no dependencies — just a Value class, a transformer, Adam, and a loop. This is the culmination of a decade of simplification work, and reading it line by line is the best introduction to what LLMs actually are. Here's the full tour.]]></description>
     <category>research</category>
-    <category>Karpathy</category>
-    <category>LLM</category>
     <category>Transformers</category>
-    <category>Autograd</category>
-    <category>Educational</category>
+    <category>LLMs</category>
+    <category>PyTorch</category>
+    <category>Deep Learning</category>
     <category>GPT</category>
-    <category>Minimalism</category>
     <category>From Scratch</category>
+    <category>Language Models</category>
+    <category>Attention</category>
+    <category>Neural Network Theory</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/microgpt-reading-karpathy.mp3" length="13502448" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -238,10 +317,12 @@
     <category>Anthropic</category>
     <category>AI Coding</category>
     <category>Developer Tools</category>
-    <category>Agentic Coding</category>
     <category>MCP</category>
     <category>CLI</category>
     <category>Productivity</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>Agents</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/claude-code-complete-guide.mp3" length="7310592" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -255,11 +336,13 @@
     <category>Git</category>
     <category>GitHub</category>
     <category>Version Control</category>
-    <category>GitHub Actions</category>
     <category>CI/CD</category>
     <category>Developer Tools</category>
-    <category>Collaboration</category>
     <category>DevOps</category>
+    <category>Collaboration</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Automation</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/git-and-github-complete-guide.mp3" length="17275824" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -273,10 +356,13 @@
     <category>Apache Airflow</category>
     <category>Data Engineering</category>
     <category>Orchestration</category>
-    <category>DAGs</category>
     <category>Workflow Automation</category>
-    <category>TaskFlow</category>
     <category>Kubernetes</category>
+    <category>Data Pipelines</category>
+    <category>Infrastructure</category>
+    <category>Batch Processing</category>
+    <category>Scheduling</category>
+    <category>Automation</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/apache-airflow-orchestration.mp3" length="9184320" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -289,11 +375,14 @@
     <category>field-notes</category>
     <category>Embeddings</category>
     <category>Fine-Tuning</category>
-    <category>Sentence Transformers</category>
     <category>RAG</category>
-    <category>Information Retrieval</category>
+    <category>NLP</category>
+    <category>Deep Learning</category>
     <category>Contrastive Learning</category>
-    <category>Hard Negative Mining</category>
+    <category>Information Retrieval</category>
+    <category>Hugging Face</category>
+    <category>PyTorch</category>
+    <category>LLMs</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/fine-tuning-embeddings.mp3" length="9751536" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -304,12 +393,16 @@
     <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A line-by-line walkthrough of Gu and Dao's 2023 Mamba paper: what state space models are, where they came from, why S4 nearly worked, the single insight that made them competitive with Transformers, and the hardware-aware trick that made them fast. Written to be understood, not just cited.]]></description>
     <category>research</category>
-    <category>Mamba</category>
     <category>State Space Models</category>
+    <category>Deep Learning</category>
     <category>Sequence Modeling</category>
-    <category>Deep Learning Theory</category>
-    <category>Architectures</category>
-    <category>Research Paper</category>
+    <category>Research Papers</category>
+    <category>Neural Network Theory</category>
+    <category>Transformers</category>
+    <category>Algorithms</category>
+    <category>Language Models</category>
+    <category>NLP</category>
+    <category>Performance</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/mamba-selective-state-spaces.mp3" length="10748880" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -320,13 +413,16 @@
     <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A technical walkthrough of ElevenLabs — how the models are built, how to wire them into a real application with streaming and WebSockets, and the ethical, operational, and cost considerations you need to think about before shipping a voice feature.]]></description>
     <category>field-notes</category>
-    <category>ElevenLabs</category>
-    <category>Text-to-Speech</category>
     <category>Voice AI</category>
-    <category>Generative Audio</category>
-    <category>Streaming APIs</category>
-    <category>Voice Cloning</category>
-    <category>AI Ethics</category>
+    <category>Text-to-Speech</category>
+    <category>Generative AI</category>
+    <category>Streaming</category>
+    <category>APIs</category>
+    <category>Deep Learning</category>
+    <category>Production ML</category>
+    <category>AI Engineering</category>
+    <category>NLP</category>
+    <category>Machine Learning</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/elevenlabs-voice-ai-engineering.mp3" length="10260288" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -343,7 +439,10 @@
     <category>Embeddings</category>
     <category>Chunking</category>
     <category>Document Processing</category>
-    <category>Metadata</category>
+    <category>Data Quality</category>
+    <category>Knowledge Engineering</category>
+    <category>NLP</category>
+    <category>Data Pipelines</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-base-curation.mp3" length="8168976" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -357,9 +456,13 @@
     <category>Knowledge Graphs</category>
     <category>Neo4j</category>
     <category>GraphRAG</category>
-    <category>Cypher</category>
-    <category>Entity Extraction</category>
-    <category>LLM</category>
+    <category>NLP</category>
+    <category>LLMs</category>
+    <category>Knowledge Engineering</category>
+    <category>Data Architecture</category>
+    <category>Ontologies</category>
+    <category>Embeddings</category>
+    <category>Information Retrieval</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-graphs-practice.mp3" length="7824816" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -371,11 +474,15 @@
     <description><![CDATA[Choosing between No-Code, Low-Code, and custom AI platforms shouldn't require a PhD in vendor marketing. This framework breaks the decision into six durable axes — scope, gateway, guardrails, observability, contingency, and interface — so your team picks the right stack for each use case, not just the loudest one.]]></description>
     <category>field-notes</category>
     <category>Enterprise AI</category>
-    <category>AI Architecture</category>
-    <category>Platform Selection</category>
-    <category>AI Gateway</category>
+    <category>AI Strategy</category>
     <category>MLOps</category>
-    <category>Guardrails</category>
+    <category>AI Governance</category>
+    <category>Infrastructure</category>
+    <category>Production ML</category>
+    <category>LLMs</category>
+    <category>Cloud Computing</category>
+    <category>Evaluation</category>
+    <category>Best Practices</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-ai-platform-selection.mp3" length="8153280" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -386,12 +493,15 @@
     <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Ontologies turn chaotic data into structured knowledge. Learn how to design, build, and deploy ontology-driven knowledge bases — from RDF triples to production-ready systems that power RAG, search, and enterprise AI.]]></description>
     <category>field-notes</category>
-    <category>Ontology Engineering</category>
+    <category>Ontologies</category>
     <category>Knowledge Graphs</category>
-    <category>OWL</category>
-    <category>RDF</category>
     <category>Knowledge Bases</category>
+    <category>Knowledge Engineering</category>
     <category>Semantic Web</category>
+    <category>Data Architecture</category>
+    <category>NLP</category>
+    <category>Data Modeling</category>
+    <category>Enterprise Data</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ontologies-building-knowledge-bases.mp3" length="8829936" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -405,10 +515,13 @@
     <category>Data Engineering</category>
     <category>Data Architecture</category>
     <category>Enterprise Data</category>
-    <category>AWS</category>
-    <category>GCP</category>
+    <category>Cloud Computing</category>
     <category>Data Mesh</category>
     <category>Knowledge Management</category>
+    <category>Data Governance</category>
+    <category>AI Strategy</category>
+    <category>Data Quality</category>
+    <category>Enterprise AI</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/data-silos-breaking-information-barriers.mp3" length="9581760" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -420,12 +533,15 @@
     <description><![CDATA[DAMA DMBOK is the industry standard framework for data governance, but most engineers encounter it as a wall of jargon. This guide breaks down all 11 knowledge areas with clear definitions, real narrative, and applies them to a bank building an AI-powered knowledge base from scratch.]]></description>
     <category>field-notes</category>
     <category>Data Governance</category>
-    <category>DAMA DMBOK</category>
     <category>Data Quality</category>
-    <category>Metadata Management</category>
-    <category>Knowledge Base</category>
-    <category>Banking Data</category>
+    <category>Metadata</category>
     <category>Data Engineering</category>
+    <category>Enterprise Data</category>
+    <category>Knowledge Management</category>
+    <category>Data Architecture</category>
+    <category>Best Practices</category>
+    <category>Data Modeling</category>
+    <category>Enterprise AI</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dama-dmbok-data-governance.mp3" length="9863424" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -439,9 +555,13 @@
     <category>Apache Spark</category>
     <category>Data Engineering</category>
     <category>PySpark</category>
-    <category>Scala</category>
     <category>Distributed Computing</category>
     <category>Big Data</category>
+    <category>SQL</category>
+    <category>Data Pipelines</category>
+    <category>Python</category>
+    <category>Batch Processing</category>
+    <category>Data Transformation</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/apache-spark-ecosystem-guide.mp3" length="8653680" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -452,12 +572,16 @@
     <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A practical look at Dataiku DSS in the context of the broader enterprise data + AI landscape: the real problems it solves, where it falls short, the honest trade-offs against alternatives, and frameworks for deciding if it's the right tool for your team.]]></description>
     <category>field-notes</category>
-    <category>Dataiku</category>
     <category>Enterprise AI</category>
     <category>MLOps</category>
     <category>AI Governance</category>
-    <category>Data Science Platforms</category>
-    <category>Make vs Buy</category>
+    <category>Data Science</category>
+    <category>Machine Learning</category>
+    <category>AI Strategy</category>
+    <category>Production ML</category>
+    <category>Cloud Computing</category>
+    <category>Evaluation</category>
+    <category>Best Practices</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3" length="10192752" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -470,11 +594,14 @@
     <category>field-notes</category>
     <category>Document Processing</category>
     <category>OCR</category>
-    <category>Layout Detection</category>
-    <category>Docling</category>
-    <category>PaddleOCR</category>
-    <category>Document AI</category>
     <category>RAG</category>
+    <category>NLP</category>
+    <category>Deep Learning</category>
+    <category>Data Pipelines</category>
+    <category>Knowledge Bases</category>
+    <category>Production ML</category>
+    <category>Embeddings</category>
+    <category>Information Retrieval</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/document-processing-ocr-layout.mp3" length="10358352" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -485,13 +612,16 @@
     <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Evaluating open-ended AI output at scale is one of the hardest unsolved problems in the field. Human evaluation is the gold standard but doesn't scale. Classical metrics like BLEU and ROUGE miss what matters. LLM-as-a-Judge — using a stronger model to evaluate another — achieves over 80% agreement with human raters and is reshaping how the field measures quality, trains reward models, and builds evaluation pipelines.]]></description>
     <category>research</category>
-    <category>LLM Evaluation</category>
-    <category>Research</category>
+    <category>Evaluation</category>
+    <category>LLMs</category>
     <category>RLHF</category>
-    <category>LLM-as-a-Judge</category>
-    <category>Prometheus</category>
-    <category>Alignment</category>
     <category>AI Engineering</category>
+    <category>Research Papers</category>
+    <category>Alignment</category>
+    <category>Benchmarks</category>
+    <category>NLP</category>
+    <category>Deep Learning</category>
+    <category>Production ML</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/llm-as-a-judge.mp3" length="9478800" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -502,14 +632,16 @@
     <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Most AI proofs of concept are designed to impress, not to inform. They test vendor demos against ideal data, measure metrics that don't match business objectives, and end with a slide deck that recommends the option the team already preferred. Here's a rigorous framework for running PoCs that produce defensible, production-aligned decisions — covering vector database evaluation, RAG quality measurement, text-to-SQL agents, and what changes when you're working in a regulated environment.]]></description>
     <category>field-notes</category>
-    <category>AI Engineering</category>
-    <category>PoC</category>
+    <category>Enterprise AI</category>
     <category>RAG</category>
-    <category>Vector Databases</category>
-    <category>Enterprise</category>
     <category>Evaluation</category>
-    <category>LLM</category>
+    <category>Vector Databases</category>
+    <category>LLMs</category>
     <category>Data Engineering</category>
+    <category>AI Strategy</category>
+    <category>Proof of Concept</category>
+    <category>Benchmarks</category>
+    <category>Cloud Computing</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ai-poc-enterprise-evaluation.mp3" length="9367632" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -522,11 +654,14 @@
     <category>field-notes</category>
     <category>MCP</category>
     <category>AI Engineering</category>
-    <category>Python</category>
-    <category>OAuth</category>
-    <category>Enterprise</category>
+    <category>Enterprise AI</category>
     <category>Agents</category>
-    <category>FastMCP</category>
+    <category>Production ML</category>
+    <category>APIs</category>
+    <category>Software Engineering</category>
+    <category>LLMs</category>
+    <category>Tool Use</category>
+    <category>Protocols</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/mcp-production-enterprise.mp3" length="4001616" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -539,10 +674,13 @@
     <category>curiosities</category>
     <category>Mathematics</category>
     <category>Signal Processing</category>
-    <category>Fourier Transform</category>
-    <category>FFT</category>
-    <category>Deep Learning</category>
     <category>Linear Algebra</category>
+    <category>Deep Learning</category>
+    <category>Computational Mathematics</category>
+    <category>Algorithms</category>
+    <category>Neural Network Theory</category>
+    <category>Representation Learning</category>
+    <category>Embeddings</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/fourier-transform.mp3" length="8778528" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -557,9 +695,11 @@
     <category>TensorFlow</category>
     <category>JAX</category>
     <category>Deep Learning</category>
-    <category>ML Engineering</category>
-    <category>Distributed Training</category>
-    <category>Python</category>
+    <category>Distributed Computing</category>
+    <category>GPU</category>
+    <category>Machine Learning</category>
+    <category>Performance</category>
+    <category>Hugging Face</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/pytorch-tensorflow-deep-learning-frameworks.mp3" length="9570672" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -570,13 +710,13 @@
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Clean Code, the Gang of Four, Hexagonal Architecture — these books sit on every senior engineer's shelf. But reading them uncritically in 2026 is almost as dangerous as not reading them at all. Here's what they got right, where they lead you astray, and how the ideas evolved into the architecture patterns we actually use.]]></description>
     <category>field-notes</category>
+    <category>Software Engineering</category>
+    <category>Design Patterns</category>
     <category>Software Architecture</category>
     <category>Clean Code</category>
-    <category>Design Patterns</category>
-    <category>Hexagonal Architecture</category>
+    <category>Best Practices</category>
     <category>SOLID</category>
-    <category>Python</category>
-    <category>Software Engineering</category>
+    <category>Testing</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/software-engineering-classics.mp3" length="8240544" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -594,6 +734,9 @@
     <category>AI Engineering</category>
     <category>Agents</category>
     <category>LangGraph</category>
+    <category>Production ML</category>
+    <category>Embeddings</category>
+    <category>LLMs</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llamaindex-langchain-llm-frameworks.mp3" length="6794640" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -604,13 +747,16 @@
     <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Every AI engineer eventually needs to run models locally — for privacy, cost control, latency, or just to avoid depending on an API that might break at 2am. This is the practical guide to the three tools that matter: LM Studio for exploration, Ollama for development, and vLLM for production. With complete Docker Compose setups and proof-of-concept patterns.]]></description>
     <category>field-notes</category>
-    <category>Local LLMs</category>
+    <category>LLM Serving</category>
     <category>Ollama</category>
     <category>vLLM</category>
-    <category>LM Studio</category>
     <category>Docker</category>
     <category>AI Engineering</category>
-    <category>LLM Serving</category>
+    <category>Infrastructure</category>
+    <category>GPU</category>
+    <category>Production ML</category>
+    <category>Open Source</category>
+    <category>Deployment</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/local-llm-inference-tools.mp3" length="4959216" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -623,11 +769,14 @@
     <category>field-notes</category>
     <category>RLHF</category>
     <category>DPO</category>
-    <category>LLM Alignment</category>
-    <category>InstructGPT</category>
-    <category>GRPO</category>
-    <category>Post-training</category>
+    <category>Alignment</category>
+    <category>LLMs</category>
+    <category>Reinforcement Learning</category>
+    <category>Fine-Tuning</category>
     <category>Machine Learning</category>
+    <category>Deep Learning</category>
+    <category>Post-Training</category>
+    <category>Evaluation</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/rlhf-dpo-alignment.mp3" length="11774448" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -638,13 +787,16 @@
     <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the deep guide — understanding the family, choosing the right variant for your hardware, why full fine-tuning is economically indefensible, how LoRA and QLoRA make adaptation practical on consumer GPUs, and a complete working recipe with Gemma 4 E4B from dataset to deployed adapter.]]></description>
     <category>field-notes</category>
-    <category>Fine-tuning</category>
-    <category>Gemma 4</category>
+    <category>Fine-Tuning</category>
     <category>LoRA</category>
     <category>QLoRA</category>
-    <category>PEFT</category>
     <category>LLMs</category>
     <category>Hugging Face</category>
+    <category>Deep Learning</category>
+    <category>Transfer Learning</category>
+    <category>PEFT</category>
+    <category>PyTorch</category>
+    <category>Production ML</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3" length="14357088" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -658,10 +810,13 @@
     <category>Data Engineering</category>
     <category>Apache Iceberg</category>
     <category>Delta Lake</category>
-    <category>Apache Hudi</category>
-    <category>Lakehouse Architecture</category>
+    <category>Data Lakehouse</category>
     <category>Data Architecture</category>
-    <category>Object Storage</category>
+    <category>Cloud Computing</category>
+    <category>Big Data</category>
+    <category>Data Pipelines</category>
+    <category>Batch Processing</category>
+    <category>Data Modeling</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/lakehouse-architecture.mp3" length="7364448" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -678,7 +833,10 @@
     <category>SQL</category>
     <category>Data Warehouse</category>
     <category>Data Transformation</category>
-    <category>dbt-utils</category>
+    <category>Data Pipelines</category>
+    <category>Software Engineering</category>
+    <category>Data Modeling</category>
+    <category>Testing</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dbt-analytics-engineering.mp3" length="5079024" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -691,11 +849,14 @@
     <category>field-notes</category>
     <category>Data Engineering</category>
     <category>Dimensional Modeling</category>
-    <category>Kimball</category>
-    <category>Star Schema</category>
-    <category>dbt</category>
     <category>Data Warehouse</category>
+    <category>dbt</category>
     <category>Analytics Engineering</category>
+    <category>SQL</category>
+    <category>Star Schema</category>
+    <category>Data Architecture</category>
+    <category>Data Modeling</category>
+    <category>Data Transformation</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dimensional-modeling-kimball.mp3" length="8002944" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -711,8 +872,11 @@
     <category>PySpark</category>
     <category>DuckDB</category>
     <category>Data Engineering</category>
-    <category>BigQuery</category>
     <category>Python</category>
+    <category>BigQuery</category>
+    <category>Data Transformation</category>
+    <category>Analytics Engineering</category>
+    <category>Performance</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/sql-pandas-pyspark-duckdb.mp3" length="8364096" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -729,7 +893,10 @@
     <category>Distributed Systems</category>
     <category>Apache Iceberg</category>
     <category>Data Quality</category>
-    <category>Modern Data Stack</category>
+    <category>Data Architecture</category>
+    <category>Data Pipelines</category>
+    <category>Cloud Computing</category>
+    <category>Batch Processing</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/data-engineering-fundamentals.mp3" length="12182688" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -742,16 +909,16 @@
     <category>field-notes</category>
     <category>GCP</category>
     <category>Vertex AI</category>
-    <category>AlloyDB</category>
     <category>RAG</category>
-    <category>Vector Search</category>
-    <category>Knowledge Pipeline</category>
-    <category>Cloud Architecture</category>
-    <category>Document AI</category>
-    <category>MLOps</category>
-    <category>pgvector</category>
-    <category>ScaNN</category>
+    <category>Vector Databases</category>
+    <category>Knowledge Bases</category>
+    <category>Cloud Computing</category>
     <category>CLI</category>
+    <category>Data Pipelines</category>
+    <category>Embeddings</category>
+    <category>Production ML</category>
+    <category>PostgreSQL</category>
+    <category>LLMs</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3" length="16495632" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -764,14 +931,15 @@
     <category>field-notes</category>
     <category>Knowledge Bases</category>
     <category>RAG</category>
-    <category>AI Agents</category>
+    <category>Agents</category>
     <category>Knowledge Engineering</category>
     <category>Enterprise AI</category>
     <category>MCP</category>
-    <category>Context Engine</category>
-    <category>Chunking</category>
-    <category>Access Control</category>
     <category>Knowledge Graphs</category>
+    <category>Embeddings</category>
+    <category>Vector Databases</category>
+    <category>Data Architecture</category>
+    <category>LLMs</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-knowledge-bases.mp3" length="18420192" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -783,14 +951,15 @@
     <description><![CDATA[Building a RAG system is only half the problem. The other half — knowing whether it actually works, understanding exactly where it fails, and having a reliable signal to improve it — is arguably harder. RAGAS offers a framework for decomposing RAG quality into measurable, interpretable dimensions. This is how it works, why it matters, and what it still can't tell you.]]></description>
     <category>field-notes</category>
     <category>RAG</category>
-    <category>RAGAS</category>
     <category>Evaluation</category>
-    <category>LLM-as-Judge</category>
     <category>MLOps</category>
     <category>Production ML</category>
     <category>NLP</category>
     <category>Metrics</category>
     <category>LLMs</category>
+    <category>Benchmarks</category>
+    <category>AI Engineering</category>
+    <category>Testing</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ragas-evaluating-rag.mp3" length="15436224" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -801,12 +970,16 @@
     <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A practical guide to LangGraph 1.x: how StateGraph works, when to use agents vs. chains, the patterns that actually work in production (Supervisor, Subgraph, HITL, Map-Reduce), and an honest comparison with alternatives.]]></description>
     <category>field-notes</category>
-    <category>langgraph</category>
-    <category>agents</category>
-    <category>llm</category>
-    <category>orchestration</category>
-    <category>python</category>
-    <category>langchain</category>
+    <category>LangGraph</category>
+    <category>Agents</category>
+    <category>LLMs</category>
+    <category>Orchestration</category>
+    <category>LangChain</category>
+    <category>Multi-Agent</category>
+    <category>AI Engineering</category>
+    <category>Production ML</category>
+    <category>Tool Use</category>
+    <category>Agentic AI</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/langgraph-multi-agent-workflows.mp3" length="5044320" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -817,12 +990,16 @@
     <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A practical deep-dive into the current state of NL→SQL systems: benchmarks, architectures, production pitfalls, and what actually works in 2026 for querying enterprise data warehouses with natural language.]]></description>
     <category>field-notes</category>
-    <category>text-to-sql</category>
-    <category>nlp</category>
-    <category>llm</category>
-    <category>bigquery</category>
-    <category>data-engineering</category>
-    <category>agents</category>
+    <category>Text-to-SQL</category>
+    <category>NLP</category>
+    <category>LLMs</category>
+    <category>BigQuery</category>
+    <category>Data Engineering</category>
+    <category>Agents</category>
+    <category>SQL</category>
+    <category>AI Engineering</category>
+    <category>Evaluation</category>
+    <category>Data Pipelines</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/text-to-sql.mp3" length="6836832" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -836,10 +1013,13 @@
     <category>Benchmarks</category>
     <category>Embeddings</category>
     <category>RAG</category>
-    <category>MTEB</category>
+    <category>Information Retrieval</category>
     <category>Knowledge Engineering</category>
-    <category>Semantic Search</category>
-    <category>Infrastructure</category>
+    <category>NLP</category>
+    <category>Evaluation</category>
+    <category>Hugging Face</category>
+    <category>LLMs</category>
+    <category>Deep Learning</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/mteb-embedding-benchmarks.mp3" length="8622288" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -855,7 +1035,10 @@
     <category>Evaluation</category>
     <category>Knowledge Engineering</category>
     <category>RAG</category>
-    <category>Infrastructure</category>
+    <category>AI Engineering</category>
+    <category>NLP</category>
+    <category>Deep Learning</category>
+    <category>Research Papers</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llm-benchmarks.mp3" length="22157856" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -867,7 +1050,6 @@
     <description><![CDATA[Naive RAG — chunk documents, embed them, retrieve the top-k, stuff into the prompt — works in demos. In production, it fails in predictable, fixable ways. This post covers the patterns that separate brittle prototypes from reliable systems: query transformation, advanced retrieval strategies, re-ranking, agentic RAG, GraphRAG, and how to decide when RAG is the wrong answer entirely.]]></description>
     <category>field-notes</category>
     <category>RAG</category>
-    <category>Advanced RAG</category>
     <category>LangChain</category>
     <category>LlamaIndex</category>
     <category>GraphRAG</category>
@@ -876,6 +1058,8 @@
     <category>Production ML</category>
     <category>MLOps</category>
     <category>LLMs</category>
+    <category>Agents</category>
+    <category>Knowledge Engineering</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/rag-advanced-patterns.mp3" length="11793024" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -895,6 +1079,8 @@
     <category>Production ML</category>
     <category>MLOps</category>
     <category>Information Retrieval</category>
+    <category>Chunking</category>
+    <category>Data Pipelines</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/rag-building-production-systems.mp3" length="12412368" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -905,14 +1091,16 @@
     <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Language models are powerful but trapped. They know only what they saw during training—a snapshot of the world that freezes the moment training ends. RAG broke this constraint. By combining a neural retriever with a neural generator, it gave language models the ability to consult external knowledge at inference time. This is the story of the original paper, the idea it introduced, and why it changed how we think about what language models can be.]]></description>
     <category>research</category>
+    <category>RAG</category>
     <category>Deep Learning</category>
     <category>NLP</category>
-    <category>RAG</category>
-    <category>Retrieval</category>
-    <category>Question Answering</category>
+    <category>Information Retrieval</category>
     <category>Research Papers</category>
     <category>Language Models</category>
-    <category>Knowledge</category>
+    <category>Knowledge Bases</category>
+    <category>LLMs</category>
+    <category>Embeddings</category>
+    <category>Vector Databases</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/rag-retrieval-augmented-generation.mp3" length="12741984" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -928,8 +1116,11 @@
     <category>RAG</category>
     <category>Knowledge Engineering</category>
     <category>Infrastructure</category>
-    <category>Open Source</category>
     <category>Production ML</category>
+    <category>Embeddings</category>
+    <category>Performance</category>
+    <category>Evaluation</category>
+    <category>Information Retrieval</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/vector-db-benchmarks.mp3" length="14811120" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -940,12 +1131,16 @@
     <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In early 2020, a team at OpenAI published a set of equations that described how language model performance grows with compute, data, and parameters. They weren't speculating. They had measured it. The curves fit. And the implications were so consequential that much of the subsequent history of AI can be read as their logical extension.]]></description>
     <category>research</category>
-    <category>Deep Learning</category>
     <category>Scaling Laws</category>
+    <category>Deep Learning</category>
     <category>Language Models</category>
     <category>Research Papers</category>
+    <category>LLMs</category>
+    <category>Pre-Training</category>
+    <category>Neural Network Theory</category>
     <category>Compute</category>
-    <category>Training</category>
+    <category>Performance</category>
+    <category>Mathematics</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/scaling-laws-neural-language-models.mp3" length="7904304" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -956,14 +1151,16 @@
     <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In 2019, a Google team asked a deceptively simple question: what if every NLP task were just a text prediction problem? The answer — T5 — didn't just win benchmarks. It proposed a new way of thinking about what language models are for, and planted the seed of the instruction-following revolution that followed.]]></description>
     <category>research</category>
+    <category>T5</category>
     <category>Deep Learning</category>
     <category>NLP</category>
-    <category>T5</category>
     <category>Transformers</category>
-    <category>Pre-training</category>
+    <category>Pre-Training</category>
     <category>Transfer Learning</category>
     <category>Research Papers</category>
     <category>Language Models</category>
+    <category>Hugging Face</category>
+    <category>Fine-Tuning</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/t5-text-to-text-transfer-transformer.mp3" length="9766800" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -978,10 +1175,11 @@
     <category>Experiment Tracking</category>
     <category>MLflow</category>
     <category>Weights &amp; Biases</category>
-    <category>DVC</category>
     <category>Machine Learning</category>
     <category>Reproducibility</category>
     <category>Production ML</category>
+    <category>Best Practices</category>
+    <category>Deep Learning</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/experiment-tracking-mlops.mp3" length="7405920" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -992,13 +1190,16 @@
     <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In October 2018, a Google research team released a model that simultaneously broke eleven NLP benchmarks—some by enormous margins. BERT didn't just improve the state of the art; it redefined what 'understanding language' could mean for a machine. This is the complete story: the problem it solved, the elegant training objectives that made it possible, what it actually learned, and why it changed everything that came after.]]></description>
     <category>research</category>
+    <category>BERT</category>
     <category>Deep Learning</category>
     <category>NLP</category>
-    <category>BERT</category>
     <category>Transformers</category>
-    <category>Pre-training</category>
+    <category>Pre-Training</category>
     <category>Research Papers</category>
     <category>Language Models</category>
+    <category>Transfer Learning</category>
+    <category>Hugging Face</category>
+    <category>Embeddings</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/bert-pre-training-bidirectional-transformers.mp3" length="12481488" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1009,12 +1210,14 @@
     <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Take any positive integer. If it is even, divide by two. If it is odd, multiply by three and add one. Repeat. No matter what number you start with, you always seem to reach 1. This has been verified for numbers up to 2^68, tested by the brightest minds in mathematics for nearly a century, and yet no one can prove it. This is the Collatz Conjecture—a problem so simple a child can understand it, and so deep it may be beyond contemporary mathematics.]]></description>
     <category>curiosities</category>
-    <category>Collatz</category>
     <category>Mathematics</category>
     <category>Number Theory</category>
     <category>Dynamical Systems</category>
     <category>Open Problems</category>
-    <category>Conjecture</category>
+    <category>Computational Mathematics</category>
+    <category>Algorithms</category>
+    <category>Computer Science</category>
+    <category>Simulation</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/collatz-conjecture.mp3" length="6180336" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1025,13 +1228,14 @@
     <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In 1931, a 25-year-old Austrian logician proved that mathematics cannot fully know itself. Kurt Gödel showed that any consistent formal system powerful enough to express arithmetic contains true statements that it can never prove. This is the story of that proof, the machinery behind it, and why its consequences still reverberate through mathematics, computer science, and philosophy.]]></description>
     <category>curiosities</category>
-    <category>Gödel</category>
-    <category>Logic</category>
-    <category>Incompleteness</category>
     <category>Mathematics</category>
+    <category>Logic</category>
     <category>Formal Systems</category>
-    <category>Set Theory</category>
     <category>Computability</category>
+    <category>Set Theory</category>
+    <category>Foundations of Mathematics</category>
+    <category>Computer Science</category>
+    <category>Algorithms</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/godels-incompleteness-theorems.mp3" length="8725248" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1042,12 +1246,14 @@
     <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[We use files every day, but rarely stop to think about what they actually are. From the OS abstraction of a file to columnar storage like Parquet, all the way to modern AI tensor formats like Safetensors and GGUF, this is a deep dive into the evolution of how we persist memory to disk.]]></description>
     <category>field-notes</category>
-    <category>Files</category>
     <category>Computer Science</category>
     <category>Data Engineering</category>
-    <category>Machine Learning</category>
     <category>Software Engineering</category>
-    <category>Systems</category>
+    <category>Systems Design</category>
+    <category>Data Structures</category>
+    <category>Algorithms</category>
+    <category>Linux</category>
+    <category>Performance</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/files-under-the-hood.mp3" length="6643152" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1058,12 +1264,15 @@
     <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[If you pick a random number from any real-world dataset—populations, stock prices, river lengths, tax returns—the first digit is far more likely to be a 1 than a 9. This is not a coincidence. It is a deep mathematical truth about how quantities grow, and it has become one of the most powerful forensic tools in the fight against fraud.]]></description>
     <category>curiosities</category>
-    <category>Benford&apos;s Law</category>
     <category>Mathematics</category>
-    <category>Data Science</category>
-    <category>Fraud Detection</category>
     <category>Probability</category>
     <category>Statistics</category>
+    <category>Data Science</category>
+    <category>Fraud Detection</category>
+    <category>Number Theory</category>
+    <category>Anomaly Detection</category>
+    <category>Data Quality</category>
+    <category>Algorithms</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/benfords-law.mp3" length="5843808" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1077,10 +1286,13 @@
     <category>Docker</category>
     <category>Containers</category>
     <category>MLOps</category>
-    <category>Deployment</category>
     <category>DevOps</category>
     <category>Production ML</category>
     <category>Infrastructure</category>
+    <category>Deployment</category>
+    <category>Reproducibility</category>
+    <category>Kubernetes</category>
+    <category>CI/CD</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/docker-for-ml-engineers.mp3" length="7349472" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1092,12 +1304,13 @@
     <description><![CDATA[AI models are powerful, but they are blind. They cannot read your files, query your database, or call your APIs—unless someone builds the bridge. The Model Context Protocol is that bridge: an open standard that gives AI a universal way to interact with the world. This is the story of MCP, how it works, and why it matters.]]></description>
     <category>field-notes</category>
     <category>MCP</category>
-    <category>AI Agents</category>
-    <category>LLM</category>
+    <category>Agents</category>
+    <category>LLMs</category>
     <category>Protocols</category>
     <category>Software Engineering</category>
-    <category>Tools</category>
-    <category>FastMCP</category>
+    <category>AI Engineering</category>
+    <category>Tool Use</category>
+    <category>APIs</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/model-context-protocol.mp3" length="7750944" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1109,13 +1322,14 @@
     <description><![CDATA[Theory is necessary but not sufficient. This is the engineering companion to RL—the implementation details that papers omit, the GPU patterns that supervised learning never taught you, the tricks that separate converging agents from wasted compute, and the deployment patterns that survive contact with reality.]]></description>
     <category>field-notes</category>
     <category>Reinforcement Learning</category>
-    <category>Deep RL</category>
+    <category>Deep Learning</category>
     <category>PyTorch</category>
     <category>CUDA</category>
-    <category>PPO</category>
-    <category>DQN</category>
-    <category>Engineering</category>
     <category>Production ML</category>
+    <category>Machine Learning</category>
+    <category>Algorithms</category>
+    <category>GPU</category>
+    <category>Optimization</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/reinforcement-learning-in-practice.mp3" length="16407648" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1127,12 +1341,15 @@
     <description><![CDATA[Most ML engineers have never truly entered the world of reinforcement learning. This is the definitive guide—from Markov Decision Processes and value functions to reward hacking, sim-to-real transfer, multi-agent chaos, and the brutal gap between papers and production systems that actually work.]]></description>
     <category>field-notes</category>
     <category>Reinforcement Learning</category>
-    <category>Deep RL</category>
-    <category>MDP</category>
+    <category>Deep Learning</category>
+    <category>Mathematics</category>
     <category>Reward Design</category>
     <category>Multi-Agent</category>
-    <category>Production ML</category>
     <category>AI Safety</category>
+    <category>Machine Learning</category>
+    <category>Algorithms</category>
+    <category>Optimization</category>
+    <category>Neural Network Theory</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/reinforcement-learning-first-principles.mp3" length="23992992" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1145,11 +1362,14 @@
     <category>field-notes</category>
     <category>Python</category>
     <category>NumPy</category>
-    <category>Apache Arrow</category>
-    <category>Polars</category>
     <category>PyTorch</category>
+    <category>Polars</category>
     <category>Performance</category>
-    <category>High-Performance Computing</category>
+    <category>Deep Learning</category>
+    <category>Data Engineering</category>
+    <category>Apache Arrow</category>
+    <category>Machine Learning</category>
+    <category>Software Engineering</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-libraries-under-the-hood.mp3" length="9362736" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1160,13 +1380,16 @@
     <pubDate>Wed, 31 Dec 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[The cloud is not just bigger computers—it is an entirely different way of building ML systems. This guide covers when to move to cloud, which services to use, how to avoid cost disasters, and the architectural patterns that separate successful cloud ML projects from expensive failures.]]></description>
     <category>field-notes</category>
-    <category>Cloud</category>
+    <category>Cloud Computing</category>
     <category>GCP</category>
     <category>AWS</category>
-    <category>Azure</category>
     <category>MLOps</category>
     <category>Infrastructure</category>
     <category>Vertex AI</category>
+    <category>GPU</category>
+    <category>Distributed Computing</category>
+    <category>Kubernetes</category>
+    <category>Machine Learning</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/cloud-ml-infrastructure.mp3" length="3791088" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1178,11 +1401,15 @@
     <description><![CDATA[A model that works in a notebook is not a model that works. This guide covers the complete lifecycle of model evaluation—from choosing the right metrics to detecting drift in production, from offline evaluation to real-time monitoring systems that catch failures before users do.]]></description>
     <category>field-notes</category>
     <category>Machine Learning</category>
-    <category>Metrics</category>
     <category>Evaluation</category>
     <category>Monitoring</category>
     <category>MLOps</category>
-    <category>Production</category>
+    <category>Production ML</category>
+    <category>Metrics</category>
+    <category>Best Practices</category>
+    <category>Observability</category>
+    <category>Deep Learning</category>
+    <category>Deployment</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-metrics-evaluation-monitoring.mp3" length="4107744" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1196,8 +1423,12 @@
     <category>Machine Learning</category>
     <category>Hugging Face</category>
     <category>Transfer Learning</category>
-    <category>Fine-tuning</category>
-    <category>Models</category>
+    <category>Fine-Tuning</category>
+    <category>Deep Learning</category>
+    <category>PyTorch</category>
+    <category>Pre-Training</category>
+    <category>NLP</category>
+    <category>LLMs</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/working-with-ml-models.mp3" length="5754960" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1213,7 +1444,11 @@
     <category>Hardware</category>
     <category>Performance</category>
     <category>MLOps</category>
-    <category>Resources</category>
+    <category>Deep Learning</category>
+    <category>Distributed Computing</category>
+    <category>Infrastructure</category>
+    <category>Cloud Computing</category>
+    <category>PyTorch</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/computational-resources-ml.mp3" length="7225776" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1225,10 +1460,15 @@
     <description><![CDATA[We train models on high-dimensional chaos, yet they learn. Why? The answer lies in geometry: the world is a crumpled sheet of paper, and intelligence is the act of smoothing it out.]]></description>
     <category>research</category>
     <category>Deep Learning</category>
-    <category>Geometry</category>
-    <category>Topology</category>
     <category>Mathematics</category>
-    <category>Research</category>
+    <category>Topology</category>
+    <category>Neural Network Theory</category>
+    <category>Research Papers</category>
+    <category>Representation Learning</category>
+    <category>Geometry</category>
+    <category>Embeddings</category>
+    <category>Algorithms</category>
+    <category>Linear Algebra</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/the-manifold-hypothesis.mp3" length="9373968" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1240,10 +1480,13 @@
     <description><![CDATA[Everyone writes Python. Few truly understand it. This is a deep dive into the mechanisms that separate elegant, maintainable code from the sprawling chaos that haunts production systems—from the data model to metaclasses, from decorators to the GIL.]]></description>
     <category>field-notes</category>
     <category>Python</category>
-    <category>Best Practices</category>
-    <category>OOP</category>
-    <category>Advanced Python</category>
     <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Design Patterns</category>
+    <category>Developer Tools</category>
+    <category>Testing</category>
+    <category>Performance</category>
+    <category>Data Structures</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/python-beyond-the-basics.mp3" length="10346832" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1256,10 +1499,14 @@
     <category>field-notes</category>
     <category>MLOps</category>
     <category>Python</category>
-    <category>Project Structure</category>
-    <category>Poetry</category>
+    <category>Software Engineering</category>
     <category>Git</category>
     <category>Best Practices</category>
+    <category>Production ML</category>
+    <category>Reproducibility</category>
+    <category>Project Structure</category>
+    <category>Testing</category>
+    <category>CI/CD</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/structuring-ml-projects.mp3" length="7781616" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1270,11 +1517,13 @@
     <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[A viral equation that seems impossible. Then the revelation: it's a glimpse into how mathematics transcends intuition. The journey from viral paradox to zeta function truth.]]></description>
     <category>curiosities</category>
-    <category>Complex Analysis</category>
+    <category>Mathematics</category>
     <category>Number Theory</category>
-    <category>Zeta Function</category>
+    <category>Complex Analysis</category>
     <category>Series</category>
-    <category>Ramanujan</category>
+    <category>Foundations of Mathematics</category>
+    <category>Deep Learning</category>
+    <category>Neural Network Theory</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/sum-of-naturals-minus-one-twelfth.mp3" length="5257440" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1285,11 +1534,16 @@
     <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[How do you teach a computer what 'king' means? You don't explain—you show it where 'king' lives in a space where meaning has coordinates. A deep dive into embeddings, from Word2Vec to modern sentence transformers, and why representing concepts as vectors changed everything.]]></description>
     <category>research</category>
+    <category>Embeddings</category>
     <category>Deep Learning</category>
     <category>NLP</category>
-    <category>Embeddings</category>
-    <category>Word2Vec</category>
     <category>Representation Learning</category>
+    <category>Word2Vec</category>
+    <category>Research Papers</category>
+    <category>Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Information Retrieval</category>
+    <category>Neural Network Theory</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/embeddings-geometry-of-meaning.mp3" length="8123616" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1300,11 +1554,13 @@
     <pubDate>Sat, 23 Aug 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[That seemingly simple game on your phone? It harbors one of computer science's most notorious complexity classes. Discover how Tetris became a lens for understanding computational hardness—and why some problems resist even our most powerful computers.]]></description>
     <category>curiosities</category>
-    <category>Tetris</category>
-    <category>ComplexityTheory</category>
-    <category>NPCompleteness</category>
+    <category>Mathematics</category>
+    <category>Computational Complexity</category>
     <category>Algorithms</category>
-    <category>Games</category>
+    <category>Computer Science</category>
+    <category>NP-Completeness</category>
+    <category>Optimization</category>
+    <category>Game Theory</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/tetris-np-complete.mp3" length="6754896" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1315,11 +1571,16 @@
     <pubDate>Mon, 20 Jan 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[How a single elegant idea—pure attention—toppled decades of sequential thinking and sparked the AI revolution. A deep dive into the architecture that changed everything.]]></description>
     <category>research</category>
+    <category>Transformers</category>
     <category>Deep Learning</category>
     <category>NLP</category>
-    <category>Transformers</category>
     <category>Attention</category>
     <category>Research Papers</category>
+    <category>Neural Network Theory</category>
+    <category>Language Models</category>
+    <category>Embeddings</category>
+    <category>Representation Learning</category>
+    <category>Algorithms</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/attention-is-all-you-need.mp3" length="9702864" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
@@ -1330,10 +1591,13 @@
     <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[What if I told you that every time you twist a Rubik's cube, you're exploring one of mathematics' most elegant structures? Discover how group theory transforms a childhood puzzle into a profound mathematical journey.]]></description>
     <category>curiosities</category>
-    <category>Group Theory</category>
     <category>Mathematics</category>
-    <category>Puzzles</category>
+    <category>Group Theory</category>
     <category>Algorithms</category>
+    <category>Combinatorics</category>
+    <category>Computational Mathematics</category>
+    <category>Computer Science</category>
+    <category>Optimization</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/rubiks-cube-group-theory.mp3" length="7718400" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
