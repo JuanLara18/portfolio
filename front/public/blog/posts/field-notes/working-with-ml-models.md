@@ -474,7 +474,7 @@ quadrantChart
     Zero-shot Pretrained: [0.08, 0.45]
     Prompt Engineering: [0.15, 0.55]
     RAG: [0.28, 0.68]
-    Fine-tuning (LoRA): [0.52, 0.80]
+    Fine-tuning LoRA: [0.52, 0.80]
     Full Fine-tuning: [0.72, 0.85]
     Train from Scratch: [0.95, 0.95]
 ```
