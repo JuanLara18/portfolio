@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1776029531,
+  "generatedAt": 1776030427,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -79,6 +79,32 @@
       "byteSize": 8575776,
       "narrationWordCount": 3611,
       "audioUrl": "/blog/audio-es/curiosities/godels-incompleteness-theorems.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "curiosities/graph-theory-mathematics-of-connections": {
+      "slug": "graph-theory-mathematics-of-connections",
+      "category": "curiosities",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "e08184ce80980da414a8deba9901d406d7b9ab8f3a0e82746f57c1089660b1d1",
+      "sourceHash": "6d0bbbd042b5f7c9b76c8d139e479d35eadf7a5e2a16420bb1f6d2212537bfe3",
+      "durationSec": 1473.384,
+      "byteSize": 8840304,
+      "narrationWordCount": 3925,
+      "audioUrl": "/blog/audio-es/curiosities/graph-theory-mathematics-of-connections.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "curiosities/network-science-communities-centrality": {
+      "slug": "network-science-communities-centrality",
+      "category": "curiosities",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "7a3a49f386fc2ed7c5382a326269e08eaa738587a1d9b81fe523e6ddcb1f2a9b",
+      "sourceHash": "634159cff0424782b9f2ae8348a693fcc16dc6263c96fa822e0f293e3d41a9ca",
+      "durationSec": 1505.472,
+      "byteSize": 9032832,
+      "narrationWordCount": 4001,
+      "audioUrl": "/blog/audio-es/curiosities/network-science-communities-centrality.mp3",
       "translationModel": "gemma4:latest"
     },
     "curiosities/pagerank-eigenvectors": {
@@ -996,11 +1022,11 @@
       "category": "research",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "bef6b8ea2876119e341820ffe3da004214432dff9dd1c29898b28a8821e06d80",
+      "hash": "d578893c793f426916d02afec1fa4d9511e69767d7e34a357bd93410404988e0",
       "sourceHash": "fa400f345c28a0e7b746fb09757c399e7b045f24bee750d3293b5936d7ef210c",
-      "durationSec": 1541.976,
-      "byteSize": 9251856,
-      "narrationWordCount": 4241,
+      "durationSec": 1541.664,
+      "byteSize": 9249984,
+      "narrationWordCount": 4257,
       "audioUrl": "/blog/audio-es/research/emotion-concepts-in-llms.mp3",
       "translationModel": "gemma4:latest"
     },
@@ -1022,11 +1048,11 @@
       "category": "research",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "146a582317dad0f6023cb5585a241a0b1825f2dbdf45b0ebc98a501b99fe6992",
+      "hash": "50b2d68600601ec54e1865e096f0b973e69b41c25cbc90afeef58a3a81f1ebfe",
       "sourceHash": "38a5c83a9baa16c2973452954afb5e3addbdcbedad9d713c088d9c8002fa4e4a",
-      "durationSec": 2095.896,
-      "byteSize": 12575376,
-      "narrationWordCount": 5459,
+      "durationSec": 1783.968,
+      "byteSize": 10703808,
+      "narrationWordCount": 4837,
       "audioUrl": "/blog/audio-es/research/mamba-selective-state-spaces.mp3",
       "translationModel": "gemma4:latest"
     },
