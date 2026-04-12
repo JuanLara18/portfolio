@@ -1,0 +1,13 @@
+{
+  "slug": "ragas-evaluating-rag",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "ec991f70f4de1986e875ae82ea6cdcc46b42206872ec04dfb4738c1a0450df50",
+  "sourceHash": "cf38802866a5817a89f3e319ae65ec14e5270198ae76aeb243c923abf8eba37e",
+  "durationSec": 2524.176,
+  "byteSize": 15145056,
+  "narrationWordCount": 6622,
+  "audioUrl": "/blog/audio-es/field-notes/ragas-evaluating-rag.mp3",
+  "translationModel": "gemma4:latest"
+}

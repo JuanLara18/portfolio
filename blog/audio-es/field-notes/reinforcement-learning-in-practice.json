@@ -1,0 +1,13 @@
+{
+  "slug": "reinforcement-learning-in-practice",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "4138662212b3cb4a0d2b4ef669594fc613e6038428bb65d626650f17431ef169",
+  "sourceHash": "c9df7608bf225dc721cf1be508e1e2ec11dd1a6635699c80ccfdb9344e4a9eea",
+  "durationSec": 2772.336,
+  "byteSize": 16634016,
+  "narrationWordCount": 6977,
+  "audioUrl": "/blog/audio-es/field-notes/reinforcement-learning-in-practice.mp3",
+  "translationModel": "gemma4:latest"
+}
