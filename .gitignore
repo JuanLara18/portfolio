@@ -109,4 +109,4 @@ pnpm-lock.yaml
 .vercel
 .serverless
 
-.claude/*
+**/.claude/
