@@ -1,0 +1,13 @@
+{
+  "slug": "production-llm-agents-patterns",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "5f830cb1100f4a82ac334bec35b937f6bcc8018a473300861fa7024a99fdc3f4",
+  "sourceHash": "fcd3b73f22ff90131f3731ae99a9dac9bb465597ef98679f6e29bfbcce2b0d86",
+  "durationSec": 1740.936,
+  "byteSize": 10445616,
+  "narrationWordCount": 4934,
+  "audioUrl": "/blog/audio-es/field-notes/production-llm-agents-patterns.mp3",
+  "translationModel": "gemma4:latest"
+}

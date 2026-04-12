@@ -1,0 +1,13 @@
+{
+  "slug": "shannon-number-chess-game-tree",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1097feb5634af48dd8ba8a7909f67c5784a9cff31c07bd274876020430976b20",
+  "sourceHash": "7013f25d02c74d528906e91e16ed693339b6639629a80dadfb1d2d298250f40e",
+  "durationSec": 1593.456,
+  "byteSize": 9560736,
+  "narrationWordCount": 4276,
+  "audioUrl": "/blog/audio-es/curiosities/shannon-number-chess-game-tree.mp3",
+  "translationModel": "gemma4:latest"
+}

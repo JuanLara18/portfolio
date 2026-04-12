@@ -1,0 +1,13 @@
+{
+  "slug": "rag-retrieval-augmented-generation",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1b9d2e53d56e26b868ab1a89a743e8a17dcfe64e8fffc3ed882e9c33b6735f78",
+  "sourceHash": "00cbb6b8a4980d9612fb6e64d45746cabc2455fef0e85f5f58304ea5e23384db",
+  "durationSec": 2052.48,
+  "byteSize": 12314880,
+  "narrationWordCount": 5367,
+  "audioUrl": "/blog/audio-es/research/rag-retrieval-augmented-generation.mp3",
+  "translationModel": "gemma4:latest"
+}

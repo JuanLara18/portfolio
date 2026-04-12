@@ -1,0 +1,13 @@
+{
+  "slug": "network-fundamentals-every-concept",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "c6a9567e2ab9c3fdd4dea37c8855c4d543775e6cb046ae172a2a08fb637c4db9",
+  "sourceHash": "38fecb78c50c1d72a91e1dcab00c70c280a0e3d87bdd6d9bc252d3c714cb8316",
+  "durationSec": 2575.872,
+  "byteSize": 15455232,
+  "narrationWordCount": 6236,
+  "audioUrl": "/blog/audio-es/field-notes/network-fundamentals-every-concept.mp3",
+  "translationModel": "gemma4:latest"
+}

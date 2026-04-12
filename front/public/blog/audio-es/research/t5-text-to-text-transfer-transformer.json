@@ -1,0 +1,13 @@
+{
+  "slug": "t5-text-to-text-transfer-transformer",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "b929c49d1e41c3b8461a8ac01637eedf1275b35e2849cd7965a336ccecbc8558",
+  "sourceHash": "2116353392a0513190e9af1e7dd034f7bdfc4977f6c0b8d1f60284be8a945692",
+  "durationSec": 1599.24,
+  "byteSize": 9595440,
+  "narrationWordCount": 4110,
+  "audioUrl": "/blog/audio-es/research/t5-text-to-text-transfer-transformer.mp3",
+  "translationModel": "gemma4:latest"
+}
