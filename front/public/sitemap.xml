@@ -25,13 +25,13 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -40,6 +40,24 @@
     <loc>https://juanlara18.github.io/portfolio/blog/category/research</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</loc>
+    <lastmod>2027-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept</loc>
+    <lastmod>2027-03-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code</loc>
+    <lastmod>2027-03-04</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>

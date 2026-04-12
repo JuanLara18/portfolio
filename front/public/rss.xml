@@ -9,8 +9,59 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Feb 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Mar 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Vertex AI: The Complete GCP ML Platform from the CLI</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</guid>
+    <pubDate>Thu, 18 Mar 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Google Cloud's ML platform is massive — notebooks, custom training, AutoML, model registry, endpoints, pipelines, feature store, vector search, generative AI, monitoring, and more. This is the map: every service explained with its CLI commands, Python SDK equivalents, pricing model, and the trade-offs you need to know before committing budget.]]></description>
+    <category>field-notes</category>
+    <category>Vertex AI</category>
+    <category>GCP</category>
+    <category>MLOps</category>
+    <category>Machine Learning</category>
+    <category>Google Cloud</category>
+    <category>CLI</category>
+    <category>Gemini</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/vertex-ai-gcp-ml-platform-cli.mp3" length="11141424" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Network Fundamentals: Every Concept You Need to Know</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept</guid>
+    <pubDate>Thu, 11 Mar 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every application you build runs on a network. This is the definitive guide to the concepts that make it work: the OSI model layer by layer, TCP/IP internals, IP addressing and subnetting, DNS resolution, HTTP and TLS, routing, NAT, DHCP, VPNs, network security, and the troubleshooting toolkit every engineer should master.]]></description>
+    <category>field-notes</category>
+    <category>Networking</category>
+    <category>TCP/IP</category>
+    <category>DNS</category>
+    <category>HTTP</category>
+    <category>Network Security</category>
+    <category>OSI Model</category>
+    <category>Infrastructure</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/network-fundamentals-every-concept.mp3" length="15347808" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Terraform: Infrastructure as Code from Zero to Production</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code</guid>
+    <pubDate>Thu, 04 Mar 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Clicking through a cloud console works until it doesn't. Terraform lets you describe your entire infrastructure in code — versioned, reviewable, reproducible. This is the complete guide: HCL syntax, providers, state management, modules, production workflows, and the hard-won patterns that keep teams from breaking things at 2 AM.]]></description>
+    <category>field-notes</category>
+    <category>Terraform</category>
+    <category>Infrastructure as Code</category>
+    <category>DevOps</category>
+    <category>Cloud</category>
+    <category>HCL</category>
+    <category>AWS</category>
+    <category>GCP</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/terraform-infrastructure-as-code.mp3" length="9761616" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Shannon&apos;s Number: Why Chess Is &apos;Uncomputable&apos; and Why Computers Beat Us Anyway</title>
     <link>https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree</link>
@@ -24,6 +75,7 @@
     <category>Combinatorics</category>
     <category>AI</category>
     <category>History-of-Computing</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/shannon-number-chess-game-tree.mp3" length="9605664" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -39,6 +91,7 @@
     <category>RAG</category>
     <category>LLM-Tools</category>
     <category>Business-Intelligence</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3" length="8247456" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -70,6 +123,7 @@
     <category>Retrieval</category>
     <category>Vector-Search</category>
     <category>Representation-Learning</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/multimodal-embeddings-metric-problem.mp3" length="11503008" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -85,6 +139,7 @@
     <category>ML-Engineering</category>
     <category>Productivity</category>
     <category>Command-Line</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/bash-daily-driver-ml-engineer.mp3" length="7273872" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -100,6 +155,7 @@
     <category>Performance</category>
     <category>Cost-Optimization</category>
     <category>Distributed-Systems</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llm-caching-four-layers.mp3" length="9101088" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -116,6 +172,7 @@
     <category>Multi-Agent</category>
     <category>MCP</category>
     <category>Observability</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/production-llm-agents-patterns.mp3" length="10246176" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -132,6 +189,7 @@
     <category>Merkle-Trees</category>
     <category>Distributed-Systems</category>
     <category>Systems</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/content-addressable-hash-as-engineering-tool.mp3" length="10525392" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
