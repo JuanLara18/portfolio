@@ -9,8 +9,44 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Apr 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 06 May 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Network Science: Communities, Centrality, and Small Worlds</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality</guid>
+    <pubDate>Thu, 06 May 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Graph theory gives you the language. Network science asks: what does a graph's structure tell you about the system it represents? From Granovetter's weak ties to Barabasi's scale-free hubs, this is the science of extracting meaning from connections -- who matters most, who belongs together, and why real networks look nothing like random ones.]]></description>
+    <category>curiosities</category>
+    <category>Mathematics</category>
+    <category>Graph Theory</category>
+    <category>Algorithms</category>
+    <category>Probability</category>
+    <category>Data Science</category>
+    <category>Statistics</category>
+    <category>Computer Science</category>
+    <category>Knowledge Graphs</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/network-science-communities-centrality.mp3" length="9103392" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Graph Theory: The Mathematics of Connections</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections</guid>
+    <pubDate>Thu, 29 Apr 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[From Euler's walk across seven bridges in 1736 to the mathematics that powers social networks, recommendation systems, and neural networks -- graph theory is the language of connections. This is the foundation that every algorithm on networks assumes you already know.]]></description>
+    <category>curiosities</category>
+    <category>Mathematics</category>
+    <category>Graph Theory</category>
+    <category>Algorithms</category>
+    <category>Computer Science</category>
+    <category>Topology</category>
+    <category>Combinatorics</category>
+    <category>Data Structures</category>
+    <category>Foundations of Mathematics</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/graph-theory-mathematics-of-connections.mp3" length="8888256" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Ramanujan&apos;s Constant: Why e^(pi*sqrt(163)) Is Almost an Integer</title>
     <link>https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer</link>
