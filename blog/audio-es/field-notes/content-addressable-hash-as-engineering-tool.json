@@ -1,0 +1,13 @@
+{
+  "slug": "content-addressable-hash-as-engineering-tool",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "38677886024f17a2895e56524fb07233ff56f994624edbfe3862d1b4d37c6a75",
+  "sourceHash": "771f7a0db0512275194251a1370fc3819e602552529ef3525107df16e483f136",
+  "durationSec": 1750.752,
+  "byteSize": 10504512,
+  "narrationWordCount": 4869,
+  "audioUrl": "/blog/audio-es/field-notes/content-addressable-hash-as-engineering-tool.mp3",
+  "translationModel": "gemma4:latest"
+}

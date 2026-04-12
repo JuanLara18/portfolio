@@ -1,0 +1,13 @@
+{
+  "slug": "pagerank-eigenvectors",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "299acffe3e270eeff58ff2b4f4621d8894eecbc33678a49b47659b281bea5b9b",
+  "sourceHash": "11ee7854c69701fb4d638da1fe5079ce86a872dcc6ea2ac06b8af8626cb79f08",
+  "durationSec": 1306.488,
+  "byteSize": 7838928,
+  "narrationWordCount": 3399,
+  "audioUrl": "/blog/audio-es/curiosities/pagerank-eigenvectors.mp3",
+  "translationModel": "gemma4:latest"
+}

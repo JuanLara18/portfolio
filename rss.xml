@@ -9,8 +9,61 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Apr 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 22 Apr 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Ramanujan&apos;s Constant: Why e^(pi*sqrt(163)) Is Almost an Integer</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer</guid>
+    <pubDate>Thu, 22 Apr 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The number e^(pi*sqrt(163)) misses being an integer by about 7.5 x 10^-13. This is not a coincidence -- it is a consequence of 163 being a Heegner number, where the j-invariant, complex multiplication, and the class number one problem converge into one of the most beautiful near-misses in all of mathematics.]]></description>
+    <category>curiosities</category>
+    <category>Mathematics</category>
+    <category>Number Theory</category>
+    <category>Complex Analysis</category>
+    <category>Series</category>
+    <category>Foundations of Mathematics</category>
+    <category>Algorithms</category>
+    <category>Topology</category>
+    <category>Computer Science</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Fermat&apos;s Last Theorem for n=4: Infinite Descent and Gaussian Integers</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent</guid>
+    <pubDate>Thu, 15 Apr 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Fermat proved exactly one case of his famous Last Theorem: the case n=4, using a technique he invented called infinite descent. We walk through his classical proof step by step, then re-prove it using Gaussian integers to reveal why algebraic number theory makes everything cleaner. Two proofs, one theorem, and the birth of a proof technique that changed mathematics.]]></description>
+    <category>curiosities</category>
+    <category>Mathematics</category>
+    <category>Number Theory</category>
+    <category>Foundations of Mathematics</category>
+    <category>Group Theory</category>
+    <category>Algorithms</category>
+    <category>Computer Science</category>
+    <category>Linear Algebra</category>
+    <category>Geometry</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Algebraic Number Theory: When Unique Factorization Breaks</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks</guid>
+    <pubDate>Thu, 08 Apr 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[You learned that every integer factors uniquely into primes. It feels like a law of nature. But extend to larger number rings and it shatters -- spectacularly. In the ring of integers of certain number fields, the number 6 has two genuinely different prime factorizations. Algebraic number theory was born from fixing this.]]></description>
+    <category>curiosities</category>
+    <category>Mathematics</category>
+    <category>Number Theory</category>
+    <category>Algorithms</category>
+    <category>Group Theory</category>
+    <category>Foundations of Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Computer Science</category>
+    <category>Complex Analysis</category>
+    <category>Topology</category>
+    <category>Geometry</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>PageRank: The Eigenvector That Launched Google</title>
     <link>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</link>
