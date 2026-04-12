@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1776030427,
+  "generatedAt": 1776031248,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -99,11 +99,11 @@
       "category": "curiosities",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "7a3a49f386fc2ed7c5382a326269e08eaa738587a1d9b81fe523e6ddcb1f2a9b",
+      "hash": "a8b4ae449043e0e7e7c7cb2315e48ed22d835b0a6520f6a999f1568ceac432e6",
       "sourceHash": "634159cff0424782b9f2ae8348a693fcc16dc6263c96fa822e0f293e3d41a9ca",
-      "durationSec": 1505.472,
-      "byteSize": 9032832,
-      "narrationWordCount": 4001,
+      "durationSec": 1505.136,
+      "byteSize": 9030816,
+      "narrationWordCount": 3999,
       "audioUrl": "/blog/audio-es/curiosities/network-science-communities-centrality.mp3",
       "translationModel": "gemma4:latest"
     },
@@ -1048,11 +1048,11 @@
       "category": "research",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "50b2d68600601ec54e1865e096f0b973e69b41c25cbc90afeef58a3a81f1ebfe",
+      "hash": "a93909f3c8565c0630a8e799cffe86d39b297e128c668567a8b871b81dfe3522",
       "sourceHash": "38a5c83a9baa16c2973452954afb5e3addbdcbedad9d713c088d9c8002fa4e4a",
-      "durationSec": 1783.968,
-      "byteSize": 10703808,
-      "narrationWordCount": 4837,
+      "durationSec": 1787.136,
+      "byteSize": 10722816,
+      "narrationWordCount": 4859,
       "audioUrl": "/blog/audio-es/research/mamba-selective-state-spaces.mp3",
       "translationModel": "gemma4:latest"
     },

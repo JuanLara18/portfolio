@@ -317,6 +317,7 @@ async function fetchMermaidPNG(code) {
     return fs.readFileSync(pngCachePath);
   }
 
+  // Try with htmlLabels:false (SVG text labels, needed for sharp/librsvg rasterization)
   const krokiSource = toKrokiMermaidSource(code);
   const body = Buffer.from(krokiSource, 'utf8');
   const { statusCode, body: resp } = await krokiPost('/mermaid/svg', body);
@@ -328,8 +329,6 @@ async function fetchMermaidPNG(code) {
     } catch (e) {
       console.warn(`  ⚠ Mermaid SVG rasterize failed (${e.message}); falling back to Kroki PNG`);
     }
-  } else if (statusCode !== 200) {
-    console.warn(`  ⚠ Kroki SVG ${statusCode}: ${resp.toString('utf8').slice(0, 120)}`);
   }
 
   const pngFallback = await krokiPost('/mermaid/png', body);
@@ -337,8 +336,18 @@ async function fetchMermaidPNG(code) {
     fs.writeFileSync(pngCachePath, pngFallback.body);
     return pngFallback.body;
   }
-  if (pngFallback.statusCode !== 200) {
-    console.warn(`  ⚠ Kroki PNG ${pngFallback.statusCode}: ${pngFallback.body.toString('utf8').slice(0, 120)}`);
+
+  // htmlLabels:false can break diagrams with \n in labels on some Kroki versions.
+  // Fallback: request PNG with the original code (Kroki's PNG uses a headless browser
+  // that renders foreignObject / HTML labels correctly).
+  const originalBody = Buffer.from(code, 'utf8');
+  const originalPng = await krokiPost('/mermaid/png', originalBody);
+  if (originalPng.statusCode === 200 && originalPng.body.length) {
+    fs.writeFileSync(pngCachePath, originalPng.body);
+    return originalPng.body;
+  }
+  if (originalPng.statusCode !== 200) {
+    console.warn(`  ⚠ Kroki PNG (all attempts) ${originalPng.statusCode}: ${originalPng.body.toString('utf8').slice(0, 120)}`);
   }
   return null;
 }
@@ -1466,24 +1475,19 @@ function drawCoverCollage(doc, pw, ph, imgPaths) {
     return;
   }
 
-  // n >= 4 — full-width hero + lower mosaic (cycles through remaining headers)
-  const heroH = Math.round(ph * 0.44);
-  drawCoverImageCell(doc, imgPaths[0], 0, 0, pw, heroH);
-
-  const galleryTop = heroH + g;
-  const galleryH = ph - galleryTop;
-  const rest = n - 1;
-  const cols = Math.min(7, Math.max(3, Math.ceil(Math.sqrt(rest * (pw / Math.max(galleryH, 1)) * 1.15))));
-  const rows = Math.ceil(rest / cols);
+  // n >= 4 — uniform grid, all cells roughly the same size
+  const aspect = pw / ph;
+  const cols = Math.min(8, Math.max(3, Math.round(Math.sqrt(n * aspect))));
+  const rows = Math.ceil(n / cols);
   const cellW = (pw - g * (cols - 1)) / cols;
-  const cellH = (galleryH - g * (rows - 1)) / rows;
+  const cellH = (ph - g * (rows - 1)) / rows;
 
   let cell = 0;
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      const imgIdx = 1 + (cell % rest);
+      const imgIdx = cell % n;
       const x = col * (cellW + g);
-      const y = galleryTop + row * (cellH + g);
+      const y = row * (cellH + g);
       drawCoverImageCell(doc, imgPaths[imgIdx], x, y, cellW, cellH);
       cell += 1;
     }
@@ -1496,15 +1500,15 @@ function drawCoverCollage(doc, pw, ph, imgPaths) {
  * without the directional-light noise of the old 3-gradient version.
  */
 function drawCoverAtmosphericOverlay(doc, pw, ph) {
-  // Main tonal wash — top slightly lighter than bottom for depth.
+  // Main tonal wash — lighter so the collage shows through as visible texture.
   const wash = doc.linearGradient(0, 0, 0, ph)
-    .stop(0, '#0b1220', 0.86)
-    .stop(1, '#020617', 0.94);
+    .stop(0, '#0b1220', 0.55)
+    .stop(1, '#020617', 0.72);
   doc.rect(0, 0, pw, ph).fill(wash);
 
   // Soft left-column shadow to seat the typography without forcing a hard edge.
   const shadow = doc.linearGradient(0, 0, pw * 0.55, 0)
-    .stop(0, '#020617', 0.45)
+    .stop(0, '#020617', 0.40)
     .stop(1, '#020617', 0);
   doc.rect(0, 0, pw * 0.55, ph).fill(shadow);
 }

@@ -27,6 +27,12 @@
           "durationSec": 1517.232,
           "byteSize": 9103392,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/curiosities/network-science-communities-centrality.mp3",
+          "durationSec": 1505.136,
+          "byteSize": 9030816,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -57,6 +63,12 @@
           "durationSec": 1481.376,
           "byteSize": 8888256,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/curiosities/graph-theory-mathematics-of-connections.mp3",
+          "durationSec": 1473.384,
+          "byteSize": 8840304,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -87,6 +99,12 @@
           "durationSec": 1209.936,
           "byteSize": 7259616,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/curiosities/ramanujan-constant-almost-integer.mp3",
+          "durationSec": 1205.784,
+          "byteSize": 7234704,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -117,6 +135,12 @@
           "durationSec": 992.544,
           "byteSize": 5955264,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/curiosities/fermat-n4-infinite-descent.mp3",
+          "durationSec": 1146.72,
+          "byteSize": 6880320,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -149,6 +173,12 @@
           "durationSec": 1243.872,
           "byteSize": 7463232,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/curiosities/algebraic-number-theory-when-factorization-breaks.mp3",
+          "durationSec": 1232.712,
+          "byteSize": 7396272,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -181,6 +211,12 @@
           "durationSec": 1286.832,
           "byteSize": 7720992,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/curiosities/pagerank-eigenvectors.mp3",
+          "durationSec": 1306.488,
+          "byteSize": 7838928,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -214,6 +250,12 @@
           "durationSec": 1938.816,
           "byteSize": 11632896,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/graph-neural-networks-learning-structured-data.mp3",
+          "durationSec": 2000.76,
+          "byteSize": 12004560,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -246,6 +288,12 @@
           "durationSec": 1856.904,
           "byteSize": 11141424,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/vertex-ai-gcp-ml-platform-cli.mp3",
+          "durationSec": 1880.184,
+          "byteSize": 11281104,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -277,6 +325,12 @@
           "durationSec": 2557.968,
           "byteSize": 15347808,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/network-fundamentals-every-concept.mp3",
+          "durationSec": 2575.872,
+          "byteSize": 15455232,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -309,6 +363,12 @@
           "durationSec": 1626.936,
           "byteSize": 9761616,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/terraform-infrastructure-as-code.mp3",
+          "durationSec": 1674.432,
+          "byteSize": 10046592,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -339,6 +399,12 @@
           "durationSec": 1600.944,
           "byteSize": 9605664,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/curiosities/shannon-number-chess-game-tree.mp3",
+          "durationSec": 1593.456,
+          "byteSize": 9560736,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -371,6 +437,12 @@
           "durationSec": 1374.576,
           "byteSize": 8247456,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3",
+          "durationSec": 1418.976,
+          "byteSize": 8513856,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -403,6 +475,12 @@
           "durationSec": 1894.2,
           "byteSize": 11365200,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/kubernetes-minimum-subset-ml.mp3",
+          "durationSec": 1951.944,
+          "byteSize": 11711664,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -435,6 +513,12 @@
           "durationSec": 1917.168,
           "byteSize": 11503008,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/multimodal-embeddings-metric-problem.mp3",
+          "durationSec": 1940.04,
+          "byteSize": 11640240,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -465,6 +549,12 @@
           "durationSec": 1212.312,
           "byteSize": 7273872,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/bash-daily-driver-ml-engineer.mp3",
+          "durationSec": 1276.68,
+          "byteSize": 7660080,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -497,6 +587,12 @@
           "durationSec": 1516.848,
           "byteSize": 9101088,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/llm-caching-four-layers.mp3",
+          "durationSec": 1544.64,
+          "byteSize": 9267840,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -529,6 +625,12 @@
           "durationSec": 1707.696,
           "byteSize": 10246176,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/production-llm-agents-patterns.mp3",
+          "durationSec": 1740.936,
+          "byteSize": 10445616,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -561,6 +663,12 @@
           "durationSec": 1754.232,
           "byteSize": 10525392,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/content-addressable-hash-as-engineering-tool.mp3",
+          "durationSec": 1750.752,
+          "byteSize": 10504512,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -593,6 +701,12 @@
           "durationSec": 1556.616,
           "byteSize": 9339696,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/emotion-concepts-in-llms.mp3",
+          "durationSec": 1541.664,
+          "byteSize": 9249984,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -814,6 +928,12 @@
           "durationSec": 1791.48,
           "byteSize": 10748880,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/mamba-selective-state-spaces.mp3",
+          "durationSec": 1787.136,
+          "byteSize": 10722816,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -3105,6 +3225,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-04-12T20:45:01.571Z",
+  "lastUpdated": "2026-04-12T22:08:18.434Z",
   "totalPosts": 86
 }
