@@ -1,0 +1,13 @@
+{
+  "slug": "rag-advanced-patterns",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "8eff461f6e2fdee3449e25de2bfa776c874ae643e0eb7c0cf2434a6ba3a3a424",
+  "sourceHash": "5f4f465808a0042f0a7075ba1940e233f453ddb74311cb94ac79b685c8fa0fe1",
+  "durationSec": 1977.12,
+  "byteSize": 11862720,
+  "narrationWordCount": 4955,
+  "audioUrl": "/blog/audio-es/field-notes/rag-advanced-patterns.mp3",
+  "translationModel": "gemma4:latest"
+}

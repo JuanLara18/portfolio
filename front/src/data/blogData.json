@@ -363,6 +363,12 @@
           "durationSec": 1471.656,
           "byteSize": 8829936,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/ontologies-building-knowledge-bases.mp3",
+          "durationSec": 1492.296,
+          "byteSize": 8953776,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -699,6 +705,12 @@
           "durationSec": 1595.112,
           "byteSize": 9570672,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/pytorch-tensorflow-deep-learning-frameworks.mp3",
+          "durationSec": 1631.976,
+          "byteSize": 9791856,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1140,6 +1152,12 @@
           "durationSec": 2572.704,
           "byteSize": 15436224,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/ragas-evaluating-rag.mp3",
+          "durationSec": 2524.176,
+          "byteSize": 15145056,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1231,6 +1249,12 @@
           "durationSec": 1437.048,
           "byteSize": 8622288,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/mteb-embedding-benchmarks.mp3",
+          "durationSec": 1432.056,
+          "byteSize": 8592336,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1297,6 +1321,12 @@
           "durationSec": 1965.504,
           "byteSize": 11793024,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/rag-advanced-patterns.mp3",
+          "durationSec": 1977.12,
+          "byteSize": 11862720,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1328,6 +1358,12 @@
           "durationSec": 2068.728,
           "byteSize": 12412368,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/rag-building-production-systems.mp3",
+          "durationSec": 2115.024,
+          "byteSize": 12690144,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1747,6 +1783,12 @@
           "durationSec": 2734.608,
           "byteSize": 16407648,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/reinforcement-learning-in-practice.mp3",
+          "durationSec": 2772.336,
+          "byteSize": 16634016,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1776,6 +1818,12 @@
           "durationSec": 3998.832,
           "byteSize": 23992992,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/reinforcement-learning-first-principles.mp3",
+          "durationSec": 4033.752,
+          "byteSize": 24202512,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1995,6 +2043,12 @@
           "durationSec": 1724.472,
           "byteSize": 10346832,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/python-beyond-the-basics.mp3",
+          "durationSec": 1790.304,
+          "byteSize": 10741824,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -2173,6 +2227,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-04-11T23:41:48.402Z",
+  "lastUpdated": "2026-04-12T02:27:51.482Z",
   "totalPosts": 67
 }
