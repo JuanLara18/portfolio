@@ -43,6 +43,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer</loc>
+    <lastmod>2027-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent</loc>
+    <lastmod>2027-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks</loc>
+    <lastmod>2027-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</loc>
     <lastmod>2027-04-01</lastmod>
     <changefreq>monthly</changefreq>

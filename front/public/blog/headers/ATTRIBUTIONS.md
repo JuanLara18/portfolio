@@ -15,3 +15,6 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `observatory-telescope-header.jpg` — Photo by ESO/Y. Beletsky, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:VISTA-_the_Visible_and_Infrared_Survey_Telescope_for_Astronomy_(eso0949d).jpg) (CC BY 4.0)
 - `branching-coral-header.jpg` — Photo by Ritiks, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Barren_Island_feather_star_and_branching_coral.jpg) (CC BY-SA 4.0)
 - `spider-web-dew-header.jpg` — Photo by Luc Viatour, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spider_web_Luc_Viatour.jpg) (CC BY-SA 3.0)
+- `light-refraction-header.jpg` — Photo by Demond666, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Colorato_dalla_luce.jpg) (CC BY-SA 4.0)
+- `spiral-staircase-header.jpg` — Photo by Dietmar Rabich, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_Heilig-Kreuz-Kirche,_Treppenhaus_--_2018_--_1385.jpg) (CC BY-SA 4.0)
+- `nautilus-shell-header.jpg` — Photo by Profberger, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Inside_Nautilus_Pompilius.jpg) (CC BY-SA 3.0)
