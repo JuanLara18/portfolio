@@ -1,0 +1,13 @@
+{
+  "slug": "llm-caching-four-layers",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "cdc6ad7495efe2deba91f14151e9b35c6e0ce05825bc9f7c3ee679fb5c7e0d1b",
+  "sourceHash": "96a7419f04fce3618f057e2183b20ce7e5140553139a64433b95d22df6edf3b4",
+  "durationSec": 1544.64,
+  "byteSize": 9267840,
+  "narrationWordCount": 3970,
+  "audioUrl": "/blog/audio-es/field-notes/llm-caching-four-layers.mp3",
+  "translationModel": "gemma4:latest"
+}

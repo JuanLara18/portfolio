@@ -1,0 +1,13 @@
+{
+  "slug": "multimodal-embeddings-metric-problem",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "4aa86706e192a492f08fe27d9ffb25afedf23ec316018a350f79694630c49bf1",
+  "sourceHash": "d688537969cd12e134c9bd366ae8e75eb67de026dbbc8ea33bafc1d5857aad4a",
+  "durationSec": 1940.04,
+  "byteSize": 11640240,
+  "narrationWordCount": 4971,
+  "audioUrl": "/blog/audio-es/field-notes/multimodal-embeddings-metric-problem.mp3",
+  "translationModel": "gemma4:latest"
+}

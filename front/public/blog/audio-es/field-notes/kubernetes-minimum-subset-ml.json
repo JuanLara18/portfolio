@@ -1,0 +1,13 @@
+{
+  "slug": "kubernetes-minimum-subset-ml",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "77421871600814aa115cdf8c98aa25dd2f6e32d06a346c5288c108e3e013ec22",
+  "sourceHash": "e0da95315c2422030475f77aa923a377d815211d9f8e7bfb7c1ce65ef0cdf3ab",
+  "durationSec": 1951.944,
+  "byteSize": 11711664,
+  "narrationWordCount": 4820,
+  "audioUrl": "/blog/audio-es/field-notes/kubernetes-minimum-subset-ml.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "bash-daily-driver-ml-engineer",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1fd8ea05df1085208de9ebc20faf178a42c41c459ada3b5cefa3acebd800d31e",
+  "sourceHash": "a2f277b0a2cbfb32493725be0e0976166c3de2e1ed6491c8f4e6191144c254cc",
+  "durationSec": 1276.68,
+  "byteSize": 7660080,
+  "narrationWordCount": 3223,
+  "audioUrl": "/blog/audio-es/field-notes/bash-daily-driver-ml-engineer.mp3",
+  "translationModel": "gemma4:latest"
+}

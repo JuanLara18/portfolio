@@ -1,0 +1,13 @@
+{
+  "slug": "terraform-infrastructure-as-code",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a2f77d178a357e1d3e1fafd01b1a4593846f52534709c3d577e7195b7105002c",
+  "sourceHash": "81f1ad11d0ec6397ffa50fc5ae2f9a387f79be8e0582e211010509125fd62614",
+  "durationSec": 1674.432,
+  "byteSize": 10046592,
+  "narrationWordCount": 4217,
+  "audioUrl": "/blog/audio-es/field-notes/terraform-infrastructure-as-code.mp3",
+  "translationModel": "gemma4:latest"
+}

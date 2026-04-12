@@ -1,0 +1,13 @@
+{
+  "slug": "mcp-server-nl-to-powerbi-dashboard",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "9e9086bbe8afd62751049511a04ac353b9ef1c5d7b644cb1778fc63b7401bc2e",
+  "sourceHash": "42ddccef12ea0e1a8366e8cb0c8436fb850920d6c65d95c7b1c0deb54cc4d29c",
+  "durationSec": 1418.976,
+  "byteSize": 8513856,
+  "narrationWordCount": 3625,
+  "audioUrl": "/blog/audio-es/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3",
+  "translationModel": "gemma4:latest"
+}

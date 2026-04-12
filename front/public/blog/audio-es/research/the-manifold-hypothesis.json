@@ -1,0 +1,13 @@
+{
+  "slug": "the-manifold-hypothesis",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "4119ea7ba7ba3fff58b73e37cf8e13d3e184b6ec0d42731fbe3e8bd5f242d205",
+  "sourceHash": "c22cfff70ee4d8b6c59c64fe848f507b1ca7145346fc788609d74e6b562af5f3",
+  "durationSec": 1593.264,
+  "byteSize": 9559584,
+  "narrationWordCount": 3862,
+  "audioUrl": "/blog/audio-es/research/the-manifold-hypothesis.mp3",
+  "translationModel": "gemma4:latest"
+}
