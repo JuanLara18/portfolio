@@ -1,0 +1,13 @@
+{
+  "slug": "network-science-communities-centrality",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "7a3a49f386fc2ed7c5382a326269e08eaa738587a1d9b81fe523e6ddcb1f2a9b",
+  "sourceHash": "634159cff0424782b9f2ae8348a693fcc16dc6263c96fa822e0f293e3d41a9ca",
+  "durationSec": 1505.472,
+  "byteSize": 9032832,
+  "narrationWordCount": 4001,
+  "audioUrl": "/blog/audio-es/curiosities/network-science-communities-centrality.mp3",
+  "translationModel": "gemma4:latest"
+}
