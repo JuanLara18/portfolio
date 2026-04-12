@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1775960871,
+  "generatedAt": 1775962725,
   "posts": {
     "curiosities/benfords-law": {
       "slug": "benfords-law",
@@ -651,6 +651,45 @@
       "byteSize": 16634016,
       "narrationWordCount": 6977,
       "audioUrl": "/blog/audio-es/field-notes/reinforcement-learning-in-practice.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/rlhf-dpo-alignment": {
+      "slug": "rlhf-dpo-alignment",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "6570d6aff132325a9a089a90a48c3c2ff53e0a97eb516188f4f3e1016e595f62",
+      "sourceHash": "62834d57f56e7f492624f0016e446db2ce535d621d90dba5a121d1064d7c4121",
+      "durationSec": 1988.784,
+      "byteSize": 11932704,
+      "narrationWordCount": 5088,
+      "audioUrl": "/blog/audio-es/field-notes/rlhf-dpo-alignment.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/software-engineering-classics": {
+      "slug": "software-engineering-classics",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "2dfea78741b7c99fc55ff3949eae8fa456e7cbd983a2522054fa435d51b87db0",
+      "sourceHash": "d101dfb554b6dafd11ac22f48b27d192e022db2e35ccb64d584338292ca6db81",
+      "durationSec": 1394.64,
+      "byteSize": 8367840,
+      "narrationWordCount": 3698,
+      "audioUrl": "/blog/audio-es/field-notes/software-engineering-classics.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/sql-pandas-pyspark-duckdb": {
+      "slug": "sql-pandas-pyspark-duckdb",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "9bbc63f0f9f61076e8d7c9a658b4a8ccbf6f1158e64a62550e8ab79fed4188a6",
+      "sourceHash": "6857a0ba78a9ce8c8498680092baf28054fa61b169ae8bf01bf2b8c67021d1cd",
+      "durationSec": 1405.296,
+      "byteSize": 8431776,
+      "narrationWordCount": 3622,
+      "audioUrl": "/blog/audio-es/field-notes/sql-pandas-pyspark-duckdb.mp3",
       "translationModel": "gemma4:latest"
     }
   }

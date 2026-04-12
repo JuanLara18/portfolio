@@ -1,0 +1,13 @@
+{
+  "slug": "software-engineering-classics",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "2dfea78741b7c99fc55ff3949eae8fa456e7cbd983a2522054fa435d51b87db0",
+  "sourceHash": "d101dfb554b6dafd11ac22f48b27d192e022db2e35ccb64d584338292ca6db81",
+  "durationSec": 1394.64,
+  "byteSize": 8367840,
+  "narrationWordCount": 3698,
+  "audioUrl": "/blog/audio-es/field-notes/software-engineering-classics.mp3",
+  "translationModel": "gemma4:latest"
+}
