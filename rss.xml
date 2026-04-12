@@ -9,8 +9,49 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Apr 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>PageRank: The Eigenvector That Launched Google</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</guid>
+    <pubDate>Thu, 01 Apr 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[An algorithm most engineers have heard of but few understand mathematically. Starting from the original problem of ranking web pages without reading them, we build the random surfer model, derive PageRank as the dominant eigenvector of a stochastic transition matrix, and trace how one linear algebra insight became worth hundreds of billions of dollars.]]></description>
+    <category>curiosities</category>
+    <category>Algorithms</category>
+    <category>Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Graph Theory</category>
+    <category>Information Retrieval</category>
+    <category>Knowledge Graphs</category>
+    <category>Computer Science</category>
+    <category>Search Algorithms</category>
+    <category>Probability</category>
+    <category>Data Structures</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/pagerank-eigenvectors.mp3" length="7720992" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Graph Neural Networks: Learning on Structured Data</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</guid>
+    <pubDate>Thu, 25 Mar 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Your data has structure that tabular models ignore. Graph Neural Networks learn directly from nodes, edges, and neighborhoods — turning social networks into recommendations, molecules into property predictions, and transaction graphs into fraud detectors. This post covers message passing, GCN, GAT, GraphSAGE, and production deployment with PyTorch Geometric.]]></description>
+    <category>field-notes</category>
+    <category>Deep Learning</category>
+    <category>Machine Learning</category>
+    <category>Neural Network Theory</category>
+    <category>PyTorch</category>
+    <category>Knowledge Graphs</category>
+    <category>Embeddings</category>
+    <category>Representation Learning</category>
+    <category>Algorithms</category>
+    <category>Graph Theory</category>
+    <category>Fraud Detection</category>
+    <category>Attention</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/graph-neural-networks-learning-structured-data.mp3" length="11632896" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Vertex AI: The Complete GCP ML Platform from the CLI</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</link>

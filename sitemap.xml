@@ -25,13 +25,13 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -40,6 +40,18 @@
     <loc>https://juanlara18.github.io/portfolio/blog/category/research</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</loc>
+    <lastmod>2027-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</loc>
+    <lastmod>2027-03-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>

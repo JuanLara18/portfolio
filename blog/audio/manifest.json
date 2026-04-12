@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776011751,
+  "generatedAt": 1776020326,
   "posts": {
     "curiosities/benfords-law": {
       "slug": "benfords-law",
@@ -53,6 +53,19 @@
       "byteSize": 8725248,
       "narrationWordCount": 3254,
       "audioUrl": "/blog/audio/curiosities/godels-incompleteness-theorems.mp3",
+      "translationModel": ""
+    },
+    "curiosities/pagerank-eigenvectors": {
+      "slug": "pagerank-eigenvectors",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "11ee7854c69701fb4d638da1fe5079ce86a872dcc6ea2ac06b8af8626cb79f08",
+      "sourceHash": "11ee7854c69701fb4d638da1fe5079ce86a872dcc6ea2ac06b8af8626cb79f08",
+      "durationSec": 1286.832,
+      "byteSize": 7720992,
+      "narrationWordCount": 3064,
+      "audioUrl": "/blog/audio/curiosities/pagerank-eigenvectors.mp3",
       "translationModel": ""
     },
     "curiosities/rubiks-cube-group-theory": {
@@ -430,6 +443,19 @@
       "byteSize": 17275824,
       "narrationWordCount": 7143,
       "audioUrl": "/blog/audio/field-notes/git-and-github-complete-guide.mp3",
+      "translationModel": ""
+    },
+    "field-notes/graph-neural-networks-learning-structured-data": {
+      "slug": "graph-neural-networks-learning-structured-data",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "78f78108c2037d216810cdd6b5cf21f66440ffc6248d5a31a58471f8f5541e6e",
+      "sourceHash": "78f78108c2037d216810cdd6b5cf21f66440ffc6248d5a31a58471f8f5541e6e",
+      "durationSec": 1938.816,
+      "byteSize": 11632896,
+      "narrationWordCount": 4183,
+      "audioUrl": "/blog/audio/field-notes/graph-neural-networks-learning-structured-data.mp3",
       "translationModel": ""
     },
     "field-notes/knowledge-base-curation": {
