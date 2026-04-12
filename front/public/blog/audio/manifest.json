@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1775968218,
+  "generatedAt": 1776008064,
   "posts": {
     "curiosities/benfords-law": {
       "slug": "benfords-law",
@@ -66,6 +66,19 @@
       "byteSize": 7718400,
       "narrationWordCount": 2799,
       "audioUrl": "/blog/audio/curiosities/rubiks-cube-group-theory.mp3",
+      "translationModel": ""
+    },
+    "curiosities/shannon-number-chess-game-tree": {
+      "slug": "shannon-number-chess-game-tree",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "7013f25d02c74d528906e91e16ed693339b6639629a80dadfb1d2d298250f40e",
+      "sourceHash": "7013f25d02c74d528906e91e16ed693339b6639629a80dadfb1d2d298250f40e",
+      "durationSec": 1600.944,
+      "byteSize": 9605664,
+      "narrationWordCount": 3861,
+      "audioUrl": "/blog/audio/curiosities/shannon-number-chess-game-tree.mp3",
       "translationModel": ""
     },
     "curiosities/sum-of-naturals-minus-one-twelfth": {
@@ -133,6 +146,19 @@
       "audioUrl": "/blog/audio/field-notes/apache-spark-ecosystem-guide.mp3",
       "translationModel": ""
     },
+    "field-notes/bash-daily-driver-ml-engineer": {
+      "slug": "bash-daily-driver-ml-engineer",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "a2f277b0a2cbfb32493725be0e0976166c3de2e1ed6491c8f4e6191144c254cc",
+      "sourceHash": "a2f277b0a2cbfb32493725be0e0976166c3de2e1ed6491c8f4e6191144c254cc",
+      "durationSec": 1212.312,
+      "byteSize": 7273872,
+      "narrationWordCount": 2943,
+      "audioUrl": "/blog/audio/field-notes/bash-daily-driver-ml-engineer.mp3",
+      "translationModel": ""
+    },
     "field-notes/claude-code-complete-guide": {
       "slug": "claude-code-complete-guide",
       "category": "field-notes",
@@ -170,6 +196,19 @@
       "byteSize": 7225776,
       "narrationWordCount": 2463,
       "audioUrl": "/blog/audio/field-notes/computational-resources-ml.mp3",
+      "translationModel": ""
+    },
+    "field-notes/content-addressable-hash-as-engineering-tool": {
+      "slug": "content-addressable-hash-as-engineering-tool",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "771f7a0db0512275194251a1370fc3819e602552529ef3525107df16e483f136",
+      "sourceHash": "771f7a0db0512275194251a1370fc3819e602552529ef3525107df16e483f136",
+      "durationSec": 1754.232,
+      "byteSize": 10525392,
+      "narrationWordCount": 4396,
+      "audioUrl": "/blog/audio/field-notes/content-addressable-hash-as-engineering-tool.mp3",
       "translationModel": ""
     },
     "field-notes/dama-dmbok-data-governance": {
@@ -484,6 +523,19 @@
       "audioUrl": "/blog/audio/field-notes/llm-benchmarks.mp3",
       "translationModel": ""
     },
+    "field-notes/llm-caching-four-layers": {
+      "slug": "llm-caching-four-layers",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "96a7419f04fce3618f057e2183b20ce7e5140553139a64433b95d22df6edf3b4",
+      "sourceHash": "96a7419f04fce3618f057e2183b20ce7e5140553139a64433b95d22df6edf3b4",
+      "durationSec": 1516.848,
+      "byteSize": 9101088,
+      "narrationWordCount": 3407,
+      "audioUrl": "/blog/audio/field-notes/llm-caching-four-layers.mp3",
+      "translationModel": ""
+    },
     "field-notes/local-llm-inference-tools": {
       "slug": "local-llm-inference-tools",
       "category": "field-notes",
@@ -508,6 +560,19 @@
       "byteSize": 4001616,
       "narrationWordCount": 1569,
       "audioUrl": "/blog/audio/field-notes/mcp-production-enterprise.mp3",
+      "translationModel": ""
+    },
+    "field-notes/mcp-server-nl-to-powerbi-dashboard": {
+      "slug": "mcp-server-nl-to-powerbi-dashboard",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "42ddccef12ea0e1a8366e8cb0c8436fb850920d6c65d95c7b1c0deb54cc4d29c",
+      "sourceHash": "42ddccef12ea0e1a8366e8cb0c8436fb850920d6c65d95c7b1c0deb54cc4d29c",
+      "durationSec": 1374.576,
+      "byteSize": 8247456,
+      "narrationWordCount": 3179,
+      "audioUrl": "/blog/audio/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3",
       "translationModel": ""
     },
     "field-notes/ml-libraries-under-the-hood": {
@@ -562,6 +627,19 @@
       "audioUrl": "/blog/audio/field-notes/mteb-embedding-benchmarks.mp3",
       "translationModel": ""
     },
+    "field-notes/multimodal-embeddings-metric-problem": {
+      "slug": "multimodal-embeddings-metric-problem",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "d688537969cd12e134c9bd366ae8e75eb67de026dbbc8ea33bafc1d5857aad4a",
+      "sourceHash": "d688537969cd12e134c9bd366ae8e75eb67de026dbbc8ea33bafc1d5857aad4a",
+      "durationSec": 1917.168,
+      "byteSize": 11503008,
+      "narrationWordCount": 4271,
+      "audioUrl": "/blog/audio/field-notes/multimodal-embeddings-metric-problem.mp3",
+      "translationModel": ""
+    },
     "field-notes/ontologies-building-knowledge-bases": {
       "slug": "ontologies-building-knowledge-bases",
       "category": "field-notes",
@@ -573,6 +651,19 @@
       "byteSize": 8829936,
       "narrationWordCount": 3160,
       "audioUrl": "/blog/audio/field-notes/ontologies-building-knowledge-bases.mp3",
+      "translationModel": ""
+    },
+    "field-notes/production-llm-agents-patterns": {
+      "slug": "production-llm-agents-patterns",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "fcd3b73f22ff90131f3731ae99a9dac9bb465597ef98679f6e29bfbcce2b0d86",
+      "sourceHash": "fcd3b73f22ff90131f3731ae99a9dac9bb465597ef98679f6e29bfbcce2b0d86",
+      "durationSec": 1707.696,
+      "byteSize": 10246176,
+      "narrationWordCount": 4490,
+      "audioUrl": "/blog/audio/field-notes/production-llm-agents-patterns.mp3",
       "translationModel": ""
     },
     "field-notes/python-beyond-the-basics": {

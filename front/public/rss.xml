@@ -54,6 +54,22 @@
     <category>GPU</category>
     <category>Orchestration</category>
     <category>Cloud</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/kubernetes-minimum-subset-ml.mp3" length="11365200" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Multimodal Embeddings: One Vector Space for Everything, and the Metric Problem Nobody Talks About</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</guid>
+    <pubDate>Thu, 04 Feb 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The promise of multimodal embeddings is seductive: encode text, images, audio, and video into a single vector space and let cosine similarity do the rest. The reality is messier. Cross-modal retrieval breaks in subtle ways because different modalities occupy different submanifolds, and naive top-k returns nonsense. This is the full story — from CLIP to SigLIP to ImageBind, the modality gap that haunts production systems, and the retrieval patterns that actually work.]]></description>
+    <category>field-notes</category>
+    <category>Multimodal</category>
+    <category>Embeddings</category>
+    <category>CLIP</category>
+    <category>Retrieval</category>
+    <category>Vector-Search</category>
+    <category>Representation-Learning</category>
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -84,21 +100,6 @@
     <category>Performance</category>
     <category>Cost-Optimization</category>
     <category>Distributed-Systems</category>
-    <dc:creator>Juan Lara</dc:creator>
-  </item>
-  <item>
-    <title>Multimodal Embeddings: One Vector Space for Everything, and the Metric Problem Nobody Talks About</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</link>
-    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</guid>
-    <pubDate>Thu, 21 Jan 2027 00:00:00 GMT</pubDate>
-    <description><![CDATA[The promise of multimodal embeddings is seductive: encode text, images, audio, and video into a single vector space and let cosine similarity do the rest. The reality is messier. Cross-modal retrieval breaks in subtle ways because different modalities occupy different submanifolds, and naive top-k returns nonsense. This is the full story — from CLIP to SigLIP to ImageBind, the modality gap that haunts production systems, and the retrieval patterns that actually work.]]></description>
-    <category>field-notes</category>
-    <category>Multimodal</category>
-    <category>Embeddings</category>
-    <category>CLIP</category>
-    <category>Retrieval</category>
-    <category>Vector-Search</category>
-    <category>Representation-Learning</category>
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>

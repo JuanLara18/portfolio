@@ -61,6 +61,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</loc>
+    <lastmod>2027-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer</loc>
     <lastmod>2027-01-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -68,12 +74,6 @@
   </url>
   <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers</loc>
-    <lastmod>2027-01-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</loc>
     <lastmod>2027-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
