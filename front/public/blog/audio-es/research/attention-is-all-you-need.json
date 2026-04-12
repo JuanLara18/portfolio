@@ -1,0 +1,13 @@
+{
+  "slug": "attention-is-all-you-need",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1cf3a850670ee91584358be3f0068f0c407d54acbe2ff1537934c0c7332597c7",
+  "sourceHash": "6ed0a696e689e76e407b8d9d16edd48041d52f3e7b30932ce650621f0c254647",
+  "durationSec": 1646.16,
+  "byteSize": 9876960,
+  "narrationWordCount": 3870,
+  "audioUrl": "/blog/audio-es/research/attention-is-all-you-need.mp3",
+  "translationModel": "gemma4:latest"
+}
