@@ -1,8 +1,21 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776020326,
+  "generatedAt": 1776022252,
   "posts": {
+    "curiosities/algebraic-number-theory-when-factorization-breaks": {
+      "slug": "algebraic-number-theory-when-factorization-breaks",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "83d99943726bb3a76c1fb4109ee14339b636b3a3bd377e204094cb54f2428bdd",
+      "sourceHash": "83d99943726bb3a76c1fb4109ee14339b636b3a3bd377e204094cb54f2428bdd",
+      "durationSec": 1243.872,
+      "byteSize": 7463232,
+      "narrationWordCount": 2928,
+      "audioUrl": "/blog/audio/curiosities/algebraic-number-theory-when-factorization-breaks.mp3",
+      "translationModel": ""
+    },
     "curiosities/benfords-law": {
       "slug": "benfords-law",
       "category": "curiosities",
@@ -27,6 +40,19 @@
       "byteSize": 6180336,
       "narrationWordCount": 2348,
       "audioUrl": "/blog/audio/curiosities/collatz-conjecture.mp3",
+      "translationModel": ""
+    },
+    "curiosities/fermat-n4-infinite-descent": {
+      "slug": "fermat-n4-infinite-descent",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "189b992e842b652844690cc21da4e289e2c01087bbeaa5c9d740f5e15e535730",
+      "sourceHash": "189b992e842b652844690cc21da4e289e2c01087bbeaa5c9d740f5e15e535730",
+      "durationSec": 992.544,
+      "byteSize": 5955264,
+      "narrationWordCount": 2648,
+      "audioUrl": "/blog/audio/curiosities/fermat-n4-infinite-descent.mp3",
       "translationModel": ""
     },
     "curiosities/fourier-transform": {
@@ -66,6 +92,19 @@
       "byteSize": 7720992,
       "narrationWordCount": 3064,
       "audioUrl": "/blog/audio/curiosities/pagerank-eigenvectors.mp3",
+      "translationModel": ""
+    },
+    "curiosities/ramanujan-constant-almost-integer": {
+      "slug": "ramanujan-constant-almost-integer",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "5eb9c62aba686cd1ec6635067b5898a6ad5677926cd2b7ad0db073f7675d137e",
+      "sourceHash": "5eb9c62aba686cd1ec6635067b5898a6ad5677926cd2b7ad0db073f7675d137e",
+      "durationSec": 1209.936,
+      "byteSize": 7259616,
+      "narrationWordCount": 2954,
+      "audioUrl": "/blog/audio/curiosities/ramanujan-constant-almost-integer.mp3",
       "translationModel": ""
     },
     "curiosities/rubiks-cube-group-theory": {
