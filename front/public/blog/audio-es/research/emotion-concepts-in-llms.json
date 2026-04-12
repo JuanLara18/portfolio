@@ -3,11 +3,11 @@
   "category": "research",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "bef6b8ea2876119e341820ffe3da004214432dff9dd1c29898b28a8821e06d80",
+  "hash": "d578893c793f426916d02afec1fa4d9511e69767d7e34a357bd93410404988e0",
   "sourceHash": "fa400f345c28a0e7b746fb09757c399e7b045f24bee750d3293b5936d7ef210c",
-  "durationSec": 1541.976,
-  "byteSize": 9251856,
-  "narrationWordCount": 4241,
+  "durationSec": 1541.664,
+  "byteSize": 9249984,
+  "narrationWordCount": 4257,
   "audioUrl": "/blog/audio-es/research/emotion-concepts-in-llms.mp3",
   "translationModel": "gemma4:latest"
 }

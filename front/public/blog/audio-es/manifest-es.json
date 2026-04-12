@@ -1,8 +1,21 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1776012155,
+  "generatedAt": 1776029531,
   "posts": {
+    "curiosities/algebraic-number-theory-when-factorization-breaks": {
+      "slug": "algebraic-number-theory-when-factorization-breaks",
+      "category": "curiosities",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "391d5e304e7239e0c90138a99835134e4ca9f7e9c8e0433c41ea94f7858bcb14",
+      "sourceHash": "83d99943726bb3a76c1fb4109ee14339b636b3a3bd377e204094cb54f2428bdd",
+      "durationSec": 1232.712,
+      "byteSize": 7396272,
+      "narrationWordCount": 3207,
+      "audioUrl": "/blog/audio-es/curiosities/algebraic-number-theory-when-factorization-breaks.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "curiosities/benfords-law": {
       "slug": "benfords-law",
       "category": "curiosities",
@@ -27,6 +40,19 @@
       "byteSize": 6088176,
       "narrationWordCount": 2572,
       "audioUrl": "/blog/audio-es/curiosities/collatz-conjecture.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "curiosities/fermat-n4-infinite-descent": {
+      "slug": "fermat-n4-infinite-descent",
+      "category": "curiosities",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "7c57a3eb6f324acfc039c2611d081d4e560a0bae49308d23e7a1754fae191289",
+      "sourceHash": "189b992e842b652844690cc21da4e289e2c01087bbeaa5c9d740f5e15e535730",
+      "durationSec": 1146.72,
+      "byteSize": 6880320,
+      "narrationWordCount": 2786,
+      "audioUrl": "/blog/audio-es/curiosities/fermat-n4-infinite-descent.mp3",
       "translationModel": "gemma4:latest"
     },
     "curiosities/fourier-transform": {
@@ -55,6 +81,32 @@
       "audioUrl": "/blog/audio-es/curiosities/godels-incompleteness-theorems.mp3",
       "translationModel": "gemma4:latest"
     },
+    "curiosities/pagerank-eigenvectors": {
+      "slug": "pagerank-eigenvectors",
+      "category": "curiosities",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "299acffe3e270eeff58ff2b4f4621d8894eecbc33678a49b47659b281bea5b9b",
+      "sourceHash": "11ee7854c69701fb4d638da1fe5079ce86a872dcc6ea2ac06b8af8626cb79f08",
+      "durationSec": 1306.488,
+      "byteSize": 7838928,
+      "narrationWordCount": 3399,
+      "audioUrl": "/blog/audio-es/curiosities/pagerank-eigenvectors.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "curiosities/ramanujan-constant-almost-integer": {
+      "slug": "ramanujan-constant-almost-integer",
+      "category": "curiosities",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "2f1c96120d676e81fb89e4c6578b4f56622a5f54d250020356fe0ce7bd15a972",
+      "sourceHash": "5eb9c62aba686cd1ec6635067b5898a6ad5677926cd2b7ad0db073f7675d137e",
+      "durationSec": 1205.784,
+      "byteSize": 7234704,
+      "narrationWordCount": 3222,
+      "audioUrl": "/blog/audio-es/curiosities/ramanujan-constant-almost-integer.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "curiosities/rubiks-cube-group-theory": {
       "slug": "rubiks-cube-group-theory",
       "category": "curiosities",
@@ -66,6 +118,19 @@
       "byteSize": 7979184,
       "narrationWordCount": 3258,
       "audioUrl": "/blog/audio-es/curiosities/rubiks-cube-group-theory.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "curiosities/shannon-number-chess-game-tree": {
+      "slug": "shannon-number-chess-game-tree",
+      "category": "curiosities",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1097feb5634af48dd8ba8a7909f67c5784a9cff31c07bd274876020430976b20",
+      "sourceHash": "7013f25d02c74d528906e91e16ed693339b6639629a80dadfb1d2d298250f40e",
+      "durationSec": 1593.456,
+      "byteSize": 9560736,
+      "narrationWordCount": 4276,
+      "audioUrl": "/blog/audio-es/curiosities/shannon-number-chess-game-tree.mp3",
       "translationModel": "gemma4:latest"
     },
     "curiosities/sum-of-naturals-minus-one-twelfth": {
@@ -133,6 +198,19 @@
       "audioUrl": "/blog/audio-es/field-notes/apache-spark-ecosystem-guide.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/bash-daily-driver-ml-engineer": {
+      "slug": "bash-daily-driver-ml-engineer",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1fd8ea05df1085208de9ebc20faf178a42c41c459ada3b5cefa3acebd800d31e",
+      "sourceHash": "a2f277b0a2cbfb32493725be0e0976166c3de2e1ed6491c8f4e6191144c254cc",
+      "durationSec": 1276.68,
+      "byteSize": 7660080,
+      "narrationWordCount": 3223,
+      "audioUrl": "/blog/audio-es/field-notes/bash-daily-driver-ml-engineer.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/claude-code-complete-guide": {
       "slug": "claude-code-complete-guide",
       "category": "field-notes",
@@ -170,6 +248,19 @@
       "byteSize": 7536096,
       "narrationWordCount": 2890,
       "audioUrl": "/blog/audio-es/field-notes/computational-resources-ml.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/content-addressable-hash-as-engineering-tool": {
+      "slug": "content-addressable-hash-as-engineering-tool",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "38677886024f17a2895e56524fb07233ff56f994624edbfe3862d1b4d37c6a75",
+      "sourceHash": "771f7a0db0512275194251a1370fc3819e602552529ef3525107df16e483f136",
+      "durationSec": 1750.752,
+      "byteSize": 10504512,
+      "narrationWordCount": 4869,
+      "audioUrl": "/blog/audio-es/field-notes/content-addressable-hash-as-engineering-tool.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/dama-dmbok-data-governance": {
@@ -393,6 +484,19 @@
       "audioUrl": "/blog/audio-es/field-notes/git-and-github-complete-guide.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/graph-neural-networks-learning-structured-data": {
+      "slug": "graph-neural-networks-learning-structured-data",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "7f5916ad23f46fe9abcd9d5a6dd8a18bb5b5d7eaa09871f072315dbdf423b820",
+      "sourceHash": "78f78108c2037d216810cdd6b5cf21f66440ffc6248d5a31a58471f8f5541e6e",
+      "durationSec": 2000.76,
+      "byteSize": 12004560,
+      "narrationWordCount": 4918,
+      "audioUrl": "/blog/audio-es/field-notes/graph-neural-networks-learning-structured-data.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/knowledge-base-curation": {
       "slug": "knowledge-base-curation",
       "category": "field-notes",
@@ -417,6 +521,19 @@
       "byteSize": 8133696,
       "narrationWordCount": 3239,
       "audioUrl": "/blog/audio-es/field-notes/knowledge-graphs-practice.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/kubernetes-minimum-subset-ml": {
+      "slug": "kubernetes-minimum-subset-ml",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "77421871600814aa115cdf8c98aa25dd2f6e32d06a346c5288c108e3e013ec22",
+      "sourceHash": "e0da95315c2422030475f77aa923a377d815211d9f8e7bfb7c1ce65ef0cdf3ab",
+      "durationSec": 1951.944,
+      "byteSize": 11711664,
+      "narrationWordCount": 4820,
+      "audioUrl": "/blog/audio-es/field-notes/kubernetes-minimum-subset-ml.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/lakehouse-architecture": {
@@ -471,6 +588,19 @@
       "audioUrl": "/blog/audio-es/field-notes/llm-benchmarks.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/llm-caching-four-layers": {
+      "slug": "llm-caching-four-layers",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "cdc6ad7495efe2deba91f14151e9b35c6e0ce05825bc9f7c3ee679fb5c7e0d1b",
+      "sourceHash": "96a7419f04fce3618f057e2183b20ce7e5140553139a64433b95d22df6edf3b4",
+      "durationSec": 1544.64,
+      "byteSize": 9267840,
+      "narrationWordCount": 3970,
+      "audioUrl": "/blog/audio-es/field-notes/llm-caching-four-layers.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/local-llm-inference-tools": {
       "slug": "local-llm-inference-tools",
       "category": "field-notes",
@@ -495,6 +625,19 @@
       "byteSize": 4137264,
       "narrationWordCount": 1786,
       "audioUrl": "/blog/audio-es/field-notes/mcp-production-enterprise.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/mcp-server-nl-to-powerbi-dashboard": {
+      "slug": "mcp-server-nl-to-powerbi-dashboard",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "9e9086bbe8afd62751049511a04ac353b9ef1c5d7b644cb1778fc63b7401bc2e",
+      "sourceHash": "42ddccef12ea0e1a8366e8cb0c8436fb850920d6c65d95c7b1c0deb54cc4d29c",
+      "durationSec": 1418.976,
+      "byteSize": 8513856,
+      "narrationWordCount": 3625,
+      "audioUrl": "/blog/audio-es/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/ml-libraries-under-the-hood": {
@@ -549,6 +692,32 @@
       "audioUrl": "/blog/audio-es/field-notes/mteb-embedding-benchmarks.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/multimodal-embeddings-metric-problem": {
+      "slug": "multimodal-embeddings-metric-problem",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "4aa86706e192a492f08fe27d9ffb25afedf23ec316018a350f79694630c49bf1",
+      "sourceHash": "d688537969cd12e134c9bd366ae8e75eb67de026dbbc8ea33bafc1d5857aad4a",
+      "durationSec": 1940.04,
+      "byteSize": 11640240,
+      "narrationWordCount": 4971,
+      "audioUrl": "/blog/audio-es/field-notes/multimodal-embeddings-metric-problem.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/network-fundamentals-every-concept": {
+      "slug": "network-fundamentals-every-concept",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "c6a9567e2ab9c3fdd4dea37c8855c4d543775e6cb046ae172a2a08fb637c4db9",
+      "sourceHash": "38fecb78c50c1d72a91e1dcab00c70c280a0e3d87bdd6d9bc252d3c714cb8316",
+      "durationSec": 2575.872,
+      "byteSize": 15455232,
+      "narrationWordCount": 6236,
+      "audioUrl": "/blog/audio-es/field-notes/network-fundamentals-every-concept.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/ontologies-building-knowledge-bases": {
       "slug": "ontologies-building-knowledge-bases",
       "category": "field-notes",
@@ -560,6 +729,19 @@
       "byteSize": 8953776,
       "narrationWordCount": 3647,
       "audioUrl": "/blog/audio-es/field-notes/ontologies-building-knowledge-bases.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/production-llm-agents-patterns": {
+      "slug": "production-llm-agents-patterns",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "5f830cb1100f4a82ac334bec35b937f6bcc8018a473300861fa7024a99fdc3f4",
+      "sourceHash": "fcd3b73f22ff90131f3731ae99a9dac9bb465597ef98679f6e29bfbcce2b0d86",
+      "durationSec": 1740.936,
+      "byteSize": 10445616,
+      "narrationWordCount": 4934,
+      "audioUrl": "/blog/audio-es/field-notes/production-llm-agents-patterns.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/python-beyond-the-basics": {
@@ -705,6 +887,19 @@
       "audioUrl": "/blog/audio-es/field-notes/structuring-ml-projects.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/terraform-infrastructure-as-code": {
+      "slug": "terraform-infrastructure-as-code",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "a2f77d178a357e1d3e1fafd01b1a4593846f52534709c3d577e7195b7105002c",
+      "sourceHash": "81f1ad11d0ec6397ffa50fc5ae2f9a387f79be8e0582e211010509125fd62614",
+      "durationSec": 1674.432,
+      "byteSize": 10046592,
+      "narrationWordCount": 4217,
+      "audioUrl": "/blog/audio-es/field-notes/terraform-infrastructure-as-code.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/text-to-sql": {
       "slug": "text-to-sql",
       "category": "field-notes",
@@ -729,6 +924,19 @@
       "byteSize": 14688000,
       "narrationWordCount": 6313,
       "audioUrl": "/blog/audio-es/field-notes/vector-db-benchmarks.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/vertex-ai-gcp-ml-platform-cli": {
+      "slug": "vertex-ai-gcp-ml-platform-cli",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "69d0b5b4fb92a66afc4685449821a5617d6bc454017d88d1ca2b4290b7104260",
+      "sourceHash": "9a5d97cf3435cb153ab55632ec5b5a684b9a10607d183a9a886bc892e3dd4f79",
+      "durationSec": 1880.184,
+      "byteSize": 11281104,
+      "narrationWordCount": 4712,
+      "audioUrl": "/blog/audio-es/field-notes/vertex-ai-gcp-ml-platform-cli.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/working-with-ml-models": {
@@ -783,6 +991,19 @@
       "audioUrl": "/blog/audio-es/research/embeddings-geometry-of-meaning.mp3",
       "translationModel": "gemma4:latest"
     },
+    "research/emotion-concepts-in-llms": {
+      "slug": "emotion-concepts-in-llms",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "bef6b8ea2876119e341820ffe3da004214432dff9dd1c29898b28a8821e06d80",
+      "sourceHash": "fa400f345c28a0e7b746fb09757c399e7b045f24bee750d3293b5936d7ef210c",
+      "durationSec": 1541.976,
+      "byteSize": 9251856,
+      "narrationWordCount": 4241,
+      "audioUrl": "/blog/audio-es/research/emotion-concepts-in-llms.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "research/llm-as-a-judge": {
       "slug": "llm-as-a-judge",
       "category": "research",
@@ -794,6 +1015,19 @@
       "byteSize": 9166176,
       "narrationWordCount": 3956,
       "audioUrl": "/blog/audio-es/research/llm-as-a-judge.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "research/mamba-selective-state-spaces": {
+      "slug": "mamba-selective-state-spaces",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "146a582317dad0f6023cb5585a241a0b1825f2dbdf45b0ebc98a501b99fe6992",
+      "sourceHash": "38a5c83a9baa16c2973452954afb5e3addbdcbedad9d713c088d9c8002fa4e4a",
+      "durationSec": 2095.896,
+      "byteSize": 12575376,
+      "narrationWordCount": 5459,
+      "audioUrl": "/blog/audio-es/research/mamba-selective-state-spaces.mp3",
       "translationModel": "gemma4:latest"
     },
     "research/microgpt-reading-karpathy": {
