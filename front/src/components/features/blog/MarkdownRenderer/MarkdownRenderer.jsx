@@ -921,7 +921,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 						src={imageSrc}
 						alt={alt || ''}
 						title={title}
-						className="w-full h-auto rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
+						className="w-full h-auto rounded-md"
 						loading="lazy"
 						onError={(e) => {
 							// Fallback to a default placeholder image instead of disappearing
