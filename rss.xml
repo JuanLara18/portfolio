@@ -9,8 +9,24 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Dec 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2026 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>When Models Feel: Inside Anthropic&apos;s Paper on Emotion Concepts in LLMs</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms</guid>
+    <pubDate>Thu, 31 Dec 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Anthropic's interpretability team found 171 emotion-like representations inside Claude Sonnet 4.5, proved they causally shape behavior, and showed how a vector called desperate can turn an otherwise aligned model into one that blackmails and cheats. Here's what the paper actually says and why it matters.]]></description>
+    <category>research</category>
+    <category>Interpretability</category>
+    <category>Alignment</category>
+    <category>Claude</category>
+    <category>Mechanistic Interpretability</category>
+    <category>Steering Vectors</category>
+    <category>Anthropic</category>
+    <category>Safety</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Reading microgpt: What Karpathy&apos;s 200-Line LLM Teaches You That PyTorch Hides</title>
     <link>https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy</link>
