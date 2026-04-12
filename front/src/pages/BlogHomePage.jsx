@@ -12,7 +12,8 @@ import {
   Mail,
   Brain,
   FileText,
-  Code2
+  Code2,
+  Network
 } from 'lucide-react';
 import { loadAllPosts, getAllTags, BLOG_CONFIG } from '../utils/blogUtils';
 import { variants as motionVariants } from '../utils';
@@ -212,12 +213,24 @@ export default function BlogHomePage() {
               </span>
             </motion.h1>
             
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
               className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto"
             >
               Mathematical curiosities, research insights, and practical deep-dives into ML/AI.
             </motion.p>
+
+            <motion.div variants={fadeInUp} className="mb-4">
+              <Link
+                to="/blog/graph"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-white rounded-full text-sm font-medium border border-slate-300 dark:border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-300 shadow-md dark:shadow-lg hover:shadow-blue-500/10 group"
+              >
+                <Network size={16} className="text-blue-500 dark:text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors" />
+                <span>Explore Knowledge Graph</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500 group-hover:text-slate-500 dark:group-hover:text-slate-400">·</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500 group-hover:text-slate-500 dark:group-hover:text-slate-400">{posts.length} posts</span>
+              </Link>
+            </motion.div>
             
             {/* Search and Filters */}
             <motion.div 
