@@ -918,11 +918,11 @@ export default function BlogPostPage() {
               
               {/* Meta Information */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-white/90 text-sm sm:text-base">
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                   <Calendar size={14} className="mr-1.5 sm:mr-2" />
                   <span className="hidden sm:inline">{formatDate(post.date, 'MMMM d, yyyy')}</span>
                   <span className="sm:hidden">{formatDate(post.date, 'MMM d')}</span>
-                </div>
+                </div> */}
                 <div className="flex items-center">
                   <Clock size={14} className="mr-1.5 sm:mr-2" />
                   <span>{post.readingTime} min read</span>
@@ -1035,13 +1035,13 @@ export default function BlogPostPage() {
                         </span>
                         <span>{post.readingTime} min</span>
                       </div>
-                      <div className="flex items-center justify-between">
+                      {/* <div className="flex items-center justify-between">
                         <span className="flex items-center">
                           <Calendar size={14} className="mr-2" />
                           Published
                         </span>
                         <span>{formatDate(post.date, 'MMM d, yyyy')}</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   

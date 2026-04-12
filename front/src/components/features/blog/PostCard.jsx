@@ -108,10 +108,10 @@ export const PostCard = ({ post }) => {
         {/* Meta info */}
         <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
           <div className="flex items-center space-x-3">
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <Calendar size={14} className="mr-1" />
               <span>{formatDate(post.date, 'MMM d')}</span>
-            </div>
+            </div> */}
             <div className="flex items-center">
               <Clock size={14} className="mr-1" />
               <span>{post.readingTime}m</span>
