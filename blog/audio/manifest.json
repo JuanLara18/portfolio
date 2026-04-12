@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776008064,
+  "generatedAt": 1776011751,
   "posts": {
     "curiosities/benfords-law": {
       "slug": "benfords-law",
@@ -640,6 +640,19 @@
       "audioUrl": "/blog/audio/field-notes/multimodal-embeddings-metric-problem.mp3",
       "translationModel": ""
     },
+    "field-notes/network-fundamentals-every-concept": {
+      "slug": "network-fundamentals-every-concept",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "38fecb78c50c1d72a91e1dcab00c70c280a0e3d87bdd6d9bc252d3c714cb8316",
+      "sourceHash": "38fecb78c50c1d72a91e1dcab00c70c280a0e3d87bdd6d9bc252d3c714cb8316",
+      "durationSec": 2557.968,
+      "byteSize": 15347808,
+      "narrationWordCount": 5368,
+      "audioUrl": "/blog/audio/field-notes/network-fundamentals-every-concept.mp3",
+      "translationModel": ""
+    },
     "field-notes/ontologies-building-knowledge-bases": {
       "slug": "ontologies-building-knowledge-bases",
       "category": "field-notes",
@@ -809,6 +822,19 @@
       "audioUrl": "/blog/audio/field-notes/structuring-ml-projects.mp3",
       "translationModel": ""
     },
+    "field-notes/terraform-infrastructure-as-code": {
+      "slug": "terraform-infrastructure-as-code",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "81f1ad11d0ec6397ffa50fc5ae2f9a387f79be8e0582e211010509125fd62614",
+      "sourceHash": "81f1ad11d0ec6397ffa50fc5ae2f9a387f79be8e0582e211010509125fd62614",
+      "durationSec": 1626.936,
+      "byteSize": 9761616,
+      "narrationWordCount": 3735,
+      "audioUrl": "/blog/audio/field-notes/terraform-infrastructure-as-code.mp3",
+      "translationModel": ""
+    },
     "field-notes/text-to-sql": {
       "slug": "text-to-sql",
       "category": "field-notes",
@@ -833,6 +859,19 @@
       "byteSize": 14811120,
       "narrationWordCount": 5329,
       "audioUrl": "/blog/audio/field-notes/vector-db-benchmarks.mp3",
+      "translationModel": ""
+    },
+    "field-notes/vertex-ai-gcp-ml-platform-cli": {
+      "slug": "vertex-ai-gcp-ml-platform-cli",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "9a5d97cf3435cb153ab55632ec5b5a684b9a10607d183a9a886bc892e3dd4f79",
+      "sourceHash": "9a5d97cf3435cb153ab55632ec5b5a684b9a10607d183a9a886bc892e3dd4f79",
+      "durationSec": 1856.904,
+      "byteSize": 11141424,
+      "narrationWordCount": 4064,
+      "audioUrl": "/blog/audio/field-notes/vertex-ai-gcp-ml-platform-cli.mp3",
       "translationModel": ""
     },
     "field-notes/working-with-ml-models": {
