@@ -1,6 +1,7 @@
 import { memo, useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import ReactMarkdown from 'react-markdown';
+import { Link as RouterLink } from 'react-router-dom';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
@@ -946,22 +947,27 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		// Enhanced links with external link detection
 		a: ({ href, children, ...props }) => {
 			const isExternal = href && (href.startsWith('http') || href.startsWith('mailto:'));
+			const isHash = href && href.startsWith('#');
+			// Internal app route (e.g. "/blog/research/foo"). These must go through
+			// React Router so the GitHub Pages basename "/portfolio" is preserved;
+			// a plain <a href="/blog/..."> navigates outside the subpath and 404s.
+			const isInternalRoute = href && href.startsWith('/') && !href.startsWith('//');
 			const linkClass = "text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline decoration-2 underline-offset-2 transition-colors";
-      
+
 			if (isExternal) {
 				return (
-					<a 
-						href={href} 
+					<a
+						href={href}
 						className={linkClass}
-						target="_blank" 
+						target="_blank"
 						rel="noopener noreferrer"
 						{...props}
 					>
 						{children}
-						<svg 
-							className="inline ml-1 w-3 h-3" 
-							fill="none" 
-							viewBox="0 0 24 24" 
+						<svg
+							className="inline ml-1 w-3 h-3"
+							fill="none"
+							viewBox="0 0 24 24"
 							stroke="currentColor"
 						>
 							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -969,7 +975,11 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 					</a>
 				);
 			}
-      
+
+			if (isInternalRoute && !isHash) {
+				return <RouterLink to={href} className={linkClass} {...props}>{children}</RouterLink>;
+			}
+
 			return <a href={href} className={linkClass} {...props}>{children}</a>;
 		},
     
