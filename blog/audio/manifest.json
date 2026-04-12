@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1775878449,
+  "generatedAt": 1775962183,
   "posts": {
     "curiosities/benfords-law": {
       "slug": "benfords-law",
@@ -781,6 +781,19 @@
       "byteSize": 8123616,
       "narrationWordCount": 3153,
       "audioUrl": "/blog/audio/research/embeddings-geometry-of-meaning.mp3",
+      "translationModel": ""
+    },
+    "research/emotion-concepts-in-llms": {
+      "slug": "emotion-concepts-in-llms",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "fa400f345c28a0e7b746fb09757c399e7b045f24bee750d3293b5936d7ef210c",
+      "sourceHash": "fa400f345c28a0e7b746fb09757c399e7b045f24bee750d3293b5936d7ef210c",
+      "durationSec": 1556.616,
+      "byteSize": 9339696,
+      "narrationWordCount": 3805,
+      "audioUrl": "/blog/audio/research/emotion-concepts-in-llms.mp3",
       "translationModel": ""
     },
     "research/llm-as-a-judge": {
