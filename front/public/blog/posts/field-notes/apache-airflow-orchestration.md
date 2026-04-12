@@ -2,7 +2,7 @@
 title: "Apache Airflow: The Orchestrator That Runs the Data World"
 date: "2026-12-03"
 excerpt: "A working engineer's guide to Airflow in the 3.x era — what it actually is, how the scheduler and executors fit together, when to use TaskFlow vs classic operators, why Assets and DAG versioning changed the mental model, and the honest tradeoffs against Prefect and Dagster. Written for people who need to ship pipelines, not slide-deck architects."
-tags: ["Apache Airflow", "Data Engineering", "Orchestration", "DAGs", "Workflow Automation", "TaskFlow", "Kubernetes"]
+tags: ["Apache Airflow", "Data Engineering", "Orchestration", "Workflow Automation", "Kubernetes", "Data Pipelines", "Infrastructure", "Batch Processing", "Scheduling", "Automation"]
 headerImage: "/blog/headers/air-flow-header.jpg"
 readingTimeMinutes: 25
 slug: apache-airflow-orchestration

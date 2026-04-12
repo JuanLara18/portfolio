@@ -2,7 +2,7 @@
 title: "Document Processing: OCR, Layout Detection, and the Path to Clean Text"
 date: "2026-08-18"
 excerpt: "Before you can retrieve from a document, you have to read it. That sounds trivial until you face a rotated scan, a two-column PDF, a table that spans pages, or a PPTX with embedded charts. This is the complete guide to document processing: image preprocessing, OCR engines, layout detection, full-pipeline parsers, table extraction, cloud APIs, vision LLMs, and benchmarks — with a routing pattern you can deploy today."
-tags: ["Document Processing", "OCR", "Layout Detection", "Docling", "PaddleOCR", "Document AI", "RAG"]
+tags: ["Document Processing", "OCR", "RAG", "NLP", "Deep Learning", "Data Pipelines", "Knowledge Bases", "Production ML", "Embeddings", "Information Retrieval"]
 headerImage: "/blog/headers/documents-header.jpg"
 readingTimeMinutes: 26
 slug: document-processing-ocr-layout

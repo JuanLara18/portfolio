@@ -2,7 +2,7 @@
 title: "Machine Learning Libraries Under the Hood: The Definitive Deep Dive"
 date: "2026-01-10"
 excerpt: "Abstractions are convenient until they break. This is an exhaustive journey through the silicon and software of the ML stack—from NumPy's memory layout and SIMD vectorization to the zero-copy revolution of Apache Arrow, the modern dominance of Polars, and the JIT compilers that turn Python into machine code."
-tags: ["Python", "NumPy", "Apache Arrow", "Polars", "PyTorch", "Performance", "High-Performance Computing"]
+tags: ["Python", "NumPy", "PyTorch", "Polars", "Performance", "Deep Learning", "Data Engineering", "Apache Arrow", "Machine Learning", "Software Engineering"]
 headerImage: "/blog/headers/ml-libraries.jpg"
 readingTimeMinutes: 55
 slug: ml-libraries-under-the-hood

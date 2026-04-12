@@ -2,7 +2,7 @@
 title: "Apache Spark: From a PhD Paper to the Backbone of the Modern Data Stack"
 date: "2026-09-01"
 excerpt: "Apache Spark started as a 2010 Berkeley paper asking a deceptively simple question: what if we didn't have to write to disk between every computation step? Fifteen years later, it powers data pipelines across most of the Fortune 500. Here's the full story — the engine, the language, the ecosystem, and the honest trade-offs."
-tags: ["Apache Spark", "Data Engineering", "PySpark", "Scala", "Distributed Computing", "Big Data"]
+tags: ["Apache Spark", "Data Engineering", "PySpark", "Distributed Computing", "Big Data", "SQL", "Data Pipelines", "Python", "Batch Processing", "Data Transformation"]
 headerImage: "/blog/headers/spark-header.jpg"
 readingTimeMinutes: 23
 slug: apache-spark-ecosystem-guide

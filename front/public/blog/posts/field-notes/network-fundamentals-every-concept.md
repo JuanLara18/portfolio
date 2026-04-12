@@ -2,7 +2,7 @@
 title: "Network Fundamentals: Every Concept You Need to Know"
 date: "2027-03-11"
 excerpt: "Every application you build runs on a network. This is the definitive guide to the concepts that make it work: the OSI model layer by layer, TCP/IP internals, IP addressing and subnetting, DNS resolution, HTTP and TLS, routing, NAT, DHCP, VPNs, network security, and the troubleshooting toolkit every engineer should master."
-tags: ["Networking", "TCP/IP", "DNS", "HTTP", "Network Security", "OSI Model", "Infrastructure"]
+tags: ["Networking", "Infrastructure", "Protocols", "Computer Science", "Systems Design", "Cloud Computing", "Security", "Distributed Systems", "Software Engineering"]
 headerImage: "/blog/headers/fiber-optic-header.jpg"
 readingTimeMinutes: 28
 slug: network-fundamentals-every-concept

@@ -2,7 +2,7 @@
 title: "The Model Context Protocol: How AI Learned to Use Tools"
 date: "2026-02-12"
 excerpt: "AI models are powerful, but they are blind. They cannot read your files, query your database, or call your APIs—unless someone builds the bridge. The Model Context Protocol is that bridge: an open standard that gives AI a universal way to interact with the world. This is the story of MCP, how it works, and why it matters."
-tags: ["MCP", "AI Agents", "LLM", "Protocols", "Software Engineering", "Tools", "FastMCP"]
+tags: ["MCP", "Agents", "LLMs", "Protocols", "Software Engineering", "AI Engineering", "Tool Use", "APIs"]
 headerImage: "/blog/headers/mcp-header.jpg"
 readingTimeMinutes: 20
 slug: model-context-protocol

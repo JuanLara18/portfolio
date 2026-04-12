@@ -2,7 +2,7 @@
 title: "MTEB: Choosing the Right Embedding Model for Your Task"
 date: "2026-04-04"
 excerpt: "The top model on the MTEB leaderboard is not automatically the right model for your RAG system. MTEB covers eight distinct task types, and a model that dominates retrieval may be mediocre at clustering or reranking. This is a complete guide to what MTEB measures, how to read it critically, and how to match an embedding model to the actual work it needs to do."
-tags: ["Benchmarks", "Embeddings", "RAG", "MTEB", "Knowledge Engineering", "Semantic Search", "Infrastructure"]
+tags: ["Benchmarks", "Embeddings", "RAG", "Information Retrieval", "Knowledge Engineering", "NLP", "Evaluation", "Hugging Face", "LLMs", "Deep Learning"]
 headerImage: "/blog/headers/mteb-embedding-benchmarks-header.jpg"
 readingTimeMinutes: 32
 slug: mteb-embedding-benchmarks

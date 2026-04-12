@@ -1,7 +1,7 @@
 ---
 title: "LangGraph: Orchestrating Multi-Agent Workflows"
 date: "2026-04-10"
-tags: ["langgraph", "agents", "llm", "orchestration", "python", "langchain"]
+tags: ["LangGraph", "Agents", "LLMs", "Orchestration", "LangChain", "Multi-Agent", "AI Engineering", "Production ML", "Tool Use", "Agentic AI"]
 category: "field-notes"
 headerImage: "/blog/headers/langgraph-multi-agent-workflows-header.jpg"
 slug: "langgraph-multi-agent-workflows"

@@ -2,7 +2,7 @@
 title: "Multimodal Embeddings: One Vector Space for Everything, and the Metric Problem Nobody Talks About"
 date: "2027-02-04"
 excerpt: "The promise of multimodal embeddings is seductive: encode text, images, audio, and video into a single vector space and let cosine similarity do the rest. The reality is messier. Cross-modal retrieval breaks in subtle ways because different modalities occupy different submanifolds, and naive top-k returns nonsense. This is the full story — from CLIP to SigLIP to ImageBind, the modality gap that haunts production systems, and the retrieval patterns that actually work."
-tags: ["Multimodal", "Embeddings", "CLIP", "Retrieval", "Vector-Search", "Representation-Learning"]
+tags: ["Embeddings", "Multimodal", "CLIP", "Vector Databases", "Deep Learning", "Information Retrieval", "Representation Learning", "NLP", "Benchmarks", "LLMs"]
 headerImage: "/blog/headers/prism-dispersion-header.jpg"
 readingTimeMinutes: 28
 slug: multimodal-embeddings-metric-problem

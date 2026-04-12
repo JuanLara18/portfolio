@@ -2,7 +2,7 @@
 title: "Building RAG Systems: Pipelines, Chunking, and Vector Search"
 date: "2026-03-29"
 excerpt: "A language model that can look things up is more useful than one that can't. But building a RAG system that actually works in production requires understanding dozens of decisions that the research paper glossed over: how to split documents, which embeddings to use, which vector database to run, how to retrieve well. This is the complete practical guide to the first half of the RAG stack."
-tags: ["RAG", "Vector Databases", "Embeddings", "LangChain", "LlamaIndex", "NLP", "Production ML", "MLOps", "Information Retrieval"]
+tags: ["RAG", "Vector Databases", "Embeddings", "LangChain", "LlamaIndex", "NLP", "Production ML", "MLOps", "Information Retrieval", "Chunking", "Data Pipelines"]
 headerImage: "/blog/headers/rag-fieldnotes-header.jpg"
 readingTimeMinutes: 28
 slug: rag-building-production-systems

@@ -2,7 +2,7 @@
 title: "The Collatz Conjecture: The Simplest Problem No One Can Solve"
 date: "2026-02-28"
 excerpt: "Take any positive integer. If it is even, divide by two. If it is odd, multiply by three and add one. Repeat. No matter what number you start with, you always seem to reach 1. This has been verified for numbers up to 2^68, tested by the brightest minds in mathematics for nearly a century, and yet no one can prove it. This is the Collatz Conjecture—a problem so simple a child can understand it, and so deep it may be beyond contemporary mathematics."
-tags: ["Collatz", "Mathematics", "Number Theory", "Dynamical Systems", "Open Problems", "Conjecture"]
+tags: ["Mathematics", "Number Theory", "Dynamical Systems", "Open Problems", "Computational Mathematics", "Algorithms", "Computer Science", "Simulation"]
 headerImage: "/blog/headers/collatz-header.jpg"
 readingTimeMinutes: 22
 slug: collatz-conjecture

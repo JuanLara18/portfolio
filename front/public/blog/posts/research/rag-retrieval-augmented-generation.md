@@ -2,7 +2,7 @@
 title: "RAG: How Language Models Learned to Look Things Up"
 date: "2026-03-29"
 excerpt: "Language models are powerful but trapped. They know only what they saw during training—a snapshot of the world that freezes the moment training ends. RAG broke this constraint. By combining a neural retriever with a neural generator, it gave language models the ability to consult external knowledge at inference time. This is the story of the original paper, the idea it introduced, and why it changed how we think about what language models can be."
-tags: ["Deep Learning", "NLP", "RAG", "Retrieval", "Question Answering", "Research Papers", "Language Models", "Knowledge"]
+tags: ["RAG", "Deep Learning", "NLP", "Information Retrieval", "Research Papers", "Language Models", "Knowledge Bases", "LLMs", "Embeddings", "Vector Databases"]
 headerImage: "/blog/headers/rag-research-header.jpg"
 readingTimeMinutes: 30
 slug: rag-retrieval-augmented-generation

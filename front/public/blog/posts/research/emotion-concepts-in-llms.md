@@ -2,7 +2,7 @@
 title: "When Models Feel: Inside Anthropic's Paper on Emotion Concepts in LLMs"
 date: "2026-12-31"
 excerpt: "Anthropic's interpretability team found 171 emotion-like representations inside Claude Sonnet 4.5, proved they causally shape behavior, and showed how a vector called desperate can turn an otherwise aligned model into one that blackmails and cheats. Here's what the paper actually says and why it matters."
-tags: ["Interpretability", "Alignment", "Claude", "Mechanistic Interpretability", "Steering Vectors", "Anthropic", "Safety"]
+tags: ["Interpretability", "Alignment", "Anthropic", "Mechanistic Interpretability", "LLMs", "AI Safety", "Research Papers", "Deep Learning", "Neural Network Theory", "NLP"]
 headerImage: "/blog/headers/emotions-header.jpg"
 readingTimeMinutes: 26
 slug: emotion-concepts-in-llms

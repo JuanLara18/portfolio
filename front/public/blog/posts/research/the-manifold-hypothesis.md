@@ -2,7 +2,7 @@
 title: "The Manifold Hypothesis: Why Deep Learning Works"
 date: "2025-11-27"
 excerpt: "We train models on high-dimensional chaos, yet they learn. Why? The answer lies in geometry: the world is a crumpled sheet of paper, and intelligence is the act of smoothing it out."
-tags: ["Deep Learning", "Geometry", "Topology", "Mathematics", "Research"]
+tags: ["Deep Learning", "Mathematics", "Topology", "Neural Network Theory", "Research Papers", "Representation Learning", "Geometry", "Embeddings", "Algorithms", "Linear Algebra"]
 headerImage: "/blog/headers/manifold-header.jpg"
 readingTimeMinutes: 22
 slug: manifold-hypothesis-geometry-of-intelligence

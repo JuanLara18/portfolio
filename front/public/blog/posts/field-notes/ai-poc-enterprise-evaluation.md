@@ -2,7 +2,7 @@
 title: "Enterprise AI PoCs: From Vendor Demos to Decisions You Can Defend"
 date: "2026-08-04"
 excerpt: "Most AI proofs of concept are designed to impress, not to inform. They test vendor demos against ideal data, measure metrics that don't match business objectives, and end with a slide deck that recommends the option the team already preferred. Here's a rigorous framework for running PoCs that produce defensible, production-aligned decisions — covering vector database evaluation, RAG quality measurement, text-to-SQL agents, and what changes when you're working in a regulated environment."
-tags: ["AI Engineering", "PoC", "RAG", "Vector Databases", "Enterprise", "Evaluation", "LLM", "Data Engineering"]
+tags: ["Enterprise AI", "RAG", "Evaluation", "Vector Databases", "LLMs", "Data Engineering", "AI Strategy", "Proof of Concept", "Benchmarks", "Cloud Computing"]
 headerImage: "/blog/headers/poc-header.jpg"
 readingTimeMinutes: 27
 slug: ai-poc-enterprise-evaluation

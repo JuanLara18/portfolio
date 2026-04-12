@@ -2,7 +2,7 @@
 title: "The Books That Shaped Software: Clean Code, Design Patterns, and Architecture"
 date: "2026-07-07"
 excerpt: "Clean Code, the Gang of Four, Hexagonal Architecture — these books sit on every senior engineer's shelf. But reading them uncritically in 2026 is almost as dangerous as not reading them at all. Here's what they got right, where they lead you astray, and how the ideas evolved into the architecture patterns we actually use."
-tags: ["Software Architecture", "Clean Code", "Design Patterns", "Hexagonal Architecture", "SOLID", "Python", "Software Engineering"]
+tags: ["Software Engineering", "Design Patterns", "Software Architecture", "Clean Code", "Best Practices", "SOLID", "Testing"]
 headerImage: "/blog/headers/software-header.jpg"
 readingTimeMinutes: 24
 slug: software-engineering-classics

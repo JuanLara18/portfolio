@@ -2,7 +2,7 @@
 title: "Kubernetes for ML Engineers: The Minimum Subset You Actually Need"
 date: "2027-02-11"
 excerpt: "Most Kubernetes guides are written for platform engineers. This one is not. If you already know Docker and just want to train models, serve predictions, and stop asking DevOps for favors, here is the 20% of Kubernetes that delivers 80% of the value -- the objects, commands, and YAML patterns an ML engineer actually touches."
-tags: ["Kubernetes", "MLOps", "DevOps", "GPU", "Orchestration", "Cloud"]
+tags: ["Kubernetes", "MLOps", "DevOps", "GPU", "Orchestration", "Cloud Computing", "Infrastructure", "Containers", "Production ML", "Docker"]
 headerImage: "/blog/headers/orchestra-header.jpg"
 readingTimeMinutes: 28
 slug: kubernetes-minimum-subset-ml

@@ -2,7 +2,7 @@
 title: "Data Engineering Fundamentals: The Mental Model Every Engineer Needs"
 date: "2026-05-05"
 excerpt: "Data engineering is not about moving files from A to B. It's about building reliable, scalable, observable systems that make data trustworthy — for analysts, ML models, and increasingly, AI agents. This post dismantles the buzzwords and builds the mental model from first principles."
-tags: ["Data Engineering", "ETL", "Data Lakehouse", "Distributed Systems", "Apache Iceberg", "Data Quality", "Modern Data Stack"]
+tags: ["Data Engineering", "ETL", "Data Lakehouse", "Distributed Systems", "Apache Iceberg", "Data Quality", "Data Architecture", "Data Pipelines", "Cloud Computing", "Batch Processing"]
 headerImage: "/blog/headers/data-cloud-header.webp"
 readingTimeMinutes: 38
 slug: data-engineering-fundamentals

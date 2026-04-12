@@ -2,7 +2,7 @@
 title: "Reading microgpt: What Karpathy's 200-Line LLM Teaches You That PyTorch Hides"
 date: "2026-12-24"
 excerpt: "In February 2026, Andrej Karpathy published a 199-line Python file that trains and runs a GPT end-to-end. No PyTorch, no NumPy, no dependencies — just a Value class, a transformer, Adam, and a loop. This is the culmination of a decade of simplification work, and reading it line by line is the best introduction to what LLMs actually are. Here's the full tour."
-tags: ["Karpathy", "LLM", "Transformers", "Autograd", "Educational", "GPT", "Minimalism", "From Scratch"]
+tags: ["Transformers", "LLMs", "PyTorch", "Deep Learning", "GPT", "From Scratch", "Language Models", "Attention", "Neural Network Theory"]
 headerImage: "/blog/headers/microgpt-header.jpg"
 readingTimeMinutes: 32
 slug: microgpt-reading-karpathy

@@ -2,7 +2,7 @@
 title: "Benford's Law: The Strange Dominance of the Number One"
 date: "2026-02-19"
 excerpt: "If you pick a random number from any real-world dataset—populations, stock prices, river lengths, tax returns—the first digit is far more likely to be a 1 than a 9. This is not a coincidence. It is a deep mathematical truth about how quantities grow, and it has become one of the most powerful forensic tools in the fight against fraud."
-tags: ["Benford's Law", "Mathematics", "Data Science", "Fraud Detection", "Probability", "Statistics"]
+tags: ["Mathematics", "Probability", "Statistics", "Data Science", "Fraud Detection", "Number Theory", "Anomaly Detection", "Data Quality", "Algorithms"]
 headerImage: "/blog/headers/benford-header.jpg"
 readingTimeMinutes: 22
 slug: benfords-law

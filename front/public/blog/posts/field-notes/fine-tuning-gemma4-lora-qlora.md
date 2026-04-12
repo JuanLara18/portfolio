@@ -2,7 +2,7 @@
 title: "Fine-tuning Gemma 4: When Prompting Isn't Enough"
 date: "2026-06-09"
 excerpt: "Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the deep guide — understanding the family, choosing the right variant for your hardware, why full fine-tuning is economically indefensible, how LoRA and QLoRA make adaptation practical on consumer GPUs, and a complete working recipe with Gemma 4 E4B from dataset to deployed adapter."
-tags: ["Fine-tuning", "Gemma 4", "LoRA", "QLoRA", "PEFT", "LLMs", "Hugging Face"]
+tags: ["Fine-Tuning", "LoRA", "QLoRA", "LLMs", "Hugging Face", "Deep Learning", "Transfer Learning", "PEFT", "PyTorch", "Production ML"]
 headerImage: "/blog/headers/fine-tune-gemma-header.jpg"
 readingTimeMinutes: 35
 slug: fine-tuning-gemma4-lora-qlora

@@ -2,7 +2,7 @@
 title: "Files Under the Hood: From Bits to Tensors"
 date: "2026-02-24"
 excerpt: "We use files every day, but rarely stop to think about what they actually are. From the OS abstraction of a file to columnar storage like Parquet, all the way to modern AI tensor formats like Safetensors and GGUF, this is a deep dive into the evolution of how we persist memory to disk."
-tags: ["Files", "Computer Science", "Data Engineering", "Machine Learning", "Software Engineering", "Systems"]
+tags: ["Computer Science", "Data Engineering", "Software Engineering", "Systems Design", "Data Structures", "Algorithms", "Linux", "Performance"]
 headerImage: "/blog/headers/files-header.jpg"
 readingTimeMinutes: 35
 slug: files-under-the-hood

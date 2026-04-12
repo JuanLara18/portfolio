@@ -2,7 +2,7 @@
 title: "Embeddings: The Geometry of Meaning"
 date: "2025-10-22"
 excerpt: "How do you teach a computer what 'king' means? You don't explain—you show it where 'king' lives in a space where meaning has coordinates. A deep dive into embeddings, from Word2Vec to modern sentence transformers, and why representing concepts as vectors changed everything."
-tags: ["Deep Learning", "NLP", "Embeddings", "Word2Vec", "Representation Learning"]
+tags: ["Embeddings", "Deep Learning", "NLP", "Representation Learning", "Word2Vec", "Research Papers", "Mathematics", "Linear Algebra", "Information Retrieval", "Neural Network Theory"]
 headerImage: "/blog/headers/embeddings-header.jpg"
 readingTimeMinutes: 28
 slug: embeddings-geometry-of-meaning

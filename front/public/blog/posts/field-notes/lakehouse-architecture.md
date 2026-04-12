@@ -2,7 +2,7 @@
 title: "Lakehouse Architecture: How Open Table Formats Fixed the Data Lake's Original Sin"
 date: "2026-06-02"
 excerpt: "Data lakes promised cheap, flexible analytics — and delivered corrupt reads, GDPR nightmares, and query engines flying blind. The lakehouse pattern fixes this by layering ACID transactions, schema enforcement, and row-level operations directly onto object storage. This is the story of how Apache Iceberg, Delta Lake, and Apache Hudi changed what's possible — and when to use each."
-tags: ["Data Engineering", "Apache Iceberg", "Delta Lake", "Apache Hudi", "Lakehouse Architecture", "Data Architecture", "Object Storage"]
+tags: ["Data Engineering", "Apache Iceberg", "Delta Lake", "Data Lakehouse", "Data Architecture", "Cloud Computing", "Big Data", "Data Pipelines", "Batch Processing", "Data Modeling"]
 headerImage: "/blog/headers/lake-header.jpg"
 readingTimeMinutes: 25
 slug: lakehouse-architecture

@@ -2,7 +2,7 @@
 title: "BERT: How Machines Learned to Read in Both Directions"
 date: "2026-03-25"
 excerpt: "In October 2018, a Google research team released a model that simultaneously broke eleven NLP benchmarks—some by enormous margins. BERT didn't just improve the state of the art; it redefined what 'understanding language' could mean for a machine. This is the complete story: the problem it solved, the elegant training objectives that made it possible, what it actually learned, and why it changed everything that came after."
-tags: ["Deep Learning", "NLP", "BERT", "Transformers", "Pre-training", "Research Papers", "Language Models"]
+tags: ["BERT", "Deep Learning", "NLP", "Transformers", "Pre-Training", "Research Papers", "Language Models", "Transfer Learning", "Hugging Face", "Embeddings"]
 headerImage: "/blog/headers/bert-header.jpg"
 readingTimeMinutes: 35
 slug: bert-pre-training-bidirectional-transformers

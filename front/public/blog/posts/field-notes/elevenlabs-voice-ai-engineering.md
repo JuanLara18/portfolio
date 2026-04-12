@@ -2,7 +2,7 @@
 title: "ElevenLabs in Production: How Neural Voice Synthesis Actually Works"
 date: "2026-11-12"
 excerpt: "A technical walkthrough of ElevenLabs — how the models are built, how to wire them into a real application with streaming and WebSockets, and the ethical, operational, and cost considerations you need to think about before shipping a voice feature."
-tags: ["ElevenLabs", "Text-to-Speech", "Voice AI", "Generative Audio", "Streaming APIs", "Voice Cloning", "AI Ethics"]
+tags: ["Voice AI", "Text-to-Speech", "Generative AI", "Streaming", "APIs", "Deep Learning", "Production ML", "AI Engineering", "NLP", "Machine Learning"]
 headerImage: "/blog/headers/eleven-header.jpg"
 readingTimeMinutes: 24
 slug: elevenlabs-voice-ai-engineering

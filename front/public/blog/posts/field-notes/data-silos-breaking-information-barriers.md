@@ -2,7 +2,7 @@
 title: "Data Silos: The Silent Tax on Every Decision Your Company Makes"
 date: "2026-10-08"
 excerpt: "Data silos are more than a technical inconvenience — they're a structural tax on every decision your organization makes. This post unpacks why silos form, why naïve centralization fails, and how to build a federation strategy that actually works, with cloud-native patterns on AWS and GCP."
-tags: ["Data Engineering", "Data Architecture", "Enterprise Data", "AWS", "GCP", "Data Mesh", "Knowledge Management"]
+tags: ["Data Engineering", "Data Architecture", "Enterprise Data", "Cloud Computing", "Data Mesh", "Knowledge Management", "Data Governance", "AI Strategy", "Data Quality", "Enterprise AI"]
 headerImage: "/blog/headers/silos-header.jpg"
 readingTimeMinutes: 22
 slug: data-silos-breaking-information-barriers

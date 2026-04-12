@@ -2,7 +2,7 @@
 title: "Designing an MCP Server That Turns Natural Language into Power BI Dashboards"
 date: "2027-02-18"
 excerpt: "The request 'show me churn by region last quarter' is actually three hard problems: understanding what churn means in your organization, generating correct SQL over your semantic layer, and choosing the right visualization. This post designs an MCP server that solves all three, grounding every step against a curated semantic layer so the LLM never hallucinates a metric or invents a column."
-tags: ["MCP", "Power-BI", "Text-to-SQL", "RAG", "LLM-Tools", "Business-Intelligence"]
+tags: ["MCP", "Text-to-SQL", "RAG", "LLMs", "Business Intelligence", "NLP", "Agents", "AI Engineering", "SQL", "Tool Use"]
 headerImage: "/blog/headers/jacquard-loom-header.jpg"
 readingTimeMinutes: 28
 slug: mcp-server-nl-to-powerbi-dashboard

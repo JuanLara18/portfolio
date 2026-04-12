@@ -2,7 +2,7 @@
 title: "Gödel's Incompleteness Theorems: The Day Mathematics Discovered Its Own Limits"
 date: "2026-02-24"
 excerpt: "In 1931, a 25-year-old Austrian logician proved that mathematics cannot fully know itself. Kurt Gödel showed that any consistent formal system powerful enough to express arithmetic contains true statements that it can never prove. This is the story of that proof, the machinery behind it, and why its consequences still reverberate through mathematics, computer science, and philosophy."
-tags: ["Gödel", "Logic", "Incompleteness", "Mathematics", "Formal Systems", "Set Theory", "Computability"]
+tags: ["Mathematics", "Logic", "Formal Systems", "Computability", "Set Theory", "Foundations of Mathematics", "Computer Science", "Algorithms"]
 headerImage: "/blog/headers/incompleteness-header.jpg"
 readingTimeMinutes: 35
 slug: godels-incompleteness-theorems

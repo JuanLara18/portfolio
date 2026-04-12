@@ -2,7 +2,7 @@
 title: "Building Enterprise MCP Servers: From Prototype to Production"
 date: "2026-07-28"
 excerpt: "The existing MCP post explains the concept. This one is about building servers that survive contact with a real company: authentication with OAuth 2.1, per-tool authorization scopes, audit logging, middleware, multi-tenant isolation, gateway patterns, and deployment strategies that don't require every developer to run their own Python process."
-tags: ["MCP", "AI Engineering", "Python", "OAuth", "Enterprise", "Agents", "FastMCP"]
+tags: ["MCP", "AI Engineering", "Enterprise AI", "Agents", "Production ML", "APIs", "Software Engineering", "LLMs", "Tool Use", "Protocols"]
 headerImage: "/blog/headers/connections-mcp-header.jpg"
 readingTimeMinutes: 26
 slug: mcp-production-enterprise

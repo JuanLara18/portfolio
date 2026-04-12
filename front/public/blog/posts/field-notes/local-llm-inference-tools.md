@@ -2,7 +2,7 @@
 title: "The AI Engineer's Inference Toolkit: Ollama, vLLM, LM Studio, and Docker"
 date: "2026-06-23"
 excerpt: "Every AI engineer eventually needs to run models locally — for privacy, cost control, latency, or just to avoid depending on an API that might break at 2am. This is the practical guide to the three tools that matter: LM Studio for exploration, Ollama for development, and vLLM for production. With complete Docker Compose setups and proof-of-concept patterns."
-tags: ["Local LLMs", "Ollama", "vLLM", "LM Studio", "Docker", "AI Engineering", "LLM Serving"]
+tags: ["LLM Serving", "Ollama", "vLLM", "Docker", "AI Engineering", "Infrastructure", "GPU", "Production ML", "Open Source", "Deployment"]
 headerImage: "/blog/headers/local-llm-header.jpg"
 readingTimeMinutes: 22
 slug: local-llm-inference-tools

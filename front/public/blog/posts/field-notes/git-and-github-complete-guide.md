@@ -2,7 +2,7 @@
 title: "Git and GitHub: The Complete Mental Model for Working with Code"
 date: "2026-12-10"
 excerpt: "Git is the single most-used piece of software in the entire profession, and most engineers use maybe 15% of it from muscle memory. This is the full guide — how Git actually stores your code, every command that matters and what it really does, how to recover from the disasters, branching strategies, GitHub's model on top of Git, Actions, organizations, and the gotchas you will hit. Long because it has to be."
-tags: ["Git", "GitHub", "Version Control", "GitHub Actions", "CI/CD", "Developer Tools", "Collaboration", "DevOps"]
+tags: ["Git", "GitHub", "Version Control", "CI/CD", "Developer Tools", "DevOps", "Collaboration", "Software Engineering", "Best Practices", "Automation"]
 headerImage: "/blog/headers/github-header.jpg"
 readingTimeMinutes: 42
 slug: git-and-github-complete-guide

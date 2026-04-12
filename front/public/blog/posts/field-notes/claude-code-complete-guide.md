@@ -2,7 +2,7 @@
 title: "Claude Code: The Complete Guide to Becoming a Power User of the AI That Codes With You"
 date: "2026-12-17"
 excerpt: "Most developers use Claude Code like a smarter autocomplete. A small minority treat it as what it actually is — a programmable agent that reads files, runs commands, spawns helpers, and iterates until your task is done. This is the complete mental model, every subsystem that matters, and how to actually become an expert."
-tags: ["Claude Code", "Anthropic", "AI Coding", "Developer Tools", "Agentic Coding", "MCP", "CLI", "Productivity"]
+tags: ["Claude Code", "Anthropic", "AI Coding", "Developer Tools", "MCP", "CLI", "Productivity", "Agentic AI", "LLMs", "Agents"]
 headerImage: "/blog/headers/claude-header.jpeg"
 readingTimeMinutes: 38
 slug: claude-code-complete-guide

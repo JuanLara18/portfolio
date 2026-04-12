@@ -2,7 +2,7 @@
 title: "Dataiku and the Enterprise AI Ecosystem: What Platforms Solve, What They Don't, and When to Use One"
 date: "2026-08-25"
 excerpt: "A practical look at Dataiku DSS in the context of the broader enterprise data + AI landscape: the real problems it solves, where it falls short, the honest trade-offs against alternatives, and frameworks for deciding if it's the right tool for your team."
-tags: ["Dataiku", "Enterprise AI", "MLOps", "AI Governance", "Data Science Platforms", "Make vs Buy"]
+tags: ["Enterprise AI", "MLOps", "AI Governance", "Data Science", "Machine Learning", "AI Strategy", "Production ML", "Cloud Computing", "Evaluation", "Best Practices"]
 headerImage: "/blog/headers/bird-header.jpg"
 readingTimeMinutes: 24
 slug: dataiku-enterprise-data-ai-ecosystem

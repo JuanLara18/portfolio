@@ -2,7 +2,7 @@
 title: "Bash as a Daily Driver: The Subset an ML Engineer Actually Uses"
 date: "2027-01-28"
 excerpt: "Bash is half duct tape, half landmine. This is the narrow slice of shell that ML and data engineers actually leverage every day -- pipe composition, safe scripting, parallelism, modern replacements, JSON wrangling -- and the honest decision point for switching to Python."
-tags: ["Bash", "Shell", "DevOps", "ML-Engineering", "Productivity", "Command-Line"]
+tags: ["Bash", "CLI", "DevOps", "Productivity", "Developer Tools", "Linux", "Automation", "Software Engineering"]
 headerImage: "/blog/headers/emperor-penguin-header.jpg"
 readingTimeMinutes: 22
 slug: bash-daily-driver-ml-engineer

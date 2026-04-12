@@ -2,7 +2,7 @@
 title: "Docker for Machine Learning Engineers: From 'Works on My Machine' to Works Everywhere"
 date: "2026-02-13"
 excerpt: "Every ML engineer has shipped a model that worked perfectly—until it ran on someone else's machine. Docker eliminates that failure mode entirely. This is the complete guide to containerization for ML: what Docker is, why it exists, how to write production-grade Dockerfiles, and how to go from a trained model to a portable, reproducible, deployable artifact."
-tags: ["Docker", "Containers", "MLOps", "Deployment", "DevOps", "Production ML", "Infrastructure"]
+tags: ["Docker", "Containers", "MLOps", "DevOps", "Production ML", "Infrastructure", "Deployment", "Reproducibility", "Kubernetes", "CI/CD"]
 headerImage: "/blog/headers/docker-header.jpg"
 readingTimeMinutes: 20
 slug: docker-for-ml-engineers

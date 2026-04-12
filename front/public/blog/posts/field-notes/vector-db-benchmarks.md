@@ -2,7 +2,7 @@
 title: "Vector Database Benchmarks: Reading the Numbers That Actually Matter"
 date: "2026-03-28"
 excerpt: "A chart says Qdrant handles 10,000 queries per second. Another says Pinecone wins at recall. Both are correct. Neither tells you what you actually need to know. This is how to read vector database benchmarks critically, what the numbers hide, and how to make decisions that hold up in production."
-tags: ["Vector Databases", "Benchmarks", "RAG", "Knowledge Engineering", "Infrastructure", "Open Source", "Production ML"]
+tags: ["Vector Databases", "Benchmarks", "RAG", "Knowledge Engineering", "Infrastructure", "Production ML", "Embeddings", "Performance", "Evaluation", "Information Retrieval"]
 headerImage: "/blog/headers/vector-db-benchmarks-header.jpg"
 readingTimeMinutes: 35
 slug: vector-db-benchmarks

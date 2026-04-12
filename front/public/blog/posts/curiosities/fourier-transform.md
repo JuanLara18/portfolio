@@ -2,7 +2,7 @@
 title: "The Fourier Transform: Every Signal Is a Sum of Sine Waves"
 date: "2026-07-21"
 excerpt: "An idea Lagrange called 'impossible' in 1807 now underlies JPEG compression, MRI machines, audio equalizers, and diffusion models. Here's where the Fourier transform comes from, why the formula looks the way it does, and why this 200-year-old insight keeps showing up at the center of modern machine learning."
-tags: ["Mathematics", "Signal Processing", "Fourier Transform", "FFT", "Deep Learning", "Linear Algebra"]
+tags: ["Mathematics", "Signal Processing", "Linear Algebra", "Deep Learning", "Computational Mathematics", "Algorithms", "Neural Network Theory", "Representation Learning", "Embeddings"]
 headerImage: "/blog/headers/wave-header.jpg"
 readingTimeMinutes: 22
 slug: fourier-transform
