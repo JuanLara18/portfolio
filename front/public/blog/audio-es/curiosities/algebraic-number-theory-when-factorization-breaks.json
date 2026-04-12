@@ -1,0 +1,13 @@
+{
+  "slug": "algebraic-number-theory-when-factorization-breaks",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "391d5e304e7239e0c90138a99835134e4ca9f7e9c8e0433c41ea94f7858bcb14",
+  "sourceHash": "83d99943726bb3a76c1fb4109ee14339b636b3a3bd377e204094cb54f2428bdd",
+  "durationSec": 1232.712,
+  "byteSize": 7396272,
+  "narrationWordCount": 3207,
+  "audioUrl": "/blog/audio-es/curiosities/algebraic-number-theory-when-factorization-breaks.mp3",
+  "translationModel": "gemma4:latest"
+}

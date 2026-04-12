@@ -1,0 +1,13 @@
+{
+  "slug": "fermat-n4-infinite-descent",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "7c57a3eb6f324acfc039c2611d081d4e560a0bae49308d23e7a1754fae191289",
+  "sourceHash": "189b992e842b652844690cc21da4e289e2c01087bbeaa5c9d740f5e15e535730",
+  "durationSec": 1146.72,
+  "byteSize": 6880320,
+  "narrationWordCount": 2786,
+  "audioUrl": "/blog/audio-es/curiosities/fermat-n4-infinite-descent.mp3",
+  "translationModel": "gemma4:latest"
+}
