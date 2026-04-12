@@ -9,8 +9,147 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Dec 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 25 Feb 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Shannon&apos;s Number: Why Chess Is &apos;Uncomputable&apos; and Why Computers Beat Us Anyway</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree</guid>
+    <pubDate>Thu, 25 Feb 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Claude Shannon estimated 10^120 possible chess games in 1950 — a number so large it dwarfs the atoms in the observable universe. The game tree is formally EXPTIME-complete. And yet a laptop running Stockfish will crush every grandmaster alive. The reconciliation is one of the most elegant ideas in computer science: you don't need to search the whole tree.]]></description>
+    <category>curiosities</category>
+    <category>Chess</category>
+    <category>Game-Theory</category>
+    <category>Computer-Science</category>
+    <category>Combinatorics</category>
+    <category>AI</category>
+    <category>History-of-Computing</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Designing an MCP Server That Turns Natural Language into Power BI Dashboards</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard</guid>
+    <pubDate>Thu, 18 Feb 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The request 'show me churn by region last quarter' is actually three hard problems: understanding what churn means in your organization, generating correct SQL over your semantic layer, and choosing the right visualization. This post designs an MCP server that solves all three, grounding every step against a curated semantic layer so the LLM never hallucinates a metric or invents a column.]]></description>
+    <category>field-notes</category>
+    <category>MCP</category>
+    <category>Power-BI</category>
+    <category>Text-to-SQL</category>
+    <category>RAG</category>
+    <category>LLM-Tools</category>
+    <category>Business-Intelligence</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Kubernetes for ML Engineers: The Minimum Subset You Actually Need</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml</guid>
+    <pubDate>Thu, 11 Feb 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most Kubernetes guides are written for platform engineers. This one is not. If you already know Docker and just want to train models, serve predictions, and stop asking DevOps for favors, here is the 20% of Kubernetes that delivers 80% of the value -- the objects, commands, and YAML patterns an ML engineer actually touches.]]></description>
+    <category>field-notes</category>
+    <category>Kubernetes</category>
+    <category>MLOps</category>
+    <category>DevOps</category>
+    <category>GPU</category>
+    <category>Orchestration</category>
+    <category>Cloud</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Bash as a Daily Driver: The Subset an ML Engineer Actually Uses</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer</guid>
+    <pubDate>Thu, 28 Jan 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Bash is half duct tape, half landmine. This is the narrow slice of shell that ML and data engineers actually leverage every day -- pipe composition, safe scripting, parallelism, modern replacements, JSON wrangling -- and the honest decision point for switching to Python.]]></description>
+    <category>field-notes</category>
+    <category>Bash</category>
+    <category>Shell</category>
+    <category>DevOps</category>
+    <category>ML-Engineering</category>
+    <category>Productivity</category>
+    <category>Command-Line</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Caching in LLM Systems: Four Layers That Actually Move the Needle</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers</guid>
+    <pubDate>Thu, 21 Jan 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Generic caching advice does not transfer cleanly to LLM applications. This post maps the four concrete cache layers in a production LLM system -- prompt prefix, embedding, retrieval, and response -- explains how they interact, and provides a decision framework for when to deploy each one.]]></description>
+    <category>field-notes</category>
+    <category>Caching</category>
+    <category>LLMs</category>
+    <category>RAG</category>
+    <category>Performance</category>
+    <category>Cost-Optimization</category>
+    <category>Distributed-Systems</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Multimodal Embeddings: One Vector Space for Everything, and the Metric Problem Nobody Talks About</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</guid>
+    <pubDate>Thu, 21 Jan 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The promise of multimodal embeddings is seductive: encode text, images, audio, and video into a single vector space and let cosine similarity do the rest. The reality is messier. Cross-modal retrieval breaks in subtle ways because different modalities occupy different submanifolds, and naive top-k returns nonsense. This is the full story — from CLIP to SigLIP to ImageBind, the modality gap that haunts production systems, and the retrieval patterns that actually work.]]></description>
+    <category>field-notes</category>
+    <category>Multimodal</category>
+    <category>Embeddings</category>
+    <category>CLIP</category>
+    <category>Retrieval</category>
+    <category>Vector-Search</category>
+    <category>Representation-Learning</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Production LLM Agents: Patterns That Survive Contact With Users</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns</guid>
+    <pubDate>Thu, 14 Jan 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Real production patterns for LLM agents in 2026: the ReAct loop, planner/executor splits, tool-use protocols, memory architectures, reflection, multi-agent coordination, failure modes that actually break you, and observability that earns its keep.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>LLMs</category>
+    <category>ReAct</category>
+    <category>Tool-Use</category>
+    <category>Multi-Agent</category>
+    <category>MCP</category>
+    <category>Observability</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Hash as an Engineering Tool: Content Addressing, Caches, and the Quiet Primitive Behind Modern Systems</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool</guid>
+    <pubDate>Thu, 07 Jan 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Hashes are not just a crypto topic. They are the quiet primitive behind Git, Docker, Bazel, IPFS, rsync, Bitcoin, CDNs, backup systems, and half the distributed systems you interact with every day. This is a tour of the hash as an everyday engineering tool — content-addressable storage, build caches, chunk deduplication, Merkle trees, consistent hashing, bloom filters, and the fingerprinting tricks that make modern infrastructure feel like magic.]]></description>
+    <category>field-notes</category>
+    <category>Hashing</category>
+    <category>Content-Addressing</category>
+    <category>Git</category>
+    <category>Caching</category>
+    <category>Merkle-Trees</category>
+    <category>Distributed-Systems</category>
+    <category>Systems</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>When Models Feel: Inside Anthropic&apos;s Paper on Emotion Concepts in LLMs</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms</guid>
+    <pubDate>Thu, 31 Dec 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Anthropic's interpretability team found 171 emotion-like representations inside Claude Sonnet 4.5, proved they causally shape behavior, and showed how a vector called desperate can turn an otherwise aligned model into one that blackmails and cheats. Here's what the paper actually says and why it matters.]]></description>
+    <category>research</category>
+    <category>Interpretability</category>
+    <category>Alignment</category>
+    <category>Claude</category>
+    <category>Mechanistic Interpretability</category>
+    <category>Steering Vectors</category>
+    <category>Anthropic</category>
+    <category>Safety</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/emotion-concepts-in-llms.mp3" length="9339696" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Reading microgpt: What Karpathy&apos;s 200-Line LLM Teaches You That PyTorch Hides</title>
     <link>https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy</link>
