@@ -1,0 +1,13 @@
+{
+  "slug": "bert-pre-training-bidirectional-transformers",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "03369fa56071063a038cc07c00c7b98d0de398c2f48bbc155c6ef7ac98f95229",
+  "sourceHash": "f5a600b1a6c478428276d7591805b11187168940ee128526d8173d1ecce14861",
+  "durationSec": 2067.264,
+  "byteSize": 12403584,
+  "narrationWordCount": 5176,
+  "audioUrl": "/blog/audio-es/research/bert-pre-training-bidirectional-transformers.mp3",
+  "translationModel": "gemma4:latest"
+}

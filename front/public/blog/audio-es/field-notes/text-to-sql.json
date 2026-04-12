@@ -1,0 +1,13 @@
+{
+  "slug": "text-to-sql",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "aac02eb56dc706222f9e23b25a9022c4fb7f89c7dbb8c1e012dd535f8aa91782",
+  "sourceHash": "5a4721f84c9ccabf66141531a2878174a4c3e191765e9b749375af324c376bb7",
+  "durationSec": 1127.28,
+  "byteSize": 6763680,
+  "narrationWordCount": 2793,
+  "audioUrl": "/blog/audio-es/field-notes/text-to-sql.mp3",
+  "translationModel": "gemma4:latest"
+}

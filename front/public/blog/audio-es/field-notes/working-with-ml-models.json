@@ -1,0 +1,13 @@
+{
+  "slug": "working-with-ml-models",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e4764b477e08e00d110ba4f81567ec99be70e8c1ecd7059dc0c9a07284616730",
+  "sourceHash": "28fceb8fb845d4510b34f56d326daaf045d0124fa5d2fe87fc038927fe740a9f",
+  "durationSec": 1045.752,
+  "byteSize": 6274512,
+  "narrationWordCount": 2195,
+  "audioUrl": "/blog/audio-es/field-notes/working-with-ml-models.mp3",
+  "translationModel": "gemma4:latest"
+}

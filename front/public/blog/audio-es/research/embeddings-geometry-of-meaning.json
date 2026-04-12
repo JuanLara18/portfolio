@@ -1,0 +1,13 @@
+{
+  "slug": "embeddings-geometry-of-meaning",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "de73cfecca896fed98318992a5c77b571b70f32b09cc588ceb77f40bd592e007",
+  "sourceHash": "bff740abe8c5bd3364cb7c778813e68932faaa784cacfa45ed70f0848e54cf1d",
+  "durationSec": 1342.824,
+  "byteSize": 8056944,
+  "narrationWordCount": 3475,
+  "audioUrl": "/blog/audio-es/research/embeddings-geometry-of-meaning.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "llm-as-a-judge",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "9d2e930fc62e1adc82a4f1a5606a5d8e0ec11cdb26b8073e32e2f788bac336cf",
+  "sourceHash": "4dc27d95877a5aa4bdc66505dff1eac6fdd219782cf4f71c74b362290d3f7edb",
+  "durationSec": 1527.696,
+  "byteSize": 9166176,
+  "narrationWordCount": 3956,
+  "audioUrl": "/blog/audio-es/research/llm-as-a-judge.mp3",
+  "translationModel": "gemma4:latest"
+}

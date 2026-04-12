@@ -1,0 +1,13 @@
+{
+  "slug": "structuring-ml-projects",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "b9a51955c0dc472327d47380977f5a5f99f6b8a31bca0d14ab9642b32dac980d",
+  "sourceHash": "6ae7539a049541195e8345a4cf2ee021cc01904dbcf97fcb70dfdc75f30eee2d",
+  "durationSec": 1394.616,
+  "byteSize": 8367696,
+  "narrationWordCount": 3077,
+  "audioUrl": "/blog/audio-es/field-notes/structuring-ml-projects.mp3",
+  "translationModel": "gemma4:latest"
+}
