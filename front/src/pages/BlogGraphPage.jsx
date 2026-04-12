@@ -222,6 +222,7 @@ export default function BlogGraphPage() {
   const [searchResults, setSearchResults] = useState([]);
   const [highlightedTag, setHighlightedTag] = useState(null);
   const [minFreq, setMinFreq] = useState(3);
+  const [categoryFilter, setCategoryFilter] = useState('all');
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isDark, setIsDark] = useState(getTheme() === 'dark');
 
@@ -268,10 +269,16 @@ export default function BlogGraphPage() {
   }, [loading]);
 
   // Build graph
+  const filteredPosts = useMemo(() => {
+    if (categoryFilter === 'all') return posts;
+    return posts.filter(p => p.category === categoryFilter);
+  }, [posts, categoryFilter]);
+
   const graphData = useMemo(() => {
-    if (posts.length === 0) return null;
-    return buildGraphData(posts, minFreq);
-  }, [posts, minFreq]);
+    if (filteredPosts.length === 0) return null;
+    const mf = categoryFilter !== 'all' ? Math.min(minFreq, 2) : minFreq;
+    return buildGraphData(filteredPosts, mf);
+  }, [filteredPosts, minFreq, categoryFilter]);
 
   // ─── Drawing ───
   const draw = useCallback(() => {
@@ -845,13 +852,37 @@ export default function BlogGraphPage() {
           ))}
         </div>
 
-        {/* Frequency threshold */}
-        <div className={`absolute z-10 flex items-center gap-3 backdrop-blur-sm border rounded-lg px-3 sm:px-4 py-2
+        {/* Controls: category filter + frequency threshold */}
+        <div className={`absolute z-10 flex flex-col gap-2 backdrop-blur-sm border rounded-lg px-3 sm:px-4 py-2.5
           bottom-4 left-4 sm:bottom-6 sm:left-20
           ${isDark ? 'bg-slate-800/80 border-slate-700/50' : 'bg-white/80 border-slate-300/50'}`}>
-          <span className={`text-xs whitespace-nowrap ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Min. freq</span>
-          <input type="range" min={1} max={8} value={minFreq} onChange={(e) => setMinFreq(Number(e.target.value))} className="w-20 sm:w-28 accent-blue-500" />
-          <span className={`text-xs font-mono w-4 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{minFreq}</span>
+          <div className="flex items-center gap-1.5">
+            {[
+              { key: 'all', label: 'All' },
+              { key: 'curiosities', label: 'Curiosities' },
+              { key: 'field-notes', label: 'Field Notes' },
+              { key: 'research', label: 'Research' },
+            ].map(cat => (
+              <button
+                key={cat.key}
+                onClick={() => { setCategoryFilter(cat.key); setSelectedNode(null); setHoveredNode(null); }}
+                className={`text-[10px] sm:text-xs px-2 py-0.5 rounded-md transition-colors whitespace-nowrap ${
+                  categoryFilter === cat.key
+                    ? 'bg-blue-500 text-white'
+                    : isDark
+                      ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/60'
+                      : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/60'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-3">
+            <span className={`text-xs whitespace-nowrap ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Min. freq</span>
+            <input type="range" min={1} max={8} value={minFreq} onChange={(e) => setMinFreq(Number(e.target.value))} className="w-20 sm:w-28 accent-blue-500" />
+            <span className={`text-xs font-mono w-4 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{minFreq}</span>
+          </div>
         </div>
 
         {/* Reset view — mobile only (replaces zoom buttons) */}
