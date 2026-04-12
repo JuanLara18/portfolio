@@ -1,0 +1,13 @@
+{
+  "slug": "sql-pandas-pyspark-duckdb",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "9bbc63f0f9f61076e8d7c9a658b4a8ccbf6f1158e64a62550e8ab79fed4188a6",
+  "sourceHash": "6857a0ba78a9ce8c8498680092baf28054fa61b169ae8bf01bf2b8c67021d1cd",
+  "durationSec": 1405.296,
+  "byteSize": 8431776,
+  "narrationWordCount": 3622,
+  "audioUrl": "/blog/audio-es/field-notes/sql-pandas-pyspark-duckdb.mp3",
+  "translationModel": "gemma4:latest"
+}

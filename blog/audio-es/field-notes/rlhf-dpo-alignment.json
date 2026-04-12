@@ -1,0 +1,13 @@
+{
+  "slug": "rlhf-dpo-alignment",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "6570d6aff132325a9a089a90a48c3c2ff53e0a97eb516188f4f3e1016e595f62",
+  "sourceHash": "62834d57f56e7f492624f0016e446db2ce535d621d90dba5a121d1064d7c4121",
+  "durationSec": 1988.784,
+  "byteSize": 11932704,
+  "narrationWordCount": 5088,
+  "audioUrl": "/blog/audio-es/field-notes/rlhf-dpo-alignment.mp3",
+  "translationModel": "gemma4:latest"
+}
