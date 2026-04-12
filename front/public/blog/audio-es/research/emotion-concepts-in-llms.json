@@ -1,0 +1,13 @@
+{
+  "slug": "emotion-concepts-in-llms",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "bef6b8ea2876119e341820ffe3da004214432dff9dd1c29898b28a8821e06d80",
+  "sourceHash": "fa400f345c28a0e7b746fb09757c399e7b045f24bee750d3293b5936d7ef210c",
+  "durationSec": 1541.976,
+  "byteSize": 9251856,
+  "narrationWordCount": 4241,
+  "audioUrl": "/blog/audio-es/research/emotion-concepts-in-llms.mp3",
+  "translationModel": "gemma4:latest"
+}

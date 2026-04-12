@@ -1,0 +1,13 @@
+{
+  "slug": "ramanujan-constant-almost-integer",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "2f1c96120d676e81fb89e4c6578b4f56622a5f54d250020356fe0ce7bd15a972",
+  "sourceHash": "5eb9c62aba686cd1ec6635067b5898a6ad5677926cd2b7ad0db073f7675d137e",
+  "durationSec": 1205.784,
+  "byteSize": 7234704,
+  "narrationWordCount": 3222,
+  "audioUrl": "/blog/audio-es/curiosities/ramanujan-constant-almost-integer.mp3",
+  "translationModel": "gemma4:latest"
+}

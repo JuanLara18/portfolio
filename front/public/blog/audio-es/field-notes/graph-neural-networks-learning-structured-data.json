@@ -1,0 +1,13 @@
+{
+  "slug": "graph-neural-networks-learning-structured-data",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "7f5916ad23f46fe9abcd9d5a6dd8a18bb5b5d7eaa09871f072315dbdf423b820",
+  "sourceHash": "78f78108c2037d216810cdd6b5cf21f66440ffc6248d5a31a58471f8f5541e6e",
+  "durationSec": 2000.76,
+  "byteSize": 12004560,
+  "narrationWordCount": 4918,
+  "audioUrl": "/blog/audio-es/field-notes/graph-neural-networks-learning-structured-data.mp3",
+  "translationModel": "gemma4:latest"
+}
