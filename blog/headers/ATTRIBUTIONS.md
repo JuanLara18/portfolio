@@ -16,5 +16,8 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `branching-coral-header.jpg` — Photo by Ritiks, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Barren_Island_feather_star_and_branching_coral.jpg) (CC BY-SA 4.0)
 - `spider-web-dew-header.jpg` — Photo by Luc Viatour, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spider_web_Luc_Viatour.jpg) (CC BY-SA 3.0)
 - `light-refraction-header.jpg` — Photo by Demond666, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Colorato_dalla_luce.jpg) (CC BY-SA 4.0)
+- `pyrite-crystal-header.jpg` — Photo by James St. John, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cubic_crystal_of_pyrite_in_metamarlstone_(Navajun,_Spain)_1_(18942531190).jpg) (CC BY 2.0)
 - `spiral-staircase-header.jpg` — Photo by Dietmar Rabich, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_Heilig-Kreuz-Kirche,_Treppenhaus_--_2018_--_1385.jpg) (CC BY-SA 4.0)
 - `nautilus-shell-header.jpg` — Photo by Profberger, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Inside_Nautilus_Pompilius.jpg) (CC BY-SA 3.0)
+- `bridge-arches-header.jpg` — Photo by Joe deSousa, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Panorama_of_Pont_Neuf_(22286979748).jpg) (CC0 1.0)
+- `city-lights-network-header.jpg` — Photo by Don Pettit/NASA ISS, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_city_lights_of_Hong_Kong_and_Shenzhen_(iss072e399613).jpg) (Public Domain)

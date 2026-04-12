@@ -3,7 +3,7 @@ title: "Algebraic Number Theory: When Unique Factorization Breaks"
 date: "2027-04-08"
 excerpt: "You learned that every integer factors uniquely into primes. It feels like a law of nature. But extend to larger number rings and it shatters -- spectacularly. In the ring of integers of certain number fields, the number 6 has two genuinely different prime factorizations. Algebraic number theory was born from fixing this."
 tags: ["Mathematics", "Number Theory", "Algorithms", "Group Theory", "Foundations of Mathematics", "Linear Algebra", "Computer Science", "Complex Analysis", "Topology", "Geometry"]
-headerImage: "/blog/headers/light-refraction-header.jpg"
+headerImage: "/blog/headers/pyrite-crystal-header.jpg"
 readingTimeMinutes: 22
 slug: algebraic-number-theory-when-factorization-breaks
 estimatedWordCount: 5300

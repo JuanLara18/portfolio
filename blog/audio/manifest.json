@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776022252,
+  "generatedAt": 1776024051,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -79,6 +79,32 @@
       "byteSize": 8725248,
       "narrationWordCount": 3254,
       "audioUrl": "/blog/audio/curiosities/godels-incompleteness-theorems.mp3",
+      "translationModel": ""
+    },
+    "curiosities/graph-theory-mathematics-of-connections": {
+      "slug": "graph-theory-mathematics-of-connections",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "6d0bbbd042b5f7c9b76c8d139e479d35eadf7a5e2a16420bb1f6d2212537bfe3",
+      "sourceHash": "6d0bbbd042b5f7c9b76c8d139e479d35eadf7a5e2a16420bb1f6d2212537bfe3",
+      "durationSec": 1481.376,
+      "byteSize": 8888256,
+      "narrationWordCount": 3548,
+      "audioUrl": "/blog/audio/curiosities/graph-theory-mathematics-of-connections.mp3",
+      "translationModel": ""
+    },
+    "curiosities/network-science-communities-centrality": {
+      "slug": "network-science-communities-centrality",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "634159cff0424782b9f2ae8348a693fcc16dc6263c96fa822e0f293e3d41a9ca",
+      "sourceHash": "634159cff0424782b9f2ae8348a693fcc16dc6263c96fa822e0f293e3d41a9ca",
+      "durationSec": 1517.232,
+      "byteSize": 9103392,
+      "narrationWordCount": 3478,
+      "audioUrl": "/blog/audio/curiosities/network-science-communities-centrality.mp3",
       "translationModel": ""
     },
     "curiosities/pagerank-eigenvectors": {
