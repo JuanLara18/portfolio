@@ -2,7 +2,7 @@
 title: "Attention is All You Need: Understanding the Transformer Revolution"
 date: "2025-01-20"
 excerpt: "How a single elegant idea—pure attention—toppled decades of sequential thinking and sparked the AI revolution. A deep dive into the architecture that changed everything."
-tags: ["Deep Learning", "NLP", "Transformers", "Attention", "Research Papers"]
+tags: ["Transformers", "Deep Learning", "NLP", "Attention", "Research Papers", "Neural Network Theory", "Language Models", "Embeddings", "Representation Learning", "Algorithms"]
 headerImage: "/blog/headers/attention-header.jpg"
 ---
 

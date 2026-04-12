@@ -2,7 +2,7 @@
 title: "Shannon's Number: Why Chess Is 'Uncomputable' and Why Computers Beat Us Anyway"
 date: "2027-02-25"
 excerpt: "Claude Shannon estimated 10^120 possible chess games in 1950 — a number so large it dwarfs the atoms in the observable universe. The game tree is formally EXPTIME-complete. And yet a laptop running Stockfish will crush every grandmaster alive. The reconciliation is one of the most elegant ideas in computer science: you don't need to search the whole tree."
-tags: ["Chess", "Game-Theory", "Computer-Science", "Combinatorics", "AI", "History-of-Computing"]
+tags: ["Mathematics", "Game Theory", "Combinatorics", "Algorithms", "Computational Complexity", "Computer Science", "Search Algorithms", "Optimization"]
 headerImage: "/blog/headers/chess-staunton-header.jpg"
 readingTimeMinutes: 22
 slug: shannon-number-chess-game-tree

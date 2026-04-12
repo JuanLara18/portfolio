@@ -2,7 +2,7 @@
 title: "Solving the Rubik's Cube Using Group Theory"
 date: "2025-01-15"
 excerpt: "What if I told you that every time you twist a Rubik's cube, you're exploring one of mathematics' most elegant structures? Discover how group theory transforms a childhood puzzle into a profound mathematical journey."
-tags: ["Group Theory", "Mathematics", "Puzzles", "Algorithms"]
+tags: ["Mathematics", "Group Theory", "Algorithms", "Combinatorics", "Computational Mathematics", "Computer Science", "Optimization"]
 headerImage: "/blog/headers/rubiks-header.jpg"
 ---
 

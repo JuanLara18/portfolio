@@ -2,7 +2,7 @@
 title: "SQL, Pandas, PySpark, and DuckDB: The Data Engineer's Complete Reference"
 date: "2026-05-12"
 excerpt: "Four tools, one mental model. SQL for declarative in-database logic. Pandas for in-memory exploration. PySpark for distributed scale. DuckDB for the vast middle ground that doesn't need a cluster. Every pattern you need, side by side, with clear rules for when to reach for each."
-tags: ["SQL", "Pandas", "PySpark", "DuckDB", "Data Engineering", "BigQuery", "Python"]
+tags: ["SQL", "Pandas", "PySpark", "DuckDB", "Data Engineering", "Python", "BigQuery", "Data Transformation", "Analytics Engineering", "Performance"]
 headerImage: "/blog/headers/data-python-header.webp"
 readingTimeMinutes: 42
 slug: sql-pandas-pyspark-duckdb

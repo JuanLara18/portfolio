@@ -2,7 +2,7 @@
 title: "Caching in LLM Systems: Four Layers That Actually Move the Needle"
 date: "2027-01-21"
 excerpt: "Generic caching advice does not transfer cleanly to LLM applications. This post maps the four concrete cache layers in a production LLM system -- prompt prefix, embedding, retrieval, and response -- explains how they interact, and provides a decision framework for when to deploy each one."
-tags: ["Caching", "LLMs", "RAG", "Performance", "Cost-Optimization", "Distributed-Systems"]
+tags: ["Caching", "LLMs", "RAG", "Performance", "Distributed Systems", "Production ML", "Infrastructure", "Cost Optimization", "Embeddings", "Systems Design"]
 headerImage: "/blog/headers/squirrel-hazelnut-header.jpg"
 readingTimeMinutes: 25
 slug: llm-caching-four-layers

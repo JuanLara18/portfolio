@@ -2,7 +2,7 @@
 title: "Metrics, Evaluation, and Monitoring: Ensuring ML Models Actually Work"
 date: "2025-12-21"
 excerpt: "A model that works in a notebook is not a model that works. This guide covers the complete lifecycle of model evaluation—from choosing the right metrics to detecting drift in production, from offline evaluation to real-time monitoring systems that catch failures before users do."
-tags: ["Machine Learning", "Metrics", "Evaluation", "Monitoring", "MLOps", "Production"]
+tags: ["Machine Learning", "Evaluation", "Monitoring", "MLOps", "Production ML", "Metrics", "Best Practices", "Observability", "Deep Learning", "Deployment"]
 headerImage: "/blog/headers/monitoring-header.jpg"
 readingTimeMinutes: 45
 slug: ml-metrics-evaluation-monitoring

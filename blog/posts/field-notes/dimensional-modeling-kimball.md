@@ -2,7 +2,7 @@
 title: "Dimensional Modeling: The Kimball Method for Analytical Data Warehouses"
 date: "2026-05-19"
 excerpt: "Your pipeline is clean, your data is accurate, and your BI dashboard still takes 45 seconds to load. The problem is rarely the data — it's the model. This is a complete guide to Kimball's dimensional modeling: star schemas, grain declaration, SCD types, the bus matrix, and how to implement all of it in dbt."
-tags: ["Data Engineering", "Dimensional Modeling", "Kimball", "Star Schema", "dbt", "Data Warehouse", "Analytics Engineering"]
+tags: ["Data Engineering", "Dimensional Modeling", "Data Warehouse", "dbt", "Analytics Engineering", "SQL", "Star Schema", "Data Architecture", "Data Modeling", "Data Transformation"]
 headerImage: "/blog/headers/kimball-header.jpg"
 readingTimeMinutes: 28
 slug: dimensional-modeling-kimball

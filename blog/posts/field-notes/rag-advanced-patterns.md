@@ -2,7 +2,7 @@
 title: "Advanced RAG: From Naive Retrieval to Systems That Actually Work"
 date: "2026-03-30"
 excerpt: "Naive RAG — chunk documents, embed them, retrieve the top-k, stuff into the prompt — works in demos. In production, it fails in predictable, fixable ways. This post covers the patterns that separate brittle prototypes from reliable systems: query transformation, advanced retrieval strategies, re-ranking, agentic RAG, GraphRAG, and how to decide when RAG is the wrong answer entirely."
-tags: ["RAG", "Advanced RAG", "LangChain", "LlamaIndex", "GraphRAG", "Agentic AI", "NLP", "Production ML", "MLOps", "LLMs"]
+tags: ["RAG", "LangChain", "LlamaIndex", "GraphRAG", "Agentic AI", "NLP", "Production ML", "MLOps", "LLMs", "Agents", "Knowledge Engineering"]
 headerImage: "/blog/headers/rag-advanced-header.jpg"
 readingTimeMinutes: 30
 slug: rag-advanced-patterns

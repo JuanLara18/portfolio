@@ -2,7 +2,7 @@
 title: "Vertex AI: The Complete GCP ML Platform from the CLI"
 date: "2027-03-18"
 excerpt: "Google Cloud's ML platform is massive — notebooks, custom training, AutoML, model registry, endpoints, pipelines, feature store, vector search, generative AI, monitoring, and more. This is the map: every service explained with its CLI commands, Python SDK equivalents, pricing model, and the trade-offs you need to know before committing budget."
-tags: ["Vertex AI", "GCP", "MLOps", "Machine Learning", "Google Cloud", "CLI", "Gemini"]
+tags: ["Vertex AI", "GCP", "MLOps", "Machine Learning", "Cloud Computing", "CLI", "AI Engineering", "Production ML", "Deep Learning", "Deployment"]
 headerImage: "/blog/headers/observatory-telescope-header.jpg"
 readingTimeMinutes: 28
 slug: vertex-ai-gcp-ml-platform-cli

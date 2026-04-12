@@ -2,7 +2,7 @@
 title: "RLHF, DPO, and the Art of Teaching Models to Behave"
 date: "2026-06-16"
 excerpt: "Pre-training produces a model that's brilliant at predicting text. Alignment turns it into a model that's actually useful — and safe. This is the deep guide to RLHF, DPO, and their 2025-2026 successors: how the reward model works, why PPO is unstable, how DPO eliminates the need for it, what SimPO, KTO, ORPO, and GRPO each solve, and what all of this means when you're building on top of aligned models."
-tags: ["RLHF", "DPO", "LLM Alignment", "InstructGPT", "GRPO", "Post-training", "Machine Learning"]
+tags: ["RLHF", "DPO", "Alignment", "LLMs", "Reinforcement Learning", "Fine-Tuning", "Machine Learning", "Deep Learning", "Post-Training", "Evaluation"]
 headerImage: "/blog/headers/RLHF-header.jpg"
 readingTimeMinutes: 28
 slug: rlhf-dpo-alignment

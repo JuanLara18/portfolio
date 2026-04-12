@@ -2,7 +2,7 @@
 title: "T5: The Unification of Language"
 date: "2026-03-26"
 excerpt: "In 2019, a Google team asked a deceptively simple question: what if every NLP task were just a text prediction problem? The answer — T5 — didn't just win benchmarks. It proposed a new way of thinking about what language models are for, and planted the seed of the instruction-following revolution that followed."
-tags: ["Deep Learning", "NLP", "T5", "Transformers", "Pre-training", "Transfer Learning", "Research Papers", "Language Models"]
+tags: ["T5", "Deep Learning", "NLP", "Transformers", "Pre-Training", "Transfer Learning", "Research Papers", "Language Models", "Hugging Face", "Fine-Tuning"]
 headerImage: "/blog/headers/t5-header.jpg"
 readingTimeMinutes: 32
 slug: t5-text-to-text-transfer-transformer

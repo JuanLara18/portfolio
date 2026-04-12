@@ -2,7 +2,7 @@
 title: "GCP AI Stack: Vertex AI, AlloyDB, and the Cloud-Native Knowledge Pipeline"
 date: "2026-04-25"
 excerpt: "Google Cloud's AI infrastructure has matured rapidly: the Vertex AI RAG Engine is GA, AlloyDB now ships a custom ScaNN vector index, and a full cloud-native knowledge pipeline is within reach from CLI alone. But the real costs, regional constraints, and architectural trade-offs are rarely discussed honestly. This post covers what the stack actually looks like in 2025-2026, where it delivers, and where it quietly disappoints."
-tags: ["GCP", "Vertex AI", "AlloyDB", "RAG", "Vector Search", "Knowledge Pipeline", "Cloud Architecture", "Document AI", "MLOps", "pgvector", "ScaNN", "CLI"]
+tags: ["GCP", "Vertex AI", "RAG", "Vector Databases", "Knowledge Bases", "Cloud Computing", "CLI", "Data Pipelines", "Embeddings", "Production ML", "PostgreSQL", "LLMs"]
 headerImage: "/blog/headers/gcp-header.jpg"
 readingTimeMinutes: 55
 slug: gcp-ai-stack-vertex-alloydb-knowledge-pipeline

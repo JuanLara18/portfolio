@@ -2,7 +2,7 @@
 title: "Knowledge Graphs in Practice: From Documents to Queryable Intelligence"
 date: "2026-10-29"
 excerpt: "Ontologies give you the blueprint. Knowledge graphs give you the building. This post walks through the full construction pipeline — extracting entities with LLMs, building graphs in Neo4j, querying with Cypher, and wiring it all into GraphRAG — with working Python code at every step."
-tags: ["Knowledge Graphs", "Neo4j", "GraphRAG", "Cypher", "Entity Extraction", "LLM"]
+tags: ["Knowledge Graphs", "Neo4j", "GraphRAG", "NLP", "LLMs", "Knowledge Engineering", "Data Architecture", "Ontologies", "Embeddings", "Information Retrieval"]
 headerImage: "/blog/headers/knowledge-graphs-header.jpg"
 readingTimeMinutes: 27
 slug: knowledge-graphs-practice

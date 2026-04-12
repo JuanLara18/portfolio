@@ -2,7 +2,7 @@
 title: "Reinforcement Learning in Practice: The Engineering That Makes It Work"
 date: "2026-02-07"
 excerpt: "Theory is necessary but not sufficient. This is the engineering companion to RL—the implementation details that papers omit, the GPU patterns that supervised learning never taught you, the tricks that separate converging agents from wasted compute, and the deployment patterns that survive contact with reality."
-tags: ["Reinforcement Learning", "Deep RL", "PyTorch", "CUDA", "PPO", "DQN", "Engineering", "Production ML"]
+tags: ["Reinforcement Learning", "Deep Learning", "PyTorch", "CUDA", "Production ML", "Machine Learning", "Algorithms", "GPU", "Optimization"]
 headerImage: "/blog/headers/rl-practice-header.jpg"
 readingTimeMinutes: 65
 slug: reinforcement-learning-in-practice

@@ -1,7 +1,7 @@
 ---
 title: "Production LLM Agents: Patterns That Survive Contact With Users"
 date: "2027-01-14"
-tags: ["Agents", "LLMs", "ReAct", "Tool-Use", "Multi-Agent", "MCP", "Observability"]
+tags: ["Agents", "LLMs", "Production ML", "Multi-Agent", "MCP", "Observability", "AI Engineering", "Tool Use", "Software Engineering", "Deployment"]
 category: "field-notes"
 headerImage: "/blog/headers/murmuration-header.jpg"
 slug: "production-llm-agents-patterns"

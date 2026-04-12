@@ -2,7 +2,7 @@
 title: "Scaling Laws: The Equations That Predicted the Future of AI"
 date: "2026-03-28"
 excerpt: "In early 2020, a team at OpenAI published a set of equations that described how language model performance grows with compute, data, and parameters. They weren't speculating. They had measured it. The curves fit. And the implications were so consequential that much of the subsequent history of AI can be read as their logical extension."
-tags: ["Deep Learning", "Scaling Laws", "Language Models", "Research Papers", "Compute", "Training"]
+tags: ["Scaling Laws", "Deep Learning", "Language Models", "Research Papers", "LLMs", "Pre-Training", "Neural Network Theory", "Compute", "Performance", "Mathematics"]
 headerImage: "/blog/headers/scaling-laws-header.jpg"
 readingTimeMinutes: 30
 slug: scaling-laws-neural-language-models

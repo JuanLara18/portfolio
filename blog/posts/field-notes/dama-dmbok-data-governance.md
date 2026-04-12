@@ -2,7 +2,7 @@
 title: "DAMA DMBOK: The Data Governance Framework Every Data Engineer Should Know"
 date: "2026-09-08"
 excerpt: "DAMA DMBOK is the industry standard framework for data governance, but most engineers encounter it as a wall of jargon. This guide breaks down all 11 knowledge areas with clear definitions, real narrative, and applies them to a bank building an AI-powered knowledge base from scratch."
-tags: ["Data Governance", "DAMA DMBOK", "Data Quality", "Metadata Management", "Knowledge Base", "Banking Data", "Data Engineering"]
+tags: ["Data Governance", "Data Quality", "Metadata", "Data Engineering", "Enterprise Data", "Knowledge Management", "Data Architecture", "Best Practices", "Data Modeling", "Enterprise AI"]
 headerImage: "/blog/headers/queen-header.jpg"
 readingTimeMinutes: 26
 slug: dama-dmbok-data-governance

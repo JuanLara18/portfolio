@@ -2,7 +2,7 @@
 title: "dbt: The Analytics Engineering Tool That Turned SQL into Software"
 date: "2026-05-26"
 excerpt: "Every data team reaches the same crisis point: SQL transformations scattered across notebooks, dashboards, and ad-hoc scripts, with no one sure which version is correct. dbt solves this by bringing software engineering practices — version control, testing, documentation, modularity — to the SQL layer. This is a complete guide to building reliable analytical pipelines with dbt."
-tags: ["dbt", "Analytics Engineering", "Data Engineering", "SQL", "Data Warehouse", "Data Transformation", "dbt-utils"]
+tags: ["dbt", "Analytics Engineering", "Data Engineering", "SQL", "Data Warehouse", "Data Transformation", "Data Pipelines", "Software Engineering", "Data Modeling", "Testing"]
 headerImage: "/blog/headers/dbt-header.jpg"
 readingTimeMinutes: 26
 slug: dbt-analytics-engineering

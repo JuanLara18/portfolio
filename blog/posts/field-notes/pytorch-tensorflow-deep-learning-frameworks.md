@@ -2,7 +2,7 @@
 title: "PyTorch, TensorFlow, and JAX: The Deep Learning Framework Landscape in 2026"
 date: "2026-07-14"
 excerpt: "PyTorch dominates research, TensorFlow still rules mobile and edge deployment, and JAX is quietly rewriting the rules for large-scale training. A complete guide to all three — their architecture, strengths, production patterns, and when to choose each."
-tags: ["PyTorch", "TensorFlow", "JAX", "Deep Learning", "ML Engineering", "Distributed Training", "Python"]
+tags: ["PyTorch", "TensorFlow", "JAX", "Deep Learning", "Distributed Computing", "GPU", "Machine Learning", "Performance", "Hugging Face"]
 headerImage: "/blog/headers/neurons-header.jpg"
 readingTimeMinutes: 27
 slug: pytorch-tensorflow-deep-learning-frameworks
