@@ -1,0 +1,13 @@
+{
+  "slug": "vertex-ai-gcp-ml-platform-cli",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "69d0b5b4fb92a66afc4685449821a5617d6bc454017d88d1ca2b4290b7104260",
+  "sourceHash": "9a5d97cf3435cb153ab55632ec5b5a684b9a10607d183a9a886bc892e3dd4f79",
+  "durationSec": 1880.184,
+  "byteSize": 11281104,
+  "narrationWordCount": 4712,
+  "audioUrl": "/blog/audio-es/field-notes/vertex-ai-gcp-ml-platform-cli.mp3",
+  "translationModel": "gemma4:latest"
+}
