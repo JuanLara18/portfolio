@@ -1,0 +1,13 @@
+{
+  "slug": "graph-theory-mathematics-of-connections",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e08184ce80980da414a8deba9901d406d7b9ab8f3a0e82746f57c1089660b1d1",
+  "sourceHash": "6d0bbbd042b5f7c9b76c8d139e479d35eadf7a5e2a16420bb1f6d2212537bfe3",
+  "durationSec": 1473.384,
+  "byteSize": 8840304,
+  "narrationWordCount": 3925,
+  "audioUrl": "/blog/audio-es/curiosities/graph-theory-mathematics-of-connections.mp3",
+  "translationModel": "gemma4:latest"
+}

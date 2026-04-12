@@ -1,0 +1,13 @@
+{
+  "slug": "mamba-selective-state-spaces",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "146a582317dad0f6023cb5585a241a0b1825f2dbdf45b0ebc98a501b99fe6992",
+  "sourceHash": "38a5c83a9baa16c2973452954afb5e3addbdcbedad9d713c088d9c8002fa4e4a",
+  "durationSec": 2095.896,
+  "byteSize": 12575376,
+  "narrationWordCount": 5459,
+  "audioUrl": "/blog/audio-es/research/mamba-selective-state-spaces.mp3",
+  "translationModel": "gemma4:latest"
+}
