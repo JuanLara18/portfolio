@@ -1,0 +1,13 @@
+{
+  "slug": "rag-building-production-systems",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a2c351a0afb3d273d7f5ac7b63aa085be128db8780af0cbf42a7f7957207d5be",
+  "sourceHash": "7b5a829327a0313ac0b99dcc092e9ee4e112beae6de0ceeef78cbc236604209f",
+  "durationSec": 2115.024,
+  "byteSize": 12690144,
+  "narrationWordCount": 5412,
+  "audioUrl": "/blog/audio-es/field-notes/rag-building-production-systems.mp3",
+  "translationModel": "gemma4:latest"
+}

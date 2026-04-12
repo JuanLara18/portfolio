@@ -1,0 +1,13 @@
+{
+  "slug": "pytorch-tensorflow-deep-learning-frameworks",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "4673c49ee1791f29b2219d41d2fd924758f0aa84a5e071735ce346cf70e5fd7f",
+  "sourceHash": "9a196cdd982de954af536fa59887906531d8bc2b1575d1662a557fb0c6316b12",
+  "durationSec": 1631.976,
+  "byteSize": 9791856,
+  "narrationWordCount": 3848,
+  "audioUrl": "/blog/audio-es/field-notes/pytorch-tensorflow-deep-learning-frameworks.mp3",
+  "translationModel": "gemma4:latest"
+}

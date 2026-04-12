@@ -1,0 +1,13 @@
+{
+  "slug": "python-beyond-the-basics",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "36421dee5d373e77c8528bc288fb424d72214245ba86291b9b2565e4733ba3a1",
+  "sourceHash": "c2a83e46958e8bea93bb7d99b0d2883efcff50302c81c8242a8f0f0529ae400e",
+  "durationSec": 1790.304,
+  "byteSize": 10741824,
+  "narrationWordCount": 4415,
+  "audioUrl": "/blog/audio-es/field-notes/python-beyond-the-basics.mp3",
+  "translationModel": "gemma4:latest"
+}
