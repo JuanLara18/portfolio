@@ -1,0 +1,13 @@
+{
+  "slug": "lookml-semantic-layer-data-modeling",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a3c0551a6c791ac8e11241750dda92886b285ab7e65504403affe37d817048ef",
+  "sourceHash": "94b11d380b679bab69910c66e06ef7cf109eaf72b3a4c5a555db56052ad40f40",
+  "durationSec": 1685.904,
+  "byteSize": 10115424,
+  "narrationWordCount": 4562,
+  "audioUrl": "/blog/audio-es/field-notes/lookml-semantic-layer-data-modeling.mp3",
+  "translationModel": "gemma4:latest"
+}
