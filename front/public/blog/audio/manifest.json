@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776024051,
+  "generatedAt": 1776056783,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -638,6 +638,19 @@
       "byteSize": 4959216,
       "narrationWordCount": 1900,
       "audioUrl": "/blog/audio/field-notes/local-llm-inference-tools.mp3",
+      "translationModel": ""
+    },
+    "field-notes/lookml-semantic-layer-data-modeling": {
+      "slug": "lookml-semantic-layer-data-modeling",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "94b11d380b679bab69910c66e06ef7cf109eaf72b3a4c5a555db56052ad40f40",
+      "sourceHash": "94b11d380b679bab69910c66e06ef7cf109eaf72b3a4c5a555db56052ad40f40",
+      "durationSec": 1756.368,
+      "byteSize": 10538208,
+      "narrationWordCount": 3998,
+      "audioUrl": "/blog/audio/field-notes/lookml-semantic-layer-data-modeling.mp3",
       "translationModel": ""
     },
     "field-notes/mcp-production-enterprise": {

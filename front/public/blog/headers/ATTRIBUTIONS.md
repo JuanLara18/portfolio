@@ -21,3 +21,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `nautilus-shell-header.jpg` — Photo by Profberger, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Inside_Nautilus_Pompilius.jpg) (CC BY-SA 3.0)
 - `bridge-arches-header.jpg` — Photo by Joe deSousa, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Panorama_of_Pont_Neuf_(22286979748).jpg) (CC0 1.0)
 - `city-lights-network-header.jpg` — Photo by Don Pettit/NASA ISS, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_city_lights_of_Hong_Kong_and_Shenzhen_(iss072e399613).jpg) (Public Domain)
+- `glass-prism-spectrum-header.jpg` — Photo by Wikimedia Commons user, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Triangular_Glass_Prism.jpg) (CC BY-SA 4.0)

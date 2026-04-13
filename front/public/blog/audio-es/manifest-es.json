@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1776031248,
+  "generatedAt": 1776057682,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -86,11 +86,11 @@
       "category": "curiosities",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "e08184ce80980da414a8deba9901d406d7b9ab8f3a0e82746f57c1089660b1d1",
+      "hash": "c082ea9ab953ceffebe44ee2adc0e065fdbcf2361b45fcd55a53e9f5c6b1ed6c",
       "sourceHash": "6d0bbbd042b5f7c9b76c8d139e479d35eadf7a5e2a16420bb1f6d2212537bfe3",
-      "durationSec": 1473.384,
-      "byteSize": 8840304,
-      "narrationWordCount": 3925,
+      "durationSec": 1465.512,
+      "byteSize": 8793072,
+      "narrationWordCount": 3920,
       "audioUrl": "/blog/audio-es/curiosities/graph-theory-mathematics-of-connections.mp3",
       "translationModel": "gemma4:latest"
     },
@@ -640,6 +640,19 @@
       "audioUrl": "/blog/audio-es/field-notes/local-llm-inference-tools.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/lookml-semantic-layer-data-modeling": {
+      "slug": "lookml-semantic-layer-data-modeling",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "a3c0551a6c791ac8e11241750dda92886b285ab7e65504403affe37d817048ef",
+      "sourceHash": "94b11d380b679bab69910c66e06ef7cf109eaf72b3a4c5a555db56052ad40f40",
+      "durationSec": 1685.904,
+      "byteSize": 10115424,
+      "narrationWordCount": 4562,
+      "audioUrl": "/blog/audio-es/field-notes/lookml-semantic-layer-data-modeling.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/mcp-production-enterprise": {
       "slug": "mcp-production-enterprise",
       "category": "field-notes",
@@ -1048,11 +1061,11 @@
       "category": "research",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "a93909f3c8565c0630a8e799cffe86d39b297e128c668567a8b871b81dfe3522",
+      "hash": "50b2d68600601ec54e1865e096f0b973e69b41c25cbc90afeef58a3a81f1ebfe",
       "sourceHash": "38a5c83a9baa16c2973452954afb5e3addbdcbedad9d713c088d9c8002fa4e4a",
-      "durationSec": 1787.136,
-      "byteSize": 10722816,
-      "narrationWordCount": 4859,
+      "durationSec": 1783.968,
+      "byteSize": 10703808,
+      "narrationWordCount": 4837,
       "audioUrl": "/blog/audio-es/research/mamba-selective-state-spaces.mp3",
       "translationModel": "gemma4:latest"
     },
