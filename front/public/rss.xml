@@ -9,8 +9,28 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 May 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 13 May 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>LookML: The Semantic Layer That Turns SQL Into a Product</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling</guid>
+    <pubDate>Thu, 13 May 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Raw SQL tables are not data products. Between the warehouse and the business sits a translation layer that defines what metrics mean, how tables relate, and who can see what. LookML is one answer to that problem -- a code-based semantic modeling language that version-controls your analytics and opens the door to agentic, programmatic BI.]]></description>
+    <category>field-notes</category>
+    <category>Data Engineering</category>
+    <category>Data Architecture</category>
+    <category>SQL</category>
+    <category>Analytics Engineering</category>
+    <category>Business Intelligence</category>
+    <category>Data Modeling</category>
+    <category>Agentic AI</category>
+    <category>Best Practices</category>
+    <category>Data Governance</category>
+    <category>GCP</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/lookml-semantic-layer-data-modeling.mp3" length="10538208" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Network Science: Communities, Centrality, and Small Worlds</title>
     <link>https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality</link>
