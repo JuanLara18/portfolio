@@ -1,0 +1,13 @@
+{
+  "slug": "ontology-grounded-rag-chunks-in-nodes",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1d95d658f54809f0ea548074cc32184b43f2e5175c26657ba1348a83ec9c5d17",
+  "sourceHash": "29646bca78443e0cc0423c664201c2ad93e315c8b18c55ab8c15b8983d2a4245",
+  "durationSec": 2160.144,
+  "byteSize": 12960864,
+  "narrationWordCount": 5861,
+  "audioUrl": "/blog/audio-es/research/ontology-grounded-rag-chunks-in-nodes.mp3",
+  "translationModel": "gemma4:latest"
+}
