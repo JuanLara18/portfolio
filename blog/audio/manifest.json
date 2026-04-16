@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776056783,
+  "generatedAt": 1776290738,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -770,6 +770,19 @@
       "audioUrl": "/blog/audio/field-notes/ontologies-building-knowledge-bases.mp3",
       "translationModel": ""
     },
+    "field-notes/ontology-to-agent-toolbox": {
+      "slug": "ontology-to-agent-toolbox",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c2dd753b22928c50782a93938df26f9a905d11aa26885acd0220978b0613b171",
+      "sourceHash": "c2dd753b22928c50782a93938df26f9a905d11aa26885acd0220978b0613b171",
+      "durationSec": 1572.744,
+      "byteSize": 9436464,
+      "narrationWordCount": 3873,
+      "audioUrl": "/blog/audio/field-notes/ontology-to-agent-toolbox.mp3",
+      "translationModel": ""
+    },
     "field-notes/production-llm-agents-patterns": {
       "slug": "production-llm-agents-patterns",
       "category": "field-notes",
@@ -807,6 +820,19 @@
       "byteSize": 9570672,
       "narrationWordCount": 3255,
       "audioUrl": "/blog/audio/field-notes/pytorch-tensorflow-deep-learning-frameworks.mp3",
+      "translationModel": ""
+    },
+    "field-notes/query-routing-agent-decisions": {
+      "slug": "query-routing-agent-decisions",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8f22f07a0ddda421a29d23df88e8a5822076087b24d248d0f0c80ccd3ea2b4c9",
+      "sourceHash": "8f22f07a0ddda421a29d23df88e8a5822076087b24d248d0f0c80ccd3ea2b4c9",
+      "durationSec": 1462.032,
+      "byteSize": 8772192,
+      "narrationWordCount": 3504,
+      "audioUrl": "/blog/audio/field-notes/query-routing-agent-decisions.mp3",
       "translationModel": ""
     },
     "field-notes/rag-advanced-patterns": {

@@ -22,3 +22,5 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `bridge-arches-header.jpg` — Photo by Joe deSousa, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Panorama_of_Pont_Neuf_(22286979748).jpg) (CC0 1.0)
 - `city-lights-network-header.jpg` — Photo by Don Pettit/NASA ISS, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_city_lights_of_Hong_Kong_and_Shenzhen_(iss072e399613).jpg) (Public Domain)
 - `glass-prism-spectrum-header.jpg` — Photo by Wikimedia Commons user, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Triangular_Glass_Prism.jpg) (CC BY-SA 4.0)
+- `blacksmith-workshop-header.jpg` — Photo by L'Estrange, Robert Augustus Henry, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Horseshoe_Forge,_Blacksmith_Workshop_-_Enniskerry,_Wicklow_(County)_-_Ireland.jpg) (CC BY-SA 4.0)
+- `railway-diamond-crossing-header.jpg` — Photo by Pi.1415926535, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Diamond_crossing_at_Walpole,_May_2017.JPG) (CC BY-SA 4.0)
