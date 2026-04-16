@@ -202,10 +202,11 @@ def upload_audio_to_r2() -> bool:
     return True
 
 
-# ---------- step 8: blog data ----------
+# ---------- step 8: blog data + knowledge base ----------
 
 def build_blog_data() -> None:
     run(["node", "scripts/build-blog-data.js"])
+    run(["node", "scripts/build-knowledge-base.js"])
 
 
 # ---------- main ----------
@@ -294,7 +295,7 @@ def _main_impl(args: argparse.Namespace) -> int:
     else:
         upload_audio_to_r2()
 
-    step(8, total, "rebuilding blog data manifest")
+    step(8, total, "rebuilding blog data and knowledge base")
     if args.dry_run:
         info("(dry-run)")
     else:

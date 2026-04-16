@@ -68,9 +68,21 @@ Requires Python 3.10+ for the audio pipeline. Ollama is optional — if not inst
 ## Tooling
 
 All build-time scripts — content orchestrator (`sync.py`), blog data generation,
-image optimization, Mermaid validation, PDF export, audio narration pipeline —
-are documented in [`front/scripts/README.md`](front/scripts/README.md). For a
-dev-oriented walkthrough of the React app, see [`front/README.md`](front/README.md).
+knowledge-base generation, image optimization, Mermaid validation, PDF export,
+audio narration pipeline — are documented in [`front/scripts/README.md`](front/scripts/README.md).
+For a dev-oriented walkthrough of the React app, see [`front/README.md`](front/README.md).
+
+## Agent-facing knowledge base
+
+The `knowledge-base/` folder at the repo root is the blog's index for AI
+agents. [`KNOWLEDGE_BASE.md`](knowledge-base/KNOWLEDGE_BASE.md) is the
+human-curated map (reading paths, cross-cutting views, full post catalog)
+and is self-sufficient when the repo is loaded as knowledge in a Claude
+Project. [`posts.json`](knowledge-base/posts.json) is a derived,
+machine-queryable index (concept index, prereq graph, tech index) meant for
+`jq`-style lookups inside Claude Code. Both are regenerated on every
+`npm run sync` and `npm run build` — see [`CLAUDE.md`](CLAUDE.md) for how
+agents consume them.
 
 ## License
 

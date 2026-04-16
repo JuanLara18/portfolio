@@ -28,6 +28,10 @@ front/
 └── package.json
 ```
 
+Agent-facing artifacts (curated map + machine-queryable index of all posts)
+live outside `front/` at the repo-root `knowledge-base/` folder. See the
+repo-root `CLAUDE.md` and `front/scripts/README.md § Knowledge base generation`.
+
 ## npm scripts
 
 | Command | What it does |
@@ -38,6 +42,7 @@ front/
 | `npm run sync:fast` | Same as `sync` but skips Spanish audio (fast text iteration) |
 | `npm run sync:check` | Validate only; no side effects. Runs in CI before every deploy |
 | `npm run build-blog-data` | Rebuild the blog manifest only |
+| `npm run build-knowledge-base` | Regenerate `knowledge-base/posts.json` and the auto-catalog in `KNOWLEDGE_BASE.md` (consumed by agents) |
 | `npm run optimize-images` | Image optimization (WebP + resized variants) |
 | `npm run validate-mermaid` | Lint Mermaid fences across all posts |
 | `npm run generate-pdf` | Render all posts into `output/blog-compilation.pdf` |
