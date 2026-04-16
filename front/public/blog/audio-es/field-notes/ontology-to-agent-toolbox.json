@@ -1,0 +1,13 @@
+{
+  "slug": "ontology-to-agent-toolbox",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "f0bdcf2e0227f4fca007a70d7c1ea6411a1294ed7d3e5cea67b654933a8743bd",
+  "sourceHash": "c2dd753b22928c50782a93938df26f9a905d11aa26885acd0220978b0613b171",
+  "durationSec": 1642.656,
+  "byteSize": 9855936,
+  "narrationWordCount": 4499,
+  "audioUrl": "/blog/audio-es/field-notes/ontology-to-agent-toolbox.mp3",
+  "translationModel": "gemma4:latest"
+}
