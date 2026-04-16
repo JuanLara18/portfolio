@@ -15,8 +15,9 @@ for troubleshooting or surgical edits.
 
 | Script | npm alias | Purpose |
 |---|---|---|
-| `sync.py` | `sync` / `sync:fast` / `sync:check` | **Main entry point.** Clean orphans → validate Mermaid → optimize images → generate EN+ES audio → upload to R2 → rebuild blog data |
-| `build-blog-data.js` | (auto via `prebuild`) | Scan `public/blog/posts/` and emit `src/data/blogData.json` |
+| `sync.py` | `sync` / `sync:fast` / `sync:check` | **Main entry point.** Clean orphans → validate Mermaid → optimize images → generate EN+ES audio → upload to R2 → rebuild blog data + knowledge base |
+| `build-blog-data.js` | `build-blog-data` (auto via `prebuild`) | Scan `public/blog/posts/` and emit `src/data/blogData.json` |
+| `build-knowledge-base.js` | `build-knowledge-base` (auto via `prebuild`) | Derive `knowledge-base/posts.json` (machine-queryable post index) and re-inject the auto-catalog into `knowledge-base/KNOWLEDGE_BASE.md`. Consumed by agents — see repo-root `CLAUDE.md` |
 | `optimize-images.js` | `optimize-images` | WebP + size-capped variants (idempotent) |
 | `validate-mermaid.js` | `validate-mermaid` | Lint Mermaid fences against the renderer's v11 normalization |
 | `generate-blog-pdf.js` | `generate-pdf` | Compile all posts into `output/blog-compilation.pdf` |
@@ -51,7 +52,7 @@ npm run sync -- --dry-run
 | 5 | English audio | `generate_blog_audio.py --lang en` (hash cache) |
 | 6 | Spanish audio | Auto-starts `ollama serve` if needed; if Ollama isn't installed, **warns and skips** instead of failing. Hash cache applies |
 | 7 | Upload to R2 | Pushes new/changed MP3s to the Cloudflare R2 bucket. Skipped with a warning if no credentials are configured. See § R2 setup below |
-| 8 | Rebuild blog data | Writes `src/data/blogData.json` with absolute audio URLs (if `AUDIO_BASE_URL_*` set) so local `npm start` sees the fresh state |
+| 8 | Rebuild blog data and knowledge base | Writes `src/data/blogData.json` with absolute audio URLs (if `AUDIO_BASE_URL_*` set), then runs `build-knowledge-base.js` to regenerate `knowledge-base/posts.json` and re-inject the auto-catalog into `knowledge-base/KNOWLEDGE_BASE.md`. Both are kept in lockstep with the posts on disk |
 
 Steps 1–3 run in `--check`. All eight run in the full pipeline.
 
@@ -88,11 +89,36 @@ npm run sync -- --only <slug> --force
 ## Blog data generation
 
 `build-blog-data.js` runs automatically before every `npm run build` (via the
-`prebuild` hook), and is also step 7 of `sync`. It parses YAML front-matter from
+`prebuild` hook), and is also step 8 of `sync`. It parses YAML front-matter from
 each `.md` under `public/blog/posts/<category>/`, merges in audio manifest data
 from `public/blog/audio/manifest.json` and `public/blog/audio-es/manifest-es.json`,
 and writes `src/data/blogData.json`. The React app reads only this JSON — it
 never touches raw markdown at runtime.
+
+## Knowledge base generation
+
+`build-knowledge-base.js` runs right after `build-blog-data.js` (chained by both
+`prebuild` and `sync` step 8). It reads `src/data/blogData.json` plus the YAML
+augmentation block in `../knowledge-base/KNOWLEDGE_BASE.md`, and produces:
+
+- **`knowledge-base/posts.json`** — machine-queryable index with per-post
+  metadata (concepts, prereqs, teaches, tech, depth, audio availability),
+  plus derived indexes: `concept_index`, `prereq_graph`, `tech_index`,
+  `tag_index`, `category_index`. Meant for `jq`-style lookups by agents.
+- **Auto-catalog inside `knowledge-base/KNOWLEDGE_BASE.md`** — the section
+  between `<!-- AUTO-CATALOG:START -->` and `<!-- AUTO-CATALOG:END -->` is
+  regenerated with one line per post (slug, title, excerpt, concepts, tech).
+  Everything above the markers is human-curated (manifest, reading paths,
+  cross-cutting views, augmentation YAML) and is left untouched.
+
+Posts without an explicit augmentation entry get sensible defaults
+(`concepts ← tags`, `depth ← word_count`, `prereqs/teaches/tech ← []`). To
+enrich a post, edit the YAML under `## Augmentation` in `KNOWLEDGE_BASE.md`
+and re-run `npm run build-knowledge-base`.
+
+The repo-root `CLAUDE.md` tells Claude Code how to consume these files;
+`KNOWLEDGE_BASE.md` alone is self-sufficient for Claude Projects (web) where
+no filesystem tools are available.
 
 ---
 
