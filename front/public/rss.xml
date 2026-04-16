@@ -9,8 +9,48 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 May 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 27 May 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Query Routing: How the Agent Decides Where to Look</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions</guid>
+    <pubDate>Thu, 27 May 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[In a hybrid retrieval system with vector stores, graphs, SQL and APIs, the quality of each source matters less than the decision of which one to consult. This post walks through three routing strategies — LLM-only, explicit classifier, cascading fallback — and shows how to evaluate the router as a first-class component.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>RAG</category>
+    <category>LLMs</category>
+    <category>Vector Databases</category>
+    <category>Knowledge Graphs</category>
+    <category>Information Retrieval</category>
+    <category>Evaluation</category>
+    <category>Production ML</category>
+    <category>Embeddings</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/query-routing-agent-decisions.mp3" length="8772192" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>From Ontology to Agent Toolbox: Turning Your Schema Into Tools</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox</guid>
+    <pubDate>Thu, 20 May 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[An ontology is not just a schema — it is the blueprint that tells you which tools to give your agent. This post walks through three levels of tool granularity, from a monolithic Cypher endpoint to domain-scoped tools derived class-by-class from an OWL ontology, with production-quality Python, guardrails, and role-based access.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Knowledge Graphs</category>
+    <category>Ontologies</category>
+    <category>LLMs</category>
+    <category>RAG</category>
+    <category>Tool Use</category>
+    <category>Neo4j</category>
+    <category>Production ML</category>
+    <category>Software Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ontology-to-agent-toolbox.mp3" length="9436464" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>LookML: The Semantic Layer That Turns SQL Into a Product</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling</link>
