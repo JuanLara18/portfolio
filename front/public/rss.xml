@@ -9,8 +9,28 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 May 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jun 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Ontology-Grounded RAG: Why Chunks-in-Nodes Matter More Than the Ontology Itself</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes</guid>
+    <pubDate>Thu, 03 Jun 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[A 2025 paper quietly demolishes the assumption that ontology source is what matters for graph-based RAG. The real lever is whether your nodes carry text chunks — and if they don't, structure alone underperforms naive vector RAG by 40 points.]]></description>
+    <category>research</category>
+    <category>RAG</category>
+    <category>Knowledge Graphs</category>
+    <category>Ontologies</category>
+    <category>Vector Databases</category>
+    <category>Information Retrieval</category>
+    <category>LLMs</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Neo4j</category>
+    <category>Data Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/ontology-grounded-rag-chunks-in-nodes.mp3" length="12998160" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Query Routing: How the Agent Decides Where to Look</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions</link>
