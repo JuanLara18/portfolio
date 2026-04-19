@@ -24,3 +24,8 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `glass-prism-spectrum-header.jpg` — Photo by Wikimedia Commons user, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Triangular_Glass_Prism.jpg) (CC BY-SA 4.0)
 - `blacksmith-workshop-header.jpg` — Photo by L'Estrange, Robert Augustus Henry, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Horseshoe_Forge,_Blacksmith_Workshop_-_Enniskerry,_Wicklow_(County)_-_Ireland.jpg) (CC BY-SA 4.0)
 - `railway-diamond-crossing-header.jpg` — Photo by Pi.1415926535, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Diamond_crossing_at_Walpole,_May_2017.JPG) (CC BY-SA 4.0)
+- `trellis-roses-header.jpg` — Photo by Acabashi, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arch_trellis_in_Victorian_walled_garden_at_Quex_House_Birchington_Kent_England.jpg) (CC BY-SA 4.0)
+- `architectural-blueprint-header.jpg` — Drawing by Alice Trythall Washburn (1924), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Blueprint_of_elevation_by_Alice_Trythall_Washburn.jpg) (Public Domain)
+- `solar-system-orbits-header.jpg` — Illustration by Rubin Observatory/NSF/AURA, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Solar_System_Illustration_(rubin-20220314-Solar-System-hero).jpg) (CC BY 4.0)
+- `industrial-conveyor-belt-header.jpg` — Photo by Martin Pearman, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Industrial_conveyor_belt_-_geograph.org.uk_-_4373595.jpg) (CC BY-SA 2.0)
+- `bee-pollinating-flower-header.jpg` — Photo by Nirajan pant, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honey_bee_pollinating_Daisy_Flower.jpg) (CC BY-SA 4.0)
