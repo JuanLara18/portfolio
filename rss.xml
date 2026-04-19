@@ -9,8 +9,93 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Jun 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jul 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Populating a Knowledge Graph with LLMs: A Banking Case Study</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking</guid>
+    <pubDate>Thu, 01 Jul 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[There is an abyss between the GraphRAG paper and a pipeline that runs reliably in production. This post crosses that gap with a worked banking case — ingesting mortgage-loan documents into Neo4j with a schema-embedded extraction prompt, Pydantic repair, pySHACL validation, entity resolution, and idempotent MERGE Cypher.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>LLMs</category>
+    <category>Ontologies</category>
+    <category>Information Extraction</category>
+    <category>Neo4j</category>
+    <category>Entity Resolution</category>
+    <category>SHACL</category>
+    <category>Data Pipelines</category>
+    <category>Production ML</category>
+    <category>Prompt Engineering</category>
+    <category>Banking</category>
+    <category>Data Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/populating-knowledge-graph-llms-banking.mp3" length="8344368" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Ontologies in Production: A CI/CD Pipeline for Enterprise Schemas on GCP</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp</guid>
+    <pubDate>Thu, 24 Jun 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[An ontology that lives on one engineer's laptop is not an ontology, it is a document. Putting one into production has its own architectural shape: Git as source of truth, YAML authored and compiled into OWL, SHACL, and JSON-Schema, CI that runs competency questions as tests, and GCP plumbing that treats the schema as code, not data.]]></description>
+    <category>field-notes</category>
+    <category>Ontology Engineering</category>
+    <category>Knowledge Graphs</category>
+    <category>MLOps</category>
+    <category>Data Engineering</category>
+    <category>CI/CD</category>
+    <category>Cloud Computing</category>
+    <category>GCP</category>
+    <category>SHACL</category>
+    <category>Airflow</category>
+    <category>Software Engineering</category>
+    <category>Data Architecture</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ontology-production-pipeline-gcp.mp3" length="8733168" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Modular Ontologies: The Core + Domains Pattern for Enterprise Knowledge Graphs</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern</guid>
+    <pubDate>Thu, 17 Jun 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[An enterprise ontology is neither a single monolithic file nor a loose federation of domain silos. Real projects converge to Core + Domains: a small, stable core of cross-cutting concepts and orbiting modules per business line. This post derives the operational rule that governs that split, using banking as the grounded example.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>Ontology Engineering</category>
+    <category>Data Architecture</category>
+    <category>Best Practices</category>
+    <category>OWL</category>
+    <category>RDF</category>
+    <category>FIBO</category>
+    <category>Neo4j</category>
+    <category>Banking</category>
+    <category>Enterprise Architecture</category>
+    <category>Software Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/modular-ontologies-core-domains-pattern.mp3" length="10804464" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>TBox and ABox: Why the Schema/Facts Split Matters in Production Knowledge Graphs</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction</guid>
+    <pubDate>Thu, 10 Jun 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most enterprise knowledge-graph projects fail at the same join: the place where the schema of the world meets the facts about the world. The Description-Logic distinction between TBox, ABox, and RBox is not academic pedantry. It is the operating model that tells you how to lay out files, who owns what, how often each piece changes, which tools to use, and where SHACL sits in the pipeline. This post grounds the theory in a banking knowledge graph and shows the concrete failure modes when teams collapse the distinction.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>Ontology Engineering</category>
+    <category>Data Engineering</category>
+    <category>Data Architecture</category>
+    <category>Neo4j</category>
+    <category>RDF</category>
+    <category>OWL</category>
+    <category>SHACL</category>
+    <category>Description Logic</category>
+    <category>Knowledge Representation</category>
+    <category>Banking</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/tbox-abox-schema-facts-distinction.mp3" length="9254736" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Ontology-Grounded RAG: Why Chunks-in-Nodes Matter More Than the Ontology Itself</title>
     <link>https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes</link>
@@ -28,6 +113,7 @@
     <category>Algorithms</category>
     <category>Neo4j</category>
     <category>Data Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/ontology-grounded-rag-chunks-in-nodes.mp3" length="12998160" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>

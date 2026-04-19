@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776290738,
+  "generatedAt": 1776641909,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -718,6 +718,19 @@
       "audioUrl": "/blog/audio/field-notes/model-context-protocol.mp3",
       "translationModel": ""
     },
+    "field-notes/modular-ontologies-core-domains-pattern": {
+      "slug": "modular-ontologies-core-domains-pattern",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "63ac54637be2c867466e7ba5caf150d912bb5bf66a3d0cfa4418306032b02b97",
+      "sourceHash": "63ac54637be2c867466e7ba5caf150d912bb5bf66a3d0cfa4418306032b02b97",
+      "durationSec": 1800.744,
+      "byteSize": 10804464,
+      "narrationWordCount": 4240,
+      "audioUrl": "/blog/audio/field-notes/modular-ontologies-core-domains-pattern.mp3",
+      "translationModel": ""
+    },
     "field-notes/mteb-embedding-benchmarks": {
       "slug": "mteb-embedding-benchmarks",
       "category": "field-notes",
@@ -770,6 +783,19 @@
       "audioUrl": "/blog/audio/field-notes/ontologies-building-knowledge-bases.mp3",
       "translationModel": ""
     },
+    "field-notes/ontology-production-pipeline-gcp": {
+      "slug": "ontology-production-pipeline-gcp",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "45a25f50eb11b2a3dd116db2fb6478048bab4d28ab708cafac840c59e7bba5c8",
+      "sourceHash": "45a25f50eb11b2a3dd116db2fb6478048bab4d28ab708cafac840c59e7bba5c8",
+      "durationSec": 1455.528,
+      "byteSize": 8733168,
+      "narrationWordCount": 3555,
+      "audioUrl": "/blog/audio/field-notes/ontology-production-pipeline-gcp.mp3",
+      "translationModel": ""
+    },
     "field-notes/ontology-to-agent-toolbox": {
       "slug": "ontology-to-agent-toolbox",
       "category": "field-notes",
@@ -781,6 +807,19 @@
       "byteSize": 9436464,
       "narrationWordCount": 3873,
       "audioUrl": "/blog/audio/field-notes/ontology-to-agent-toolbox.mp3",
+      "translationModel": ""
+    },
+    "field-notes/populating-knowledge-graph-llms-banking": {
+      "slug": "populating-knowledge-graph-llms-banking",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "7118caf3e19c5be8ddfb8601f5d905b63a46b871679835e0ebd3f780ea1472d8",
+      "sourceHash": "7118caf3e19c5be8ddfb8601f5d905b63a46b871679835e0ebd3f780ea1472d8",
+      "durationSec": 1390.728,
+      "byteSize": 8344368,
+      "narrationWordCount": 3882,
+      "audioUrl": "/blog/audio/field-notes/populating-knowledge-graph-llms-banking.mp3",
       "translationModel": ""
     },
     "field-notes/production-llm-agents-patterns": {
@@ -952,6 +991,19 @@
       "audioUrl": "/blog/audio/field-notes/structuring-ml-projects.mp3",
       "translationModel": ""
     },
+    "field-notes/tbox-abox-schema-facts-distinction": {
+      "slug": "tbox-abox-schema-facts-distinction",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "13c3a1c441947472a4ab2c678877007a42bee3d0b7b85ea7bfcfc6f1712ed2aa",
+      "sourceHash": "13c3a1c441947472a4ab2c678877007a42bee3d0b7b85ea7bfcfc6f1712ed2aa",
+      "durationSec": 1542.456,
+      "byteSize": 9254736,
+      "narrationWordCount": 3734,
+      "audioUrl": "/blog/audio/field-notes/tbox-abox-schema-facts-distinction.mp3",
+      "translationModel": ""
+    },
     "field-notes/terraform-infrastructure-as-code": {
       "slug": "terraform-infrastructure-as-code",
       "category": "field-notes",
@@ -1106,6 +1158,19 @@
       "byteSize": 13502448,
       "narrationWordCount": 5306,
       "audioUrl": "/blog/audio/research/microgpt-reading-karpathy.mp3",
+      "translationModel": ""
+    },
+    "research/ontology-grounded-rag-chunks-in-nodes": {
+      "slug": "ontology-grounded-rag-chunks-in-nodes",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "29646bca78443e0cc0423c664201c2ad93e315c8b18c55ab8c15b8983d2a4245",
+      "sourceHash": "29646bca78443e0cc0423c664201c2ad93e315c8b18c55ab8c15b8983d2a4245",
+      "durationSec": 2166.36,
+      "byteSize": 12998160,
+      "narrationWordCount": 5109,
+      "audioUrl": "/blog/audio/research/ontology-grounded-rag-chunks-in-nodes.mp3",
       "translationModel": ""
     },
     "research/rag-retrieval-augmented-generation": {
