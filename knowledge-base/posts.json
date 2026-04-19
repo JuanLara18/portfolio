@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-04-16T17:04:56.540Z",
+  "generated_at": "2026-04-16T21:24:04.484Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,18 +8,61 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 89,
+    "total_posts": 90,
     "augmented_posts": 15,
     "by_category": {
+      "research": 12,
       "field-notes": 64,
-      "curiosities": 14,
-      "research": 11
+      "curiosities": 14
     },
-    "concepts_indexed": 260,
+    "concepts_indexed": 262,
     "tech_indexed": 17,
     "prereq_edges": 21
   },
   "posts": {
+    "ontology-grounded-rag-chunks-in-nodes": {
+      "title": "Ontology-Grounded RAG: Why Chunks-in-Nodes Matter More Than the Ontology Itself",
+      "date": "2027-06-03",
+      "category": "research",
+      "tags": [
+        "RAG",
+        "Knowledge Graphs",
+        "Ontologies",
+        "Vector Databases",
+        "Information Retrieval",
+        "LLMs",
+        "Research Papers",
+        "Algorithms",
+        "Neo4j",
+        "Data Engineering"
+      ],
+      "excerpt": "A 2025 paper quietly demolishes the assumption that ontology source is what matters for graph-based RAG. The real lever is whether your nodes carry text chunks — and if they don't, structure alone underperforms naive vector RAG by 40 points.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/ontology-grounded-rag-chunks-in-nodes",
+      "source_path": "front/public/blog/posts/research/ontology-grounded-rag-chunks-in-nodes.md",
+      "reading_minutes": 30,
+      "word_count": 7285,
+      "concepts": [
+        "rag",
+        "knowledge graphs",
+        "ontologies",
+        "vector databases",
+        "information retrieval",
+        "llms",
+        "research papers",
+        "algorithms",
+        "neo4j",
+        "data engineering"
+      ],
+      "prereqs": [],
+      "teaches": [],
+      "tech": [],
+      "depth": "deep",
+      "audio_available": [
+        "en",
+        "es"
+      ],
+      "augmented": false
+    },
     "query-routing-agent-decisions": {
       "title": "Query Routing: How the Agent Decides Where to Look",
       "date": "2027-05-27",
@@ -3833,30 +3876,6 @@
     }
   },
   "concept_index": {
-    "tool routing": [
-      {
-        "slug": "query-routing-agent-decisions",
-        "depth": "deep"
-      }
-    ],
-    "query classification": [
-      {
-        "slug": "query-routing-agent-decisions",
-        "depth": "deep"
-      }
-    ],
-    "retrieval evaluation": [
-      {
-        "slug": "query-routing-agent-decisions",
-        "depth": "deep"
-      }
-    ],
-    "cascading retrieval": [
-      {
-        "slug": "query-routing-agent-decisions",
-        "depth": "deep"
-      }
-    ],
     "rag": [
       {
         "slug": "ai-poc-enterprise-evaluation",
@@ -3903,6 +3922,10 @@
         "depth": "deep"
       },
       {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
         "slug": "query-routing-agent-decisions",
         "depth": "deep"
       },
@@ -3912,6 +3935,392 @@
       },
       {
         "slug": "vector-db-benchmarks",
+        "depth": "deep"
+      }
+    ],
+    "knowledge graphs": [
+      {
+        "slug": "enterprise-knowledge-bases",
+        "depth": "deep"
+      },
+      {
+        "slug": "network-science-communities-centrality",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      }
+    ],
+    "ontologies": [
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      }
+    ],
+    "vector databases": [
+      {
+        "slug": "ai-poc-enterprise-evaluation",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-knowledge-bases",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "multimodal-embeddings-metric-problem",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "vector-db-benchmarks",
+        "depth": "deep"
+      }
+    ],
+    "information retrieval": [
+      {
+        "slug": "document-processing-ocr-layout",
+        "depth": "deep"
+      },
+      {
+        "slug": "fine-tuning-embeddings",
+        "depth": "deep"
+      },
+      {
+        "slug": "mteb-embedding-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "multimodal-embeddings-metric-problem",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "vector-db-benchmarks",
+        "depth": "deep"
+      }
+    ],
+    "llms": [
+      {
+        "slug": "ai-poc-enterprise-evaluation",
+        "depth": "deep"
+      },
+      {
+        "slug": "emotion-concepts-in-llms",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-ai-platform-selection",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-knowledge-bases",
+        "depth": "deep"
+      },
+      {
+        "slug": "fine-tuning-embeddings",
+        "depth": "deep"
+      },
+      {
+        "slug": "fine-tuning-gemma4-lora-qlora",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "langgraph-multi-agent-workflows",
+        "depth": "deep"
+      },
+      {
+        "slug": "llamaindex-langchain-llm-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-as-a-judge",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-caching-four-layers",
+        "depth": "deep"
+      },
+      {
+        "slug": "mcp-server-nl-to-powerbi-dashboard",
+        "depth": "deep"
+      },
+      {
+        "slug": "microgpt-reading-karpathy",
+        "depth": "deep"
+      },
+      {
+        "slug": "mteb-embedding-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "multimodal-embeddings-metric-problem",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "rlhf-dpo-alignment",
+        "depth": "deep"
+      },
+      {
+        "slug": "scaling-laws-neural-language-models",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
+        "depth": "deep"
+      },
+      {
+        "slug": "working-with-ml-models",
+        "depth": "deep"
+      }
+    ],
+    "research papers": [
+      {
+        "slug": "attention-is-all-you-need",
+        "depth": "intro"
+      },
+      {
+        "slug": "bert-pre-training-bidirectional-transformers",
+        "depth": "deep"
+      },
+      {
+        "slug": "emotion-concepts-in-llms",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-as-a-judge",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "mamba-selective-state-spaces",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "scaling-laws-neural-language-models",
+        "depth": "deep"
+      },
+      {
+        "slug": "t5-text-to-text-transfer-transformer",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-manifold-hypothesis",
+        "depth": "deep"
+      }
+    ],
+    "algorithms": [
+      {
+        "slug": "algebraic-number-theory-when-factorization-breaks",
+        "depth": "deep"
+      },
+      {
+        "slug": "attention-is-all-you-need",
+        "depth": "intro"
+      },
+      {
+        "slug": "benfords-law",
+        "depth": "deep"
+      },
+      {
+        "slug": "collatz-conjecture",
+        "depth": "deep"
+      },
+      {
+        "slug": "content-addressable-hash-as-engineering-tool",
+        "depth": "deep"
+      },
+      {
+        "slug": "fermat-n4-infinite-descent",
+        "depth": "deep"
+      },
+      {
+        "slug": "files-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "fourier-transform",
+        "depth": "deep"
+      },
+      {
+        "slug": "godels-incompleteness-theorems",
+        "depth": "deep"
+      },
+      {
+        "slug": "graph-theory-mathematics-of-connections",
+        "depth": "deep"
+      },
+      {
+        "slug": "mamba-selective-state-spaces",
+        "depth": "deep"
+      },
+      {
+        "slug": "network-science-communities-centrality",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "ramanujan-constant-almost-integer",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-first-principles",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-in-practice",
+        "depth": "deep"
+      },
+      {
+        "slug": "rubiks-cube-group-theory",
+        "depth": "intro"
+      },
+      {
+        "slug": "shannon-number-chess-game-tree",
+        "depth": "deep"
+      },
+      {
+        "slug": "tetris-np-complete",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-manifold-hypothesis",
+        "depth": "deep"
+      }
+    ],
+    "neo4j": [
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      }
+    ],
+    "data engineering": [
+      {
+        "slug": "ai-poc-enterprise-evaluation",
+        "depth": "deep"
+      },
+      {
+        "slug": "apache-airflow-orchestration",
+        "depth": "deep"
+      },
+      {
+        "slug": "apache-spark-ecosystem-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "dama-dmbok-data-governance",
+        "depth": "deep"
+      },
+      {
+        "slug": "data-engineering-fundamentals",
+        "depth": "deep"
+      },
+      {
+        "slug": "data-silos-breaking-information-barriers",
+        "depth": "deep"
+      },
+      {
+        "slug": "dbt-analytics-engineering",
+        "depth": "deep"
+      },
+      {
+        "slug": "dimensional-modeling-kimball",
+        "depth": "deep"
+      },
+      {
+        "slug": "files-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "lakehouse-architecture",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-libraries-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "sql-pandas-pyspark-duckdb",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
+        "depth": "deep"
+      }
+    ],
+    "tool routing": [
+      {
+        "slug": "query-routing-agent-decisions",
+        "depth": "deep"
+      }
+    ],
+    "query classification": [
+      {
+        "slug": "query-routing-agent-decisions",
+        "depth": "deep"
+      }
+    ],
+    "retrieval evaluation": [
+      {
+        "slug": "query-routing-agent-decisions",
+        "depth": "deep"
+      }
+    ],
+    "cascading retrieval": [
+      {
+        "slug": "query-routing-agent-decisions",
         "depth": "deep"
       }
     ],
@@ -4079,84 +4488,6 @@
         "depth": "deep"
       }
     ],
-    "algorithms": [
-      {
-        "slug": "algebraic-number-theory-when-factorization-breaks",
-        "depth": "deep"
-      },
-      {
-        "slug": "attention-is-all-you-need",
-        "depth": "intro"
-      },
-      {
-        "slug": "benfords-law",
-        "depth": "deep"
-      },
-      {
-        "slug": "collatz-conjecture",
-        "depth": "deep"
-      },
-      {
-        "slug": "content-addressable-hash-as-engineering-tool",
-        "depth": "deep"
-      },
-      {
-        "slug": "fermat-n4-infinite-descent",
-        "depth": "deep"
-      },
-      {
-        "slug": "files-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "fourier-transform",
-        "depth": "deep"
-      },
-      {
-        "slug": "godels-incompleteness-theorems",
-        "depth": "deep"
-      },
-      {
-        "slug": "graph-theory-mathematics-of-connections",
-        "depth": "deep"
-      },
-      {
-        "slug": "mamba-selective-state-spaces",
-        "depth": "deep"
-      },
-      {
-        "slug": "network-science-communities-centrality",
-        "depth": "deep"
-      },
-      {
-        "slug": "ramanujan-constant-almost-integer",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-first-principles",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-in-practice",
-        "depth": "deep"
-      },
-      {
-        "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
-      },
-      {
-        "slug": "shannon-number-chess-game-tree",
-        "depth": "deep"
-      },
-      {
-        "slug": "tetris-np-complete",
-        "depth": "deep"
-      },
-      {
-        "slug": "the-manifold-hypothesis",
-        "depth": "deep"
-      }
-    ],
     "probability": [
       {
         "slug": "benfords-law",
@@ -4242,16 +4573,6 @@
       },
       {
         "slug": "tetris-np-complete",
-        "depth": "deep"
-      }
-    ],
-    "knowledge graphs": [
-      {
-        "slug": "enterprise-knowledge-bases",
-        "depth": "deep"
-      },
-      {
-        "slug": "network-science-communities-centrality",
         "depth": "deep"
       }
     ],
@@ -5241,92 +5562,6 @@
         "depth": "deep"
       }
     ],
-    "llms": [
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "emotion-concepts-in-llms",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-ai-platform-selection",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-knowledge-bases",
-        "depth": "deep"
-      },
-      {
-        "slug": "fine-tuning-embeddings",
-        "depth": "deep"
-      },
-      {
-        "slug": "fine-tuning-gemma4-lora-qlora",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "langgraph-multi-agent-workflows",
-        "depth": "deep"
-      },
-      {
-        "slug": "llamaindex-langchain-llm-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-as-a-judge",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-caching-four-layers",
-        "depth": "deep"
-      },
-      {
-        "slug": "mcp-server-nl-to-powerbi-dashboard",
-        "depth": "deep"
-      },
-      {
-        "slug": "microgpt-reading-karpathy",
-        "depth": "deep"
-      },
-      {
-        "slug": "mteb-embedding-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "multimodal-embeddings-metric-problem",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "rlhf-dpo-alignment",
-        "depth": "deep"
-      },
-      {
-        "slug": "scaling-laws-neural-language-models",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
-        "depth": "deep"
-      },
-      {
-        "slug": "working-with-ml-models",
-        "depth": "deep"
-      }
-    ],
     "business intelligence": [
       {
         "slug": "mcp-server-nl-to-powerbi-dashboard",
@@ -5625,58 +5860,6 @@
         "depth": "deep"
       }
     ],
-    "vector databases": [
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-knowledge-bases",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "multimodal-embeddings-metric-problem",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "vector-db-benchmarks",
-        "depth": "deep"
-      }
-    ],
-    "information retrieval": [
-      {
-        "slug": "document-processing-ocr-layout",
-        "depth": "deep"
-      },
-      {
-        "slug": "fine-tuning-embeddings",
-        "depth": "deep"
-      },
-      {
-        "slug": "mteb-embedding-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "multimodal-embeddings-metric-problem",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "vector-db-benchmarks",
-        "depth": "deep"
-      }
-    ],
     "representation learning": [
       {
         "slug": "attention-is-all-you-need",
@@ -5909,48 +6092,6 @@
         "depth": "deep"
       }
     ],
-    "research papers": [
-      {
-        "slug": "attention-is-all-you-need",
-        "depth": "intro"
-      },
-      {
-        "slug": "bert-pre-training-bidirectional-transformers",
-        "depth": "deep"
-      },
-      {
-        "slug": "emotion-concepts-in-llms",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-as-a-judge",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "mamba-selective-state-spaces",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "scaling-laws-neural-language-models",
-        "depth": "deep"
-      },
-      {
-        "slug": "t5-text-to-text-transfer-transformer",
-        "depth": "deep"
-      },
-      {
-        "slug": "the-manifold-hypothesis",
-        "depth": "deep"
-      }
-    ],
     "neural network theory": [
       {
         "slug": "attention-is-all-you-need",
@@ -6156,60 +6297,6 @@
     "apache airflow": [
       {
         "slug": "apache-airflow-orchestration",
-        "depth": "deep"
-      }
-    ],
-    "data engineering": [
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "apache-airflow-orchestration",
-        "depth": "deep"
-      },
-      {
-        "slug": "apache-spark-ecosystem-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "dama-dmbok-data-governance",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-engineering-fundamentals",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-silos-breaking-information-barriers",
-        "depth": "deep"
-      },
-      {
-        "slug": "dbt-analytics-engineering",
-        "depth": "deep"
-      },
-      {
-        "slug": "dimensional-modeling-kimball",
-        "depth": "deep"
-      },
-      {
-        "slug": "files-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "lakehouse-architecture",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-libraries-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "sql-pandas-pyspark-duckdb",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
         "depth": "deep"
       }
     ],
@@ -7505,28 +7592,6 @@
     ]
   },
   "tag_index": {
-    "Agents": [
-      "claude-code-complete-guide",
-      "enterprise-knowledge-bases",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "mcp-production-enterprise",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "model-context-protocol",
-      "ontology-to-agent-toolbox",
-      "production-llm-agents-patterns",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns",
-      "text-to-sql"
-    ],
-    "Agentic AI": [
-      "claude-code-complete-guide",
-      "langgraph-multi-agent-workflows",
-      "lookml-semantic-layer-data-modeling",
-      "ontology-to-agent-toolbox",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns"
-    ],
     "RAG": [
       "ai-poc-enterprise-evaluation",
       "document-processing-ocr-layout",
@@ -7539,12 +7604,55 @@
       "llm-caching-four-layers",
       "mcp-server-nl-to-powerbi-dashboard",
       "mteb-embedding-benchmarks",
+      "ontology-grounded-rag-chunks-in-nodes",
       "ontology-to-agent-toolbox",
       "query-routing-agent-decisions",
       "rag-advanced-patterns",
       "rag-building-production-systems",
       "rag-retrieval-augmented-generation",
       "ragas-evaluating-rag",
+      "vector-db-benchmarks"
+    ],
+    "Knowledge Graphs": [
+      "enterprise-knowledge-bases",
+      "graph-neural-networks-learning-structured-data",
+      "knowledge-graphs-practice",
+      "network-science-communities-centrality",
+      "ontologies-building-knowledge-bases",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-to-agent-toolbox",
+      "pagerank-eigenvectors",
+      "query-routing-agent-decisions"
+    ],
+    "Ontologies": [
+      "knowledge-graphs-practice",
+      "ontologies-building-knowledge-bases",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-to-agent-toolbox"
+    ],
+    "Vector Databases": [
+      "ai-poc-enterprise-evaluation",
+      "enterprise-knowledge-bases",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "multimodal-embeddings-metric-problem",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "query-routing-agent-decisions",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
+      "vector-db-benchmarks"
+    ],
+    "Information Retrieval": [
+      "document-processing-ocr-layout",
+      "embeddings-geometry-of-meaning",
+      "fine-tuning-embeddings",
+      "knowledge-graphs-practice",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "pagerank-eigenvectors",
+      "query-routing-agent-decisions",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
       "vector-db-benchmarks"
     ],
     "LLMs": [
@@ -7568,6 +7676,7 @@
       "model-context-protocol",
       "mteb-embedding-benchmarks",
       "multimodal-embeddings-metric-problem",
+      "ontology-grounded-rag-chunks-in-nodes",
       "ontology-to-agent-toolbox",
       "production-llm-agents-patterns",
       "query-routing-agent-decisions",
@@ -7579,38 +7688,87 @@
       "text-to-sql",
       "working-with-ml-models"
     ],
-    "Vector Databases": [
-      "ai-poc-enterprise-evaluation",
-      "enterprise-knowledge-bases",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "multimodal-embeddings-metric-problem",
-      "query-routing-agent-decisions",
-      "rag-building-production-systems",
-      "rag-retrieval-augmented-generation",
-      "vector-db-benchmarks"
-    ],
-    "Knowledge Graphs": [
-      "enterprise-knowledge-bases",
-      "graph-neural-networks-learning-structured-data",
-      "knowledge-graphs-practice",
-      "network-science-communities-centrality",
-      "ontologies-building-knowledge-bases",
-      "ontology-to-agent-toolbox",
-      "pagerank-eigenvectors",
-      "query-routing-agent-decisions"
-    ],
-    "Information Retrieval": [
-      "document-processing-ocr-layout",
+    "Research Papers": [
+      "attention-is-all-you-need",
+      "bert-pre-training-bidirectional-transformers",
       "embeddings-geometry-of-meaning",
-      "fine-tuning-embeddings",
-      "knowledge-graphs-practice",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "pagerank-eigenvectors",
-      "query-routing-agent-decisions",
-      "rag-building-production-systems",
+      "emotion-concepts-in-llms",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "mamba-selective-state-spaces",
+      "ontology-grounded-rag-chunks-in-nodes",
       "rag-retrieval-augmented-generation",
-      "vector-db-benchmarks"
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis"
+    ],
+    "Algorithms": [
+      "algebraic-number-theory-when-factorization-breaks",
+      "attention-is-all-you-need",
+      "benfords-law",
+      "collatz-conjecture",
+      "content-addressable-hash-as-engineering-tool",
+      "fermat-n4-infinite-descent",
+      "files-under-the-hood",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-neural-networks-learning-structured-data",
+      "graph-theory-mathematics-of-connections",
+      "mamba-selective-state-spaces",
+      "network-science-communities-centrality",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "pagerank-eigenvectors",
+      "ramanujan-constant-almost-integer",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete",
+      "the-manifold-hypothesis"
+    ],
+    "Neo4j": [
+      "knowledge-graphs-practice",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-to-agent-toolbox"
+    ],
+    "Data Engineering": [
+      "ai-poc-enterprise-evaluation",
+      "apache-airflow-orchestration",
+      "apache-spark-ecosystem-guide",
+      "dama-dmbok-data-governance",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "dbt-analytics-engineering",
+      "dimensional-modeling-kimball",
+      "files-under-the-hood",
+      "lakehouse-architecture",
+      "lookml-semantic-layer-data-modeling",
+      "ml-libraries-under-the-hood",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "sql-pandas-pyspark-duckdb",
+      "text-to-sql"
+    ],
+    "Agents": [
+      "claude-code-complete-guide",
+      "enterprise-knowledge-bases",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "mcp-production-enterprise",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "model-context-protocol",
+      "ontology-to-agent-toolbox",
+      "production-llm-agents-patterns",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns",
+      "text-to-sql"
+    ],
+    "Agentic AI": [
+      "claude-code-complete-guide",
+      "langgraph-multi-agent-workflows",
+      "lookml-semantic-layer-data-modeling",
+      "ontology-to-agent-toolbox",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns"
     ],
     "Evaluation": [
       "ai-poc-enterprise-evaluation",
@@ -7676,11 +7834,6 @@
       "the-manifold-hypothesis",
       "vector-db-benchmarks"
     ],
-    "Ontologies": [
-      "knowledge-graphs-practice",
-      "ontologies-building-knowledge-bases",
-      "ontology-to-agent-toolbox"
-    ],
     "Tool Use": [
       "langgraph-multi-agent-workflows",
       "mcp-production-enterprise",
@@ -7688,10 +7841,6 @@
       "model-context-protocol",
       "ontology-to-agent-toolbox",
       "production-llm-agents-patterns"
-    ],
-    "Neo4j": [
-      "knowledge-graphs-practice",
-      "ontology-to-agent-toolbox"
     ],
     "Software Engineering": [
       "bash-daily-driver-ml-engineer",
@@ -7708,22 +7857,6 @@
       "python-beyond-the-basics",
       "software-engineering-classics",
       "structuring-ml-projects"
-    ],
-    "Data Engineering": [
-      "ai-poc-enterprise-evaluation",
-      "apache-airflow-orchestration",
-      "apache-spark-ecosystem-guide",
-      "dama-dmbok-data-governance",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "dbt-analytics-engineering",
-      "dimensional-modeling-kimball",
-      "files-under-the-hood",
-      "lakehouse-architecture",
-      "lookml-semantic-layer-data-modeling",
-      "ml-libraries-under-the-hood",
-      "sql-pandas-pyspark-duckdb",
-      "text-to-sql"
     ],
     "Data Architecture": [
       "dama-dmbok-data-governance",
@@ -7813,29 +7946,6 @@
       "graph-theory-mathematics-of-connections",
       "network-science-communities-centrality",
       "pagerank-eigenvectors"
-    ],
-    "Algorithms": [
-      "algebraic-number-theory-when-factorization-breaks",
-      "attention-is-all-you-need",
-      "benfords-law",
-      "collatz-conjecture",
-      "content-addressable-hash-as-engineering-tool",
-      "fermat-n4-infinite-descent",
-      "files-under-the-hood",
-      "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-neural-networks-learning-structured-data",
-      "graph-theory-mathematics-of-connections",
-      "mamba-selective-state-spaces",
-      "network-science-communities-centrality",
-      "pagerank-eigenvectors",
-      "ramanujan-constant-almost-integer",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rubiks-cube-group-theory",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete",
-      "the-manifold-hypothesis"
     ],
     "Probability": [
       "benfords-law",
@@ -8315,19 +8425,6 @@
       "emotion-concepts-in-llms",
       "reinforcement-learning-first-principles"
     ],
-    "Research Papers": [
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "mamba-selective-state-spaces",
-      "rag-retrieval-augmented-generation",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis"
-    ],
     "Transformers": [
       "attention-is-all-you-need",
       "bert-pre-training-bidirectional-transformers",
@@ -8777,6 +8874,20 @@
     ]
   },
   "category_index": {
+    "research": [
+      "attention-is-all-you-need",
+      "bert-pre-training-bidirectional-transformers",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "llm-as-a-judge",
+      "mamba-selective-state-spaces",
+      "microgpt-reading-karpathy",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "rag-retrieval-augmented-generation",
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis"
+    ],
     "field-notes": [
       "ai-poc-enterprise-evaluation",
       "apache-airflow-orchestration",
@@ -8858,19 +8969,6 @@
       "shannon-number-chess-game-tree",
       "sum-of-naturals-minus-one-twelfth",
       "tetris-np-complete"
-    ],
-    "research": [
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "llm-as-a-judge",
-      "mamba-selective-state-spaces",
-      "microgpt-reading-karpathy",
-      "rag-retrieval-augmented-generation",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis"
     ]
   },
   "prereq_graph": {
