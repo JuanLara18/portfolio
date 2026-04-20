@@ -1,0 +1,13 @@
+{
+  "slug": "populating-knowledge-graph-llms-banking",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "298ef76b736f78ddad36e11167e1a0846791052adc933cb2dbdd13cc532a7b1e",
+  "sourceHash": "7118caf3e19c5be8ddfb8601f5d905b63a46b871679835e0ebd3f780ea1472d8",
+  "durationSec": 1652.64,
+  "byteSize": 9915840,
+  "narrationWordCount": 4295,
+  "audioUrl": "/blog/audio-es/field-notes/populating-knowledge-graph-llms-banking.mp3",
+  "translationModel": "aya-expanse:8b"
+}
