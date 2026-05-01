@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1776641909,
+  "generatedAt": 1777673811,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -183,6 +183,19 @@
       "byteSize": 6754896,
       "narrationWordCount": 2345,
       "audioUrl": "/blog/audio/curiosities/tetris-np-complete.mp3",
+      "translationModel": ""
+    },
+    "field-notes/agent-guardrails-field-guide": {
+      "slug": "agent-guardrails-field-guide",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "ac523e684519b6a27647e9138b81f19ca08ff4053a819b42a25ad27d82f6f387",
+      "sourceHash": "ac523e684519b6a27647e9138b81f19ca08ff4053a819b42a25ad27d82f6f387",
+      "durationSec": 2248.176,
+      "byteSize": 13489056,
+      "narrationWordCount": 5497,
+      "audioUrl": "/blog/audio/field-notes/agent-guardrails-field-guide.mp3",
       "translationModel": ""
     },
     "field-notes/ai-poc-enterprise-evaluation": {
@@ -508,6 +521,19 @@
       "byteSize": 17275824,
       "narrationWordCount": 7143,
       "audioUrl": "/blog/audio/field-notes/git-and-github-complete-guide.mp3",
+      "translationModel": ""
+    },
+    "field-notes/google-cloud-next-2026-agent-native-stack": {
+      "slug": "google-cloud-next-2026-agent-native-stack",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8557120880f6511b1b34ae767846290d66333f1fb096a6b4d61812cbc595e5a1",
+      "sourceHash": "8557120880f6511b1b34ae767846290d66333f1fb096a6b4d61812cbc595e5a1",
+      "durationSec": 1786.68,
+      "byteSize": 10720080,
+      "narrationWordCount": 5364,
+      "audioUrl": "/blog/audio/field-notes/google-cloud-next-2026-agent-native-stack.mp3",
       "translationModel": ""
     },
     "field-notes/graph-neural-networks-learning-structured-data": {
