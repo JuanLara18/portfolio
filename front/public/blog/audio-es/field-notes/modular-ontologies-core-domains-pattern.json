@@ -1,0 +1,13 @@
+{
+  "slug": "modular-ontologies-core-domains-pattern",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "3362a343587a2d676b078c51a73fdf54455aadf464adbb4984b4c6cfd0e822d7",
+  "sourceHash": "63ac54637be2c867466e7ba5caf150d912bb5bf66a3d0cfa4418306032b02b97",
+  "durationSec": 1757.712,
+  "byteSize": 10546272,
+  "narrationWordCount": 4569,
+  "audioUrl": "/blog/audio-es/field-notes/modular-ontologies-core-domains-pattern.mp3",
+  "translationModel": "gemma4:latest"
+}
