@@ -29,3 +29,5 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `solar-system-orbits-header.jpg` — Illustration by Rubin Observatory/NSF/AURA, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Solar_System_Illustration_(rubin-20220314-Solar-System-hero).jpg) (CC BY 4.0)
 - `industrial-conveyor-belt-header.jpg` — Photo by Martin Pearman, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Industrial_conveyor_belt_-_geograph.org.uk_-_4373595.jpg) (CC BY-SA 2.0)
 - `bee-pollinating-flower-header.jpg` — Photo by Nirajan pant, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honey_bee_pollinating_Daisy_Flower.jpg) (CC BY-SA 4.0)
+- `mountain-road-guardrail-header.jpg` — Photo by Ximonic (Simo Räsänen), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Estrada_Regional_105_mountain_road_in_Ribeira_Brava,_Madeira,_2023_May_-_2.jpg) (CC BY-SA 4.0)
+- `las-vegas-convention-center-header.jpg` — Photo by Steve Jurvetson, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Las_Vegas_Convention_Center_Loop.jpeg) (CC BY 2.0)
