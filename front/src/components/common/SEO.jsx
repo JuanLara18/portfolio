@@ -19,10 +19,10 @@ const PERSON_SCHEMA = {
   '@type': 'Person',
   name: 'Juan Lara',
   url: SITE_URL,
-  jobTitle: 'AI Engineer',
+  jobTitle: 'Senior AI Engineer',
   affiliation: {
     '@type': 'Organization',
-    name: 'Harvard Business School',
+    name: 'Davivienda',
   },
   sameAs: SAME_AS,
 };
@@ -188,7 +188,7 @@ export const SEO = ({
       )}
 
       {/* RSS feed discovery (browsers, feed readers, AI agents) */}
-      <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} — Writing`} href={`${SITE_URL}/rss.xml`} />
+      <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} · Writing`} href={`${SITE_URL}/rss.xml`} />
 
       {/* Structured Data — primary */}
       <script type="application/ld+json">{JSON.stringify(primarySchema)}</script>
@@ -212,22 +212,20 @@ export const SEO = ({
  * Default SEO configuration for the entire site.
  */
 export const defaultSEO = {
-  title: 'Juan Lara | AI Engineer — Research to Production',
+  title: 'Juan Lara · Senior AI Engineer',
   description:
-    'Research-minded AI Engineer specializing in LLM systems, NLP, and taking ML from concept to production. CS + Mathematics foundation, experience spanning Harvard research to enterprise-scale AI.',
+    'Senior AI Engineer building production AI systems at enterprise scale. RAG platforms, agentic architectures, knowledge-grounded LLM applications. Engineering experience across regulated banking, retail logistics, healthcare AI, and Harvard research.',
   keywords: [
     'Juan Lara',
-    'AI Engineer',
-    'Machine Learning',
-    'LLM Systems',
-    'NLP',
+    'Senior AI Engineer',
+    'Production AI',
     'RAG',
-    'AI Agents',
-    'Harvard Business School',
-    'Computer Science',
-    'Applied Mathematics',
-    'Deep Learning',
-    'Transformers',
+    'Agentic Architectures',
+    'Knowledge Systems',
+    'LLM Ops',
+    'Knowledge Data Engineer',
+    'Machine Learning',
+    'LangChain',
     'PyTorch',
     'Python',
   ],
