@@ -9,8 +9,30 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Jul 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Aug 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Agent Engineering as a Discipline: Six Roles That Just Got Names</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines</guid>
+    <pubDate>Thu, 05 Aug 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[By 2026 the people who keep production agents alive had stopped calling themselves AI engineers and started using more specific titles. Context Engineer. Memory Engineer. Harness Engineer. Tool Engineer. Eval Engineer. Identity and Policy Engineer. This post is a tour of those six disciplines: what each one owns, the artifacts they produce, the named effects they fight, the anti-patterns that keep biting, and an honest projection of which roles will consolidate, which will be absorbed by vendors, and which are LinkedIn theater.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>Production ML</category>
+    <category>Best Practices</category>
+    <category>Software Engineering</category>
+    <category>MLOps</category>
+    <category>Prompt Engineering</category>
+    <category>Evaluation</category>
+    <category>RAG</category>
+    <category>Infrastructure</category>
+    <category>AI Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-engineering-disciplines.mp3" length="10929600" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Knowledge Catalog vs Ontologies: A Confluence, Not a Replacement</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies</link>
