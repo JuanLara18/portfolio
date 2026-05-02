@@ -29,7 +29,7 @@ Reading a blog as a chronology is the obvious move and almost always the wrong o
 
 The corpus is about its structure. Every post has tags. Every tag connects to other tags through co-occurrence on the same post. Every two posts that share a tag are connected; two posts that share several tags are connected through a thicker rope. Concepts strung across posts thread the whole corpus together. What you get when you draw this is a graph: nodes are posts (or tags, depending on how you project), edges are co-mentions, weights are how often two things travel together.
 
-This is not a metaphor. It is the same construction the network science literature has been refining for fifty years. Granovetter's weak ties, Newman's modularity, the Louvain method, eigenvector centrality, betweenness — all of it works on any graph you can construct, and a tag-co-occurrence graph from a blog corpus is, structurally, no different from a citation network or a protein interaction network. The math does not know the nodes are blog posts. It will tell you the same things it tells everyone else: which nodes are central, which form natural clusters, which act as bridges, which are dangling out on the periphery.
+This is not a metaphor. It is the same construction network science uses for citation networks and protein interaction networks. The math does not know the nodes are blog posts. It will tell you the same things it tells everyone else: which nodes are central, which form natural clusters, which act as bridges, which are dangling out on the periphery.
 
 The site already exposes a small graph view at `/blog/graph` that lets a reader navigate by clicking related posts. The view I want for this retrospective is the analytic one: not "what should I read next" but "what is the shape of the thing I have built." Graph theory gives me the vocabulary; network science gives me the verdicts.
 
@@ -250,7 +250,7 @@ The pattern across the top 10 edges: about half are real intellectual co-occurre
 
 The spine and the hubs tell you about gravity. Communities tell you about structure: which clusters of nodes are densely interconnected internally and only sparsely connected to the rest of the graph.
 
-To detect communities I run the Louvain method on the tag-tag graph. Louvain — the [fast-unfolding algorithm by Blondel et al. (2008)](https://arxiv.org/abs/0803.0476) — maximizes [Newman's modularity](https://www.pnas.org/doi/10.1073/pnas.0601602103) greedily by repeatedly merging nodes into the community that gives the largest local gain, then collapsing the graph and repeating. Modularity, in plain language, is "edges-within-clusters minus edges-you-would-expect-by-chance." A high-modularity partition has dense communities and sparse cuts between them.
+To detect communities I run the Louvain method on the tag-tag graph. It maximizes modularity — roughly, "edges-within-clusters minus edges-you-would-expect-by-chance" — by greedily merging nodes into the community that gives the biggest local gain. A high-modularity partition has dense communities and sparse cuts between them.
 
 ```python
 import networkx.algorithms.community as nxcomm
@@ -500,7 +500,7 @@ This is the five-post agent arc the corpus has been pointing at for several mont
 4. [ontology-production-pipeline-gcp](https://juanlara18.github.io/portfolio/#/blog/ontology-production-pipeline-gcp)
 5. [ontology-to-agent-toolbox](https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox)
 
-These three paths cover roughly half the corpus by tag overlap. The other half is reachable from any of them within two hops, which is the small-world property doing its work — but I will not claim small-world rigorously without measuring clustering coefficient against a Watts-Strogatz null model, and that is a sidebar I am leaving for another piece.
+These three paths cover roughly half the corpus by tag overlap. The other half is reachable from any of them within two hops. Two hops is short, which is the kind of property that makes a graph feel small.
 
 ---
 
@@ -595,46 +595,14 @@ That is the whole promotion path. From drafted Markdown to a node in a graph in 
 
 ---
 
-## Going Deeper
+## A Closer
 
-**Books:**
+I usually end posts with a Going Deeper section: books, papers, videos, questions to think about. This one does not get that. There is no canon to point you to here. The corpus *is* the canon I am pointing at, and the only honest follow-up is the next post.
 
-- Newman, M. (2018). *Networks.* Oxford University Press, 2nd edition.
-  - The graduate-level reference for everything in this post: degree distributions, modularity, betweenness, community detection, random graph models. If you only own one network science book, this is it.
-- Barabási, A.-L. (2016). *Network Science.* Cambridge University Press.
-  - The free online edition at networksciencebook.com is the most accessible introduction. Strong on scale-free networks and the empirical regularities that make real-world graphs look like real-world graphs.
-- Watts, D. J. (2003). *Six Degrees: The Science of a Connected Age.* W. W. Norton.
-  - The popular-audience companion to the small-world paper. Worth reading specifically for the chapters on how Watts and Strogatz arrived at the model. Lighter on math, heavier on intellectual history.
-- Easley, D., and Kleinberg, J. (2010). *Networks, Crowds, and Markets: Reasoning About a Highly Connected World.* Cambridge University Press.
-  - Free online. Bridges the gap between graph theory and economics, with a long chapter on information cascades that resonates with the "why some posts spread and others do not" question I sidestepped here.
+Post #101, [stack-recommendations-after-100-posts](https://juanlara18.github.io/portfolio/#/blog/stack-recommendations-after-100-posts), is the practical companion to this one. Two halves of the same retrospective: this one is the shape of what I wrote; the next is what I would actually use today, knowing what I know after writing about hundreds of options.
 
-**Online Resources:**
+If you want to run this analysis on your own corpus, the snippets above are enough. The numbers in this post came from `front/src/data/blogData.json` plus about a hundred lines of networkx; you can verify any claim by re-running the same code. That auditability turned out to be the thing I was after when I started writing — not posts you have to trust, but posts you can argue with.
 
-- [networkx documentation](https://networkx.org/documentation/stable/) — Reference for every function I used in this post: `degree`, `betweenness_centrality`, `louvain_communities`, `modularity`. Read the user guide once and the reference will pay back the time.
-- [Network Science by Barabási, online edition](http://networksciencebook.com/) — Free, hyperlinked, with interactive figures. Chapters 4 (Scale-Free Networks) and 9 (Communities) are directly relevant to this retrospective.
-- [Stanford CS224W: Machine Learning with Graphs](https://web.stanford.edu/class/cs224w/) — Course materials are public. Goes deeper into graph machine learning, but the early lectures on graph statistics and community detection are excellent on their own.
-- [Cytoscape](https://cytoscape.org/) — If you want to actually visualize a personal corpus graph, export the edge list from networkx and load it into Cytoscape. The static images in this post do not do justice to what the graph looks like in motion.
+A hundred is an arbitrary number. The graph does not care. But arbitrary numbers are useful as forcing functions, and this one forced me to look at the dataset I had been generating without ever measuring. It turned out to know more about me than I knew about it.
 
-**Videos:**
-
-- [The Mathematics of Networks](https://www.youtube.com/watch?v=lETt7IcDWLI) by Steven Strogatz — Strogatz himself walking through small-world phenomena and the original 1998 paper. Good companion reading for the methodology section.
-- [Community Detection with the Louvain Algorithm](https://www.youtube.com/watch?v=0zuiLBOIcsw) — A focused, mathematical walkthrough of the algorithm I used to partition the tag graph in this post.
-
-**Academic Papers:**
-
-- Watts, D. J., and Strogatz, S. H. (1998). ["Collective dynamics of 'small-world' networks."](https://www.nature.com/articles/30918) *Nature*, 393(6684), 440–442.
-  - The foundational small-world paper. The reason we expect any reasonably-connected graph to have short paths.
-- Newman, M. E. J. (2006). ["Modularity and community structure in networks."](https://www.pnas.org/doi/10.1073/pnas.0601602103) *PNAS*, 103(23), 8577–8582.
-  - The definitional paper for modularity, the objective function the Louvain method maximizes. Its eigenvector-based formulation is also the cleanest derivation of the modularity matrix.
-- Blondel, V. D., Guillaume, J.-L., Lambiotte, R., and Lefebvre, E. (2008). ["Fast unfolding of communities in large networks."](https://arxiv.org/abs/0803.0476) *Journal of Statistical Mechanics: Theory and Experiment*, 2008(10), P10008.
-  - The Louvain method paper. A greedy, modularity-maximizing community detection algorithm fast enough to run on graphs with billions of edges, and very much overkill for 223 nodes — but the standard tool, and the one I used here.
-- Granovetter, M. S. (1973). ["The strength of weak ties."](https://www.jstor.org/stable/2776392) *American Journal of Sociology*, 78(6), 1360–1380.
-  - The conceptual origin of bridges-as-information-pathways. Reading this paper alongside the bridges section above is the cleanest way to understand why the three bridge posts I cited matter more than their individual readership numbers suggest.
-
-**Questions to Explore:**
-
-- If a personal blog graph is a low-dimensional embedding of its author, what other graphs in your life embed you in the same way? Your code repository commit graph? Your email reply graph? Your reading list? Are these embeddings consistent with each other, or do they reveal different selves?
-- The singleton tag problem is a measurable editorial KPI. What other corpus-level KPIs should a writer track? Average post-post path length? Modularity over time? Cluster size variance? Which of these are gameable and which are diagnostic?
-- The Louvain algorithm is greedy and stochastic. The communities it returns depend on the seed. How would you decide whether a community is "real" — that is, robust across many runs of the algorithm — versus an artifact of a specific seed? The literature has answers (consensus clustering, modularity over null models); would you accept them or look for stronger evidence?
-- Is there a *right* number of communities a personal blog should have? Too few and the corpus is one-dimensional; too many and it is incoherent. Five communities feels right to me at 99 posts. Should that scale linearly with corpus size, sub-linearly, or saturate?
-- What would post #200's retrospective look like? If you could fast-forward and see it now, which of the to-do items above would have been completed, which would have been ignored, and which would have been replaced by problems you cannot see today?
+Thanks for being here for any of these. The next one starts now.
