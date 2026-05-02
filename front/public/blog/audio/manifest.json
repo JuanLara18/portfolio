@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1777694696,
+  "generatedAt": 1777749041,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -261,6 +261,19 @@
       "byteSize": 8653680,
       "narrationWordCount": 3309,
       "audioUrl": "/blog/audio/field-notes/apache-spark-ecosystem-guide.mp3",
+      "translationModel": ""
+    },
+    "field-notes/application-data-flow-replicas-backups": {
+      "slug": "application-data-flow-replicas-backups",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "cd7ab2429a1bbe5a29daa2cb01b1e8533f1a671d87345b8c15c0e786ed5168cf",
+      "sourceHash": "cd7ab2429a1bbe5a29daa2cb01b1e8533f1a671d87345b8c15c0e786ed5168cf",
+      "durationSec": 2038.992,
+      "byteSize": 12233952,
+      "narrationWordCount": 5226,
+      "audioUrl": "/blog/audio/field-notes/application-data-flow-replicas-backups.mp3",
       "translationModel": ""
     },
     "field-notes/bash-daily-driver-ml-engineer": {
@@ -560,6 +573,32 @@
       "byteSize": 17275824,
       "narrationWordCount": 7143,
       "audioUrl": "/blog/audio/field-notes/git-and-github-complete-guide.mp3",
+      "translationModel": ""
+    },
+    "field-notes/google-adk-agent-development-deep-dive": {
+      "slug": "google-adk-agent-development-deep-dive",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "671e50f37f4f63558bab0544c9337d3c52a392f114390bfdfa7d03163eac6460",
+      "sourceHash": "671e50f37f4f63558bab0544c9337d3c52a392f114390bfdfa7d03163eac6460",
+      "durationSec": 1443.48,
+      "byteSize": 8660880,
+      "narrationWordCount": 3891,
+      "audioUrl": "/blog/audio/field-notes/google-adk-agent-development-deep-dive.mp3",
+      "translationModel": ""
+    },
+    "field-notes/google-cloud-certifications-2026-roadmap": {
+      "slug": "google-cloud-certifications-2026-roadmap",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "ca827059e59b2be54f79227c26d6b4c00f91c16d22204b84ab8e18c3e05ca97e",
+      "sourceHash": "ca827059e59b2be54f79227c26d6b4c00f91c16d22204b84ab8e18c3e05ca97e",
+      "durationSec": 1588.872,
+      "byteSize": 9533232,
+      "narrationWordCount": 3994,
+      "audioUrl": "/blog/audio/field-notes/google-cloud-certifications-2026-roadmap.mp3",
       "translationModel": ""
     },
     "field-notes/google-cloud-next-2026-agent-native-stack": {
