@@ -223,6 +223,7 @@ export default function BlogGraphPage() {
   const [highlightedTag, setHighlightedTag] = useState(null);
   const [minFreq, setMinFreq] = useState(3);
   const [categoryFilter, setCategoryFilter] = useState('all');
+  const [selectedCluster, setSelectedCluster] = useState(null);
   const [controlsOpen, setControlsOpen] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isDark, setIsDark] = useState(getTheme() === 'dark');
@@ -331,6 +332,10 @@ export default function BlogGraphPage() {
       let alpha = 0.06 + ratio * 0.25;
       let lineWidth = 0.5 + ratio * 2.5;
 
+      // Cluster filter dim — fades edges that don't connect two nodes of the selected cluster
+      const inCluster = selectedCluster == null
+        || (src.community === selectedCluster && tgt.community === selectedCluster);
+
       if (activeNode) {
         const srcId = src.id;
         const tgtId = tgt.id;
@@ -352,6 +357,8 @@ export default function BlogGraphPage() {
         }
       }
 
+      if (!inCluster) alpha *= 0.12;
+
       ctx.globalAlpha = Math.min(alpha, 0.8);
       ctx.lineWidth = lineWidth;
       ctx.beginPath();
@@ -368,7 +375,8 @@ export default function BlogGraphPage() {
       const color = CLUSTER_COLORS[n.community % CLUSTER_COLORS.length];
       const isActive = n.id === activeNode;
       const isNeighbor = activeNeighbors.has(n.id);
-      const dimmed = activeNode && !isActive && !isNeighbor;
+      const outOfCluster = selectedCluster != null && n.community !== selectedCluster;
+      const dimmed = (activeNode && !isActive && !isNeighbor) || outOfCluster;
 
       // Glow for large nodes
       if (ratio >= 0.35 && !dimmed) {
@@ -417,7 +425,7 @@ export default function BlogGraphPage() {
 
     ctx.restore();
     ctx.globalAlpha = 1;
-  }, [graphData, dimensions, hoveredNode, selectedNode, highlightedTag, isDark]);
+  }, [graphData, dimensions, hoveredNode, selectedNode, highlightedTag, selectedCluster, isDark]);
 
   // Keep drawRef always up to date
   useEffect(() => { drawRef.current = draw; }, [draw]);
@@ -945,17 +953,49 @@ export default function BlogGraphPage() {
           <LocateFixed size={16} />
         </button>
 
-        {/* Cluster legend — compact on mobile */}
-        <div className={`absolute top-4 left-4 z-10 backdrop-blur-sm border p-3 max-w-[160px] sm:max-w-[200px] ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
-          <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Clusters</p>
-          <div className="space-y-1 sm:space-y-1.5">
-            {clusterLegend.map(c => (
-              <div key={c.id} className="flex items-center gap-1.5 sm:gap-2">
-                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0" style={{ backgroundColor: c.color }} />
-                <span className={`text-[11px] sm:text-xs truncate ${isDark ? 'text-brand-fg' : 'text-gray-700'}`}>{c.label}</span>
-                <span className={`font-mono text-[10px] ml-auto ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{c.count}</span>
-              </div>
-            ))}
+        {/* Cluster legend — clickable to filter; click again or "All" to clear */}
+        <div className={`absolute top-4 left-4 z-10 backdrop-blur-sm border p-3 max-w-[170px] sm:max-w-[210px] ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
+          <div className="flex items-center justify-between mb-2 gap-2">
+            <p className={`font-mono text-[10px] tracking-[0.18em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Clusters</p>
+            {selectedCluster != null && (
+              <button
+                type="button"
+                onClick={() => setSelectedCluster(null)}
+                className={`font-mono text-[9px] tracking-[0.12em] uppercase transition-colors ${isDark ? 'text-brand-accent hover:text-brand-accent-soft' : 'text-cyan-700 hover:text-cyan-800'}`}
+                aria-label="Clear cluster filter"
+              >
+                All
+              </button>
+            )}
+          </div>
+          <div className="space-y-0.5">
+            {clusterLegend.map(c => {
+              const active = selectedCluster === c.id;
+              const dim = selectedCluster != null && !active;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setSelectedCluster(active ? null : c.id)}
+                  aria-pressed={active}
+                  aria-label={`Filter by ${c.label} cluster`}
+                  className={`w-full flex items-center gap-1.5 sm:gap-2 px-1 py-1 -mx-1 transition-opacity ${dim ? 'opacity-40 hover:opacity-70' : 'opacity-100'}`}
+                >
+                  <div
+                    className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0 transition-transform"
+                    style={{
+                      backgroundColor: c.color,
+                      transform: active ? 'scale(1.4)' : 'scale(1)',
+                      boxShadow: active ? `0 0 0 2px ${c.color}30` : 'none',
+                    }}
+                  />
+                  <span className={`text-[11px] sm:text-xs truncate text-left flex-1 transition-colors ${active ? (isDark ? 'text-brand-fg font-semibold' : 'text-gray-900 font-semibold') : (isDark ? 'text-brand-fg' : 'text-gray-700')}`}>
+                    {c.label}
+                  </span>
+                  <span className={`font-mono text-[10px] ${active ? (isDark ? 'text-brand-accent' : 'text-cyan-700') : (isDark ? 'text-brand-fg-muted' : 'text-gray-500')}`}>{c.count}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -995,9 +1035,14 @@ export default function BlogGraphPage() {
             {selectedNodeData.connectedTags.length > 0 && (
               <div className={`px-4 py-3 border-b ${isDark ? 'border-white/[0.08]' : 'border-gray-200'}`}>
                 <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Related Topics</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {selectedNodeData.connectedTags.slice(0, 12).map(({ tag, weight }) => (
-                    <button key={tag} onClick={() => { setSelectedNode(tag); focusOnTag(tag); }} className={`font-mono text-[10px] tracking-[0.08em] uppercase border px-2 py-1 transition-colors ${isDark ? 'border-brand-accent/30 hover:border-brand-accent text-brand-fg-muted hover:text-brand-accent' : 'border-cyan-700/30 hover:border-cyan-700 text-gray-700 hover:text-cyan-700'}`}>
+                {/* Mobile: show 6 chips. Desktop: show 12. Keep posts the primary content. */}
+                <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                  {selectedNodeData.connectedTags.slice(0, 12).map(({ tag, weight }, i) => (
+                    <button
+                      key={tag}
+                      onClick={() => { setSelectedNode(tag); focusOnTag(tag); }}
+                      className={`font-mono text-[10px] tracking-[0.06em] uppercase border px-1.5 py-0.5 transition-colors ${i >= 6 ? 'hidden sm:inline-flex' : ''} ${isDark ? 'border-brand-accent/30 hover:border-brand-accent text-brand-fg-muted hover:text-brand-accent' : 'border-cyan-700/30 hover:border-cyan-700 text-gray-700 hover:text-cyan-700'}`}
+                    >
                       {tag}
                       <span className={`ml-1 ${isDark ? 'text-brand-fg-muted/70' : 'text-gray-400'}`}>{weight}</span>
                     </button>
@@ -1007,12 +1052,14 @@ export default function BlogGraphPage() {
             )}
 
             <div className="flex-1 overflow-y-auto px-4 py-3">
-              <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Posts</p>
+              <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-3 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>
+                Posts <span className={`ml-1 ${isDark ? 'text-brand-fg-muted/60' : 'text-gray-400'}`}>· {selectedNodeData.posts.length}</span>
+              </p>
               <div>
                 {selectedNodeData.posts.map(post => (
-                  <Link key={post.slug} to={`/blog/${post.category}/${post.slug}`} className={`block py-3 border-b last:border-b-0 group transition-colors ${isDark ? 'border-white/[0.08]' : 'border-gray-200/60'}`}>
-                    <p className={`text-sm leading-snug font-medium transition-colors ${isDark ? 'text-brand-fg group-hover:text-brand-accent' : 'text-gray-900 group-hover:text-cyan-700'}`}>{post.title}</p>
-                    <div className="flex items-center gap-2 mt-1">
+                  <Link key={post.slug} to={`/blog/${post.category}/${post.slug}`} className={`block py-3.5 border-b last:border-b-0 group transition-colors ${isDark ? 'border-white/[0.08]' : 'border-gray-200/60'}`}>
+                    <p className={`text-[15px] sm:text-sm leading-snug font-semibold transition-colors mb-1 ${isDark ? 'text-brand-fg group-hover:text-brand-accent' : 'text-gray-900 group-hover:text-cyan-700'}`}>{post.title}</p>
+                    <div className="flex items-center gap-2">
                       <span className={`font-mono text-[10px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{post.category}</span>
                       <span className={`text-[10px] ${isDark ? 'text-brand-fg-muted/60' : 'text-gray-300'}`}>·</span>
                       <span className={`font-mono text-[10px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{post.readingTime}m</span>
