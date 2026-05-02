@@ -9,8 +9,68 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Aug 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Sep 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Google Cloud Certifications in 2026: A Practical Roadmap</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</guid>
+    <pubDate>Thu, 09 Sep 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[What the cert ladder actually looks like in 2026, what's been added in the agent era, what each exam is honestly like, and how a working engineer should pick one. The post I wish had existed when I started planning.]]></description>
+    <category>field-notes</category>
+    <category>Google Cloud</category>
+    <category>GCP</category>
+    <category>Cloud Computing</category>
+    <category>Software Engineering</category>
+    <category>AI Engineering</category>
+    <category>Data Engineering</category>
+    <category>MLOps</category>
+    <category>Best Practices</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/google-cloud-certifications-2026-roadmap.mp3" length="9533232" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Forgotten Half of Your App: How Data Actually Flows Between Front, Back, and Backups</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups</guid>
+    <pubDate>Thu, 02 Sep 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most engineers can draw a frontend, a backend, and a database. Then the interviewer asks about backups, replicas, dev refresh, point in time recovery, and the analytics warehouse, and the room goes quiet. The second half of the data plane is where production maturity lives. This post is the honest map: vocabulary, trade offs, and a default architecture you can copy.]]></description>
+    <category>field-notes</category>
+    <category>Data Engineering</category>
+    <category>Data Architecture</category>
+    <category>Data Pipelines</category>
+    <category>Software Engineering</category>
+    <category>Cloud Computing</category>
+    <category>Best Practices</category>
+    <category>Data Quality</category>
+    <category>Data Governance</category>
+    <category>Data Lakehouse</category>
+    <category>Infrastructure</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/application-data-flow-replicas-backups.mp3" length="12233952" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Google ADK: Building Production Agents from First Principles</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</guid>
+    <pubDate>Thu, 26 Aug 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the four-pillar mental model, runnable code for every core abstraction, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Engine, and an honest comparison with the rest of the field.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Agent Engineering</category>
+    <category>Google Cloud</category>
+    <category>Cloud Computing</category>
+    <category>AI Engineering</category>
+    <category>LLMs</category>
+    <category>Multi-Agent</category>
+    <category>Production ML</category>
+    <category>Software Engineering</category>
+    <category>Tool Use</category>
+    <category>MLOps</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/google-adk-agent-development-deep-dive.mp3" length="8660880" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>The Stack I Would Adopt After 100 Posts: An Opinionated Manifesto</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</link>

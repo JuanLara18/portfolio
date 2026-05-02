@@ -1,0 +1,13 @@
+{
+  "slug": "application-data-flow-replicas-backups",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "2cda2126b8b0edb9b6ee69567e9e94d9bf13978fb4459bf9b4372b4bff0b0fd7",
+  "sourceHash": "cd7ab2429a1bbe5a29daa2cb01b1e8533f1a671d87345b8c15c0e786ed5168cf",
+  "durationSec": 1996.2,
+  "byteSize": 11977200,
+  "narrationWordCount": 6003,
+  "audioUrl": "/blog/audio-es/field-notes/application-data-flow-replicas-backups.mp3",
+  "translationModel": "gemma4:latest"
+}

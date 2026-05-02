@@ -43,6 +43,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</loc>
+    <lastmod>2027-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups</loc>
+    <lastmod>2027-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</loc>
+    <lastmod>2027-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</loc>
     <lastmod>2027-08-19</lastmod>
     <changefreq>monthly</changefreq>
