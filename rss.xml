@@ -9,8 +9,93 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Jul 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Jul 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Knowledge Catalog vs Ontologies: A Confluence, Not a Replacement</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies</guid>
+    <pubDate>Thu, 29 Jul 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Google's Knowledge Catalog and a domain ontology look like they answer the same question. They do not. One is an asset registry with governance and lineage; the other is a formal model of meaning with inferential reasoning. A mature knowledge layer almost always needs both, with a clear arrow of dependency between them. This post is the four-part arc's closing piece, naming the substitutions, the anti-patterns, and the honest hybrid architecture.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>Ontologies</category>
+    <category>Ontology Engineering</category>
+    <category>GCP</category>
+    <category>Data Architecture</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>RAG</category>
+    <category>Best Practices</category>
+    <category>Knowledge Bases</category>
+    <category>OWL</category>
+    <category>Semantic Web</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Gemini Enterprise and the Knowledge Catalog: Two Buildings, Room by Room</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive</guid>
+    <pubDate>Thu, 22 Jul 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The Cloud Next 26 overview gave you the map. This post zooms in on the two pieces that will reshape a Knowledge Data Engineer's day-to-day in the next twelve months: the Gemini Enterprise Agent Platform as a control plane, and the Knowledge Catalog as the semantic spine that grounds every agent answer in audited enterprise truth.]]></description>
+    <category>field-notes</category>
+    <category>Google Cloud</category>
+    <category>Vertex AI</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Knowledge Graphs</category>
+    <category>Data Architecture</category>
+    <category>Production ML</category>
+    <category>Infrastructure</category>
+    <category>RAG</category>
+    <category>MLOps</category>
+    <category>MCP</category>
+    <category>Knowledge Engineering</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Google Cloud Next 2026: The Agent-Native Stack, Decoded</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack</guid>
+    <pubDate>Thu, 15 Jul 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[On April 22, 2026, Sundar Pichai walked onstage at Mandalay Bay and quietly renamed Vertex AI. The new label, Gemini Enterprise Agent Platform, sounds like marketing. It is not. It is the most aggressive cloud reorganization since the original Compute Engine launch. This is the practitioner's deep dive into every announcement that matters, what it replaces, and what to actually adopt.]]></description>
+    <category>field-notes</category>
+    <category>GCP</category>
+    <category>Vertex AI</category>
+    <category>Cloud Computing</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>Infrastructure</category>
+    <category>MLOps</category>
+    <category>MCP</category>
+    <category>RAG</category>
+    <category>Production ML</category>
+    <category>Data Architecture</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/google-cloud-next-2026-agent-native-stack.mp3" length="10720080" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Guardrails for Agent Systems: A Field Guide</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide</guid>
+    <pubDate>Thu, 08 Jul 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[What goes wrong when an agent gets loose in production, and the layered defenses that actually keep it from doing damage. A practitioner's mental model: threat taxonomy, five guardrail layers with code, blast radius reasoning, the tooling landscape, evaluation, and the anti-patterns that defeat the whole effort.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>Production ML</category>
+    <category>Best Practices</category>
+    <category>Evaluation</category>
+    <category>MLOps</category>
+    <category>Prompt Engineering</category>
+    <category>Software Engineering</category>
+    <category>Infrastructure</category>
+    <category>Security</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-guardrails-field-guide.mp3" length="13489056" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Populating a Knowledge Graph with LLMs: A Banking Case Study</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking</link>

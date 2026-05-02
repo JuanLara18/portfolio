@@ -1,0 +1,13 @@
+{
+  "slug": "agent-guardrails-field-guide",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1cf226a1c1d53508997bd600599125ce66a81fb8db044e5256d2f7a2101716d5",
+  "sourceHash": "ac523e684519b6a27647e9138b81f19ca08ff4053a819b42a25ad27d82f6f387",
+  "durationSec": 2297.952,
+  "byteSize": 13787712,
+  "narrationWordCount": 6338,
+  "audioUrl": "/blog/audio-es/field-notes/agent-guardrails-field-guide.mp3",
+  "translationModel": "gemma4:latest"
+}

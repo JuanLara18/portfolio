@@ -1,0 +1,13 @@
+{
+  "slug": "google-cloud-next-2026-agent-native-stack",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "4d764ddfb9ff2e748462ee1faa78e246bfd237b00b100a76390a6de96f2aff40",
+  "sourceHash": "8557120880f6511b1b34ae767846290d66333f1fb096a6b4d61812cbc595e5a1",
+  "durationSec": 2341.656,
+  "byteSize": 14049936,
+  "narrationWordCount": 6281,
+  "audioUrl": "/blog/audio-es/field-notes/google-cloud-next-2026-agent-native-stack.mp3",
+  "translationModel": "gemma4:latest"
+}
