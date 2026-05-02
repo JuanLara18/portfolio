@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1777753348,
+  "generatedAt": 1777762288,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -794,6 +794,32 @@
       "byteSize": 8513856,
       "narrationWordCount": 3625,
       "audioUrl": "/blog/audio-es/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/ml-cert-review-part-1-foundations": {
+      "slug": "ml-cert-review-part-1-foundations",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "f818f3a332e8d898e24901684a5ff0eab6aaca079659d56c1430a3e00a1200a2",
+      "sourceHash": "81b91e03f0f3d4aaa547854924d65687b5e277b670efb857017065b02ddaa59f",
+      "durationSec": 2327.064,
+      "byteSize": 13962384,
+      "narrationWordCount": 5934,
+      "audioUrl": "/blog/audio-es/field-notes/ml-cert-review-part-1-foundations.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/ml-cert-review-part-2-deep-learning-and-beyond": {
+      "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "4731b9cd45d723fe12d8d70e861c392327cc3b83b44c4f3fdd95e2e251f632f1",
+      "sourceHash": "e12ace67758bd359d4ce40fb6c9c8f2bb381cadc7871c1134efb71e03d17798b",
+      "durationSec": 2220.696,
+      "byteSize": 13324176,
+      "narrationWordCount": 5703,
+      "audioUrl": "/blog/audio-es/field-notes/ml-cert-review-part-2-deep-learning-and-beyond.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/ml-libraries-under-the-hood": {

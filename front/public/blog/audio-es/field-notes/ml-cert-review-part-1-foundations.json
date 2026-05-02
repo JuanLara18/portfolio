@@ -1,0 +1,13 @@
+{
+  "slug": "ml-cert-review-part-1-foundations",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "f818f3a332e8d898e24901684a5ff0eab6aaca079659d56c1430a3e00a1200a2",
+  "sourceHash": "81b91e03f0f3d4aaa547854924d65687b5e277b670efb857017065b02ddaa59f",
+  "durationSec": 2327.064,
+  "byteSize": 13962384,
+  "narrationWordCount": 5934,
+  "audioUrl": "/blog/audio-es/field-notes/ml-cert-review-part-1-foundations.mp3",
+  "translationModel": "gemma4:latest"
+}
