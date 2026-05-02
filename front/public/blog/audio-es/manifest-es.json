@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1776374234,
+  "generatedAt": 1777681101,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -183,6 +183,19 @@
       "byteSize": 6991776,
       "narrationWordCount": 2724,
       "audioUrl": "/blog/audio-es/curiosities/tetris-np-complete.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/agent-guardrails-field-guide": {
+      "slug": "agent-guardrails-field-guide",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1cf226a1c1d53508997bd600599125ce66a81fb8db044e5256d2f7a2101716d5",
+      "sourceHash": "ac523e684519b6a27647e9138b81f19ca08ff4053a819b42a25ad27d82f6f387",
+      "durationSec": 2297.952,
+      "byteSize": 13787712,
+      "narrationWordCount": 6338,
+      "audioUrl": "/blog/audio-es/field-notes/agent-guardrails-field-guide.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/ai-poc-enterprise-evaluation": {
@@ -497,6 +510,19 @@
       "audioUrl": "/blog/audio-es/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/gemini-enterprise-knowledge-catalog-deep-dive": {
+      "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "77164fa475f1860197e2662e0fc75984320fb85c933e29d40f100e778d928424",
+      "sourceHash": "82f0e862083677b20ad035258aacf21a03ab7376d415d49b627adf8beb038cdb",
+      "durationSec": 2146.704,
+      "byteSize": 12880224,
+      "narrationWordCount": 6392,
+      "audioUrl": "/blog/audio-es/field-notes/gemini-enterprise-knowledge-catalog-deep-dive.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/git-and-github-complete-guide": {
       "slug": "git-and-github-complete-guide",
       "category": "field-notes",
@@ -508,6 +534,19 @@
       "byteSize": 18610560,
       "narrationWordCount": 8190,
       "audioUrl": "/blog/audio-es/field-notes/git-and-github-complete-guide.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/google-cloud-next-2026-agent-native-stack": {
+      "slug": "google-cloud-next-2026-agent-native-stack",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "4d764ddfb9ff2e748462ee1faa78e246bfd237b00b100a76390a6de96f2aff40",
+      "sourceHash": "8557120880f6511b1b34ae767846290d66333f1fb096a6b4d61812cbc595e5a1",
+      "durationSec": 2341.656,
+      "byteSize": 14049936,
+      "narrationWordCount": 6281,
+      "audioUrl": "/blog/audio-es/field-notes/google-cloud-next-2026-agent-native-stack.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/graph-neural-networks-learning-structured-data": {
@@ -534,6 +573,19 @@
       "byteSize": 8557344,
       "narrationWordCount": 3577,
       "audioUrl": "/blog/audio-es/field-notes/knowledge-base-curation.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/knowledge-catalog-vs-ontologies": {
+      "slug": "knowledge-catalog-vs-ontologies",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "f32aea7559372d68a22c0d44adead68bbff2cdd21f63ca755b77e1320f70e734",
+      "sourceHash": "9d7ac6fcdebfd8a40f32a620a979eef5ce9269818346a221c9a170b87ce14551",
+      "durationSec": 1855.68,
+      "byteSize": 11134080,
+      "narrationWordCount": 5241,
+      "audioUrl": "/blog/audio-es/field-notes/knowledge-catalog-vs-ontologies.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/knowledge-graphs-practice": {
@@ -718,6 +770,19 @@
       "audioUrl": "/blog/audio-es/field-notes/model-context-protocol.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/modular-ontologies-core-domains-pattern": {
+      "slug": "modular-ontologies-core-domains-pattern",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "3362a343587a2d676b078c51a73fdf54455aadf464adbb4984b4c6cfd0e822d7",
+      "sourceHash": "63ac54637be2c867466e7ba5caf150d912bb5bf66a3d0cfa4418306032b02b97",
+      "durationSec": 1757.712,
+      "byteSize": 10546272,
+      "narrationWordCount": 4569,
+      "audioUrl": "/blog/audio-es/field-notes/modular-ontologies-core-domains-pattern.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/mteb-embedding-benchmarks": {
       "slug": "mteb-embedding-benchmarks",
       "category": "field-notes",
@@ -770,6 +835,19 @@
       "audioUrl": "/blog/audio-es/field-notes/ontologies-building-knowledge-bases.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/ontology-production-pipeline-gcp": {
+      "slug": "ontology-production-pipeline-gcp",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "33e55372f12dd3c246a40952b75d36d131c2b3ac7afa651e875d3f16331e5187",
+      "sourceHash": "45a25f50eb11b2a3dd116db2fb6478048bab4d28ab708cafac840c59e7bba5c8",
+      "durationSec": 1471.896,
+      "byteSize": 8831376,
+      "narrationWordCount": 3961,
+      "audioUrl": "/blog/audio-es/field-notes/ontology-production-pipeline-gcp.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/ontology-to-agent-toolbox": {
       "slug": "ontology-to-agent-toolbox",
       "category": "field-notes",
@@ -782,6 +860,19 @@
       "narrationWordCount": 4499,
       "audioUrl": "/blog/audio-es/field-notes/ontology-to-agent-toolbox.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/populating-knowledge-graph-llms-banking": {
+      "slug": "populating-knowledge-graph-llms-banking",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "298ef76b736f78ddad36e11167e1a0846791052adc933cb2dbdd13cc532a7b1e",
+      "sourceHash": "7118caf3e19c5be8ddfb8601f5d905b63a46b871679835e0ebd3f780ea1472d8",
+      "durationSec": 1652.64,
+      "byteSize": 9915840,
+      "narrationWordCount": 4295,
+      "audioUrl": "/blog/audio-es/field-notes/populating-knowledge-graph-llms-banking.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/production-llm-agents-patterns": {
       "slug": "production-llm-agents-patterns",
@@ -950,6 +1041,19 @@
       "byteSize": 8367696,
       "narrationWordCount": 3077,
       "audioUrl": "/blog/audio-es/field-notes/structuring-ml-projects.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/tbox-abox-schema-facts-distinction": {
+      "slug": "tbox-abox-schema-facts-distinction",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "249ccad9a42850afe406ad151beb3622106237aa594dcb9b0c23f82a55605050",
+      "sourceHash": "13c3a1c441947472a4ab2c678877007a42bee3d0b7b85ea7bfcfc6f1712ed2aa",
+      "durationSec": 1540.536,
+      "byteSize": 9243216,
+      "narrationWordCount": 4135,
+      "audioUrl": "/blog/audio-es/field-notes/tbox-abox-schema-facts-distinction.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/terraform-infrastructure-as-code": {

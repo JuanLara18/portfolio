@@ -31,3 +31,5 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `bee-pollinating-flower-header.jpg` — Photo by Nirajan pant, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honey_bee_pollinating_Daisy_Flower.jpg) (CC BY-SA 4.0)
 - `mountain-road-guardrail-header.jpg` — Photo by Ximonic (Simo Räsänen), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Estrada_Regional_105_mountain_road_in_Ribeira_Brava,_Madeira,_2023_May_-_2.jpg) (CC BY-SA 4.0)
 - `las-vegas-convention-center-header.jpg` — Photo by Steve Jurvetson, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Las_Vegas_Convention_Center_Loop.jpeg) (CC BY 2.0)
+- `card-catalog-drawers-header.jpg` — Photo by MarkBuckawicki, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wooden_Card_Catalog_Furniture.jpg) (CC0)
+- `rivers-confluence-header.jpg` — Photo by Timothy A. Gonsalves, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Confluence_Tsarap_Purne_Lungnak_Zanskar_Oct22_A7C_03655.jpg) (CC BY-SA 4.0)
