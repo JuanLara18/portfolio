@@ -33,6 +33,7 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `mountain-trail-header.jpg` — Photo by Coconino National Forest, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bear_Mountain_Trail_No._54_(34874291700).jpg) (CC BY-SA 2.0)
 - `fluorescence-microscope-header.jpg` — Photo by Olivier Dugornay / Ifremer, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Microscope_%C3%A0_fluorescence_(Ifremer_00642-75447_-_30190).jpg) (CC BY-SA 4.0)
 - `datacenter-racks-header.jpg` — Photo by Carl Lender, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg) (CC BY-SA 2.0)
+- `river-delta-aerial-header.jpg` — Photo by NASA / ISS Expedition 20 crew, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Po_River_Delta-_ISS020-E-9731.JPG) (Public Domain)
 - `bee-pollinating-flower-header.jpg` — Photo by Nirajan pant, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honey_bee_pollinating_Daisy_Flower.jpg) (CC BY-SA 4.0)
 - `mountain-road-guardrail-header.jpg` — Photo by Ximonic (Simo Räsänen), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Estrada_Regional_105_mountain_road_in_Ribeira_Brava,_Madeira,_2023_May_-_2.jpg) (CC BY-SA 4.0)
 - `las-vegas-convention-center-header.jpg` — Photo by Steve Jurvetson, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Las_Vegas_Convention_Center_Loop.jpeg) (CC BY 2.0)

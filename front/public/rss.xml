@@ -9,8 +9,28 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Sep 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 30 Sep 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The RL Algorithm Tree: A Practitioner&apos;s Tour from Policy Gradients to AlphaZero</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour</guid>
+    <pubDate>Thu, 30 Sep 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The cert review showed you the silhouette of reinforcement learning. The tree the field actually uses has four branches, fifteen named algorithms, and a clean logic for which one to reach for. This is the tour through it, with the equation, the contribution, and the minimal skeleton for each.]]></description>
+    <category>field-notes</category>
+    <category>Reinforcement Learning</category>
+    <category>Deep Learning</category>
+    <category>Machine Learning</category>
+    <category>Algorithms</category>
+    <category>Neural Network Theory</category>
+    <category>Mathematics</category>
+    <category>Optimization</category>
+    <category>PyTorch</category>
+    <category>AI Engineering</category>
+    <category>Research Papers</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/rl-algorithm-taxonomy-tour.mp3" length="10240128" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>ML Cert Review, Part II: Deep Learning, Scale, NLP, RL, and Explainability</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond</link>

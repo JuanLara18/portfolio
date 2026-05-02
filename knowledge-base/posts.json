@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-05-02T22:06:55.806Z",
+  "generated_at": "2026-05-02T23:56:28.973Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,10 +8,10 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 106,
+    "total_posts": 107,
     "augmented_posts": 15,
     "by_category": {
-      "field-notes": 79,
+      "field-notes": 80,
       "curiosities": 15,
       "research": 12
     },
@@ -20,6 +20,48 @@
     "prereq_edges": 21
   },
   "posts": {
+    "rl-algorithm-taxonomy-tour": {
+      "title": "The RL Algorithm Tree: A Practitioner's Tour from Policy Gradients to AlphaZero",
+      "date": "2027-09-30",
+      "category": "field-notes",
+      "tags": [
+        "Reinforcement Learning",
+        "Deep Learning",
+        "Machine Learning",
+        "Algorithms",
+        "Neural Network Theory",
+        "Mathematics",
+        "Optimization",
+        "PyTorch",
+        "AI Engineering",
+        "Research Papers"
+      ],
+      "excerpt": "The cert review showed you the silhouette of reinforcement learning. The tree the field actually uses has four branches, fifteen named algorithms, and a clean logic for which one to reach for. This is the tour through it, with the equation, the contribution, and the minimal skeleton for each.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/rl-algorithm-taxonomy-tour",
+      "source_path": "front/public/blog/posts/field-notes/rl-algorithm-taxonomy-tour.md",
+      "reading_minutes": 28,
+      "word_count": 6900,
+      "concepts": [
+        "reinforcement learning",
+        "deep learning",
+        "machine learning",
+        "algorithms",
+        "neural network theory",
+        "mathematics",
+        "optimization",
+        "pytorch",
+        "ai engineering",
+        "research papers"
+      ],
+      "prereqs": [],
+      "teaches": [],
+      "tech": [],
+      "depth": "deep",
+      "audio_available": [
+        "en"
+      ],
+      "augmented": false
+    },
     "ml-cert-review-part-2-deep-learning-and-beyond": {
       "title": "ML Cert Review, Part II: Deep Learning, Scale, NLP, RL, and Explainability",
       "date": "2027-09-23",
@@ -60,7 +102,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -102,7 +145,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -4596,6 +4640,28 @@
     }
   },
   "concept_index": {
+    "reinforcement learning": [
+      {
+        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-first-principles",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-in-practice",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "rlhf-dpo-alignment",
+        "depth": "deep"
+      }
+    ],
     "deep learning": [
       {
         "slug": "attention-is-all-you-need",
@@ -4690,6 +4756,10 @@
         "depth": "deep"
       },
       {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
         "slug": "rlhf-dpo-alignment",
         "depth": "deep"
       },
@@ -4715,6 +4785,158 @@
       },
       {
         "slug": "working-with-ml-models",
+        "depth": "deep"
+      }
+    ],
+    "machine learning": [
+      {
+        "slug": "cloud-ml-infrastructure",
+        "depth": "deep"
+      },
+      {
+        "slug": "dataiku-enterprise-data-ai-ecosystem",
+        "depth": "deep"
+      },
+      {
+        "slug": "elevenlabs-voice-ai-engineering",
+        "depth": "deep"
+      },
+      {
+        "slug": "experiment-tracking-mlops",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-libraries-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-metrics-evaluation-monitoring",
+        "depth": "deep"
+      },
+      {
+        "slug": "pytorch-tensorflow-deep-learning-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-first-principles",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-in-practice",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "rlhf-dpo-alignment",
+        "depth": "deep"
+      },
+      {
+        "slug": "vertex-ai-gcp-ml-platform-cli",
+        "depth": "deep"
+      },
+      {
+        "slug": "working-with-ml-models",
+        "depth": "deep"
+      }
+    ],
+    "algorithms": [
+      {
+        "slug": "100-posts-knowledge-graph-retrospective",
+        "depth": "deep"
+      },
+      {
+        "slug": "algebraic-number-theory-when-factorization-breaks",
+        "depth": "deep"
+      },
+      {
+        "slug": "attention-is-all-you-need",
+        "depth": "intro"
+      },
+      {
+        "slug": "benfords-law",
+        "depth": "deep"
+      },
+      {
+        "slug": "collatz-conjecture",
+        "depth": "deep"
+      },
+      {
+        "slug": "content-addressable-hash-as-engineering-tool",
+        "depth": "deep"
+      },
+      {
+        "slug": "fermat-n4-infinite-descent",
+        "depth": "deep"
+      },
+      {
+        "slug": "files-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "fourier-transform",
+        "depth": "deep"
+      },
+      {
+        "slug": "godels-incompleteness-theorems",
+        "depth": "deep"
+      },
+      {
+        "slug": "graph-theory-mathematics-of-connections",
+        "depth": "deep"
+      },
+      {
+        "slug": "mamba-selective-state-spaces",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "network-science-communities-centrality",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "ramanujan-constant-almost-integer",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-first-principles",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-in-practice",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "rubiks-cube-group-theory",
+        "depth": "intro"
+      },
+      {
+        "slug": "shannon-number-chess-game-tree",
+        "depth": "deep"
+      },
+      {
+        "slug": "tetris-np-complete",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-manifold-hypothesis",
         "depth": "deep"
       }
     ],
@@ -4748,6 +4970,10 @@
         "depth": "deep"
       },
       {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
         "slug": "scaling-laws-neural-language-models",
         "depth": "deep"
       },
@@ -4760,15 +4986,111 @@
         "depth": "deep"
       }
     ],
-    "cnns": [
+    "mathematics": [
       {
-        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "slug": "100-posts-knowledge-graph-retrospective",
+        "depth": "deep"
+      },
+      {
+        "slug": "algebraic-number-theory-when-factorization-breaks",
+        "depth": "deep"
+      },
+      {
+        "slug": "benfords-law",
+        "depth": "deep"
+      },
+      {
+        "slug": "collatz-conjecture",
+        "depth": "deep"
+      },
+      {
+        "slug": "fermat-n4-infinite-descent",
+        "depth": "deep"
+      },
+      {
+        "slug": "fourier-transform",
+        "depth": "deep"
+      },
+      {
+        "slug": "godels-incompleteness-theorems",
+        "depth": "deep"
+      },
+      {
+        "slug": "graph-theory-mathematics-of-connections",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "network-science-communities-centrality",
+        "depth": "deep"
+      },
+      {
+        "slug": "ramanujan-constant-almost-integer",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-first-principles",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "rubiks-cube-group-theory",
+        "depth": "intro"
+      },
+      {
+        "slug": "scaling-laws-neural-language-models",
+        "depth": "deep"
+      },
+      {
+        "slug": "shannon-number-chess-game-tree",
+        "depth": "deep"
+      },
+      {
+        "slug": "sum-of-naturals-minus-one-twelfth",
+        "depth": "intro"
+      },
+      {
+        "slug": "tetris-np-complete",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-manifold-hypothesis",
         "depth": "deep"
       }
     ],
-    "rnns": [
+    "optimization": [
       {
-        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-first-principles",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-in-practice",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "rubiks-cube-group-theory",
+        "depth": "intro"
+      },
+      {
+        "slug": "shannon-number-chess-game-tree",
+        "depth": "deep"
+      },
+      {
+        "slug": "tetris-np-complete",
         "depth": "deep"
       }
     ],
@@ -4806,7 +5128,139 @@
         "depth": "deep"
       },
       {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
         "slug": "working-with-ml-models",
+        "depth": "deep"
+      }
+    ],
+    "ai engineering": [
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "elevenlabs-voice-ai-engineering",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "langgraph-multi-agent-workflows",
+        "depth": "deep"
+      },
+      {
+        "slug": "llamaindex-langchain-llm-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-as-a-judge",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "local-llm-inference-tools",
+        "depth": "deep"
+      },
+      {
+        "slug": "mcp-server-nl-to-powerbi-dashboard",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
+        "depth": "deep"
+      },
+      {
+        "slug": "vertex-ai-gcp-ml-platform-cli",
+        "depth": "deep"
+      }
+    ],
+    "research papers": [
+      {
+        "slug": "attention-is-all-you-need",
+        "depth": "intro"
+      },
+      {
+        "slug": "bert-pre-training-bidirectional-transformers",
+        "depth": "deep"
+      },
+      {
+        "slug": "emotion-concepts-in-llms",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-as-a-judge",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "mamba-selective-state-spaces",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "scaling-laws-neural-language-models",
+        "depth": "deep"
+      },
+      {
+        "slug": "t5-text-to-text-transfer-transformer",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-manifold-hypothesis",
+        "depth": "deep"
+      }
+    ],
+    "cnns": [
+      {
+        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "depth": "deep"
+      }
+    ],
+    "rnns": [
+      {
+        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
         "depth": "deep"
       }
     ],
@@ -4881,24 +5335,6 @@
       },
       {
         "slug": "working-with-ml-models",
-        "depth": "deep"
-      }
-    ],
-    "reinforcement learning": [
-      {
-        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-first-principles",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-in-practice",
-        "depth": "deep"
-      },
-      {
-        "slug": "rlhf-dpo-alignment",
         "depth": "deep"
       }
     ],
@@ -5088,122 +5524,6 @@
         "depth": "deep"
       }
     ],
-    "ai engineering": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "elevenlabs-voice-ai-engineering",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "langgraph-multi-agent-workflows",
-        "depth": "deep"
-      },
-      {
-        "slug": "llamaindex-langchain-llm-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-as-a-judge",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "local-llm-inference-tools",
-        "depth": "deep"
-      },
-      {
-        "slug": "mcp-server-nl-to-powerbi-dashboard",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
-        "depth": "deep"
-      },
-      {
-        "slug": "vertex-ai-gcp-ml-platform-cli",
-        "depth": "deep"
-      }
-    ],
-    "machine learning": [
-      {
-        "slug": "cloud-ml-infrastructure",
-        "depth": "deep"
-      },
-      {
-        "slug": "dataiku-enterprise-data-ai-ecosystem",
-        "depth": "deep"
-      },
-      {
-        "slug": "elevenlabs-voice-ai-engineering",
-        "depth": "deep"
-      },
-      {
-        "slug": "experiment-tracking-mlops",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-libraries-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-metrics-evaluation-monitoring",
-        "depth": "deep"
-      },
-      {
-        "slug": "pytorch-tensorflow-deep-learning-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-first-principles",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-in-practice",
-        "depth": "deep"
-      },
-      {
-        "slug": "rlhf-dpo-alignment",
-        "depth": "deep"
-      },
-      {
-        "slug": "vertex-ai-gcp-ml-platform-cli",
-        "depth": "deep"
-      },
-      {
-        "slug": "working-with-ml-models",
-        "depth": "deep"
-      }
-    ],
     "statistics": [
       {
         "slug": "100-posts-knowledge-graph-retrospective",
@@ -5219,106 +5539,6 @@
       },
       {
         "slug": "network-science-communities-centrality",
-        "depth": "deep"
-      }
-    ],
-    "mathematics": [
-      {
-        "slug": "100-posts-knowledge-graph-retrospective",
-        "depth": "deep"
-      },
-      {
-        "slug": "algebraic-number-theory-when-factorization-breaks",
-        "depth": "deep"
-      },
-      {
-        "slug": "benfords-law",
-        "depth": "deep"
-      },
-      {
-        "slug": "collatz-conjecture",
-        "depth": "deep"
-      },
-      {
-        "slug": "fermat-n4-infinite-descent",
-        "depth": "deep"
-      },
-      {
-        "slug": "fourier-transform",
-        "depth": "deep"
-      },
-      {
-        "slug": "godels-incompleteness-theorems",
-        "depth": "deep"
-      },
-      {
-        "slug": "graph-theory-mathematics-of-connections",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "network-science-communities-centrality",
-        "depth": "deep"
-      },
-      {
-        "slug": "ramanujan-constant-almost-integer",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-first-principles",
-        "depth": "deep"
-      },
-      {
-        "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
-      },
-      {
-        "slug": "scaling-laws-neural-language-models",
-        "depth": "deep"
-      },
-      {
-        "slug": "shannon-number-chess-game-tree",
-        "depth": "deep"
-      },
-      {
-        "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
-      },
-      {
-        "slug": "tetris-np-complete",
-        "depth": "deep"
-      },
-      {
-        "slug": "the-manifold-hypothesis",
-        "depth": "deep"
-      }
-    ],
-    "optimization": [
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-first-principles",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-in-practice",
-        "depth": "deep"
-      },
-      {
-        "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
-      },
-      {
-        "slug": "shannon-number-chess-game-tree",
-        "depth": "deep"
-      },
-      {
-        "slug": "tetris-np-complete",
         "depth": "deep"
       }
     ],
@@ -5377,96 +5597,6 @@
       },
       {
         "slug": "vector-db-benchmarks",
-        "depth": "deep"
-      }
-    ],
-    "algorithms": [
-      {
-        "slug": "100-posts-knowledge-graph-retrospective",
-        "depth": "deep"
-      },
-      {
-        "slug": "algebraic-number-theory-when-factorization-breaks",
-        "depth": "deep"
-      },
-      {
-        "slug": "attention-is-all-you-need",
-        "depth": "intro"
-      },
-      {
-        "slug": "benfords-law",
-        "depth": "deep"
-      },
-      {
-        "slug": "collatz-conjecture",
-        "depth": "deep"
-      },
-      {
-        "slug": "content-addressable-hash-as-engineering-tool",
-        "depth": "deep"
-      },
-      {
-        "slug": "fermat-n4-infinite-descent",
-        "depth": "deep"
-      },
-      {
-        "slug": "files-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "fourier-transform",
-        "depth": "deep"
-      },
-      {
-        "slug": "godels-incompleteness-theorems",
-        "depth": "deep"
-      },
-      {
-        "slug": "graph-theory-mathematics-of-connections",
-        "depth": "deep"
-      },
-      {
-        "slug": "mamba-selective-state-spaces",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "network-science-communities-centrality",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-grounded-rag-chunks-in-nodes",
-        "depth": "deep"
-      },
-      {
-        "slug": "ramanujan-constant-almost-integer",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-first-principles",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-in-practice",
-        "depth": "deep"
-      },
-      {
-        "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
-      },
-      {
-        "slug": "shannon-number-chess-game-tree",
-        "depth": "deep"
-      },
-      {
-        "slug": "tetris-np-complete",
-        "depth": "deep"
-      },
-      {
-        "slug": "the-manifold-hypothesis",
         "depth": "deep"
       }
     ],
@@ -6913,52 +7043,6 @@
       },
       {
         "slug": "tbox-abox-schema-facts-distinction",
-        "depth": "deep"
-      }
-    ],
-    "research papers": [
-      {
-        "slug": "attention-is-all-you-need",
-        "depth": "intro"
-      },
-      {
-        "slug": "bert-pre-training-bidirectional-transformers",
-        "depth": "deep"
-      },
-      {
-        "slug": "emotion-concepts-in-llms",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-as-a-judge",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "mamba-selective-state-spaces",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-grounded-rag-chunks-in-nodes",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "scaling-laws-neural-language-models",
-        "depth": "deep"
-      },
-      {
-        "slug": "t5-text-to-text-transfer-transformer",
-        "depth": "deep"
-      },
-      {
-        "slug": "the-manifold-hypothesis",
         "depth": "deep"
       }
     ],
@@ -9048,6 +9132,13 @@
     ]
   },
   "tag_index": {
+    "Reinforcement Learning": [
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rlhf-dpo-alignment"
+    ],
     "Deep Learning": [
       "attention-is-all-you-need",
       "bert-pre-training-bidirectional-transformers",
@@ -9074,6 +9165,7 @@
       "rag-retrieval-augmented-generation",
       "reinforcement-learning-first-principles",
       "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
       "rlhf-dpo-alignment",
       "scaling-laws-neural-language-models",
       "sum-of-naturals-minus-one-twelfth",
@@ -9081,6 +9173,50 @@
       "the-manifold-hypothesis",
       "vertex-ai-gcp-ml-platform-cli",
       "working-with-ml-models"
+    ],
+    "Machine Learning": [
+      "cloud-ml-infrastructure",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "elevenlabs-voice-ai-engineering",
+      "experiment-tracking-mlops",
+      "graph-neural-networks-learning-structured-data",
+      "ml-cert-review-part-1-foundations",
+      "ml-libraries-under-the-hood",
+      "ml-metrics-evaluation-monitoring",
+      "pytorch-tensorflow-deep-learning-frameworks",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rlhf-dpo-alignment",
+      "vertex-ai-gcp-ml-platform-cli",
+      "working-with-ml-models"
+    ],
+    "Algorithms": [
+      "100-posts-knowledge-graph-retrospective",
+      "algebraic-number-theory-when-factorization-breaks",
+      "attention-is-all-you-need",
+      "benfords-law",
+      "collatz-conjecture",
+      "content-addressable-hash-as-engineering-tool",
+      "fermat-n4-infinite-descent",
+      "files-under-the-hood",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-neural-networks-learning-structured-data",
+      "graph-theory-mathematics-of-connections",
+      "mamba-selective-state-spaces",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "pagerank-eigenvectors",
+      "ramanujan-constant-almost-integer",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete",
+      "the-manifold-hypothesis"
     ],
     "Neural Network Theory": [
       "attention-is-all-you-need",
@@ -9092,15 +9228,42 @@
       "microgpt-reading-karpathy",
       "ml-cert-review-part-2-deep-learning-and-beyond",
       "reinforcement-learning-first-principles",
+      "rl-algorithm-taxonomy-tour",
       "scaling-laws-neural-language-models",
       "sum-of-naturals-minus-one-twelfth",
       "the-manifold-hypothesis"
     ],
-    "CNNs": [
-      "ml-cert-review-part-2-deep-learning-and-beyond"
+    "Mathematics": [
+      "100-posts-knowledge-graph-retrospective",
+      "algebraic-number-theory-when-factorization-breaks",
+      "benfords-law",
+      "collatz-conjecture",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-theory-mathematics-of-connections",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "pagerank-eigenvectors",
+      "ramanujan-constant-almost-integer",
+      "reinforcement-learning-first-principles",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "scaling-laws-neural-language-models",
+      "shannon-number-chess-game-tree",
+      "sum-of-naturals-minus-one-twelfth",
+      "tetris-np-complete",
+      "the-manifold-hypothesis"
     ],
-    "RNNs": [
-      "ml-cert-review-part-2-deep-learning-and-beyond"
+    "Optimization": [
+      "ml-cert-review-part-1-foundations",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete"
     ],
     "PyTorch": [
       "computational-resources-ml",
@@ -9112,7 +9275,51 @@
       "ml-libraries-under-the-hood",
       "pytorch-tensorflow-deep-learning-frameworks",
       "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
       "working-with-ml-models"
+    ],
+    "AI Engineering": [
+      "agent-engineering-disciplines",
+      "elevenlabs-voice-ai-engineering",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "local-llm-inference-tools",
+      "mcp-production-enterprise",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "ml-cert-review-part-1-foundations",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "model-context-protocol",
+      "production-llm-agents-patterns",
+      "ragas-evaluating-rag",
+      "rl-algorithm-taxonomy-tour",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "Research Papers": [
+      "attention-is-all-you-need",
+      "bert-pre-training-bidirectional-transformers",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "mamba-selective-state-spaces",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "rag-retrieval-augmented-generation",
+      "rl-algorithm-taxonomy-tour",
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis"
+    ],
+    "CNNs": [
+      "ml-cert-review-part-2-deep-learning-and-beyond"
+    ],
+    "RNNs": [
+      "ml-cert-review-part-2-deep-learning-and-beyond"
     ],
     "NLP": [
       "attention-is-all-you-need",
@@ -9139,12 +9346,6 @@
       "t5-text-to-text-transfer-transformer",
       "text-to-sql",
       "working-with-ml-models"
-    ],
-    "Reinforcement Learning": [
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rlhf-dpo-alignment"
     ],
     "MLOps": [
       "agent-engineering-disciplines",
@@ -9201,78 +9402,11 @@
       "structuring-ml-projects",
       "terraform-infrastructure-as-code"
     ],
-    "AI Engineering": [
-      "agent-engineering-disciplines",
-      "elevenlabs-voice-ai-engineering",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "local-llm-inference-tools",
-      "mcp-production-enterprise",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "ml-cert-review-part-1-foundations",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "model-context-protocol",
-      "production-llm-agents-patterns",
-      "ragas-evaluating-rag",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql",
-      "vertex-ai-gcp-ml-platform-cli"
-    ],
-    "Machine Learning": [
-      "cloud-ml-infrastructure",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "elevenlabs-voice-ai-engineering",
-      "experiment-tracking-mlops",
-      "graph-neural-networks-learning-structured-data",
-      "ml-cert-review-part-1-foundations",
-      "ml-libraries-under-the-hood",
-      "ml-metrics-evaluation-monitoring",
-      "pytorch-tensorflow-deep-learning-frameworks",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rlhf-dpo-alignment",
-      "vertex-ai-gcp-ml-platform-cli",
-      "working-with-ml-models"
-    ],
     "Statistics": [
       "100-posts-knowledge-graph-retrospective",
       "benfords-law",
       "ml-cert-review-part-1-foundations",
       "network-science-communities-centrality"
-    ],
-    "Mathematics": [
-      "100-posts-knowledge-graph-retrospective",
-      "algebraic-number-theory-when-factorization-breaks",
-      "benfords-law",
-      "collatz-conjecture",
-      "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
-      "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-theory-mathematics-of-connections",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "pagerank-eigenvectors",
-      "ramanujan-constant-almost-integer",
-      "reinforcement-learning-first-principles",
-      "rubiks-cube-group-theory",
-      "scaling-laws-neural-language-models",
-      "shannon-number-chess-game-tree",
-      "sum-of-naturals-minus-one-twelfth",
-      "tetris-np-complete",
-      "the-manifold-hypothesis"
-    ],
-    "Optimization": [
-      "ml-cert-review-part-1-foundations",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rubiks-cube-group-theory",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete"
     ],
     "Evaluation": [
       "agent-engineering-disciplines",
@@ -9291,32 +9425,6 @@
       "stack-recommendations-after-100-posts",
       "text-to-sql",
       "vector-db-benchmarks"
-    ],
-    "Algorithms": [
-      "100-posts-knowledge-graph-retrospective",
-      "algebraic-number-theory-when-factorization-breaks",
-      "attention-is-all-you-need",
-      "benfords-law",
-      "collatz-conjecture",
-      "content-addressable-hash-as-engineering-tool",
-      "fermat-n4-infinite-descent",
-      "files-under-the-hood",
-      "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-neural-networks-learning-structured-data",
-      "graph-theory-mathematics-of-connections",
-      "mamba-selective-state-spaces",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "pagerank-eigenvectors",
-      "ramanujan-constant-almost-integer",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rubiks-cube-group-theory",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete",
-      "the-manifold-hypothesis"
     ],
     "Linear Algebra": [
       "algebraic-number-theory-when-factorization-breaks",
@@ -9821,20 +9929,6 @@
     ],
     "Knowledge Representation": [
       "tbox-abox-schema-facts-distinction"
-    ],
-    "Research Papers": [
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "mamba-selective-state-spaces",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "rag-retrieval-augmented-generation",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis"
     ],
     "Embeddings": [
       "attention-is-all-you-need",
@@ -10610,6 +10704,7 @@
       "ragas-evaluating-rag",
       "reinforcement-learning-first-principles",
       "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
       "rlhf-dpo-alignment",
       "software-engineering-classics",
       "sql-pandas-pyspark-duckdb",
