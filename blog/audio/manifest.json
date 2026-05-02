@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1777673811,
+  "generatedAt": 1777677498,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -510,6 +510,19 @@
       "audioUrl": "/blog/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3",
       "translationModel": ""
     },
+    "field-notes/gemini-enterprise-knowledge-catalog-deep-dive": {
+      "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "82f0e862083677b20ad035258aacf21a03ab7376d415d49b627adf8beb038cdb",
+      "sourceHash": "82f0e862083677b20ad035258aacf21a03ab7376d415d49b627adf8beb038cdb",
+      "durationSec": 1696.248,
+      "byteSize": 10177488,
+      "narrationWordCount": 5552,
+      "audioUrl": "/blog/audio/field-notes/gemini-enterprise-knowledge-catalog-deep-dive.mp3",
+      "translationModel": ""
+    },
     "field-notes/git-and-github-complete-guide": {
       "slug": "git-and-github-complete-guide",
       "category": "field-notes",
@@ -560,6 +573,19 @@
       "byteSize": 8168976,
       "narrationWordCount": 3048,
       "audioUrl": "/blog/audio/field-notes/knowledge-base-curation.mp3",
+      "translationModel": ""
+    },
+    "field-notes/knowledge-catalog-vs-ontologies": {
+      "slug": "knowledge-catalog-vs-ontologies",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "9d7ac6fcdebfd8a40f32a620a979eef5ce9269818346a221c9a170b87ce14551",
+      "sourceHash": "9d7ac6fcdebfd8a40f32a620a979eef5ce9269818346a221c9a170b87ce14551",
+      "durationSec": 1675.392,
+      "byteSize": 10052352,
+      "narrationWordCount": 4813,
+      "audioUrl": "/blog/audio/field-notes/knowledge-catalog-vs-ontologies.mp3",
       "translationModel": ""
     },
     "field-notes/knowledge-graphs-practice": {
