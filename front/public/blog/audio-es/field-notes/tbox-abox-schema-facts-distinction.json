@@ -1,0 +1,13 @@
+{
+  "slug": "tbox-abox-schema-facts-distinction",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "249ccad9a42850afe406ad151beb3622106237aa594dcb9b0c23f82a55605050",
+  "sourceHash": "13c3a1c441947472a4ab2c678877007a42bee3d0b7b85ea7bfcfc6f1712ed2aa",
+  "durationSec": 1540.536,
+  "byteSize": 9243216,
+  "narrationWordCount": 4135,
+  "audioUrl": "/blog/audio-es/field-notes/tbox-abox-schema-facts-distinction.mp3",
+  "translationModel": "gemma4:latest"
+}

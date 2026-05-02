@@ -1,0 +1,13 @@
+{
+  "slug": "knowledge-catalog-vs-ontologies",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "f32aea7559372d68a22c0d44adead68bbff2cdd21f63ca755b77e1320f70e734",
+  "sourceHash": "9d7ac6fcdebfd8a40f32a620a979eef5ce9269818346a221c9a170b87ce14551",
+  "durationSec": 1855.68,
+  "byteSize": 11134080,
+  "narrationWordCount": 5241,
+  "audioUrl": "/blog/audio-es/field-notes/knowledge-catalog-vs-ontologies.mp3",
+  "translationModel": "gemma4:latest"
+}
