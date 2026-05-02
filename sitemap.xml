@@ -43,6 +43,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond</loc>
+    <lastmod>2027-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations</loc>
+    <lastmod>2027-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</loc>
     <lastmod>2027-09-09</lastmod>
     <changefreq>monthly</changefreq>

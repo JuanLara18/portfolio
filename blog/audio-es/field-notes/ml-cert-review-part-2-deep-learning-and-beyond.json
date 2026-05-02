@@ -1,0 +1,13 @@
+{
+  "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "4731b9cd45d723fe12d8d70e861c392327cc3b83b44c4f3fdd95e2e251f632f1",
+  "sourceHash": "e12ace67758bd359d4ce40fb6c9c8f2bb381cadc7871c1134efb71e03d17798b",
+  "durationSec": 2220.696,
+  "byteSize": 13324176,
+  "narrationWordCount": 5703,
+  "audioUrl": "/blog/audio-es/field-notes/ml-cert-review-part-2-deep-learning-and-beyond.mp3",
+  "translationModel": "gemma4:latest"
+}
