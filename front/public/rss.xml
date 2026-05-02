@@ -9,8 +9,49 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Sep 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 23 Sep 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>ML Cert Review, Part II: Deep Learning, Scale, NLP, RL, and Explainability</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond</guid>
+    <pubDate>Thu, 23 Sep 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part II of the cert review picks up where the classical foundations end. This is the modern stack: deep learning core, regularization, optimizers, distributed training, the NLP and RL fast tours, explainability, and the tooling map. Crisp coverage at cert speed.]]></description>
+    <category>field-notes</category>
+    <category>Deep Learning</category>
+    <category>Neural Network Theory</category>
+    <category>CNNs</category>
+    <category>RNNs</category>
+    <category>PyTorch</category>
+    <category>NLP</category>
+    <category>Reinforcement Learning</category>
+    <category>MLOps</category>
+    <category>Distributed Computing</category>
+    <category>Best Practices</category>
+    <category>AI Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-cert-review-part-2-deep-learning-and-beyond.mp3" length="11940192" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>ML Cert Review, Part I: How Models Learn and How We Measure Them</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations</guid>
+    <pubDate>Thu, 16 Sep 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[You've picked your cert. Now here is the ground you actually need to be solid on. A dense, opinionated refresher on the classical ML half of any modern ML certification: metrics, losses, activations, the bias-variance trade-off, feature engineering, evaluation, ensembles, and the algorithm zoo.]]></description>
+    <category>field-notes</category>
+    <category>Machine Learning</category>
+    <category>Statistics</category>
+    <category>Mathematics</category>
+    <category>Optimization</category>
+    <category>Evaluation</category>
+    <category>Best Practices</category>
+    <category>AI Engineering</category>
+    <category>Algorithms</category>
+    <category>Linear Algebra</category>
+    <category>MLOps</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-cert-review-part-1-foundations.mp3" length="12955968" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Google Cloud Certifications in 2026: A Practical Roadmap</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</link>
