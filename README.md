@@ -2,7 +2,9 @@
 
 # Juan Lara — Portfolio & Blog
 
-**Computer Scientist · Applied Mathematician · ML Engineer**
+**Senior AI Engineer · Production AI · Knowledge Systems**
+
+State-of-the-art AI, engineered for production.
 
 [![Live Site](https://img.shields.io/badge/Live_Site-juanlara18.github.io%2Fportfolio-6d28d9?style=flat-square&logo=github-pages&logoColor=white)](https://juanlara18.github.io/portfolio)
 [![License](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](LICENSE)
@@ -18,7 +20,7 @@
 
 ---
 
-Personal site built to share research, algorithmic analysis, and mathematical proofs — not just a resume. Features a custom Markdown blog engine with full LaTeX rendering, Mermaid diagrams, optional narrated audio in English and Spanish, dark mode, and animated UI.
+Personal site and engineering notebook for production AI. Field notes on RAG, agents, knowledge systems, and LLM ops — alongside research deep-dives and the occasional mathematical curiosity. Features a custom Markdown blog engine with full LaTeX rendering, Mermaid diagrams, optional narrated audio in English and Spanish, dark mode, and animated UI.
 
 ## Stack
 
@@ -32,14 +34,14 @@ Personal site built to share research, algorithmic analysis, and mathematical pr
 
 ## Writing
 
-**Curiosities** — Mathematical results that break intuition
-`Collatz Conjecture` · `Gödel's Incompleteness` · `Tetris is NP-Complete` · `1+2+3+... = -1/12`
-
-**Field Notes** — Engineering & ML in practice
-`Docker` · `Reinforcement Learning` · `ML Infrastructure` · `Production LLMs`
+**Field Notes** — Production AI in practice
+`Production RAG` · `Agentic Architectures` · `Knowledge Systems` · `LLM Ops`
 
 **Research** — Close reads of foundational ML papers
 `Attention Is All You Need` · `The Manifold Hypothesis` · `Embeddings: Geometry of Meaning`
+
+**Curiosities** — Mathematical results that break intuition
+`Collatz Conjecture` · `Gödel's Incompleteness` · `Tetris is NP-Complete` · `1+2+3+... = -1/12`
 
 ## Run locally
 

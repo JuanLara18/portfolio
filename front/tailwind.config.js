@@ -14,9 +14,20 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        mono: ['Source Code Pro', 'monospace'],
+        display: ['Newsreader', 'Inter', 'serif'],
+        mono: ['"JetBrains Mono"', '"Source Code Pro"', 'monospace'],
       },
       colors: {
+        // Brand v2 — Variant 04 (Logo B sigil + Cyan accent)
+        // Locked 2026-05-01. Mirror in CSS where Tailwind isn't available.
+        brand: {
+          bg: '#0B1120',          // Deep navy, replaces gray-900 as dark canvas (slightly warmer than pure #0A0F1E)
+          'bg-soft': '#101a2e',   // Slightly lifted surface (cards, sections)
+          fg: '#F5F5F0',          // Warm white, replaces slate-100 as primary text
+          'fg-muted': '#A1A9BB',  // Muted gray, for kickers and meta — brighter for dark-mode legibility
+          accent: '#22D3EE',      // Cyan-400 exact, the only accent color
+          'accent-soft': '#67E8F9', // Cyan-300 for hover/secondary
+        },
   // Added custom color palette
         slate: {
           50: '#f8fafc',
