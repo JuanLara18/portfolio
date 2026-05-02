@@ -1,0 +1,13 @@
+{
+  "slug": "ontology-production-pipeline-gcp",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "33e55372f12dd3c246a40952b75d36d131c2b3ac7afa651e875d3f16331e5187",
+  "sourceHash": "45a25f50eb11b2a3dd116db2fb6478048bab4d28ab708cafac840c59e7bba5c8",
+  "durationSec": 1471.896,
+  "byteSize": 8831376,
+  "narrationWordCount": 3961,
+  "audioUrl": "/blog/audio-es/field-notes/ontology-production-pipeline-gcp.mp3",
+  "translationModel": "gemma4:latest"
+}

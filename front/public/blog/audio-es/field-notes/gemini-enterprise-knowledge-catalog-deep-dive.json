@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "77164fa475f1860197e2662e0fc75984320fb85c933e29d40f100e778d928424",
+  "sourceHash": "82f0e862083677b20ad035258aacf21a03ab7376d415d49b627adf8beb038cdb",
+  "durationSec": 2146.704,
+  "byteSize": 12880224,
+  "narrationWordCount": 6392,
+  "audioUrl": "/blog/audio-es/field-notes/gemini-enterprise-knowledge-catalog-deep-dive.mp3",
+  "translationModel": "gemma4:latest"
+}
