@@ -6,19 +6,21 @@ export const BLOG_CONFIG = {
     curiosities: {
       name: 'Mathematical Curiosities',
       description: 'Explorations of games, puzzles, and mathematical phenomena',
-      color: 'blue',
+      // Brand v2: single accent (cyan). Keep `color` field for back-compat with any
+      // consumer that still reads it, but every category resolves to the same accent.
+      color: 'cyan',
       icon: 'Brain'
     },
     research: {
       name: 'Research Notes',
       description: 'Academic papers, studies, and research insights',
-      color: 'indigo',
+      color: 'cyan',
       icon: 'FileText'
     },
     'field-notes': {
       name: 'Field Notes',
       description: 'Practical guides and technical deep-dives from real-world ML/AI work',
-      color: 'emerald',
+      color: 'cyan',
       icon: 'Code2'
     }
   },

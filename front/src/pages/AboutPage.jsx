@@ -28,7 +28,8 @@ import {
   Cpu
 } from 'lucide-react';
 import { HoverMotion } from '../components/layout';
-import { ScrollIndicator, OptimizedImage } from '../components/ui';
+import { OptimizedImage } from '../components/ui';
+import { STRAP_LINE } from '../data/brand';
 
 // Animation variants
 const fadeInUp = motionVariants.fadeInUp();
@@ -36,26 +37,12 @@ const fadeInRight = motionVariants.fadeInRight();
 const fadeInLeft = motionVariants.fadeInLeft();
 const staggerContainer = motionVariants.stagger();
 
-// Skill component
-const SkillItem = ({ name, icon: Icon, color = "blue" }) => {
-  // Color mappings for different UI elements
-  const colorClasses = {
-    blue: "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/30",
-    indigo: "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/30",
-    green: "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800/30",
-    red: "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800/30",
-    yellow: "bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800/30",
-    teal: "bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border-teal-200 dark:border-teal-800/30",
-    orange: "bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800/30",
-    purple: "bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800/30"
-  };
-  
-  const classes = colorClasses[color] || colorClasses.blue;
-  
+// Skill component — editorial: clean list line, no pill/border/bg.
+const SkillItem = ({ name, icon: Icon }) => {
   return (
-    <div className={`flex items-center p-2 xl:p-3 rounded-lg border ${classes} transition-all duration-300 hover:shadow-sm hover:-translate-y-0.5`}>
-      <Icon className="w-4 h-4 xl:w-5 xl:h-5 mr-2 xl:mr-3 flex-shrink-0" />
-      <span className="font-medium text-[13px] lg:text-xs xl:text-sm whitespace-nowrap tracking-tight">{name}</span>
+    <div className="flex items-center gap-3 py-2">
+      <Icon className="w-4 h-4 text-cyan-700 dark:text-brand-accent flex-shrink-0" />
+      <span className="text-sm text-gray-700 dark:text-brand-fg-muted">{name}</span>
     </div>
   );
 };
@@ -84,80 +71,67 @@ const ExperienceCard = ({
   };
   
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 sm:p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden group mobile-card-large hover:shadow-md transition-shadow"
+      className="py-10 border-b border-gray-200/60 dark:border-white/[0.08] last:border-b-0"
     >
-      <div className="absolute top-0 right-0 w-40 h-40 bg-blue-50/50 dark:bg-blue-900/10 rounded-full -mr-20 -mt-20 z-0 transform group-hover:scale-110 transition-transform duration-500"></div>
-      
-      <div className="relative z-10">
-        <div className="flex flex-col md:flex-row md:items-center mb-4 gap-4">
-          <div className="w-28 h-20 md:w-32 md:h-20 rounded-lg overflow-hidden flex-shrink-0 bg-white p-2 shadow-md flex items-center justify-center">
-            <OptimizedImage 
-              src={`/images/company-logos/${logo}`} 
-              alt={`${company} company logo`}
-              objectFit="contain"
-            />
-          </div>
-          
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mobile-card-title">{role}</h3>
-            <div className="text-lg text-blue-600 dark:text-blue-400 font-medium">{company}</div>
-            <div className="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400 mt-1 gap-2">
-              <span>{period}</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400"></span>
-              <span>{location}</span>
-            </div>
+      <div className="flex items-start gap-5 mb-4">
+        <div className="w-24 h-16 sm:w-28 sm:h-20 md:w-32 md:h-20 overflow-hidden flex-shrink-0 flex items-center justify-center bg-white dark:bg-white/95 p-2 sm:p-3 rounded-sm">
+          <OptimizedImage
+            src={`/images/company-logos/${logo}`}
+            alt={`${company} company logo`}
+            objectFit="contain"
+          />
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <h3 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-1">{role}</h3>
+          <div className="font-mono text-sm tracking-wide text-cyan-700 dark:text-brand-accent mb-1">{company}</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-500 dark:text-brand-fg-muted">
+            {period} <span className="mx-1.5 opacity-60">|</span> {location}
           </div>
         </div>
-        
-        <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed mobile-card-text">{description}</p>
-        
-        {responsibilities && responsibilities.length > 0 && (
-          <div className="mb-4">
-            <AnimatePresence>
-              {expanded && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className="overflow-hidden"
-                >
-                  <h4 className="text-sm uppercase tracking-wider text-gray-600 dark:text-gray-400 font-semibold mb-2 mobile-card-subtitle">Key Responsibilities</h4>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300 mb-2">
-                    {responsibilities.map((item, index) => (
-                      <li key={index} className="leading-relaxed">{item}</li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            <button
-              onClick={toggle}
-              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer"
-            >
-              {expanded ? 'Show less \u2191' : 'Key responsibilities \u2193'}
-            </button>
-          </div>
-        )}
-        
-        {skills && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {skills.map((skill, index) => (
-              <span 
-                key={index} 
-                className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-md text-sm"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
+
+      <p className="text-sm sm:text-[15px] text-gray-600 dark:text-brand-fg-muted mb-4 leading-relaxed max-w-2xl">{description}</p>
+
+      {responsibilities && responsibilities.length > 0 && (
+        <div className="mb-4">
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="overflow-hidden"
+              >
+                <h4 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent font-semibold mb-2">Key Responsibilities</h4>
+                <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-brand-fg-muted mb-2">
+                  {responsibilities.map((item, index) => (
+                    <li key={index} className="leading-relaxed">{item}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <button
+            onClick={toggle}
+            className="text-sm text-cyan-700 dark:text-brand-accent hover:text-cyan-800 dark:hover:text-brand-accent-soft transition-colors duration-200 font-medium cursor-pointer"
+          >
+            {expanded ? 'Show less \u2191' : 'Key responsibilities \u2193'}
+          </button>
+        </div>
+      )}
+
+      {skills && skills.length > 0 && (
+        <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-gray-600 dark:text-brand-fg/70 mt-4 leading-relaxed">
+          {skills.join(' \u00b7 ')}
+        </p>
+      )}
     </motion.div>
   );
 };
@@ -177,64 +151,50 @@ const EducationCard = ({
   const isInView = useInView(ref, { once: true, margin: "0px" });
   
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-700 relative overflow-hidden mobile-card-large hover:shadow-md transition-shadow"
+      className="py-8 border-b border-gray-200/60 dark:border-white/[0.08] last:border-b-0"
     >
-      <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-50/50 dark:bg-blue-900/10 rounded-full -ml-20 -mb-20 z-0"></div>
-      
-      <div className="relative z-10">
-        <div className="flex items-center mb-5 gap-3 sm:gap-4">
-          <div className="w-16 h-12 sm:w-20 sm:h-14 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1.5 shadow-sm flex items-center justify-center">
-            <OptimizedImage 
-              src={`/images/institutions/${logo}`} 
-              alt={`${institution} institutional logo`}
-              objectFit="contain"
-            />
-          </div>
-          
-          <div className="min-w-0">
-            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mobile-card-title leading-tight mb-0.5 tracking-tight">{degree}</h3>
-            <div className="text-sm sm:text-[15px] text-blue-600 dark:text-blue-400 font-medium leading-tight tracking-tight whitespace-nowrap">{institution}</div>
-            <div className="flex flex-wrap items-center text-xs text-gray-600 dark:text-gray-400 mt-1.5 gap-1.5">
-              <span className="whitespace-nowrap">{period}</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400 flex-shrink-0"></span>
-              <span className="whitespace-nowrap">{location}</span>
-            </div>
+      <div className="flex items-start gap-4 mb-3">
+        <div className="w-16 h-12 sm:w-20 sm:h-14 overflow-hidden flex-shrink-0 flex items-center justify-center bg-white dark:bg-white/95 p-1.5 sm:p-2 rounded-sm">
+          <OptimizedImage
+            src={`/images/institutions/${logo}`}
+            alt={`${institution} institutional logo`}
+            objectFit="contain"
+          />
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <h3 className="font-bold text-lg tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-0.5">{degree}</h3>
+          <div className="font-mono text-sm tracking-wide text-cyan-700 dark:text-brand-accent leading-tight">{institution}</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-500 dark:text-brand-fg-muted mt-1">
+            {period} <span className="mx-1 opacity-60">·</span> {location}
           </div>
         </div>
-        
-        <div className="flex flex-wrap gap-3 mb-4">
-          {focus && (
-            <div className="px-4 py-2 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-md text-sm flex items-center">
-              <BookOpen size={14} className="mr-1.5" />
-              <span>Focus: {focus}</span>
-            </div>
-          )}
-          
-          {gpa && (
-            <div className="px-4 py-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-md text-sm flex items-center">
-              <Award size={14} className="mr-1.5" />
-              <span>GPA: {gpa}</span>
-            </div>
-          )}
-        </div>
-        
-        {certificateLink && (
-          <a 
-            href={certificateLink}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline gap-1 group"
-          >
-            <span>View Certificate</span>
-            <ExternalLink size={14} className="transform group-hover:translate-x-1 transition-transform duration-150" />
-          </a>
-        )}
       </div>
+
+      {(focus || gpa) && (
+        <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-600 dark:text-brand-fg/70 mb-3">
+          {focus && <span>Focus <span className="opacity-60">·</span> {focus}</span>}
+          {focus && gpa && <span className="mx-3 opacity-40">|</span>}
+          {gpa && <span>GPA <span className="opacity-60">·</span> {gpa}</span>}
+        </p>
+      )}
+
+      {certificateLink && (
+        <a
+          href={certificateLink}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center text-sm text-cyan-700 dark:text-brand-accent hover:text-cyan-800 dark:hover:text-brand-accent-soft hover:underline gap-1 group transition-colors"
+        >
+          <span>View Certificate</span>
+          <ExternalLink size={13} className="transform group-hover:translate-x-1 transition-transform duration-150" />
+        </a>
+      )}
     </motion.div>
   );
 };
@@ -255,62 +215,45 @@ const CourseCard = ({
   const isInView = useInView(ref, { once: true, margin: "0px" });
   
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-100 dark:border-gray-700 h-full relative overflow-hidden group mobile-card"
+      className="py-6 h-full flex flex-col"
     >
-      <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-full -mr-12 -mt-12 z-0 transform group-hover:scale-110 transition-transform duration-500"></div>
-      
-      <div className="relative z-10">
-        <div className="flex items-start gap-3 mb-3">
-          <div className="w-20 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1.5 shadow-sm flex items-center justify-center">
-            <OptimizedImage 
-              src={`/images/institutions/${logo}`} 
-              alt={`${provider} training provider logo`}
-              objectFit="contain"
-            />
-          </div>
-          
-          <div>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mobile-card-title leading-snug">{title}</h3>
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">{provider}</div>
-          </div>
+      <div className="flex items-start gap-4 mb-3">
+        <div className="w-20 h-14 overflow-hidden flex-shrink-0 flex items-center justify-center bg-white dark:bg-white/95 p-2 rounded-sm">
+          <OptimizedImage
+            src={`/images/institutions/${logo}`}
+            alt={`${provider} training provider logo`}
+            objectFit="contain"
+          />
         </div>
-        
-        <div className="flex flex-wrap gap-2 mb-3 text-xs">
-          <span className="card-tag inline-flex items-center">
-            {date}
-          </span>
-          
-          {duration && (
-            <span className="card-tag inline-flex items-center">
-              {duration}
-            </span>
-          )}
+
+        <div className="min-w-0 flex-1">
+          <h3 className="font-bold text-base tracking-tight text-gray-900 dark:text-brand-fg leading-snug">{title}</h3>
+          <div className="font-mono text-sm tracking-wide text-cyan-700 dark:text-brand-accent mt-0.5">{provider}</div>
         </div>
-        
-        {/* Description hidden for visual density — data preserved in course objects */}
-        {false && description && (
-          <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 line-clamp-2 card-description">{description}</p>
-        )}
-        
-        {certificateLink && (
-          <div className="mt-auto pt-2">
-            <a 
-              href={certificateLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center text-blue-600 dark:text-blue-400 text-sm hover:underline gap-1 group"
-            >
-              <span>Verify Certificate</span>
-              <ExternalLink size={12} className="transform group-hover:translate-x-1 transition-transform duration-150" />
-            </a>
-          </div>
-        )}
       </div>
+
+      <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-500 dark:text-brand-fg-muted mb-3">
+        {date}{duration && <> <span className="mx-1 opacity-60">·</span> {duration}</>}
+      </p>
+
+      {certificateLink && (
+        <div className="mt-auto pt-2">
+          <a
+            href={certificateLink}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center text-cyan-700 dark:text-brand-accent hover:text-cyan-800 dark:hover:text-brand-accent-soft text-sm hover:underline gap-1 group transition-colors"
+          >
+            <span>Verify Certificate</span>
+            <ExternalLink size={12} className="transform group-hover:translate-x-1 transition-transform duration-150" />
+          </a>
+        </div>
+      )}
     </motion.div>
   );
 };
@@ -334,7 +277,7 @@ const experiences = [
     period: "April 2026 - Present",
     location: "Bogotá D.C., Colombia",
     description:
-      "Building enterprise knowledge and data foundations for an AI-first strategy—connecting trusted information, metadata, and retrieval-ready datasets with the pipelines and governance patterns that power search, analytics, and generative AI across the organization.",
+      "Building enterprise knowledge and data foundations for an AI-first strategy. Connecting trusted information, metadata, and retrieval-ready datasets with the pipelines and governance patterns that power search, analytics, and generative AI across the organization.",
     responsibilities: [
       "Designing knowledge and data architectures and reusable data products that support semantic discovery, retrieval workflows, and downstream ML and analytics use cases.",
       "Engineering robust ingestion, quality, and documentation practices so knowledge assets and operational data remain fit for AI-driven products and compliance expectations.",
@@ -507,23 +450,22 @@ const courses = [
   return (
     <>
       <SEO
-        title="About | Juan Lara"
-        description="AI Engineer with a research mindset — building LLM systems, NLP pipelines, and production ML across research, healthcare, and enterprise domains. CS + Mathematics dual degree, M.S. AI candidate at Universidad de los Andes."
+        title="About · Juan Lara"
+        description="Senior AI Engineer building production AI systems at enterprise scale. RAG platforms, agentic architectures, knowledge-grounded LLM applications. Engineering experience across regulated banking, retail logistics, healthcare AI, and Harvard research."
         canonical="https://juanlara18.github.io/portfolio/#/about"
         keywords={[
           'Juan Lara',
-          'Computer Science',
-          'Mathematics',
-          'AI Engineer',
-          'LLM Systems',
-          'NLP',
+          'Senior AI Engineer',
+          'Production AI',
           'RAG',
-          'Production ML',
-          'Applied Research',
-          'GenAI'
+          'Agentic Architectures',
+          'Knowledge Systems',
+          'LLM Ops',
+          'Knowledge Data Engineer',
+          'Davivienda'
         ]}
       />
-      <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+      <div className="bg-white dark:bg-brand-bg text-gray-900 dark:text-brand-fg min-h-screen">
       
       {/* Hero Section */}
       <div className="pt-8 pb-12 sm:pt-16 sm:pb-20 flex flex-col relative overflow-hidden">
@@ -532,66 +474,8 @@ const courses = [
           style={{ opacity: heroOpacity, scale: heroScale }}
           className="relative flex-1 flex items-center justify-center pt-0"
         >
-        {/* Enhanced background with multiple layers */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 via-blue-50/80 to-white dark:from-gray-800/90 dark:via-gray-800/70 dark:to-gray-900 -z-10"></div>
-        
-        {/* Animated decorative elements */}
-        <motion.div 
-          className="absolute top-20 right-0 w-80 h-80 rounded-full bg-blue-100/50 dark:bg-blue-900/20 blur-3xl -z-10"
-          animate={{ 
-            scale: [1, 1.05, 1],
-            opacity: [0.5, 0.6, 0.5]
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity,
-            repeatType: "reverse" 
-          }}
-        ></motion.div>
-        
-        <motion.div 
-          className="absolute -bottom-10 left-10 w-96 h-96 rounded-full bg-indigo-100/40 dark:bg-indigo-900/20 blur-3xl -z-10"
-          animate={{ 
-            scale: [1, 0.95, 1],
-            opacity: [0.4, 0.5, 0.4]
-          }}
-          transition={{ 
-            duration: 10, 
-            repeat: Infinity,
-            repeatType: "reverse",
-            delay: 1
-          }}
-        ></motion.div>
-        
-        {/* Additional floating elements */}
-        <motion.div 
-          className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-green-100/30 dark:bg-green-900/10 blur-2xl -z-10"
-          animate={{ 
-            y: [-10, 10, -10],
-            opacity: [0.3, 0.4, 0.3]
-          }}
-          transition={{ 
-            duration: 12, 
-            repeat: Infinity,
-            repeatType: "reverse" 
-          }}
-        ></motion.div>
-        
-        <motion.div 
-          className="absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-purple-100/20 dark:bg-purple-900/10 blur-xl -z-10"
-          animate={{ 
-            y: [5, -5, 5],
-            opacity: [0.2, 0.3, 0.2]
-          }}
-          transition={{ 
-            duration: 15, 
-            repeat: Infinity,
-            repeatType: "reverse" 
-          }}
-        ></motion.div>
-        
-        {/* Subtle geometric patterns */}
-        <div className="absolute inset-0 opacity-5 dark:opacity-10 bg-grid-pattern -z-10"></div>
+        {/* Background. Editorial. Single canvas, no decorative blobs. */}
+        <div className="absolute inset-0 bg-gray-50 dark:bg-brand-bg -z-10"></div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <motion.div 
@@ -600,19 +484,23 @@ const courses = [
             variants={staggerContainer}
             className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12"
           >
-            {/* Profile Image */}
-            <motion.div 
+            {/* Profile Image — editorial portrait, no frame, with a subtle cyan accent line */}
+            <motion.div
               variants={fadeInRight}
-              className="w-40 h-48 sm:w-48 sm:h-56 md:w-56 md:h-72 flex-shrink-0 mx-auto md:mx-0"
+              className="w-40 h-52 sm:w-48 sm:h-60 md:w-56 md:h-72 flex-shrink-0 mx-auto md:mx-0 relative group"
             >
-              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
-                <OptimizedImage 
-                  src="/images/Profile.jpeg" 
+              {/* Accent line: thin cyan rule offset bottom-right, peeks out from under the photo */}
+              <div
+                className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-full h-full border-b border-r border-cyan-700 dark:border-brand-accent pointer-events-none transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1"
+                aria-hidden="true"
+              />
+              <div className="relative w-full h-full overflow-hidden">
+                <OptimizedImage
+                  src="/images/Profile.jpeg"
                   alt="Juan Lara"
                   className="object-cover w-full h-full"
                   eager={true}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
               </div>
             </motion.div>
 
@@ -621,21 +509,22 @@ const courses = [
               variants={fadeInRight}
               className="flex-1 text-center md:text-left"
             >
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-100/50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium mb-4">
-                <Code size={14} className="mr-2" /> About Me
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl font-bold mb-2 leading-tight text-gray-900 dark:text-white tracking-tight">
-                Juan Lara
+              <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-4">
+                About
+              </p>
+
+              <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 leading-[0.95] text-gray-900 dark:text-brand-fg tracking-tight">
+                Juan Lara.
               </h1>
-              
-              <h2 className="text-lg sm:text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-medium mb-4">
-                Computer Scientist · Mathematician · AI Researcher
+
+              <h2 className="font-mono text-xs sm:text-sm tracking-[0.05em] text-cyan-700 dark:text-brand-accent mb-6">
+                {STRAP_LINE}
               </h2>
-              
+
               <div className="space-y-4 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
+                {/* Pitch. Bold opener, italic industries, colored company names. */}
                 <p>
-                  <span className="font-medium text-gray-900 dark:text-gray-100">AI Engineer</span> with 3+ years building production AI systems across research, healthcare, banking, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning <span className="font-medium text-red-600 dark:text-red-400">Davivienda</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">Harvard University</span>, <span className="font-medium text-indigo-600 dark:text-indigo-400">GenomAI</span>, and <span className="font-medium text-blue-600 dark:text-blue-400">Falabella</span>.
+                  <span className="font-semibold text-gray-900 dark:text-white">Senior AI Engineer</span> with 5+ years building production AI across <span className="italic">banking</span>, <span className="italic">retail logistics</span>, <span className="italic">healthcare AI</span>, and <span className="italic">academic research</span>. Currently at <span className="font-semibold text-red-600 dark:text-red-400">Davivienda</span>. Previously at <span className="font-semibold text-blue-600 dark:text-blue-400">Falabella</span>, <span className="font-semibold text-emerald-600 dark:text-emerald-400">GenomAI</span>, and <span className="font-semibold text-amber-600 dark:text-amber-400">Harvard University</span>.
                 </p>
 
                 <AnimatePresence>
@@ -645,17 +534,25 @@ const courses = [
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
+                      className="overflow-hidden space-y-4"
                     >
+                      {/* Focus \u2014 moved into Read more so the visible bio stays compact */}
                       <p className="pt-2">
-                        Specializing in LLM fine-tuning, RAG architectures, NLP pipelines, and production ML systems on cloud infrastructure. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes, combining a dual foundation in Computer Science and Mathematics (4.7/5.0) with a drive to push AI research into real-world applications.
+                        My focus is the engineering layer between frontier ML research and enterprise systems. RAG and retrieval platforms. Agentic architectures. Knowledge-grounded LLM applications. The data foundations that make them reliable.
+                      </p>
+                      <p>
+                        Three things meet in my work. Deep familiarity with the latest research. The engineering rigor required to ship under regulated and high-scale constraints. The architectural taste to know which abstractions survive contact with production.
+                      </p>
+                      <p>
+                        <span className="font-medium text-gray-900 dark:text-gray-100">Computer Science + Mathematics</span> dual degree, 4.7/5.0. M.Sc. in Artificial Intelligence in progress at <span className="font-medium text-gray-900 dark:text-gray-100">Universidad de los Andes</span>.
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
+
                 <button
                   onClick={() => setBioExpanded(!bioExpanded)}
-                  className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200 font-medium cursor-pointer inline-flex items-center mx-auto md:mx-0"
+                  className="mt-2 text-sm text-cyan-700 dark:text-brand-accent hover:text-cyan-800 dark:hover:text-brand-accent-soft transition-colors duration-200 font-medium cursor-pointer inline-flex items-center mx-auto md:mx-0"
                 >
                   {bioExpanded ? 'Show less \u2191' : 'Read more \u2193'}
                 </button>
@@ -667,8 +564,8 @@ const courses = [
         </motion.section>
       </div>
       
-      {/* Skills Section */}
-      <section className="pt-8 pb-16 bg-gray-50 dark:bg-gray-800">
+      {/* Skills Section — editorial column layout, no boxes */}
+      <section className="pt-8 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
           <motion.div
             initial="hidden"
@@ -677,141 +574,82 @@ const courses = [
             variants={staggerContainer}
             className="w-full mx-auto"
           >
+            <motion.p
+              variants={fadeInUp}
+              className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2 text-center"
+            >
+              Stack
+            </motion.p>
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-gray-200"
+              className="font-bold text-2xl sm:text-3xl md:text-4xl text-center tracking-tight text-gray-900 dark:text-brand-fg mb-3"
             >
-              Technical Proficiency
+              Technical proficiency<span className="text-cyan-700 dark:text-brand-accent">.</span>
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="italic text-center mb-10 text-gray-600 dark:text-gray-400"
+              className="text-center text-sm mb-12 text-gray-600 dark:text-brand-fg-muted"
             >
-              The core technologies and frameworks driving my production-grade AI systems
+              The core technologies and frameworks driving my production-grade AI systems.
             </motion.p>
 
             <motion.div
               variants={fadeInUp}
-              className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+              className="grid grid-cols-2 gap-x-5 gap-y-8 md:gap-12 lg:grid-cols-4"
             >
               {/* Generative AI & NLP */}
-              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
-                  <BrainCircuit className="mr-2 text-blue-500 flex-shrink-0" size={18} />
+              <div>
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-purple-600 dark:text-purple-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-purple-600/30 dark:border-purple-400/30">
+                  <BrainCircuit className="flex-shrink-0" size={18} />
                   Generative AI & NLP
                 </h3>
-                {/* Use grid-cols-1 to ensure text never wraps to two lines, even on small screens */}
-                <div className="grid grid-cols-1 gap-3">
-                  <SkillItem
-                    name="RAG Architectures"
-                    icon={Database}
-                    color="blue"
-                  />
-                  <SkillItem
-                    name="LLM Fine-Tuning & PEFT"
-                    icon={Code}
-                    color="indigo"
-                  />
-                  <SkillItem
-                    name="Agentic Workflows"
-                    icon={Layers}
-                    color="green"
-                  />
-                  <SkillItem
-                    name="Advanced NLP Pipelines"
-                    icon={BrainCircuit}
-                    color="purple"
-                  />
+                <div className="space-y-1">
+                  <SkillItem name="RAG Architectures" icon={Database} />
+                  <SkillItem name="LLM Fine-Tuning & PEFT" icon={Code} />
+                  <SkillItem name="Agentic Workflows" icon={Layers} />
+                  <SkillItem name="Advanced NLP Pipelines" icon={BrainCircuit} />
                 </div>
               </div>
 
               {/* ML Engineering & MLOps */}
-              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
-                  <Server className="mr-2 text-purple-500 flex-shrink-0" size={18} />
+              <div>
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-emerald-600/30 dark:border-emerald-400/30">
+                  <Server className="flex-shrink-0" size={18} />
                   Production ML & MLOps
                 </h3>
-                <div className="grid grid-cols-1 gap-3">
-                  <SkillItem
-                    name="Model Serving & Endpoints"
-                    icon={Globe}
-                    color="purple"
-                  />
-                  <SkillItem
-                    name="CI/CD & Deployment"
-                    icon={Github}
-                    color="red"
-                  />
-                  <SkillItem
-                    name="Scalable System Architecture"
-                    icon={Box}
-                    color="orange"
-                  />
-                  <SkillItem
-                    name="Model Drift & Monitoring"
-                    icon={LineChart}
-                    color="teal"
-                  />
+                <div className="space-y-1">
+                  <SkillItem name="Model Serving & Endpoints" icon={Globe} />
+                  <SkillItem name="CI/CD & Deployment" icon={Github} />
+                  <SkillItem name="Scalable System Architecture" icon={Box} />
+                  <SkillItem name="Model Drift & Monitoring" icon={LineChart} />
                 </div>
               </div>
 
               {/* Cloud & Data Engineering */}
-              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
-                  <Cloud className="mr-2 text-teal-500 flex-shrink-0" size={18} />
+              <div>
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-sky-600 dark:text-sky-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-sky-600/30 dark:border-sky-400/30">
+                  <Cloud className="flex-shrink-0" size={18} />
                   Cloud & Data Engineering
                 </h3>
-                <div className="grid grid-cols-1 gap-3">
-                  <SkillItem
-                    name="GCP & AWS"
-                    icon={Cloud}
-                    color="teal"
-                  />
-                  <SkillItem
-                    name="Distributed Computing"
-                    icon={Layers}
-                    color="indigo"
-                  />
-                  <SkillItem
-                    name="Containerization (Docker)"
-                    icon={Box}
-                    color="yellow"
-                  />
-                  <SkillItem
-                    name="ETL & Data Pipelines"
-                    icon={Database}
-                    color="blue"
-                  />
+                <div className="space-y-1">
+                  <SkillItem name="GCP & AWS" icon={Cloud} />
+                  <SkillItem name="Distributed Computing" icon={Layers} />
+                  <SkillItem name="Containerization (Docker)" icon={Box} />
+                  <SkillItem name="ETL & Data Pipelines" icon={Database} />
                 </div>
               </div>
 
               {/* Core ML & Research */}
-              <div className="bg-white dark:bg-gray-900 p-4 xl:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h3 className="text-[15px] xl:text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200 flex items-center whitespace-nowrap tracking-tight">
-                  <Code className="mr-2 text-green-500 flex-shrink-0" size={18} />
+              <div>
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-amber-600 dark:text-amber-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-amber-600/30 dark:border-amber-400/30">
+                  <Code className="flex-shrink-0" size={18} />
                   Core ML & Research
                 </h3>
-                <div className="grid grid-cols-1 gap-3">
-                  <SkillItem
-                    name="Deep Learning Foundations"
-                    icon={BrainCircuit}
-                    color="blue"
-                  />
-                  <SkillItem
-                    name="Mathematical Modeling"
-                    icon={BarChart}
-                    color="green"
-                  />
-                  <SkillItem
-                    name="Predictive Analytics"
-                    icon={LineChart}
-                    color="purple"
-                  />
-                  <SkillItem
-                    name="Reinforcement Learning"
-                    icon={Cpu}
-                    color="red"
-                  />
+                <div className="space-y-1">
+                  <SkillItem name="Deep Learning Foundations" icon={BrainCircuit} />
+                  <SkillItem name="Mathematical Modeling" icon={BarChart} />
+                  <SkillItem name="Predictive Analytics" icon={LineChart} />
+                  <SkillItem name="Reinforcement Learning" icon={Cpu} />
                 </div>
               </div>
             </motion.div>
@@ -821,62 +659,53 @@ const courses = [
       </section>
 
       
-      {/* Unified Professional Section (Grid Layout) */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800/50">
+      {/* Unified Professional Section (Grid Layout) — editorial flow */}
+      <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-12">
-            
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16">
+
             {/* Left Column: Experience */}
             <div className="lg:col-span-7 xl:col-span-8 space-y-12">
-              <motion.div 
+              <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "0px" }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeInUp} className="flex items-center mb-8">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-4 shadow-sm">
-                    <Briefcase className="text-blue-600 dark:text-blue-400" size={20} />
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">Professional Experience</h2>
+                <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
+                  <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Experience</p>
+                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">What I've shipped<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
                 </motion.div>
-                
-                <div className="relative">
-                  {/* Subtle timeline line for desktop */}
-                  <div className="absolute left-[3.5rem] top-8 bottom-0 w-px bg-gradient-to-b from-blue-200 via-blue-100 to-transparent dark:from-blue-800 dark:via-blue-900/50 dark:to-transparent z-0 hidden md:block"></div>
-                  
-                  <div className="relative z-10 space-y-8">
-                    {experiences.map((exp, index) => (
-                      <ExperienceCard 
-                        key={index} 
-                        {...exp} 
-                        isExpanded={expandedExperienceId === index}
-                        onToggle={() => setExpandedExperienceId(expandedExperienceId === index ? null : index)}
-                      />
-                    ))}
-                  </div>
+
+                <div>
+                  {experiences.map((exp, index) => (
+                    <ExperienceCard
+                      key={index}
+                      {...exp}
+                      isExpanded={expandedExperienceId === index}
+                      onToggle={() => setExpandedExperienceId(expandedExperienceId === index ? null : index)}
+                    />
+                  ))}
                 </div>
               </motion.div>
             </div>
 
             {/* Right Column: Education, Awards, Languages */}
             <div className="lg:col-span-5 xl:col-span-4 space-y-12">
-              
+
               {/* Education */}
-              <motion.div 
+              <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "0px" }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeInUp} className="flex items-center mb-6">
-                  <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center mr-4 shadow-sm">
-                    <GraduationCap className="text-indigo-600 dark:text-indigo-400" size={20} />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Education</h2>
+                <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
+                  <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Education</p>
+                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Where I trained<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
                 </motion.div>
-                
-                <div className="space-y-6">
+
+                <div>
                   {education.map((edu, index) => (
                     <EducationCard key={index} {...edu} />
                   ))}
@@ -884,40 +713,38 @@ const courses = [
               </motion.div>
 
               {/* Awards */}
-              <motion.div 
+              <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "0px" }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeInUp} className="flex items-center mb-6">
-                  <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mr-4 shadow-sm">
-                    <Award className="text-yellow-600 dark:text-yellow-400" size={20} />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Awards & Recognition</h2>
+                <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
+                  <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Awards</p>
+                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Recognition<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
                 </motion.div>
-                
-                <div className="space-y-4">
-                  <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-all hover:shadow-md">
-                    <div className="flex items-start">
-                      <Award className="text-yellow-600 dark:text-yellow-400 mt-0.5 mr-3 flex-shrink-0" size={20} />
+
+                <div>
+                  <div className="py-6 border-b border-gray-200/60 dark:border-white/[0.08]">
+                    <div className="flex items-start gap-3">
+                      <Award className="text-cyan-700 dark:text-brand-accent mt-0.5 flex-shrink-0" size={22} />
                       <div className="min-w-0">
-                        <h3 className="text-base font-bold text-gray-900 dark:text-white leading-tight mb-1">Total Ops Star Employee - LATAM</h3>
-                        <div className="text-[11px] sm:text-xs font-medium text-blue-600 dark:text-blue-400 mb-2 tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">Ipsos • April 2024</div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <h3 className="font-bold text-lg tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-1">Total Ops Star Employee — LATAM</h3>
+                        <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-cyan-700 dark:text-brand-accent mb-2">Ipsos <span className="opacity-60">·</span> April 2024</div>
+                        <p className="text-sm text-gray-600 dark:text-brand-fg-muted leading-relaxed">
                           Awarded for developing TextInsight and driving technical impact across LATAM.
                         </p>
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-all hover:shadow-md">
-                    <div className="flex items-start">
-                      <Award className="text-yellow-600 dark:text-yellow-400 mt-0.5 mr-3 flex-shrink-0" size={20} />
+
+                  <div className="py-6">
+                    <div className="flex items-start gap-3">
+                      <Award className="text-cyan-700 dark:text-brand-accent mt-0.5 flex-shrink-0" size={22} />
                       <div className="min-w-0">
-                        <h3 className="text-base font-bold text-gray-900 dark:text-white leading-tight mb-1">Best Averages Scholarship</h3>
-                        <div className="text-[11px] sm:text-xs font-medium text-blue-600 dark:text-blue-400 mb-2 tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">Universidad Nacional de Colombia • 2018-2023</div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <h3 className="font-bold text-lg tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-1">Best Averages Scholarship</h3>
+                        <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-cyan-700 dark:text-brand-accent mb-2">Universidad Nacional de Colombia <span className="opacity-60">·</span> 2018–2023</div>
+                        <p className="text-sm text-gray-600 dark:text-brand-fg-muted leading-relaxed">
                           Awarded 10 consecutive semesters for ranking in the top 15 students.
                         </p>
                       </div>
@@ -927,40 +754,25 @@ const courses = [
               </motion.div>
 
               {/* Languages */}
-              <motion.div 
+              <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "0px" }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeInUp} className="flex items-center mb-6">
-                  <div className="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mr-4 shadow-sm">
-                    <Globe className="text-teal-600 dark:text-teal-400" size={20} />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Languages</h2>
+                <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
+                  <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Languages</p>
+                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">How I speak<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
                 </motion.div>
-                
-                <div className="bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700">
-                  <div className="flex gap-8">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex-shrink-0 flex items-center justify-center">
-                        <span className="text-base font-bold text-teal-700 dark:text-teal-400">ES</span>
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-gray-900 dark:text-white">Spanish</h3>
-                        <p className="text-xs text-teal-600 dark:text-teal-400">Native</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex-shrink-0 flex items-center justify-center">
-                        <span className="text-base font-bold text-teal-700 dark:text-teal-400">EN</span>
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-gray-900 dark:text-white">English</h3>
-                        <p className="text-xs text-teal-600 dark:text-teal-400">Advanced</p>
-                      </div>
-                    </div>
+
+                <div className="py-4 flex gap-10">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent mb-1">Spanish</p>
+                    <p className="font-sans text-sm text-gray-700 dark:text-brand-fg-muted">Native</p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent mb-1">English</p>
+                    <p className="font-sans text-sm text-gray-700 dark:text-brand-fg-muted">Advanced</p>
                   </div>
                 </div>
               </motion.div>
@@ -980,11 +792,9 @@ const courses = [
             variants={staggerContainer}
             className="max-w-7xl mx-auto"
           >
-            <motion.div variants={fadeInUp} className="flex items-center justify-center mb-10">
-              <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mr-4 shadow-sm">
-                <BookOpen className="text-green-600 dark:text-green-400" size={24} />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Additional Training</h2>
+            <motion.div variants={fadeInUp} className="mb-10 text-center">
+              <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Training</p>
+              <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Continuing education<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
             </motion.div>
             
             <motion.div 

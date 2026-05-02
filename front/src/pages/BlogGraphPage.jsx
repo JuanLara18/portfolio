@@ -773,27 +773,27 @@ export default function BlogGraphPage() {
 
   if (loading) {
     return (
-      <div className={`fixed inset-0 flex items-center justify-center z-50 ${isDark ? 'bg-[#0F172A]' : 'bg-slate-50'}`}>
+      <div className={`fixed inset-0 flex items-center justify-center z-50 ${isDark ? 'bg-brand-bg' : 'bg-white'}`}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Building knowledge graph...</p>
+          <div className={`animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4 ${isDark ? 'border-brand-accent' : 'border-cyan-700'}`}></div>
+          <p className={`text-sm ${isDark ? 'text-brand-fg-muted' : 'text-gray-600'}`}>Building knowledge graph...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`fixed inset-0 z-50 flex flex-col ${isDark ? 'bg-[#0F172A]' : 'bg-slate-50'}`} style={{ marginTop: 0, paddingTop: 0 }}>
+    <div className={`fixed inset-0 z-50 flex flex-col ${isDark ? 'bg-brand-bg' : 'bg-white'}`} style={{ marginTop: 0, paddingTop: 0 }}>
       {/* Top bar */}
-      <div className={`relative z-10 flex items-center justify-between px-4 py-3 backdrop-blur-md border-b ${isDark ? 'bg-[#0F172A]/90 border-slate-800/60' : 'bg-white/90 border-slate-200'}`}>
+      <div className={`relative z-10 flex items-center justify-between px-4 py-3 backdrop-blur-md border-b ${isDark ? 'bg-brand-bg/95 border-white/[0.08]' : 'bg-white/95 border-gray-200'}`}>
         <div className="flex items-center gap-4">
-          <Link to="/blog" className={`flex items-center gap-2 transition-colors text-sm ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`}>
+          <Link to="/blog" className={`flex items-center gap-2 transition-colors text-sm ${isDark ? 'text-brand-fg-muted hover:text-brand-accent' : 'text-gray-600 hover:text-cyan-700'}`}>
             <ArrowLeft size={16} />
             <span className="hidden sm:inline">Back to Blog</span>
           </Link>
-          <div className={`hidden sm:block h-4 w-px ${isDark ? 'bg-slate-700' : 'bg-slate-300'}`}></div>
-          <h1 className={`font-semibold text-sm sm:text-base ${isDark ? 'text-white' : 'text-slate-900'}`}>Knowledge Graph</h1>
-          <span className={`text-xs hidden md:inline ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>
+          <div className={`hidden sm:block h-4 w-px ${isDark ? 'bg-white/[0.1]' : 'bg-gray-300'}`}></div>
+          <h1 className={`font-bold tracking-tight text-base sm:text-lg ${isDark ? 'text-brand-fg' : 'text-gray-900'}`}>Knowledge Graph</h1>
+          <span className={`hidden md:inline font-mono text-[11px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>
             {graphData?.nodes.length} topics · {graphData?.edges.length} connections
           </span>
         </div>
@@ -801,26 +801,26 @@ export default function BlogGraphPage() {
         {/* Search */}
         <div className="relative">
           <div className="flex items-center">
-            <Search size={14} className={`absolute left-3 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
+            <Search size={14} className={`absolute left-3 ${isDark ? 'text-brand-fg-muted' : 'text-gray-400'}`} />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search topics..."
-              className={`w-40 sm:w-56 pl-9 pr-8 py-1.5 border rounded-lg text-sm focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 ${isDark ? 'bg-slate-800/60 border-slate-700/50 text-slate-200 placeholder-slate-500' : 'bg-white border-slate-300 text-slate-800 placeholder-slate-400'}`}
+              className={`w-40 sm:w-56 pl-9 pr-8 py-1.5 border-0 border-b text-sm bg-transparent focus:outline-none ${isDark ? 'border-white/[0.1] text-brand-fg placeholder-brand-fg-muted focus:border-brand-accent' : 'border-gray-300 text-gray-900 placeholder-gray-400 focus:border-cyan-700'}`}
             />
             {searchTerm && (
-              <button onClick={() => { setSearchTerm(''); setSearchResults([]); setHighlightedTag(null); }} className={`absolute right-2 ${isDark ? 'text-slate-500 hover:text-slate-300' : 'text-slate-400 hover:text-slate-600'}`}>
+              <button onClick={() => { setSearchTerm(''); setSearchResults([]); setHighlightedTag(null); }} className={`absolute right-2 ${isDark ? 'text-brand-fg-muted hover:text-brand-fg' : 'text-gray-400 hover:text-gray-600'}`}>
                 <X size={14} />
               </button>
             )}
           </div>
           {searchResults.length > 0 && (
-            <div className={`absolute right-0 top-full mt-1 w-64 border rounded-lg shadow-2xl overflow-hidden ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}>
+            <div className={`absolute right-0 top-full mt-1 w-64 border backdrop-blur-md overflow-hidden ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
               {searchResults.map(r => (
-                <button key={r.id} onClick={() => focusOnTag(r.id)} className={`w-full text-left px-4 py-2.5 transition-colors flex items-center justify-between ${isDark ? 'hover:bg-slate-700/60' : 'hover:bg-slate-50'}`}>
-                  <span className={`text-sm ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>{r.id}</span>
-                  <span className={`text-xs ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{r.freq} posts</span>
+                <button key={r.id} onClick={() => focusOnTag(r.id)} className={`w-full text-left px-4 py-2.5 transition-colors flex items-center justify-between ${isDark ? 'text-brand-fg hover:text-brand-accent' : 'text-gray-900 hover:text-cyan-700'}`}>
+                  <span className="text-sm">{r.id}</span>
+                  <span className={`font-mono text-[10px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{r.freq} posts</span>
                 </button>
               ))}
             </div>
@@ -841,13 +841,13 @@ export default function BlogGraphPage() {
         />
 
         {/* Zoom controls — desktop only (mobile uses pinch) */}
-        <div className="absolute bottom-6 left-6 hidden sm:flex flex-col gap-2 z-10">
+        <div className={`absolute bottom-6 left-6 hidden sm:flex flex-col z-10 border backdrop-blur-sm ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
           {[
             { icon: <ZoomIn size={16} />, action: () => zoomTo(1.3) },
             { icon: <ZoomOut size={16} />, action: () => zoomTo(1 / 1.3) },
             { icon: <LocateFixed size={16} />, action: centerView },
           ].map((btn, i) => (
-            <button key={i} onClick={btn.action} className={`w-9 h-9 border rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm ${isDark ? 'bg-slate-800/80 hover:bg-slate-700 border-slate-700/50 text-slate-400 hover:text-white' : 'bg-white/80 hover:bg-white border-slate-300/50 text-slate-500 hover:text-slate-800'}`}>
+            <button key={i} onClick={btn.action} className={`w-9 h-9 flex items-center justify-center transition-colors ${isDark ? 'text-brand-fg-muted hover:text-brand-accent' : 'text-gray-500 hover:text-cyan-700'}`}>
               {btn.icon}
             </button>
           ))}
@@ -857,22 +857,24 @@ export default function BlogGraphPage() {
         {/* Mobile: collapsible toggle button */}
         <button
           onClick={() => setControlsOpen(v => !v)}
-          className={`absolute bottom-4 left-4 z-10 sm:hidden w-9 h-9 border rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm ${
+          className={`absolute bottom-4 left-4 z-10 sm:hidden w-9 h-9 border flex items-center justify-center transition-colors backdrop-blur-sm ${
             controlsOpen
-              ? 'bg-blue-500 text-white border-blue-400'
+              ? isDark
+                ? 'bg-brand-bg/95 border-brand-accent text-brand-accent'
+                : 'bg-white/95 border-cyan-700 text-cyan-700'
               : isDark
-                ? 'bg-slate-800/80 hover:bg-slate-700 border-slate-700/50 text-slate-400'
-                : 'bg-white/80 hover:bg-white border-slate-300/50 text-slate-500'
+                ? 'bg-brand-bg/95 border-white/[0.1] text-brand-fg-muted hover:text-brand-accent'
+                : 'bg-white/95 border-gray-200 text-gray-500 hover:text-cyan-700'
           }`}
         >
           <SlidersHorizontal size={16} />
         </button>
         {/* Mobile: expanded controls panel */}
         {controlsOpen && (
-          <div className={`absolute z-10 flex flex-col gap-2 backdrop-blur-sm border rounded-lg px-3 py-2.5
+          <div className={`absolute z-10 flex flex-col gap-2 backdrop-blur-md border px-3 py-2.5
             bottom-16 left-4 sm:hidden
-            ${isDark ? 'bg-slate-800/90 border-slate-700/50' : 'bg-white/90 border-slate-300/50'}`}>
-            <div className="flex flex-wrap items-center gap-1.5">
+            ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
+            <div className="flex flex-wrap items-center gap-3">
               {[
                 { key: 'all', label: 'All' },
                 { key: 'curiosities', label: 'Curiosities' },
@@ -882,12 +884,14 @@ export default function BlogGraphPage() {
                 <button
                   key={cat.key}
                   onClick={() => { setCategoryFilter(cat.key); setSelectedNode(null); setHoveredNode(null); }}
-                  className={`text-[10px] px-2 py-0.5 rounded-md transition-colors whitespace-nowrap ${
+                  className={`font-mono text-[10px] tracking-[0.12em] uppercase py-1 transition-colors whitespace-nowrap ${
                     categoryFilter === cat.key
-                      ? 'bg-blue-500 text-white'
+                      ? isDark
+                        ? 'text-brand-accent underline underline-offset-[6px] decoration-1'
+                        : 'text-cyan-700 underline underline-offset-[6px] decoration-1'
                       : isDark
-                        ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/60'
-                        : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/60'
+                        ? 'text-brand-fg-muted hover:text-brand-fg'
+                        : 'text-gray-500 hover:text-gray-900'
                   }`}
                 >
                   {cat.label}
@@ -895,17 +899,17 @@ export default function BlogGraphPage() {
               ))}
             </div>
             <div className="flex items-center gap-3">
-              <span className={`text-xs whitespace-nowrap ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Min. freq</span>
-              <input type="range" min={1} max={8} value={minFreq} onChange={(e) => setMinFreq(Number(e.target.value))} className="w-20 accent-blue-500" />
-              <span className={`text-xs font-mono w-4 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{minFreq}</span>
+              <span className={`font-mono text-[10px] tracking-[0.12em] uppercase whitespace-nowrap ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Min. freq</span>
+              <input type="range" min={1} max={8} value={minFreq} onChange={(e) => setMinFreq(Number(e.target.value))} className={`w-20 ${isDark ? 'accent-brand-accent' : 'accent-cyan-700'}`} />
+              <span className={`text-xs font-mono w-4 ${isDark ? 'text-brand-fg' : 'text-gray-700'}`}>{minFreq}</span>
             </div>
           </div>
         )}
         {/* Desktop: always visible controls */}
-        <div className={`absolute z-10 hidden sm:flex flex-col gap-2 backdrop-blur-sm border rounded-lg px-4 py-2.5
+        <div className={`absolute z-10 hidden sm:flex flex-col gap-2 backdrop-blur-md border px-4 py-2.5
           bottom-6 left-20
-          ${isDark ? 'bg-slate-800/80 border-slate-700/50' : 'bg-white/80 border-slate-300/50'}`}>
-          <div className="flex items-center gap-1.5">
+          ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
+          <div className="flex items-center gap-4">
             {[
               { key: 'all', label: 'All' },
               { key: 'curiosities', label: 'Curiosities' },
@@ -915,12 +919,14 @@ export default function BlogGraphPage() {
               <button
                 key={cat.key}
                 onClick={() => { setCategoryFilter(cat.key); setSelectedNode(null); setHoveredNode(null); }}
-                className={`text-xs px-2 py-0.5 rounded-md transition-colors whitespace-nowrap ${
+                className={`font-mono text-[11px] tracking-[0.12em] uppercase py-1 transition-colors whitespace-nowrap ${
                   categoryFilter === cat.key
-                    ? 'bg-blue-500 text-white'
+                    ? isDark
+                      ? 'text-brand-accent underline underline-offset-[6px] decoration-1'
+                      : 'text-cyan-700 underline underline-offset-[6px] decoration-1'
                     : isDark
-                      ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/60'
-                      : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/60'
+                      ? 'text-brand-fg-muted hover:text-brand-fg'
+                      : 'text-gray-500 hover:text-gray-900'
                 }`}
               >
                 {cat.label}
@@ -928,26 +934,26 @@ export default function BlogGraphPage() {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <span className={`text-xs whitespace-nowrap ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Min. freq</span>
-            <input type="range" min={1} max={8} value={minFreq} onChange={(e) => setMinFreq(Number(e.target.value))} className="w-28 accent-blue-500" />
-            <span className={`text-xs font-mono w-4 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{minFreq}</span>
+            <span className={`font-mono text-[10px] tracking-[0.12em] uppercase whitespace-nowrap ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Min. freq</span>
+            <input type="range" min={1} max={8} value={minFreq} onChange={(e) => setMinFreq(Number(e.target.value))} className={`w-28 ${isDark ? 'accent-brand-accent' : 'accent-cyan-700'}`} />
+            <span className={`text-xs font-mono w-4 ${isDark ? 'text-brand-fg' : 'text-gray-700'}`}>{minFreq}</span>
           </div>
         </div>
 
         {/* Reset view — mobile only */}
-        <button onClick={centerView} className={`absolute bottom-4 right-4 z-10 sm:hidden w-9 h-9 border rounded-lg flex items-center justify-center transition-colors backdrop-blur-sm ${isDark ? 'bg-slate-800/80 hover:bg-slate-700 border-slate-700/50 text-slate-400' : 'bg-white/80 hover:bg-white border-slate-300/50 text-slate-500'}`}>
+        <button onClick={centerView} className={`absolute bottom-4 right-4 z-10 sm:hidden w-9 h-9 border flex items-center justify-center transition-colors backdrop-blur-sm ${isDark ? 'bg-brand-bg/95 border-white/[0.1] text-brand-fg-muted hover:text-brand-accent' : 'bg-white/95 border-gray-200 text-gray-500 hover:text-cyan-700'}`}>
           <LocateFixed size={16} />
         </button>
 
         {/* Cluster legend — compact on mobile */}
-        <div className={`absolute top-4 left-4 z-10 backdrop-blur-sm border rounded-lg p-2 sm:p-3 max-w-[160px] sm:max-w-[200px] ${isDark ? 'bg-slate-800/70 border-slate-700/40' : 'bg-white/80 border-slate-200'}`}>
-          <p className={`text-[10px] uppercase tracking-wider mb-1.5 sm:mb-2 font-medium ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>Clusters</p>
+        <div className={`absolute top-4 left-4 z-10 backdrop-blur-sm border p-3 max-w-[160px] sm:max-w-[200px] ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
+          <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Clusters</p>
           <div className="space-y-1 sm:space-y-1.5">
             {clusterLegend.map(c => (
               <div key={c.id} className="flex items-center gap-1.5 sm:gap-2">
                 <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shrink-0" style={{ backgroundColor: c.color }} />
-                <span className={`text-[11px] sm:text-xs truncate ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{c.label}</span>
-                <span className={`text-[10px] ml-auto ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{c.count}</span>
+                <span className={`text-[11px] sm:text-xs truncate ${isDark ? 'text-brand-fg' : 'text-gray-700'}`}>{c.label}</span>
+                <span className={`font-mono text-[10px] ml-auto ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{c.count}</span>
               </div>
             ))}
           </div>
@@ -961,39 +967,39 @@ export default function BlogGraphPage() {
           const sx = node.x * t.k + t.x;
           const sy = node.y * t.k + t.y;
           return (
-            <div className={`absolute z-20 pointer-events-none backdrop-blur-sm border rounded-lg px-3 py-2 shadow-xl ${isDark ? 'bg-slate-800/95 border-slate-600/50' : 'bg-white/95 border-slate-200'}`} style={{ left: sx + 20, top: sy - 10, maxWidth: 220 }}>
-              <p className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>{node.id}</p>
-              <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{node.freq} posts</p>
+            <div className={`absolute z-20 pointer-events-none backdrop-blur-sm border px-3 py-2 ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`} style={{ left: sx + 20, top: sy - 10, maxWidth: 220 }}>
+              <p className={`text-sm font-bold ${isDark ? 'text-brand-fg' : 'text-gray-900'}`}>{node.id}</p>
+              <p className={`font-mono text-[10px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{node.freq} posts</p>
             </div>
           );
         })()}
 
         {/* Selected node panel — side panel on desktop, bottom sheet on mobile */}
         {selectedNodeData && (
-          <div className={`absolute z-20 backdrop-blur-md border rounded-xl shadow-2xl overflow-hidden flex flex-col
+          <div className={`absolute z-20 backdrop-blur-md border overflow-hidden flex flex-col
             inset-x-2 bottom-2 max-h-[55vh]
             sm:inset-x-auto sm:bottom-auto sm:top-4 sm:right-4 sm:w-80 sm:max-h-[calc(100%-2rem)]
-            ${isDark ? 'bg-slate-800/95 border-slate-700/60' : 'bg-white/95 border-slate-200'}`}>
-            <div className={`p-4 border-b ${isDark ? 'border-slate-700/40' : 'border-slate-200'}`}>
+            ${isDark ? 'bg-brand-bg/95 border-white/[0.1]' : 'bg-white/95 border-gray-200'}`}>
+            <div className={`p-4 border-b ${isDark ? 'border-white/[0.08]' : 'border-gray-200'}`}>
               <div className="flex items-center justify-between mb-1">
-                <h3 className={`text-base font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{selectedNodeData.id}</h3>
-                <button onClick={() => setSelectedNode(null)} className={`${isDark ? 'text-slate-500 hover:text-slate-300' : 'text-slate-400 hover:text-slate-600'} transition-colors`}>
+                <h3 className={`font-bold tracking-tight text-lg ${isDark ? 'text-brand-fg' : 'text-gray-900'}`}>{selectedNodeData.id}</h3>
+                <button onClick={() => setSelectedNode(null)} className={`${isDark ? 'text-brand-fg-muted hover:text-brand-accent' : 'text-gray-400 hover:text-cyan-700'} transition-colors`}>
                   <X size={16} />
                 </button>
               </div>
-              <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+              <p className={`font-mono text-[10px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>
                 {selectedNodeData.freq} posts · {selectedNodeData.connectedTags.length} connected topics
               </p>
             </div>
 
             {selectedNodeData.connectedTags.length > 0 && (
-              <div className={`px-4 py-3 border-b ${isDark ? 'border-slate-700/40' : 'border-slate-200'}`}>
-                <p className={`text-[10px] uppercase tracking-wider mb-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>Related Topics</p>
+              <div className={`px-4 py-3 border-b ${isDark ? 'border-white/[0.08]' : 'border-gray-200'}`}>
+                <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Related Topics</p>
                 <div className="flex flex-wrap gap-1.5">
                   {selectedNodeData.connectedTags.slice(0, 12).map(({ tag, weight }) => (
-                    <button key={tag} onClick={() => { setSelectedNode(tag); focusOnTag(tag); }} className={`px-2 py-0.5 text-xs rounded-md transition-colors ${isDark ? 'bg-slate-700/60 hover:bg-slate-600/60 text-slate-300' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>
+                    <button key={tag} onClick={() => { setSelectedNode(tag); focusOnTag(tag); }} className={`font-mono text-[10px] tracking-[0.08em] uppercase border px-2 py-1 transition-colors ${isDark ? 'border-brand-accent/30 hover:border-brand-accent text-brand-fg-muted hover:text-brand-accent' : 'border-cyan-700/30 hover:border-cyan-700 text-gray-700 hover:text-cyan-700'}`}>
                       {tag}
-                      <span className={`ml-1 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{weight}</span>
+                      <span className={`ml-1 ${isDark ? 'text-brand-fg-muted/70' : 'text-gray-400'}`}>{weight}</span>
                     </button>
                   ))}
                 </div>
@@ -1001,23 +1007,23 @@ export default function BlogGraphPage() {
             )}
 
             <div className="flex-1 overflow-y-auto px-4 py-3">
-              <p className={`text-[10px] uppercase tracking-wider mb-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>Posts</p>
-              <div className="space-y-2">
+              <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Posts</p>
+              <div>
                 {selectedNodeData.posts.map(post => (
-                  <Link key={post.slug} to={`/blog/${post.category}/${post.slug}`} className={`block p-2.5 rounded-lg transition-colors border border-transparent ${isDark ? 'bg-slate-700/30 hover:bg-slate-700/60 hover:border-slate-600/40' : 'bg-slate-50 hover:bg-slate-100 hover:border-slate-200'}`}>
-                    <p className={`text-sm leading-snug font-medium ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>{post.title}</p>
+                  <Link key={post.slug} to={`/blog/${post.category}/${post.slug}`} className={`block py-3 border-b last:border-b-0 group transition-colors ${isDark ? 'border-white/[0.08]' : 'border-gray-200/60'}`}>
+                    <p className={`text-sm leading-snug font-medium transition-colors ${isDark ? 'text-brand-fg group-hover:text-brand-accent' : 'text-gray-900 group-hover:text-cyan-700'}`}>{post.title}</p>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className={`text-[10px] capitalize ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{post.category}</span>
-                      <span className={`text-[10px] ${isDark ? 'text-slate-600' : 'text-slate-300'}`}>·</span>
-                      <span className={`text-[10px] ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{post.readingTime}m</span>
+                      <span className={`font-mono text-[10px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{post.category}</span>
+                      <span className={`text-[10px] ${isDark ? 'text-brand-fg-muted/60' : 'text-gray-300'}`}>·</span>
+                      <span className={`font-mono text-[10px] tracking-[0.08em] uppercase ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>{post.readingTime}m</span>
                     </div>
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className={`p-3 border-t ${isDark ? 'border-slate-700/40' : 'border-slate-200'}`}>
-              <button onClick={() => navigate(`/blog/tag/${encodeURIComponent(selectedNodeData.id)}`)} className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">
+            <div className={`p-3 border-t ${isDark ? 'border-white/[0.08]' : 'border-gray-200'}`}>
+              <button onClick={() => navigate(`/blog/tag/${encodeURIComponent(selectedNodeData.id)}`)} className={`w-full py-2 font-mono text-[11px] tracking-[0.12em] uppercase font-medium transition-colors ${isDark ? 'bg-brand-accent hover:bg-brand-accent-soft text-brand-bg' : 'bg-cyan-700 hover:bg-cyan-800 text-white'}`}>
                 Filter blog by "{selectedNodeData.id}"
               </button>
             </div>
@@ -1026,7 +1032,7 @@ export default function BlogGraphPage() {
 
         {/* Instructions hint — hidden when a node panel is open */}
         {!selectedNodeData && (
-          <div className={`absolute bottom-6 right-6 z-10 text-[11px] text-right hidden sm:block pointer-events-none select-none ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>
+          <div className={`absolute bottom-6 right-6 z-10 text-[11px] text-right hidden sm:block pointer-events-none select-none ${isDark ? 'text-brand-fg-muted/70' : 'text-gray-400'}`}>
             <p>Scroll to zoom · Drag to pan</p>
             <p>Click a node to explore</p>
           </div>

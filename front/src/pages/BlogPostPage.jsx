@@ -1,12 +1,10 @@
-import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { SEO } from '../components/common/SEO';
 import {
-  Calendar,
   Clock,
-  Tag,
   ArrowLeft,
   Share2,
   BookOpen,
@@ -17,7 +15,7 @@ import {
   Maximize2,
   ArrowDownUp
 } from 'lucide-react';
-import { getPostBySlug, BLOG_CONFIG, formatDate, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
+import { getPostBySlug, BLOG_CONFIG, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
 import { MarkdownRenderer, AudioPlayer } from '../components/features/blog';
 import { HoverMotion } from '../components/layout';
 
@@ -44,6 +42,13 @@ const slideInLeft = {
 // (e.g. Dockerfile `# ...`, bash `# ...`) are not mistaken for headings.
 function stripCodeBlocks(markdown) {
   return markdown.replace(/```[\s\S]*?```/g, '');
+}
+
+// Strip the leading '# Title' line from markdown so it doesn't render as a
+// duplicate H1 — the post hero already shows the title prominently.
+function stripLeadingH1(markdown) {
+  if (!markdown) return markdown;
+  return markdown.replace(/^\s*#\s+[^\n]+\n+/, '');
 }
 
 // Table of Contents component
@@ -105,23 +110,22 @@ const TableOfContents = ({ content }) => {
   };
   
   return (
-    <nav className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
-        <BookOpen size={16} className="mr-2" />
-        Table of Contents
+    <nav>
+      <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-4">
+        Contents
       </h3>
-      <ul className="space-y-1">
+      <ul className="space-y-1 border-l border-gray-200/60 dark:border-white/[0.08]">
         {headings.map(({ level, text, id }) => (
           <li key={id}>
             <a
               href={`#${id}`}
               onClick={(e) => scrollToElement(e, id)}
-              className={`block py-1 text-sm transition-colors duration-200 cursor-pointer ${
+              className={`block py-1 text-sm transition-colors duration-200 cursor-pointer leading-snug -ml-px border-l ${
                 activeId === id
-                  ? 'text-blue-600 dark:text-blue-400 font-medium'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                  ? 'text-cyan-700 dark:text-brand-accent font-medium border-cyan-700 dark:border-brand-accent'
+                  : 'text-gray-600 dark:text-brand-fg-muted hover:text-gray-900 dark:hover:text-brand-fg border-transparent'
               }`}
-              style={{ paddingLeft: `${(level - 1) * 12}px` }}
+              style={{ paddingLeft: `${(level - 1) * 12 + 12}px` }}
             >
               {text}
             </a>
@@ -201,10 +205,10 @@ const MobileTableOfContents = ({ content }) => {
 
   return (
     <>
-      {/* Floating TOC button */}
+      {/* Floating TOC button — circular accent (allowed: rounded-full on a circle) */}
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden fixed bottom-8 left-8 z-50 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-colors"
+        className="lg:hidden fixed bottom-8 left-8 z-50 w-12 h-12 bg-cyan-700 hover:bg-cyan-800 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg rounded-full flex items-center justify-center transition-colors"
         aria-label="Table of Contents"
       >
         <List size={22} />
@@ -218,7 +222,7 @@ const MobileTableOfContents = ({ content }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/60"
               onClick={() => setIsOpen(false)}
             />
             <motion.div
@@ -226,24 +230,23 @@ const MobileTableOfContents = ({ content }) => {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-              className="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white dark:bg-gray-800 rounded-t-2xl shadow-2xl overflow-hidden"
+              className="absolute bottom-0 left-0 right-0 max-h-[70vh] bg-white dark:bg-brand-bg overflow-hidden border-t border-gray-200/60 dark:border-white/[0.08]"
             >
               {/* Drag handle */}
               <div className="flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1 bg-gray-300 dark:bg-gray-600 rounded-full" />
+                <div className="w-10 h-1 bg-gray-300 dark:bg-cyan-400/30 rounded-full" />
               </div>
               {/* Header */}
-              <div className="flex items-center justify-between px-6 pb-3 border-b border-gray-200 dark:border-gray-700">
-                <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 flex items-center">
-                  <BookOpen size={18} className="mr-2" />
-                  Table of Contents
+              <div className="flex items-center justify-between px-6 pb-3 border-b border-gray-200/60 dark:border-white/[0.08]">
+                <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted">
+                  Contents
                 </h3>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  className="p-1.5 hover:bg-gray-100 dark:hover:bg-cyan-400/10 transition-colors"
                   aria-label="Close"
                 >
-                  <X size={20} className="text-gray-500 dark:text-gray-400" />
+                  <X size={18} className="text-gray-500 dark:text-brand-fg-muted" />
                 </button>
               </div>
               {/* Headings list */}
@@ -254,10 +257,10 @@ const MobileTableOfContents = ({ content }) => {
                       <a
                         href={`#${id}`}
                         onClick={(e) => handleNavigation(e, id)}
-                        className={`block py-2 text-sm rounded-lg transition-colors duration-200 ${
+                        className={`block py-2 text-sm transition-colors duration-200 ${
                           activeId === id
-                            ? 'text-blue-600 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-900/20'
-                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50'
+                            ? 'text-cyan-700 dark:text-brand-accent font-medium'
+                            : 'text-gray-600 dark:text-brand-fg-muted hover:text-gray-900 dark:hover:text-brand-fg'
                         }`}
                         style={{ paddingLeft: `${(level - 1) * 12 + 12}px`, paddingRight: '12px' }}
                       >
@@ -284,7 +287,7 @@ const CopyToast = ({ show }) => (
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.2 }}
-        className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[100] px-4 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2"
+        className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[100] px-4 py-2.5 bg-gray-900 dark:bg-brand-fg text-white dark:text-brand-bg text-sm font-medium flex items-center gap-2"
       >
         <Check size={16} />
         Link copied to clipboard
@@ -316,7 +319,7 @@ const ScrollToTop = () => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-colors"
+      className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-cyan-700 hover:bg-cyan-800 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg rounded-full flex items-center justify-center transition-colors"
       scale={1.1}
       whileTap={{ scale: 0.9 }}
     >
@@ -336,7 +339,7 @@ const ScrollProgress = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 dark:bg-blue-400 origin-left z-[100]"
+      className="fixed top-0 left-0 right-0 h-0.5 bg-cyan-700 dark:bg-brand-accent origin-left z-[100]"
       style={{ scaleX }}
     />
   );
@@ -465,12 +468,6 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
     </button>
   );
 
-  const excerptBg = theme === 'dark'
-    ? 'rgba(59,130,246,0.12)'
-    : theme === 'sepia'
-    ? 'rgba(139,90,43,0.10)'
-    : 'rgba(239,246,255,1)';
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -585,7 +582,7 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
               className="w-5 h-5 rounded-full transition-all flex-shrink-0"
               style={{
                 backgroundColor: t.bg,
-                border: theme === t.key ? '2px solid #2563eb' : `1.5px solid ${t.border}`,
+                border: theme === t.key ? '2px solid #22D3EE' : `1.5px solid ${t.border}`,
                 transform: theme === t.key ? 'scale(1.2)' : 'scale(1)',
               }}
             />
@@ -598,7 +595,7 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
       {!isDiagramFullscreen && (
       <div className="h-0.5 flex-shrink-0" style={{ backgroundColor: tc.border }}>
         <div
-          className="h-full bg-blue-600 transition-[width] duration-75"
+          className="h-full bg-cyan-700 dark:bg-brand-accent transition-[width] duration-75"
           style={{ width: `${readProgress * 100}%` }}
         />
       </div>
@@ -625,14 +622,14 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
           </h1>
 
           {post.excerpt && (
-            <div className="mb-8 p-4 rounded-lg border-l-4 border-blue-500" style={{ backgroundColor: excerptBg }}>
+            <div className="mb-8 border-l border-cyan-700/40 dark:border-brand-accent/40 pl-4">
               <p className="italic leading-relaxed" style={{ color: tc.text, opacity: 0.85 }}>
                 {post.excerpt}
               </p>
             </div>
           )}
 
-          <MarkdownRenderer content={post.content} baseImagePath={baseImagePath} />
+          <MarkdownRenderer content={stripLeadingH1(post.content)} baseImagePath={baseImagePath} />
           <div className="h-16" />
         </div>
       </div>
@@ -751,7 +748,7 @@ export default function BlogPostPage() {
       try {
         await navigator.share({ title, url });
       } catch (err) {
-        console.log('Error sharing:', err);
+        console.error('Error sharing:', err);
       }
     } else {
       // Fallback: copy to clipboard
@@ -767,39 +764,39 @@ export default function BlogPostPage() {
   
   if (loading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-brand-bg flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Loading post...</p>
+          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-cyan-700 dark:border-brand-accent mx-auto mb-4"></div>
+          <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted">Loading post</p>
         </div>
       </div>
     );
   }
-  
+
   if (error || !post) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center max-w-md">
-          <BookOpen className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-          <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-            {error || 'Post Not Found'}
+      <div className="min-h-screen bg-white dark:bg-brand-bg flex items-center justify-center">
+        <div className="text-center max-w-md px-6">
+          <BookOpen className="mx-auto h-12 w-12 text-gray-400 dark:text-brand-fg-muted mb-4" />
+          <h1 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg mb-2">
+            {error || 'Post not found.'}
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-gray-600 dark:text-brand-fg-muted mb-6">
             The post you're looking for doesn't exist or may have been moved.
           </p>
-          <div className="flex gap-3 justify-center">
-            <button 
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+            <button
               onClick={() => navigate('/blog')}
-              className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2"
+              className="font-mono text-[11px] tracking-[0.12em] uppercase text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors flex items-center gap-2"
             >
-              <ArrowLeft size={16} />
-              Back to Blog
+              <ArrowLeft size={14} />
+              Back
             </button>
-            <Link 
+            <Link
               to="/blog"
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
             >
-              View All Posts
+              View all posts
             </Link>
           </div>
         </div>
@@ -821,8 +818,8 @@ export default function BlogPostPage() {
   return (
     <>
       <SEO
-        title={`${post.title} | Juan Lara`}
-        description={post.excerpt || post.description || `Read about ${post.title} — a deep dive into ${post.category}.`}
+        title={`${post.title} · Juan Lara`}
+        description={post.excerpt || post.description || `Read about ${post.title}. A deep dive into ${post.category}.`}
         canonical={`https://juanlara18.github.io/portfolio/blog/${post.category}/${post.slug}`}
         image={headerImage.startsWith('http') ? headerImage : `https://juanlara18.github.io${headerImage}`}
         type="article"
@@ -848,7 +845,7 @@ export default function BlogPostPage() {
       {/* Reading Progress Bar */}
       <ScrollProgress />
 
-      <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+      <div className="bg-white dark:bg-brand-bg text-gray-900 dark:text-brand-fg min-h-screen">
       {/* Header with Hero Image */}
   <motion.section 
         ref={heroRef}
@@ -877,7 +874,9 @@ export default function BlogPostPage() {
               }}
             />
           </picture>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+          {/* Theme-aware overlay. Light mode = black gradient (max text contrast).
+              Dark mode = navy gradient that blends seamlessly into the page bg below. */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/45 dark:from-brand-bg dark:via-brand-bg/85 dark:to-brand-bg/55"></div>
         </div>
         
         {/* Content Overlay */}
@@ -889,62 +888,57 @@ export default function BlogPostPage() {
               variants={fadeInUp}
               className="max-w-4xl"
             >
-              {/* Back Button */}
-              <div className="mb-4 sm:mb-6">
+              {/* Back Button — inline mono link */}
+              <div className="mb-5 sm:mb-7">
                 <button
                   onClick={() => navigate('/blog')}
-                  className="inline-flex items-center px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-md text-white rounded-lg hover:bg-white/30 transition-colors border border-white/20 text-sm sm:text-base"
+                  className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-white hover:text-brand-accent transition-colors"
                 >
-                  <ArrowLeft size={16} className="mr-2" />
-                  <span className="hidden xs:inline">Back to Blog</span>
+                  <ArrowLeft size={14} />
+                  <span className="hidden xs:inline">Back to blog</span>
                   <span className="xs:hidden">Back</span>
                 </button>
               </div>
-              
-              {/* Category Badge */}
-              <div className="mb-3 sm:mb-4">
-                <Link 
+
+              {/* Category kicker — inline mono uppercase */}
+              <div className="mb-4 sm:mb-5">
+                <Link
                   to={`/blog/category/${post.category}`}
-                  className="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded-full text-xs sm:text-sm font-medium border border-white/20 hover:bg-white/30 transition-colors"
+                  className="inline-flex items-center font-mono text-[10px] tracking-[0.18em] uppercase text-brand-accent hover:underline underline-offset-4 transition-colors"
                 >
                   {categoryConfig?.name || post.category}
                 </Link>
               </div>
-              
-              {/* Title */}
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight">
+
+              {/* Title — Newsreader italic */}
+              <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 sm:mb-5 leading-[1.05] tracking-tight">
                 {post.title}
               </h1>
-              
+
               {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-white/90 text-sm sm:text-base">
-                {/* <div className="flex items-center">
-                  <Calendar size={14} className="mr-1.5 sm:mr-2" />
-                  <span className="hidden sm:inline">{formatDate(post.date, 'MMMM d, yyyy')}</span>
-                  <span className="sm:hidden">{formatDate(post.date, 'MMM d')}</span>
-                </div> */}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] tracking-[0.08em] uppercase text-white/95">
                 <div className="flex items-center">
-                  <Clock size={14} className="mr-1.5 sm:mr-2" />
+                  <Clock size={12} className="mr-1.5" />
                   <span>{post.readingTime} min read</span>
                 </div>
                 {post.readingTime >= 15 && (
-                  <span className="inline-flex items-center px-2.5 py-0.5 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-medium border border-white/20">
-                    Long read
+                  <span className="inline-flex items-center text-white/95">
+                    · Long read
                   </span>
                 )}
                 <button
                   onClick={sharePost}
-                  className="flex items-center hover:text-white transition-colors"
+                  className="flex items-center hover:text-brand-accent transition-colors"
                 >
-                  <Share2 size={14} className="mr-1.5 sm:mr-2" />
+                  <Share2 size={12} className="mr-1.5" />
                   <span>Share</span>
                 </button>
                 <button
                   onClick={() => setIsReadingMode(true)}
-                  className="flex items-center hover:text-white transition-colors"
-                  title="Modo lectura"
+                  className="flex items-center hover:text-brand-accent transition-colors"
+                  title="Reading mode"
                 >
-                  <Maximize2 size={14} className="mr-1.5 sm:mr-2" />
+                  <Maximize2 size={12} className="mr-1.5" />
                   <span className="hidden xs:inline">Read</span>
                 </button>
               </div>
@@ -955,32 +949,28 @@ export default function BlogPostPage() {
       
       {/* Post Content */}
       <section className="py-8 md:py-16">
-        <div className="container mx-auto px-2 sm:px-6 lg:px-8 mobile-card-container">
-          <div className="max-w-6xl mx-auto">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mobile-card-container">
+          <div>
             
-            {/* Mobile post meta — category & tags shown before the article on small screens */}
+            {/* Mobile post meta — inline mono, dot-separated, no boxes */}
             <div className="lg:hidden mb-6 px-2 sm:px-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <Link 
+              <div className="font-mono text-[10px] tracking-[0.12em] uppercase">
+                <Link
                   to={`/blog/category/${post.category}`}
-                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-                    ${categoryConfig?.color === 'blue' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' : ''}
-                    ${categoryConfig?.color === 'indigo' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300' : ''}
-                    ${categoryConfig?.color === 'emerald' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : ''}
-                    ${!categoryConfig?.color ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300' : ''}
-                  `}
+                  className="text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
                 >
                   {categoryConfig?.name || post.category}
                 </Link>
                 {post.tags && post.tags.map((tag, index) => (
-                  <Link
-                    key={index}
-                    to={`/blog/tag/${encodeURIComponent(tag)}`}
-                    className="card-tag inline-flex items-center text-xs"
-                  >
-                    <Tag size={10} className="mr-1" />
-                    {tag}
-                  </Link>
+                  <span key={index}>
+                    <span className="mx-1.5 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>
+                    <Link
+                      to={`/blog/tag/${encodeURIComponent(tag)}`}
+                      className="text-gray-600 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
+                    >
+                      {tag}
+                    </Link>
+                  </span>
                 ))}
               </div>
             </div>
@@ -993,20 +983,20 @@ export default function BlogPostPage() {
                 variants={slideInLeft}
                 className="lg:w-3/4"
               >
-                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm sm:shadow-lg p-4 sm:p-6 md:p-8 lg:p-12 border border-gray-100 dark:border-gray-700">
+                <div>
                   {post.audio && <AudioPlayer audio={post.audio} />}
 
                   {post.excerpt && (
-                    <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
-                      <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">
+                    <div className="mb-6 sm:mb-8 pl-4 border-l border-cyan-700/40 dark:border-brand-accent/40">
+                      <p className="font-display italic text-base sm:text-lg text-gray-700 dark:text-brand-fg/90 leading-relaxed">
                         {post.excerpt}
                       </p>
                     </div>
                   )}
-                  
-                  <div className="px-1 sm:px-0">
-                    <MarkdownRenderer 
-                      content={post.content} 
+
+                  <div>
+                    <MarkdownRenderer
+                      content={stripLeadingH1(post.content)}
                       baseImagePath={baseImagePath}
                       className=""
                     />
@@ -1015,76 +1005,70 @@ export default function BlogPostPage() {
               </motion.article>
               
               {/* Sidebar — hidden on mobile, visible on desktop */}
-              <aside 
+              <aside
                 ref={sidebarRef}
-                className="hidden lg:flex lg:flex-col lg:w-1/4 lg:gap-6 sticky self-start"
+                className="hidden lg:flex lg:flex-col lg:w-1/4 lg:gap-10 sticky self-start"
               >
                 {/* Table of Contents */}
                 <TableOfContents content={post.content} />
-                  
-                  {/* Post Stats */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                      Post Information
-                    </h3>
-                    <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                      <div className="flex items-center justify-between">
-                        <span className="flex items-center">
-                          <Clock size={14} className="mr-2" />
-                          Reading Time
-                        </span>
-                        <span>{post.readingTime} min</span>
-                      </div>
-                      {/* <div className="flex items-center justify-between">
-                        <span className="flex items-center">
-                          <Calendar size={14} className="mr-2" />
-                          Published
-                        </span>
-                        <span>{formatDate(post.date, 'MMM d, yyyy')}</span>
-                      </div> */}
+
+                {/* Post Stats */}
+                <div>
+                  <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
+                    Post info
+                  </h3>
+                  <div className="text-sm text-gray-700 dark:text-brand-fg/80 divide-y divide-gray-200/60 dark:divide-white/[0.08]">
+                    <div className="flex items-center justify-between py-2">
+                      <span className="flex items-center text-gray-500 dark:text-brand-fg-muted">
+                        <Clock size={14} className="mr-2" />
+                        Reading time
+                      </span>
+                      <span className="font-mono text-xs tabular-nums">{post.readingTime} min</span>
                     </div>
                   </div>
-                  
-                  {/* Category Info */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                      Category
-                    </h3>
-                    <Link 
-                      to={`/blog/category/${post.category}`}
-                      className="block p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
-                    >
-                      <div className="font-medium text-sm text-blue-900 dark:text-blue-100">
-                        {categoryConfig?.name || post.category}
+                </div>
+
+                {/* Category Info */}
+                <div>
+                  <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
+                    Category
+                  </h3>
+                  <Link
+                    to={`/blog/category/${post.category}`}
+                    className="block group"
+                  >
+                    <div className="font-bold text-base text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
+                      {categoryConfig?.name || post.category}
+                    </div>
+                    {categoryConfig?.description && (
+                      <div className="text-xs text-gray-600 dark:text-brand-fg-muted mt-2 leading-relaxed">
+                        {categoryConfig?.description}
                       </div>
-                      {categoryConfig?.description && (
-                        <div className="text-xs text-blue-700 dark:text-blue-300 mt-1">
-                          {categoryConfig?.description}
-                        </div>
-                      )}
-                    </Link>
-                  </div>
-                  
-                  {/* Tags */}
-                  {post.tags && post.tags.length > 0 && (
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700">
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                        Tags
-                      </h3>
-                      <div className="flex flex-wrap gap-1.5">
-                        {post.tags.map((tag, index) => (
+                    )}
+                  </Link>
+                </div>
+
+                {/* Tags — inline mono uppercase, dot-separated */}
+                {post.tags && post.tags.length > 0 && (
+                  <div>
+                    <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
+                      Tags
+                    </h3>
+                    <div className="font-mono text-[11px] tracking-[0.12em] uppercase leading-[1.9]">
+                      {post.tags.map((tag, index) => (
+                        <span key={index}>
+                          {index > 0 && <span className="mx-1.5 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>}
                           <Link
-                            key={index}
                             to={`/blog/tag/${encodeURIComponent(tag)}`}
-                            className="card-tag inline-flex items-center text-xs"
+                            className="text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
                           >
-                            <Tag size={10} className="mr-1" />
                             {tag}
                           </Link>
-                        ))}
-                      </div>
+                        </span>
+                      ))}
                     </div>
-                  )}
+                  </div>
+                )}
               </aside>
             </div>
           </div>
