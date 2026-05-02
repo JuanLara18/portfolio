@@ -172,7 +172,7 @@ export default function AudioPlayer({ audio }) {
 
   return (
     <>
-    <div ref={containerRef} className="mb-6 sm:mb-8 p-4 sm:p-5 bg-gradient-to-r from-blue-50 to-sky-50 dark:from-blue-900/20 dark:to-sky-900/20 rounded-lg border border-blue-100 dark:border-blue-800/50">
+    <div ref={containerRef} className="mb-8 sm:mb-10 pb-6 border-b border-gray-200/60 dark:border-white/[0.08]">
       <audio ref={audioRef} src={publicUrl(current.url)} preload="none" />
 
       {/* Desktop: single row. Mobile: stacked rows. */}
@@ -181,20 +181,20 @@ export default function AudioPlayer({ audio }) {
           type="button"
           onClick={togglePlay}
           aria-label={isPlaying ? 'Pause narration' : 'Play narration'}
-          className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white flex items-center justify-center shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+          className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:focus:ring-brand-accent focus:ring-offset-2 dark:focus:ring-offset-brand-bg"
         >
           {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
         </button>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between mb-1.5 gap-2">
-            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-blue-900 dark:text-blue-200 min-w-0">
-              <Headphones size={14} className="flex-shrink-0" />
+          <div className="flex items-center justify-between mb-2 gap-2">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] tracking-[0.08em] uppercase text-gray-700 dark:text-brand-fg/80 min-w-0">
+              <Headphones size={12} className="flex-shrink-0" />
               <span className="truncate">
                 {lang === 'es' ? 'Escucha este post' : 'Listen to this post'}
               </span>
             </div>
-            <div className="text-xs text-blue-700 dark:text-blue-300 tabular-nums flex-shrink-0">
+            <div className="font-mono text-[11px] text-gray-500 dark:text-brand-fg-muted tabular-nums flex-shrink-0">
               {formatTime(currentTime)} / {formatTime(duration)}
             </div>
           </div>
@@ -203,39 +203,41 @@ export default function AudioPlayer({ audio }) {
             type="button"
             onClick={onSeek}
             aria-label="Seek"
-            className="w-full h-2 rounded-full bg-blue-200 dark:bg-blue-900/60 cursor-pointer group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full h-1.5 bg-gray-200 dark:bg-cyan-400/15 cursor-pointer group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:focus:ring-brand-accent"
           >
             <div
-              className="h-full bg-blue-600 dark:bg-blue-400 rounded-full transition-[width] duration-100"
+              className="h-full bg-cyan-700 dark:bg-brand-accent transition-[width] duration-100"
               style={{ width: `${progress}%` }}
             />
           </button>
         </div>
 
         {/* Secondary controls — hidden on mobile, shown inline on sm+ */}
-        <div className="hidden sm:flex items-center gap-1 flex-shrink-0">
+        <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
           {showLangToggle && (
             <div
               role="group"
               aria-label="Audio language"
-              className="inline-flex items-center rounded-md bg-white/60 dark:bg-blue-950/40 p-0.5 border border-blue-200 dark:border-blue-800/60"
+              className="inline-flex items-center gap-1.5"
               title="Switch audio language"
             >
-              <Languages size={12} className="ml-1 mr-0.5 text-blue-600 dark:text-blue-300" />
-              {available.map((l) => (
-                <button
-                  key={l}
-                  type="button"
-                  onClick={() => switchLang(l)}
-                  aria-pressed={l === lang}
-                  className={`px-2 py-0.5 text-[11px] sm:text-xs font-semibold rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                    l === lang
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'text-blue-700 dark:text-blue-200 hover:bg-blue-100 dark:hover:bg-blue-900/40'
-                  }`}
-                >
-                  {l.toUpperCase()}
-                </button>
+              <Languages size={12} className="text-cyan-700 dark:text-brand-accent" />
+              {available.map((l, idx) => (
+                <span key={l} className="inline-flex items-center">
+                  {idx > 0 && <span className="mx-1 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>}
+                  <button
+                    type="button"
+                    onClick={() => switchLang(l)}
+                    aria-pressed={l === lang}
+                    className={`font-mono text-[10px] tracking-[0.12em] uppercase transition-colors focus:outline-none ${
+                      l === lang
+                        ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-4 decoration-1'
+                        : 'text-gray-500 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
+                    }`}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                </span>
               ))}
             </div>
           )}
@@ -244,38 +246,40 @@ export default function AudioPlayer({ audio }) {
             type="button"
             onClick={cycleSpeed}
             aria-label={`Playback speed: ${currentSpeed}x`}
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs sm:text-sm font-medium text-blue-700 dark:text-blue-200 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="inline-flex items-center gap-1 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors focus:outline-none"
             title="Change playback speed"
           >
-            <Gauge size={14} />
+            <Gauge size={12} />
             <span className="tabular-nums">{currentSpeed}x</span>
           </button>
         </div>
       </div>
 
       {/* Mobile-only secondary controls row */}
-      <div className="mt-3 flex items-center justify-end gap-1.5 sm:hidden">
+      <div className="mt-3 flex items-center justify-end gap-3 sm:hidden">
         {showLangToggle && (
           <div
             role="group"
             aria-label="Audio language"
-            className="inline-flex items-center rounded-md bg-white/60 dark:bg-blue-950/40 p-0.5 border border-blue-200 dark:border-blue-800/60"
+            className="inline-flex items-center gap-1.5"
           >
-            <Languages size={12} className="ml-1 mr-0.5 text-blue-600 dark:text-blue-300" />
-            {available.map((l) => (
-              <button
-                key={l}
-                type="button"
-                onClick={() => switchLang(l)}
-                aria-pressed={l === lang}
-                className={`px-2 py-0.5 text-[11px] font-semibold rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                  l === lang
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-blue-700 dark:text-blue-200 hover:bg-blue-100 dark:hover:bg-blue-900/40'
-                }`}
-              >
-                {l.toUpperCase()}
-              </button>
+            <Languages size={12} className="text-cyan-700 dark:text-brand-accent" />
+            {available.map((l, idx) => (
+              <span key={l} className="inline-flex items-center">
+                {idx > 0 && <span className="mx-1 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>}
+                <button
+                  type="button"
+                  onClick={() => switchLang(l)}
+                  aria-pressed={l === lang}
+                  className={`font-mono text-[10px] tracking-[0.12em] uppercase transition-colors focus:outline-none ${
+                    l === lang
+                      ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-4 decoration-1'
+                      : 'text-gray-500 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              </span>
             ))}
           </div>
         )}
@@ -284,15 +288,15 @@ export default function AudioPlayer({ audio }) {
           type="button"
           onClick={cycleSpeed}
           aria-label={`Playback speed: ${currentSpeed}x`}
-          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-medium text-blue-700 dark:text-blue-200 bg-white/60 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/60 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="inline-flex items-center gap-1 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors focus:outline-none"
         >
-          <Gauge size={14} />
+          <Gauge size={12} />
           <span className="tabular-nums">{currentSpeed}x</span>
         </button>
       </div>
 
       {!isReady && (
-        <p className="mt-2 text-[11px] text-blue-700/80 dark:text-blue-300/80">
+        <p className="mt-3 font-mono text-[10px] tracking-[0.08em] uppercase text-gray-500 dark:text-brand-fg-muted">
           {lang === 'es'
             ? 'Narrado con Microsoft Neural TTS · código, diagramas y ecuaciones se omiten'
             : 'Narrated by Microsoft Neural TTS · code, diagrams, and equations are skipped'}
@@ -307,7 +311,7 @@ export default function AudioPlayer({ audio }) {
       tabIndex={showFloating ? 0 : -1}
       aria-label={floatingLabel}
       title={floatingLabel}
-      className={`fixed ${isReadingMode ? 'bottom-8 z-[450]' : 'bottom-24 z-[199]'} right-8 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${
+      className={`fixed ${isReadingMode ? 'bottom-8 z-[450]' : 'bottom-24 z-[199]'} right-8 w-12 h-12 bg-cyan-700 hover:bg-cyan-800 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg rounded-full flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:focus:ring-brand-accent focus:ring-offset-2 dark:focus:ring-offset-brand-bg ${
         showFloating ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
       }`}
     >

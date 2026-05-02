@@ -1,18 +1,18 @@
-import { Link } from 'react-router-dom';
-import { Calendar, Clock, Tag, ArrowRight, Brain, FileText, Code2 } from 'lucide-react';
-import { BLOG_CONFIG, formatDate, getWebPPath } from '../../../utils/blogUtils';
+﻿import { Link } from 'react-router-dom';
+import { BLOG_CONFIG, getWebPPath } from '../../../utils/blogUtils';
 import { variants as motionVariants } from '../../../utils';
-import { MotionCard } from '../../common';
+import { motion } from 'framer-motion';
 
 const fadeInUp = motionVariants.fadeInUp();
 
 /**
- * Reusable Post Card Component
- * Used across BlogHomePage, BlogCategoryPage, and potentially other blog views
+ * Editorial Post Card (Brand v3)
+ * Magazine-style entry: no card chrome, hairline only at the bottom.
+ * Typography and whitespace structure the listing.
  */
 export const PostCard = ({ post }) => {
   const categoryConfig = BLOG_CONFIG.categories[post.category];
-  
+
   // Get the header image path with PUBLIC_URL
   const getImageUrl = (path) => {
     if (!path) return '';
@@ -21,110 +21,75 @@ export const PostCard = ({ post }) => {
     if (path.startsWith('/')) return `${base}${path}`;
     return `${base}/${path}`;
   };
-  
+
   const headerImagePath = post.headerImage || `/blog/headers/default-${post.category}.jpg`;
   const fallbackPath = `/blog/headers/default.jpg`;
-  
+
   const postUrl = `/blog/${post.category}/${post.slug}`;
-  
+
   return (
-    <MotionCard 
-      className="relative bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 h-full flex flex-col group hover:shadow-xl transition-all duration-200 mobile-card"
-      hover="lift"
+    <motion.article
       variants={fadeInUp}
+      className="relative group flex flex-col h-full pb-8 border-b border-gray-200/60 dark:border-white/[0.08]"
     >
-      {/* Header Image */}
-      <div className="relative overflow-hidden aspect-[16/9]">
+      {/* Header Image — flush, no rounding, no overlay */}
+      <div className="relative overflow-hidden aspect-[16/9] mb-5">
         <picture>
-          <source 
-            srcSet={getImageUrl(getWebPPath(headerImagePath))} 
-            type="image/webp" 
+          <source
+            srcSet={getImageUrl(getWebPPath(headerImagePath))}
+            type="image/webp"
           />
-          <img 
+          <img
             src={getImageUrl(headerImagePath)}
             alt={post.title}
             loading="lazy"
             onError={(e) => {
               e.target.src = getImageUrl(fallbackPath);
             }}
-            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-        
-        {/* Category badge */}
-        <div className="absolute top-4 left-4">
-          <span 
-            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-              ${categoryConfig?.color === 'blue' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' : ''}
-              ${categoryConfig?.color === 'indigo' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300' : ''}
-              ${categoryConfig?.color === 'emerald' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : ''}
-            `}
-          >
-            {categoryConfig?.icon === 'Brain' && <Brain size={12} className="mr-1" />}
-            {categoryConfig?.icon === 'FileText' && <FileText size={12} className="mr-1" />}
-            {categoryConfig?.icon === 'Code2' && <Code2 size={12} className="mr-1" />}
-            {categoryConfig?.name || post.category}
-          </span>
-        </div>
       </div>
-      
-      {/* Content */}
-      <div className="p-4 sm:p-6 flex-1 flex flex-col">
-        <div className="flex-1">
-          {/* Title with stretched link — makes the entire card clickable */}
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
-            <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
-              {post.title.split(':')[0]}
-            </Link>
-          </h2>
-          
-          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 leading-relaxed card-description text-sm">
-            {post.excerpt}
-          </p>
-          
-          {/* Tags — positioned above the stretched link so they remain independently clickable */}
-          {post.tags && post.tags.length > 0 && (
-            <div className="relative z-10 flex flex-wrap gap-1.5 mb-4">
-              {post.tags.slice(0, 2).map((tag, index) => (
-                <Link
-                  key={index}
-                  to={`/blog/tag/${encodeURIComponent(tag)}`}
-                  className="card-tag inline-flex items-center text-xs"
-                >
-                  <Tag size={9} className="mr-1" />
-                  {tag}
-                </Link>
-              ))}
-              {post.tags.length > 2 && (
-                <span className="card-tag inline-flex items-center text-xs opacity-70">
-                  +{post.tags.length - 2}
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-        
-        {/* Meta info */}
-        <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
-          <div className="flex items-center space-x-3">
-            {/* <div className="flex items-center">
-              <Calendar size={14} className="mr-1" />
-              <span>{formatDate(post.date, 'MMM d')}</span>
-            </div> */}
-            <div className="flex items-center">
-              <Clock size={14} className="mr-1" />
-              <span>{post.readingTime}m</span>
-            </div>
-          </div>
-          
-          <span className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition-colors">
-            <span className="mr-1">Read</span>
-            <ArrowRight size={14} className="transform transition-transform group-hover:translate-x-1" />
-          </span>
-        </div>
+
+      {/* Kicker — category */}
+      <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-cyan-700 dark:text-brand-accent mb-3">
+        {categoryConfig?.name || post.category}
       </div>
-    </MotionCard>
+
+      {/* Title — Newsreader italic; stretched link covers the whole card */}
+      <h2 className="font-bold text-2xl md:text-[1.7rem] tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-3 line-clamp-2 group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
+        <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
+          {post.title.split(':')[0]}
+        </Link>
+      </h2>
+
+      {/* Meta — mono uppercase, dot-separated */}
+      <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-gray-500 dark:text-brand-fg-muted mb-4">
+        <span>{post.readingTime} min read</span>
+      </div>
+
+      {/* Excerpt */}
+      <p className="text-gray-600 dark:text-brand-fg-muted mb-4 line-clamp-3 leading-relaxed text-sm flex-1">
+        {post.excerpt}
+      </p>
+
+      {/* Tags — inline mono uppercase, middle-dot separated, no boxes */}
+      {post.tags && post.tags.length > 0 && (
+        <div className="relative z-10 font-mono text-[10px] tracking-[0.12em] uppercase text-gray-500 dark:text-brand-fg-muted mt-auto">
+          {post.tags.slice(0, 3).map((tag, index) => (
+            <span key={tag}>
+              {index > 0 && <span className="mx-1.5 opacity-50">·</span>}
+              <Link
+                to={`/blog/tag/${encodeURIComponent(tag)}`}
+                className="hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
+              >
+                {tag}
+              </Link>
+            </span>
+          ))}
+        </div>
+      )}
+    </motion.article>
   );
 };
 

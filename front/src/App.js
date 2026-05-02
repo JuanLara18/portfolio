@@ -17,7 +17,7 @@ const BlogGraphPage = lazy(() => import('./pages/BlogGraphPage'));
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
     <div className="text-center">
-      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 dark:border-blue-400 mx-auto mb-3"></div>
+      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-cyan-700 dark:border-brand-accent mx-auto mb-3"></div>
       <p className="text-sm text-gray-500 dark:text-gray-400">Loading...</p>
     </div>
   </div>

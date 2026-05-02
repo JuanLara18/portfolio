@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sun, Moon, Menu } from 'lucide-react';
 import MobileMenu from './MobileMenu';
+import { Logo } from '../ui';
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,13 +35,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   
   const getLinkClass = (path) => {
     const baseClass = "relative py-2 px-1 font-medium transition-all duration-300";
-    const activeClass = "text-blue-600 dark:text-blue-400 before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:bg-blue-600 dark:before:bg-blue-400";
-    const inactiveClass = "text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:scale-x-0 before:bg-blue-600 dark:before:bg-blue-400 before:origin-left before:transition-transform hover:before:scale-x-100";
-    
-    const isActive = path === '/' 
-      ? location.pathname === '/' 
+    const activeClass = "text-cyan-600 dark:text-brand-accent before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:bg-cyan-600 dark:before:bg-brand-accent";
+    const inactiveClass = "text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-brand-accent before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:scale-x-0 before:bg-cyan-600 dark:before:bg-brand-accent before:origin-left before:transition-transform hover:before:scale-x-100";
+
+    const isActive = path === '/'
+      ? location.pathname === '/'
       : location.pathname.startsWith(path);
-    
+
     return `${baseClass} ${isActive ? activeClass : inactiveClass}`;
   };
   
@@ -49,8 +50,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       <motion.header 
         className="fixed w-full z-50 transition-all duration-500"
         style={{
-          backgroundColor: darkMode 
-            ? useTransform(backgroundOpacity, (value) => `rgba(17, 24, 39, ${value})`)
+          backgroundColor: darkMode
+            ? useTransform(backgroundOpacity, (value) => `rgba(11, 17, 32, ${value})`)
             : useTransform(backgroundOpacity, (value) => `rgba(255, 255, 255, ${value})`),
           backdropFilter: useTransform(backdropBlur, (value) => `blur(${value}px)`),
           WebkitBackdropFilter: useTransform(backdropBlur, (value) => `blur(${value}px)`),
@@ -63,16 +64,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-xl font-bold relative z-10"
+              className="relative z-10 text-slate-900 dark:text-brand-fg"
             >
-              <Link to="/" className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-                Juan Lara
-              </Link>
-              <div className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"></div>
+              <Logo size="md" />
             </motion.div>
             
             <motion.nav 
