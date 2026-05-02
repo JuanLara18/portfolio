@@ -349,9 +349,17 @@ const ScrollProgress = () => {
 const RM_THEMES = {
   light: { bg: '#ffffff', text: '#111827', subtleBg: '#f9fafb', border: '#e5e7eb', dark: false },
   sepia: { bg: '#f4ecd8', text: '#3b2c1a', subtleBg: '#ede3c8', border: '#d4b896', dark: false },
-  dark:  { bg: '#111827', text: '#f3f4f6', subtleBg: '#1f2937', border: '#374151', dark: true  },
+  dark:  { bg: '#000000', text: '#f5f5f0', subtleBg: '#0c0c0c', border: '#222222', dark: true  },
 };
 const RM_WIDTHS = { narrow: '58ch', normal: '70ch', wide: '90ch' };
+
+// Reading mode font families. Cycles via toggle button.
+const RM_FONTS = {
+  sans:  { label: 'Sans',  stack: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',           sample: 'Aa' },
+  serif: { label: 'Serif', stack: 'Newsreader, Georgia, "Palatino Linotype", Palatino, serif',                              sample: 'Aa' },
+  mono:  { label: 'Mono',  stack: '"JetBrains Mono", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace',    sample: 'Aa' },
+};
+const RM_FONT_KEYS = Object.keys(RM_FONTS);
 
 // Reading mode overlay component
 const ReadingMode = ({ post, onClose, baseImagePath }) => {
@@ -448,8 +456,8 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
     }
   };
 
-  const fontSizeMin = 14, fontSizeMax = 26;
-  const lineHeightMin = 1.4, lineHeightMax = 2.4;
+  const fontSizeMin = 13, fontSizeMax = 32;
+  const lineHeightMin = 1.3, lineHeightMax = 2.6;
   const tc = RM_THEMES[theme] || RM_THEMES.light;
 
   const sep = (
@@ -533,17 +541,21 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
 
         {sep}
 
-        {/* Font family */}
+        {/* Font family — cycles through Sans / Serif / Mono */}
         <button
-          onClick={() => setFontFamily(f => f === 'sans' ? 'serif' : 'sans')}
-          title="Toggle font family"
+          onClick={() => {
+            const idx = RM_FONT_KEYS.indexOf(fontFamily);
+            setFontFamily(RM_FONT_KEYS[(idx + 1) % RM_FONT_KEYS.length]);
+          }}
+          title={`Font: ${RM_FONTS[fontFamily]?.label || 'Sans'} (click to cycle)`}
+          aria-label={`Current font ${RM_FONTS[fontFamily]?.label}, click to cycle`}
           style={{ color: tc.text }}
-          className="px-2 h-8 rounded-lg hover:bg-black/[0.06] text-xs transition-colors flex-shrink-0 select-none"
+          className="px-2.5 h-8 rounded-lg hover:bg-black/[0.06] text-xs transition-colors flex-shrink-0 select-none flex items-center gap-1.5"
         >
-          {fontFamily === 'sans'
-            ? <span style={{ fontFamily: 'Georgia, serif' }}>Serif</span>
-            : <span>Sans</span>
-          }
+          <span style={{ fontFamily: RM_FONTS[fontFamily]?.stack || 'inherit' }}>
+            {RM_FONTS[fontFamily]?.sample || 'Aa'}
+          </span>
+          <span className="hidden sm:inline opacity-70">{RM_FONTS[fontFamily]?.label || 'Sans'}</span>
         </button>
 
         {sep}
@@ -572,7 +584,7 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
           {[
             { key: 'light', bg: '#ffffff', border: '#d1d5db', label: 'Light' },
             { key: 'sepia', bg: '#f4ecd8', border: '#c4a87a', label: 'Sepia' },
-            { key: 'dark',  bg: '#111827', border: '#6b7280', label: 'Dark'  },
+            { key: 'dark',  bg: '#000000', border: '#444444', label: 'Dark'  },
           ].map(t => (
             <button
               key={t.key}
@@ -609,9 +621,7 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
             maxWidth: RM_WIDTHS[width] || RM_WIDTHS.normal,
             fontSize: `${fontSize}px`,
             lineHeight: lineHeight,
-            fontFamily: fontFamily === 'serif'
-              ? '"Georgia", "Palatino Linotype", Palatino, serif'
-              : 'inherit',
+            fontFamily: RM_FONTS[fontFamily]?.stack || 'inherit',
           }}
         >
           <h1
