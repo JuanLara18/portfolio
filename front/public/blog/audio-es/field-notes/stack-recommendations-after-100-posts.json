@@ -1,0 +1,13 @@
+{
+  "slug": "stack-recommendations-after-100-posts",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "71a07bcd78b881539fb7a01e4bdb66b9ca7ad141f88ac687383907c58567574b",
+  "sourceHash": "a97b6908e71478693fc3cd8f440419222d1536e25f05652de111afefb1b060df",
+  "durationSec": 2354.136,
+  "byteSize": 14124816,
+  "narrationWordCount": 7198,
+  "audioUrl": "/blog/audio-es/field-notes/stack-recommendations-after-100-posts.mp3",
+  "translationModel": "gemma4:latest"
+}
