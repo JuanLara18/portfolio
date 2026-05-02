@@ -1035,13 +1035,15 @@ export default function BlogGraphPage() {
             {selectedNodeData.connectedTags.length > 0 && (
               <div className={`px-4 py-3 border-b ${isDark ? 'border-white/[0.08]' : 'border-gray-200'}`}>
                 <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${isDark ? 'text-brand-fg-muted' : 'text-gray-500'}`}>Related Topics</p>
-                {/* Mobile: show 6 chips. Desktop: show 12. Keep posts the primary content. */}
-                <div className="flex flex-wrap gap-1 sm:gap-1.5">
-                  {selectedNodeData.connectedTags.slice(0, 12).map(({ tag, weight }, i) => (
+                {/* Mobile: single-row horizontal scroll so posts get the vertical space. Desktop: wrap. */}
+                <div
+                  className="flex flex-nowrap sm:flex-wrap gap-1 sm:gap-1.5 overflow-x-auto sm:overflow-visible -mx-4 px-4 sm:mx-0 sm:px-0 pb-1 sm:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                >
+                  {selectedNodeData.connectedTags.slice(0, 12).map(({ tag, weight }) => (
                     <button
                       key={tag}
                       onClick={() => { setSelectedNode(tag); focusOnTag(tag); }}
-                      className={`font-mono text-[10px] tracking-[0.06em] uppercase border px-1.5 py-0.5 transition-colors ${i >= 6 ? 'hidden sm:inline-flex' : ''} ${isDark ? 'border-brand-accent/30 hover:border-brand-accent text-brand-fg-muted hover:text-brand-accent' : 'border-cyan-700/30 hover:border-cyan-700 text-gray-700 hover:text-cyan-700'}`}
+                      className={`flex-shrink-0 font-mono text-[10px] tracking-[0.06em] uppercase border px-1.5 py-0.5 transition-colors ${isDark ? 'border-brand-accent/30 hover:border-brand-accent text-brand-fg-muted hover:text-brand-accent' : 'border-cyan-700/30 hover:border-cyan-700 text-gray-700 hover:text-cyan-700'}`}
                     >
                       {tag}
                       <span className={`ml-1 ${isDark ? 'text-brand-fg-muted/70' : 'text-gray-400'}`}>{weight}</span>
