@@ -1,8 +1,21 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1777684012,
+  "generatedAt": 1777694696,
   "posts": {
+    "curiosities/100-posts-knowledge-graph-retrospective": {
+      "slug": "100-posts-knowledge-graph-retrospective",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "153ee03744cda0ec6b32307fb7587512050137da8013f41ce47616fa89dd6ec8",
+      "sourceHash": "153ee03744cda0ec6b32307fb7587512050137da8013f41ce47616fa89dd6ec8",
+      "durationSec": 1120.68,
+      "byteSize": 6724080,
+      "narrationWordCount": 5179,
+      "audioUrl": "/blog/audio/curiosities/100-posts-knowledge-graph-retrospective.mp3",
+      "translationModel": ""
+    },
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
       "category": "curiosities",
@@ -1041,6 +1054,19 @@
       "byteSize": 8364096,
       "narrationWordCount": 3174,
       "audioUrl": "/blog/audio/field-notes/sql-pandas-pyspark-duckdb.mp3",
+      "translationModel": ""
+    },
+    "field-notes/stack-recommendations-after-100-posts": {
+      "slug": "stack-recommendations-after-100-posts",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "a97b6908e71478693fc3cd8f440419222d1536e25f05652de111afefb1b060df",
+      "sourceHash": "a97b6908e71478693fc3cd8f440419222d1536e25f05652de111afefb1b060df",
+      "durationSec": 2286.744,
+      "byteSize": 13720464,
+      "narrationWordCount": 5638,
+      "audioUrl": "/blog/audio/field-notes/stack-recommendations-after-100-posts.mp3",
       "translationModel": ""
     },
     "field-notes/structuring-ml-projects": {

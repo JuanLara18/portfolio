@@ -31,15 +31,27 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/category/research</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</loc>
+    <lastmod>2027-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective</loc>
+    <lastmod>2027-08-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
