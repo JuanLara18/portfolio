@@ -9,8 +9,48 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Aug 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Aug 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The Stack I Would Adopt After 100 Posts: An Opinionated Manifesto</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</guid>
+    <pubDate>Thu, 19 Aug 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The hundredth post was the structural retrospective. This is the practical one. After a hundred posts of saying it depends, here is the stack I would actually pick today, the books and papers that earned their place on my shelf, the patterns that proved their weight, and the ones I would refuse to deploy a second time.]]></description>
+    <category>field-notes</category>
+    <category>Production ML</category>
+    <category>Best Practices</category>
+    <category>MLOps</category>
+    <category>LLMs</category>
+    <category>RAG</category>
+    <category>Agents</category>
+    <category>Software Engineering</category>
+    <category>Infrastructure</category>
+    <category>Cloud Computing</category>
+    <category>Evaluation</category>
+    <category>AI Engineering</category>
+    <category>Vector Databases</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>100 Posts as a Knowledge Graph: A Retrospective in Network Science</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective</guid>
+    <pubDate>Thu, 12 Aug 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[When you write 99 posts and then plot the result as a graph, the picture is not what you thought you were drawing. This is post number 100, and instead of a victory lap I ran the corpus through networkx: 99 nodes, 685k words, 223 tags, 2,408 tag-tag edges. What the structure reveals is more interesting than the chronology. There is a spine, four-and-a-half communities, a long tail of singleton tags that I tagged once and forgot, a handful of bridge posts holding the graph together, and a measurable bias toward production over theory. This is the blog reading itself, with real numbers, real cluster names, and the uncomfortable parts left in.]]></description>
+    <category>curiosities</category>
+    <category>Knowledge Graphs</category>
+    <category>Graph Theory</category>
+    <category>Mathematics</category>
+    <category>Algorithms</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Statistics</category>
+    <category>Data Engineering</category>
+    <category>Information Retrieval</category>
+    <category>Computer Science</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Agent Engineering as a Discipline: Six Roles That Just Got Names</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines</link>
