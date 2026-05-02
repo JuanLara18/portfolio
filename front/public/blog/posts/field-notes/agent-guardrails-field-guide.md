@@ -64,10 +64,10 @@ flowchart TD
     L2 --> L3[Layer 3: Tools and actions<br/>allow-listing, scoping, dry-run, capability tokens]
     L3 --> L4[Layer 4: Output validation<br/>toxicity, leaked secrets, citation, hallucination]
     L4 --> O[Response to user]
-    L5[Layer 5: System and operational<br/>observability, kill switches, sandboxing, HITL] -. wraps every layer .-> L1
-    L5 -. .-> L2
-    L5 -. .-> L3
-    L5 -. .-> L4
+    L5[Layer 5: System and operational<br/>observability, kill switches, sandboxing, HITL] -.-> L1
+    L5 -.-> L2
+    L5 -.-> L3
+    L5 -.-> L4
     L3 --> A[(External world<br/>APIs, databases, files, email)]
 ```
 
