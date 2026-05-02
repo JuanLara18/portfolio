@@ -1,39 +1,26 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
+﻿import { useState, useEffect, useRef, useMemo } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { SEO } from '../components/common/SEO';
-import { variants as motionVariants, defaultViewportSettings, earlyViewportSettings } from '../utils';
-import { MotionCard } from '../components/common';
-import { 
-  ExternalLink, 
-  Github, 
-  Code, 
-  Database, 
-  BarChart, 
-  Layers, 
-  Box, 
-  Cpu, 
-  Gamepad, 
-  Server, 
-  Globe, 
-  FileText, 
-  Music, 
-  Search, 
-  Filter,
+import { variants as motionVariants, defaultViewportSettings } from '../utils';
+import {
+  ExternalLink,
+  Github,
+  BarChart,
+  Layers,
+  Gamepad,
+  Globe,
+  FileText,
+  Search,
   Terminal,
-  Mail
+  ArrowRight
 } from 'lucide-react';
-import { ScrollIndicator, OptimizedImage } from '../components/ui';
+import { OptimizedImage, ViewToggle } from '../components/ui';
 
 // Animation variants (centralized)
 const fadeInUp = motionVariants.fadeInUp();
-const fadeInRight = motionVariants.fadeInRight();
 const staggerContainer = motionVariants.stagger();
 
-// Card hover behavior is centralized via MotionCard
-
-// Constantes de configuración de grid
+// Grid configuration constants
 const GRID_CONFIG = {
   DESKTOP_COLUMNS: 4,
   MOBILE_COLUMNS: 2,
@@ -41,43 +28,30 @@ const GRID_CONFIG = {
   FEATURED_PLACEMENT_INTERVAL: 6
 };
 
-// Project categories with their icons and colors
+// Project categories (icons preserved for filter UI; color metadata dropped — single cyan accent only)
 const categories = [
-  { id: 'all', name: 'All', icon: Layers, color: 'blue' },
-  { id: 'ml', name: 'AI & ML', icon: Brain, color: 'purple' },
-  { id: 'web', name: 'Web Dev', icon: Globe, color: 'indigo' },
-  { id: 'data', name: 'Data', icon: BarChart, color: 'green' },
-  { id: 'tools', name: 'Tools', icon: Terminal, color: 'yellow' },
-  { id: 'games', name: 'Games', icon: Gamepad, color: 'red' },
-  { id: 'upcoming', name: 'Upcoming', icon: FileText, color: 'teal' }
+  { id: 'all', name: 'All', icon: Layers },
+  { id: 'ml', name: 'AI & ML', icon: Brain },
+  { id: 'web', name: 'Web Dev', icon: Globe },
+  { id: 'data', name: 'Data', icon: BarChart },
+  { id: 'tools', name: 'Tools', icon: Terminal },
+  { id: 'games', name: 'Games', icon: Gamepad },
+  { id: 'upcoming', name: 'Upcoming', icon: FileText }
 ];
 
-// Color map for badges (light bg, dark opaque bg, and text colors)
-const COLOR_MAP = {
-  blue: { lightBg: '#DBEAFE', darkBg: 'rgba(37,99,235,0.22)', lightText: '#1e3a8a', darkText: '#FFFFFF' },
-  indigo: { lightBg: '#EEF2FF', darkBg: 'rgba(99,102,241,0.22)', lightText: '#3730a3', darkText: '#FFFFFF' },
-  purple: { lightBg: '#F3E8FF', darkBg: 'rgba(124,58,237,0.22)', lightText: '#6b21a8', darkText: '#FFFFFF' },
-  green: { lightBg: '#ECFCCB', darkBg: 'rgba(34,197,94,0.22)', lightText: '#166534', darkText: '#FFFFFF' },
-  yellow: { lightBg: '#FEF3C7', darkBg: 'rgba(245,158,11,0.22)', lightText: '#92400e', darkText: '#111827' },
-  teal: { lightBg: '#CCFBF1', darkBg: 'rgba(20,184,166,0.22)', lightText: '#0f766e', darkText: '#FFFFFF' },
-  orange: { lightBg: '#FFF7ED', darkBg: 'rgba(249,115,22,0.22)', lightText: '#7c2d12', darkText: '#111827' },
-  red: { lightBg: '#FEE2E2', darkBg: 'rgba(239,68,68,0.22)', lightText: '#7f1d1d', darkText: '#FFFFFF' },
-  gray: { lightBg: '#F1F5F9', darkBg: 'rgba(148,163,184,0.22)', lightText: '#334155', darkText: '#FFFFFF' }
-};
-
-// Brain icon is not imported, so let's define it
+// Brain icon (kept inline since lucide doesn't export Brain in this version)
 function Brain(props) {
   return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width={props.size || 24} 
-      height={props.size || 24} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={props.className}
     >
       <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"></path>
@@ -137,15 +111,6 @@ const projects = [
     category: "ml",
     featured: true
   },
-  // {
-  //   id: 6,
-  //   name: "Pharmacy Segmentation Application",
-  //   description: "Responsive mobile field application for pharmacy segmentation using R Shiny with Google Cloud Storage integration. Features geolocation mapping with Leaflet, route management, and real-time ML classification, reducing manual segmentation effort by 85%.",
-  //   image: "pharmacy-app.png",
-  //   tags: ["R Shiny", "Google Cloud", "Random Forest", "Leaflet"],
-  //   category: "data",
-  //   featured: true
-  // },
   {
     id: 9,
     name: "Cunservicios Platform",
@@ -183,160 +148,101 @@ const projects = [
   }
 ];
 
-// Project card component
-const ProjectCard = ({ project, inView }) => {
-  const getIcon = (tag) => {
-    switch (tag.toLowerCase()) {
-      case 'ml': case 'ai': case 'machine-learning':
-        return <Brain size={14} />;
-      case 'python': case 'flask': case 'javascript': case 'typescript': case 'react':
-        return <Code size={14} />;
-      case 'data': case 'data-analysis': case 'price-prediction':
-        return <BarChart size={14} />;
-      case 'nlp': case 'transformers': case 'openai':
-        return <Terminal size={14} />;
-      default:
-        return <Box size={14} />;
-    }
-  };
-
-  // Get category color
-  const getCategoryColor = (categoryId) => {
-    const category = categories.find(c => c.id === categoryId);
-    return category ? category.color : 'gray';
-  };
-
-  
-  // detect dark mode class on <html> and respond to changes
-  const [isDark, setIsDark] = useState(false);
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
-    const check = () => setIsDark(document.documentElement.classList.contains('dark'));
-    check();
-    const obs = new MutationObserver(check);
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    return () => obs.disconnect();
-  }, []);
+// Editorial project entry — magazine flow, no card chrome, hairline divider only.
+const ProjectCard = ({ project }) => {
+  const categoryObj = categories.find(c => c.id === project.category);
+  const CategoryIcon = categoryObj && typeof categoryObj.icon === 'function' ? categoryObj.icon : Layers;
 
   return (
-    <MotionCard
-      as={motion.div}
-      hover="liftScale"
-  className={`relative bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 h-full flex flex-col mobile-card
-  ${project.featured ? 'ring-1 ring-yellow-200 dark:ring-yellow-900/30' : ''}`}
+    <motion.div
+      variants={fadeInUp}
+      className="group flex flex-col pb-10 border-b border-gray-200/60 dark:border-white/[0.08]"
     >
-      <div className="relative overflow-hidden aspect-[4/3]">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 z-10"></div>
+      {/* Image — flush, no rounding, no overlay */}
+      <div className="relative overflow-hidden aspect-[4/3] mb-6">
         {project.image ? (
-          <OptimizedImage 
-            src={`/images/project-previews/${project.image}`} 
+          <OptimizedImage
+            src={`/images/project-previews/${project.image}`}
             alt={project.name}
-            className="transform transition-transform duration-700 hover:scale-105"
+            className="w-full h-full object-cover"
           />
         ) : (
-          <div className={`w-full h-full flex items-center justify-center bg-${getCategoryColor(project.category)}-100 dark:bg-${getCategoryColor(project.category)}-900/30`}>
-            {(() => {
-              const category = categories.find(c => c.id === project.category);
-              if (category && typeof category.icon === 'function') {
-                const IconComponent = category.icon;
-                return <IconComponent size={48} className={`text-${getCategoryColor(project.category)}-600 dark:text-${getCategoryColor(project.category)}-400 opacity-40`} />;
-              }
-              return <Box size={48} className={`text-${getCategoryColor(project.category)}-600 dark:text-${getCategoryColor(project.category)}-400 opacity-40`} />;
-            })()}
-          </div>
-        )}
-        
-        {/* Category badge (improved contrast in dark mode) */}
-        {(() => {
-          const catKey = getCategoryColor(project.category);
-          const categoryObj = categories.find(c => c.id === project.category);
-          const colorInfo = COLOR_MAP[catKey] || COLOR_MAP.gray;
-          const badgeStyle = {
-            backgroundColor: isDark ? colorInfo.darkBg : colorInfo.lightBg,
-            color: isDark ? (colorInfo.darkText || '#fff') : (colorInfo.lightText || '#111'),
-            border: isDark ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-            boxShadow: isDark ? 'inset 0 -1px 0 rgba(0,0,0,0.2)' : 'none'
-          };
-          const IconComponent = categoryObj && typeof categoryObj.icon === 'function' ? categoryObj.icon : Box;
-          return (
-            <div style={badgeStyle} className="absolute top-4 left-4 z-20 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
-              <IconComponent size={12} />
-              <span>{categoryObj?.name}</span>
-            </div>
-          );
-        })()}
-        
-        {project.featured && (
-          <div className="absolute top-4 right-4 z-20 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-xs font-medium px-2.5 py-1 rounded-full">
-            Featured
+          <div className="w-full h-full flex items-center justify-center">
+            <CategoryIcon size={48} className="text-gray-400 dark:text-brand-fg-muted opacity-50" />
           </div>
         )}
       </div>
-      
-      <div className="p-4 sm:p-6">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{project.name.split(':')[0]}</h3>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 card-description">{project.description}</p>
-        
-        <div className="flex flex-wrap gap-1.5 mb-4 sm:mb-6">
-          {project.tags && project.tags.slice(0, 4).map((tag, index) => (
-            <span 
-              key={index} 
-              className="card-tag inline-flex items-center gap-1 text-xs sm:text-sm"
-            >
-              {getIcon(tag)}
-              {tag}
-            </span>
-          ))}
-          {project.tags && project.tags.length > 4 && (
-            <span className="card-tag inline-flex items-center text-xs sm:text-sm">
-              +{project.tags.length - 4} more
-            </span>
+
+      {/* Body */}
+      <div className="flex flex-col flex-grow">
+        {/* Category kicker */}
+        <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3 flex items-center gap-2">
+          <CategoryIcon size={12} />
+          <span>{categoryObj?.name}</span>
+          {project.featured && (
+            <span className="text-cyan-700 dark:text-brand-accent">· Featured</span>
           )}
-        </div>
-        
-        <div className="flex items-center justify-between mt-auto">
-          {/* left area intentionally left blank — action icons are fixed to bottom-left */}
-          <div />
+          {project.category === 'upcoming' && (
+            <span className="text-cyan-700 dark:text-brand-accent">· Coming soon</span>
+          )}
+        </p>
 
-          {project.category === 'upcoming' ? (
-            <span className="text-xs font-medium bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 px-2 sm:px-2.5 py-1 rounded-full">
-              Coming Soon
-            </span>
-          ) : null}
-        </div>
+        <h3 className="font-bold text-2xl md:text-[1.7rem] tracking-tight leading-tight mb-3 text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
+          {project.name.split(':')[0]}
+        </h3>
 
-        {/* Fixed icons: GitHub always bottom-left; demo link next to it if present. */}
-        <div className="absolute left-3 sm:left-4 bottom-3 sm:bottom-4 z-30 flex items-center gap-2 sm:gap-3">
+        <p className="font-sans text-sm text-gray-600 dark:text-brand-fg-muted leading-relaxed mb-5">
+          {project.description}
+        </p>
+
+        {/* Tech stack — inline mono uppercase, dot-separated, no boxes */}
+        {project.tags && project.tags.length > 0 && (
+          <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-gray-500 dark:text-brand-fg-muted mb-5 leading-[1.9]">
+            {project.tags.slice(0, 5).map((tag, index) => (
+              <span key={index}>
+                {index > 0 && <span className="mx-1.5 opacity-60">·</span>}
+                <span>{tag}</span>
+              </span>
+            ))}
+            {project.tags.length > 5 && (
+              <span>
+                <span className="mx-1.5 opacity-60">·</span>
+                <span>+{project.tags.length - 5}</span>
+              </span>
+            )}
+          </div>
+        )}
+
+        {/* Actions — inline cyan text links */}
+        <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] tracking-[0.12em] uppercase">
           {project.github ? (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="inline-flex items-center gap-1.5 text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
               aria-label={`GitHub repository for ${project.name}`}
             >
-              <Github size={18} />
+              <Github size={13} />
+              <span>Code →</span>
             </a>
-          ) : (
-            <span className="text-gray-400 dark:text-gray-600 opacity-50" aria-hidden="true">
-              <Github size={18} />
-            </span>
-          )}
+          ) : null}
 
           {project.demo ? (
             <a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="inline-flex items-center gap-1.5 text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
               aria-label={`Live demo for ${project.name}`}
             >
-              <ExternalLink size={18} />
+              <ExternalLink size={13} />
+              <span>Demo →</span>
             </a>
           ) : null}
         </div>
       </div>
-  </MotionCard>
+    </motion.div>
   );
 };
 
@@ -347,137 +253,113 @@ export default function ProjectsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
-  const featuredRef = useRef(null);
-  const isFeaturedInView = useInView(featuredRef, { once: true, margin: "0px" });
-  
+
+  // View mode: 'grid' (default) or 'list'. Persisted in localStorage.
+  const [viewMode, setViewMode] = useState(() => {
+    if (typeof window === 'undefined') return 'grid';
+    try {
+      return window.localStorage.getItem('projects-view-mode') === 'list' ? 'list' : 'grid';
+    } catch (_) { return 'grid'; }
+  });
+  useEffect(() => {
+    try { window.localStorage.setItem('projects-view-mode', viewMode); } catch (_) {}
+  }, [viewMode]);
+
   // Pagination configuration
-  const PROJECTS_PER_PAGE = 6;
-  
-  // Transform values based on scroll position
+  const PROJECTS_PER_PAGE = 9;
+
+  // Subtle scroll-driven hero fade (no scale-y/skew shenanigans)
   const heroOpacity = useTransform(scrollY, [260, 800], [1, 0.98]);
-  const heroScale = useTransform(scrollY, [260, 800], [1, 0.995]);
-  
+
   // Filter projects based on category and search term with optimized visual layout
   const filteredProjects = useMemo(() => {
     let filtered = [...projects];
-    
-    // Apply category filter first
+
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(project => project.category === selectedCategory);
     }
-    
-    // Apply search filter if there's a search term
+
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(project => 
-        project.name.toLowerCase().includes(term) || 
+      filtered = filtered.filter(project =>
+        project.name.toLowerCase().includes(term) ||
         project.description.toLowerCase().includes(term) ||
         (project.tags && project.tags.some(tag => tag.toLowerCase().includes(term)))
       );
     }
-    
-    // Only reorganize if showing all projects without search
+
     if (selectedCategory === 'all' && !searchTerm) {
       const featuredProjects = filtered.filter(p => p.featured);
       const regularProjects = filtered.filter(p => !p.featured);
-      
-      // Create grid-aware layout that fills space efficiently
+
       const createOptimalLayout = () => {
-        // Use configuration constants
-        const { DESKTOP_COLUMNS, MOBILE_COLUMNS, FEATURED_WIDTH, FEATURED_PLACEMENT_INTERVAL } = GRID_CONFIG;
-        
-        // Calculate how many slots we have to fill
-        const totalRegularSlots = regularProjects.length;
-        const totalFeaturedSlots = featuredProjects.length * FEATURED_WIDTH;
-        const totalSlots = totalRegularSlots + totalFeaturedSlots;
-        
-        // Initialize arrays to track our grid
+        const { DESKTOP_COLUMNS, FEATURED_WIDTH, FEATURED_PLACEMENT_INTERVAL } = GRID_CONFIG;
+
         const result = [];
-        let currentGridState = []; // Represents the state of the current row being built
+        let currentGridState = [];
         let regularIndex = 0;
         let featuredIndex = 0;
-        
-        // Function to add a project to the result and update grid state
+
         const addToGrid = (project, width) => {
           result.push(project);
-          
-          // Update grid state (desktop layout)
           for (let i = 0; i < width; i++) {
             currentGridState.push(true);
           }
-          
-          // If we've filled a row or more, reset the grid state
           while (currentGridState.length >= DESKTOP_COLUMNS) {
             currentGridState = currentGridState.slice(DESKTOP_COLUMNS);
           }
         };
-        
-        // Distribute projects optimally across the grid
+
         while (regularIndex < regularProjects.length || featuredIndex < featuredProjects.length) {
-          // Check if we can place a featured project in the current row
-          const canPlaceFeatured = 
-            featuredIndex < featuredProjects.length && 
+          const canPlaceFeatured =
+            featuredIndex < featuredProjects.length &&
             (currentGridState.length + FEATURED_WIDTH <= DESKTOP_COLUMNS);
-          
-          // Check if placing a featured project would minimize gaps
-          const shouldPlaceFeatured = 
-            canPlaceFeatured && 
+
+          const shouldPlaceFeatured =
+            canPlaceFeatured &&
             (
-              // Place featured at start of row
               currentGridState.length === 0 ||
-              // Place featured at end of row if it fits perfectly
               currentGridState.length === DESKTOP_COLUMNS - FEATURED_WIDTH ||
-              // Place featured at strategic positions or if we're running out of regular projects
               regularIndex === regularProjects.length ||
-              // Place featured after every ~6 regular projects for visual rhythm
-              (featuredIndex < featuredProjects.length - 1 && 
-              regularIndex > 0 && 
-              regularIndex % FEATURED_PLACEMENT_INTERVAL === 0)
+              (featuredIndex < featuredProjects.length - 1 &&
+                regularIndex > 0 &&
+                regularIndex % FEATURED_PLACEMENT_INTERVAL === 0)
             );
-            
+
           if (shouldPlaceFeatured) {
-            // Place a featured project
             addToGrid(featuredProjects[featuredIndex], FEATURED_WIDTH);
             featuredIndex++;
           } else if (regularIndex < regularProjects.length) {
-            // Place a regular project
             addToGrid(regularProjects[regularIndex], 1);
             regularIndex++;
           } else if (featuredIndex < featuredProjects.length) {
-            // Force place remaining featured projects at the beginning of the next row
             if (currentGridState.length !== 0) {
-              // Fill the current row with regular projects if available
               while (currentGridState.length < DESKTOP_COLUMNS && regularIndex < regularProjects.length) {
                 addToGrid(regularProjects[regularIndex], 1);
                 regularIndex++;
               }
-              // Reset to start a new row
               currentGridState = [];
             }
-            
-            // Now place the featured project at the start of a row
             addToGrid(featuredProjects[featuredIndex], FEATURED_WIDTH);
             featuredIndex++;
           }
         }
-        
-        // If we still have incomplete row, fill it with any remaining projects
-        // This should rarely happen with the logic above, but just in case
+
         if (regularIndex < regularProjects.length && currentGridState.length > 0) {
           while (currentGridState.length < DESKTOP_COLUMNS && regularIndex < regularProjects.length) {
             addToGrid(regularProjects[regularIndex], 1);
             regularIndex++;
           }
         }
-        
+
         return result;
       };
-      
+
       filtered = createOptimalLayout();
     }
-    
+
     return filtered;
-  }, [selectedCategory, searchTerm, projects]);
+  }, [selectedCategory, searchTerm]);
 
   // Reset to first page when filters change
   useEffect(() => {
@@ -489,13 +371,10 @@ export default function ProjectsPage() {
   const totalPages = Math.max(1, Math.ceil(totalProjects / PROJECTS_PER_PAGE));
   const paginatedProjects = filteredProjects.slice((currentPage - 1) * PROJECTS_PER_PAGE, currentPage * PROJECTS_PER_PAGE);
 
-  // Get featured projects
-  const featuredProjects = projects.filter(project => project.featured);
-  
   return (
     <>
       <SEO
-        title="Projects | Juan Lara"
+        title="Projects · Juan Lara"
         description="Portfolio of AI and machine learning projects including TextInsight, RAG systems, and production-ready generative AI solutions. Explore ML engineering work and research implementations."
         canonical="https://juanlara18.github.io/portfolio/#/projects"
         keywords={[
@@ -509,251 +388,312 @@ export default function ProjectsPage() {
           'Deep Learning'
         ]}
       />
-      <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
-      
-      {/* Header Section */}
-      <div className="pt-8 pb-12 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 flex flex-col relative overflow-hidden">
-        <motion.section 
-          ref={heroRef}
-          style={{ opacity: heroOpacity, scale: heroScale }}
-          className="relative flex-1 flex items-center justify-center pt-0"
-        >
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 to-white dark:from-gray-800 dark:to-gray-900 -z-10"></div>
-        
-        {/* Decorative elements - adjusted for mobile */}
-        <div className="absolute top-20 sm:top-40 right-10 sm:right-20 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-blue-100/50 dark:bg-blue-900/20 blur-3xl -z-10"></div>
-        <div className="absolute -bottom-10 sm:-bottom-20 -left-10 sm:-left-20 w-60 sm:w-80 h-60 sm:h-80 rounded-full bg-indigo-100/30 dark:bg-indigo-900/10 blur-3xl -z-10"></div>
-        
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 mobile-card-container">
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto text-center mb-0"
+      <div className="bg-white dark:bg-brand-bg text-gray-900 dark:text-brand-fg min-h-screen">
+
+        {/* Hero — editorial, centered (matches Blog structure) */}
+        <div className="pt-12 pb-10 sm:pt-20 sm:pb-14 lg:pt-24 lg:pb-16">
+          <motion.section
+            ref={heroRef}
+            style={{ opacity: heroOpacity }}
+            className="relative"
           >
-            <motion.div variants={fadeInUp} className="mb-2">
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300 text-sm font-medium mb-2">
-                <Layers size={14} className="mr-1.5" /> Project Portfolio
-              </div>
-            </motion.div>
-            
-            <motion.h1 
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 leading-tight"
-            >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mr-2 sm:mr-3">
-                Built, Shipped,
-              </span>
-              <span className="text-gray-800 dark:text-gray-100">
-                Learned
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              variants={fadeInUp}
-              className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-10 max-w-3xl mx-auto px-2 sm:px-0"
-            >
-              Production systems, research tools, and open-source contributions.
-            </motion.p>
-            
-            {/* Search and filter */}
-            <motion.div 
-              variants={fadeInUp}
-              className="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto px-2 sm:px-0"
-            >
-              <div className="relative flex-grow">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search size={18} className="text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent text-sm sm:text-base"
-                  placeholder="Search projects..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Filter size={18} className="text-gray-400" />
-                </div>
-                <select
-                  className="block w-full pl-10 pr-10 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent appearance-none text-sm sm:text-base"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  {categories.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-        
-        </motion.section>
-      </div>
-      
-      {/* All Projects Grid */}
-      <section className="py-0 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mobile-card-container">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={defaultViewportSettings}
-            variants={staggerContainer}
-            className="max-w-6xl mx-auto"
-          >
-            <motion.div 
-              variants={motionVariants.scrollReveal.right()}
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4"
-            >
-              <div className="flex items-center">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center">
-                  <Layers className="text-blue-600 dark:text-blue-400 mr-3" size={24} />
-                  {selectedCategory !== 'all' 
-                    ? categories.find(c => c.id === selectedCategory)?.name 
-                    : 'All Projects'}
-                </h2>
-              </div>
-              
-              <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
-              </div>
-            </motion.div>
-            
-            {/* Category pills for easier filtering on desktop - hide on mobile for cleaner look */}
-            <motion.div 
-              variants={fadeInUp}
-              className="hidden md:flex flex-wrap gap-3 mb-6"
-            >
-              {categories.map(category => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  aria-pressed={selectedCategory === category.id}
-                  aria-label={`Filter projects by ${category.name}`}
-                  className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-colors
-                    ${selectedCategory === category.id 
-                      ? `bg-${category.color}-100 dark:bg-${category.color}-900/50 text-${category.color}-800 dark:text-${category.color}-200 border border-${category.color}-200 dark:border-${category.color}-800` 
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent'}`}
-                >
-                  {(() => {
-                    if (typeof category.icon === 'function') {
-                      const IconComponent = category.icon;
-                      return <IconComponent size={16} className="mr-2" />;
-                    }
-                    return <Box size={16} className="mr-2" />;
-                  })()}
-                  {category.name}
-                </button>
-              ))}
-            </motion.div>
-            
-            {filteredProjects.length === 0 ? (
-              <motion.div 
-                variants={fadeInUp}
-                className="text-center py-16"
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
+                className="max-w-4xl mx-auto text-center"
               >
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                  <Search size={32} className="text-gray-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">No projects found</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  Try adjusting your search or filter to find what you're looking for.
-                </p>
-                <button 
-                  onClick={() => {
-                    setSelectedCategory('all');
-                    setSearchTerm('');
-                  }}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center gap-2"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 12h18M3 6h18M3 18h18"></path>
-                  </svg>
-                  Show all projects
-                </button>
-              </motion.div>
-            ) : (
-              <>
-                <motion.div 
-                  variants={fadeInUp}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 auto-rows-auto mobile-grid-single"
-                >
-                  {paginatedProjects.map(project => (
-                    <ProjectCard key={project.id} project={project} inView={true} />
-                  ))}
+                <motion.div variants={fadeInUp} className="mb-4">
+                  <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted">
+                    Projects
+                  </span>
                 </motion.div>
 
-                {/* Pagination controls */}
-                {totalPages > 1 && (
-                  <motion.div
-                    variants={fadeInUp}
-                    className="flex flex-col sm:flex-row items-center justify-between mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
+                <motion.h1
+                  variants={fadeInUp}
+                  className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-gray-900 dark:text-brand-fg mb-6"
+                >
+                  Built<span className="text-cyan-700 dark:text-brand-accent">.</span> Shipped<span className="text-cyan-700 dark:text-brand-accent">.</span> Learned<span className="text-cyan-700 dark:text-brand-accent">.</span>
+                </motion.h1>
+
+                <motion.p
+                  variants={fadeInUp}
+                  className="text-base md:text-lg text-gray-600 dark:text-brand-fg-muted mb-8 max-w-2xl mx-auto leading-relaxed"
+                >
+                  Production systems, research tools, and open-source contributions.
+                </motion.p>
+
+                {/* GitHub count link — mirrors the Knowledge Graph link in Blog */}
+                <motion.div variants={fadeInUp} className="mb-10">
+                  <a
+                    href="https://github.com/JuanLara18"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
                   >
-                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-0">
-                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min((currentPage - 1) * PROJECTS_PER_PAGE + 1, totalProjects)}</span>
-                      {' '}-{' '}
-                      <span className="font-medium text-gray-700 dark:text-gray-100">{Math.min(currentPage * PROJECTS_PER_PAGE, totalProjects)}</span>
-                      {' '}of{' '}
-                      <span className="font-medium text-gray-700 dark:text-gray-100">{totalProjects}</span> projects
+                    <Github size={14} />
+                    <span>View on GitHub</span>
+                    <span className="opacity-50">·</span>
+                    <span>{projects.length} projects</span>
+                  </a>
+                </motion.div>
+
+                {/* Search — centered, bottom hairline only (matches Blog) */}
+                <motion.div
+                  variants={fadeInUp}
+                  className="max-w-3xl mx-auto"
+                >
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                      <Search size={16} className="text-gray-400 dark:text-brand-fg-muted" />
                     </div>
-                    
-                    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-0">
-                      <button
-                        onClick={() => setCurrentPage(1)}
-                        disabled={currentPage === 1}
-                        className="hidden sm:block px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                      >
-                        First
-                      </button>
-                      
-                      <button
-                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                        disabled={currentPage === 1}
-                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                      >
-                        Prev
-                      </button>
-                      
-                      <div className="px-1 sm:px-3 text-sm text-gray-700 dark:text-gray-300 font-medium whitespace-nowrap">
-                        {currentPage} / {totalPages}
-                      </div>
-                      
-                      <button
-                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                        disabled={currentPage === totalPages}
-                        className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                      >
-                        Next
-                      </button>
-                      
-                      <button
-                        onClick={() => setCurrentPage(totalPages)}
-                        disabled={currentPage === totalPages}
-                        className="hidden sm:block px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                      >
-                        Last
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-              </>
-            )}
-          </motion.div>
+                    <input
+                      type="text"
+                      aria-label="Search projects"
+                      className="block w-full pl-7 pr-3 py-2.5 bg-transparent border-0 border-b border-gray-200/60 dark:border-white/[0.08] text-gray-900 dark:text-brand-fg placeholder-gray-400 dark:placeholder-brand-fg-muted focus:outline-none focus:border-cyan-700 dark:focus:border-brand-accent transition-colors text-sm"
+                      placeholder="Search projects..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.section>
         </div>
-      </section>
-      
-    </div>
+
+        {/* Projects grid */}
+        <section className="pb-10 sm:pb-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mobile-card-container">
+            <motion.div
+              initial={false}
+              whileInView="visible"
+              viewport={{ once: true, margin: "0px" }}
+              variants={staggerContainer}
+            >
+              {/* Category filter row — inline mono uppercase, underline-active (matches Blog) */}
+              <motion.div
+                variants={fadeInUp}
+                className="flex flex-wrap gap-x-6 gap-y-2 mb-8"
+                role="group"
+                aria-label="Filter projects by category"
+              >
+                {categories.map(category => {
+                  const isActive = selectedCategory === category.id;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      aria-pressed={isActive}
+                      aria-label={`Filter projects by ${category.name}`}
+                      className={`font-mono text-[11px] tracking-[0.12em] uppercase py-1 transition-colors ${
+                        isActive
+                          ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-[6px] decoration-1'
+                          : 'text-gray-500 dark:text-brand-fg-muted hover:text-gray-900 dark:hover:text-brand-fg'
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  );
+                })}
+              </motion.div>
+
+              {/* Section header — kicker + view toggle + count (matches Blog) */}
+              <motion.div
+                variants={fadeInUp}
+                className="flex items-end justify-between mb-12 gap-3 pb-5 border-b border-gray-200/60 dark:border-white/[0.08]"
+              >
+                <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted">
+                  {selectedCategory !== 'all'
+                    ? categories.find(c => c.id === selectedCategory)?.name
+                    : 'All projects'}
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <ViewToggle value={viewMode} onChange={setViewMode} />
+                  <span className="w-px h-4 bg-gray-300/70 dark:bg-white/[0.12]" />
+                  <div className="font-mono text-[11px] tracking-[0.08em] uppercase text-gray-500 dark:text-brand-fg-muted whitespace-nowrap">
+                    {filteredProjects.length > 0 && (
+                      <>
+                        {Math.min((currentPage - 1) * PROJECTS_PER_PAGE + 1, filteredProjects.length)}
+                        {'–'}
+                        {Math.min(currentPage * PROJECTS_PER_PAGE, filteredProjects.length)}
+                        {' / '}
+                        {filteredProjects.length}
+                      </>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+
+              {filteredProjects.length === 0 ? (
+                <motion.div
+                  variants={fadeInUp}
+                  className="text-center py-24"
+                >
+                  <Search size={28} className="mx-auto mb-4 text-gray-400 dark:text-brand-fg-muted" />
+                  <h3 className="font-bold text-xl tracking-tight mb-2 text-gray-900 dark:text-brand-fg">
+                    No projects found
+                  </h3>
+                  <p className="font-sans text-sm text-gray-600 dark:text-brand-fg-muted mb-6 max-w-md mx-auto">
+                    Try adjusting your search or filter to find what you're looking for.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSelectedCategory('all');
+                      setSearchTerm('');
+                    }}
+                    className="font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+                  >
+                    Show all projects
+                  </button>
+                </motion.div>
+              ) : (
+                <>
+                  {viewMode === 'grid' ? (
+                    <motion.div
+                      variants={fadeInUp}
+                      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+                    >
+                      {paginatedProjects.map(project => (
+                        <ProjectCard key={project.id} project={project} />
+                      ))}
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      variants={fadeInUp}
+                      className="divide-y divide-gray-200/60 dark:divide-white/[0.08]"
+                    >
+                      {paginatedProjects.map(project => {
+                        const categoryName = categories.find(c => c.id === project.category)?.name || project.category;
+                        return (
+                          <article key={project.id} className="group flex gap-5 sm:gap-8 py-6 sm:py-8">
+                            {/* Thumbnail */}
+                            {project.image && (
+                              <div className="hidden sm:block flex-shrink-0 w-32 md:w-44 aspect-[4/3] bg-gray-100 dark:bg-brand-bg-soft overflow-hidden">
+                                <OptimizedImage
+                                  src={`/images/project-previews/${project.image}`}
+                                  alt={project.name}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                />
+                              </div>
+                            )}
+
+                            {/* Content */}
+                            <div className="flex-1 min-w-0">
+                              <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-cyan-700 dark:text-brand-accent mb-2">
+                                {categoryName}
+                                {project.featured && (
+                                  <>
+                                    <span className="opacity-50 mx-1.5">·</span>
+                                    Featured
+                                  </>
+                                )}
+                              </p>
+                              <h3 className="font-bold text-xl sm:text-2xl tracking-tight leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-2">
+                                {project.name}
+                              </h3>
+                              {project.description && (
+                                <p className="text-sm text-gray-600 dark:text-brand-fg-muted leading-relaxed line-clamp-2 mb-3">
+                                  {project.description}
+                                </p>
+                              )}
+                              {project.tags && project.tags.length > 0 && (
+                                <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-gray-500 dark:text-brand-fg-muted hidden sm:block mb-3">
+                                  {project.tags.slice(0, 5).join(' · ')}
+                                </p>
+                              )}
+                              {(project.github || project.demo) && (
+                                <div className="flex gap-5 mt-2">
+                                  {project.github && (
+                                    <a
+                                      href={project.github}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+                                    >
+                                      <Github size={12} />
+                                      <span>Code</span>
+                                    </a>
+                                  )}
+                                  {project.demo && (
+                                    <a
+                                      href={project.demo}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+                                    >
+                                      <ExternalLink size={12} />
+                                      <span>Demo</span>
+                                    </a>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Arrow on the right */}
+                            <div className="hidden md:flex items-center text-cyan-700/40 dark:text-brand-accent/40 group-hover:text-cyan-700 dark:group-hover:text-brand-accent flex-shrink-0 transition-colors">
+                              <ArrowRight size={16} />
+                            </div>
+                          </article>
+                        );
+                      })}
+                    </motion.div>
+                  )}
+
+                  {/* Pagination — text-based */}
+                  {totalPages > 1 && (
+                    <motion.div
+                      variants={fadeInUp}
+                      className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0 mt-10 pt-6 border-t border-gray-200/60 dark:border-white/[0.08]"
+                    >
+                      <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-gray-500 dark:text-brand-fg-muted">
+                        <span className="text-gray-700 dark:text-brand-fg">
+                          {Math.min((currentPage - 1) * PROJECTS_PER_PAGE + 1, totalProjects)}
+                        </span>
+                        {' – '}
+                        <span className="text-gray-700 dark:text-brand-fg">
+                          {Math.min(currentPage * PROJECTS_PER_PAGE, totalProjects)}
+                        </span>
+                        {' of '}
+                        <span className="text-gray-700 dark:text-brand-fg">{totalProjects}</span>
+                      </div>
+
+                      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-mono text-[11px] tracking-[0.12em] uppercase">
+                        <button
+                          onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                          disabled={currentPage === 1}
+                          className="text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                        >
+                          ← Prev
+                        </button>
+
+                        <span className="opacity-50">·</span>
+
+                        <div className="text-gray-500 dark:text-brand-fg-muted whitespace-nowrap tabular-nums">
+                          {String(currentPage).padStart(2, '0')} / {String(totalPages).padStart(2, '0')}
+                        </div>
+
+                        <span className="opacity-50">·</span>
+
+                        <button
+                          onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                          disabled={currentPage === totalPages}
+                          className="text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                        >
+                          Next →
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </>
+              )}
+            </motion.div>
+          </div>
+        </section>
+
+      </div>
     </>
   );
 }
