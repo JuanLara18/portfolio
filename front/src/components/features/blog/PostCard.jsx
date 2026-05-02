@@ -68,8 +68,15 @@ export const PostCard = ({ post }) => {
         <span>{post.readingTime} min read</span>
       </div>
 
-      {/* Excerpt */}
-      <p className="text-gray-600 dark:text-brand-fg-muted mb-4 line-clamp-3 leading-relaxed text-sm flex-1">
+      {/* Excerpt — clean 3-line clamp (no flex-1; tags use mt-auto to anchor) */}
+      <p
+        className="text-gray-600 dark:text-brand-fg-muted mb-4 leading-relaxed text-sm overflow-hidden"
+        style={{
+          display: '-webkit-box',
+          WebkitLineClamp: 3,
+          WebkitBoxOrient: 'vertical',
+        }}
+      >
         {post.excerpt}
       </p>
 
