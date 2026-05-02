@@ -1048,26 +1048,27 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 			</blockquote>
 		),
     
-		// Enhanced tables
+		// Editorial tables — em-based padding so they scale with font-size,
+		// hairline borders only (no boxy chrome), color inherits from parent (RM theme aware).
 		table: ({ children, ...props }) => (
-			<div className="my-6 overflow-x-auto">
-				<table className="w-full border-collapse border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden" {...props}>
+			<div className="my-[1.5em] -mx-4 sm:mx-0 overflow-x-auto [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:bg-current/20">
+				<table className="w-full border-collapse text-[0.92em] mx-4 sm:mx-0" style={{ minWidth: 'max-content' }} {...props}>
 					{children}
 				</table>
 			</div>
 		),
 		thead: ({ children, ...props }) => (
-			<thead className="bg-gray-100 dark:bg-gray-800" {...props}>
+			<thead {...props}>
 				{children}
 			</thead>
 		),
 		th: ({ children, ...props }) => (
-			<th className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600" {...props}>
+			<th className="px-[0.9em] py-[0.55em] text-left font-semibold whitespace-nowrap border-b-2 border-current/30" {...props}>
 				{children}
 			</th>
 		),
 		td: ({ children, ...props }) => (
-			<td className="px-4 py-3 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600" {...props}>
+			<td className="px-[0.9em] py-[0.5em] align-top border-b border-current/10" {...props}>
 				{children}
 			</td>
 		),
