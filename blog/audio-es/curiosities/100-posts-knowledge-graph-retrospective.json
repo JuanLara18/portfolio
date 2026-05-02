@@ -1,0 +1,13 @@
+{
+  "slug": "100-posts-knowledge-graph-retrospective",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a62d35d888581f622fc3dd059c646d535fb69e40ffa62ff8a1516266a6dd0469",
+  "sourceHash": "153ee03744cda0ec6b32307fb7587512050137da8013f41ce47616fa89dd6ec8",
+  "durationSec": 2181.984,
+  "byteSize": 13091904,
+  "narrationWordCount": 5630,
+  "audioUrl": "/blog/audio-es/curiosities/100-posts-knowledge-graph-retrospective.mp3",
+  "translationModel": "gemma4:latest"
+}
