@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1777681101,
+  "generatedAt": 1777685545,
   "posts": {
     "curiosities/algebraic-number-theory-when-factorization-breaks": {
       "slug": "algebraic-number-theory-when-factorization-breaks",
@@ -183,6 +183,19 @@
       "byteSize": 6991776,
       "narrationWordCount": 2724,
       "audioUrl": "/blog/audio-es/curiosities/tetris-np-complete.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/agent-engineering-disciplines": {
+      "slug": "agent-engineering-disciplines",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "6fd94c1f7fdbd292c9e8959ef33bb507de12b429119f78d86ddfac16fef24bc5",
+      "sourceHash": "726cfe86f6c975b5baf50c6dccdc88b9e5b18478e4d51c65554bf8257cc15d75",
+      "durationSec": 2651.616,
+      "byteSize": 15909696,
+      "narrationWordCount": 7334,
+      "audioUrl": "/blog/audio-es/field-notes/agent-engineering-disciplines.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/agent-guardrails-field-guide": {

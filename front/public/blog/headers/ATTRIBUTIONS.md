@@ -33,3 +33,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `las-vegas-convention-center-header.jpg` — Photo by Steve Jurvetson, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Las_Vegas_Convention_Center_Loop.jpeg) (CC BY 2.0)
 - `card-catalog-drawers-header.jpg` — Photo by MarkBuckawicki, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wooden_Card_Catalog_Furniture.jpg) (CC0)
 - `rivers-confluence-header.jpg` — Photo by Timothy A. Gonsalves, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Confluence_Tsarap_Purne_Lungnak_Zanskar_Oct22_A7C_03655.jpg) (CC BY-SA 4.0)
+- `mission-control-apollo-header.jpg` — Photo by NASA on The Commons, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Apollo_16,_Mission_Control_-_Flickr_-_NASA_on_The_Commons.jpg) (Public Domain / NASA)
