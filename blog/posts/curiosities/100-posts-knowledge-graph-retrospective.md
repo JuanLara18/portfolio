@@ -13,7 +13,7 @@ estimatedWordCount: 7100
 
 When you write 99 posts and then plot the result as a graph, the picture is not what you thought you were drawing.
 
-I started the blog in January 2025 with a piece on the Rubik's cube and group theory. The plan, to the extent there was one, was to write a few math curiosities on the side, mostly because the Knowledge Data Engineer day job left no place to put long-form derivations. Sixteen months later I have 99 posts, 685,421 words, 223 distinct tags, and a habit. This piece is post number 100. It is also the first time I have looked at the corpus the way I would look at any other dataset I owned: dump it to JSON, load it into networkx, ask the graph what it knows.
+I started the blog in January 2025 with a piece on the Rubik's cube and group theory. The plan, to the extent there was one, was to write a few math curiosities on the side and see what stuck. What stuck turned out to be a habit: 99 posts, 685,421 words, 223 distinct tags. This piece is post number 100. It is also the first time I have looked at the corpus the way I would look at any other dataset I owned: dump it to JSON, load it into networkx, ask the graph what it knows.
 
 The answer is not what I expected. I thought I had been writing about LLMs and ontologies on top of a foundation in math and software engineering. The graph thinks I have been writing about LLMs and Production ML on top of a foundation in math and software engineering, with everything else clustered around those two gravity wells. I thought my curiosities posts were a vibrant side garden. The graph thinks they are a bright, dense, undersized continent that connects to the rest of the corpus through exactly two bridges. I thought my tagging discipline was reasonable. The graph thinks 39 percent of my tags are dead nodes, used once and never again.
 
@@ -57,7 +57,7 @@ Before any analysis, the raw shape. All numbers come from running an analytics p
 | Tag-tag edges | 2,408 |
 | Singleton tags | 87 (39 percent of all tags) |
 
-The split by category and by year:
+The split by category:
 
 | Category | Count | Share |
 |---|---|---|
@@ -65,30 +65,11 @@ The split by category and by year:
 | curiosities | 14 | 14.1 percent |
 | research | 12 | 12.1 percent |
 
-| Year | Posts | Cumulative |
-|---|---|---|
-| 2025 | 12 | 12 |
-| 2026 | 56 | 68 |
-| 2027 | 31 | 99 |
-
 A few observations from the numbers alone, before we touch the graph.
 
-First, the corpus is dominated by field-notes. Roughly seventy-three of every hundred posts are practical writeups; only fourteen are curiosities and twelve are research deep-dives. This is the first signal that the blog is less of a balanced trio and more of a single applied-engineering torso with two small intellectual wings. It is also, in retrospect, a faithful reflection of how I spend my time: at a financial institution shipping production agents and data pipelines, with curiosities and research relegated to evenings.
+First, the corpus is dominated by field-notes. Roughly seventy-three of every hundred posts are practical writeups; only fourteen are curiosities and twelve are research deep-dives. This is the first signal that the blog is less of a balanced trio and more of a single applied-engineering torso with two small intellectual wings. It is also, in retrospect, a faithful reflection of how the writing has evolved: most of the posts are practical writeups from data and ML work, with curiosities and research relegated to evenings.
 
-Second, the cadence story is not the slow climb you might guess. 2025 was a slow start: 12 posts spread over the year, roughly one a month. 2026 was an explosion: 56 posts, more than four a month, almost certainly correlated with the moment I admitted to myself that this was a real practice. 2027 partially regressed to a sustainable cadence: 31 posts in roughly seven months, around four a month again, but with longer pieces.
-
-Third, the median post is 6,500 words. The mean is also high: 685,421 over 99 is roughly 6,923. This is not a list-blog. It is closer to a textbook with chapters that happen to be marketed as posts. The single longest piece, [reinforcement-learning-first-principles](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-first-principles), is 18,000 words, which is a small book.
-
-```mermaid
-timeline
-    title Cumulative posts by year
-    2025 H1 : 0 posts
-    2025 H2 : 12 posts cumulative
-    2026 H1 : ~40 posts cumulative
-    2026 H2 : 68 posts cumulative
-    2027 H1 : 92 posts cumulative
-    2027 H2 : 99 posts cumulative, retrospective at 100
-```
+Second, the median post is 6,500 words. The mean is also high: 685,421 over 99 is roughly 6,923. This is not a list-blog. It is closer to a textbook with chapters that happen to be marketed as posts. The single longest piece, [reinforcement-learning-first-principles](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-first-principles), is 18,000 words, which is a small book.
 
 ---
 
@@ -331,11 +312,11 @@ flowchart TB
 
 A few honest observations.
 
-**The LLM/RAG/Agents cluster is the largest community by far.** This is the gravity well I mentioned earlier. It absorbs new posts at the highest rate, and it has been the most active region of the blog through 2026 and 2027.
+**The LLM/RAG/Agents cluster is the largest community by far.** This is the gravity well I mentioned earlier. It absorbs new posts at the highest rate, and it has been the most active region of the blog over the last year.
 
 **The Math/Curiosities community is the smallest of the five but has the highest concept density per post.** A typical curiosities post has 8–10 tags, of which 5–6 are within the cluster. The cluster is small because there are only 14 curiosities posts and they all live in the same neighborhood. It has high quality per node and low coverage. This is the community I am most under-investing in.
 
-**The Knowledge Graphs / Ontology community is the youngest.** Most of its posts are from 2027. It is also the cluster with the strongest internal coherence: the ontology arc was deliberately written as a sequence ([ontologies-building-knowledge-bases](https://juanlara18.github.io/portfolio/#/blog/ontologies-building-knowledge-bases), [knowledge-graphs-practice](https://juanlara18.github.io/portfolio/#/blog/knowledge-graphs-practice), [tbox-abox-schema-facts-distinction](https://juanlara18.github.io/portfolio/#/blog/tbox-abox-schema-facts-distinction), [modular-ontologies-core-domains-pattern](https://juanlara18.github.io/portfolio/#/blog/modular-ontologies-core-domains-pattern), [ontology-production-pipeline-gcp](https://juanlara18.github.io/portfolio/#/blog/ontology-production-pipeline-gcp), [ontology-to-agent-toolbox](https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox)), and the sequencing shows up as tight modularity in the Louvain partition.
+**The Knowledge Graphs / Ontology community is the youngest.** Most of its posts are recent. It is also the cluster with the strongest internal coherence: the ontology arc was deliberately written as a sequence ([ontologies-building-knowledge-bases](https://juanlara18.github.io/portfolio/#/blog/ontologies-building-knowledge-bases), [knowledge-graphs-practice](https://juanlara18.github.io/portfolio/#/blog/knowledge-graphs-practice), [tbox-abox-schema-facts-distinction](https://juanlara18.github.io/portfolio/#/blog/tbox-abox-schema-facts-distinction), [modular-ontologies-core-domains-pattern](https://juanlara18.github.io/portfolio/#/blog/modular-ontologies-core-domains-pattern), [ontology-production-pipeline-gcp](https://juanlara18.github.io/portfolio/#/blog/ontology-production-pipeline-gcp), [ontology-to-agent-toolbox](https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox)), and the sequencing shows up as tight modularity in the Louvain partition.
 
 **The Foundations / ML internals / SE community is the most heterogeneous.** It mixes posts on Python, on bash, on Docker, on git, on Kubernetes, on file formats, on hashing, on software-engineering classics, with a few ML-internals posts. The community holds together because all of these posts share the "engineering hygiene" angle, not because they share a topic.
 
@@ -509,9 +490,9 @@ The graph is also a navigation device. Three reading paths, each derived from de
 4. [query-routing-agent-decisions](https://juanlara18.github.io/portfolio/#/blog/query-routing-agent-decisions)
 5. [agent-engineering-disciplines](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines)
 
-This is the five-post agent arc the corpus has been pointing at since early 2027. The arc ended at post #99, [agent-engineering-disciplines](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines), and the natural continuation is in the upcoming stack-recommendations post #101.
+This is the five-post agent arc the corpus has been pointing at for several months. The arc ended at post #99, [agent-engineering-disciplines](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines), and the natural continuation is in the upcoming stack-recommendations post #101.
 
-**Path C: Ontologies to Action.** The 2027 ontology arc, designed as a sequence.
+**Path C: Ontologies to Action.** The ontology arc, designed as a sequence.
 
 1. [ontologies-building-knowledge-bases](https://juanlara18.github.io/portfolio/#/blog/ontologies-building-knowledge-bases)
 2. [tbox-abox-schema-facts-distinction](https://juanlara18.github.io/portfolio/#/blog/tbox-abox-schema-facts-distinction)
