@@ -198,9 +198,9 @@ export default function LandingPage() {
             {/* Pillar 1 — Production AI Systems */}
             <motion.div variants={motionVariants.scrollReveal.up()} className="group">
               <div className="flex items-start gap-5 sm:gap-6">
-                <Server strokeWidth={1.3} className="w-9 h-9 sm:w-11 sm:h-11 text-cyan-700 dark:text-brand-accent flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
+                <Server strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-cyan-700 dark:text-brand-accent flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.1] mb-3">
+                  <h3 className="font-bold text-lg sm:text-2xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.15] mb-2 sm:mb-3">
                     {PILLARS[0].name}.
                   </h3>
                   <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm sm:text-[15px]">
@@ -213,9 +213,9 @@ export default function LandingPage() {
             {/* Pillar 2 — Engineering Practice */}
             <motion.div variants={motionVariants.scrollReveal.up()} className="group">
               <div className="flex items-start gap-5 sm:gap-6">
-                <Cpu strokeWidth={1.3} className="w-9 h-9 sm:w-11 sm:h-11 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
+                <Cpu strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.1] mb-3">
+                  <h3 className="font-bold text-lg sm:text-2xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.15] mb-2 sm:mb-3">
                     {PILLARS[1].name}.
                   </h3>
                   <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm sm:text-[15px]">
@@ -228,9 +228,9 @@ export default function LandingPage() {
             {/* Pillar 3 — Applied Research */}
             <motion.div variants={motionVariants.scrollReveal.up()} className="group">
               <div className="flex items-start gap-5 sm:gap-6">
-                <BrainCircuit strokeWidth={1.3} className="w-9 h-9 sm:w-11 sm:h-11 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
+                <BrainCircuit strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.1] mb-3">
+                  <h3 className="font-bold text-lg sm:text-2xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.15] mb-2 sm:mb-3">
                     {PILLARS[2].name}.
                   </h3>
                   <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm sm:text-[15px]">
@@ -286,7 +286,7 @@ export default function LandingPage() {
                           </p>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-bold text-xl sm:text-2xl tracking-tight leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-1">
+                          <h4 className="font-bold text-lg sm:text-2xl tracking-tight leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-1">
                             {post.title}
                             {!/[.!?]$/.test(post.title) && '.'}
                           </h4>

@@ -110,9 +110,9 @@ const ExperienceCard = ({
                 className="overflow-hidden"
               >
                 <h4 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent font-semibold mb-2">Key Responsibilities</h4>
-                <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-brand-fg-muted mb-2">
+                <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm sm:text-[15px] text-gray-600 dark:text-brand-fg-muted mb-2 max-w-2xl">
                   {responsibilities.map((item, index) => (
-                    <li key={index} className="leading-relaxed">{item}</li>
+                    <li key={index} className="leading-relaxed pl-1">{item}</li>
                   ))}
                 </ul>
               </motion.div>
