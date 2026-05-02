@@ -107,12 +107,11 @@ const expandMermaidLabelBounds = (svg) => {
 // per theme change, even when many diagrams render simultaneously.
 let mermaidConfigKey = null;
 
-// Mermaid configuration helper.
-// Color palette is built on the site's blue-slate identity:
-//   primary #2563eb / secondary #4338ca / dark bg #0f172a
-// Dark mode  → dark navy node fills + medium-blue borders + blue arrows.
-// Light mode → very-light-blue node fills + soft-blue borders + brand-blue arrows.
-// Both modes stay monochromatic (no rainbow), just have more contrast & depth.
+// Mermaid configuration helper — Brand v2 palette.
+//   Accent: cyan-700 (#0E7490) light / cyan-400 (#22D3EE) dark
+//   Dark canvas: brand-bg (#0B1120)
+//   Light canvas: white
+// Mermaid stays monochrome-ish (neutral nodes, cyan accents for arrows + emphasis).
 const getMermaidConfig = (isDark) => ({
   startOnLoad: false,
   theme: isDark ? 'dark' : 'default',
@@ -124,62 +123,61 @@ const getMermaidConfig = (isDark) => ({
     padding: 15,
   },
   themeVariables: isDark ? {
-    // ── Dark mode: dark navy base, medium-blue accents ──
-    background:            '#0f172a', // page bg (slate-900)
-    mainBkg:               '#162033', // node fill — dark navy, not flat gray
-    nodeBorder:            '#2e4f85', // node border — visible blue, not gray
-    primaryColor:          '#1a3260', // primary-class nodes — deep blue
-    primaryBorderColor:    '#3668b8', // primary node border — more saturated
-    primaryTextColor:      '#e2e8f0', // text on primary nodes (slate-200)
-    secondaryColor:        '#101a2e', // secondary elements — darker navy
-    tertiaryColor:         '#1a2c45', // tertiary — mid navy
-    lineColor:             '#4a7fc1', // arrows — clear medium blue (much more readable)
-    clusterBkg:            '#0c1422', // subgraph fill — darker than nodes → hierarchy
-    clusterBorder:         '#243d6e', // subgraph border — subtle blue
-    titleColor:            '#e8eeff', // slightly blue-white
-    edgeLabelBackground:   '#162033', // edge labels match node bg
-    nodeTextColor:         '#dde4f0', // node text — slightly blue-tinted light
+    // ── Dark mode: brand navy + cyan accents ──
+    background:            '#0B1120', // brand-bg
+    mainBkg:               '#101a2e', // node fill — brand-bg-soft, slightly lifted from page
+    nodeBorder:            '#3a4660', // node border — neutral, not screaming
+    primaryColor:          '#0e2a3a', // primary-class nodes — dark cyan-tinted
+    primaryBorderColor:    '#22D3EE', // primary node border — brand-accent
+    primaryTextColor:      '#F5F5F0', // text on primary nodes — warm white
+    secondaryColor:        '#0c1422', // secondary — darker than nodes for hierarchy
+    tertiaryColor:         '#13203a', // tertiary — mid step
+    lineColor:             '#22D3EE', // arrows — brand-accent (cyan-400)
+    clusterBkg:            '#0a1020', // subgraph fill — almost page bg
+    clusterBorder:         '#2a3550', // subgraph border — subtle neutral
+    titleColor:            '#67E8F9', // titles — cyan-300, brighter accent
+    edgeLabelBackground:   '#101a2e', // edge labels match node bg
+    nodeTextColor:         '#E5E7F0', // node text — slightly cool light
   } : {
-    // ── Light mode: barely-blue node fills, brand-blue borders & arrows ──
+    // ── Light mode: white canvas + cyan-700 accents ──
     background:            '#ffffff',
-    mainBkg:               '#f0f5ff', // node fill — site's --bg-accent (near-white + blue)
-    nodeBorder:            '#93c5fd', // node border — blue-300 (soft but visible)
-    primaryColor:          '#dbeafe', // primary-class nodes — blue-100
-    primaryBorderColor:    '#60a5fa', // primary node border — blue-400
-    primaryTextColor:      '#1e3a8a', // text on primary nodes — blue-900 (high contrast)
-    secondaryColor:        '#edf2ff', // secondary elements — slightly deeper tint
-    tertiaryColor:         '#e5edff', // tertiary — another step deeper
-    lineColor:             '#2563eb', // arrows — site's --primary (strong, readable)
-    clusterBkg:            '#f8fafc', // subgraph fill — slate-50 (lighter than nodes)
-    clusterBorder:         '#bfdbfe', // subgraph border — blue-200
-    titleColor:            '#1e3a8a', // deep blue title — blue-900
-    edgeLabelBackground:   '#e8f0fe', // edge labels — very light blue
-    nodeTextColor:         '#0f172a', // node text — slate-900 (maximum contrast)
+    mainBkg:               '#fafafa', // node fill — barely-off-white, neutral
+    nodeBorder:            '#d4d4d8', // node border — gray-300, soft
+    primaryColor:          '#ECFEFF', // primary-class nodes — cyan-50, hint of accent
+    primaryBorderColor:    '#0E7490', // primary node border — cyan-700
+    primaryTextColor:      '#0E7490', // text on primary nodes — cyan-700
+    secondaryColor:        '#f4f4f5', // secondary — slightly deeper neutral
+    tertiaryColor:         '#fafafa', // tertiary — back to nearly white
+    lineColor:             '#0E7490', // arrows — cyan-700 (brand light accent)
+    clusterBkg:            '#fafafa', // subgraph fill — very light neutral
+    clusterBorder:         '#e5e7eb', // subgraph border — gray-200
+    titleColor:            '#0E7490', // titles — cyan-700
+    edgeLabelBackground:   '#ffffff', // edge labels white
+    nodeTextColor:         '#111827', // node text — gray-900 (max contrast)
   }
 });
 
-// Enhanced Toggle Component
+// Toggle Section — editorial: border-top/bottom hairlines, no fill, cyan chevron.
 const ToggleSection = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
-  
+
   return (
-    <div className="my-6 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800/50">
+    <div className="my-[1.5em] border-y border-current/15">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 hover:from-blue-100 hover:to-indigo-100 dark:hover:from-blue-900/50 dark:hover:to-indigo-900/50 transition-all duration-200 flex items-center justify-between text-left font-semibold text-gray-900 dark:text-gray-100"
+        className="w-full py-[0.7em] flex items-center justify-between text-left font-semibold transition-opacity hover:opacity-70"
       >
-        <span className="flex items-center">
+        <span className="flex items-center gap-2">
           {isOpen ? (
-            <ChevronDown size={18} className="mr-2 text-blue-600 dark:text-blue-400" />
+            <ChevronDown size={16} className="text-cyan-700 dark:text-brand-accent flex-shrink-0" />
           ) : (
-            <ChevronRight size={18} className="mr-2 text-blue-600 dark:text-blue-400" />
+            <ChevronRight size={16} className="text-cyan-700 dark:text-brand-accent flex-shrink-0" />
           )}
           {title}
         </span>
-        <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400"></div>
       </button>
       {isOpen && (
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <div className="pb-[1em] pt-[0.4em] border-t border-current/10">
           {children}
         </div>
       )}
@@ -778,22 +776,22 @@ const CodeBlock = ({ language, value, ...props }) => {
     );
   }
   
-  // Select theme based on dark mode
+  // Editorial code block — hairline header (mono uppercase language label),
+  // no rounded chrome, no header bg fill. Syntax highlighting theme keeps
+  // its own colors (those are designed for code readability, not brand).
   const codeTheme = isDarkMode ? oneDark : oneLight;
-  const headerBg = isDarkMode ? 'bg-gray-800' : 'bg-gray-200';
-  const headerText = isDarkMode ? 'text-gray-300' : 'text-gray-700';
-  const borderColor = isDarkMode ? 'border-gray-600' : 'border-gray-300';
-  
+
   return (
-    <div className="relative my-6 group">
-      <div className={`flex items-center justify-between ${headerBg} ${headerText} px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-t-lg border-b ${borderColor}`}>
-        <span className="font-medium">{language || 'code'}</span>
+    <div className="relative my-[1.5em] group">
+      <div className="flex items-center justify-between px-[0.6em] py-[0.4em] border-b border-current/15 font-mono text-[0.7em] tracking-[0.12em] uppercase">
+        <span className="opacity-60">{language || 'code'}</span>
         <button
           onClick={copyToClipboard}
-          className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100 text-xs sm:text-sm"
+          className="flex items-center gap-1 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+          aria-label={copied ? 'Copied' : 'Copy code'}
         >
-          {copied ? <Check size={14} /> : <Copy size={14} />}
-          <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy'}</span>
+          {copied ? <Check size={11} /> : <Copy size={11} />}
+          <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy'}</span>
         </button>
       </div>
       <SyntaxHighlighter
@@ -801,13 +799,10 @@ const CodeBlock = ({ language, value, ...props }) => {
         language={language || 'text'}
         customStyle={{
           margin: 0,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-          borderBottomLeftRadius: '0.5rem',
-          borderBottomRightRadius: '0.5rem',
-          fontSize: '0.875rem',
-          lineHeight: '1.5',
-          padding: '1rem',
+          borderRadius: 0,
+          fontSize: '0.85em',
+          lineHeight: '1.55',
+          padding: '1em',
           overflowX: 'auto',
         }}
         {...props}
@@ -995,11 +990,11 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		// It's inline if: no language class AND no newlines AND content is short
 		const isInline = !hasLanguageClass && !hasNewlines;
 		
-		// Handle inline code
+		// Inline code — subtle cyan tint, no border, font-mono inherits from RM theme
 		if (isInline) {
 			return (
-				<code 
-					className="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded text-sm font-mono border border-gray-300 dark:border-gray-600"
+				<code
+					className="px-[0.35em] py-[0.05em] bg-cyan-700/10 dark:bg-brand-accent/10 text-cyan-800 dark:text-brand-accent text-[0.88em] font-mono"
 					{...props}
 				>
 					{children}
@@ -1021,27 +1016,27 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		return <>{children}</>;
 	},
     
-		// Enhanced lists
+		// Lists — color inherits from parent (RM-aware)
 		ul: ({ children, ...props }) => (
-			<ul className="mb-4 ml-6 space-y-2 list-disc text-gray-700 dark:text-gray-300" {...props}>
+			<ul className="mb-[1em] ml-[1.5em] space-y-[0.4em] list-disc" {...props}>
 				{children}
 			</ul>
 		),
 		ol: ({ children, ...props }) => (
-			<ol className="mb-4 ml-6 space-y-2 list-decimal text-gray-700 dark:text-gray-300" {...props}>
+			<ol className="mb-[1em] ml-[1.5em] space-y-[0.4em] list-decimal" {...props}>
 				{children}
 			</ol>
 		),
 		li: ({ children, ...props }) => (
-			<li className="leading-relaxed" {...props}>
+			<li className="leading-relaxed pl-[0.25em]" {...props}>
 				{children}
 			</li>
 		),
-    
-		// Enhanced blockquotes
+
+		// Blockquote — editorial: thin cyan left rule, italic, inherits color
 		blockquote: ({ children, ...props }) => (
-			<blockquote 
-				className="my-8 pl-6 border-l-4 border-blue-500 dark:border-blue-400 py-2 italic text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed"
+			<blockquote
+				className="my-[1.5em] pl-[1em] border-l-2 border-cyan-700/40 dark:border-brand-accent/40 italic"
 				{...props}
 			>
 				{children}
