@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1777762288,
+  "generatedAt": 1777767175,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -1080,6 +1080,19 @@
       "byteSize": 16634016,
       "narrationWordCount": 6977,
       "audioUrl": "/blog/audio-es/field-notes/reinforcement-learning-in-practice.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/rl-algorithm-taxonomy-tour": {
+      "slug": "rl-algorithm-taxonomy-tour",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "c432093d356eb48627ac96a23a5151e8d01820c4e51e193c68a098c486991519",
+      "sourceHash": "df9c3f2711d602e24d790974bc1805bb89a4f2d3650ee53f590d2ca1c2741e9c",
+      "durationSec": 2212.92,
+      "byteSize": 13277520,
+      "narrationWordCount": 5421,
+      "audioUrl": "/blog/audio-es/field-notes/rl-algorithm-taxonomy-tour.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/rlhf-dpo-alignment": {
