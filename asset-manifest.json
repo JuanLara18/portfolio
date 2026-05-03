@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.631902ac.css",
-    "main.js": "/portfolio/static/js/main.78fe91ac.js",
+    "main.js": "/portfolio/static/js/main.20878d91.js",
     "static/js/2937.31707c99.chunk.js": "/portfolio/static/js/2937.31707c99.chunk.js",
     "static/js/9543.c00be67a.chunk.js": "/portfolio/static/js/9543.c00be67a.chunk.js",
     "static/js/6888.dab6fffc.chunk.js": "/portfolio/static/js/6888.dab6fffc.chunk.js",
@@ -52,7 +52,7 @@
     "static/js/5.40c3d355.chunk.js": "/portfolio/static/js/5.40c3d355.chunk.js",
     "static/js/151.4c3c562d.chunk.js": "/portfolio/static/js/151.4c3c562d.chunk.js",
     "static/js/7514.f4bfcddd.chunk.js": "/portfolio/static/js/7514.f4bfcddd.chunk.js",
-    "static/js/6065.d20819d1.chunk.js": "/portfolio/static/js/6065.d20819d1.chunk.js",
+    "static/js/6065.4332e45a.chunk.js": "/portfolio/static/js/6065.4332e45a.chunk.js",
     "static/js/2227.a7c44a05.chunk.js": "/portfolio/static/js/2227.a7c44a05.chunk.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/portfolio/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/portfolio/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
@@ -116,7 +116,7 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/portfolio/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/portfolio/index.html",
     "main.631902ac.css.map": "/portfolio/static/css/main.631902ac.css.map",
-    "main.78fe91ac.js.map": "/portfolio/static/js/main.78fe91ac.js.map",
+    "main.20878d91.js.map": "/portfolio/static/js/main.20878d91.js.map",
     "2937.31707c99.chunk.js.map": "/portfolio/static/js/2937.31707c99.chunk.js.map",
     "9543.c00be67a.chunk.js.map": "/portfolio/static/js/9543.c00be67a.chunk.js.map",
     "6888.dab6fffc.chunk.js.map": "/portfolio/static/js/6888.dab6fffc.chunk.js.map",
@@ -160,11 +160,11 @@
     "5.40c3d355.chunk.js.map": "/portfolio/static/js/5.40c3d355.chunk.js.map",
     "151.4c3c562d.chunk.js.map": "/portfolio/static/js/151.4c3c562d.chunk.js.map",
     "7514.f4bfcddd.chunk.js.map": "/portfolio/static/js/7514.f4bfcddd.chunk.js.map",
-    "6065.d20819d1.chunk.js.map": "/portfolio/static/js/6065.d20819d1.chunk.js.map",
+    "6065.4332e45a.chunk.js.map": "/portfolio/static/js/6065.4332e45a.chunk.js.map",
     "2227.a7c44a05.chunk.js.map": "/portfolio/static/js/2227.a7c44a05.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.631902ac.css",
-    "static/js/main.78fe91ac.js"
+    "static/js/main.20878d91.js"
   ]
 }
