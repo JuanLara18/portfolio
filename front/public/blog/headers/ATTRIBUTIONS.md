@@ -42,3 +42,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `mission-control-apollo-header.jpg` — Photo by NASA on The Commons, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Apollo_16,_Mission_Control_-_Flickr_-_NASA_on_The_Commons.jpg) (Public Domain / NASA)
 - `star-clusters-carina-header.jpg` — Image by ESO, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Star_formation_regions_in_the_constellation_of_Carina_(The_Keel)_(eso1425b).jpg) (CC BY 4.0)
 - `architecture-drafting-desks-header.jpg` — Photo by Ragesoss, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Desks_of_architecture_students_in_the_Yale_Art_and_Architecture_Building,_September_29,_2008.jpg) (CC BY-SA 3.0)
+- `air-traffic-control-header.jpg` — Photo by Air traffic control binoculars, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Air_traffic_control_binoculars.jpg) (Public Domain)

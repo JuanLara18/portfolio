@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-05-02T23:56:28.973Z",
+  "generated_at": "2026-05-13T02:07:25.794Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,10 +8,10 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 107,
+    "total_posts": 108,
     "augmented_posts": 15,
     "by_category": {
-      "field-notes": 80,
+      "field-notes": 81,
       "curiosities": 15,
       "research": 12
     },
@@ -20,6 +20,46 @@
     "prereq_edges": 21
   },
   "posts": {
+    "agent-architectures-productive-patterns": {
+      "title": "Agent Architectures: What Makes an Agent Productive",
+      "date": "2027-10-07",
+      "category": "field-notes",
+      "tags": [
+        "Agents",
+        "Agentic AI",
+        "LLMs",
+        "Best Practices",
+        "AI Engineering",
+        "Production ML",
+        "MLOps",
+        "Software Engineering",
+        "Cloud Computing"
+      ],
+      "excerpt": "We put LLMs in a loop, gave them tools, and called them agents. But putting an engine in a chassis doesn't make a car. This is the engineering behind agent architectures—from single routers to multi-agent supervisors—and the enterprise tools and cloud services that turn brittle demos into productive enterprise systems.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-architectures-productive-patterns",
+      "source_path": "front/public/blog/posts/field-notes/agent-architectures-productive-patterns.md",
+      "reading_minutes": 30,
+      "word_count": 5200,
+      "concepts": [
+        "agents",
+        "agentic ai",
+        "llms",
+        "best practices",
+        "ai engineering",
+        "production ml",
+        "mlops",
+        "software engineering",
+        "cloud computing"
+      ],
+      "prereqs": [],
+      "teaches": [],
+      "tech": [],
+      "depth": "deep",
+      "audio_available": [
+        "en"
+      ],
+      "augmented": false
+    },
     "rl-algorithm-taxonomy-tour": {
       "title": "The RL Algorithm Tree: A Practitioner's Tour from Policy Gradients to AlphaZero",
       "date": "2027-09-30",
@@ -58,7 +98,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -4640,6 +4681,728 @@
     }
   },
   "concept_index": {
+    "agents": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-guardrails-field-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-knowledge-bases",
+        "depth": "deep"
+      },
+      {
+        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-next-2026-agent-native-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "knowledge-catalog-vs-ontologies",
+        "depth": "deep"
+      },
+      {
+        "slug": "langgraph-multi-agent-workflows",
+        "depth": "deep"
+      },
+      {
+        "slug": "llamaindex-langchain-llm-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "mcp-server-nl-to-powerbi-dashboard",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
+        "depth": "deep"
+      }
+    ],
+    "agentic ai": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-guardrails-field-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-next-2026-agent-native-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "knowledge-catalog-vs-ontologies",
+        "depth": "deep"
+      },
+      {
+        "slug": "langgraph-multi-agent-workflows",
+        "depth": "deep"
+      }
+    ],
+    "llms": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-guardrails-field-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "ai-poc-enterprise-evaluation",
+        "depth": "deep"
+      },
+      {
+        "slug": "emotion-concepts-in-llms",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-ai-platform-selection",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-knowledge-bases",
+        "depth": "deep"
+      },
+      {
+        "slug": "fine-tuning-embeddings",
+        "depth": "deep"
+      },
+      {
+        "slug": "fine-tuning-gemma4-lora-qlora",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-next-2026-agent-native-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "langgraph-multi-agent-workflows",
+        "depth": "deep"
+      },
+      {
+        "slug": "llamaindex-langchain-llm-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-as-a-judge",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-caching-four-layers",
+        "depth": "deep"
+      },
+      {
+        "slug": "mcp-server-nl-to-powerbi-dashboard",
+        "depth": "deep"
+      },
+      {
+        "slug": "microgpt-reading-karpathy",
+        "depth": "deep"
+      },
+      {
+        "slug": "mteb-embedding-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "multimodal-embeddings-metric-problem",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "populating-knowledge-graph-llms-banking",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "rlhf-dpo-alignment",
+        "depth": "deep"
+      },
+      {
+        "slug": "scaling-laws-neural-language-models",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
+        "depth": "deep"
+      },
+      {
+        "slug": "working-with-ml-models",
+        "depth": "deep"
+      }
+    ],
+    "best practices": [
+      {
+        "slug": "100-posts-knowledge-graph-retrospective",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-guardrails-field-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "application-data-flow-replicas-backups",
+        "depth": "deep"
+      },
+      {
+        "slug": "dama-dmbok-data-governance",
+        "depth": "deep"
+      },
+      {
+        "slug": "dataiku-enterprise-data-ai-ecosystem",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-ai-platform-selection",
+        "depth": "deep"
+      },
+      {
+        "slug": "experiment-tracking-mlops",
+        "depth": "deep"
+      },
+      {
+        "slug": "git-and-github-complete-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "knowledge-catalog-vs-ontologies",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-metrics-evaluation-monitoring",
+        "depth": "deep"
+      },
+      {
+        "slug": "modular-ontologies-core-domains-pattern",
+        "depth": "deep"
+      },
+      {
+        "slug": "python-beyond-the-basics",
+        "depth": "deep"
+      },
+      {
+        "slug": "software-engineering-classics",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "structuring-ml-projects",
+        "depth": "deep"
+      },
+      {
+        "slug": "terraform-infrastructure-as-code",
+        "depth": "deep"
+      }
+    ],
+    "ai engineering": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "elevenlabs-voice-ai-engineering",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "langgraph-multi-agent-workflows",
+        "depth": "deep"
+      },
+      {
+        "slug": "llamaindex-langchain-llm-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-as-a-judge",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "local-llm-inference-tools",
+        "depth": "deep"
+      },
+      {
+        "slug": "mcp-server-nl-to-powerbi-dashboard",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "depth": "deep"
+      },
+      {
+        "slug": "rl-algorithm-taxonomy-tour",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
+        "depth": "deep"
+      },
+      {
+        "slug": "vertex-ai-gcp-ml-platform-cli",
+        "depth": "deep"
+      }
+    ],
+    "production ml": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-guardrails-field-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "dataiku-enterprise-data-ai-ecosystem",
+        "depth": "deep"
+      },
+      {
+        "slug": "docker-for-ml-engineers",
+        "depth": "deep"
+      },
+      {
+        "slug": "document-processing-ocr-layout",
+        "depth": "deep"
+      },
+      {
+        "slug": "elevenlabs-voice-ai-engineering",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-ai-platform-selection",
+        "depth": "deep"
+      },
+      {
+        "slug": "experiment-tracking-mlops",
+        "depth": "deep"
+      },
+      {
+        "slug": "fine-tuning-gemma4-lora-qlora",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-next-2026-agent-native-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "kubernetes-minimum-subset-ml",
+        "depth": "deep"
+      },
+      {
+        "slug": "langgraph-multi-agent-workflows",
+        "depth": "deep"
+      },
+      {
+        "slug": "llamaindex-langchain-llm-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-as-a-judge",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-caching-four-layers",
+        "depth": "deep"
+      },
+      {
+        "slug": "local-llm-inference-tools",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-metrics-evaluation-monitoring",
+        "depth": "deep"
+      },
+      {
+        "slug": "populating-knowledge-graph-llms-banking",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-in-practice",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "structuring-ml-projects",
+        "depth": "deep"
+      },
+      {
+        "slug": "vector-db-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "vertex-ai-gcp-ml-platform-cli",
+        "depth": "deep"
+      }
+    ],
+    "mlops": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-guardrails-field-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "cloud-ml-infrastructure",
+        "depth": "deep"
+      },
+      {
+        "slug": "computational-resources-ml",
+        "depth": "deep"
+      },
+      {
+        "slug": "dataiku-enterprise-data-ai-ecosystem",
+        "depth": "deep"
+      },
+      {
+        "slug": "docker-for-ml-engineers",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-ai-platform-selection",
+        "depth": "deep"
+      },
+      {
+        "slug": "experiment-tracking-mlops",
+        "depth": "deep"
+      },
+      {
+        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-next-2026-agent-native-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "kubernetes-minimum-subset-ml",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-1-foundations",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-metrics-evaluation-monitoring",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-production-pipeline-gcp",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "structuring-ml-projects",
+        "depth": "deep"
+      },
+      {
+        "slug": "vertex-ai-gcp-ml-platform-cli",
+        "depth": "deep"
+      }
+    ],
+    "software engineering": [
+      {
+        "slug": "100-posts-knowledge-graph-retrospective",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-engineering-disciplines",
+        "depth": "deep"
+      },
+      {
+        "slug": "agent-guardrails-field-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "application-data-flow-replicas-backups",
+        "depth": "deep"
+      },
+      {
+        "slug": "bash-daily-driver-ml-engineer",
+        "depth": "deep"
+      },
+      {
+        "slug": "content-addressable-hash-as-engineering-tool",
+        "depth": "deep"
+      },
+      {
+        "slug": "dbt-analytics-engineering",
+        "depth": "deep"
+      },
+      {
+        "slug": "files-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "git-and-github-complete-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-libraries-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "modular-ontologies-core-domains-pattern",
+        "depth": "deep"
+      },
+      {
+        "slug": "network-fundamentals-every-concept",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-production-pipeline-gcp",
+        "depth": "deep"
+      },
+      {
+        "slug": "python-beyond-the-basics",
+        "depth": "deep"
+      },
+      {
+        "slug": "software-engineering-classics",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "structuring-ml-projects",
+        "depth": "deep"
+      }
+    ],
+    "cloud computing": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "ai-poc-enterprise-evaluation",
+        "depth": "deep"
+      },
+      {
+        "slug": "application-data-flow-replicas-backups",
+        "depth": "deep"
+      },
+      {
+        "slug": "cloud-ml-infrastructure",
+        "depth": "deep"
+      },
+      {
+        "slug": "computational-resources-ml",
+        "depth": "deep"
+      },
+      {
+        "slug": "data-engineering-fundamentals",
+        "depth": "deep"
+      },
+      {
+        "slug": "data-silos-breaking-information-barriers",
+        "depth": "deep"
+      },
+      {
+        "slug": "dataiku-enterprise-data-ai-ecosystem",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-ai-platform-selection",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-next-2026-agent-native-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "kubernetes-minimum-subset-ml",
+        "depth": "deep"
+      },
+      {
+        "slug": "lakehouse-architecture",
+        "depth": "deep"
+      },
+      {
+        "slug": "network-fundamentals-every-concept",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-production-pipeline-gcp",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "terraform-infrastructure-as-code",
+        "depth": "deep"
+      },
+      {
+        "slug": "vertex-ai-gcp-ml-platform-cli",
+        "depth": "deep"
+      }
+    ],
     "reinforcement learning": [
       {
         "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
@@ -5136,72 +5899,6 @@
         "depth": "deep"
       }
     ],
-    "ai engineering": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "elevenlabs-voice-ai-engineering",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "langgraph-multi-agent-workflows",
-        "depth": "deep"
-      },
-      {
-        "slug": "llamaindex-langchain-llm-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-as-a-judge",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "local-llm-inference-tools",
-        "depth": "deep"
-      },
-      {
-        "slug": "mcp-server-nl-to-powerbi-dashboard",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
-        "depth": "deep"
-      },
-      {
-        "slug": "rl-algorithm-taxonomy-tour",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
-        "depth": "deep"
-      },
-      {
-        "slug": "vertex-ai-gcp-ml-platform-cli",
-        "depth": "deep"
-      }
-    ],
     "research papers": [
       {
         "slug": "attention-is-all-you-need",
@@ -5338,88 +6035,6 @@
         "depth": "deep"
       }
     ],
-    "mlops": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-guardrails-field-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "cloud-ml-infrastructure",
-        "depth": "deep"
-      },
-      {
-        "slug": "computational-resources-ml",
-        "depth": "deep"
-      },
-      {
-        "slug": "dataiku-enterprise-data-ai-ecosystem",
-        "depth": "deep"
-      },
-      {
-        "slug": "docker-for-ml-engineers",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-ai-platform-selection",
-        "depth": "deep"
-      },
-      {
-        "slug": "experiment-tracking-mlops",
-        "depth": "deep"
-      },
-      {
-        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-next-2026-agent-native-stack",
-        "depth": "deep"
-      },
-      {
-        "slug": "kubernetes-minimum-subset-ml",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-metrics-evaluation-monitoring",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-production-pipeline-gcp",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "structuring-ml-projects",
-        "depth": "deep"
-      },
-      {
-        "slug": "vertex-ai-gcp-ml-platform-cli",
-        "depth": "deep"
-      }
-    ],
     "distributed computing": [
       {
         "slug": "apache-spark-ecosystem-guide",
@@ -5439,88 +6054,6 @@
       },
       {
         "slug": "pytorch-tensorflow-deep-learning-frameworks",
-        "depth": "deep"
-      }
-    ],
-    "best practices": [
-      {
-        "slug": "100-posts-knowledge-graph-retrospective",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-guardrails-field-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "application-data-flow-replicas-backups",
-        "depth": "deep"
-      },
-      {
-        "slug": "dama-dmbok-data-governance",
-        "depth": "deep"
-      },
-      {
-        "slug": "dataiku-enterprise-data-ai-ecosystem",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-ai-platform-selection",
-        "depth": "deep"
-      },
-      {
-        "slug": "experiment-tracking-mlops",
-        "depth": "deep"
-      },
-      {
-        "slug": "git-and-github-complete-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "knowledge-catalog-vs-ontologies",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-1-foundations",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-metrics-evaluation-monitoring",
-        "depth": "deep"
-      },
-      {
-        "slug": "modular-ontologies-core-domains-pattern",
-        "depth": "deep"
-      },
-      {
-        "slug": "python-beyond-the-basics",
-        "depth": "deep"
-      },
-      {
-        "slug": "software-engineering-classics",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "structuring-ml-projects",
-        "depth": "deep"
-      },
-      {
-        "slug": "terraform-infrastructure-as-code",
         "depth": "deep"
       }
     ],
@@ -5667,162 +6200,6 @@
       },
       {
         "slug": "vertex-ai-gcp-ml-platform-cli",
-        "depth": "deep"
-      }
-    ],
-    "cloud computing": [
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "application-data-flow-replicas-backups",
-        "depth": "deep"
-      },
-      {
-        "slug": "cloud-ml-infrastructure",
-        "depth": "deep"
-      },
-      {
-        "slug": "computational-resources-ml",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-engineering-fundamentals",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-silos-breaking-information-barriers",
-        "depth": "deep"
-      },
-      {
-        "slug": "dataiku-enterprise-data-ai-ecosystem",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-ai-platform-selection",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-next-2026-agent-native-stack",
-        "depth": "deep"
-      },
-      {
-        "slug": "kubernetes-minimum-subset-ml",
-        "depth": "deep"
-      },
-      {
-        "slug": "lakehouse-architecture",
-        "depth": "deep"
-      },
-      {
-        "slug": "network-fundamentals-every-concept",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-production-pipeline-gcp",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "terraform-infrastructure-as-code",
-        "depth": "deep"
-      },
-      {
-        "slug": "vertex-ai-gcp-ml-platform-cli",
-        "depth": "deep"
-      }
-    ],
-    "software engineering": [
-      {
-        "slug": "100-posts-knowledge-graph-retrospective",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-guardrails-field-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "application-data-flow-replicas-backups",
-        "depth": "deep"
-      },
-      {
-        "slug": "bash-daily-driver-ml-engineer",
-        "depth": "deep"
-      },
-      {
-        "slug": "content-addressable-hash-as-engineering-tool",
-        "depth": "deep"
-      },
-      {
-        "slug": "dbt-analytics-engineering",
-        "depth": "deep"
-      },
-      {
-        "slug": "files-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "git-and-github-complete-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-libraries-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "modular-ontologies-core-domains-pattern",
-        "depth": "deep"
-      },
-      {
-        "slug": "network-fundamentals-every-concept",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-production-pipeline-gcp",
-        "depth": "deep"
-      },
-      {
-        "slug": "python-beyond-the-basics",
-        "depth": "deep"
-      },
-      {
-        "slug": "software-engineering-classics",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "structuring-ml-projects",
         "depth": "deep"
       }
     ],
@@ -6132,203 +6509,9 @@
         "depth": "deep"
       }
     ],
-    "agents": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-guardrails-field-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-knowledge-bases",
-        "depth": "deep"
-      },
-      {
-        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-next-2026-agent-native-stack",
-        "depth": "deep"
-      },
-      {
-        "slug": "knowledge-catalog-vs-ontologies",
-        "depth": "deep"
-      },
-      {
-        "slug": "langgraph-multi-agent-workflows",
-        "depth": "deep"
-      },
-      {
-        "slug": "llamaindex-langchain-llm-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "mcp-server-nl-to-powerbi-dashboard",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
-        "depth": "deep"
-      }
-    ],
-    "agentic ai": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-guardrails-field-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-next-2026-agent-native-stack",
-        "depth": "deep"
-      },
-      {
-        "slug": "knowledge-catalog-vs-ontologies",
-        "depth": "deep"
-      },
-      {
-        "slug": "langgraph-multi-agent-workflows",
-        "depth": "deep"
-      }
-    ],
     "agent engineering": [
       {
         "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      }
-    ],
-    "llms": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-guardrails-field-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "emotion-concepts-in-llms",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-ai-platform-selection",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-knowledge-bases",
-        "depth": "deep"
-      },
-      {
-        "slug": "fine-tuning-embeddings",
-        "depth": "deep"
-      },
-      {
-        "slug": "fine-tuning-gemma4-lora-qlora",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-next-2026-agent-native-stack",
-        "depth": "deep"
-      },
-      {
-        "slug": "langgraph-multi-agent-workflows",
-        "depth": "deep"
-      },
-      {
-        "slug": "llamaindex-langchain-llm-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-as-a-judge",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-caching-four-layers",
-        "depth": "deep"
-      },
-      {
-        "slug": "mcp-server-nl-to-powerbi-dashboard",
-        "depth": "deep"
-      },
-      {
-        "slug": "microgpt-reading-karpathy",
-        "depth": "deep"
-      },
-      {
-        "slug": "mteb-embedding-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "multimodal-embeddings-metric-problem",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-grounded-rag-chunks-in-nodes",
-        "depth": "deep"
-      },
-      {
-        "slug": "populating-knowledge-graph-llms-banking",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "rlhf-dpo-alignment",
-        "depth": "deep"
-      },
-      {
-        "slug": "scaling-laws-neural-language-models",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
-        "depth": "deep"
-      },
-      {
-        "slug": "working-with-ml-models",
         "depth": "deep"
       }
     ],
@@ -6343,112 +6526,6 @@
       },
       {
         "slug": "reinforcement-learning-first-principles",
-        "depth": "deep"
-      }
-    ],
-    "production ml": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "agent-guardrails-field-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "dataiku-enterprise-data-ai-ecosystem",
-        "depth": "deep"
-      },
-      {
-        "slug": "docker-for-ml-engineers",
-        "depth": "deep"
-      },
-      {
-        "slug": "document-processing-ocr-layout",
-        "depth": "deep"
-      },
-      {
-        "slug": "elevenlabs-voice-ai-engineering",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-ai-platform-selection",
-        "depth": "deep"
-      },
-      {
-        "slug": "experiment-tracking-mlops",
-        "depth": "deep"
-      },
-      {
-        "slug": "fine-tuning-gemma4-lora-qlora",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-next-2026-agent-native-stack",
-        "depth": "deep"
-      },
-      {
-        "slug": "kubernetes-minimum-subset-ml",
-        "depth": "deep"
-      },
-      {
-        "slug": "langgraph-multi-agent-workflows",
-        "depth": "deep"
-      },
-      {
-        "slug": "llamaindex-langchain-llm-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-as-a-judge",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-caching-four-layers",
-        "depth": "deep"
-      },
-      {
-        "slug": "local-llm-inference-tools",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-metrics-evaluation-monitoring",
-        "depth": "deep"
-      },
-      {
-        "slug": "populating-knowledge-graph-llms-banking",
-        "depth": "deep"
-      },
-      {
-        "slug": "reinforcement-learning-in-practice",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "structuring-ml-projects",
-        "depth": "deep"
-      },
-      {
-        "slug": "vector-db-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "vertex-ai-gcp-ml-platform-cli",
         "depth": "deep"
       }
     ],
@@ -9132,6 +9209,240 @@
     ]
   },
   "tag_index": {
+    "Agents": [
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "claude-code-complete-guide",
+      "enterprise-knowledge-bases",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "knowledge-catalog-vs-ontologies",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "mcp-production-enterprise",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "model-context-protocol",
+      "ontology-to-agent-toolbox",
+      "production-llm-agents-patterns",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql"
+    ],
+    "Agentic AI": [
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "claude-code-complete-guide",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "knowledge-catalog-vs-ontologies",
+      "langgraph-multi-agent-workflows",
+      "lookml-semantic-layer-data-modeling",
+      "ontology-to-agent-toolbox",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns"
+    ],
+    "LLMs": [
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "ai-poc-enterprise-evaluation",
+      "claude-code-complete-guide",
+      "emotion-concepts-in-llms",
+      "enterprise-ai-platform-selection",
+      "enterprise-knowledge-bases",
+      "fine-tuning-embeddings",
+      "fine-tuning-gemma4-lora-qlora",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "knowledge-graphs-practice",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "llm-caching-four-layers",
+      "mcp-production-enterprise",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "microgpt-reading-karpathy",
+      "model-context-protocol",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-to-agent-toolbox",
+      "populating-knowledge-graph-llms-banking",
+      "production-llm-agents-patterns",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns",
+      "rag-retrieval-augmented-generation",
+      "ragas-evaluating-rag",
+      "rlhf-dpo-alignment",
+      "scaling-laws-neural-language-models",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql",
+      "working-with-ml-models"
+    ],
+    "Best Practices": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "application-data-flow-replicas-backups",
+      "dama-dmbok-data-governance",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "git-and-github-complete-guide",
+      "google-cloud-certifications-2026-roadmap",
+      "knowledge-catalog-vs-ontologies",
+      "lookml-semantic-layer-data-modeling",
+      "ml-cert-review-part-1-foundations",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "ml-metrics-evaluation-monitoring",
+      "modular-ontologies-core-domains-pattern",
+      "python-beyond-the-basics",
+      "software-engineering-classics",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "terraform-infrastructure-as-code"
+    ],
+    "AI Engineering": [
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "elevenlabs-voice-ai-engineering",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "local-llm-inference-tools",
+      "mcp-production-enterprise",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "ml-cert-review-part-1-foundations",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "model-context-protocol",
+      "production-llm-agents-patterns",
+      "ragas-evaluating-rag",
+      "rl-algorithm-taxonomy-tour",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "Production ML": [
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "docker-for-ml-engineers",
+      "document-processing-ocr-layout",
+      "elevenlabs-voice-ai-engineering",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "fine-tuning-gemma4-lora-qlora",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "kubernetes-minimum-subset-ml",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-as-a-judge",
+      "llm-caching-four-layers",
+      "local-llm-inference-tools",
+      "mcp-production-enterprise",
+      "ml-metrics-evaluation-monitoring",
+      "ontology-to-agent-toolbox",
+      "populating-knowledge-graph-llms-banking",
+      "production-llm-agents-patterns",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns",
+      "rag-building-production-systems",
+      "ragas-evaluating-rag",
+      "reinforcement-learning-in-practice",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "vector-db-benchmarks",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "MLOps": [
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "cloud-ml-infrastructure",
+      "computational-resources-ml",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "docker-for-ml-engineers",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "google-cloud-next-2026-agent-native-stack",
+      "kubernetes-minimum-subset-ml",
+      "ml-cert-review-part-1-foundations",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "ml-metrics-evaluation-monitoring",
+      "ontology-production-pipeline-gcp",
+      "rag-advanced-patterns",
+      "rag-building-production-systems",
+      "ragas-evaluating-rag",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "Software Engineering": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "application-data-flow-replicas-backups",
+      "bash-daily-driver-ml-engineer",
+      "content-addressable-hash-as-engineering-tool",
+      "dbt-analytics-engineering",
+      "files-under-the-hood",
+      "git-and-github-complete-guide",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "mcp-production-enterprise",
+      "ml-libraries-under-the-hood",
+      "model-context-protocol",
+      "modular-ontologies-core-domains-pattern",
+      "network-fundamentals-every-concept",
+      "ontology-production-pipeline-gcp",
+      "ontology-to-agent-toolbox",
+      "production-llm-agents-patterns",
+      "python-beyond-the-basics",
+      "software-engineering-classics",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects"
+    ],
+    "Cloud Computing": [
+      "agent-architectures-productive-patterns",
+      "ai-poc-enterprise-evaluation",
+      "application-data-flow-replicas-backups",
+      "cloud-ml-infrastructure",
+      "computational-resources-ml",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "enterprise-ai-platform-selection",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "google-cloud-next-2026-agent-native-stack",
+      "kubernetes-minimum-subset-ml",
+      "lakehouse-architecture",
+      "network-fundamentals-every-concept",
+      "ontology-production-pipeline-gcp",
+      "stack-recommendations-after-100-posts",
+      "terraform-infrastructure-as-code",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
     "Reinforcement Learning": [
       "ml-cert-review-part-2-deep-learning-and-beyond",
       "reinforcement-learning-first-principles",
@@ -9278,28 +9589,6 @@
       "rl-algorithm-taxonomy-tour",
       "working-with-ml-models"
     ],
-    "AI Engineering": [
-      "agent-engineering-disciplines",
-      "elevenlabs-voice-ai-engineering",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "local-llm-inference-tools",
-      "mcp-production-enterprise",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "ml-cert-review-part-1-foundations",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "model-context-protocol",
-      "production-llm-agents-patterns",
-      "ragas-evaluating-rag",
-      "rl-algorithm-taxonomy-tour",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql",
-      "vertex-ai-gcp-ml-platform-cli"
-    ],
     "Research Papers": [
       "attention-is-all-you-need",
       "bert-pre-training-bidirectional-transformers",
@@ -9347,60 +9636,12 @@
       "text-to-sql",
       "working-with-ml-models"
     ],
-    "MLOps": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "cloud-ml-infrastructure",
-      "computational-resources-ml",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "docker-for-ml-engineers",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "google-cloud-next-2026-agent-native-stack",
-      "kubernetes-minimum-subset-ml",
-      "ml-cert-review-part-1-foundations",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "ml-metrics-evaluation-monitoring",
-      "ontology-production-pipeline-gcp",
-      "rag-advanced-patterns",
-      "rag-building-production-systems",
-      "ragas-evaluating-rag",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "vertex-ai-gcp-ml-platform-cli"
-    ],
     "Distributed Computing": [
       "apache-spark-ecosystem-guide",
       "cloud-ml-infrastructure",
       "computational-resources-ml",
       "ml-cert-review-part-2-deep-learning-and-beyond",
       "pytorch-tensorflow-deep-learning-frameworks"
-    ],
-    "Best Practices": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "application-data-flow-replicas-backups",
-      "dama-dmbok-data-governance",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "git-and-github-complete-guide",
-      "google-cloud-certifications-2026-roadmap",
-      "knowledge-catalog-vs-ontologies",
-      "lookml-semantic-layer-data-modeling",
-      "ml-cert-review-part-1-foundations",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "ml-metrics-evaluation-monitoring",
-      "modular-ontologies-core-domains-pattern",
-      "python-beyond-the-basics",
-      "software-engineering-classics",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "terraform-infrastructure-as-code"
     ],
     "Statistics": [
       "100-posts-knowledge-graph-retrospective",
@@ -9450,52 +9691,6 @@
       "ontology-production-pipeline-gcp",
       "terraform-infrastructure-as-code",
       "vertex-ai-gcp-ml-platform-cli"
-    ],
-    "Cloud Computing": [
-      "ai-poc-enterprise-evaluation",
-      "application-data-flow-replicas-backups",
-      "cloud-ml-infrastructure",
-      "computational-resources-ml",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "enterprise-ai-platform-selection",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "google-cloud-next-2026-agent-native-stack",
-      "kubernetes-minimum-subset-ml",
-      "lakehouse-architecture",
-      "network-fundamentals-every-concept",
-      "ontology-production-pipeline-gcp",
-      "stack-recommendations-after-100-posts",
-      "terraform-infrastructure-as-code",
-      "vertex-ai-gcp-ml-platform-cli"
-    ],
-    "Software Engineering": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "application-data-flow-replicas-backups",
-      "bash-daily-driver-ml-engineer",
-      "content-addressable-hash-as-engineering-tool",
-      "dbt-analytics-engineering",
-      "files-under-the-hood",
-      "git-and-github-complete-guide",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "mcp-production-enterprise",
-      "ml-libraries-under-the-hood",
-      "model-context-protocol",
-      "modular-ontologies-core-domains-pattern",
-      "network-fundamentals-every-concept",
-      "ontology-production-pipeline-gcp",
-      "ontology-to-agent-toolbox",
-      "production-llm-agents-patterns",
-      "python-beyond-the-basics",
-      "software-engineering-classics",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects"
     ],
     "Data Engineering": [
       "100-posts-knowledge-graph-retrospective",
@@ -9590,123 +9785,14 @@
       "terraform-infrastructure-as-code",
       "vector-db-benchmarks"
     ],
-    "Agents": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "claude-code-complete-guide",
-      "enterprise-knowledge-bases",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "knowledge-catalog-vs-ontologies",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "mcp-production-enterprise",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "model-context-protocol",
-      "ontology-to-agent-toolbox",
-      "production-llm-agents-patterns",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql"
-    ],
-    "Agentic AI": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "claude-code-complete-guide",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "knowledge-catalog-vs-ontologies",
-      "langgraph-multi-agent-workflows",
-      "lookml-semantic-layer-data-modeling",
-      "ontology-to-agent-toolbox",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns"
-    ],
     "Agent Engineering": [
       "google-adk-agent-development-deep-dive"
-    ],
-    "LLMs": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "ai-poc-enterprise-evaluation",
-      "claude-code-complete-guide",
-      "emotion-concepts-in-llms",
-      "enterprise-ai-platform-selection",
-      "enterprise-knowledge-bases",
-      "fine-tuning-embeddings",
-      "fine-tuning-gemma4-lora-qlora",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "knowledge-graphs-practice",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "llm-caching-four-layers",
-      "mcp-production-enterprise",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "microgpt-reading-karpathy",
-      "model-context-protocol",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-to-agent-toolbox",
-      "populating-knowledge-graph-llms-banking",
-      "production-llm-agents-patterns",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns",
-      "rag-retrieval-augmented-generation",
-      "ragas-evaluating-rag",
-      "rlhf-dpo-alignment",
-      "scaling-laws-neural-language-models",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql",
-      "working-with-ml-models"
     ],
     "Multi-Agent": [
       "google-adk-agent-development-deep-dive",
       "langgraph-multi-agent-workflows",
       "production-llm-agents-patterns",
       "reinforcement-learning-first-principles"
-    ],
-    "Production ML": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "docker-for-ml-engineers",
-      "document-processing-ocr-layout",
-      "elevenlabs-voice-ai-engineering",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "fine-tuning-gemma4-lora-qlora",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "kubernetes-minimum-subset-ml",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-as-a-judge",
-      "llm-caching-four-layers",
-      "local-llm-inference-tools",
-      "mcp-production-enterprise",
-      "ml-metrics-evaluation-monitoring",
-      "ontology-to-agent-toolbox",
-      "populating-knowledge-graph-llms-banking",
-      "production-llm-agents-patterns",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns",
-      "rag-building-production-systems",
-      "ragas-evaluating-rag",
-      "reinforcement-learning-in-practice",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "vector-db-benchmarks",
-      "vertex-ai-gcp-ml-platform-cli"
     ],
     "Tool Use": [
       "google-adk-agent-development-deep-dive",
@@ -10636,6 +10722,7 @@
   },
   "category_index": {
     "field-notes": [
+      "agent-architectures-productive-patterns",
       "agent-engineering-disciplines",
       "agent-guardrails-field-guide",
       "ai-poc-enterprise-evaluation",

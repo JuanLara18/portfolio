@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1777766173,
+  "generatedAt": 1778634409,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -196,6 +196,19 @@
       "byteSize": 6754896,
       "narrationWordCount": 2345,
       "audioUrl": "/blog/audio/curiosities/tetris-np-complete.mp3",
+      "translationModel": ""
+    },
+    "field-notes/agent-architectures-productive-patterns": {
+      "slug": "agent-architectures-productive-patterns",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "f9ff72b45fc4f3deb7bad4a9ca34dc448df66d7a18bbaccc525e4d99b791581f",
+      "sourceHash": "f9ff72b45fc4f3deb7bad4a9ca34dc448df66d7a18bbaccc525e4d99b791581f",
+      "durationSec": 1800.576,
+      "byteSize": 10803456,
+      "narrationWordCount": 4089,
+      "audioUrl": "/blog/audio/field-notes/agent-architectures-productive-patterns.mp3",
       "translationModel": ""
     },
     "field-notes/agent-engineering-disciplines": {
