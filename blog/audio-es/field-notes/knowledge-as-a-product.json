@@ -1,0 +1,13 @@
+{
+  "slug": "knowledge-as-a-product",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "dfaa43b1b883df26788c8cb265f5bb324c789f99ddd1cd016cee144774196798",
+  "sourceHash": "38bc1be451ea918f7d1927170222dce675770bcb2dd34eecf1ea5b1875e47392",
+  "durationSec": 2218.104,
+  "byteSize": 13308624,
+  "narrationWordCount": 6245,
+  "audioUrl": "/blog/audio-es/field-notes/knowledge-as-a-product.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "agent-architectures-productive-patterns",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e32187554be7803688decdf02b31f2be390ef39a296b3bcb588e818768ebe96f",
+  "sourceHash": "f9ff72b45fc4f3deb7bad4a9ca34dc448df66d7a18bbaccc525e4d99b791581f",
+  "durationSec": 1749.648,
+  "byteSize": 10497888,
+  "narrationWordCount": 4606,
+  "audioUrl": "/blog/audio-es/field-notes/agent-architectures-productive-patterns.mp3",
+  "translationModel": "gemma4:latest"
+}
