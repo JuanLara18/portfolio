@@ -9,8 +9,72 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Oct 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 28 Oct 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Curating and Governing an Enterprise Agent: A Lifecycle Operating Model</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle</guid>
+    <pubDate>Thu, 28 Oct 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most teams treat an agent like a product launch: build it, ship it, move on. A production agent is more like a warship. It gets designed, sea-trialed, and certified, and then it returns to the dry dock again and again for inspection and refit across its whole service life. This is the end-to-end operating model for curating and governing an enterprise agent, phase by phase, with owners, gates, artifacts, and the GCP services that help at each step.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>AI Governance</category>
+    <category>Enterprise AI</category>
+    <category>GCP</category>
+    <category>Vertex AI</category>
+    <category>MLOps</category>
+    <category>Best Practices</category>
+    <category>Production ML</category>
+    <category>Knowledge Management</category>
+    <category>AI Engineering</category>
+    <category>Evaluation</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-agent-governance-lifecycle.mp3" length="14715072" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Knowledge as a Product: What a Knowledge Base Really Is, and How Large Organizations Should Build One</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product</guid>
+    <pubDate>Thu, 21 Oct 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most enterprises treat their knowledge base as a pile of documents bolted onto a vector store, then wonder why nobody trusts it. The fix is older than RAG and borrowed from data mesh: treat knowledge as a product, with an owner, a contract, an SLA, and a shelf you can actually find it on. This is the long version of that argument, applied to a large regulated bank.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Bases</category>
+    <category>Knowledge Management</category>
+    <category>Data Architecture</category>
+    <category>Data Mesh</category>
+    <category>Enterprise AI</category>
+    <category>Data Governance</category>
+    <category>Cloud Computing</category>
+    <category>GCP</category>
+    <category>RAG</category>
+    <category>Knowledge Graphs</category>
+    <category>Best Practices</category>
+    <category>AI Strategy</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-as-a-product.mp3" length="13333824" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Where Your Code Should Live: Cloud Workstations, Workbench, Coder, and the AI Team&apos;s Dev Environment</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams</guid>
+    <pubDate>Thu, 14 Oct 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The blog has eighty-something posts on what to build and almost nothing on where to build it. This is the missing one. For an AI engineering team in a regulated enterprise, the dev environment is not a personal preference, it is part of the architecture, and choosing it badly costs you GPUs, data residency, and your audit trail.]]></description>
+    <category>field-notes</category>
+    <category>Developer Tools</category>
+    <category>Cloud Computing</category>
+    <category>GCP</category>
+    <category>Docker</category>
+    <category>DevOps</category>
+    <category>AI Engineering</category>
+    <category>Best Practices</category>
+    <category>Infrastructure</category>
+    <category>MLOps</category>
+    <category>Software Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dev-environments-for-ai-teams.mp3" length="12370176" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Agent Architectures: What Makes an Agent Productive</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architectures-productive-patterns</link>
