@@ -43,3 +43,6 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `star-clusters-carina-header.jpg` — Image by ESO, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Star_formation_regions_in_the_constellation_of_Carina_(The_Keel)_(eso1425b).jpg) (CC BY 4.0)
 - `architecture-drafting-desks-header.jpg` — Photo by Ragesoss, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Desks_of_architecture_students_in_the_Yale_Art_and_Architecture_Building,_September_29,_2008.jpg) (CC BY-SA 3.0)
 - `air-traffic-control-header.jpg` — Photo by Air traffic control binoculars, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Air_traffic_control_binoculars.jpg) (Public Domain)
+- `restaurant-kitchen-line-header.jpg` — Photo by Raysonho @ Open Grid Scheduler / Grid Engine, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RestaurantKitchen.jpg) (CC0)
+- `apothecary-shelves-header.jpg` — Photo by Ellin Beltz, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ring%27s_Pharmacy_Woodwork.jpg) (Public Domain)
+- `ship-dry-dock-header.jpg` — Photo by Peretz Partensky, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:USS_Ramage_(DDG-61)_in_a_floating_dry_dock_at_the_Norfolk_Naval_Shipyard_on_25_May_2012_(7315920660).jpg) (CC BY 2.0)
