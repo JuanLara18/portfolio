@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1778634409,
+  "generatedAt": 1780193363,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -419,6 +419,19 @@
       "audioUrl": "/blog/audio/field-notes/dbt-analytics-engineering.mp3",
       "translationModel": ""
     },
+    "field-notes/dev-environments-for-ai-teams": {
+      "slug": "dev-environments-for-ai-teams",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "845fc777962104fb46604971c80a8c4b663a7324490d6e12294906b8ac2150db",
+      "sourceHash": "845fc777962104fb46604971c80a8c4b663a7324490d6e12294906b8ac2150db",
+      "durationSec": 2061.696,
+      "byteSize": 12370176,
+      "narrationWordCount": 5243,
+      "audioUrl": "/blog/audio/field-notes/dev-environments-for-ai-teams.mp3",
+      "translationModel": ""
+    },
     "field-notes/dimensional-modeling-kimball": {
       "slug": "dimensional-modeling-kimball",
       "category": "field-notes",
@@ -469,6 +482,19 @@
       "byteSize": 10260288,
       "narrationWordCount": 3983,
       "audioUrl": "/blog/audio/field-notes/elevenlabs-voice-ai-engineering.mp3",
+      "translationModel": ""
+    },
+    "field-notes/enterprise-agent-governance-lifecycle": {
+      "slug": "enterprise-agent-governance-lifecycle",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "f7f3c1690cb6439168f5da9be4caeb2a392bd1856a84f641bb0f28cdc2db476a",
+      "sourceHash": "f7f3c1690cb6439168f5da9be4caeb2a392bd1856a84f641bb0f28cdc2db476a",
+      "durationSec": 2452.512,
+      "byteSize": 14715072,
+      "narrationWordCount": 6149,
+      "audioUrl": "/blog/audio/field-notes/enterprise-agent-governance-lifecycle.mp3",
       "translationModel": ""
     },
     "field-notes/enterprise-ai-platform-selection": {
@@ -638,6 +664,19 @@
       "byteSize": 11632896,
       "narrationWordCount": 4183,
       "audioUrl": "/blog/audio/field-notes/graph-neural-networks-learning-structured-data.mp3",
+      "translationModel": ""
+    },
+    "field-notes/knowledge-as-a-product": {
+      "slug": "knowledge-as-a-product",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "38bc1be451ea918f7d1927170222dce675770bcb2dd34eecf1ea5b1875e47392",
+      "sourceHash": "38bc1be451ea918f7d1927170222dce675770bcb2dd34eecf1ea5b1875e47392",
+      "durationSec": 2222.304,
+      "byteSize": 13333824,
+      "narrationWordCount": 5667,
+      "audioUrl": "/blog/audio/field-notes/knowledge-as-a-product.mp3",
       "translationModel": ""
     },
     "field-notes/knowledge-base-curation": {
