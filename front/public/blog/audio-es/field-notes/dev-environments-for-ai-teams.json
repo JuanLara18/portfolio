@@ -1,0 +1,13 @@
+{
+  "slug": "dev-environments-for-ai-teams",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "8b0b284b020aa3dd76d4812d330bc36788c432916de12878742d516f1ea81dc8",
+  "sourceHash": "845fc777962104fb46604971c80a8c4b663a7324490d6e12294906b8ac2150db",
+  "durationSec": 2087.352,
+  "byteSize": 12524112,
+  "narrationWordCount": 5947,
+  "audioUrl": "/blog/audio-es/field-notes/dev-environments-for-ai-teams.mp3",
+  "translationModel": "gemma4:latest"
+}
