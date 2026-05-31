@@ -62,8 +62,29 @@ function Brain(props) {
 
 // Project data based on the GitHub repositories
 const projects = [
+  // ── AI & ML ──────────────────────────────────────────────
   {
     id: 1,
+    name: "classifai",
+    description: "Classify any text dataset from a single config file. Supports OpenAI, Anthropic, and local Ollama models with guaranteed structured outputs, unsupervised clustering (UMAP + HDBSCAN), and rich HTML reports.",
+    image: "classification.png",
+    tags: ["nlp", "llm", "text-classification", "clustering", "openai", "ollama"],
+    github: "https://github.com/JuanLara18/classifai",
+    category: "ml",
+    featured: true
+  },
+  {
+    id: 2,
+    name: "voxscribe",
+    description: "Local-first transcription and speaker diarization for any audio or video. Wraps faster-whisper, pyannote, WhisperX, and Ollama into a single CLI and Python library — no cloud, no data leaving your machine.",
+    image: "meeting-scribe.png",
+    tags: ["whisper", "speaker-diarization", "faster-whisper", "pyannote", "speech-to-text"],
+    github: "https://github.com/JuanLara18/voxscribe",
+    category: "ml",
+    featured: true
+  },
+  {
+    id: 3,
     name: "TextInsight",
     description: "Advanced text analysis library combining BERT for sentiment analysis, GPT-3.5 for text correction and topic generation, and embeddings for graph visualization. Deployed at Ipsos to analyze survey data, reducing analysis time by 60% while delivering deeper insights.",
     image: "textinsight.png",
@@ -73,46 +94,65 @@ const projects = [
     category: "ml",
   },
   {
-    id: 2,
-    name: "Meeting-Scribe",
-    description: "AI-powered meeting transcription tool with speaker diarization using Whisper and pyannote-audio. Automatically transcribes meetings, identifies speakers, and generates summaries.",
-    image: "meeting-scribe.png",
-    tags: ["ffmpeg", "transcription", "whisper", "pyannote-audio", "diarization"],
-    github: "https://github.com/JuanLara18/Meeting-Scribe",
-    category: "ml",
-    featured: true
+    id: 4,
+    name: "bank-agent-llm",
+    description: "Privacy-first local pipeline that imports and parses bank statements (PDF), categorizes transactions, and surfaces dashboards in the terminal and Streamlit. Runs fully offline with Ollama and SQLite.",
+    image: "bank-agent-llm.png",
+    tags: ["personal-finance", "ollama", "pdf", "streamlit", "local-first", "python"],
+    github: "https://github.com/JuanLara18/bank-agent-llm",
+    category: "ml"
   },
   {
-    id: 3,
+    id: 5,
     name: "Translation",
     description: "High-performance distributed translation system for large multilingual datasets using PySpark and OpenAI. Features caching, checkpointing, and metadata-preserving Stata translation.",
     image: "translation.png",
     tags: ["nlp", "distributed-computing", "stata", "pyspark", "openai"],
-    github: "https://github.com/JuanLara18/Translation",
+    github: "https://github.com/JuanLara18/Distributed-Translation-System",
     category: "ml",
     featured: true
   },
   {
-    id: 4,
+    id: 6,
     name: "AgentFlow",
     description: "Simulation framework for visualizing multi-agent organizational dynamics using a modular Streamlit-based interface. Models organizational behavior and hierarchies.",
     image: "agentflow.png",
     tags: ["simulation", "multi-agent-systems", "organizational-model"],
     github: "https://github.com/JuanLara18/AgentFlow",
+    demo: "https://agentflow.streamlit.app/",
     category: "ml"
   },
   {
-    id: 5,
-    name: "Classification",
-    description: "Modular pipeline for text clustering, classification, and evaluation using TF-IDF and unsupervised ML techniques. Optimized for large-scale document processing.",
-    image: "classification.png",
-    tags: ["nlp", "unsupervised-learning", "tfidf", "text-clustering"],
-    github: "https://github.com/JuanLara18/Classification",
+    id: 7,
+    name: "ai-video-gen",
+    description: "Batch AI video generation from JSON prompts. A multi-provider pipeline (including Veo on Vertex AI) with style packs, variants, and automatic logo overlay.",
+    image: "ai-video-gen.png",
+    tags: ["generative-ai", "video-generation", "vertex-ai", "veo", "ffmpeg", "python"],
+    github: "https://github.com/JuanLara18/ai-video-gen",
+    category: "ml"
+  },
+  {
+    id: 8,
+    name: "awesome-ai-roadmap",
+    description: "The open-source roadmap to mastering AI and ML — from foundations to LLMs, agents, and production systems. Curated resources, project ideas, and visual learning paths.",
+    image: "ai-roadmap.png",
+    tags: ["roadmap", "machine-learning", "llm", "ai-agents", "learning-path"],
+    github: "https://github.com/JuanLara18/awesome-ai-roadmap",
     category: "ml",
     featured: true
   },
   {
     id: 9,
+    name: "minigrid-qlearning",
+    description: "Tabular Q-learning with subtask reward shaping for MiniGrid BlockedUnlockPickup, built as a reinforcement-learning course project. Includes a walled-maze environment as supplementary work.",
+    image: "minigrid-qlearning.png",
+    tags: ["reinforcement-learning", "q-learning", "gymnasium", "minigrid", "python"],
+    github: "https://github.com/JuanLara18/minigrid-qlearning",
+    category: "ml"
+  },
+  // ── Web ──────────────────────────────────────────────────
+  {
+    id: 10,
     name: "Cunservicios Platform",
     description: "Smart platform for managing public utility services, including bill consultation, claims processing (PQR), and payment tracking. Built with React and Python.",
     image: "cunservicios.png",
@@ -121,9 +161,88 @@ const projects = [
     category: "web",
     featured: true
   },
-  // Upcoming/In-progress projects
+  {
+    id: 11,
+    name: "QuizApp",
+    description: "Full-stack learning platform where educators create and manage quizzes and learners get instant feedback. React frontend, Flask backend, SQLite storage.",
+    image: "quizapp.png",
+    tags: ["react", "flask", "quiz", "sqlite", "full-stack"],
+    github: "https://github.com/JuanLara18/QuizApp",
+    demo: "https://quizapp213.netlify.app",
+    category: "web"
+  },
+  // ── Tools ────────────────────────────────────────────────
+  {
+    id: 12,
+    name: "pdf-optimizer",
+    description: "Smart PDF compression that combines structural and raster optimization, exposed through both a CLI and a Streamlit UI. Built on PyMuPDF.",
+    image: "pdf-optimizer.png",
+    tags: ["pdf", "compression", "pymupdf", "streamlit", "python"],
+    github: "https://github.com/JuanLara18/pdf-optimizer",
+    demo: "https://pdf-optimizer.streamlit.app/",
+    category: "tools"
+  },
+  {
+    id: 13,
+    name: "notebook-converter",
+    description: "Convert Jupyter notebooks into clean, organized Python packages — preserving code, outputs, and markdown as documentation.",
+    image: "notebook-converter.png",
+    tags: ["jupyter", "converter", "markdown", "data-science", "streamlit"],
+    github: "https://github.com/JuanLara18/notebook-converter",
+    demo: "https://notebook-converter.streamlit.app/",
+    category: "tools"
+  },
+  {
+    id: 14,
+    name: "whiteboard",
+    description: "Lightweight local-first whiteboard in the browser: freehand drawing, sticky notes, image paste, templates, and zoom/pan, with PNG and JSON export. Saves to localStorage, no backend.",
+    image: "whiteboard.png",
+    tags: ["canvas", "konva", "typescript", "vite", "local-first"],
+    github: "https://github.com/JuanLara18/whiteboard",
+    category: "tools"
+  },
   {
     id: 15,
+    name: "MadameX",
+    description: "Interactive cryptography toolkit for encrypting and decrypting messages across classic algorithms — plus cryptanalysis tools to break ciphers without the original key.",
+    image: "madamex.png",
+    tags: ["cryptography", "encryption", "cryptanalysis", "javascript"],
+    github: "https://github.com/JuanLara18/MadameX",
+    demo: "https://juanlara18.github.io/MadameX/",
+    category: "tools"
+  },
+  // ── Games ────────────────────────────────────────────────
+  {
+    id: 16,
+    name: "pixel-valentine",
+    description: "A retro pixel-art platformer that ends with your own love letter — fork it, edit one file, and send it to your crush. Built with Phaser 3 and TypeScript.",
+    image: "pixel-valentine.png",
+    tags: ["game", "phaser3", "pixel-art", "typescript", "platformer"],
+    github: "https://github.com/JuanLara18/pixel-valentine",
+    demo: "https://juanlara18.github.io/San-Valentine/",
+    category: "games"
+  },
+  {
+    id: 17,
+    name: "Tetris",
+    description: "A clean Tetris implementation built with JavaScript and the p5.js library, originally written for an object-oriented programming course.",
+    image: "tetris.png",
+    tags: ["game", "javascript", "p5js", "object-oriented"],
+    github: "https://github.com/JuanLara18/Tetris",
+    category: "games"
+  },
+  {
+    id: 18,
+    name: "BrickBreaker",
+    description: "A classic brick-breaker arcade game built in JavaScript, originally an object-oriented programming course project.",
+    image: "brickbreaker.png",
+    tags: ["game", "javascript", "object-oriented", "arcade"],
+    github: "https://github.com/JuanLara18/BrickBreaker",
+    category: "games"
+  },
+  // ── Upcoming / In-progress ───────────────────────────────
+  {
+    id: 19,
     name: "BalanceAI",
     description: "Reinforcement learning project to teach an AI agent to balance itself. Visual interface enables real-time observation of the agent learning and improving through training iterations.",
     image: "balance-ai.png",
@@ -131,7 +250,7 @@ const projects = [
     category: "upcoming"
   },
   {
-    id: 16,
+    id: 20,
     name: "DJ-Mix Generator",
     description: "AI-powered DJ that creates seamless transitions between songs based on your preferences. Analyzes BPM, key, and energy levels to create professional-sounding mixes with a techno focus.",
     image: "dj-mix.png",
@@ -139,7 +258,7 @@ const projects = [
     category: "upcoming"
   },
   {
-    id: 17,
+    id: 21,
     name: "FoodEconomy",
     description: "Web app that tracks historical prices of essential household products, analyzes their evolution over time, and recommends optimized shopping lists based on price trends and preferences.",
     image: "food-economy.png",
