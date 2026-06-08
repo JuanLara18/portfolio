@@ -52,3 +52,5 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `spiderweb-droplets-header.jpg` — Photo by Simone Bissi, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Water_Droplets_on_spider_web.jpg) (CC BY 4.0)
 - `swiss-army-knife-header.jpg` — Photo by Dave Taylor, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Victorinox_Swiss_Army_SwissChamp_XAVT.jpg) (CC BY 2.0)
 - `vintage-aircraft-header.jpg` — Photo by Orygun, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Erickson_Aircraft_Collection_B-17.jpg) (CC BY 4.0)
+- `interference-ripples-header.jpg` — Photo by "Mark" / Roger McLassus, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Interference_waves_mark.jpg) (CC BY-SA)
+- `strata-cliff-header.jpg` — Photo by Maciej, "Cliff in Gaspe", [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cliff_in_Gaspe_-_IMG_1304_(15584559606).jpg) (CC BY-SA)

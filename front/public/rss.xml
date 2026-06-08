@@ -9,8 +9,51 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Dec 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 23 Dec 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Defining the Knowledge Stack: Assets, Products, Tools, and Pipelines</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</guid>
+    <pubDate>Thu, 23 Dec 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[You cannot structure what you cannot define. Before an enterprise argues about which knowledge base to build, it needs crisp words for the strata involved: assets, products, tools, pipelines, and the discipline that binds them. This is the definitional companion to the knowledge-as-a-product argument, a layered vocabulary you can lift straight into your own org docs.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Bases</category>
+    <category>Knowledge Engineering</category>
+    <category>Knowledge Management</category>
+    <category>Data Architecture</category>
+    <category>Vector Databases</category>
+    <category>Knowledge Graphs</category>
+    <category>Embeddings</category>
+    <category>RAG</category>
+    <category>MCP</category>
+    <category>Ontologies</category>
+    <category>Information Retrieval</category>
+    <category>Knowledge Representation</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/defining-the-knowledge-stack.mp3" length="12325392" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Comparing Knowledge Bases: Detecting Semantic and Textual Overlap Between Knowledge Products</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap</guid>
+    <pubDate>Thu, 16 Dec 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[A large organization rarely has one knowledge base. It has two FAQ spreadsheets that nobody realized were eighty percent the same, plus a vectorized KB and a structured one that may or may not be talking about the same things. This is the rigorous version of the question every governance review eventually asks, do these two knowledge bases overlap, and what should we do about it, worked from exact-duplicate hashing through MinHash, embeddings, optimal transport, and the contradiction case that usually matters most.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Bases</category>
+    <category>Knowledge Management</category>
+    <category>Embeddings</category>
+    <category>Information Retrieval</category>
+    <category>Vector Databases</category>
+    <category>Entity Resolution</category>
+    <category>RAG</category>
+    <category>NLP</category>
+    <category>Data Architecture</category>
+    <category>Knowledge Engineering</category>
+    <category>MCP</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/comparing-knowledge-bases-semantic-overlap.mp3" length="9990288" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>ADK, Advanced: The Evolution of Agent Engineering</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</link>

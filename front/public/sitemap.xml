@@ -49,6 +49,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</loc>
+    <lastmod>2027-12-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap</loc>
+    <lastmod>2027-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</loc>
     <lastmod>2027-12-09</lastmod>
     <changefreq>monthly</changefreq>
