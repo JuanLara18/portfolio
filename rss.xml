@@ -9,8 +9,133 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Oct 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Dec 2027 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>ADK, Advanced: The Evolution of Agent Engineering</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</guid>
+    <pubDate>Thu, 09 Dec 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[The state of the art for building agents in 2026 is Google's ADK. But the fastest way to understand it deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed by ADK, including its limits.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>AI Engineering</category>
+    <category>LangChain</category>
+    <category>Multi-Agent</category>
+    <category>Orchestration</category>
+    <category>Agent Engineering</category>
+    <category>Tool Use</category>
+    <category>GCP</category>
+    <category>LLM Frameworks</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/adk-advanced-evolution-of-agent-engineering.mp3" length="10620000" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Redis for AI on GCP: A Critical Buy-vs-Build Analysis</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp</guid>
+    <pubDate>Thu, 02 Dec 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[You already run everything on Google Cloud. Redis is selling an AI bundle -- agent memory, vector search, semantic caching, feature serving -- and it is one click away on the Marketplace. This is a skeptical procurement analysis of what you actually gain by adding it, where Memorystore and Vertex already cover you, and three POCs that would prove or disprove the value before you sign anything.]]></description>
+    <category>field-notes</category>
+    <category>Caching</category>
+    <category>Vector Databases</category>
+    <category>Agents</category>
+    <category>Feature Store</category>
+    <category>Production ML</category>
+    <category>GCP</category>
+    <category>Infrastructure</category>
+    <category>MLOps</category>
+    <category>Performance</category>
+    <category>AI Engineering</category>
+    <category>Cost Optimization</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/redis-for-ai-buy-vs-build-gcp.mp3" length="11480688" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Understanding Cloud Spanner: Graphs, Knowledge, and Where Ontologies Fit</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents</guid>
+    <pubDate>Thu, 25 Nov 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Spanner was built to solve a problem most databases declare impossible: global scale, horizontal sharding, and external consistency at the same time. This is a field-notes tour of why it exists, how Spanner Graph layers a property graph on relational tables, and the honest answer to the question I keep getting asked: should your ontology and knowledge graph live in Spanner?]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>GCP</category>
+    <category>Data Architecture</category>
+    <category>Distributed Systems</category>
+    <category>Graph Databases</category>
+    <category>Ontologies</category>
+    <category>SQL</category>
+    <category>Agents</category>
+    <category>Knowledge Bases</category>
+    <category>Distributed Computing</category>
+    <category>Data Modeling</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/spanner-graph-for-knowledge-and-agents.mp3" length="12188448" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Definitive Knowledge Catalog Workshop: Catalog, Enrich, Search</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop</guid>
+    <pubDate>Thu, 18 Nov 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[A hands-on, lab-style walkthrough of Google's Knowledge Catalog, the Dataplex-lineage cataloging and AI-grounding layer. We work the three core moves end to end, catalog then enrich then search, explain how each works under the hood, and close with the hard usability questions: catalog everything or be selective, one catalog or many, and what the service genuinely does not solve.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Engineering</category>
+    <category>Data Governance</category>
+    <category>GCP</category>
+    <category>Knowledge Bases</category>
+    <category>Metadata</category>
+    <category>Data Architecture</category>
+    <category>Enterprise AI</category>
+    <category>Knowledge Management</category>
+    <category>Information Retrieval</category>
+    <category>Best Practices</category>
+    <category>Vertex AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/gemini-knowledge-catalog-workshop.mp3" length="10263024" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Vector Databases Demystified: From Indexes to Vertex AI Vector Search</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search</guid>
+    <pubDate>Thu, 11 Nov 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[You have embeddings. Now you need to find the nearest ones among billions, in milliseconds, without melting your budget. This is the full story of how vector indexes emerge from that one constraint, how the major index families actually work, and how to run a production vector database on Google Cloud with Vertex AI Vector Search.]]></description>
+    <category>field-notes</category>
+    <category>Vector Databases</category>
+    <category>Embeddings</category>
+    <category>Information Retrieval</category>
+    <category>Algorithms</category>
+    <category>RAG</category>
+    <category>GCP</category>
+    <category>Vertex AI</category>
+    <category>Data Architecture</category>
+    <category>Production ML</category>
+    <category>Cloud Computing</category>
+    <category>Search Algorithms</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/vector-databases-indexes-to-vertex-search.mp3" length="12566880" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Algorithm Behind Regex: From Patterns to Finite Automata</title>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata</guid>
+    <pubDate>Thu, 04 Nov 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[A regular expression looks like line noise but it is secretly a tiny, beautiful machine. The same pattern can be matched in guaranteed linear time, yet the regex engine shipped with Python, Perl, and JavaScript can grind to a halt for minutes on a 30-character string. This is the story of Thompson's construction, finite automata, and why the most popular regex engines on earth chose the one algorithm that can blow up exponentially.]]></description>
+    <category>curiosities</category>
+    <category>Algorithms</category>
+    <category>Mathematics</category>
+    <category>Computer Science</category>
+    <category>Computational Complexity</category>
+    <category>Search Algorithms</category>
+    <category>Formal Systems</category>
+    <category>Computability</category>
+    <category>Foundations of Mathematics</category>
+    <category>Regular Expressions</category>
+    <category>Theory of Computation</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/curiosities/regex-engines-finite-automata.mp3" length="10060992" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Curating and Governing an Enterprise Agent: A Lifecycle Operating Model</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle</link>
