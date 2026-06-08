@@ -6,6 +6,7 @@ import {
   Search,
   BookOpen,
   Network,
+  Layers,
   ArrowRight
 } from 'lucide-react';
 import { loadAllPosts, getAllTags, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
@@ -217,8 +218,8 @@ export default function BlogHomePage() {
               Engineering notes on RAG, agents, and knowledge systems. Research deep-dives. Mathematical curiosities.
             </motion.p>
 
-            {/* Subtle knowledge graph link — inline mono text with hover underline */}
-            <motion.div variants={fadeInUp} className="mb-10">
+            {/* Subtle discovery links — inline mono text with hover underline */}
+            <motion.div variants={fadeInUp} className="mb-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
               <Link
                 to="/blog/graph"
                 className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
@@ -227,6 +228,13 @@ export default function BlogHomePage() {
                 <span>Explore knowledge graph</span>
                 <span className="opacity-50">·</span>
                 <span>{posts.length} posts</span>
+              </Link>
+              <Link
+                to="/blog/series"
+                className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+              >
+                <Layers size={14} />
+                <span>Reading series</span>
               </Link>
             </motion.div>
 

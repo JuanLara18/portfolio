@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import blogData from '../data/blogData.json';
+import { SERIES } from '../data/series';
 
 export const BLOG_CONFIG = {
   categories: {
@@ -88,6 +89,47 @@ export async function getAllTags() {
     return Array.from(tagSet).sort();
   } catch (error) {
     console.error('Error loading tags:', error);
+    return [];
+  }
+}
+
+/**
+ * Return the curated narrative reading series (raw registry, slugs only).
+ */
+export async function loadAllSeries() {
+  return SERIES;
+}
+
+/**
+ * Resolve each series' slugs against the post catalog.
+ *
+ * Returns series enriched with full post objects, in declared order. Each post
+ * gains `part` (1-based position) and `partsTotal`. Slugs that no longer resolve
+ * to a post are dropped defensively so the page never breaks on a typo or a
+ * renamed/removed post; series left with fewer than 2 resolved posts are
+ * omitted entirely (a "series" of one is not a series).
+ */
+export async function getSeriesWithPosts() {
+  try {
+    const allPosts = await loadAllPosts();
+    const bySlug = new Map(allPosts.map(p => [p.slug, p]));
+
+    return SERIES.map(series => {
+      const resolved = (series.posts || [])
+        .map(slug => bySlug.get(slug))
+        .filter(Boolean);
+
+      const partsTotal = resolved.length;
+      const posts = resolved.map((post, index) => ({
+        ...post,
+        part: index + 1,
+        partsTotal,
+      }));
+
+      return { ...series, posts, partsTotal };
+    }).filter(series => series.partsTotal >= 2);
+  } catch (error) {
+    console.error('Error building series with posts:', error);
     return [];
   }
 }

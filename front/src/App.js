@@ -12,6 +12,7 @@ const BlogHomePage = lazy(() => import('./pages/BlogHomePage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const BlogCategoryPage = lazy(() => import('./pages/BlogCategoryPage'));
 const BlogGraphPage = lazy(() => import('./pages/BlogGraphPage'));
+const BlogSeriesPage = lazy(() => import('./pages/BlogSeriesPage'));
 
 // Minimal loading fallback (matches the app background to avoid flash)
 const PageLoader = () => (
@@ -100,6 +101,7 @@ function App() {
                 {/* Blog routes */}
                 <Route path="/blog" element={<BlogHomePage />} />
                 <Route path="/blog/graph" element={<BlogGraphPage />} />
+                <Route path="/blog/series" element={<BlogSeriesPage />} />
                 <Route path="/blog/category/:category" element={<BlogCategoryPage />} />
                 <Route path="/blog/tag/:tag" element={<BlogCategoryPage />} />
                 <Route path="/blog/:category/:slug" element={<BlogPostPage />} />
