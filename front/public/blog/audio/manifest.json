@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1780193363,
+  "generatedAt": 1780951478,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -146,6 +146,19 @@
       "audioUrl": "/blog/audio/curiosities/ramanujan-constant-almost-integer.mp3",
       "translationModel": ""
     },
+    "curiosities/regex-engines-finite-automata": {
+      "slug": "regex-engines-finite-automata",
+      "category": "curiosities",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "286ca31787738fe69c0facf9e89df56d4034fc1de1cc3e255a0cbb4f41199dfc",
+      "sourceHash": "286ca31787738fe69c0facf9e89df56d4034fc1de1cc3e255a0cbb4f41199dfc",
+      "durationSec": 1676.832,
+      "byteSize": 10060992,
+      "narrationWordCount": 4111,
+      "audioUrl": "/blog/audio/curiosities/regex-engines-finite-automata.mp3",
+      "translationModel": ""
+    },
     "curiosities/rubiks-cube-group-theory": {
       "slug": "rubiks-cube-group-theory",
       "category": "curiosities",
@@ -196,6 +209,19 @@
       "byteSize": 6754896,
       "narrationWordCount": 2345,
       "audioUrl": "/blog/audio/curiosities/tetris-np-complete.mp3",
+      "translationModel": ""
+    },
+    "field-notes/adk-advanced-evolution-of-agent-engineering": {
+      "slug": "adk-advanced-evolution-of-agent-engineering",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "0acec20e1009784124da94785419782a600d4ebda7e048b0c2c79fd5ecdc3287",
+      "sourceHash": "0acec20e1009784124da94785419782a600d4ebda7e048b0c2c79fd5ecdc3287",
+      "durationSec": 1770.0,
+      "byteSize": 10620000,
+      "narrationWordCount": 4845,
+      "audioUrl": "/blog/audio/field-notes/adk-advanced-evolution-of-agent-engineering.mp3",
       "translationModel": ""
     },
     "field-notes/agent-architectures-productive-patterns": {
@@ -599,6 +625,19 @@
       "byteSize": 10177488,
       "narrationWordCount": 5552,
       "audioUrl": "/blog/audio/field-notes/gemini-enterprise-knowledge-catalog-deep-dive.mp3",
+      "translationModel": ""
+    },
+    "field-notes/gemini-knowledge-catalog-workshop": {
+      "slug": "gemini-knowledge-catalog-workshop",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "ed578718ce9d18187682d4ea5e8fe308a6f7fb0858a0a392b6990730cadebc0e",
+      "sourceHash": "ed578718ce9d18187682d4ea5e8fe308a6f7fb0858a0a392b6990730cadebc0e",
+      "durationSec": 1710.504,
+      "byteSize": 10263024,
+      "narrationWordCount": 4504,
+      "audioUrl": "/blog/audio/field-notes/gemini-knowledge-catalog-workshop.mp3",
       "translationModel": ""
     },
     "field-notes/git-and-github-complete-guide": {
@@ -1108,6 +1147,19 @@
       "audioUrl": "/blog/audio/field-notes/ragas-evaluating-rag.mp3",
       "translationModel": ""
     },
+    "field-notes/redis-for-ai-buy-vs-build-gcp": {
+      "slug": "redis-for-ai-buy-vs-build-gcp",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "08d35ad4acde7893aad2dff09e818555bbba7d01ffd875f60907e904a364b48a",
+      "sourceHash": "08d35ad4acde7893aad2dff09e818555bbba7d01ffd875f60907e904a364b48a",
+      "durationSec": 1913.448,
+      "byteSize": 11480688,
+      "narrationWordCount": 4523,
+      "audioUrl": "/blog/audio/field-notes/redis-for-ai-buy-vs-build-gcp.mp3",
+      "translationModel": ""
+    },
     "field-notes/reinforcement-learning-first-principles": {
       "slug": "reinforcement-learning-first-principles",
       "category": "field-notes",
@@ -1171,6 +1223,19 @@
       "byteSize": 8240544,
       "narrationWordCount": 3306,
       "audioUrl": "/blog/audio/field-notes/software-engineering-classics.mp3",
+      "translationModel": ""
+    },
+    "field-notes/spanner-graph-for-knowledge-and-agents": {
+      "slug": "spanner-graph-for-knowledge-and-agents",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "f27d9c808570484ad28cfd4d91cb08b6b6f99c10f2bb7c2eb27744c48c09bdc0",
+      "sourceHash": "f27d9c808570484ad28cfd4d91cb08b6b6f99c10f2bb7c2eb27744c48c09bdc0",
+      "durationSec": 2031.408,
+      "byteSize": 12188448,
+      "narrationWordCount": 5020,
+      "audioUrl": "/blog/audio/field-notes/spanner-graph-for-knowledge-and-agents.mp3",
       "translationModel": ""
     },
     "field-notes/sql-pandas-pyspark-duckdb": {
@@ -1249,6 +1314,19 @@
       "byteSize": 6836832,
       "narrationWordCount": 2338,
       "audioUrl": "/blog/audio/field-notes/text-to-sql.mp3",
+      "translationModel": ""
+    },
+    "field-notes/vector-databases-indexes-to-vertex-search": {
+      "slug": "vector-databases-indexes-to-vertex-search",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "d999bb81252861b323fd5d4bad231e190b99cd26d94764e7428812a6f1f8248b",
+      "sourceHash": "d999bb81252861b323fd5d4bad231e190b99cd26d94764e7428812a6f1f8248b",
+      "durationSec": 2094.48,
+      "byteSize": 12566880,
+      "narrationWordCount": 5044,
+      "audioUrl": "/blog/audio/field-notes/vector-databases-indexes-to-vertex-search.mp3",
       "translationModel": ""
     },
     "field-notes/vector-db-benchmarks": {
