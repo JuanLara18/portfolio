@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1780951478,
+  "generatedAt": 1780961518,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -354,6 +354,19 @@
       "audioUrl": "/blog/audio/field-notes/cloud-ml-infrastructure.mp3",
       "translationModel": ""
     },
+    "field-notes/comparing-knowledge-bases-semantic-overlap": {
+      "slug": "comparing-knowledge-bases-semantic-overlap",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "42faf3427803d259b92c814b756a5ae9ccbd396e6cf84033697049c49fbb10f3",
+      "sourceHash": "42faf3427803d259b92c814b756a5ae9ccbd396e6cf84033697049c49fbb10f3",
+      "durationSec": 1665.048,
+      "byteSize": 9990288,
+      "narrationWordCount": 4181,
+      "audioUrl": "/blog/audio/field-notes/comparing-knowledge-bases-semantic-overlap.mp3",
+      "translationModel": ""
+    },
     "field-notes/computational-resources-ml": {
       "slug": "computational-resources-ml",
       "category": "field-notes",
@@ -443,6 +456,19 @@
       "byteSize": 5079024,
       "narrationWordCount": 1910,
       "audioUrl": "/blog/audio/field-notes/dbt-analytics-engineering.mp3",
+      "translationModel": ""
+    },
+    "field-notes/defining-the-knowledge-stack": {
+      "slug": "defining-the-knowledge-stack",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "04ef6de2f23cf3fa7889f25ac595da515101b27b499002da99920f45ba106734",
+      "sourceHash": "04ef6de2f23cf3fa7889f25ac595da515101b27b499002da99920f45ba106734",
+      "durationSec": 2054.232,
+      "byteSize": 12325392,
+      "narrationWordCount": 5340,
+      "audioUrl": "/blog/audio/field-notes/defining-the-knowledge-stack.mp3",
       "translationModel": ""
     },
     "field-notes/dev-environments-for-ai-teams": {
