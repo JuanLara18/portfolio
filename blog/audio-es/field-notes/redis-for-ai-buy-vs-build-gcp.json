@@ -1,0 +1,13 @@
+{
+  "slug": "redis-for-ai-buy-vs-build-gcp",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "d84ed8982f0ea90629181ee8dc23982f3d7fb6ee9a037a81a343864680daf2e9",
+  "sourceHash": "08d35ad4acde7893aad2dff09e818555bbba7d01ffd875f60907e904a364b48a",
+  "durationSec": 1892.136,
+  "byteSize": 11352816,
+  "narrationWordCount": 5225,
+  "audioUrl": "/blog/audio-es/field-notes/redis-for-ai-buy-vs-build-gcp.mp3",
+  "translationModel": "gemma4:latest"
+}

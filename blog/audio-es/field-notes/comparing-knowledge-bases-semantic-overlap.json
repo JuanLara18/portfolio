@@ -1,0 +1,13 @@
+{
+  "slug": "comparing-knowledge-bases-semantic-overlap",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "12fed6cd3c02ca02169a80a8cfd51543fa8f65154eaa92eb27b4f157fd547a6a",
+  "sourceHash": "42faf3427803d259b92c814b756a5ae9ccbd396e6cf84033697049c49fbb10f3",
+  "durationSec": 1630.344,
+  "byteSize": 9782064,
+  "narrationWordCount": 4690,
+  "audioUrl": "/blog/audio-es/field-notes/comparing-knowledge-bases-semantic-overlap.mp3",
+  "translationModel": "gemma4:latest"
+}

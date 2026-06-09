@@ -1,0 +1,13 @@
+{
+  "slug": "spanner-graph-for-knowledge-and-agents",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "eae5ea868cdf2ef8758596af1088640c30542bb5b62b2127162184c99a6240ad",
+  "sourceHash": "f27d9c808570484ad28cfd4d91cb08b6b6f99c10f2bb7c2eb27744c48c09bdc0",
+  "durationSec": 1979.328,
+  "byteSize": 11875968,
+  "narrationWordCount": 5674,
+  "audioUrl": "/blog/audio-es/field-notes/spanner-graph-for-knowledge-and-agents.mp3",
+  "translationModel": "gemma4:latest"
+}

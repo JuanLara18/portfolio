@@ -1,0 +1,13 @@
+{
+  "slug": "regex-engines-finite-automata",
+  "category": "curiosities",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "189026d545ccbd4c43101100a325692438e956687229724e8265800baf625431",
+  "sourceHash": "286ca31787738fe69c0facf9e89df56d4034fc1de1cc3e255a0cbb4f41199dfc",
+  "durationSec": 1641.456,
+  "byteSize": 9848736,
+  "narrationWordCount": 4436,
+  "audioUrl": "/blog/audio-es/curiosities/regex-engines-finite-automata.mp3",
+  "translationModel": "gemma4:latest"
+}

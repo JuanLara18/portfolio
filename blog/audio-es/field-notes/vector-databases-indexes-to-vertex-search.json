@@ -1,0 +1,13 @@
+{
+  "slug": "vector-databases-indexes-to-vertex-search",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1503be3e851a6b2fb0354a2ee02bcede3b4ceeafb82896845dda6e9d75886fd1",
+  "sourceHash": "d999bb81252861b323fd5d4bad231e190b99cd26d94764e7428812a6f1f8248b",
+  "durationSec": 2075.784,
+  "byteSize": 12454704,
+  "narrationWordCount": 5690,
+  "audioUrl": "/blog/audio-es/field-notes/vector-databases-indexes-to-vertex-search.mp3",
+  "translationModel": "gemma4:latest"
+}

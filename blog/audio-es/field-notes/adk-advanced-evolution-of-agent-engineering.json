@@ -1,0 +1,13 @@
+{
+  "slug": "adk-advanced-evolution-of-agent-engineering",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "53809bb29826e5728d53a1f8d8d66e769f287e77f6ef5477bac933caf741446a",
+  "sourceHash": "0acec20e1009784124da94785419782a600d4ebda7e048b0c2c79fd5ecdc3287",
+  "durationSec": 1965.072,
+  "byteSize": 11790432,
+  "narrationWordCount": 5475,
+  "audioUrl": "/blog/audio-es/field-notes/adk-advanced-evolution-of-agent-engineering.mp3",
+  "translationModel": "gemma4:latest"
+}
