@@ -1,0 +1,13 @@
+{
+  "slug": "gemini-knowledge-catalog-workshop",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "c0fa339b71f97c9ccba39164ccd03df771892b95a4c7e070d96eec095d8ba4c4",
+  "sourceHash": "ed578718ce9d18187682d4ea5e8fe308a6f7fb0858a0a392b6990730cadebc0e",
+  "durationSec": 1858.776,
+  "byteSize": 11152656,
+  "narrationWordCount": 5198,
+  "audioUrl": "/blog/audio-es/field-notes/gemini-knowledge-catalog-workshop.mp3",
+  "translationModel": "gemma4:latest"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "defining-the-knowledge-stack",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "f071947769f4687f2673c8e4217ec9bcc0a225d85407b85c29cae407907ec22a",
+  "sourceHash": "04ef6de2f23cf3fa7889f25ac595da515101b27b499002da99920f45ba106734",
+  "durationSec": 2028.36,
+  "byteSize": 12170160,
+  "narrationWordCount": 5820,
+  "audioUrl": "/blog/audio-es/field-notes/defining-the-knowledge-stack.mp3",
+  "translationModel": "gemma4:latest"
+}
