@@ -61,8 +61,8 @@ The service pipeline covers four stages:
 **Chunking**: Fixed-size chunking at no additional charge. Chunk size and overlap are configurable via `chunk_size` and `chunk_overlap` token parameters. There is no hierarchical or semantic chunking built in—if you need those strategies, you are back to orchestrating them yourself.
 
 **Embedding models**: At the time of writing, embedding model selection is configured per corpus. The native options through Vertex AI include:
-- `gemini-embedding-001`: 3072-dimensional output by default (truncatable to 768 or 1536), GA, priced at $0.15 per million tokens ($0.075 batch)
-- `text-embedding-005`: 768-dimensional, GA, priced at $0.000025 per 1,000 characters (online), $0.00002 (batch)
+- `gemini-embedding-001`: 3072-dimensional output by default (truncatable to 768 or 1536), GA, priced at \$0.15 per million tokens (\$0.075 batch)
+- `text-embedding-005`: 768-dimensional, GA, priced at \$0.000025 per 1,000 characters (online), \$0.00002 (batch)
 - `gemini-embedding-2` (Preview): improved multilingual quality, $0.20 per million tokens
 
 Both `gemini-embedding-001` and `text-embedding-005` support Matryoshka Representation Learning (MRL), meaning you can truncate output dimensions from their defaults without significant quality loss. This matters for storage cost in AlloyDB and Vector Search. All models support over 100 languages and a 2048-token input limit.
@@ -79,9 +79,9 @@ This deserves its own section because it is the biggest gotcha in the entire Ver
 
 When you use `RagManagedDb` (the default), the service provisions a Google-managed Spanner instance in a Google-tenant project. You pay for that Spanner instance via standard Spanner SKUs. There are two tiers:
 
-**Basic tier**: 100 processing units (0.1 nodes). At Spanner's regional rate of roughly $0.90 per processing unit-hour, this works out to approximately $65/month. The documentation describes it as "cost-effective" and recommends it for "experimentation, small datasets, and latency-insensitive workloads." This is reasonable for prototyping.
+**Basic tier**: 100 processing units (0.1 nodes). At Spanner's regional rate of roughly \$0.90 per processing unit-hour, this works out to approximately \$65/month. The documentation describes it as "cost-effective" and recommends it for "experimentation, small datasets, and latency-insensitive workloads." This is reasonable for prototyping.
 
-**Scaled tier**: Autoscaling from 1 node (1,000 PUs) to 10 nodes (10,000 PUs). A single node at $0.90 × 1,000 × 730 hours = approximately $657/month at baseline, scaling to $6,570/month at the ceiling. This is the tier for production workloads.
+**Scaled tier**: Autoscaling from 1 node (1,000 PUs) to 10 nodes (10,000 PUs). A single node at \$0.90 × 1,000 × 730 hours = approximately \$657/month at baseline, scaling to $6,570/month at the ceiling. This is the tier for production workloads.
 
 The third option is the **Unprovisioned tier**, which deletes the Spanner instance and all data permanently. There is no pause; it is deletion.
 
@@ -451,15 +451,15 @@ Available CPU counts: 2, 4, 8, 16, 32, 64, 96, 128. High availability doubles co
 AlloyDB is significantly more expensive than Cloud SQL, and understanding exactly why is important for architectural decisions.
 
 **Compute (us-east1, on-demand)**:
-- Per vCPU: $54.51/month ($0.0747/hour)
-- Per GB memory: $9.24/month ($0.0127/hour)
+- Per vCPU: \$54.51/month (\$0.0747/hour)
+- Per GB memory: \$9.24/month (\$0.0127/hour)
 - Approximately $0.0666/vCPU-hour in us-central1
 
 A common production configuration—8 vCPU primary + read pools + HA:
 
 | Component | vCPUs | RAM | Monthly |
 |-----------|-------|-----|---------|
-| Primary (HA, 8 vCPU, 64GB) | 8 | 64GB | $436 compute × 2 for HA = ~$872 |
+| Primary (HA, 8 vCPU, 64GB) | 8 | 64GB | \$436 compute × 2 for HA = ~\$872 |
 | Read pool (2× 4 vCPU, 32GB) | 4 each | 32GB each | ~$436 total |
 | Storage (500GB) | — | — | ~$170 |
 | **Total** | | | **~$1,478/month** |
@@ -592,9 +592,9 @@ Document AI's Layout Parser combines specialized OCR with Gemini's generative ca
 **Pricing (approximate)**:
 - Document AI base OCR: $1.50 per 1,000 pages
 - Form Parser: $30 per 1,000 pages at baseline
-- Layout Parser: $0.10 for 1-10 pages per request, $0.20 for 11-20 pages
+- Layout Parser: \$0.10 for 1-10 pages per request, \$0.20 for 11-20 pages
 
-At scale, Document AI costs accumulate quickly. Processing 100,000 pages with the Layout Parser at $0.10 per 10-page request = approximately $1,000 in parsing costs alone, before embedding.
+At scale, Document AI costs accumulate quickly. Processing 100,000 pages with the Layout Parser at \$0.10 per 10-page request = approximately \$1,000 in parsing costs alone, before embedding.
 
 When the Vertex AI RAG Engine uses the Document AI Layout Parser, both services bill simultaneously. This is the most capable but also most expensive parsing path.
 
@@ -744,7 +744,7 @@ with beam.Pipeline() as pipeline:
     )
 ```
 
-Dataflow charges at the worker rate (e2-standard machines, approximately $0.05-0.10/worker-hour) plus a 10% Dataflow management premium. For a 1-million document corpus generating embeddings, a Dataflow job with 20 workers running for 2 hours costs approximately $4-8 in compute—substantially cheaper than running a persistent service.
+Dataflow charges at the worker rate (e2-standard machines, approximately \$0.05-0.10/worker-hour) plus a 10% Dataflow management premium. For a 1-million document corpus generating embeddings, a Dataflow job with 20 workers running for 2 hours costs approximately \$4-8 in compute—substantially cheaper than running a persistent service.
 
 The 2025 alternative for on-worker inference is Google's EmbeddingGemma (308M parameters), which can run directly on Dataflow workers without remote API calls. This eliminates Vertex AI API quota constraints and reduces latency for large batches, but provides lower embedding quality than Gemini Embedding for complex multilingual content.
 
@@ -770,7 +770,7 @@ gcloud run deploy rag-api \
   --no-allow-unauthenticated
 ```
 
-The `--min-instances=0` enables true scale-to-zero. For production with latency requirements, set `--min-instances=1` to keep one instance warm. Cloud Run charges $0.00002400/vCPU-second and $0.00000250/GiB-second for requests-based billing, plus a small per-million requests fee. The AlwaysAllocated billing model (needed for min-instances > 0) charges continuously but at half the per-second rate.
+The `--min-instances=0` enables true scale-to-zero. For production with latency requirements, set `--min-instances=1` to keep one instance warm. Cloud Run charges \$0.00002400/vCPU-second and \$0.00000250/GiB-second for requests-based billing, plus a small per-million requests fee. The AlwaysAllocated billing model (needed for min-instances > 0) charges continuously but at half the per-second rate.
 
 ---
 
@@ -997,8 +997,8 @@ For a team operating a production RAG system at moderate scale (5 million docume
 
 **Managed GCP path (Vertex AI RAG Engine + RagManagedDb Scaled tier)**:
 - Spanner Scaled tier (1 node minimum): $657/month
-- Vertex AI Embeddings (ongoing, ~10M tokens/day at $0.15/1M): $45/month
-- Google Search grounding ($2.50/1,000 grounding requests, 50K/day): ~$3,750/month
+- Vertex AI Embeddings (ongoing, ~10M tokens/day at \$0.15/1M): \$45/month
+- Google Search grounding (\$2.50/1,000 grounding requests, 50K/day): ~\$3,750/month
 - Cloud Run serving: ~$100-200/month
 - **Total: ~$4,500-5,000/month**
 

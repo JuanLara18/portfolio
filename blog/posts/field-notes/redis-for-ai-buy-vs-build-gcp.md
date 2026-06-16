@@ -68,12 +68,12 @@ quadrantChart
     quadrant-2 Buy only if latency critical
     quadrant-3 Skip or use native
     quadrant-4 Build it yourself
-    Session memory KV: 0.18 0.32
-    Vector search: 0.45 0.55
-    Semantic cache self hosted: 0.55 0.62
-    LangCache managed: 0.28 0.70
-    Feast online store: 0.40 0.48
-    Agent checkpointing: 0.62 0.58
+    Session memory KV: [0.18, 0.32]
+    Vector search: [0.45, 0.55]
+    Semantic cache self hosted: [0.55, 0.62]
+    LangCache managed: [0.28, 0.70]
+    Feast online store: [0.40, 0.48]
+    Agent checkpointing: [0.62, 0.58]
 ```
 
 ## The GCP-Native Overlap Map
@@ -97,7 +97,7 @@ Map it capability by capability:
 
 Two services deserve a closer look because they define the boundaries.
 
-**Vertex AI Vector Search** (formerly Matching Engine) is Google's managed ANN service built on ScaNN. It is architecturally the opposite of Redis vector search: it is disk-and-memory tiered, scales well past what fits in a single machine's RAM, and is billed on infrastructure node-hours for the index-serving endpoint. That last point is the catch that surprises every team: the endpoint bills per node-hour whether or not you send a single query, on the order of roughly $0.09 per node-hour for a small machine type, with index builds around $3 per GiB processed and streaming updates around $0.45 per GiB. A modestly sized index on a few replicas runs on the order of several hundred dollars a month just to keep the lights on. It is excellent when you have a large corpus and steady traffic; it is a money pit when you have a small index and bursty or development traffic, because there is no scale-to-zero by default. (Set `minReplicaCount` carefully and undeploy idle endpoints.)
+**Vertex AI Vector Search** (formerly Matching Engine) is Google's managed ANN service built on ScaNN. It is architecturally the opposite of Redis vector search: it is disk-and-memory tiered, scales well past what fits in a single machine's RAM, and is billed on infrastructure node-hours for the index-serving endpoint. That last point is the catch that surprises every team: the endpoint bills per node-hour whether or not you send a single query, on the order of roughly \$0.09 per node-hour for a small machine type, with index builds around \$3 per GiB processed and streaming updates around \$0.45 per GiB. A modestly sized index on a few replicas runs on the order of several hundred dollars a month just to keep the lights on. It is excellent when you have a large corpus and steady traffic; it is a money pit when you have a small index and bursty or development traffic, because there is no scale-to-zero by default. (Set `minReplicaCount` carefully and undeploy idle endpoints.)
 
 **Vertex AI Feature Store** has consolidated on **Bigtable online serving** -- the older "Optimized online serving" tier is deprecated as of mid-2026 and should not be used for new builds. The offline store is BigQuery: you register existing BigQuery tables as feature groups and sync selected features to Bigtable for serving. Real-world server-side latency lands around 30 ms at moderate QPS, which is fast enough for most inference paths but is emphatically not the sub-millisecond tier Redis plays in. Note also that Bigtable online serving does not manage embeddings; Google explicitly points you to Vector Search for that.
 
@@ -261,7 +261,7 @@ $$
 \text{net savings} = H \cdot (c_{\text{gen}} - c_{\text{lookup}}) - (1 - H) \cdot c_{\text{lookup}}
 $$
 
-where \(H\) is the hit rate, \(c_{\text{gen}}\) is the cost of a generation, and \(c_{\text{lookup}}\) is the embedding-plus-search cost. There is a break-even hit rate below which the cache loses money. With a cheap embedding model and an expensive generation, that break-even can be in the low single-digit percentages -- but with a near-free generation (small model) and a managed cache that bills per lookup, it can climb high enough that caching is pointless. The cache pays when queries genuinely repeat and generations are expensive; it is dead weight when every query is unique or the model is cheap.
+where $H$ is the hit rate, $c_{\text{gen}}$ is the cost of a generation, and $c_{\text{lookup}}$ is the embedding-plus-search cost. There is a break-even hit rate below which the cache loses money. With a cheap embedding model and an expensive generation, that break-even can be in the low single-digit percentages -- but with a near-free generation (small model) and a managed cache that bills per lookup, it can climb high enough that caching is pointless. The cache pays when queries genuinely repeat and generations are expensive; it is dead weight when every query is unique or the model is cheap.
 
 When does LangCache (buy) beat building it on Memorystore? When you do not want to operate the index, pick and host the embedding model, or tune eviction -- and when LangCache's purpose-trained embedding model meaningfully beats a generic one on *your* query distribution. When does building win? When you already operate Memorystore, want full control of the threshold and embedding, need the cache co-located with other data for filtering, or cannot send prompts to a third-party managed service for compliance reasons.
 
@@ -325,7 +325,7 @@ Do not benchmark anything until you can answer these. A POC without them produce
 
 - **A real latency budget, end to end.** Not "fast." A number: p99 must be under X ms, of which the data layer may consume Y ms. Without this, the Redis-vs-Bigtable latency gap is uninterpretable.
 - **A real query distribution.** For caching, the only thing that matters is the repeat rate of *your* actual prompts. Pull a week of production traffic. If you cannot, the POC is theater.
-- **A cost baseline.** Current spend on embeddings, generation, and existing infra, per request. You cannot compute caching ROI without \(c_{\text{gen}}\) and \(c_{\text{lookup}}\).
+- **A cost baseline.** Current spend on embeddings, generation, and existing infra, per request. You cannot compute caching ROI without $c_{\text{gen}}$ and $c_{\text{lookup}}$.
 - **A corpus size and growth curve.** RAM-resident vector search has a hard ceiling. Know whether you are at 100K, 10M, or 1B vectors next year.
 - **Compliance constraints.** Can prompts leave your VPC to a managed cache? If not, LangCache (buy) is off the table and the question collapses to Memorystore (build).
 

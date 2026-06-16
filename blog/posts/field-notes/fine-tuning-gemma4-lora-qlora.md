@@ -85,7 +85,7 @@ If you need more VRAM (for the 26B-A4B or 31B), longer sessions, or faster itera
 
 | Provider | GPU | VRAM | $/hour | Supports |
 |---|---|---|---|---|
-| Colab Pro | A100 | 40 GB | ~$0.12 (via $12/mo plan) | All variants |
+| Colab Pro | A100 | 40 GB | ~\$0.12 (via \$12/mo plan) | All variants |
 | RunPod (community) | A30 | 24 GB | ~$0.11 | E2B, E4B, 26B-A4B |
 | RunPod (community) | A100 80GB | 80 GB | ~$0.79 | All variants |
 | Vast.ai | A100 80GB | 80 GB | ~$0.70 | All variants |
@@ -140,7 +140,7 @@ But during training, you need three additional copies of that memory:
 
 Add it up: ~71 GB minimum for the E4B with full fine-tuning. That's two H100 80GB GPUs for a comfortable margin. For the 31B, you're in 4–8× A100 territory.
 
-Cloud costs for this: running 8× A100 80GB on AWS (p4d.24xlarge) costs ~$30/hour. A fine-tuning run that takes 10 hours costs $300. If you need to iterate — adjust hyperparameters, fix data quality issues, retrain — costs multiply quickly.
+Cloud costs for this: running 8× A100 80GB on AWS (p4d.24xlarge) costs ~\$30/hour. A fine-tuning run that takes 10 hours costs \$300. If you need to iterate — adjust hyperparameters, fix data quality issues, retrain — costs multiply quickly.
 
 This isn't a reason to give up on fine-tuning. It's a reason to use the methods that make full fine-tuning unnecessary.
 

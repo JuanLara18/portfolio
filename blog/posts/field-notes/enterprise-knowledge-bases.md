@@ -532,7 +532,7 @@ def enrich_chunk_metadata(
     })
 ```
 
-The cost at scale: enriching a 100,000-document corpus with a fast model at average chunk sizes around 512 tokens runs to roughly 500 million input tokens. At GPT-4o-mini pricing (approximately $0.15/M input tokens as of early 2026), this costs around $75 for the extraction pass—a reasonable one-time investment for a corpus that will be queried thousands of times. For very large corpora, enrichment can be batched and parallelized, and selective enrichment (only for document types where metadata quality matters most) reduces cost further.
+The cost at scale: enriching a 100,000-document corpus with a fast model at average chunk sizes around 512 tokens runs to roughly 500 million input tokens. At GPT-4o-mini pricing (approximately \$0.15/M input tokens as of early 2026), this costs around \$75 for the extraction pass—a reasonable one-time investment for a corpus that will be queried thousands of times. For very large corpora, enrichment can be batched and parallelized, and selective enrichment (only for document types where metadata quality matters most) reduces cost further.
 
 ### Document Lifecycle Management
 

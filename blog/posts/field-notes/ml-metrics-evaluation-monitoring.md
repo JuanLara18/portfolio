@@ -35,7 +35,7 @@ Consider fraud detection:
 - **False positive**: A legitimate transaction is blocked. Customer is inconvenienced, might call support, might abandon purchase.
 - **False negative**: Fraudulent transaction is approved. Direct financial loss, potential chargeback, damaged trust.
 
-These costs are asymmetric. A false negative might cost $500 in direct loss; a false positive might cost $5 in support time. Optimizing for raw accuracy ignores this asymmetry entirely.
+These costs are asymmetric. A false negative might cost \$500 in direct loss; a false positive might cost \$5 in support time. Optimizing for raw accuracy ignores this asymmetry entirely.
 
 ### Classification Metrics: The Complete Picture
 

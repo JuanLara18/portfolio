@@ -244,7 +244,7 @@ The practical consequence: when a regulator asks "what did your AI system do wit
 
 **Pure data engineering workloads.** If 70% of your work is large-scale data transformations, complex ETL, and big-data processing, Databricks is the better choice. Databricks is built on Apache Spark and optimized for data engineering at scale. Dataiku can connect to Spark and Databricks clusters, but it's fundamentally an analytics and ML platform — not a data engineering platform. For organizations where heavy data engineering dominates, the right architecture is often Databricks + dbt for data engineering with Dataiku added for governed analytics and ML if that layer is needed.
 
-**Small startups and teams under 20 people.** Dataiku's entry pricing is $26,000+ per year, and enterprise deployments routinely reach $100,000+. For a team of five data scientists who communicate over Slack and deploy models to a single Kubernetes cluster, the open-source stack (dbt + Airflow + MLflow + Jupyter) is cheaper, more flexible, and has significantly lower cognitive overhead. The governance overhead that makes Dataiku valuable at scale becomes friction at small scale.
+**Small startups and teams under 20 people.** Dataiku's entry pricing is \$26,000+ per year, and enterprise deployments routinely reach \$100,000+. For a team of five data scientists who communicate over Slack and deploy models to a single Kubernetes cluster, the open-source stack (dbt + Airflow + MLflow + Jupyter) is cheaper, more flexible, and has significantly lower cognitive overhead. The governance overhead that makes Dataiku valuable at scale becomes friction at small scale.
 
 **ML research and rapid experimentation.** If your use case is "train 200 models, compare them, iterate fast," Dataiku's structured workflows introduce overhead that slows research velocity. Jupyter + MLflow + Weights & Biases is faster for this. Dataiku is optimized for production-grade, repeatable workflows — not exploration-first, publication-oriented research.
 
@@ -397,7 +397,7 @@ These choices aren't mutually exclusive. Many large enterprises run Databricks f
 
 ## Pricing and Market Context
 
-Dataiku starts at approximately $26,000 per year for a basic installation and routinely reaches $100,000+ for enterprise deployments with multiple users, advanced modules, and support SLAs. This is not a startup budget. The value calculation requires answering: what is the cost of not having governance, not having collaboration tooling, not having centralized MLOps — measured in compliance risk, engineering time, and coordination overhead?
+Dataiku starts at approximately \$26,000 per year for a basic installation and routinely reaches \$100,000+ for enterprise deployments with multiple users, advanced modules, and support SLAs. This is not a startup budget. The value calculation requires answering: what is the cost of not having governance, not having collaboration tooling, not having centralized MLOps — measured in compliance risk, engineering time, and coordination overhead?
 
 In a regulated industry where a single compliance failure can cost more than a decade of Dataiku licensing, the math often works. In a growth-stage startup where the risk is moving too slowly, spending $100k per year on platform licensing is probably the wrong trade-off.
 
