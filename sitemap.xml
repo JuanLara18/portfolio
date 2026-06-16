@@ -49,6 +49,42 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business</loc>
+    <lastmod>2028-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale</loc>
+    <lastmod>2028-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a</loc>
+    <lastmod>2028-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag</loc>
+    <lastmod>2028-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration</loc>
+    <lastmod>2028-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents</loc>
+    <lastmod>2027-12-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</loc>
     <lastmod>2027-12-23</lastmod>
     <changefreq>monthly</changefreq>

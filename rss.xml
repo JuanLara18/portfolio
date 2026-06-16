@@ -9,8 +9,123 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Dec 2027 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 03 Feb 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The Enterprise Shield: Governance, Security, and Business Value of Agents</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business</guid>
+    <pubDate>Thu, 03 Feb 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The strategic close to the agentic engineering arc. An agent that is fluent and clever but insecure, unaccountable, or untethered to a business metric should not ship. This is the shield a regulated bank wraps around a production agent: prompt-injection defense in depth, retrieval ACLs, PII masking, an incident protocol for a jailbreak in the wild, responsible-AI controls for proxy bias, system cards and red teaming to satisfy a security review, and the FinOps and ROI arguments that prove the thing earns its keep.]]></description>
+    <category>field-notes</category>
+    <category>Agentic AI</category>
+    <category>Agents</category>
+    <category>AI Governance</category>
+    <category>Security</category>
+    <category>Responsible AI</category>
+    <category>Enterprise AI</category>
+    <category>Prompt Engineering</category>
+    <category>AI Engineering</category>
+    <category>Best Practices</category>
+    <category>Production ML</category>
+    <category>RAG</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Operating Agents: Evaluation, Observability, and Scalability</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale</guid>
+    <pubDate>Thu, 27 Jan 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[An agent that demos beautifully is not a production service. This is the operations layer of agentic engineering: how to measure quality with RAGAS-style metrics, build regression gates that block bad deploys, make stochastic bugs reproducible, trace every decision for audit, and scale the whole thing without setting your token budget on fire.]]></description>
+    <category>field-notes</category>
+    <category>Agentic AI</category>
+    <category>Agents</category>
+    <category>Evaluation</category>
+    <category>Observability</category>
+    <category>MLOps</category>
+    <category>Production ML</category>
+    <category>LLMs</category>
+    <category>AI Engineering</category>
+    <category>Best Practices</category>
+    <category>RAG</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Integration Protocols: How Agents Talk to the World and to Each Other</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a</guid>
+    <pubDate>Thu, 20 Jan 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every agent you build has to reach data it does not own and cooperate with agents it did not write. Do that with bespoke connectors and the cost explodes as M times N. This is the protocol layer of agentic engineering: MCP for tools and context, A2A for agent-to-agent collaboration, and why a standard beats a super-agent, a single model, or a shared vector database every time.]]></description>
+    <category>field-notes</category>
+    <category>Agentic AI</category>
+    <category>Agents</category>
+    <category>Multi-Agent</category>
+    <category>MCP</category>
+    <category>AI Engineering</category>
+    <category>LLMs</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Production ML</category>
+    <category>Protocols</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Agent Memory and Retrieval: From Embeddings to Production RAG</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag</guid>
+    <pubDate>Thu, 13 Jan 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[An agent's intelligence is mostly its context system: what it can remember across turns and what it can pull in from the outside. Memory and retrieval are one design surface. This is the engineering of that surface, from the geometry of embeddings to the production failures that decide whether your agent answers from today's policy or last year's deleted record.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>RAG</category>
+    <category>Embeddings</category>
+    <category>Vector Databases</category>
+    <category>Information Retrieval</category>
+    <category>Knowledge Graphs</category>
+    <category>LLMs</category>
+    <category>AI Engineering</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Agent Architecture and Orchestration: Routers, Graphs, and Multi-Agent Workflows</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration</guid>
+    <pubDate>Thu, 06 Jan 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Control flow is the part of agent engineering nobody puts in the demo and everybody fights with in production. This is a working tour of the topologies that matter, routers, hierarchical supervisors, consensus layers, and the cyclic graphs underneath them, plus the LangGraph, CrewAI, LangChain, and LlamaIndex machinery that makes them durable instead of brittle.]]></description>
+    <category>field-notes</category>
+    <category>Agentic AI</category>
+    <category>Agents</category>
+    <category>Multi-Agent</category>
+    <category>LangChain</category>
+    <category>LangGraph</category>
+    <category>LlamaIndex</category>
+    <category>AI Engineering</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Production ML</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Foundations of Agentic AI: How LLMs Think, and What Makes a Program an Agent</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents</guid>
+    <pubDate>Thu, 30 Dec 2027 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part one of a six-part series on agentic AI engineering. We demystify what an LLM actually does when it thinks, why it can never be certain, and where the bright line falls between a hardcoded chain and a program that controls its own flow.]]></description>
+    <category>field-notes</category>
+    <category>Agentic AI</category>
+    <category>Agents</category>
+    <category>LLMs</category>
+    <category>Transformers</category>
+    <category>Attention Mechanism</category>
+    <category>Prompt Engineering</category>
+    <category>AI Engineering</category>
+    <category>NLP</category>
+    <category>Tokenization</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Defining the Knowledge Stack: Assets, Products, Tools, and Pipelines</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</link>
