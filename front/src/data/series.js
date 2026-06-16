@@ -11,6 +11,23 @@
 
 export const SERIES = [
   {
+    id: 'agentic-ai-engineering',
+    title: 'Agentic AI Engineering, end to end',
+    description:
+      'A six-part path through building production agents: how LLMs actually think, ' +
+      'architecture and orchestration, memory and retrieval, the integration protocols ' +
+      'that connect them, operating them at scale, and the enterprise shield of ' +
+      'governance, security, and business value.',
+    posts: [
+      'foundations-of-agentic-ai-llms-to-agents',
+      'agent-architecture-and-orchestration',
+      'agent-memory-and-retrieval-embeddings-to-rag',
+      'agent-integration-protocols-mcp-and-a2a',
+      'operating-agents-eval-observability-scale',
+      'enterprise-agents-governance-security-business',
+    ],
+  },
+  {
     id: 'production-rag',
     title: 'RAG, from foundations to production',
     description:
