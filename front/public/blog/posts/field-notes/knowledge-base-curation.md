@@ -299,7 +299,7 @@ def contextualize_chunk(
     return f"{context}\n\n{chunk}"
 ```
 
-**The cost trade-off:** contextual enrichment requires one LLM call per chunk. For a 10,000-chunk corpus, that's ~$2-5 using Claude Haiku. For 100,000 chunks, ~$20-50. It's a one-time cost at ingestion — not per query — and the retrieval quality improvement typically justifies it within days.
+**The cost trade-off:** contextual enrichment requires one LLM call per chunk. For a 10,000-chunk corpus, that's ~\$2-5 using Claude Haiku. For 100,000 chunks, ~\$20-50. It's a one-time cost at ingestion — not per query — and the retrieval quality improvement typically justifies it within days.
 
 **When to skip it:** If your documents are self-contained (each chunk has clear entity references and dates within the chunk itself), contextual enrichment adds cost without meaningful benefit. Test with a sample before rolling it out across the entire corpus.
 
@@ -422,12 +422,12 @@ def detect_near_duplicates(
 
 ### Conflict Resolution
 
-Deduplication reveals a harder problem: what do you do when two authoritative documents *contradict* each other? The 2024 travel policy says "maximum hotel rate: $200/night." The 2025 addendum says "$250/night for tier-1 cities." Both are current. Both are official.
+Deduplication reveals a harder problem: what do you do when two authoritative documents *contradict* each other? The 2024 travel policy says "maximum hotel rate: \$200/night." The 2025 addendum says "\$250/night for tier-1 cities." Both are current. Both are official.
 
 Options:
 
 1. **Merge with precedence rules** — later documents override earlier ones. Simple but dangerous if the later document is a partial update, not a full replacement.
-2. **Keep both with metadata flags** — tag the conflict and let the LLM at query time acknowledge the ambiguity: "Policy X says $200, but the 2025 addendum updated this to $250 for tier-1 cities."
+2. **Keep both with metadata flags** — tag the conflict and let the LLM at query time acknowledge the ambiguity: "Policy X says \$200, but the 2025 addendum updated this to \$250 for tier-1 cities."
 3. **Escalate to a human** — flag contradictions for domain expert resolution before indexing. Slowest but safest for high-stakes domains.
 
 For most organizations, option 2 is the pragmatic choice. The retrieval system returns both chunks with their dates and sources, and the LLM synthesizes the response acknowledging the evolution. This is more honest than silently picking one version.

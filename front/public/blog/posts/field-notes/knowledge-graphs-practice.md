@@ -266,7 +266,7 @@ async def build_graph():
 asyncio.run(build_graph())
 ```
 
-Each document makes one or more LLM calls. For the two short documents above, expect ~$0.01-0.02 in API costs. For a 10,000-document corpus, budget $50-200 depending on document length and model choice.
+Each document makes one or more LLM calls. For the two short documents above, expect ~\$0.01-0.02 in API costs. For a 10,000-document corpus, budget \$50-200 depending on document length and model choice.
 
 ### Step 4: Verify the Graph
 

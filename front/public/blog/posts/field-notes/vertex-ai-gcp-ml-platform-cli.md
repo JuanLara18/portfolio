@@ -183,7 +183,7 @@ Workbench pricing is Compute Engine pricing. You pay for the VM while it is runn
 | n1-highmem-4 | 4 | 26 GB | ~$0.24 |
 | e2-standard-4 | 4 | 16 GB | ~$0.13 |
 
-Adding a T4 GPU adds approximately $0.25/hour. An A100 adds approximately $3.06/hour. The most common mistake is forgetting to stop notebooks when you are done -- an idle n1-standard-8 with a T4 costs roughly $460/month if left running.
+Adding a T4 GPU adds approximately \$0.25/hour. An A100 adds approximately \$3.06/hour. The most common mistake is forgetting to stop notebooks when you are done -- an idle n1-standard-8 with a T4 costs roughly $460/month if left running.
 
 ### When to Use It
 
@@ -321,7 +321,7 @@ Custom Training charges have two components: compute infrastructure (Compute Eng
 | n1-standard-8 + A100 | $3.44 | $0.44 | $3.88 |
 | a2-highgpu-1g (A100 40GB) | $3.67 | $0.44 | $4.11 |
 
-Billing is in 30-second increments, which means short jobs are not penalized with a full-hour minimum. Hyperparameter tuning jobs charge the same per-trial rates -- a 20-trial job running 5 in parallel at $0.71/hour costs roughly $0.71 x 4 hours x 5 parallel = $14.20 if each trial takes 1 hour (trials vary, so this is approximate).
+Billing is in 30-second increments, which means short jobs are not penalized with a full-hour minimum. Hyperparameter tuning jobs charge the same per-trial rates -- a 20-trial job running 5 in parallel at \$0.71/hour costs roughly \$0.71 x 4 hours x 5 parallel = $14.20 if each trial takes 1 hour (trials vary, so this is approximate).
 
 ### Training with Spot VMs
 
@@ -339,7 +339,7 @@ container-image-uri=gcr.io/my-project/trainer:v1 \
   --scheduling-strategy=SPOT
 ```
 
-An A100 that normally costs $3.88/hour drops to approximately $1.17/hour with spot pricing. The trade-off is that your job can be preempted at any time, so your training code needs to support checkpointing and resumption. For most modern frameworks (PyTorch Lightning, TensorFlow with callbacks), this is straightforward.
+An A100 that normally costs \$3.88/hour drops to approximately \$1.17/hour with spot pricing. The trade-off is that your job can be preempted at any time, so your training code needs to support checkpointing and resumption. For most modern frameworks (PyTorch Lightning, TensorFlow with callbacks), this is straightforward.
 
 ### Pre-built Containers vs Custom Containers
 
@@ -521,7 +521,7 @@ gcloud ai batch-prediction-jobs create \
 
 ### Endpoint Pricing
 
-This is where Vertex AI costs can surprise you. **You pay for deployed endpoints whether or not they receive traffic.** A model deployed to an `n1-standard-2` endpoint costs approximately $0.10/hour, which is $72/month. If you forget to undeploy, you pay continuously.
+This is where Vertex AI costs can surprise you. **You pay for deployed endpoints whether or not they receive traffic.** A model deployed to an `n1-standard-2` endpoint costs approximately \$0.10/hour, which is \$72/month. If you forget to undeploy, you pay continuously.
 
 | Endpoint Machine | Cost/Hour | Cost/Month (24/7) |
 |---|---|---|
@@ -649,7 +649,7 @@ gcloud ai pipeline-jobs create \
 
 ### Pricing
 
-Vertex AI Pipelines charges **$0.03 per pipeline run** as a management fee. The actual compute cost comes from the Compute Engine resources each pipeline component uses, billed at the same rates as Custom Training. A typical pipeline with three components running 30 minutes each on `n1-standard-4` machines costs roughly $0.03 + (3 x 0.5 x $0.23) = $0.38 total.
+Vertex AI Pipelines charges **\$0.03 per pipeline run** as a management fee. The actual compute cost comes from the Compute Engine resources each pipeline component uses, billed at the same rates as Custom Training. A typical pipeline with three components running 30 minutes each on `n1-standard-4` machines costs roughly \$0.03 + (3 x 0.5 x \$0.23) = \$0.38 total.
 
 ### Pipeline Best Practices
 
@@ -745,7 +745,7 @@ feature_view = client.create_feature_view(
 | Online serving (Bigtable) | $1.20/node-hour |
 | Data sync/ingestion | $0.10/node-hour |
 
-The offline store uses BigQuery pricing directly -- roughly $0.02/GB/month for storage and $6.25/TB for queries. The online store runs continuously, so a single optimized node costs approximately $274/month. This makes Feature Store one of the more expensive "always-on" services in Vertex AI. Only use the online store if you genuinely need sub-10ms feature lookups at prediction time.
+The offline store uses BigQuery pricing directly -- roughly \$0.02/GB/month for storage and \$6.25/TB for queries. The online store runs continuously, so a single optimized node costs approximately $274/month. This makes Feature Store one of the more expensive "always-on" services in Vertex AI. Only use the online store if you genuinely need sub-10ms feature lookups at prediction time.
 
 ### Point-in-Time Lookups
 
@@ -781,7 +781,7 @@ Without a feature store, this join logic must be implemented manually for every 
 
 ### Choosing Between Optimized and Bigtable Online Serving
 
-The optimized online store is cheaper ($0.38/node-hour vs $1.20/node-hour) and handles most use cases. Choose Bigtable online serving when you need higher throughput (millions of reads per second), custom Bigtable configurations, or when you already have Bigtable infrastructure and want to consolidate. For most teams starting with Feature Store, the optimized option is the right default.
+The optimized online store is cheaper (\$0.38/node-hour vs \$1.20/node-hour) and handles most use cases. Choose Bigtable online serving when you need higher throughput (millions of reads per second), custom Bigtable configurations, or when you already have Bigtable infrastructure and want to consolidate. For most teams starting with Feature Store, the optimized option is the right default.
 
 ---
 
@@ -863,8 +863,8 @@ Vector Search pricing depends on the deployed infrastructure:
 | Component | Cost |
 |---|---|
 | Index building | Compute Engine pricing for the build job |
-| Deployed endpoint (e2-standard-16) | ~$0.54/hour (~$389/month) |
-| Deployed endpoint (e2-standard-2) | ~$0.08/hour (~$58/month) |
+| Deployed endpoint (e2-standard-16) | ~\$0.54/hour (~\$389/month) |
+| Deployed endpoint (e2-standard-2) | ~\$0.08/hour (~\$58/month) |
 | Storage | Standard GCS pricing |
 
 Like prediction endpoints, you pay for deployed indexes whether or not they receive queries. For development, use the smallest machine type and scale up for production. Vector Search also offers a $1,000 free trial credit for new users.
@@ -1212,7 +1212,7 @@ This does not include network egress, Cloud Logging, or other ancillary GCP serv
 
 ### The Golden Rule of Vertex AI Costs
 
-The pattern across every service is the same: **always-on resources are what kill budgets, not job-based compute.** A training job that costs $50 runs once and stops. An endpoint that costs $0.10/hour runs forever and costs $72/month. A Feature Store node that costs $0.38/hour runs forever and costs $274/month. The most impactful cost optimization is not finding cheaper machine types -- it is eliminating always-on resources you do not need.
+The pattern across every service is the same: **always-on resources are what kill budgets, not job-based compute.** A training job that costs \$50 runs once and stops. An endpoint that costs \$0.10/hour runs forever and costs \$72/month. A Feature Store node that costs \$0.38/hour runs forever and costs $274/month. The most impactful cost optimization is not finding cheaper machine types -- it is eliminating always-on resources you do not need.
 
 Before you deploy anything to production, ask three questions: (1) Does this need to be real-time, or can batch processing handle it? (2) Can this autoscale to zero during off-hours? (3) Is there a cheaper alternative that meets my latency requirements? If you answer "batch," "yes," and "yes" to those questions, your Vertex AI bill drops dramatically.
 

@@ -15,7 +15,7 @@ There are exactly three situations where you should stop calling the cloud API a
 
 **Privacy:** Your customer data, your patient records, your internal documents can't leave your infrastructure. An API call to an external LLM is data leaving your control, regardless of what the terms of service say.
 
-**Cost:** At scale, API costs compound. A million tokens a day at $0.002/thousand tokens is $730 a month. A used H100 amortized over two years and running a model continuously is often cheaper, and at high volume, dramatically cheaper.
+**Cost:** At scale, API costs compound. A million tokens a day at \$0.002/thousand tokens is \$730 a month. A used H100 amortized over two years and running a model continuously is often cheaper, and at high volume, dramatically cheaper.
 
 **Control:** You want a specific model version frozen in production, or a fine-tuned model that doesn't exist on any API, or you need guaranteed latency that doesn't depend on external rate limits.
 

@@ -516,7 +516,7 @@ quadrantChart
 | Context | 16 tokens | 1,024 tokens | 2,048 tokens | 128K–1M |
 | Training data | 32K names | OpenWebText (~8B tokens) | FineWeb (~38B tokens) | trillions of tokens |
 | Training time | 60 seconds | ~4 days, 8xA100 | ~4 hours, 8xH100 | months, thousands of H100 |
-| Training cost | ~0 | ~$1,000 | ~$100 | ~$100M |
+| Training cost | ~0 | ~\$1,000 | ~\$100 | ~\$100M |
 | Post-training | none | none | SFT + RL | SFT + RLHF + RLAIF + more |
 | Inference infra | Python loop | PyTorch | PyTorch + vLLM | massive distributed serving |
 | Lines of code | 199 | ~600 | ~8,000 | millions (internal) |

@@ -15,7 +15,7 @@ There's a specific moment in every organization's AI journey where the excitemen
 
 Six months later, you have three disconnected pilots, two vendor contracts, a shadow LangChain repo that's somehow in production, and a CFO asking what exactly the AI budget is buying.
 
-This isn't a technology problem. It's a decision-making problem. The AI platform market grew from $101 billion in 2025 to a projected $201 billion by 2030, and with that growth came a blizzard of overlapping tools that make rational selection nearly impossible without a framework. Forty-two percent of companies scrapped AI initiatives in 2024 due to timeline and selection failures — not technical ones.
+This isn't a technology problem. It's a decision-making problem. The AI platform market grew from \$101 billion in 2025 to a projected \$201 billion by 2030, and with that growth came a blizzard of overlapping tools that make rational selection nearly impossible without a framework. Forty-two percent of companies scrapped AI initiatives in 2024 due to timeline and selection failures — not technical ones.
 
 This post doesn't tell you which tool to buy. It gives you a framework for deciding — one built around six durable axes that remain relevant even as specific products evolve. Whether you're an ML engineer evaluating options, a data scientist choosing where to build, or a CDO presenting a strategy to the board, the same axes apply. The tools plugged into them will change; the axes won't.
 
@@ -374,7 +374,7 @@ The PDF's cost analysis is directionally correct but undersells the nuance:
 | **Low-Code** | $100K-300K (platform + cloud) | Variable (compute + licensing) | FinOps discipline required to avoid runaway cloud spend |
 | **Hard-Code** | $200K-500K (engineering) | $150K-400K (maintenance) | 65% of cost is post-deployment. Talent retention risk. |
 
-The critical insight: **the cheapest option is the one that matches your use case**. A Hard-Code system that should have been No-Code wastes $300K in over-engineering. A No-Code system that should have been Low-Code wastes $300K in migration costs when you hit the ceiling.
+The critical insight: **the cheapest option is the one that matches your use case**. A Hard-Code system that should have been No-Code wastes \$300K in over-engineering. A No-Code system that should have been Low-Code wastes \$300K in migration costs when you hit the ceiling.
 
 ### Step 4: Map Your Portfolio
 
@@ -415,7 +415,7 @@ If you're the person who needs to sell this framework internally, here's the tra
 
 **For the CDO/CTO:** "We're not choosing one AI tool — we're building an AI capability portfolio. Each use case maps to the right paradigm based on six criteria. Here's the scoring for our top five use cases, and here's the cost projection for each."
 
-**For the CFO:** "Hard-Code everything costs $400K+ year one and $300K+ ongoing. Smart layering — No-Code for productivity, Low-Code for analytics, Hard-Code only for differentiators — cuts total cost by 40-60% while increasing coverage. Here's the TCO comparison by scenario."
+**For the CFO:** "Hard-Code everything costs \$400K+ year one and \$300K+ ongoing. Smart layering — No-Code for productivity, Low-Code for analytics, Hard-Code only for differentiators — cuts total cost by 40-60% while increasing coverage. Here's the TCO comparison by scenario."
 
 **For the Board:** "Our AI strategy has three layers: managed tools for everyday productivity (low risk, fast deployment), hybrid platforms for our data and ML operations (moderate investment, high flexibility), and custom development only where AI is our competitive moat. Every layer has built-in guardrails, observability, and fallback plans."
 

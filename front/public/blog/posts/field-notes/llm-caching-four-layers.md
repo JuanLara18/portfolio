@@ -152,7 +152,7 @@ The anti-pattern is putting variable content -- timestamps, user IDs, session me
 
 ### The Problem
 
-Every RAG query starts by embedding the user's question into a dense vector. Embedding API calls are cheap individually -- roughly $0.02-0.10 per million tokens for modern models -- but at scale they add up, and more importantly they add latency. A round-trip to an embedding API takes 50-200ms. If you are processing 100,000 queries per day and 40% are near-duplicates, that is 40,000 unnecessary API calls adding 2-8 seconds of cumulative wait time per batch and roughly $80-400/month in unnecessary costs.
+Every RAG query starts by embedding the user's question into a dense vector. Embedding API calls are cheap individually -- roughly \$0.02-0.10 per million tokens for modern models -- but at scale they add up, and more importantly they add latency. A round-trip to an embedding API takes 50-200ms. If you are processing 100,000 queries per day and 40% are near-duplicates, that is 40,000 unnecessary API calls adding 2-8 seconds of cumulative wait time per batch and roughly \$80-400/month in unnecessary costs.
 
 ### Content-Hash Keying
 

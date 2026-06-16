@@ -292,7 +292,7 @@ How you split documents before indexing determines what information is co-locate
 
 **Hierarchical chunking** (parent-child): Index fine-grained chunks for precise retrieval, return their parent chunk for synthesis context. The right default for most knowledge bases. LlamaIndex's `HierarchicalNodeParser` implements this pattern cleanly.
 
-**Metadata injection into every chunk**: Always include document title, section heading, date, and source in each chunk's text and metadata. A chunk that says "The minimum balance is $500" is ambiguous. A chunk that says "Product: Premium Savings | Section: Account Requirements | Effective: 2026-01 | The minimum balance is $500" is not. This single practice eliminates a large fraction of context recall failures.
+**Metadata injection into every chunk**: Always include document title, section heading, date, and source in each chunk's text and metadata. A chunk that says "The minimum balance is \$500" is ambiguous. A chunk that says "Product: Premium Savings | Section: Account Requirements | Effective: 2026-01 | The minimum balance is \$500" is not. This single practice eliminates a large fraction of context recall failures.
 
 ---
 

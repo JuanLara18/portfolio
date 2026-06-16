@@ -455,11 +455,11 @@ Deprecation is the part nobody plans for and everybody needs. A knowledge produc
 
 The metric that matters is not "is the system up." It is "do people use this product, and do they trust it." Both are observable. Usage is `queries_30d` and the breadth of distinct consumers. Trust is harder but not unmeasurable: groundedness (the fraction of answers carrying a valid citation, which an LLM-as-judge harness can score), consumer satisfaction (the thumbs-up signal from the feedback loop), and open incidents.
 
-It helps to roll these into a single product trust score, defined explicitly rather than by vibe. With freshness ratio \(f\), groundedness \(g\), usage-weighted satisfaction \(u\), and an open-incident penalty \(o\):
+It helps to roll these into a single product trust score, defined explicitly rather than by vibe. With freshness ratio $f$, groundedness $g$, usage-weighted satisfaction $u$, and an open-incident penalty $o$:
 
-\[ T = w_f f + w_g g + w_u u - w_o\, o \]
+$$ T = w_f f + w_g g + w_u u - w_o\, o $$
 
-with weights summing to one over the positive terms and \(o\) normalized to the product's query volume so that one incident on a low-traffic product hurts more than one incident on a heavily used one. The exact weights are a domain decision — a compliance product weights groundedness near-totally, an internal engineering wiki tolerates more — but the point of writing it down is that the catalog can *rank* products by \(T\), surface the ones decaying below threshold, and route consumers to the trustworthy one when two products overlap. A product whose \(T\) is sliding is a product whose owner gets paged before a regulator notices.
+with weights summing to one over the positive terms and $o$ normalized to the product's query volume so that one incident on a low-traffic product hurts more than one incident on a heavily used one. The exact weights are a domain decision — a compliance product weights groundedness near-totally, an internal engineering wiki tolerates more — but the point of writing it down is that the catalog can *rank* products by $T$, surface the ones decaying below threshold, and route consumers to the trustworthy one when two products overlap. A product whose $T$ is sliding is a product whose owner gets paged before a regulator notices.
 
 ### The operating model is the real deliverable
 
@@ -555,7 +555,7 @@ If you build the operating model — domain owners, a self-serve platform, a fed
 **Questions to Explore:**
 
 - A knowledge product binds to an ontology term for its meaning. When the ontology itself changes — a class is split, a definition tightened — every product bound to it inherits a meaning change it did not author. What is the right propagation discipline, and who is accountable when a downstream product's answers shift because an upstream definition moved?
-- The trust score \(T\) lets a catalog rank overlapping products and route consumers to the trustworthy one. But ranking creates a feedback loop: the top-ranked product gets more traffic, more feedback, and more reasons to stay on top, while a better but newer product starves. How do you design the ranking so it does not ossify?
+- The trust score $T$ lets a catalog rank overlapping products and route consumers to the trustworthy one. But ranking creates a feedback loop: the top-ranked product gets more traffic, more feedback, and more reasons to stay on top, while a better but newer product starves. How do you design the ranking so it does not ossify?
 - Data products serve analysts and other products; knowledge products serve agents that act. When an agent makes a consequential decision grounded in a knowledge product, the chain of evidence spans the agent's run trace, the product's citations, and the ontology's definitions. What is the minimum viable cross-layer audit artifact a regulator would accept, and which role in the operating model produces it?
 - The Core + Domains split keeps shared concepts small and stable. But business reality drifts: a concept that was domain-specific becomes cross-cutting, or vice versa. What is the governance process for *promoting* a concept into the Core or *demoting* one out of it, and how do you do it without breaking the products bound to it?
 - Most of an enterprise's hardest knowledge is tacit — the exceptions and judgment calls in experts' heads. Product thinking gives that knowledge an owner, but it does not extract it. Is there a defensible loop where agent interactions with a domain steward progressively externalize tacit knowledge into the product, or does the irreducibly tacit part set a hard ceiling on what any knowledge base can ever contain?

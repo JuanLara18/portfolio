@@ -300,7 +300,7 @@ Self-hosted parsers require GPU infrastructure, model management, and engineerin
 
 ### LlamaParse (LlamaIndex)
 
-Pricing: **1,000 pages/day free**, then **$0.003/page** ($3 per 1,000 pages). New accounts: 10,000 free credits.
+Pricing: **1,000 pages/day free**, then **\$0.003/page** (\$3 per 1,000 pages). New accounts: 10,000 free credits.
 
 From the Applied-AI benchmark of 800+ documents across 7 frontier parsers: LlamaParse achieves **78% edit similarity** and **81% ChrF++ robustness** (the best ChrF++ score of all tested parsers). Processing time: **~6 seconds regardless of document size** due to cloud parallelism — a 1-page and a 50-page document both process in ~6 seconds. This makes LlamaParse the best cost/quality option for moderate volumes where API latency is acceptable.
 
@@ -311,7 +311,7 @@ Open-source ETL for 65+ file types, with a cloud API. Pricing: per-page, with fr
 ### AWS Textract
 
 Pricing:
-- Detect Text (raw OCR): **$1.50/1,000 pages** (first 1M pages), then **$0.60/1,000 pages**
+- Detect Text (raw OCR): **\$1.50/1,000 pages** (first 1M pages), then **\$0.60/1,000 pages**
 - Analyze Document (tables + forms + queries): **$15–$65/1,000 pages** depending on features
 
 AWS Textract is a natural choice for AWS-native stacks. The 2026 updates improved accuracy on rotated text and low-resolution faxes. At high volume (200K+ pages/month), negotiated pricing reduces these rates significantly.
@@ -531,7 +531,7 @@ The decisions with the highest leverage:
 
 **Pick Docling or MinerU as your default parser.** Both are MIT-licensed, production-grade, and handle the common cases well. Docling is stronger on enterprise documents with complex tables; MinerU is stronger on academic papers and CJK content. Both beat the legacy tools (Tesseract raw, pdf2text, PDFMiner) significantly.
 
-**Use LlamaParse or a vision LLM as your escalation path.** For documents that defeat your deterministic pipeline — unusual layouts, handwritten annotations, extremely complex tables — the cloud API is the escape valve. At $0.003/page (LlamaParse), the cost of processing 1,000 difficult documents is $3.
+**Use LlamaParse or a vision LLM as your escalation path.** For documents that defeat your deterministic pipeline — unusual layouts, handwritten annotations, extremely complex tables — the cloud API is the escape valve. At \$0.003/page (LlamaParse), the cost of processing 1,000 difficult documents is \$3.
 
 **Table extraction needs explicit handling.** Do not assume your general-purpose parser handles tables correctly. Test with the specific table types in your corpus. For financial reports with complex merged headers, Docling's TableFormer is the right choice. For simple bordered tables in government PDFs, Camelot is faster and more predictable.
 
