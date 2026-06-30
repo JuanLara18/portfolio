@@ -27,6 +27,7 @@
     <category>Decision Making</category>
     <category>Best Practices</category>
     <category>Agentic AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/senior-product-engineering-scale-prioritization-architecture.mp3" length="11387232" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -45,6 +46,7 @@
     <category>Trade-offs</category>
     <category>Best Practices</category>
     <category>Agentic AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs.mp3" length="12430512" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -63,6 +65,7 @@
     <category>Backend Engineering</category>
     <category>Best Practices</category>
     <category>Agentic AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/senior-api-design-contracts-versioning-dx.mp3" length="13223808" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -82,6 +85,7 @@
     <category>Query Optimization</category>
     <category>Best Practices</category>
     <category>Agentic AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/senior-data-modeling-query-patterns-database-design.mp3" length="14237280" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -101,6 +105,7 @@
     <category>Observability</category>
     <category>Best Practices</category>
     <category>Agentic AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/senior-infrastructure-distributed-systems-failure-networking.mp3" length="14001840" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -121,6 +126,7 @@
     <category>Best Practices</category>
     <category>Production ML</category>
     <category>RAG</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-agents-governance-security-business.mp3" length="14299632" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -140,6 +146,7 @@
     <category>AI Engineering</category>
     <category>Best Practices</category>
     <category>RAG</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/operating-agents-eval-observability-scale.mp3" length="13700160" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -159,6 +166,7 @@
     <category>Best Practices</category>
     <category>Production ML</category>
     <category>Protocols</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-integration-protocols-mcp-and-a2a.mp3" length="8405856" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -178,6 +186,7 @@
     <category>LLMs</category>
     <category>AI Engineering</category>
     <category>Best Practices</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-memory-and-retrieval-embeddings-to-rag.mp3" length="11414736" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -197,6 +206,7 @@
     <category>Software Engineering</category>
     <category>Best Practices</category>
     <category>Production ML</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-architecture-and-orchestration.mp3" length="12285216" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -216,6 +226,7 @@
     <category>NLP</category>
     <category>Tokenization</category>
     <category>Best Practices</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/foundations-of-agentic-ai-llms-to-agents.mp3" length="10037952" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -300,7 +311,7 @@
     <category>Performance</category>
     <category>AI Engineering</category>
     <category>Cost Optimization</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/redis-for-ai-buy-vs-build-gcp.mp3" length="11480688" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/redis-for-ai-buy-vs-build-gcp.mp3" length="10097568" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -427,7 +438,7 @@
     <category>Knowledge Graphs</category>
     <category>Best Practices</category>
     <category>AI Strategy</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-as-a-product.mp3" length="13333824" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-as-a-product.mp3" length="13204080" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -447,7 +458,7 @@
     <category>Infrastructure</category>
     <category>MLOps</category>
     <category>Software Engineering</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dev-environments-for-ai-teams.mp3" length="12370176" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dev-environments-for-ai-teams.mp3" length="10885680" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1056,7 +1067,7 @@
     <category>Production ML</category>
     <category>Deep Learning</category>
     <category>Deployment</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/vertex-ai-gcp-ml-platform-cli.mp3" length="11141424" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/vertex-ai-gcp-ml-platform-cli.mp3" length="10343520" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1211,7 +1222,7 @@
     <category>Cost Optimization</category>
     <category>Embeddings</category>
     <category>Systems Design</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llm-caching-four-layers.mp3" length="9101088" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/llm-caching-four-layers.mp3" length="9095760" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1310,7 +1321,7 @@
     <category>Agentic AI</category>
     <category>LLMs</category>
     <category>Agents</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/claude-code-complete-guide.mp3" length="7310592" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/claude-code-complete-guide.mp3" length="8785584" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1430,7 +1441,7 @@
     <category>Knowledge Engineering</category>
     <category>NLP</category>
     <category>Data Pipelines</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-base-curation.mp3" length="8168976" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-base-curation.mp3" length="7621344" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1450,7 +1461,7 @@
     <category>Ontologies</category>
     <category>Embeddings</category>
     <category>Information Retrieval</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-graphs-practice.mp3" length="7824816" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/knowledge-graphs-practice.mp3" length="6518448" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1470,7 +1481,7 @@
     <category>Cloud Computing</category>
     <category>Evaluation</category>
     <category>Best Practices</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-ai-platform-selection.mp3" length="8153280" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-ai-platform-selection.mp3" length="8115408" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1489,7 +1500,7 @@
     <category>NLP</category>
     <category>Data Modeling</category>
     <category>Enterprise Data</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ontologies-building-knowledge-bases.mp3" length="8829936" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ontologies-building-knowledge-bases.mp3" length="8822160" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1569,7 +1580,7 @@
     <category>Cloud Computing</category>
     <category>Evaluation</category>
     <category>Best Practices</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3" length="10192752" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3" length="9335952" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1589,7 +1600,7 @@
     <category>Production ML</category>
     <category>Embeddings</category>
     <category>Information Retrieval</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/document-processing-ocr-layout.mp3" length="10358352" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/document-processing-ocr-layout.mp3" length="9527328" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1629,7 +1640,7 @@
     <category>Proof of Concept</category>
     <category>Benchmarks</category>
     <category>Cloud Computing</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ai-poc-enterprise-evaluation.mp3" length="9367632" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ai-poc-enterprise-evaluation.mp3" length="8392608" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1744,7 +1755,7 @@
     <category>Production ML</category>
     <category>Open Source</category>
     <category>Deployment</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/local-llm-inference-tools.mp3" length="4959216" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/local-llm-inference-tools.mp3" length="4962096" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1784,7 +1795,7 @@
     <category>PEFT</category>
     <category>PyTorch</category>
     <category>Production ML</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3" length="14357088" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3" length="11446848" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1906,7 +1917,7 @@
     <category>Production ML</category>
     <category>PostgreSQL</category>
     <category>LLMs</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3" length="16495632" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3" length="15481152" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1927,7 +1938,7 @@
     <category>Vector Databases</category>
     <category>Data Architecture</category>
     <category>LLMs</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-knowledge-bases.mp3" length="18420192" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-knowledge-bases.mp3" length="18415440" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -2397,7 +2408,7 @@
     <category>Observability</category>
     <category>Deep Learning</category>
     <category>Deployment</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-metrics-evaluation-monitoring.mp3" length="4107744" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/ml-metrics-evaluation-monitoring.mp3" length="2730384" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
