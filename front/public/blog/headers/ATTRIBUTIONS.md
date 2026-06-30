@@ -60,3 +60,9 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `container-port-header.jpg` — Photo by Brian Harris (U.S. Army), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aerial_view_of_shipping_containers,_and_big_container_cranes_at_Tacoma%27s_container_port_-a.jpg) (Public Domain)
 - `control-room-header.jpg` — Photo via Wikimedia Commons, [Power plant control room, Gdansk 1904](https://commons.wikimedia.org/wiki/File:Control_room_in_power_plant_powered_by_steam_machine_generators_at_Gdansk_University_of_Technology,_1904.jpg) (Public Domain)
 - `bank-vault-door-header.jpg` — Photo by Beyond My Ken, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Manufacturers_Trust_Company_Building_bank_vault_door.jpg) (CC BY-SA 4.0)
+
+- `power-lines-blue-hour-header.jpg` — Photo by Bernd Thaller, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Power_lines_during_Blue_Hour_BW.jpg) (CC BY 2.0)
+- `library-archive-stacks-header.jpg` — Photo of Hamamatsu Municipal Sakuma Library, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hamamatsu_Municipal_Sakuma_Library_reading_room_ac_(5).jpg) (CC BY-SA)
+- `container-terminal-header.jpg` — Eimskip container terminal, Port of Reykjavík, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eimskip_container_terminal_at_Port_of_Reykjav%C3%ADk.jpg) (CC BY-SA)
+- `balance-scale-header.jpg` — Letter balance, Auckland Museum Collections, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Balance,_letter_(51360064428).jpg) (CC BY)
+- `city-skyline-aerial-header.jpg` — Aerial view of Guatemala City by Rene Hernandez, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aerial_view_of_Guatemala_City_-_Guatemala_-_16.jpg) (CC BY-SA 2.0)
