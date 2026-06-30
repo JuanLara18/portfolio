@@ -4,9 +4,9 @@ date: "2026-12-17"
 excerpt: "Most developers use Claude Code like a smarter autocomplete. A small minority treat it as what it actually is — a programmable agent that reads files, runs commands, spawns helpers, and iterates until your task is done. This is the complete mental model, every subsystem that matters, and how to actually become an expert."
 tags: ["Claude Code", "Anthropic", "AI Coding", "Developer Tools", "MCP", "CLI", "Productivity", "Agentic AI", "LLMs", "Agents"]
 headerImage: "/blog/headers/claude-header.jpeg"
-readingTimeMinutes: 38
+readingTimeMinutes: 49
 slug: claude-code-complete-guide
-estimatedWordCount: 8000
+estimatedWordCount: 8700
 ---
 
 # Claude Code: The Complete Guide to Becoming a Power User of the AI That Codes With You
@@ -15,7 +15,7 @@ I've been using Claude Code as my primary development interface for long enough 
 
 And yet most people I talk to are using maybe 20% of what Claude Code actually does. They treat it as a chat window with file access. They never touch subagents. They've never written a hook, never scoped a skill, never looked at `/context` to see why the session feels sluggish. They don't know that `CLAUDE.md` is loaded every turn or that `--dangerously-skip-permissions` exists or that the Agent tool is why the thing can search ten thousand files without melting the context window.
 
-This post is the guide I wish I'd had on day one. It's long on purpose — Claude Code is genuinely a large system with many moving parts, and shallow coverage just breeds shallow use. I'll walk through the mental model, the core loop, the full configuration surface, and the half-dozen subsystems (CLAUDE.md, skills, subagents, MCP, hooks, permissions) that separate casual users from power users. Every section is grounded in actual behavior you can verify today.
+This post is the guide I wish I'd had on day one. It's long on purpose — Claude Code is genuinely a large system with many moving parts, and shallow coverage just breeds shallow use. I'll walk through the mental model, the core loop, the full configuration surface, and the subsystems (CLAUDE.md, skills, subagents, MCP, hooks, permissions, sandboxing, plugins, checkpoints) that separate casual users from power users. It's also a *living* document: Claude Code ships changes weekly, and this revision folds in the sandboxing, plugin-marketplace, checkpointing, and multi-surface (web, desktop, mobile, scheduled) capabilities that landed over the last few months. Every section is grounded in actual behavior you can verify today.
 
 Let's start with the thing most docs skip: what Claude Code fundamentally *is*.
 
@@ -83,7 +83,7 @@ After installing, `claude doctor` is the health check — it verifies auth, git,
 
 For individual use on a Pro or Max plan, just run `claude` the first time and a browser window opens. For CI, use `claude setup-token` to generate a one-year OAuth token and set `CLAUDE_CODE_OAUTH_TOKEN` in your CI secrets.
 
-There's one subtlety worth flagging: **which plan you're on changes what models are available**. Pro has restricted access to Opus. Max and Team unlock Opus 4.6 with extended thinking and the 1M context window. Enterprise adds SSO, managed policies, and compliance features. If you're using Claude Code for serious work, the Max plan pays for itself within a week if your alternative is pay-as-you-go API billing — extended thinking on Opus is expensive at list price.
+There's one subtlety worth flagging: **which plan you're on changes what models are available**. Pro has restricted access to Opus. Max and Team unlock Opus 4.8 with extended thinking and the 1M context window. Enterprise adds SSO, managed policies, and compliance features. If you're using Claude Code for serious work, the Max plan pays for itself within a week if your alternative is pay-as-you-go API billing — extended thinking on Opus is expensive at list price.
 
 ## Part 3 — The Core Loop: Tools as Hands
 
@@ -228,7 +228,36 @@ Once you've got a reasonable rule set, the model stops pestering you for routine
 
 `--dangerously-skip-permissions` exists as an escape hatch for isolated environments. I use it inside Docker containers and ephemeral VMs where the entire environment is throwaway. I do not use it on my main machine. Ever. The name is deliberate.
 
-## Part 6 — Slash Commands: The Control Surface
+## Part 6 — Sandboxing: Fewer Prompts Without Lowering the Guard
+
+The permission system answers "should I let Claude do this?" one action at a time. Sandboxing answers a different question: "what's the blast radius if I let Claude do *anything* inside this boundary?" The two compose, and together they're what finally let you stop drowning in approval prompts without resorting to the nuclear `--dangerously-skip-permissions`.
+
+The core idea: instead of confirming each command, you draw a box. Inside the box, Claude runs freely. The box itself is enforced by the operating system, so it holds even if a prompt-injection attack or a confused model tries to step outside it. Anthropic reports that internally, sandboxing cut permission prompts by about 84 percent — which matches my experience. The approval fatigue that makes people reflexively hit "yes" mostly disappears.
+
+Effective sandboxing needs **two** boundaries, because either one alone is trivially defeated:
+
+```mermaid
+flowchart LR
+    C[Claude bash and subprocesses] --> FS{Filesystem boundary}
+    C --> NET{Network boundary}
+    FS -->|allowed paths| OK1[Project dir, scratch]
+    FS -->|blocked| DENY1[Home secrets, system files]
+    NET -->|allowlisted hosts| OK2[Package registries, your APIs]
+    NET -->|blocked| DENY2[Unknown exfiltration targets]
+    style FS fill:#7c3aed,color:#fff
+    style NET fill:#0ea5e9,color:#fff
+    style DENY1 fill:#ef4444,color:#fff
+    style DENY2 fill:#ef4444,color:#fff
+```
+
+- **Filesystem isolation** confines reads and writes to the directories you name. Claude can churn through your repo and a scratch folder, but it cannot read `~/.ssh`, your browser cookies, or `/etc` — even if something convinces it to try.
+- **Network isolation** restricts outbound connections to an allowlist of hosts. Package installs and calls to your own services go through; a command that tries to POST your source tree to an unknown server is blocked at the socket.
+
+It's enforced at the OS level — **Seatbelt** on macOS, **bubblewrap** on Linux and WSL2 — so it covers not just Claude's direct calls but every script and subprocess they spawn. Because the guarantee comes from the kernel rather than from the model's good behavior, you can hand the agent much longer autonomous runs inside the box than you'd ever grant in plain default mode.
+
+The mental model I use: **permissions are the per-action gate, sandboxing is the perimeter fence.** On a throwaway VM I'll skip permissions entirely. On my real machine I keep permissions on *and* run inside a sandbox, so the rare thing that slips past one is caught by the other. That layering is exactly the defense-in-depth posture you'd want for anything with this much reach into your filesystem.
+
+## Part 7 — Slash Commands: The Control Surface
 
 Slash commands are how you talk *to* Claude Code as opposed to talking *through* it. They configure the session, switch modes, inspect state, and invoke skills. Type `/` in any session and you'll see the full list.
 
@@ -252,6 +281,8 @@ The ones I use daily:
 - `/agents` — create and manage subagents.
 - `/hooks` — view configured hooks.
 - `/skills` — browse available skills.
+- `/plugin` — browse marketplaces and install plugins (with a catalog search bar).
+- `/config` — settings, including the **output style** (Explanatory, Learning, or your own custom voice) that shapes how Claude narrates its work.
 - `/status` — account info, current model, session usage.
 - `/cost` — current session spend.
 
@@ -259,10 +290,11 @@ The ones I use daily:
 - `/init` — analyze a fresh codebase and generate a starter CLAUDE.md. Run this once per new project.
 - `/review` — bundled code-review skill. Works on staged changes or a branch diff.
 - `/test` — run your test suite with Claude watching output.
+- `/schedule` — set up a recurring cloud agent (see Part 16).
 
 Custom commands are really just skills under the hood (more on that in a moment). If you find yourself repeating the same prompt pattern — "make a commit with a conventional-commits message that..." — promote it to a skill and invoke it with `/commit`.
 
-## Part 7 — Skills: Prompt Modules with a Contract
+## Part 8 — Skills: Prompt Modules with a Contract
 
 Skills are the feature I wish more people used. They're prompt-based workflows that Claude invokes automatically when relevant or that you trigger manually with a slash command. They live at `.claude/skills/<name>/SKILL.md` (project) or `~/.claude/skills/<name>/SKILL.md` (user global).
 
@@ -319,7 +351,7 @@ The commands run *before* Claude sees the prompt. Output replaces the placeholde
 
 Skills are the main reason my `/commit`, `/review`, and `/ship` workflows take three keystrokes instead of three paragraphs.
 
-## Part 8 — Subagents: Context Isolation and Specialization
+## Part 9 — Subagents: Context Isolation and Specialization
 
 I mentioned the `Agent` tool earlier but the full subagent system is deeper. Subagents are specialized assistants that run in their own context window, with their own tool access, their own model, and their own system prompt. When they finish, they return a short summary to the main conversation. Whatever they read, whatever they searched, whatever intermediate thinking they did — none of that bloats your main context.
 
@@ -373,7 +405,13 @@ The parallel pattern is the one most people miss. If you need to audit three ind
 
 The flip side: subagent invocation has overhead. For a task where you know exactly which file to edit, spawning a subagent is pure waste. Subagents shine when the cost of exploration is high relative to the cost of the edit, or when you need context isolation to protect the main conversation.
 
-## Part 9 — MCP: Extending Claude Beyond the Filesystem
+### Running work in the background
+
+Subagents used to be synchronous — you spawned one and waited. Now they can run *asynchronously*. Launch a subagent with `run_in_background` and it executes independently while you keep working with Claude on something else; you get a task ID, and a notification fires when it finishes. The same pattern applies to long shell commands: when Claude kicks off `npm install`, a Docker build, a test suite, or an `ffmpeg` job, it can background the command (you can also background a running one with `Ctrl-B`) instead of blocking the whole session.
+
+This changes how you structure big work. Instead of a serial chain — explore, then build, then test, then review — you fan out: send three independent migrations to three background subagents in isolated worktrees, let a long test suite run in the background while you review the first diff, and consolidate as each reports back. The agent loop stops being a single thread of attention and starts looking like a small team you're directing. The discipline it demands is the same one good engineering managers have: keep track of what's in flight, and don't start more parallel work than you can actually review.
+
+## Part 10 — MCP: Extending Claude Beyond the Filesystem
 
 Model Context Protocol is Anthropic's open standard for letting external systems expose tools to Claude. The filesystem, Git, Bash — those are built-in. Everything else — your database, your Linear board, your Figma files, your production logs, your Slack — lives behind an MCP server.
 
@@ -422,7 +460,24 @@ One subtlety: MCP servers consume context space even when you're not using them,
 
 Check `/mcp` for a per-server cost breakdown and to see which ones are actually connected.
 
-## Part 10 — Hooks: Deterministic Automation Around the Loop
+## Part 11 — Plugins and Marketplaces: Distribution for Everything Above
+
+By now you've noticed a pattern: skills, subagents, hooks, MCP servers, and slash commands are all separate files in separate places. That's fine for your own machine. It falls apart the moment you want to share a coherent setup with a team or install someone else's. A **plugin** is the answer — a single installable unit that bundles any combination of those primitives.
+
+One plugin might ship a `/deploy` command, a `deployment-reviewer` subagent, a `PreToolUse` hook that blocks pushes to protected branches, and an MCP server that talks to your cloud provider — all versioned together, installed in one step, and updated as a unit. Instead of a wiki page that says "copy these seven files into these seven directories," you publish a plugin.
+
+Plugins are distributed through **marketplaces**. You add a marketplace (the official Anthropic one, a community list, or an internal one your org stands up behind the firewall), browse its catalog, and install:
+
+```bash
+claude plugin marketplace add anthropics/claude-code-plugins
+claude plugin install code-review@anthropic
+```
+
+Or interactively with `/plugin`, which now includes a search bar for browsing a marketplace's catalog. An internal marketplace is the cleanest way I've seen to standardize "how we use Claude Code here" across a team: golden CLAUDE.md fragments, the review and commit skills everyone should have, the security hooks compliance requires, and the MCP servers wired to your infrastructure — all in one curated, updatable place. It turns "Claude hygiene" from tribal knowledge into something you can actually ship and version.
+
+The trade-off is the usual one for any package ecosystem: a plugin can carry hooks and MCP servers that execute code and reach the network, so install from sources you trust and read what a plugin bundles before you add it — the same scrutiny you'd give an npm dependency or a VS Code extension.
+
+## Part 12 — Hooks: Deterministic Automation Around the Loop
 
 Hooks are how you get *guaranteed* behavior around Claude Code's lifecycle. CLAUDE.md rules are advisory — the model might skip them. Hooks are deterministic — they run every time, no exceptions.
 
@@ -501,7 +556,41 @@ Hooks are where you enforce organizational policy (block pushes to main, require
 
 They're also the right place to persist environment variables across Bash commands — a gotcha that trips everyone. Each Bash call runs in its own subprocess, so `export FOO=bar` in one call vanishes by the next. The fix is a `SessionStart` hook that writes the env to `$CLAUDE_ENV_FILE`, which every subsequent Bash command sources automatically.
 
-## Part 11 — Context Management: The Skill That Separates Experts
+## Part 13 — Checkpointing and Rewind: A Time Machine for the Session
+
+Sandboxing limits the blast radius. Checkpointing lets you undo whatever happened inside it. This is the feature that makes it psychologically safe to tell Claude "try the ambitious version" — because if the ambitious version is wrong, you rewind and try a different prompt, with no manual cleanup.
+
+Claude Code automatically snapshots the state of your code before each edit. Every prompt you send creates a new checkpoint, and — this is the part people miss — **checkpoints persist across sessions**. Resume a conversation tomorrow and you can still rewind to where you were today. They're cleaned up with the session after 30 days by default.
+
+Open the menu with `/rewind`, or press `Esc` twice when the prompt input is empty. (If there's text in the input, the first double-`Esc` clears it instead — but the cleared text goes to your input history, so `Up` brings it back.) The menu lists every prompt from the session, and for the point you pick you choose what to move:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Working
+    Working --> RewindMenu: /rewind or Esc Esc
+    RewindMenu --> RestoreBoth: Restore code and conversation
+    RewindMenu --> RestoreConv: Restore conversation only
+    RewindMenu --> RestoreCode: Restore code only
+    RewindMenu --> SummarizeFwd: Summarize from here
+    RewindMenu --> SummarizeBack: Summarize up to here
+    RewindMenu --> Working: Never mind
+    RestoreBoth --> Working
+    RestoreConv --> Working
+    RestoreCode --> Working
+    SummarizeFwd --> Working
+    SummarizeBack --> Working
+```
+
+The three *restore* actions revert state — code, conversation, or both — to the selected point. The two *summarize* actions don't touch your files at all; they compress one side of the conversation into a summary to reclaim context (more on that next part). It's like a targeted `/compact`: you decide whether to crush the early setup discussion or a noisy debugging tangent while keeping the rest in full detail. The original messages stay in the transcript, so Claude can still reference specifics if needed.
+
+Two limitations matter, and both come straight from the docs:
+
+- **Bash changes are not tracked.** Checkpointing captures edits made through Claude's file-editing tools only. If Claude ran `rm`, `mv`, or `cp`, rewind cannot undo those. This is the single most important caveat — a rewind can leave you with restored source files but side effects on disk that it never touched.
+- **It is not a replacement for version control.** Checkpoints are session-level "local undo." Git remains your permanent history. Think of them as complementary: rewind for the speculative attempt you abandoned five minutes ago, commits for anything you want to keep.
+
+There's also a nice escape hatch: if you ran `/clear` earlier in the same process, the rewind menu shows a "previous session" entry at the top so you can recover the conversation you thought you'd thrown away.
+
+## Part 14 — Context Management: The Skill That Separates Experts
 
 Context is the most precious resource in an agentic session. Run out and everything slows down, gets dumber, and costs more. Manage it well and a single session can handle a full day of serious work.
 
@@ -536,7 +625,7 @@ The habit that matters: get comfortable with `/clear`. Most people treat their s
 
 A related habit: name your sessions. `/rename oauth-refactor` lets you resume with `claude --resume oauth-refactor` days later. It's a small thing that compounds.
 
-## Part 12 — Models, Effort Levels, and Fast Mode
+## Part 15 — Models, Effort Levels, and Fast Mode
 
 Claude Code gives you three model families and four effort levels, and picking well matters for both cost and quality.
 
@@ -544,9 +633,9 @@ Claude Code gives you three model families and four effort levels, and picking w
 |---|---|---|
 | **Haiku 4.5** | Mechanical tasks, bulk refactors, simple edits | Low |
 | **Sonnet 4.6** | Daily coding, reading/editing, routine debugging | Medium |
-| **Opus 4.6** | Hard reasoning, architecture, tricky bugs, planning | High |
+| **Opus 4.8** | Hard reasoning, architecture, tricky bugs, planning | High |
 
-Switch with `/model` mid-session. There's also `opusplan`, which uses Opus for plan mode and Sonnet for execution — a nice hybrid that gives you strong reasoning during the design phase without paying Opus rates during implementation.
+The lineup moves fast — Opus is on 4.8 as I write this, with 4.7 still around, and there's now **Fable 5** as well. Don't memorize version numbers; memorize the *tiers*. Haiku is the cheap workhorse for mechanical edits, Sonnet is the daily driver, Opus is what you reach for when the problem is genuinely hard. Switch with `/model` mid-session. There's also `opusplan`, which uses Opus for plan mode and Sonnet for execution — a nice hybrid that gives you strong reasoning during the design phase without paying Opus rates during implementation.
 
 Effort levels control the thinking budget:
 
@@ -557,13 +646,13 @@ Effort levels control the thinking budget:
 
 Set with `/effort high` or include "ultrathink" in a prompt for a one-off high-effort turn.
 
-**Fast mode** (`/fast`) is a separate toggle — same Opus 4.6 model, but an optimized decoding path that produces output faster. Worth trying on long-running tasks where you're watching Claude work.
+**Fast mode** (`/fast`) is a separate toggle, available on Opus 4.8 and 4.7 — same model, not a downgrade to something smaller, but an optimized output path that produces tokens faster. Worth keeping on for interactive work where you're watching Claude iterate.
 
 Track spending with `/cost`. On the Max plan with the all-you-can-eat OAuth, this matters less for individuals. On API billing, it matters a lot — a badly-managed session can rack up real money.
 
 My default setup: Sonnet 4.6 medium effort, `/fast` on, switch to Opus for explicit planning or hard debugging, switch to Haiku for bulk mechanical tasks. That gives me the best cost/quality curve for my workload. Yours may differ.
 
-## Part 13 — IDE and GitHub Integration
+## Part 16 — Beyond the Terminal: IDE, GitHub, Web, Desktop, and Scheduled Agents
 
 The VS Code and JetBrains extensions are thin wrappers over the CLI — same tools, same model, same agent loop. What they add is inline diffs, `@file` mentions with line ranges (`@src/auth.ts#40-60`), keyboard shortcuts, and a graphical plan-review panel. If you already live in VS Code, the extension is worth installing. If you're terminal-native, the CLI alone is fine.
 
@@ -599,7 +688,23 @@ claude -p "Review the latest commit and summarize risks" \
 
 I use headless mode for nightly audits that scan for stale dependencies, security issues in recent changes, and TODOs that have aged past a threshold. The report lands in a Slack channel by morning.
 
-## Part 14 — Best Practices: The Patterns That Actually Work
+### The terminal is no longer the only surface
+
+For a long time "Claude Code" meant the CLI, full stop. That's no longer true. The same agent now runs across several surfaces, and sessions travel between them:
+
+- **Web** — drive Claude Code from the browser against a cloud environment, useful for kicking off or checking on work without a terminal in front of you.
+- **Desktop app** — a Code tab with niceties like a worktree checkbox for isolated parallel work.
+- **Mobile** — the iOS and Android apps have a Code tab too, so you can fire off a task or review a diff from your phone.
+
+The connective tissue is **session teleportation**: start something on your laptop, check it from your phone on the train, finish it back at your desk — it's the same session, not a copy. The CLI is still the most powerful and scriptable surface, but the agent itself is now portable.
+
+### Scheduled and autonomous agents
+
+The logical next step beyond "run it in CI" is "run it on a schedule, in the cloud, whether or not my machine is on." Claude Code supports **scheduled agents** (routines): a recurring cloud job defined by a cron-like schedule and a prompt. `/schedule a daily job that reviews every PR shipped since yesterday and posts a digest` is a real, standing task — it runs server-side, so your device doesn't need to be awake.
+
+This is where Claude Code stops being only a thing you *use* and becomes a thing you *deploy*. The same guardrails from earlier parts — permissions, sandboxing, hooks, a tight CLAUDE.md — matter more here, not less, because nobody is watching each turn. An autonomous agent is exactly as safe as the box you put it in. Build the box first, then hand over the keys.
+
+## Part 17 — Best Practices: The Patterns That Actually Work
 
 Everything above is mechanics. Here's the distilled field wisdom.
 
@@ -618,13 +723,15 @@ Everything above is mechanics. Here's the distilled field wisdom.
 
 **Use subagents for search.** "Find all places where we do X" is almost always a subagent task. It keeps your main context clean.
 
-**Checkpoint before risk.** `/rewind` is your undo button. Before asking Claude to try something speculative, know that you can roll back cleanly.
+**Checkpoint before risk.** `/rewind` is your undo button. Before asking Claude to try something speculative, know that you can roll back cleanly — just remember rewind covers file edits, not the side effects of bash commands.
+
+**Sandbox instead of skipping permissions.** When you want long, low-friction autonomy, reach for a sandbox (filesystem plus network isolation) before you reach for `--dangerously-skip-permissions`. You get most of the prompt reduction with a real, OS-enforced perimeter instead of no perimeter at all.
 
 **Review every diff.** Not because Claude is careless — it's usually good — but because *you* need to keep the mental model of the codebase in your head. If you're not reading the diffs, you're losing ownership of the code.
 
 **Don't skip permissions on your main machine.** Ever. `--dangerously-skip-permissions` is for containers and VMs.
 
-## Part 15 — Honest Limits and Gotchas
+## Part 18 — Honest Limits and Gotchas
 
 Claude Code is not magic. Here's where it struggles:
 
@@ -644,7 +751,7 @@ Claude Code is not magic. Here's where it struggles:
 
 **The model is not deterministic.** Same prompt, different session, different solution. This is usually fine but can be frustrating when you're trying to reproduce a previous result. Save working prompts as skills.
 
-## Part 16 — The Evolution: Where This Is Going
+## Part 19 — The Evolution: Where This Is Going
 
 The pace of change here is the main reason this post will need regular updates. Quick timeline of what's been added recently:
 
@@ -655,12 +762,13 @@ timeline
     2025 H1 : Hooks, auto-memory : Lifecycle automation, persistent learning
     2025 H2 : Effort levels, fast mode : Adaptive thinking, optimized decoding
     2026 H1 : 1M context, tool search : Long sessions, deferred tool schemas
-    2026 H2 : Plugin marketplaces, agent teams : Shared skills, multi-agent orchestration
+    2026 H2 : Sandboxing, checkpointing, plugins : Safe autonomy, rewind, packaged distribution
+    2026 H2 : Web, desktop, mobile, scheduled agents : Portable sessions, autonomous cloud runs
 ```
 
-Each of these changes the optimal workflow in small but real ways. Subagents made large-codebase work practical. Hooks made policy enforcement possible. Auto-memory made sessions less forgetful. The 1M context window made refactors across dozens of files viable in a single session. Tool search made "connect everything to Claude" feasible without drowning in schemas.
+Each of these changes the optimal workflow in small but real ways. Subagents made large-codebase work practical. Hooks made policy enforcement possible. Auto-memory made sessions less forgetful. The 1M context window made refactors across dozens of files viable in a single session. Tool search made "connect everything to Claude" feasible without drowning in schemas. The most recent wave is about *trusting the agent with more rope safely*: sandboxing draws a kernel-enforced box so autonomy stops meaning approval fatigue, checkpointing makes ambitious attempts reversible, plugins let teams distribute a vetted setup, and the web, desktop, mobile, and scheduled surfaces unhook the agent from a single terminal.
 
-The direction is clear: more autonomy, more context, more integration with external systems, tighter feedback loops with CI and production. The boundary of what's agentically tractable keeps pushing outward. The question for you as a user is how quickly you learn to trust the new capabilities and how well you build the guardrails (hooks, permissions, CLAUDE.md) to make that trust safe.
+Notice the through-line of this revision. Almost everything new is paired: more autonomy (sandboxing, background tasks, scheduled cloud agents) arriving alongside more safety and recoverability (kernel sandboxes, checkpoints, packaged guardrails). That's not an accident. The boundary of what's agentically tractable keeps pushing outward, and the only way to push it responsibly is to make the failure modes cheap. The question for you as a user hasn't changed: how quickly you learn to trust the new capabilities, and how well you build the guardrails (sandboxes, hooks, permissions, CLAUDE.md) to make that trust safe.
 
 I'll be updating this post as major features land. Bookmark it, check back quarterly, and treat it as a living reference.
 

@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "8d3d01c2fcace1bb626234dcbc62eeb40e2260d4f33bc0a6a2f4296a19fdb437",
-  "sourceHash": "8d3d01c2fcace1bb626234dcbc62eeb40e2260d4f33bc0a6a2f4296a19fdb437",
-  "durationSec": 1471.656,
-  "byteSize": 8829936,
-  "narrationWordCount": 3160,
+  "hash": "e39a188607574bffd7e6e68793d72c039d097d49aa16a1c50cefcf61846033f0",
+  "sourceHash": "e39a188607574bffd7e6e68793d72c039d097d49aa16a1c50cefcf61846033f0",
+  "durationSec": 1470.36,
+  "byteSize": 8822160,
+  "narrationWordCount": 3156,
   "audioUrl": "/blog/audio/field-notes/ontologies-building-knowledge-bases.mp3",
   "translationModel": ""
 }

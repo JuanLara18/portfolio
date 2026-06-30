@@ -9,8 +9,100 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Feb 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Mar 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Engineering for the Product: Scale, Prioritization, and Architecture as Judgment</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture</guid>
+    <pubDate>Thu, 09 Mar 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The capstone of the senior-in-the-age-of-AI series. Implementation is cheap now, so the scarce skill moves up the stack: deciding what to build, how much to scale, which trade-off to take, and when generated code is subtly wrong. A field guide to engineering judgment as a product discipline, told through the lens of city planning.]]></description>
+    <category>field-notes</category>
+    <category>Software Engineering</category>
+    <category>System Design</category>
+    <category>Software Architecture</category>
+    <category>Scalability</category>
+    <category>Product Engineering</category>
+    <category>Technical Debt</category>
+    <category>Decision Making</category>
+    <category>Best Practices</category>
+    <category>Agentic AI</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Theory That Survives: CAP, PACELC, and the Trade-offs an AI Will Quietly Violate</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs</guid>
+    <pubDate>Thu, 02 Mar 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Frameworks churn. The theorems that bound what a distributed system can do are permanent, and an AI coding tool will confidently generate a system that quietly violates the consistency model you actually needed. This is the theory with the longest shelf life, framed as a brass balance scale where every guarantee you add to one pan is paid for in another.]]></description>
+    <category>field-notes</category>
+    <category>Software Engineering</category>
+    <category>System Design</category>
+    <category>Distributed Systems</category>
+    <category>CAP Theorem</category>
+    <category>Consistency</category>
+    <category>Databases</category>
+    <category>Trade-offs</category>
+    <category>Best Practices</category>
+    <category>Agentic AI</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Container, Not the Code: API Design as a Contract</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx</guid>
+    <pubDate>Thu, 24 Feb 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[An AI can generate endpoint handlers and an OpenAPI spec in seconds. But an API is a promise to other humans and systems, and promises are expensive to break. This is the third field note in a series on what stays scarce when the implementation becomes free: the contract, not the code, is the hard part.]]></description>
+    <category>field-notes</category>
+    <category>Software Engineering</category>
+    <category>System Design</category>
+    <category>API Design</category>
+    <category>Developer Experience</category>
+    <category>Versioning</category>
+    <category>REST</category>
+    <category>Backend Engineering</category>
+    <category>Best Practices</category>
+    <category>Agentic AI</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Shelf That Outlives the Building: Data Modeling for the Senior Engineer</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design</guid>
+    <pubDate>Thu, 17 Feb 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[An AI will generate a CREATE TABLE statement in two seconds. It cannot tell you whether that table is the right shape for the queries you will run for the next ten years. The data model is the one decision that outlives every rewrite and is the most expensive to get wrong. This is the second post in a series on the judgment that stays scarce when machines write the code.]]></description>
+    <category>field-notes</category>
+    <category>Software Engineering</category>
+    <category>System Design</category>
+    <category>Data Engineering</category>
+    <category>Data Architecture</category>
+    <category>Databases</category>
+    <category>SQL</category>
+    <category>Data Modeling</category>
+    <category>Query Optimization</category>
+    <category>Best Practices</category>
+    <category>Agentic AI</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Grid Doesn&apos;t Care About Your Retry Loop: Infrastructure Judgment in the Age of AI Coding</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking</guid>
+    <pubDate>Thu, 10 Feb 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[An AI can scaffold a Kubernetes manifest or a retry loop in seconds. It cannot decide your failure domains, your blast radius, or whether your retry will trigger a thundering herd at 3am. This is the first post in a series on the senior judgment that survives the code generator, starting with the hardest place to be wrong: infrastructure.]]></description>
+    <category>field-notes</category>
+    <category>Software Engineering</category>
+    <category>System Design</category>
+    <category>Distributed Systems</category>
+    <category>Infrastructure</category>
+    <category>Cloud Computing</category>
+    <category>Reliability</category>
+    <category>Networking</category>
+    <category>Observability</category>
+    <category>Best Practices</category>
+    <category>Agentic AI</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>The Enterprise Shield: Governance, Security, and Business Value of Agents</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business</link>

@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "66b84a4b6fb82c5d45d6ed9c012bfa11d3a6cdd47ed08daad369bb3e210aa828",
-  "sourceHash": "66b84a4b6fb82c5d45d6ed9c012bfa11d3a6cdd47ed08daad369bb3e210aa828",
-  "durationSec": 1358.88,
-  "byteSize": 8153280,
-  "narrationWordCount": 2940,
+  "hash": "bca36edaa4cdf5c813421bb3ff3be1050e0c7c32f8a64ac8a877a80309007cb3",
+  "sourceHash": "bca36edaa4cdf5c813421bb3ff3be1050e0c7c32f8a64ac8a877a80309007cb3",
+  "durationSec": 1352.568,
+  "byteSize": 8115408,
+  "narrationWordCount": 2937,
   "audioUrl": "/blog/audio/field-notes/enterprise-ai-platform-selection.mp3",
   "translationModel": ""
 }

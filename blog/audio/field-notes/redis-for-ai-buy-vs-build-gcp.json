@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "08d35ad4acde7893aad2dff09e818555bbba7d01ffd875f60907e904a364b48a",
-  "sourceHash": "08d35ad4acde7893aad2dff09e818555bbba7d01ffd875f60907e904a364b48a",
-  "durationSec": 1913.448,
-  "byteSize": 11480688,
-  "narrationWordCount": 4523,
+  "hash": "a6f2179fb3c026782ae5dacd8e73856598b60929bbe3ced086e482eca00b8d14",
+  "sourceHash": "a6f2179fb3c026782ae5dacd8e73856598b60929bbe3ced086e482eca00b8d14",
+  "durationSec": 1682.928,
+  "byteSize": 10097568,
+  "narrationWordCount": 4519,
   "audioUrl": "/blog/audio/field-notes/redis-for-ai-buy-vs-build-gcp.mp3",
   "translationModel": ""
 }
