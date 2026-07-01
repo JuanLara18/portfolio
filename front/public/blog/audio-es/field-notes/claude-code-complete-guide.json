@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "088a76d773d7b1c647241cc164493a60fad499d68b1860bbc3623a1184c32309",
-  "sourceHash": "295d234fd37511d1a03dadcfd920ac67fce7a8f9abe1e190f1d2ab0319a7dbce",
-  "durationSec": 1288.176,
-  "byteSize": 7729056,
-  "narrationWordCount": 3178,
+  "hash": "4c16c57a4ef3f789c28fc74602c29490c9a3c1e5a4bb3033e6f0621c3efaa0c0",
+  "sourceHash": "10fbce3ab023b9d09129652f222418df3eba08701b555d2adb64acbc6c6563c9",
+  "durationSec": 1347.624,
+  "byteSize": 8085744,
+  "narrationWordCount": 3852,
   "audioUrl": "/blog/audio-es/field-notes/claude-code-complete-guide.mp3",
   "translationModel": "gemma4:latest"
 }

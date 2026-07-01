@@ -1,0 +1,13 @@
+{
+  "slug": "enterprise-agents-governance-security-business",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "8463db0cb124db218c25c91453037528d3147bdcb53c60b9098b557892beb0b6",
+  "sourceHash": "75aef2e672c8c004ad2e2cbe65f4f0cedb130b43ecac8d83ea639a705b4d9915",
+  "durationSec": 2557.68,
+  "byteSize": 15346080,
+  "narrationWordCount": 7595,
+  "audioUrl": "/blog/audio-es/field-notes/enterprise-agents-governance-security-business.mp3",
+  "translationModel": "gemma4:latest"
+}

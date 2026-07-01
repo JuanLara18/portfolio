@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "322f03ad96eccf16c3f9be613a6475ca46a5aea28dfd88c4bed96cd9a724e3ba",
-  "sourceHash": "8bfcf9def72db2e9c58c3aaff31102b3d91fcf99586b7ef473b07a5ce78f2a43",
-  "durationSec": 1681.2,
-  "byteSize": 10087200,
-  "narrationWordCount": 4546,
+  "hash": "1b15654c44ca992fae69114112306f798b044dbdf98f940817c2e8a3ee90fbbd",
+  "sourceHash": "a8707f0b17f9145470c51887f832de96d83c5240a7d5faabe9d0e82ab8f2d423",
+  "durationSec": 1682.88,
+  "byteSize": 10097280,
+  "narrationWordCount": 4552,
   "audioUrl": "/blog/audio-es/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3",
   "translationModel": "gemma4:latest"
 }

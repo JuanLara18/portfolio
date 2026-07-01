@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "cce09dd0a5e60d2950e40d039787d4d68dc23d3dc36080b5c22369da296c59d9",
-  "sourceHash": "506486e33023f6cdc490cf8a9291268a15c627b3265d1512933a3ed02fb1bae0",
-  "durationSec": 2358.048,
-  "byteSize": 14148288,
-  "narrationWordCount": 5982,
+  "hash": "0ec812092e6f866201473ac85e55ff7e8edd2d4fc75ebe0b1bce5bfcdae639a8",
+  "sourceHash": "cdcda2883ab9d9d06d4a48051d266007ae6edeba96cd02900b4f84d25a07ae5e",
+  "durationSec": 2364.168,
+  "byteSize": 14185008,
+  "narrationWordCount": 5989,
   "audioUrl": "/blog/audio-es/field-notes/fine-tuning-gemma4-lora-qlora.mp3",
   "translationModel": "gemma4:latest"
 }

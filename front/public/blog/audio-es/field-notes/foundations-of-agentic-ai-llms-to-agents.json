@@ -1,0 +1,13 @@
+{
+  "slug": "foundations-of-agentic-ai-llms-to-agents",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "67461400b54b0184820cdd74220caf7632ffdfd22daec43b00a0e29d11a41e49",
+  "sourceHash": "b8d4fa05c0db892c5867631e4a84dd158aa70b084a26a896a8e5389ec340e302",
+  "durationSec": 1838.616,
+  "byteSize": 11031696,
+  "narrationWordCount": 5179,
+  "audioUrl": "/blog/audio-es/field-notes/foundations-of-agentic-ai-llms-to-agents.mp3",
+  "translationModel": "gemma4:latest"
+}
