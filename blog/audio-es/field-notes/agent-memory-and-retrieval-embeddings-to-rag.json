@@ -1,0 +1,13 @@
+{
+  "slug": "agent-memory-and-retrieval-embeddings-to-rag",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "cc075e629f0075812c46be0943055d8de7f32d4280af7b84ec5da1dfe8a1ac1b",
+  "sourceHash": "93f7584e4b70c0225cf6d518aa0021d750d413ef555c8e9c517cb9c57ded5fbd",
+  "durationSec": 1990.488,
+  "byteSize": 11942928,
+  "narrationWordCount": 5584,
+  "audioUrl": "/blog/audio-es/field-notes/agent-memory-and-retrieval-embeddings-to-rag.mp3",
+  "translationModel": "gemma4:latest"
+}

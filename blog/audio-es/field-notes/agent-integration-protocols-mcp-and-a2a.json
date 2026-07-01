@@ -1,0 +1,13 @@
+{
+  "slug": "agent-integration-protocols-mcp-and-a2a",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "6d4370a6bdfac0090e6e800377e57e30b9dfa4eabc426f0fab378560deb21054",
+  "sourceHash": "20c80e9fbd20e25a9ac564ded1a47b1c71a05202ae60436da06d012b5d2ee011",
+  "durationSec": 1697.928,
+  "byteSize": 10187568,
+  "narrationWordCount": 4579,
+  "audioUrl": "/blog/audio-es/field-notes/agent-integration-protocols-mcp-and-a2a.mp3",
+  "translationModel": "gemma4:latest"
+}

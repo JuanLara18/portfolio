@@ -1,0 +1,13 @@
+{
+  "slug": "agent-architecture-and-orchestration",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "0017e2d6e8cd52fa2d3ac0bfc727ddf0a0b784c525cf11d39a4ebcb50ba5d24a",
+  "sourceHash": "8763ca63712745ffa190675d99af11c8159bc15ce8b7f7b7da06033311325e64",
+  "durationSec": 2026.056,
+  "byteSize": 12156336,
+  "narrationWordCount": 5847,
+  "audioUrl": "/blog/audio-es/field-notes/agent-architecture-and-orchestration.mp3",
+  "translationModel": "gemma4:latest"
+}

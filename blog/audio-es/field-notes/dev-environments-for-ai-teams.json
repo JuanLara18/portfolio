@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "8b0b284b020aa3dd76d4812d330bc36788c432916de12878742d516f1ea81dc8",
-  "sourceHash": "845fc777962104fb46604971c80a8c4b663a7324490d6e12294906b8ac2150db",
-  "durationSec": 2087.352,
-  "byteSize": 12524112,
-  "narrationWordCount": 5947,
+  "hash": "12f8dfffa9d406049f50ccb316472e8fc9e35a33ee2e8a6a25088df4644832c5",
+  "sourceHash": "18067757144fb6b1cce6d53c6f19aa0ad5b95c1ee21ebd34b3ff8c4684adec48",
+  "durationSec": 2083.56,
+  "byteSize": 12501360,
+  "narrationWordCount": 5931,
   "audioUrl": "/blog/audio-es/field-notes/dev-environments-for-ai-teams.mp3",
   "translationModel": "gemma4:latest"
 }
