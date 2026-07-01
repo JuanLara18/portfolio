@@ -9,8 +9,108 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Mar 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 13 Apr 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The Graph Layer in Production: MCP, Local-First, and Build vs Buy</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy</guid>
+    <pubDate>Thu, 13 Apr 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The finale of the graph-layer series. Four posts argued that agents need a graph of your code. This one is about shipping it: why MCP became the universal transport, why the winning pattern is pre-computed and local-first with no code egress, how to keep the graph fresh, when it pays for itself, and the honest senior take on when not to graphify at all.]]></description>
+    <category>field-notes</category>
+    <category>Model Context Protocol</category>
+    <category>Agents</category>
+    <category>Knowledge Graphs</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Production ML</category>
+    <category>Agentic AI</category>
+    <category>MLOps</category>
+    <category>Infrastructure</category>
+    <category>RAG</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/graph-layer-in-production-mcp-build-vs-buy.mp3" length="11737296" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Graph Memory: Giving Agents a Temporal Knowledge Graph</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee</guid>
+    <pubDate>Thu, 06 Apr 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Vector memory retrieves text that looks like the past. It cannot tell you that the past changed. This is the fourth post in The Graph Layer for Agents: how to give an agent a memory that models evolving, contradicting facts over time as a bi-temporal knowledge graph, why fact invalidation beats deletion, what Graphiti and Cognee actually do, and the senior judgment of when none of this is worth the cost.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Knowledge Graphs</category>
+    <category>Agentic AI</category>
+    <category>RAG</category>
+    <category>Embeddings</category>
+    <category>Vector Databases</category>
+    <category>Information Retrieval</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Model Context Protocol</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/graph-memory-temporal-agents-graphiti-cognee.mp3" length="9133488" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Querying Code Graphs: Blast Radius, Localization, and Ranking Context</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization</guid>
+    <pubDate>Thu, 30 Mar 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part 3 of The Graph Layer for Agents. You have a code graph. Now what queries actually make an agent smarter? Localization, blast radius, PageRank-ranked context, and multi-hop retrieval, with real networkx over a call graph. The point is fewer tokens, fewer tool calls, better grounding.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>Agents</category>
+    <category>Algorithms</category>
+    <category>Software Engineering</category>
+    <category>PageRank</category>
+    <category>RAG</category>
+    <category>Information Retrieval</category>
+    <category>Best Practices</category>
+    <category>Agentic AI</category>
+    <category>Graph Theory</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/querying-code-graphs-blast-radius-localization.mp3" length="11913408" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction</guid>
+    <pubDate>Thu, 23 Mar 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part 2 of The Graph Layer for Agents. Two indexers point at the same Java repo. One finishes in eight seconds and answers every architecture question correctly. The other takes forty minutes, silently drops 377 files, and still gets some answers wrong. This is the story of how a repository actually becomes a graph, and why the boring deterministic path wins.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>Agents</category>
+    <category>Software Engineering</category>
+    <category>LLMs</category>
+    <category>RAG</category>
+    <category>Best Practices</category>
+    <category>Data Architecture</category>
+    <category>Information Retrieval</category>
+    <category>Algorithms</category>
+    <category>Agentic AI</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/repo-to-graph-ast-vs-llm-extraction.mp3" length="10974384" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short</guid>
+    <pubDate>Thu, 16 Mar 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Coding agents hit a hard ceiling with grep and vector embeddings, because neither can answer the questions that matter, what breaks if I touch this, who calls this, where does this decision actually live. The answer emerging across the industry in 2025 and 2026 is the context engine, a pre-analyzed queryable graph of your codebase served to the agent over MCP. This is part one of a five-part series, the map before the deep dives.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Knowledge Graphs</category>
+    <category>RAG</category>
+    <category>Embeddings</category>
+    <category>Model Context Protocol</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>Vector Databases</category>
+    <category>Information Retrieval</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-graph-layer-why-grep-embeddings-fell-short.mp3" length="12049776" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Engineering for the Product: Scale, Prioritization, and Architecture as Judgment</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture</link>
