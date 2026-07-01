@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1782845742,
+  "generatedAt": 1782866306,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -261,6 +261,19 @@
       "byteSize": 10929600,
       "narrationWordCount": 6254,
       "audioUrl": "/blog/audio/field-notes/agent-engineering-disciplines.mp3",
+      "translationModel": ""
+    },
+    "field-notes/agent-graph-layer-why-grep-embeddings-fell-short": {
+      "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "e9f76fe52d9c3a367ef05d245b68d4a0397080b76897ff4e9cc6adba227cc00d",
+      "sourceHash": "e9f76fe52d9c3a367ef05d245b68d4a0397080b76897ff4e9cc6adba227cc00d",
+      "durationSec": 2008.296,
+      "byteSize": 12049776,
+      "narrationWordCount": 5170,
+      "audioUrl": "/blog/audio/field-notes/agent-graph-layer-why-grep-embeddings-fell-short.mp3",
       "translationModel": ""
     },
     "field-notes/agent-guardrails-field-guide": {
@@ -783,6 +796,32 @@
       "audioUrl": "/blog/audio/field-notes/google-cloud-next-2026-agent-native-stack.mp3",
       "translationModel": ""
     },
+    "field-notes/graph-layer-in-production-mcp-build-vs-buy": {
+      "slug": "graph-layer-in-production-mcp-build-vs-buy",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "97b941ad0a2f8f6939a4701c670acbfa2f9231b2276beaddd7f78ce804c12013",
+      "sourceHash": "97b941ad0a2f8f6939a4701c670acbfa2f9231b2276beaddd7f78ce804c12013",
+      "durationSec": 1956.216,
+      "byteSize": 11737296,
+      "narrationWordCount": 5649,
+      "audioUrl": "/blog/audio/field-notes/graph-layer-in-production-mcp-build-vs-buy.mp3",
+      "translationModel": ""
+    },
+    "field-notes/graph-memory-temporal-agents-graphiti-cognee": {
+      "slug": "graph-memory-temporal-agents-graphiti-cognee",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "21195b247ab790a0bc66553015c49c2a28f5a8ad6098ab413f1ab41665120cb6",
+      "sourceHash": "21195b247ab790a0bc66553015c49c2a28f5a8ad6098ab413f1ab41665120cb6",
+      "durationSec": 1522.248,
+      "byteSize": 9133488,
+      "narrationWordCount": 3839,
+      "audioUrl": "/blog/audio/field-notes/graph-memory-temporal-agents-graphiti-cognee.mp3",
+      "translationModel": ""
+    },
     "field-notes/graph-neural-networks-learning-structured-data": {
       "slug": "graph-neural-networks-learning-structured-data",
       "category": "field-notes",
@@ -1212,6 +1251,19 @@
       "audioUrl": "/blog/audio/field-notes/query-routing-agent-decisions.mp3",
       "translationModel": ""
     },
+    "field-notes/querying-code-graphs-blast-radius-localization": {
+      "slug": "querying-code-graphs-blast-radius-localization",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c851fe99f07f325ce5b7fcb862fcd1ac1d1343a6c6e61380f1a465565894d1a0",
+      "sourceHash": "c851fe99f07f325ce5b7fcb862fcd1ac1d1343a6c6e61380f1a465565894d1a0",
+      "durationSec": 1985.568,
+      "byteSize": 11913408,
+      "narrationWordCount": 5081,
+      "audioUrl": "/blog/audio/field-notes/querying-code-graphs-blast-radius-localization.mp3",
+      "translationModel": ""
+    },
     "field-notes/rag-advanced-patterns": {
       "slug": "rag-advanced-patterns",
       "category": "field-notes",
@@ -1288,6 +1340,19 @@
       "byteSize": 16407648,
       "narrationWordCount": 5873,
       "audioUrl": "/blog/audio/field-notes/reinforcement-learning-in-practice.mp3",
+      "translationModel": ""
+    },
+    "field-notes/repo-to-graph-ast-vs-llm-extraction": {
+      "slug": "repo-to-graph-ast-vs-llm-extraction",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c75ed891ee67ee723d7cbf173a078799d6d79e911d9c16de12a2d0b17bb73f4e",
+      "sourceHash": "c75ed891ee67ee723d7cbf173a078799d6d79e911d9c16de12a2d0b17bb73f4e",
+      "durationSec": 1829.064,
+      "byteSize": 10974384,
+      "narrationWordCount": 4452,
+      "audioUrl": "/blog/audio/field-notes/repo-to-graph-ast-vs-llm-extraction.mp3",
       "translationModel": ""
     },
     "field-notes/rl-algorithm-taxonomy-tour": {

@@ -66,3 +66,8 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `container-terminal-header.jpg` — Eimskip container terminal, Port of Reykjavík, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eimskip_container_terminal_at_Port_of_Reykjav%C3%ADk.jpg) (CC BY-SA)
 - `balance-scale-header.jpg` — Letter balance, Auckland Museum Collections, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Balance,_letter_(51360064428).jpg) (CC BY)
 - `city-skyline-aerial-header.jpg` — Aerial view of Guatemala City by Rene Hernandez, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aerial_view_of_Guatemala_City_-_Guatemala_-_16.jpg) (CC BY-SA 2.0)
+- `aerial-city-network-header.jpg` — Photo by Michael, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:City_lights_from_air_at_night_2.jpg) (CC BY 2.0)
+- `bare-branches-ast-header.jpg` — Photo by W.carter, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hoar_frost_on_bare_tree_branches_at_Myrstigen_1.jpg) (CC BY-SA 4.0)
+- `water-ripples-blast-radius-header.jpg` — Photo by Michael Pfundt, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ripples_in_Motion_Frozen_in_Time.jpg) (CC BY-SA 4.0)
+- `tree-rings-temporal-header.jpg` — Photo by MdE, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Growth_Rings_tree_rings_02.jpg) (CC BY-SA 4.0)
+- `truss-bridge-production-header.jpg` — Photo by Frank Schulenburg, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bridge_of_the_Gods_October_2019_001.jpg) (CC BY-SA 4.0)
