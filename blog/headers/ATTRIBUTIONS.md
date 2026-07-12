@@ -74,3 +74,5 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `claude-spark-header.jpg` — Claude AI symbol by Anthropic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Claude_AI_symbol.svg) (CC0), composed on ivory background
 - `claude-wordmark-header.jpg` — Claude AI logo by Anthropic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Claude_AI_logo.svg) (Public domain), composed on ivory background
 - `anthropic-wordmark-header.jpg` — Anthropic logo by Anthropic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Anthropic_logo.svg) (Public domain), composed on ivory background
+- `passport-control-header.jpg` — Photo by Vasyatka1, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Munich_Airport_T1_L4_passport_controls.jpg) (CC BY-SA 4.0)
+- `safe-deposit-vault-header.jpg` — Photo by GeoTrinity, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tresorraum_Deutschland_2.jpg) (CC BY-SA 3.0)
