@@ -9,8 +9,69 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Apr 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 04 May 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The Claude Certified Architect Professional Exam (CCAR-P): A Complete Study Guide</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide</guid>
+    <pubDate>Thu, 04 May 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The Professional Architect certification is the hardest credential in Anthropic's track: seven domains, 63 scenario questions, and almost no code. This guide teaches the architecture reasoning, governance frameworks, and lifecycle discipline the exam actually tests, from someone who does this work in a regulated bank.]]></description>
+    <category>field-notes</category>
+    <category>Anthropic</category>
+    <category>Certifications</category>
+    <category>LLMs</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>AI Governance</category>
+    <category>Evaluation</category>
+    <category>Enterprise AI</category>
+    <category>Production ML</category>
+    <category>Best Practices</category>
+    <category>MLOps</category>
+    <category>Data Architecture</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Claude Certified Developer Exam: A Complete Study Guide</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide</guid>
+    <pubDate>Thu, 27 Apr 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[A domain-by-domain study guide for Anthropic's CCDV-F exam. Eight domains, real SDK code for every one of them, a worked mini-project, and a preparation plan built for working engineers.]]></description>
+    <category>field-notes</category>
+    <category>Anthropic</category>
+    <category>LLMs</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Prompt Engineering</category>
+    <category>MCP</category>
+    <category>Evaluation</category>
+    <category>APIs</category>
+    <category>Software Engineering</category>
+    <category>AI Engineering</category>
+    <category>Best Practices</category>
+    <category>Tool Use</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Claude Certified Associate Exam: A Complete Study Guide for CCAO-F</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide</guid>
+    <pubDate>Thu, 20 Apr 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Anthropic's entry-level certification tests whether you can evaluate Claude's outputs, design workflows around it, and use it responsibly. This is the full study guide: every domain in blueprint order, the actual material behind each one, and how to walk into the exam ready to pass.]]></description>
+    <category>field-notes</category>
+    <category>Anthropic</category>
+    <category>Certifications</category>
+    <category>LLMs</category>
+    <category>Prompt Engineering</category>
+    <category>Evaluation</category>
+    <category>AI Governance</category>
+    <category>Best Practices</category>
+    <category>AI Engineering</category>
+    <category>AI Strategy</category>
+    <category>Agents</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>The Graph Layer in Production: MCP, Local-First, and Build vs Buy</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy</link>
