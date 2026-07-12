@@ -13,48 +13,48 @@ export const TAGLINE = "Frontier AI. Engineered for production.";
 // Sub-tagline. Different vocabulary so it adds claim instead of repeating.
 export const SUB_TAGLINE = "From research to enterprise scale.";
 
-export const ROLE = "Senior AI Engineer";
+export const ROLE = "AI Engineer";
 
-export const STRAP_LINE = "Senior AI Engineer · Production AI · Knowledge Systems";
+export const STRAP_LINE = "AI Engineer · Production AI · Knowledge Systems";
 
 // Short bio. For Twitter/X, GitHub header, talk speaker tagline. ~30 words.
+// "Frontier" lives in the tagline only — bios show facts, not adjectives.
 export const BIO_50 =
-  "Senior AI Engineer. Frontier AI, engineered for production. " +
-  "Five years across banking, retail logistics, healthcare AI, and academic research. " +
+  "AI Engineer building production AI since 2022. " +
+  "Banking, retail logistics, healthcare AI, academic research. " +
   "Currently at Davivienda. Previously: Falabella, GenomAI, Harvard.";
 
 // Medium bio. For LinkedIn short form, conference speaker bio.
 export const BIO_100 =
-  "Senior AI Engineer. Frontier AI, engineered for production at enterprise scale.\n\n" +
-  "Five years across regulated industries: banking, retail logistics, healthcare AI, " +
-  "academic research at Harvard. Currently Knowledge Data Engineer for the AI-First " +
-  "initiative at Davivienda, building the data and knowledge platforms behind " +
-  "production AI inside a financial institution.\n\n" +
+  "AI Engineer building production AI at enterprise scale since 2022.\n\n" +
+  "Currently leading the knowledge-base cell of Davivienda's AI-First strategy, " +
+  "building the semantic layer that grounds the bank's AI agents in verifiable, " +
+  "traceable business context. Previously: ML for logistics at Falabella, compliance-grade " +
+  "generative AI at GenomAI, research engineering at Harvard.\n\n" +
   "My focus is what production demands that papers omit. Scale. Governance. " +
   "Evaluation. The engineering decisions between a working prototype and a system " +
   "you can run.";
 
 // Long bio. For /about, full LinkedIn About, full conference bio.
 export const BIO_200 =
-  "Senior AI Engineer. Frontier AI, engineered for production at enterprise scale.\n\n" +
-  "Five years building production AI across banking, retail logistics, healthcare AI, " +
-  "and academic research. Currently Knowledge Data Engineer for the AI-First " +
-  "initiative at Davivienda. Previously at Falabella, GenomAI, and Harvard University.\n\n" +
-  "My focus is the engineering layer between frontier ML research and enterprise " +
-  "systems. RAG and retrieval platforms. Agentic architectures. Knowledge-grounded " +
+  "AI Engineer building production AI at enterprise scale since 2022.\n\n" +
+  "Currently I lead the knowledge-base cell of Davivienda's AI-First strategy, " +
+  "building the semantic layer that grounds the bank's AI agents in verifiable, " +
+  "traceable, and governed business context. Before that: ML for logistics at Falabella " +
+  "(a distribution center moving ~4.6M SKUs), compliance-grade generative AI in " +
+  "healthcare at GenomAI, and three years of research engineering at Harvard " +
+  "University.\n\n" +
+  "My focus is the engineering layer between ML research and enterprise systems. " +
+  "Retrieval platforms, from RAG to GraphRAG. Agentic architectures. Knowledge-grounded " +
   "LLM applications. The data foundations that make them reliable.\n\n" +
-  "Three things meet in my work. Deep familiarity with the latest research. The " +
-  "engineering rigor required to ship under regulated and high-scale constraints. " +
-  "The architectural taste to know which abstractions survive contact with production. " +
-  "I write about all of it on my blog.\n\n" +
   "Computer Science + Mathematics dual degree, 4.7/5.0. M.Sc. in Artificial " +
   "Intelligence in progress at Universidad de los Andes. Open to talks, technical " +
-  "engagements, and collaborations at the production-AI frontier.";
+  "engagements, and collaborations on production AI systems.";
 
 // Hero body. List-of-three then context. Apple period cadence, no em-dashes.
 export const HERO_BODY =
-  "Production RAG. Agentic architectures. Knowledge systems. " +
-  "Built for regulated industries. Currently inside a major bank.";
+  "RAG & GraphRAG. Agentic architectures. Knowledge systems. " +
+  "Built for regulated industries. Currently at Davivienda.";
 
 // Three content pillars. Order enforces the 70/25/5 hierarchy.
 // `color` is a Tailwind palette key consumed by existing components.
@@ -64,8 +64,8 @@ export const PILLARS = [
     id: "production-ai-systems",
     name: "Production AI Systems",
     oneLiner:
-      "The systems themselves — RAG platforms, agentic architectures, knowledge applications, LLM ops at scale.",
-    homeCopy: "Production AI, shipped. RAG, agents, and knowledge applications in users' hands.",
+      "The systems themselves: RAG and GraphRAG platforms, agentic architectures, knowledge applications, LLM ops at scale.",
+    homeCopy: "Production AI, shipped. Retrieval, agents, and knowledge applications in users' hands.",
     color: "blue",
     icon: "Server",
   },
@@ -73,7 +73,7 @@ export const PILLARS = [
     id: "engineering-practice",
     name: "Engineering Practice",
     oneLiner:
-      "How they ship — architecture decisions, MLOps, evaluation, governance, the engineering moves between prototype and production.",
+      "How they ship: architecture decisions, MLOps, evaluation, governance, the engineering moves between prototype and production.",
     homeCopy: "From notebook to running system. Architecture, evaluation, and ops at scale.",
     color: "indigo",
     icon: "Cpu",
@@ -82,8 +82,8 @@ export const PILLARS = [
     id: "applied-research",
     name: "Applied Research",
     oneLiner:
-      "Reading the frontier — paper-to-product translation, what survives contact with production.",
-    homeCopy: "The frontier, translated. What survives contact with production.",
+      "Reading the research: paper-to-product translation, what survives contact with production.",
+    homeCopy: "Research, translated. From paper to running system.",
     color: "emerald",
     icon: "BrainCircuit",
   },
@@ -93,7 +93,7 @@ export const PILLARS = [
 // MLOps / Scalable Architecture set. These are short noun phrases for the four cards
 // directly under the hero tagline.
 export const HERO_CHIPS = [
-  "Production RAG",
+  "RAG & GraphRAG",
   "Agentic Architectures",
   "Knowledge Systems",
   "LLM Ops",
@@ -183,14 +183,14 @@ export const FORBIDDEN_PHRASES = [
 
 // Footer / contact blurb.
 export const FOOTER_CONNECT_BLURB =
-  "Open to talks, technical engagements, and collaborations on production AI at the research frontier.";
+  "Open to talks, technical engagements, and collaborations on production AI systems.";
 
 // Default SEO description. No em-dashes; periods for cadence.
 export const SEO_DEFAULT_DESCRIPTION =
-  "Senior AI Engineer building production AI systems at enterprise scale. RAG platforms, " +
-  "agentic architectures, knowledge-grounded LLM applications. Engineering experience " +
-  "across regulated banking, retail logistics, healthcare AI, and Harvard research.";
+  "AI Engineer building production AI systems at enterprise scale. Knowledge systems " +
+  "for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. " +
+  "Currently leading the knowledge-base cell of Davivienda's AI-First strategy.";
 
 // Default SEO title. Single separator (middle dot). Tab-truncation safe.
-// Stays readable when truncated to "Juan Lara · Senior AI Engineer".
-export const SEO_DEFAULT_TITLE = "Juan Lara · Senior AI Engineer";
+// Stays readable when truncated to "Juan Lara · AI Engineer".
+export const SEO_DEFAULT_TITLE = "Juan Lara · AI Engineer";

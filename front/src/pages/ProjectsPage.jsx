@@ -76,7 +76,7 @@ const projects = [
   {
     id: 2,
     name: "voxscribe",
-    description: "Local-first transcription and speaker diarization for any audio or video. Wraps faster-whisper, pyannote, WhisperX, and Ollama into a single CLI and Python library — no cloud, no data leaving your machine.",
+    description: "Local-first transcription and speaker diarization for any audio or video. Wraps faster-whisper, pyannote, WhisperX, and Ollama into a single CLI and Python library. No cloud, no data leaving your machine.",
     image: "meeting-scribe.png",
     tags: ["whisper", "speaker-diarization", "faster-whisper", "pyannote", "speech-to-text"],
     github: "https://github.com/JuanLara18/voxscribe",
@@ -134,7 +134,7 @@ const projects = [
   {
     id: 8,
     name: "awesome-ai-roadmap",
-    description: "The open-source roadmap to mastering AI and ML — from foundations to LLMs, agents, and production systems. Curated resources, project ideas, and visual learning paths.",
+    description: "The open-source roadmap to mastering AI and ML, from foundations to LLMs, agents, and production systems. Curated resources, project ideas, and visual learning paths.",
     image: "ai-roadmap.png",
     tags: ["roadmap", "machine-learning", "llm", "ai-agents", "learning-path"],
     github: "https://github.com/JuanLara18/awesome-ai-roadmap",
@@ -185,7 +185,7 @@ const projects = [
   {
     id: 13,
     name: "notebook-converter",
-    description: "Convert Jupyter notebooks into clean, organized Python packages — preserving code, outputs, and markdown as documentation.",
+    description: "Convert Jupyter notebooks into clean, organized Python packages, preserving code, outputs, and markdown as documentation.",
     image: "notebook-converter.png",
     tags: ["jupyter", "converter", "markdown", "data-science", "streamlit"],
     github: "https://github.com/JuanLara18/notebook-converter",
@@ -204,7 +204,7 @@ const projects = [
   {
     id: 15,
     name: "MadameX",
-    description: "Interactive cryptography toolkit for encrypting and decrypting messages across classic algorithms — plus cryptanalysis tools to break ciphers without the original key.",
+    description: "Interactive cryptography toolkit for encrypting and decrypting messages across classic algorithms, plus cryptanalysis tools to break ciphers without the original key.",
     image: "madamex.png",
     tags: ["cryptography", "encryption", "cryptanalysis", "javascript"],
     github: "https://github.com/JuanLara18/MadameX",
@@ -215,7 +215,7 @@ const projects = [
   {
     id: 16,
     name: "pixel-valentine",
-    description: "A retro pixel-art platformer that ends with your own love letter — fork it, edit one file, and send it to your crush. Built with Phaser 3 and TypeScript.",
+    description: "A retro pixel-art platformer that ends with your own love letter. Fork it, edit one file, and send it to your crush. Built with Phaser 3 and TypeScript.",
     image: "pixel-valentine.png",
     tags: ["game", "phaser3", "pixel-art", "typescript", "platformer"],
     github: "https://github.com/JuanLara18/pixel-valentine",

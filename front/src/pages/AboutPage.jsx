@@ -277,13 +277,13 @@ const experiences = [
     period: "April 2026 - Present",
     location: "Bogotá D.C., Colombia",
     description:
-      "Building enterprise knowledge and data foundations for an AI-first strategy. Connecting trusted information, metadata, and retrieval-ready datasets with the pipelines and governance patterns that power search, analytics, and generative AI across the organization.",
+      "Leading the knowledge-base cell of Davivienda's AI-First strategy: the semantic layer that grounds the bank's AI agents in verifiable, traceable, and governed business context.",
     responsibilities: [
-      "Designing knowledge and data architectures and reusable data products that support semantic discovery, retrieval workflows, and downstream ML and analytics use cases.",
-      "Engineering robust ingestion, quality, and documentation practices so knowledge assets and operational data remain fit for AI-driven products and compliance expectations.",
-      "Collaborating with product, data, and AI teams to align roadmaps on metadata, access patterns, and scalable delivery as initiatives take shape."
+      "Designing the bank's knowledge architecture on GCP: ontologies, metadata, and retrieval services that turn scattered business data into agent-ready context.",
+      "Defining AI lifecycle governance so knowledge assets stay versioned, auditable, and trustworthy from ingestion to agent consumption in a regulated bank.",
+      "Working hands-on with engineering teams across the bank as internal AI products move from architecture review to production on the Gemini Enterprise Agent Platform."
     ],
-    skills: ["Knowledge Engineering", "Data Engineering", "AI-First Delivery", "Data Governance", "Python", "Enterprise Search"],
+    skills: ["Knowledge Architecture", "Semantic Layer", "Gemini Enterprise Agent Platform", "BigQuery", "AI Governance", "Python"],
     logo: "davivienda-logo.png"
   },
   {
@@ -292,7 +292,7 @@ const experiences = [
     period: "November 2025 - March 2026",
     location: "Bogotá D.C., Colombia (Hybrid)",
     description:
-      "Designed and deployed end-to-end ML solutions for logistics optimization at a large-scale distribution center (~4.6M SKUs), boosting OTD, OLT, and throughput.",
+      "Designed and deployed end-to-end ML solutions for logistics optimization at a large-scale distribution center (~4.6M SKUs), improving on-time delivery, order lead time, and throughput.",
     responsibilities: [
       "Built predictive models for demand forecasting and pre-pack allocation, reducing lead times and supporting data-driven fulfillment decisions across the distribution network.",
       "Developed a workforce planning optimization model integrated with a multi-agent reinforcement learning environment to automate optimal staffing levels, timing, and resource allocation across distribution-center areas.",
@@ -310,7 +310,7 @@ const experiences = [
     description:
       "Architected production AI systems integrating RAG pipelines with vector databases and LLM fine-tuning techniques, building end-to-end generative AI solutions with strict compliance requirements and real-time performance demands.",
     responsibilities: [
-      "Developed compliance-grade generative AI solutions using advanced prompt engineering and retrieval-augmented generation to process multimodal data, implementing strict data governance and privacy frameworks.",
+      "Developed compliance-grade generative AI solutions using prompt engineering and retrieval-augmented generation to process multimodal data, implementing strict data governance and privacy frameworks.",
       "Built and optimized ML deployment pipelines with Docker containerization and CI/CD automation, implementing scalable cloud infrastructure that supports production healthcare applications with sub-second response requirements.",
       "Led cross-functional collaboration to translate complex domain workflows into scalable AI architectures, bridging subject-matter expertise with production-grade ML systems."
     ],
@@ -340,7 +340,7 @@ const experiences = [
     description:
       "Engineered production-ready applications for geospatial analysis and segmentation using ML models and robust data-processing pipelines on Google Cloud Platform, enhancing operational efficiency across multiple data sources.",
     responsibilities: [
-      "Led the design and implementation of TextInsight, a Python library for automated multilingual text analysis using LLMs and advanced NetworkX visualizations, reducing text processing time from hours to minutes and earning Total Ops Star Employee recognition across LATAM regions.",
+      "Led the design and implementation of TextInsight, a Python library for automated multilingual text analysis using LLMs and NetworkX visualizations, reducing text processing time from hours to minutes.",
       "Streamlined analytical workflows through automated Python pipelines, significantly reducing manual processing while enabling dynamic real-time reporting and cross-functional analytics.",
       "Integrated scalable cloud workflows with advanced data management systems, supporting large-scale batch processing and reproducible research methodologies."
     ],
@@ -439,7 +439,7 @@ const courses = [
     provider: "Talento Tech Cymetria",
     date: "May-October 2024",
     duration: "159 hours",
-    description: "Intensive training in AI and machine learning, covering cutting-edge algorithms and deep learning model construction.",
+    description: "Intensive training in AI and machine learning, covering core algorithms and deep learning model construction.",
     certificateLink: "https://certificados.talentotech.co/?cert=2518458921#pdf",
     certificateId: "2518458921",
     topics: ["Deep Learning", "Neural Networks", "PyTorch"],
@@ -451,11 +451,11 @@ const courses = [
     <>
       <SEO
         title="About · Juan Lara"
-        description="Senior AI Engineer building production AI systems at enterprise scale. RAG platforms, agentic architectures, knowledge-grounded LLM applications. Engineering experience across regulated banking, retail logistics, healthcare AI, and Harvard research."
+        description="AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy."
         canonical="https://juanlara18.github.io/portfolio/#/about"
         keywords={[
           'Juan Lara',
-          'Senior AI Engineer',
+          'AI Engineer',
           'Production AI',
           'RAG',
           'Agentic Architectures',
@@ -524,7 +524,7 @@ const courses = [
               <div className="space-y-4 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
                 {/* Pitch. Bold opener, italic industries, colored company names. */}
                 <p>
-                  <span className="font-semibold text-gray-900 dark:text-white">Senior AI Engineer</span> with 5+ years building production AI across <span className="italic">banking</span>, <span className="italic">retail logistics</span>, <span className="italic">healthcare AI</span>, and <span className="italic">academic research</span>. Currently at <span className="font-semibold text-red-600 dark:text-red-400">Davivienda</span>. Previously at <span className="font-semibold text-blue-600 dark:text-blue-400">Falabella</span>, <span className="font-semibold text-emerald-600 dark:text-emerald-400">GenomAI</span>, and <span className="font-semibold text-amber-600 dark:text-amber-400">Harvard University</span>.
+                  <span className="font-semibold text-gray-900 dark:text-white">AI Engineer</span> building production AI since 2022 across <span className="italic">banking</span>, <span className="italic">retail logistics</span>, <span className="italic">healthcare AI</span>, and <span className="italic">academic research</span>. Currently at <span className="font-semibold text-red-600 dark:text-red-400">Davivienda</span>. Previously at <span className="font-semibold text-blue-600 dark:text-blue-400">Falabella</span>, <span className="font-semibold text-emerald-600 dark:text-emerald-400">GenomAI</span>, and <span className="font-semibold text-amber-600 dark:text-amber-400">Harvard University</span>.
                 </p>
 
                 <AnimatePresence>
@@ -538,10 +538,10 @@ const courses = [
                     >
                       {/* Focus \u2014 moved into Read more so the visible bio stays compact */}
                       <p className="pt-2">
-                        My focus is the engineering layer between frontier ML research and enterprise systems. RAG and retrieval platforms. Agentic architectures. Knowledge-grounded LLM applications. The data foundations that make them reliable.
+                        My focus is the engineering layer between ML research and enterprise systems. Retrieval platforms, from RAG to GraphRAG. Agentic architectures. Knowledge-grounded LLM applications. The data foundations that make them reliable.
                       </p>
                       <p>
-                        Three things meet in my work. Deep familiarity with the latest research. The engineering rigor required to ship under regulated and high-scale constraints. The architectural taste to know which abstractions survive contact with production.
+                        At Davivienda I lead the knowledge-base cell of the AI-First strategy, building the semantic layer that grounds the bank's AI agents in verifiable, traceable business context. Before that: ML for logistics at Falabella (a distribution center moving ~4.6M SKUs), compliance-grade generative AI in healthcare at GenomAI, and three years of research engineering at Harvard.
                       </p>
                       <p>
                         <span className="font-medium text-gray-900 dark:text-gray-100">Computer Science + Mathematics</span> dual degree, 4.7/5.0. M.Sc. in Artificial Intelligence in progress at <span className="font-medium text-gray-900 dark:text-gray-100">Universidad de los Andes</span>.
@@ -590,7 +590,7 @@ const courses = [
               variants={fadeInUp}
               className="text-center text-sm mb-12 text-gray-600 dark:text-brand-fg-muted"
             >
-              The core technologies and frameworks driving my production-grade AI systems.
+              The technologies I work with in production.
             </motion.p>
 
             <motion.div
@@ -604,10 +604,10 @@ const courses = [
                   Generative AI & NLP
                 </h3>
                 <div className="space-y-1">
-                  <SkillItem name="RAG Architectures" icon={Database} />
+                  <SkillItem name="RAG & GraphRAG Architectures" icon={Database} />
                   <SkillItem name="LLM Fine-Tuning & PEFT" icon={Code} />
-                  <SkillItem name="Agentic Workflows" icon={Layers} />
-                  <SkillItem name="Advanced NLP Pipelines" icon={BrainCircuit} />
+                  <SkillItem name="Google ADK 2.0 & LangGraph" icon={Layers} />
+                  <SkillItem name="Vector Databases" icon={BrainCircuit} />
                 </div>
               </div>
 
@@ -620,7 +620,7 @@ const courses = [
                 <div className="space-y-1">
                   <SkillItem name="Model Serving & Endpoints" icon={Globe} />
                   <SkillItem name="CI/CD & Deployment" icon={Github} />
-                  <SkillItem name="Scalable System Architecture" icon={Box} />
+                  <SkillItem name="GCP (Gemini Enterprise Agent Platform)" icon={Box} />
                   <SkillItem name="Model Drift & Monitoring" icon={LineChart} />
                 </div>
               </div>
@@ -633,7 +633,7 @@ const courses = [
                 </h3>
                 <div className="space-y-1">
                   <SkillItem name="GCP & AWS" icon={Cloud} />
-                  <SkillItem name="Distributed Computing" icon={Layers} />
+                  <SkillItem name="BigQuery & Spark" icon={Layers} />
                   <SkillItem name="Containerization (Docker)" icon={Box} />
                   <SkillItem name="ETL & Data Pipelines" icon={Database} />
                 </div>
@@ -646,9 +646,9 @@ const courses = [
                   Core ML & Research
                 </h3>
                 <div className="space-y-1">
-                  <SkillItem name="Deep Learning Foundations" icon={BrainCircuit} />
+                  <SkillItem name="PyTorch & TensorFlow" icon={BrainCircuit} />
                   <SkillItem name="Mathematical Modeling" icon={BarChart} />
-                  <SkillItem name="Predictive Analytics" icon={LineChart} />
+                  <SkillItem name="XGBoost & scikit-learn" icon={LineChart} />
                   <SkillItem name="Reinforcement Learning" icon={Cpu} />
                 </div>
               </div>
@@ -729,10 +729,10 @@ const courses = [
                     <div className="flex items-start gap-3">
                       <Award className="text-cyan-700 dark:text-brand-accent mt-0.5 flex-shrink-0" size={22} />
                       <div className="min-w-0">
-                        <h3 className="font-bold text-lg tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-1">Total Ops Star Employee — LATAM</h3>
+                        <h3 className="font-bold text-lg tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-1">Total Ops Star Employee (LATAM)</h3>
                         <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-cyan-700 dark:text-brand-accent mb-2">Ipsos <span className="opacity-60">·</span> April 2024</div>
                         <p className="text-sm text-gray-600 dark:text-brand-fg-muted leading-relaxed">
-                          Awarded for developing TextInsight and driving technical impact across LATAM.
+                          Awarded for developing TextInsight and its technical impact across LATAM.
                         </p>
                       </div>
                     </div>
@@ -761,8 +761,8 @@ const courses = [
                 variants={staggerContainer}
               >
                 <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
-                  <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Languages</p>
-                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">How I speak<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
+                  <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Profile</p>
+                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Languages<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
                 </motion.div>
 
                 <div className="py-4 flex gap-10">

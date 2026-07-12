@@ -19,7 +19,7 @@ const PERSON_SCHEMA = {
   '@type': 'Person',
   name: 'Juan Lara',
   url: SITE_URL,
-  jobTitle: 'Senior AI Engineer',
+  jobTitle: 'AI Engineer',
   affiliation: {
     '@type': 'Organization',
     name: 'Davivienda',
@@ -212,20 +212,21 @@ export const SEO = ({
  * Default SEO configuration for the entire site.
  */
 export const defaultSEO = {
-  title: 'Juan Lara · Senior AI Engineer',
+  title: 'Juan Lara · AI Engineer',
   description:
-    'Senior AI Engineer building production AI systems at enterprise scale. RAG platforms, agentic architectures, knowledge-grounded LLM applications. Engineering experience across regulated banking, retail logistics, healthcare AI, and Harvard research.',
+    "AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy.",
   keywords: [
     'Juan Lara',
-    'Senior AI Engineer',
+    'AI Engineer',
     'Production AI',
     'RAG',
+    'GraphRAG',
     'Agentic Architectures',
     'Knowledge Systems',
     'LLM Ops',
     'Knowledge Data Engineer',
     'Machine Learning',
-    'LangChain',
+    'Google ADK',
     'PyTorch',
     'Python',
   ],

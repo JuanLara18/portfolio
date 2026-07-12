@@ -71,7 +71,7 @@ const Logo = ({
       <Link
         to={to}
         onClick={onClick}
-        aria-label="Juan Lara — Senior AI Engineer"
+        aria-label="Juan Lara · AI Engineer"
         className="inline-flex items-center hover:opacity-80 transition-opacity"
       >
         {content}

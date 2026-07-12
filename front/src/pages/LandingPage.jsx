@@ -41,18 +41,18 @@ export default function LandingPage() {
   return (
     <>
       <SEO
-        title="Juan Lara · Senior AI Engineer"
-        description="Senior AI Engineer building production AI systems at enterprise scale. RAG platforms, agentic architectures, knowledge-grounded LLM applications. Engineering experience across regulated banking, retail logistics, healthcare AI, and Harvard research."
+        title="Juan Lara · AI Engineer"
+        description="AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy."
         keywords={[
           'Juan Lara',
-          'Senior AI Engineer',
+          'AI Engineer',
           'Production AI',
           'RAG',
           'Agentic Architectures',
           'Knowledge Systems',
           'LLM Ops',
           'Knowledge Data Engineer',
-          'LangChain',
+          'Google ADK',
           'PyTorch'
         ]}
       />

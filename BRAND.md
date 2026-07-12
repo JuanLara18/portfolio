@@ -8,7 +8,7 @@ Canonical source of truth for the verbal layer of the personal brand. Every exte
 
 ## 1. Positioning
 
-**Identity.** Senior AI Engineer who takes state-of-the-art AI from research to production at enterprise scale.
+**Identity.** AI Engineer who takes state-of-the-art AI from research to production at enterprise scale. The title is deliberately unmodified: seniority is shown through scope (leading the knowledge-base cell of a bank's AI-First strategy), not claimed through adjectives.
 
 **Hierarchy of what the brand projects.** A 70 / 25 / 5 split, in this order:
 
@@ -40,7 +40,7 @@ Canonical source of truth for the verbal layer of the personal brand. Every exte
 
 **Strap-line** — three-slot identity line, replaces all `Computer Scientist · Mathematician · AI Researcher` style strings:
 
-> Senior AI Engineer · Production AI · Knowledge Systems
+> AI Engineer · Production AI · Knowledge Systems
 
 **Usage rules.**
 
@@ -48,7 +48,7 @@ Canonical source of truth for the verbal layer of the personal brand. Every exte
 |---|---|
 | Home hero (large) | Primary tagline |
 | About hero | Strap-line above name, primary tagline below |
-| LinkedIn headline | `Senior AI Engineer · Production AI at Davivienda · I take SOTA to production` (or current employer) |
+| LinkedIn headline | `AI Engineer · Production AI at Davivienda · I take SOTA to production` (or current employer) |
 | Email signature, slide footer | `Juan Lara — State-of-the-art AI, engineered for production.` |
 | Speaker tagline (1 line on a slide) | Primary tagline |
 | Talk-submission speaker bio | Sub-tagline + 100-word bio |
@@ -64,9 +64,9 @@ Three lengths. Pick the one whose word budget matches the surface.
 For: Twitter/X bio, GitHub profile header line, talk speaker tagline, podcast intro.
 
 ```
-Senior AI Engineer. Frontier AI, engineered for production. Five years across
-banking, retail logistics, healthcare AI, and academic research. Currently at
-Davivienda. Previously: Falabella, GenomAI, Harvard.
+AI Engineer building production AI since 2022. Banking, retail logistics,
+healthcare AI, academic research. Currently at Davivienda. Previously:
+Falabella, GenomAI, Harvard.
 ```
 
 ### 3.2. Bio — medium (~75 words)
@@ -74,13 +74,12 @@ Davivienda. Previously: Falabella, GenomAI, Harvard.
 For: LinkedIn About short form, conference speaker bio, podcast intro, guest-post author block.
 
 ```
-Senior AI Engineer. Frontier AI, engineered for production at enterprise
-scale.
+AI Engineer building production AI at enterprise scale since 2022.
 
-Five years across regulated industries: banking, retail logistics, healthcare
-AI, academic research at Harvard. Currently Knowledge Data Engineer for the
-AI-First initiative at Davivienda, building the data and knowledge platforms
-behind production AI inside a financial institution.
+Currently leading the knowledge-base cell of Davivienda's AI-First strategy,
+building the semantic layer that grounds the bank's AI agents in verifiable,
+traceable business context. Previously: ML for logistics at Falabella, compliance-grade
+generative AI at GenomAI, research engineering at Harvard.
 
 My focus is what production demands that papers omit. Scale. Governance.
 Evaluation. The engineering decisions between a working prototype and a system
@@ -92,30 +91,26 @@ you can run.
 For: Portfolio `/about` page, full LinkedIn About, full conference / panel bio.
 
 ```
-Senior AI Engineer. Frontier AI, engineered for production at enterprise
-scale.
+AI Engineer building production AI at enterprise scale since 2022.
 
-Five years building production AI across banking, retail logistics, healthcare
-AI, and academic research. Currently Knowledge Data Engineer for the AI-First
-initiative at Davivienda. Previously at Falabella, GenomAI, and Harvard
+Currently I lead the knowledge-base cell of Davivienda's AI-First strategy,
+building the semantic layer that grounds the bank's AI agents in verifiable,
+traceable, and governed business context. Before that: ML for logistics at Falabella
+(a distribution center moving ~4.6M SKUs), compliance-grade generative AI in
+healthcare at GenomAI, and three years of research engineering at Harvard
 University.
 
-My focus is the engineering layer between frontier ML research and enterprise
-systems. RAG and retrieval platforms. Agentic architectures.
+My focus is the engineering layer between ML research and enterprise systems.
+Retrieval platforms, from RAG to GraphRAG. Agentic architectures.
 Knowledge-grounded LLM applications. The data foundations that make them
 reliable.
 
-Three things meet in my work. Deep familiarity with the latest research. The
-engineering rigor required to ship under regulated and high-scale constraints.
-The architectural taste to know which abstractions survive contact with
-production. I write about all of it on my blog.
-
 Computer Science + Mathematics dual degree, 4.7/5.0. M.Sc. in Artificial
 Intelligence in progress at Universidad de los Andes. Open to talks, technical
-engagements, and collaborations at the production-AI frontier.
+engagements, and collaborations on production AI systems.
 ```
 
-> **Rendering note.** On the portfolio `/about` page, the bio is rendered with rich formatting: bold opener (`Senior AI Engineer`), italic industries (`banking`, `retail logistics`, `healthcare AI`, `academic research`), and color-coded company names (Davivienda red, Falabella blue, GenomAI emerald, Harvard indigo). The plain-text version above is canonical for LinkedIn / Twitter / speaker submissions.
+> **Rendering note.** On the portfolio `/about` page, the bio is rendered with rich formatting: bold opener (`AI Engineer`), italic industries (`banking`, `retail logistics`, `healthcare AI`, `academic research`), and color-coded company names (Davivienda red, Falabella blue, GenomAI emerald, Harvard indigo). The plain-text version above is canonical for LinkedIn / Twitter / speaker submissions.
 
 ---
 
@@ -125,9 +120,9 @@ Three pillars. The ordering enforces the 70/25/5 hierarchy: two engineering-flav
 
 | # | Pillar | One-line description | Color (Tailwind) | Lucide icon |
 |---|---|---|---|---|
-| 1 | **Production AI Systems** | The systems themselves — RAG platforms, agentic architectures, knowledge applications, LLM ops at scale. | `blue-600` | `Server` |
-| 2 | **Engineering Practice** | How they ship — architecture decisions, MLOps, evaluation, governance, the engineering moves between prototype and production. | `indigo-600` | `Cpu` |
-| 3 | **Applied Research** | Reading the frontier — paper-to-product translation, what survives contact with production. | `emerald-600` | `BrainCircuit` |
+| 1 | **Production AI Systems** | The systems themselves: RAG and GraphRAG platforms, agentic architectures, knowledge applications, LLM ops at scale. | `blue-600` | `Server` |
+| 2 | **Engineering Practice** | How they ship: architecture decisions, MLOps, evaluation, governance, the engineering moves between prototype and production. | `indigo-600` | `Cpu` |
+| 3 | **Applied Research** | Reading the research: paper-to-product translation, what survives contact with production. | `emerald-600` | `BrainCircuit` |
 
 Replaces the previous home pillars `Applied Research / Scalable Engineering / Business Impact`.
 
@@ -189,7 +184,7 @@ Em-dashes (`—`) are the signature of AI-generated text in the 2024–2026 era.
 
 **Rules:**
 
-- **Default to a period.** *"Built for regulated industries. Currently inside a major bank."* beats *"Built for regulated industries — currently inside a major bank."*
+- **Default to a period.** *"Built for regulated industries. Currently at Davivienda."* beats *"Built for regulated industries — currently at Davivienda."*
 - **Default to a comma when you need flow.** *"Three things meet in my work, starting with…"* beats *"Three things meet in my work — starting with…"*
 - **Allow at most one em-dash per major surface** (a hero block, a paragraph, a chip). Two em-dashes in the same paragraph is one too many.
 - **Never use em-dashes in lists or to introduce subordinate clauses.** That's where they multiply fastest.
@@ -203,7 +198,7 @@ Browser tab titles get truncated to ~30 characters at typical widths. Two compet
 
 - **One separator only.** Prefer `·` (middle dot) for editorial tone. Apple uses it across apple.com nav.
 - **Front-load the identity.** Brand name first, role second. The truncated form should still identify the page.
-- **Keep under 32 characters when possible.** SEO weight lives in the meta description, not the title. *"Juan Lara · Senior AI Engineer"* (29 chars) beats *"Juan Lara | Senior AI Engineer — Production AI at Enterprise Scale"* (66 chars, truncates to nonsense).
+- **Keep under 32 characters when possible.** SEO weight lives in the meta description, not the title. *"Juan Lara · AI Engineer"* (23 chars) beats *"Juan Lara | AI Engineer — Production AI at Enterprise Scale"* (60 chars, truncates to nonsense).
 
 ### 6.6. Before / after table
 
@@ -212,9 +207,9 @@ Real strings from the current repo, with their replacement:
 | Surface | Before | After |
 |---|---|---|
 | Home hero strap (two-line) | "Bridging the gap from research to scalable production" | "Frontier AI." / "Engineered for production." |
-| Home hero body | "I transform complex mathematical models and AI research into robust, enterprise-grade applications. Specializing in autonomous agents, distributed systems, and driving measurable business impact through scalable ML engineering." | "Production RAG. Agentic architectures. Knowledge systems. Built for regulated industries. Currently inside a major bank." |
-| Tab title | "Juan Lara \| AI Engineer — Research to Production" (66 chars, truncates ambiguously) | "Juan Lara · Senior AI Engineer" (29 chars, single separator) |
-| Home hero chips | Autonomous Agents · Distributed Systems · Enterprise MLOps · Scalable Architecture | Production RAG · Agentic Architectures · Knowledge Systems · LLM Ops |
+| Home hero body | "I transform complex mathematical models and AI research into robust, enterprise-grade applications. Specializing in autonomous agents, distributed systems, and driving measurable business impact through scalable ML engineering." | "RAG & GraphRAG. Agentic architectures. Knowledge systems. Built for regulated industries. Currently at Davivienda." |
+| Tab title | "Juan Lara \| AI Engineer — Research to Production" (66 chars, truncates ambiguously) | "Juan Lara · AI Engineer" (23 chars, single separator) |
+| Home hero chips | Autonomous Agents · Distributed Systems · Enterprise MLOps · Scalable Architecture | RAG & GraphRAG · Agentic Architectures · Knowledge Systems · LLM Ops |
 | Home pillar — Production AI Systems | (was "Applied Research" copy) "Translating SOTA mathematical models and papers into practical algorithms that solve complex problems." | "Production AI, shipped. RAG, agents, and knowledge applications in users' hands." |
 | Home pillar — Engineering Practice | (was "Scalable Engineering" copy) "Building robust data pipelines, optimizing inference latency, and deploying ML systems on the cloud." | "From notebook to running system. Architecture, evaluation, and ops at scale." |
 | Home pillar — Applied Research | (was "Business Impact" copy) "Creating AI solutions that automate workflows, reduce operational costs, and deliver measurable ROI." | "The frontier, translated. What survives contact with production." |
@@ -222,13 +217,13 @@ Real strings from the current repo, with their replacement:
 | Home value-card item 1 ("Intelligent Systems") | "Automating complex enterprise workflows." | "Production RAG and agentic architectures inside regulated industries." |
 | Home value-card item 2 ("Scalable Architecture") | "Low-latency models deployed at scale." | "Platforms that survive production: evaluation, governance, scale." |
 | Home value-card item 3 ("Applied Research") | "Bridging theory and business solutions." | "Translating frontier ML research into systems that ship." |
-| About hero strap | "Computer Scientist · Mathematician · AI Researcher" | "Senior AI Engineer · Production AI · Knowledge Systems" |
+| About hero strap | "Computer Scientist · Mathematician · AI Researcher" | "AI Engineer · Production AI · Knowledge Systems" |
 | About bio (collapsed) | "AI Engineer with 3+ years building production AI systems across research, healthcare, banking, and enterprise domains. Focused on LLM systems, NLP, and taking ML from concept to deployment — with experience spanning Davivienda, Harvard University, GenomAI, and Falabella." | Use Bio 100. |
 | About bio (expanded) | "Specializing in LLM fine-tuning, RAG architectures, NLP pipelines, and production ML systems on cloud infrastructure. Currently pursuing an M.S. in Artificial Intelligence at Universidad de los Andes, combining a dual foundation in Computer Science and Mathematics (4.7/5.0) with a drive to push AI research into real-world applications." | Use Bio 200 (last 2 paragraphs as the expanded section). |
-| Footer connect blurb | "Open to research collaborations, technical challenges, and building enterprise-grade AI systems." | "Open to talks, technical engagements, and collaborations on production AI at the research frontier." |
-| Mobile menu bio line | "Computer Scientist & Mathematician" | "Senior AI Engineer · Production AI" |
+| Footer connect blurb | "Open to research collaborations, technical challenges, and building enterprise-grade AI systems." | "Open to talks, technical engagements, and collaborations on production AI systems." |
+| Mobile menu bio line | "Computer Scientist & Mathematician" | "AI Engineer · Production AI" |
 | Projects page subtitle | "Production systems, research tools, and open-source contributions." | (keep — already on-brand) |
-| SEO description | "Research-minded AI Engineer specializing in LLM systems, NLP, and taking ML from concept to production. CS + Mathematics foundation, experience spanning Harvard research to enterprise-scale AI." | "Senior AI Engineer building production AI systems at enterprise scale — RAG platforms, agentic architectures, knowledge-grounded LLM applications. Engineering experience across regulated banking, retail logistics, healthcare AI, and Harvard research." |
+| SEO description | "Research-minded AI Engineer specializing in LLM systems, NLP, and taking ML from concept to production. CS + Mathematics foundation, experience spanning Harvard research to enterprise-scale AI." | "AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy." |
 | RSS description | "Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities." | "Engineering notes on production AI — RAG systems, agentic architectures, LLM ops, and the patterns that survive contact with production." |
 
 ---
