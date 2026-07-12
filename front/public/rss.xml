@@ -9,8 +9,52 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 May 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 May 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Bank-Grade Agent Security: IAM, MCP Gateways, and Zero Trust at Enterprise Scale</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways</guid>
+    <pubDate>Thu, 18 May 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part 2 of the agent security series moves from the startup to the bank: enterprise IAM for agents as first-class principals, agent identity on Google Cloud, the MCP gateway pattern that never lets a client touch a server directly, zero trust with SPIFFE-style workload identity, and the audit machinery regulators actually ask for.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Security</category>
+    <category>Authentication</category>
+    <category>OAuth</category>
+    <category>Enterprise AI</category>
+    <category>MCP</category>
+    <category>Cloud Computing</category>
+    <category>GCP</category>
+    <category>Vertex AI</category>
+    <category>Production ML</category>
+    <category>AI Governance</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/bank-grade-agent-security-iam-gateways.mp3" length="12831552" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Who Is Your Agent? OAuth, MCP Auth, and Identity for AI Agents — the Startup Playbook</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity</guid>
+    <pubDate>Thu, 11 May 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[AI agents are non-human identities that act with delegated human power, long after the login that granted it. This post — part 1 of a two-part series on agent security — rebuilds OAuth from the agent's point of view, walks through the MCP authorization spec requirement by requirement, and lays out a concrete identity architecture for a five-person startup shipping an agent that touches users' Gmail, Calendar, and CRM.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>AI Engineering</category>
+    <category>Security</category>
+    <category>Authentication</category>
+    <category>OAuth</category>
+    <category>MCP</category>
+    <category>Protocols</category>
+    <category>LLMs</category>
+    <category>Production ML</category>
+    <category>Best Practices</category>
+    <category>APIs</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-authentication-oauth-mcp-identity.mp3" length="12230208" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>The Claude Certified Architect Professional Exam (CCAR-P): A Complete Study Guide</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide</link>
@@ -30,6 +74,7 @@
     <category>Best Practices</category>
     <category>MLOps</category>
     <category>Data Architecture</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/claude-certified-architect-professional-exam-guide.mp3" length="16021872" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -51,6 +96,7 @@
     <category>AI Engineering</category>
     <category>Best Practices</category>
     <category>Tool Use</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/claude-certified-developer-exam-guide.mp3" length="11048688" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -70,6 +116,7 @@
     <category>AI Engineering</category>
     <category>AI Strategy</category>
     <category>Agents</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/claude-certified-associate-exam-guide.mp3" length="14696928" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>

@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1782866306,
+  "generatedAt": 1783897228,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -250,6 +250,19 @@
       "audioUrl": "/blog/audio/field-notes/agent-architectures-productive-patterns.mp3",
       "translationModel": ""
     },
+    "field-notes/agent-authentication-oauth-mcp-identity": {
+      "slug": "agent-authentication-oauth-mcp-identity",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "afe5028ae27d7a237daad8bc2e05f23eb34ae7c66d61f9ca5e170b1ce32e54fd",
+      "sourceHash": "afe5028ae27d7a237daad8bc2e05f23eb34ae7c66d61f9ca5e170b1ce32e54fd",
+      "durationSec": 2038.368,
+      "byteSize": 12230208,
+      "narrationWordCount": 4751,
+      "audioUrl": "/blog/audio/field-notes/agent-authentication-oauth-mcp-identity.mp3",
+      "translationModel": ""
+    },
     "field-notes/agent-engineering-disciplines": {
       "slug": "agent-engineering-disciplines",
       "category": "field-notes",
@@ -367,6 +380,19 @@
       "audioUrl": "/blog/audio/field-notes/application-data-flow-replicas-backups.mp3",
       "translationModel": ""
     },
+    "field-notes/bank-grade-agent-security-iam-gateways": {
+      "slug": "bank-grade-agent-security-iam-gateways",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "51faf0f588b1c7f2b92e5a38d43b5c56badea7d57e29fa1e6e67cf05439b8628",
+      "sourceHash": "51faf0f588b1c7f2b92e5a38d43b5c56badea7d57e29fa1e6e67cf05439b8628",
+      "durationSec": 2138.592,
+      "byteSize": 12831552,
+      "narrationWordCount": 4939,
+      "audioUrl": "/blog/audio/field-notes/bank-grade-agent-security-iam-gateways.mp3",
+      "translationModel": ""
+    },
     "field-notes/bash-daily-driver-ml-engineer": {
       "slug": "bash-daily-driver-ml-engineer",
       "category": "field-notes",
@@ -378,6 +404,45 @@
       "byteSize": 7273872,
       "narrationWordCount": 2943,
       "audioUrl": "/blog/audio/field-notes/bash-daily-driver-ml-engineer.mp3",
+      "translationModel": ""
+    },
+    "field-notes/claude-certified-architect-professional-exam-guide": {
+      "slug": "claude-certified-architect-professional-exam-guide",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "1e6665ad6b15611aec7311484f23577256027604fcf19194ec0ba8d53ce768e2",
+      "sourceHash": "1e6665ad6b15611aec7311484f23577256027604fcf19194ec0ba8d53ce768e2",
+      "durationSec": 2670.312,
+      "byteSize": 16021872,
+      "narrationWordCount": 6117,
+      "audioUrl": "/blog/audio/field-notes/claude-certified-architect-professional-exam-guide.mp3",
+      "translationModel": ""
+    },
+    "field-notes/claude-certified-associate-exam-guide": {
+      "slug": "claude-certified-associate-exam-guide",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "ba75dcd0eca1926e92bf37ca88c8ba6d93f4c15505d8749a261e0393acdaf4dd",
+      "sourceHash": "ba75dcd0eca1926e92bf37ca88c8ba6d93f4c15505d8749a261e0393acdaf4dd",
+      "durationSec": 2449.488,
+      "byteSize": 14696928,
+      "narrationWordCount": 5775,
+      "audioUrl": "/blog/audio/field-notes/claude-certified-associate-exam-guide.mp3",
+      "translationModel": ""
+    },
+    "field-notes/claude-certified-developer-exam-guide": {
+      "slug": "claude-certified-developer-exam-guide",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "d68c67e5387a1fdeb65176c41589b5bc92538776ce765f1864d22398b56e3d87",
+      "sourceHash": "d68c67e5387a1fdeb65176c41589b5bc92538776ce765f1864d22398b56e3d87",
+      "durationSec": 1841.448,
+      "byteSize": 11048688,
+      "narrationWordCount": 4313,
+      "audioUrl": "/blog/audio/field-notes/claude-certified-developer-exam-guide.mp3",
       "translationModel": ""
     },
     "field-notes/claude-code-complete-guide": {
