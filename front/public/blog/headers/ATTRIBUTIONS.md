@@ -76,3 +76,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `anthropic-wordmark-header.jpg` — Anthropic logo by Anthropic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Anthropic_logo.svg) (Public domain), composed on ivory background
 - `passport-control-header.jpg` — Photo by Vasyatka1, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Munich_Airport_T1_L4_passport_controls.jpg) (CC BY-SA 4.0)
 - `safe-deposit-vault-header.jpg` — Photo by GeoTrinity, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tresorraum_Deutschland_2.jpg) (CC BY-SA 3.0)
+- `electricity-meter-header.jpg` — Photo by Mike1024, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mechanical_electricity_meter_1965_(1).jpg) (Public Domain)

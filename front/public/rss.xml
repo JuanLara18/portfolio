@@ -9,8 +9,27 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 May 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 25 May 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>FinOps for AI Agents: Token Economics, Cost Observability, and a Bill You Can Explain</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics</guid>
+    <pubDate>Thu, 25 May 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Token spend is the new cloud bill -- variable, usage-driven, and easy to ignore until it triples. This post applies the FinOps discipline to LLM and agent systems: the real cost equation of an agent task, unit economics that survive a CFO meeting, attribution and metering architecture, the optimization levers ranked by effort and impact, and a budget-aware agent loop in production-quality Python.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>Cloud Computing</category>
+    <category>Enterprise AI</category>
+    <category>Best Practices</category>
+    <category>Observability</category>
+    <category>Cost Optimization</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Bank-Grade Agent Security: IAM, MCP Gateways, and Zero Trust at Enterprise Scale</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways</link>

@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1783897228,
+  "generatedAt": 1783898682,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -755,6 +755,19 @@
       "byteSize": 11446848,
       "narrationWordCount": 5225,
       "audioUrl": "/blog/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3",
+      "translationModel": ""
+    },
+    "field-notes/finops-llm-agents-token-economics": {
+      "slug": "finops-llm-agents-token-economics",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c4aaf38cb88e3df12a60a2ba05fbf6d99e65f31d78ac491430ec68ae254b2159",
+      "sourceHash": "c4aaf38cb88e3df12a60a2ba05fbf6d99e65f31d78ac491430ec68ae254b2159",
+      "durationSec": 2075.616,
+      "byteSize": 12453696,
+      "narrationWordCount": 4946,
+      "audioUrl": "/blog/audio/field-notes/finops-llm-agents-token-economics.mp3",
       "translationModel": ""
     },
     "field-notes/foundations-of-agentic-ai-llms-to-agents": {
