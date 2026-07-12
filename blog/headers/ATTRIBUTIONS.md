@@ -71,3 +71,6 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `water-ripples-blast-radius-header.jpg` — Photo by Michael Pfundt, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ripples_in_Motion_Frozen_in_Time.jpg) (CC BY-SA 4.0)
 - `tree-rings-temporal-header.jpg` — Photo by MdE, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Growth_Rings_tree_rings_02.jpg) (CC BY-SA 4.0)
 - `truss-bridge-production-header.jpg` — Photo by Frank Schulenburg, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bridge_of_the_Gods_October_2019_001.jpg) (CC BY-SA 4.0)
+- `claude-spark-header.jpg` — Claude AI symbol by Anthropic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Claude_AI_symbol.svg) (CC0), composed on ivory background
+- `claude-wordmark-header.jpg` — Claude AI logo by Anthropic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Claude_AI_logo.svg) (Public domain), composed on ivory background
+- `anthropic-wordmark-header.jpg` — Anthropic logo by Anthropic, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Anthropic_logo.svg) (Public domain), composed on ivory background
