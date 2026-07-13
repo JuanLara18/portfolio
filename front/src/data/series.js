@@ -65,6 +65,36 @@ export const SERIES = [
     ],
   },
   {
+    id: 'graph-layer-for-agents',
+    title: 'The Graph Layer for Agents',
+    description:
+      'A five-part series on why grep and embeddings stop being enough for coding agents: ' +
+      'building a repo into a code graph, querying it for blast radius and localization, ' +
+      'giving agents a temporal graph memory, and shipping the whole layer in production.',
+    posts: [
+      'agent-graph-layer-why-grep-embeddings-fell-short',
+      'repo-to-graph-ast-vs-llm-extraction',
+      'querying-code-graphs-blast-radius-localization',
+      'graph-memory-temporal-agents-graphiti-cognee',
+      'graph-layer-in-production-mcp-build-vs-buy',
+    ],
+  },
+  {
+    id: 'senior-judgment-ai-era',
+    title: 'Senior engineering judgment in the AI era',
+    description:
+      'What stays scarce when an AI can generate the code in seconds: infrastructure and ' +
+      'failure domains, data modeling that outlives the app, API contracts, the distributed-' +
+      'systems theory an AI will quietly violate, and architecture as a product discipline.',
+    posts: [
+      'senior-infrastructure-distributed-systems-failure-networking',
+      'senior-data-modeling-query-patterns-database-design',
+      'senior-api-design-contracts-versioning-dx',
+      'senior-distributed-theory-cap-pacelc-tradeoffs',
+      'senior-product-engineering-scale-prioritization-architecture',
+    ],
+  },
+  {
     id: 'ml-cert-review',
     title: 'ML certification review',
     description:
