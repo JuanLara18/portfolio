@@ -1,0 +1,13 @@
+{
+  "slug": "openclaw-anatomy-viral-agent-platform",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "c66e964b0df0b7aff5c7e97b11ed953def9f4bdde3684a8e1d8be648ca036f54",
+  "sourceHash": "1b34a24e6aff881ed633bc2d22dd7e6914fdb71ee059cea9e8c664ce8223eee2",
+  "durationSec": 1855.224,
+  "byteSize": 11131344,
+  "narrationWordCount": 5309,
+  "audioUrl": "/blog/audio-es/field-notes/openclaw-anatomy-viral-agent-platform.mp3",
+  "translationModel": "aya-expanse:8b"
+}

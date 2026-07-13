@@ -1,0 +1,13 @@
+{
+  "slug": "agent-authentication-oauth-mcp-identity",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "364c65711a456f7c09bbbcb2fcff1b046c765e602bf996696df639d7fadb2a31",
+  "sourceHash": "afe5028ae27d7a237daad8bc2e05f23eb34ae7c66d61f9ca5e170b1ce32e54fd",
+  "durationSec": 2063.784,
+  "byteSize": 12382704,
+  "narrationWordCount": 5580,
+  "audioUrl": "/blog/audio-es/field-notes/agent-authentication-oauth-mcp-identity.mp3",
+  "translationModel": "gemma4:latest"
+}

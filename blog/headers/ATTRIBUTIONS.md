@@ -78,3 +78,8 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `safe-deposit-vault-header.jpg` — Photo by GeoTrinity, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tresorraum_Deutschland_2.jpg) (CC BY-SA 3.0)
 - `electricity-meter-header.jpg` — Photo by Mike1024, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mechanical_electricity_meter_1965_(1).jpg) (Public Domain)
 - `st-peters-basilica-header.jpg` — Photo by Diego Delso, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bas%C3%ADlica_de_San_Pedro,_Ciudad_del_Vaticano,_2022-09-14,_DD_19-21_HDR.jpg) (CC BY-SA 4.0)
+
+- `osprey-talons-header.jpg` — Photo by Anthony Sleiman / NPS (evergladesnps), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Osprey_(53412534453).jpg) (Public Domain)
+- `hermes-statue-header.jpg` — Photo by Quist, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hermes-Mercury.jpg) (CC BY-SA)
+- `brass-balance-header.jpg` — Photo by Auckland Museum Collections, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Balance,_letter_(51360064428).jpg) (CC BY 2.0)
+- `card-catalog-header.jpg` — Photo by MarkBuckawicki, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wooden_Card_Catalog_Furniture.jpg) (CC0)

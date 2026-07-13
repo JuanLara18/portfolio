@@ -31,13 +31,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/research</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/research</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -46,6 +46,30 @@
     <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</loc>
+    <lastmod>2028-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison</loc>
+    <lastmod>2028-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/hermes-self-improving-agent-persistent-memory</loc>
+    <lastmod>2028-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-anatomy-viral-agent-platform</loc>
+    <lastmod>2028-06-08</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
