@@ -77,3 +77,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `passport-control-header.jpg` — Photo by Vasyatka1, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Munich_Airport_T1_L4_passport_controls.jpg) (CC BY-SA 4.0)
 - `safe-deposit-vault-header.jpg` — Photo by GeoTrinity, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tresorraum_Deutschland_2.jpg) (CC BY-SA 3.0)
 - `electricity-meter-header.jpg` — Photo by Mike1024, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mechanical_electricity_meter_1965_(1).jpg) (Public Domain)
+- `st-peters-basilica-header.jpg` — Photo by Diego Delso, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bas%C3%ADlica_de_San_Pedro,_Ciudad_del_Vaticano,_2022-09-14,_DD_19-21_HDR.jpg) (CC BY-SA 4.0)
