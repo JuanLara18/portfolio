@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1782846682,
+  "generatedAt": 1783898040,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -224,6 +224,19 @@
       "audioUrl": "/blog/audio-es/field-notes/adk-advanced-evolution-of-agent-engineering.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/agent-architecture-and-orchestration": {
+      "slug": "agent-architecture-and-orchestration",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "0017e2d6e8cd52fa2d3ac0bfc727ddf0a0b784c525cf11d39a4ebcb50ba5d24a",
+      "sourceHash": "8763ca63712745ffa190675d99af11c8159bc15ce8b7f7b7da06033311325e64",
+      "durationSec": 2026.056,
+      "byteSize": 12156336,
+      "narrationWordCount": 5847,
+      "audioUrl": "/blog/audio-es/field-notes/agent-architecture-and-orchestration.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/agent-architectures-productive-patterns": {
       "slug": "agent-architectures-productive-patterns",
       "category": "field-notes",
@@ -261,6 +274,45 @@
       "byteSize": 13787712,
       "narrationWordCount": 6338,
       "audioUrl": "/blog/audio-es/field-notes/agent-guardrails-field-guide.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/agent-integration-protocols-mcp-and-a2a": {
+      "slug": "agent-integration-protocols-mcp-and-a2a",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "6d4370a6bdfac0090e6e800377e57e30b9dfa4eabc426f0fab378560deb21054",
+      "sourceHash": "20c80e9fbd20e25a9ac564ded1a47b1c71a05202ae60436da06d012b5d2ee011",
+      "durationSec": 1697.928,
+      "byteSize": 10187568,
+      "narrationWordCount": 4579,
+      "audioUrl": "/blog/audio-es/field-notes/agent-integration-protocols-mcp-and-a2a.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/agent-memory-and-retrieval-embeddings-to-rag": {
+      "slug": "agent-memory-and-retrieval-embeddings-to-rag",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "cc075e629f0075812c46be0943055d8de7f32d4280af7b84ec5da1dfe8a1ac1b",
+      "sourceHash": "93f7584e4b70c0225cf6d518aa0021d750d413ef555c8e9c517cb9c57ded5fbd",
+      "durationSec": 1990.488,
+      "byteSize": 11942928,
+      "narrationWordCount": 5584,
+      "audioUrl": "/blog/audio-es/field-notes/agent-memory-and-retrieval-embeddings-to-rag.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/ai-poc-enterprise-evaluation": {
+      "slug": "ai-poc-enterprise-evaluation",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "782447a6e0e69ccde3151e5b3ef4359addf021d052e60d3014d04c9a7cf93565",
+      "sourceHash": "5283f5c8e4ecdf68cbd7a2a53ea6e0e73fe40291a6406e10355587c127747cc7",
+      "durationSec": 1577.136,
+      "byteSize": 9462816,
+      "narrationWordCount": 4130,
+      "audioUrl": "/blog/audio-es/field-notes/ai-poc-enterprise-evaluation.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/apache-airflow-orchestration": {
@@ -313,6 +365,19 @@
       "byteSize": 7660080,
       "narrationWordCount": 3223,
       "audioUrl": "/blog/audio-es/field-notes/bash-daily-driver-ml-engineer.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/claude-code-complete-guide": {
+      "slug": "claude-code-complete-guide",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "4c16c57a4ef3f789c28fc74602c29490c9a3c1e5a4bb3033e6f0621c3efaa0c0",
+      "sourceHash": "10fbce3ab023b9d09129652f222418df3eba08701b555d2adb64acbc6c6563c9",
+      "durationSec": 1347.624,
+      "byteSize": 8085744,
+      "narrationWordCount": 3852,
+      "audioUrl": "/blog/audio-es/field-notes/claude-code-complete-guide.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/cloud-ml-infrastructure": {
@@ -406,6 +471,19 @@
       "audioUrl": "/blog/audio-es/field-notes/data-silos-breaking-information-barriers.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/dataiku-enterprise-data-ai-ecosystem": {
+      "slug": "dataiku-enterprise-data-ai-ecosystem",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1b15654c44ca992fae69114112306f798b044dbdf98f940817c2e8a3ee90fbbd",
+      "sourceHash": "a8707f0b17f9145470c51887f832de96d83c5240a7d5faabe9d0e82ab8f2d423",
+      "durationSec": 1682.88,
+      "byteSize": 10097280,
+      "narrationWordCount": 4552,
+      "audioUrl": "/blog/audio-es/field-notes/dataiku-enterprise-data-ai-ecosystem.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/dbt-analytics-engineering": {
       "slug": "dbt-analytics-engineering",
       "category": "field-notes",
@@ -430,6 +508,19 @@
       "byteSize": 12170160,
       "narrationWordCount": 5820,
       "audioUrl": "/blog/audio-es/field-notes/defining-the-knowledge-stack.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/dev-environments-for-ai-teams": {
+      "slug": "dev-environments-for-ai-teams",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "12f8dfffa9d406049f50ccb316472e8fc9e35a33ee2e8a6a25088df4644832c5",
+      "sourceHash": "18067757144fb6b1cce6d53c6f19aa0ad5b95c1ee21ebd34b3ff8c4684adec48",
+      "durationSec": 2083.56,
+      "byteSize": 12501360,
+      "narrationWordCount": 5931,
+      "audioUrl": "/blog/audio-es/field-notes/dev-environments-for-ai-teams.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/dimensional-modeling-kimball": {
@@ -458,6 +549,19 @@
       "audioUrl": "/blog/audio-es/field-notes/docker-for-ml-engineers.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/document-processing-ocr-layout": {
+      "slug": "document-processing-ocr-layout",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "f9d1fdfb20b5c83a44b6b69793bfe733a0e8a179636e93876f0879086f45c78c",
+      "sourceHash": "a1bab75ec977051084cc2415628882cd1c6c54519cd66702ed4532031cee2fb2",
+      "durationSec": 1701.192,
+      "byteSize": 10207152,
+      "narrationWordCount": 4048,
+      "audioUrl": "/blog/audio-es/field-notes/document-processing-ocr-layout.mp3",
+      "translationModel": "gemma4:latest"
+    },
     "field-notes/elevenlabs-voice-ai-engineering": {
       "slug": "elevenlabs-voice-ai-engineering",
       "category": "field-notes",
@@ -482,6 +586,45 @@
       "byteSize": 14639616,
       "narrationWordCount": 7117,
       "audioUrl": "/blog/audio-es/field-notes/enterprise-agent-governance-lifecycle.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/enterprise-agents-governance-security-business": {
+      "slug": "enterprise-agents-governance-security-business",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "8463db0cb124db218c25c91453037528d3147bdcb53c60b9098b557892beb0b6",
+      "sourceHash": "75aef2e672c8c004ad2e2cbe65f4f0cedb130b43ecac8d83ea639a705b4d9915",
+      "durationSec": 2557.68,
+      "byteSize": 15346080,
+      "narrationWordCount": 7595,
+      "audioUrl": "/blog/audio-es/field-notes/enterprise-agents-governance-security-business.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/enterprise-ai-platform-selection": {
+      "slug": "enterprise-ai-platform-selection",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "65f57ee284b281fa58b82711892d74c24bcbe86c817fe74f8f10ce0b1319501a",
+      "sourceHash": "bca36edaa4cdf5c813421bb3ff3be1050e0c7c32f8a64ac8a877a80309007cb3",
+      "durationSec": 1377.504,
+      "byteSize": 8265024,
+      "narrationWordCount": 3411,
+      "audioUrl": "/blog/audio-es/field-notes/enterprise-ai-platform-selection.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/enterprise-knowledge-bases": {
+      "slug": "enterprise-knowledge-bases",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "d2f3c9fb544ab9c15e5d4f1066f371552463b14068210d34da679481db0f1d0e",
+      "sourceHash": "4391858ada41adc41784cf113e02b5f1051af6c5f8e5233a6d81df5b38a36674",
+      "durationSec": 3021.696,
+      "byteSize": 18130176,
+      "narrationWordCount": 7936,
+      "audioUrl": "/blog/audio-es/field-notes/enterprise-knowledge-bases.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/experiment-tracking-mlops": {
@@ -521,6 +664,32 @@
       "byteSize": 9967968,
       "narrationWordCount": 4468,
       "audioUrl": "/blog/audio-es/field-notes/fine-tuning-embeddings.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/fine-tuning-gemma4-lora-qlora": {
+      "slug": "fine-tuning-gemma4-lora-qlora",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "0ec812092e6f866201473ac85e55ff7e8edd2d4fc75ebe0b1bce5bfcdae639a8",
+      "sourceHash": "cdcda2883ab9d9d06d4a48051d266007ae6edeba96cd02900b4f84d25a07ae5e",
+      "durationSec": 2364.168,
+      "byteSize": 14185008,
+      "narrationWordCount": 5989,
+      "audioUrl": "/blog/audio-es/field-notes/fine-tuning-gemma4-lora-qlora.mp3",
+      "translationModel": "gemma4:latest"
+    },
+    "field-notes/foundations-of-agentic-ai-llms-to-agents": {
+      "slug": "foundations-of-agentic-ai-llms-to-agents",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "67461400b54b0184820cdd74220caf7632ffdfd22daec43b00a0e29d11a41e49",
+      "sourceHash": "b8d4fa05c0db892c5867631e4a84dd158aa70b084a26a896a8e5389ec340e302",
+      "durationSec": 1838.616,
+      "byteSize": 11031696,
+      "narrationWordCount": 5179,
+      "audioUrl": "/blog/audio-es/field-notes/foundations-of-agentic-ai-llms-to-agents.mp3",
       "translationModel": "gemma4:latest"
     },
     "field-notes/gemini-enterprise-knowledge-catalog-deep-dive": {

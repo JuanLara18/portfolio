@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1783897228,
+  "generatedAt": 1783904184,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -755,6 +755,19 @@
       "byteSize": 11446848,
       "narrationWordCount": 5225,
       "audioUrl": "/blog/audio/field-notes/fine-tuning-gemma4-lora-qlora.mp3",
+      "translationModel": ""
+    },
+    "field-notes/finops-llm-agents-token-economics": {
+      "slug": "finops-llm-agents-token-economics",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "c4aaf38cb88e3df12a60a2ba05fbf6d99e65f31d78ac491430ec68ae254b2159",
+      "sourceHash": "c4aaf38cb88e3df12a60a2ba05fbf6d99e65f31d78ac491430ec68ae254b2159",
+      "durationSec": 2075.616,
+      "byteSize": 12453696,
+      "narrationWordCount": 4946,
+      "audioUrl": "/blog/audio/field-notes/finops-llm-agents-token-economics.mp3",
       "translationModel": ""
     },
     "field-notes/foundations-of-agentic-ai-llms-to-agents": {
@@ -1730,6 +1743,19 @@
       "byteSize": 9478800,
       "narrationWordCount": 3436,
       "audioUrl": "/blog/audio/research/llm-as-a-judge.mp3",
+      "translationModel": ""
+    },
+    "research/magnifica-humanitas-ai-encyclical-analysis": {
+      "slug": "magnifica-humanitas-ai-encyclical-analysis",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "436b7320d790eadf98e6d9a1d257f6629cdc48624341ee2b98141e0cd2e7291b",
+      "sourceHash": "436b7320d790eadf98e6d9a1d257f6629cdc48624341ee2b98141e0cd2e7291b",
+      "durationSec": 2194.2,
+      "byteSize": 13165200,
+      "narrationWordCount": 5033,
+      "audioUrl": "/blog/audio/research/magnifica-humanitas-ai-encyclical-analysis.mp3",
       "translationModel": ""
     },
     "research/mamba-selective-state-spaces": {

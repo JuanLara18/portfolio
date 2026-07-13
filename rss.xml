@@ -9,8 +9,48 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 May 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jun 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Magnifica Humanitas: Reading the Pope&apos;s AI Encyclical as an Engineer</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis</guid>
+    <pubDate>Thu, 01 Jun 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Pope Leo XIV's first encyclical is a 42,300-word argument about artificial intelligence, signed on the 135th anniversary of Rerum Novarum — the document that defined the Church's response to the industrial revolution. Most engineers will never read it. This post does: chapter by chapter, quote by quote, mapping its claims about non-neutrality, cognitive disarmament, and concentration of power onto the design decisions ML practitioners make every day.]]></description>
+    <category>research</category>
+    <category>AI Governance</category>
+    <category>AI Safety</category>
+    <category>Responsible AI</category>
+    <category>LLMs</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Machine Learning</category>
+    <category>Enterprise AI</category>
+    <category>Best Practices</category>
+    <category>Research Papers</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/magnifica-humanitas-ai-encyclical-analysis.mp3" length="13165200" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>FinOps for AI Agents: Token Economics, Cost Observability, and a Bill You Can Explain</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics</guid>
+    <pubDate>Thu, 25 May 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Token spend is the new cloud bill -- variable, usage-driven, and easy to ignore until it triples. This post applies the FinOps discipline to LLM and agent systems: the real cost equation of an agent task, unit economics that survive a CFO meeting, attribution and metering architecture, the optimization levers ranked by effort and impact, and a budget-aware agent loop in production-quality Python.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>Cloud Computing</category>
+    <category>Enterprise AI</category>
+    <category>Best Practices</category>
+    <category>Observability</category>
+    <category>Cost Optimization</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/finops-llm-agents-token-economics.mp3" length="12453696" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Bank-Grade Agent Security: IAM, MCP Gateways, and Zero Trust at Enterprise Scale</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways</link>
