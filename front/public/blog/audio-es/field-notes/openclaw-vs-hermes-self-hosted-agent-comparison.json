@@ -1,0 +1,13 @@
+{
+  "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "86934e5a9aad234ea9274c951c983f40e3c74d319e6c5a7c2985264223734360",
+  "sourceHash": "94c757492a46674002fc4076051259cdd0621ecc9b699f4c68d13154b0c17e54",
+  "durationSec": 1566.408,
+  "byteSize": 9398448,
+  "narrationWordCount": 4466,
+  "audioUrl": "/blog/audio-es/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison.mp3",
+  "translationModel": "aya-expanse:8b"
+}
