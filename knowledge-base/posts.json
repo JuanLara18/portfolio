@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-07-13T04:53:00.285Z",
+  "generated_at": "2026-07-13T14:28:14.865Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,10 +8,10 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 145,
+    "total_posts": 146,
     "augmented_posts": 43,
     "by_category": {
-      "field-notes": 116,
+      "field-notes": 117,
       "research": 13,
       "curiosities": 16
     },
@@ -20,6 +20,48 @@
     "prereq_edges": 67
   },
   "posts": {
+    "enterprise-agent-memory-continuity-adk-geap": {
+      "title": "The Agent That Remembers You: Continuity Engineering on ADK 2.0 and Gemini Enterprise",
+      "date": "2028-06-29",
+      "category": "field-notes",
+      "tags": [
+        "Agents",
+        "Agentic AI",
+        "LLMs",
+        "Production ML",
+        "MLOps",
+        "RAG",
+        "Knowledge Bases",
+        "BigQuery",
+        "Cloud Computing",
+        "Data Engineering",
+        "Best Practices"
+      ],
+      "excerpt": "Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph and the Anthropic and OpenAI SDKs.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/enterprise-agent-memory-continuity-adk-geap",
+      "source_path": "front/public/blog/posts/field-notes/enterprise-agent-memory-continuity-adk-geap.md",
+      "reading_minutes": 29,
+      "word_count": 6800,
+      "concepts": [
+        "agents",
+        "agentic ai",
+        "llms",
+        "production ml",
+        "mlops",
+        "rag",
+        "knowledge bases",
+        "bigquery",
+        "cloud computing",
+        "data engineering",
+        "best practices"
+      ],
+      "prereqs": [],
+      "teaches": [],
+      "tech": [],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": false
+    },
     "openclaw-vs-hermes-self-hosted-agent-comparison": {
       "title": "OpenClaw vs Hermes: Two Philosophies of the Self-Hosted Agent",
       "date": "2028-06-22",
@@ -59,7 +101,10 @@
       "teaches": [],
       "tech": [],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": false
     },
     "hermes-self-improving-agent-persistent-memory": {
@@ -101,7 +146,10 @@
       "teaches": [],
       "tech": [],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": false
     },
     "openclaw-anatomy-viral-agent-platform": {
@@ -141,7 +189,10 @@
       "teaches": [],
       "tech": [],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": false
     },
     "magnifica-humanitas-ai-encyclical-analysis": {
@@ -316,7 +367,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -1450,7 +1502,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -1723,7 +1776,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": true
     },
@@ -3102,7 +3156,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -3435,7 +3490,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -3912,7 +3968,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -3959,7 +4016,8 @@
       ],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": true
     },
@@ -4048,7 +4106,8 @@
       ],
       "depth": "working",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": true
     },
@@ -4599,7 +4658,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -4946,7 +5006,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -6019,7 +6080,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -6467,6 +6529,10 @@
         "depth": "deep"
       },
       {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
+        "depth": "deep"
+      },
+      {
         "slug": "enterprise-knowledge-bases",
         "depth": "deep"
       },
@@ -6557,6 +6623,10 @@
         "depth": "deep"
       },
       {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
+        "depth": "deep"
+      },
+      {
         "slug": "finops-llm-agents-token-economics",
         "depth": "deep"
       },
@@ -6620,6 +6690,10 @@
       },
       {
         "slug": "emotion-concepts-in-llms",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
         "depth": "deep"
       },
       {
@@ -6731,24 +6805,6 @@
         "depth": "deep"
       }
     ],
-    "open source": [
-      {
-        "slug": "hermes-self-improving-agent-persistent-memory",
-        "depth": "deep"
-      },
-      {
-        "slug": "local-llm-inference-tools",
-        "depth": "deep"
-      },
-      {
-        "slug": "openclaw-anatomy-viral-agent-platform",
-        "depth": "deep"
-      },
-      {
-        "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
-        "depth": "deep"
-      }
-    ],
     "production ml": [
       {
         "slug": "agent-architectures-productive-patterns",
@@ -6788,6 +6844,10 @@
       },
       {
         "slug": "enterprise-agent-governance-lifecycle",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
         "depth": "deep"
       },
       {
@@ -6921,6 +6981,10 @@
         "depth": "deep"
       },
       {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
+        "depth": "deep"
+      },
+      {
         "slug": "enterprise-ai-platform-selection",
         "depth": "deep"
       },
@@ -6981,55 +7045,293 @@
         "depth": "deep"
       }
     ],
-    "ai safety": [
+    "rag": [
       {
-        "slug": "emotion-concepts-in-llms",
+        "slug": "agent-engineering-disciplines",
         "depth": "deep"
       },
       {
-        "slug": "magnifica-humanitas-ai-encyclical-analysis",
+        "slug": "ai-poc-enterprise-evaluation",
         "depth": "deep"
       },
       {
-        "slug": "openclaw-anatomy-viral-agent-platform",
+        "slug": "document-processing-ocr-layout",
         "depth": "deep"
       },
       {
-        "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
         "depth": "deep"
       },
       {
-        "slug": "reinforcement-learning-first-principles",
+        "slug": "enterprise-knowledge-bases",
+        "depth": "deep"
+      },
+      {
+        "slug": "fine-tuning-embeddings",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "knowledge-base-curation",
+        "depth": "deep"
+      },
+      {
+        "slug": "llamaindex-langchain-llm-frameworks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "llm-caching-four-layers",
+        "depth": "deep"
+      },
+      {
+        "slug": "mcp-server-nl-to-powerbi-dashboard",
+        "depth": "deep"
+      },
+      {
+        "slug": "mteb-embedding-benchmarks",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "query-routing-agent-decisions",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "vector-databases-indexes-to-vertex-search",
+        "depth": "deep"
+      },
+      {
+        "slug": "vector-db-benchmarks",
         "depth": "deep"
       }
     ],
-    "automation": [
+    "knowledge bases": [
+      {
+        "slug": "document-processing-ocr-layout",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-knowledge-bases",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "knowledge-base-curation",
+        "depth": "deep"
+      },
+      {
+        "slug": "rag-retrieval-augmented-generation",
+        "depth": "deep"
+      },
+      {
+        "slug": "spanner-graph-for-knowledge-and-agents",
+        "depth": "deep"
+      }
+    ],
+    "bigquery": [
+      {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
+        "depth": "deep"
+      },
+      {
+        "slug": "sql-pandas-pyspark-duckdb",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
+        "depth": "deep"
+      }
+    ],
+    "cloud computing": [
+      {
+        "slug": "agent-architectures-productive-patterns",
+        "depth": "deep"
+      },
+      {
+        "slug": "ai-poc-enterprise-evaluation",
+        "depth": "deep"
+      },
+      {
+        "slug": "application-data-flow-replicas-backups",
+        "depth": "deep"
+      },
+      {
+        "slug": "bank-grade-agent-security-iam-gateways",
+        "depth": "deep"
+      },
+      {
+        "slug": "cloud-ml-infrastructure",
+        "depth": "deep"
+      },
+      {
+        "slug": "computational-resources-ml",
+        "depth": "deep"
+      },
+      {
+        "slug": "data-engineering-fundamentals",
+        "depth": "deep"
+      },
+      {
+        "slug": "data-silos-breaking-information-barriers",
+        "depth": "deep"
+      },
+      {
+        "slug": "dataiku-enterprise-data-ai-ecosystem",
+        "depth": "deep"
+      },
+      {
+        "slug": "dev-environments-for-ai-teams",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-ai-platform-selection",
+        "depth": "deep"
+      },
+      {
+        "slug": "finops-llm-agents-token-economics",
+        "depth": "deep"
+      },
+      {
+        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-adk-agent-development-deep-dive",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "kubernetes-minimum-subset-ml",
+        "depth": "deep"
+      },
+      {
+        "slug": "lakehouse-architecture",
+        "depth": "deep"
+      },
+      {
+        "slug": "network-fundamentals-every-concept",
+        "depth": "deep"
+      },
+      {
+        "slug": "stack-recommendations-after-100-posts",
+        "depth": "deep"
+      },
+      {
+        "slug": "terraform-infrastructure-as-code",
+        "depth": "deep"
+      },
+      {
+        "slug": "vector-databases-indexes-to-vertex-search",
+        "depth": "deep"
+      },
+      {
+        "slug": "vertex-ai-gcp-ml-platform-cli",
+        "depth": "deep"
+      }
+    ],
+    "data engineering": [
+      {
+        "slug": "100-posts-knowledge-graph-retrospective",
+        "depth": "deep"
+      },
+      {
+        "slug": "ai-poc-enterprise-evaluation",
+        "depth": "deep"
+      },
       {
         "slug": "apache-airflow-orchestration",
         "depth": "deep"
       },
       {
-        "slug": "bash-daily-driver-ml-engineer",
+        "slug": "apache-spark-ecosystem-guide",
         "depth": "deep"
       },
       {
-        "slug": "git-and-github-complete-guide",
+        "slug": "application-data-flow-replicas-backups",
         "depth": "deep"
       },
       {
-        "slug": "hermes-self-improving-agent-persistent-memory",
+        "slug": "dama-dmbok-data-governance",
         "depth": "deep"
       },
       {
-        "slug": "openclaw-anatomy-viral-agent-platform",
+        "slug": "data-engineering-fundamentals",
         "depth": "deep"
       },
       {
-        "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
+        "slug": "data-silos-breaking-information-barriers",
         "depth": "deep"
       },
       {
-        "slug": "terraform-infrastructure-as-code",
+        "slug": "dbt-analytics-engineering",
+        "depth": "deep"
+      },
+      {
+        "slug": "dimensional-modeling-kimball",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
+        "depth": "deep"
+      },
+      {
+        "slug": "files-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "google-cloud-certifications-2026-roadmap",
+        "depth": "deep"
+      },
+      {
+        "slug": "lakehouse-architecture",
+        "depth": "deep"
+      },
+      {
+        "slug": "ml-libraries-under-the-hood",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontology-grounded-rag-chunks-in-nodes",
+        "depth": "deep"
+      },
+      {
+        "slug": "sql-pandas-pyspark-duckdb",
+        "depth": "deep"
+      },
+      {
+        "slug": "text-to-sql",
         "depth": "deep"
       }
     ],
@@ -7080,6 +7382,10 @@
       },
       {
         "slug": "enterprise-agent-governance-lifecycle",
+        "depth": "deep"
+      },
+      {
+        "slug": "enterprise-agent-memory-continuity-adk-geap",
         "depth": "deep"
       },
       {
@@ -7136,6 +7442,76 @@
       },
       {
         "slug": "structuring-ml-projects",
+        "depth": "deep"
+      },
+      {
+        "slug": "terraform-infrastructure-as-code",
+        "depth": "deep"
+      }
+    ],
+    "open source": [
+      {
+        "slug": "hermes-self-improving-agent-persistent-memory",
+        "depth": "deep"
+      },
+      {
+        "slug": "local-llm-inference-tools",
+        "depth": "deep"
+      },
+      {
+        "slug": "openclaw-anatomy-viral-agent-platform",
+        "depth": "deep"
+      },
+      {
+        "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
+        "depth": "deep"
+      }
+    ],
+    "ai safety": [
+      {
+        "slug": "emotion-concepts-in-llms",
+        "depth": "deep"
+      },
+      {
+        "slug": "magnifica-humanitas-ai-encyclical-analysis",
+        "depth": "deep"
+      },
+      {
+        "slug": "openclaw-anatomy-viral-agent-platform",
+        "depth": "deep"
+      },
+      {
+        "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
+        "depth": "deep"
+      },
+      {
+        "slug": "reinforcement-learning-first-principles",
+        "depth": "deep"
+      }
+    ],
+    "automation": [
+      {
+        "slug": "apache-airflow-orchestration",
+        "depth": "deep"
+      },
+      {
+        "slug": "bash-daily-driver-ml-engineer",
+        "depth": "deep"
+      },
+      {
+        "slug": "git-and-github-complete-guide",
+        "depth": "deep"
+      },
+      {
+        "slug": "hermes-self-improving-agent-persistent-memory",
+        "depth": "deep"
+      },
+      {
+        "slug": "openclaw-anatomy-viral-agent-platform",
+        "depth": "deep"
+      },
+      {
+        "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
         "depth": "deep"
       },
       {
@@ -7582,96 +7958,6 @@
       },
       {
         "slug": "the-manifold-hypothesis",
-        "depth": "deep"
-      }
-    ],
-    "cloud computing": [
-      {
-        "slug": "agent-architectures-productive-patterns",
-        "depth": "deep"
-      },
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "application-data-flow-replicas-backups",
-        "depth": "deep"
-      },
-      {
-        "slug": "bank-grade-agent-security-iam-gateways",
-        "depth": "deep"
-      },
-      {
-        "slug": "cloud-ml-infrastructure",
-        "depth": "deep"
-      },
-      {
-        "slug": "computational-resources-ml",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-engineering-fundamentals",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-silos-breaking-information-barriers",
-        "depth": "deep"
-      },
-      {
-        "slug": "dataiku-enterprise-data-ai-ecosystem",
-        "depth": "deep"
-      },
-      {
-        "slug": "dev-environments-for-ai-teams",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-ai-platform-selection",
-        "depth": "deep"
-      },
-      {
-        "slug": "finops-llm-agents-token-economics",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-adk-agent-development-deep-dive",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "kubernetes-minimum-subset-ml",
-        "depth": "deep"
-      },
-      {
-        "slug": "lakehouse-architecture",
-        "depth": "deep"
-      },
-      {
-        "slug": "network-fundamentals-every-concept",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "terraform-infrastructure-as-code",
-        "depth": "deep"
-      },
-      {
-        "slug": "vector-databases-indexes-to-vertex-search",
-        "depth": "deep"
-      },
-      {
-        "slug": "vertex-ai-gcp-ml-platform-cli",
         "depth": "deep"
       }
     ],
@@ -9453,32 +9739,6 @@
         "depth": "deep"
       }
     ],
-    "knowledge bases": [
-      {
-        "slug": "document-processing-ocr-layout",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-knowledge-bases",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "knowledge-base-curation",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "spanner-graph-for-knowledge-and-agents",
-        "depth": "deep"
-      }
-    ],
     "distributed computing": [
       {
         "slug": "apache-spark-ecosystem-guide",
@@ -9676,80 +9936,6 @@
       },
       {
         "slug": "vector-databases-indexes-to-vertex-search",
-        "depth": "deep"
-      }
-    ],
-    "rag": [
-      {
-        "slug": "agent-engineering-disciplines",
-        "depth": "deep"
-      },
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "document-processing-ocr-layout",
-        "depth": "deep"
-      },
-      {
-        "slug": "enterprise-knowledge-bases",
-        "depth": "deep"
-      },
-      {
-        "slug": "fine-tuning-embeddings",
-        "depth": "deep"
-      },
-      {
-        "slug": "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-        "depth": "deep"
-      },
-      {
-        "slug": "knowledge-base-curation",
-        "depth": "deep"
-      },
-      {
-        "slug": "llamaindex-langchain-llm-frameworks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "llm-caching-four-layers",
-        "depth": "deep"
-      },
-      {
-        "slug": "mcp-server-nl-to-powerbi-dashboard",
-        "depth": "deep"
-      },
-      {
-        "slug": "mteb-embedding-benchmarks",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-grounded-rag-chunks-in-nodes",
-        "depth": "deep"
-      },
-      {
-        "slug": "query-routing-agent-decisions",
-        "depth": "deep"
-      },
-      {
-        "slug": "rag-retrieval-augmented-generation",
-        "depth": "deep"
-      },
-      {
-        "slug": "stack-recommendations-after-100-posts",
-        "depth": "deep"
-      },
-      {
-        "slug": "vector-databases-indexes-to-vertex-search",
-        "depth": "deep"
-      },
-      {
-        "slug": "vector-db-benchmarks",
         "depth": "deep"
       }
     ],
@@ -10468,76 +10654,6 @@
       },
       {
         "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      }
-    ],
-    "data engineering": [
-      {
-        "slug": "100-posts-knowledge-graph-retrospective",
-        "depth": "deep"
-      },
-      {
-        "slug": "ai-poc-enterprise-evaluation",
-        "depth": "deep"
-      },
-      {
-        "slug": "apache-airflow-orchestration",
-        "depth": "deep"
-      },
-      {
-        "slug": "apache-spark-ecosystem-guide",
-        "depth": "deep"
-      },
-      {
-        "slug": "application-data-flow-replicas-backups",
-        "depth": "deep"
-      },
-      {
-        "slug": "dama-dmbok-data-governance",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-engineering-fundamentals",
-        "depth": "deep"
-      },
-      {
-        "slug": "data-silos-breaking-information-barriers",
-        "depth": "deep"
-      },
-      {
-        "slug": "dbt-analytics-engineering",
-        "depth": "deep"
-      },
-      {
-        "slug": "dimensional-modeling-kimball",
-        "depth": "deep"
-      },
-      {
-        "slug": "files-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "google-cloud-certifications-2026-roadmap",
-        "depth": "deep"
-      },
-      {
-        "slug": "lakehouse-architecture",
-        "depth": "deep"
-      },
-      {
-        "slug": "ml-libraries-under-the-hood",
-        "depth": "deep"
-      },
-      {
-        "slug": "ontology-grounded-rag-chunks-in-nodes",
-        "depth": "deep"
-      },
-      {
-        "slug": "sql-pandas-pyspark-duckdb",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
         "depth": "deep"
       }
     ],
@@ -12067,16 +12183,6 @@
         "depth": "deep"
       }
     ],
-    "bigquery": [
-      {
-        "slug": "sql-pandas-pyspark-duckdb",
-        "depth": "deep"
-      },
-      {
-        "slug": "text-to-sql",
-        "depth": "deep"
-      }
-    ],
     "etl": [
       {
         "slug": "data-engineering-fundamentals",
@@ -12520,6 +12626,7 @@
       "claude-certified-developer-exam-guide",
       "claude-code-complete-guide",
       "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
       "enterprise-agents-governance-security-business",
       "enterprise-knowledge-bases",
       "finops-llm-agents-token-economics",
@@ -12566,6 +12673,7 @@
       "claude-certified-developer-exam-guide",
       "claude-code-complete-guide",
       "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
       "enterprise-agents-governance-security-business",
       "finops-llm-agents-token-economics",
       "foundations-of-agentic-ai-llms-to-agents",
@@ -12607,6 +12715,7 @@
       "claude-certified-developer-exam-guide",
       "claude-code-complete-guide",
       "emotion-concepts-in-llms",
+      "enterprise-agent-memory-continuity-adk-geap",
       "enterprise-ai-platform-selection",
       "enterprise-knowledge-bases",
       "fine-tuning-embeddings",
@@ -12648,12 +12757,6 @@
       "text-to-sql",
       "working-with-ml-models"
     ],
-    "Open Source": [
-      "hermes-self-improving-agent-persistent-memory",
-      "local-llm-inference-tools",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison"
-    ],
     "Production ML": [
       "agent-architecture-and-orchestration",
       "agent-architectures-productive-patterns",
@@ -12668,6 +12771,7 @@
       "document-processing-ocr-layout",
       "elevenlabs-voice-ai-engineering",
       "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
       "enterprise-agents-governance-security-business",
       "enterprise-ai-platform-selection",
       "experiment-tracking-mlops",
@@ -12716,6 +12820,7 @@
       "dev-environments-for-ai-teams",
       "docker-for-ml-engineers",
       "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
       "enterprise-ai-platform-selection",
       "experiment-tracking-mlops",
       "finops-llm-agents-token-economics",
@@ -12740,21 +12845,118 @@
       "structuring-ml-projects",
       "vertex-ai-gcp-ml-platform-cli"
     ],
-    "AI Safety": [
-      "emotion-concepts-in-llms",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "reinforcement-learning-first-principles"
+    "RAG": [
+      "agent-engineering-disciplines",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "ai-poc-enterprise-evaluation",
+      "comparing-knowledge-bases-semantic-overlap",
+      "defining-the-knowledge-stack",
+      "document-processing-ocr-layout",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-agents-governance-security-business",
+      "enterprise-knowledge-bases",
+      "fine-tuning-embeddings",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "knowledge-as-a-product",
+      "knowledge-base-curation",
+      "knowledge-catalog-vs-ontologies",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-benchmarks",
+      "llm-caching-four-layers",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "mteb-embedding-benchmarks",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-to-agent-toolbox",
+      "operating-agents-eval-observability-scale",
+      "query-routing-agent-decisions",
+      "querying-code-graphs-blast-radius-localization",
+      "rag-advanced-patterns",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
+      "ragas-evaluating-rag",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "stack-recommendations-after-100-posts",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks"
     ],
-    "Automation": [
+    "Knowledge Bases": [
+      "comparing-knowledge-bases-semantic-overlap",
+      "defining-the-knowledge-stack",
+      "document-processing-ocr-layout",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-knowledge-bases",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "gemini-knowledge-catalog-workshop",
+      "knowledge-as-a-product",
+      "knowledge-base-curation",
+      "knowledge-catalog-vs-ontologies",
+      "ontologies-building-knowledge-bases",
+      "rag-retrieval-augmented-generation",
+      "spanner-graph-for-knowledge-and-agents"
+    ],
+    "BigQuery": [
+      "enterprise-agent-memory-continuity-adk-geap",
+      "sql-pandas-pyspark-duckdb",
+      "text-to-sql"
+    ],
+    "Cloud Computing": [
+      "agent-architectures-productive-patterns",
+      "ai-poc-enterprise-evaluation",
+      "application-data-flow-replicas-backups",
+      "bank-grade-agent-security-iam-gateways",
+      "cloud-ml-infrastructure",
+      "computational-resources-ml",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "dev-environments-for-ai-teams",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-ai-platform-selection",
+      "finops-llm-agents-token-economics",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "google-cloud-next-2026-agent-native-stack",
+      "knowledge-as-a-product",
+      "kubernetes-minimum-subset-ml",
+      "lakehouse-architecture",
+      "network-fundamentals-every-concept",
+      "ontology-production-pipeline-gcp",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "stack-recommendations-after-100-posts",
+      "terraform-infrastructure-as-code",
+      "vector-databases-indexes-to-vertex-search",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "Data Engineering": [
+      "100-posts-knowledge-graph-retrospective",
+      "ai-poc-enterprise-evaluation",
       "apache-airflow-orchestration",
-      "bash-daily-driver-ml-engineer",
-      "git-and-github-complete-guide",
-      "hermes-self-improving-agent-persistent-memory",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "terraform-infrastructure-as-code"
+      "apache-spark-ecosystem-guide",
+      "application-data-flow-replicas-backups",
+      "dama-dmbok-data-governance",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "dbt-analytics-engineering",
+      "dimensional-modeling-kimball",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "files-under-the-hood",
+      "google-cloud-certifications-2026-roadmap",
+      "lakehouse-architecture",
+      "lookml-semantic-layer-data-modeling",
+      "ml-libraries-under-the-hood",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-production-pipeline-gcp",
+      "populating-knowledge-graph-llms-banking",
+      "senior-data-modeling-query-patterns-database-design",
+      "sql-pandas-pyspark-duckdb",
+      "tbox-abox-schema-facts-distinction",
+      "text-to-sql"
     ],
     "Best Practices": [
       "100-posts-knowledge-graph-retrospective",
@@ -12774,6 +12976,7 @@
       "dataiku-enterprise-data-ai-ecosystem",
       "dev-environments-for-ai-teams",
       "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
       "enterprise-agents-governance-security-business",
       "enterprise-ai-platform-selection",
       "experiment-tracking-mlops",
@@ -12805,6 +13008,28 @@
       "software-engineering-classics",
       "stack-recommendations-after-100-posts",
       "structuring-ml-projects",
+      "terraform-infrastructure-as-code"
+    ],
+    "Open Source": [
+      "hermes-self-improving-agent-persistent-memory",
+      "local-llm-inference-tools",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison"
+    ],
+    "AI Safety": [
+      "emotion-concepts-in-llms",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "reinforcement-learning-first-principles"
+    ],
+    "Automation": [
+      "apache-airflow-orchestration",
+      "bash-daily-driver-ml-engineer",
+      "git-and-github-complete-guide",
+      "hermes-self-improving-agent-persistent-memory",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
       "terraform-infrastructure-as-code"
     ],
     "Software Engineering": [
@@ -12971,34 +13196,6 @@
       "scaling-laws-neural-language-models",
       "t5-text-to-text-transfer-transformer",
       "the-manifold-hypothesis"
-    ],
-    "Cloud Computing": [
-      "agent-architectures-productive-patterns",
-      "ai-poc-enterprise-evaluation",
-      "application-data-flow-replicas-backups",
-      "bank-grade-agent-security-iam-gateways",
-      "cloud-ml-infrastructure",
-      "computational-resources-ml",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "dev-environments-for-ai-teams",
-      "enterprise-ai-platform-selection",
-      "finops-llm-agents-token-economics",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "google-cloud-next-2026-agent-native-stack",
-      "knowledge-as-a-product",
-      "kubernetes-minimum-subset-ml",
-      "lakehouse-architecture",
-      "network-fundamentals-every-concept",
-      "ontology-production-pipeline-gcp",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "stack-recommendations-after-100-posts",
-      "terraform-infrastructure-as-code",
-      "vector-databases-indexes-to-vertex-search",
-      "vertex-ai-gcp-ml-platform-cli"
     ],
     "Observability": [
       "finops-llm-agents-token-economics",
@@ -13250,44 +13447,6 @@
       "terraform-infrastructure-as-code",
       "vector-db-benchmarks"
     ],
-    "RAG": [
-      "agent-engineering-disciplines",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "ai-poc-enterprise-evaluation",
-      "comparing-knowledge-bases-semantic-overlap",
-      "defining-the-knowledge-stack",
-      "document-processing-ocr-layout",
-      "enterprise-agents-governance-security-business",
-      "enterprise-knowledge-bases",
-      "fine-tuning-embeddings",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "knowledge-as-a-product",
-      "knowledge-base-curation",
-      "knowledge-catalog-vs-ontologies",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-benchmarks",
-      "llm-caching-four-layers",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "mteb-embedding-benchmarks",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-to-agent-toolbox",
-      "operating-agents-eval-observability-scale",
-      "query-routing-agent-decisions",
-      "querying-code-graphs-blast-radius-localization",
-      "rag-advanced-patterns",
-      "rag-building-production-systems",
-      "rag-retrieval-augmented-generation",
-      "ragas-evaluating-rag",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "stack-recommendations-after-100-posts",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks"
-    ],
     "Embeddings": [
       "agent-graph-layer-why-grep-embeddings-fell-short",
       "agent-memory-and-retrieval-embeddings-to-rag",
@@ -13442,30 +13601,6 @@
     "Backend Engineering": [
       "senior-api-design-contracts-versioning-dx"
     ],
-    "Data Engineering": [
-      "100-posts-knowledge-graph-retrospective",
-      "ai-poc-enterprise-evaluation",
-      "apache-airflow-orchestration",
-      "apache-spark-ecosystem-guide",
-      "application-data-flow-replicas-backups",
-      "dama-dmbok-data-governance",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "dbt-analytics-engineering",
-      "dimensional-modeling-kimball",
-      "files-under-the-hood",
-      "google-cloud-certifications-2026-roadmap",
-      "lakehouse-architecture",
-      "lookml-semantic-layer-data-modeling",
-      "ml-libraries-under-the-hood",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-production-pipeline-gcp",
-      "populating-knowledge-graph-llms-banking",
-      "senior-data-modeling-query-patterns-database-design",
-      "sql-pandas-pyspark-duckdb",
-      "tbox-abox-schema-facts-distinction",
-      "text-to-sql"
-    ],
     "SQL": [
       "apache-spark-ecosystem-guide",
       "dbt-analytics-engineering",
@@ -13566,20 +13701,6 @@
     ],
     "Tokenization": [
       "foundations-of-agentic-ai-llms-to-agents"
-    ],
-    "Knowledge Bases": [
-      "comparing-knowledge-bases-semantic-overlap",
-      "defining-the-knowledge-stack",
-      "document-processing-ocr-layout",
-      "enterprise-knowledge-bases",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "gemini-knowledge-catalog-workshop",
-      "knowledge-as-a-product",
-      "knowledge-base-curation",
-      "knowledge-catalog-vs-ontologies",
-      "ontologies-building-knowledge-bases",
-      "rag-retrieval-augmented-generation",
-      "spanner-graph-for-knowledge-and-agents"
     ],
     "Knowledge Engineering": [
       "comparing-knowledge-bases-semantic-overlap",
@@ -14365,10 +14486,6 @@
     "DuckDB": [
       "sql-pandas-pyspark-duckdb"
     ],
-    "BigQuery": [
-      "sql-pandas-pyspark-duckdb",
-      "text-to-sql"
-    ],
     "ETL": [
       "data-engineering-fundamentals"
     ],
@@ -14498,6 +14615,7 @@
       "document-processing-ocr-layout",
       "elevenlabs-voice-ai-engineering",
       "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
       "enterprise-agents-governance-security-business",
       "enterprise-ai-platform-selection",
       "enterprise-knowledge-bases",

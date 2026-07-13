@@ -82,3 +82,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `osprey-talons-header.jpg` — Photo by Anthony Sleiman / NPS (evergladesnps), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Osprey_(53412534453).jpg) (Public Domain)
 - `hermes-statue-header.jpg` — Photo by Quist, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hermes-Mercury.jpg) (CC BY-SA)
 - `brass-balance-header.jpg` — Photo by Auckland Museum Collections, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Balance,_letter_(51360064428).jpg) (CC BY 2.0)
+- `card-catalog-header.jpg` — Photo by MarkBuckawicki, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wooden_Card_Catalog_Furniture.jpg) (CC0)

@@ -9,8 +9,28 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Jun 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Jun 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The Agent That Remembers You: Continuity Engineering on ADK 2.0 and Gemini Enterprise</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</guid>
+    <pubDate>Thu, 29 Jun 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph and the Anthropic and OpenAI SDKs.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>LLMs</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>RAG</category>
+    <category>Knowledge Bases</category>
+    <category>BigQuery</category>
+    <category>Cloud Computing</category>
+    <category>Data Engineering</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>OpenClaw vs Hermes: Two Philosophies of the Self-Hosted Agent</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison</link>
@@ -29,6 +49,7 @@
     <category>Best Practices</category>
     <category>Software Engineering</category>
     <category>Security</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison.mp3" length="9487728" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -49,6 +70,7 @@
     <category>Reinforcement Learning</category>
     <category>Tool Use</category>
     <category>Open Source</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/hermes-self-improving-agent-persistent-memory.mp3" length="11183472" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -68,6 +90,7 @@
     <category>AI Safety</category>
     <category>Vector Databases</category>
     <category>Software Engineering</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/openclaw-anatomy-viral-agent-platform.mp3" length="11509776" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
