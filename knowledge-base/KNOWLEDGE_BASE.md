@@ -89,11 +89,51 @@ Curated sequences for common goals. Each path is a slug list in the suggested or
 8. llm-caching-four-layers
 9. llm-benchmarks
 
-### Graph theory thread (curiosity → applied)
+### Graph theory thread (curiosity → applied → agentic)
+The same eigenvector math that ranked the early web now ranks context for a coding agent.
 1. graph-theory-mathematics-of-connections
 2. network-science-communities-centrality
 3. pagerank-eigenvectors
 4. graph-neural-networks-learning-structured-data
+5. knowledge-graphs-practice
+6. agent-graph-layer-why-grep-embeddings-fell-short
+7. repo-to-graph-ast-vs-llm-extraction
+8. querying-code-graphs-blast-radius-localization
+9. graph-memory-temporal-agents-graphiti-cognee
+10. graph-layer-in-production-mcp-build-vs-buy
+
+### The Graph Layer for Agents (five-part series)
+Why grep and embeddings stop being enough for coding agents, and what replaces them.
+1. agent-graph-layer-why-grep-embeddings-fell-short
+2. repo-to-graph-ast-vs-llm-extraction
+3. querying-code-graphs-blast-radius-localization
+4. graph-memory-temporal-agents-graphiti-cognee
+5. graph-layer-in-production-mcp-build-vs-buy
+
+### Senior Engineering Judgment in the AI Era (five-part series)
+What stays scarce when an AI can generate the code: infrastructure, data modeling, API contracts, distributed-systems theory, and product judgment.
+1. senior-infrastructure-distributed-systems-failure-networking
+2. senior-data-modeling-query-patterns-database-design
+3. senior-api-design-contracts-versioning-dx
+4. senior-distributed-theory-cap-pacelc-tradeoffs
+5. senior-product-engineering-scale-prioritization-architecture
+
+### Enterprise Ontology / Banking Knowledge Graph (four-part series)
+1. tbox-abox-schema-facts-distinction
+2. modular-ontologies-core-domains-pattern
+3. ontology-production-pipeline-gcp
+4. populating-knowledge-graph-llms-banking
+
+### Knowledge Catalog & Knowledge Architecture
+The four-part arc on Google's Knowledge Catalog vs ontologies, plus the hands-on companion and the adjacent knowledge-as-a-product trio.
+1. agent-guardrails-field-guide
+2. google-cloud-next-2026-agent-native-stack
+3. gemini-enterprise-knowledge-catalog-deep-dive
+4. knowledge-catalog-vs-ontologies
+5. gemini-knowledge-catalog-workshop
+6. knowledge-as-a-product
+7. defining-the-knowledge-stack
+8. comparing-knowledge-bases-semantic-overlap
 
 ### Software-engineering foundations the blog assumes
 1. software-engineering-classics
@@ -303,6 +343,168 @@ enterprise-agents-governance-security-business:
   teaches: [defend against prompt injection with input and output rails, enforce retrieval ACLs, mask PII before logging, run a jailbreak incident protocol, detect proxy bias, choose ROI metrics over vanity metrics]
   tech: [presidio, nemo-guardrails, llama-guard]
   depth: deep
+
+# --- Series: The Graph Layer for Agents (5 parts) ---
+
+agent-graph-layer-why-grep-embeddings-fell-short:
+  concepts: [context engine, code graph, grep limitations, embedding limitations, call graph, blast radius]
+  prereqs: [knowledge-graphs-practice, model-context-protocol]
+  teaches: [explain why grep and embeddings fail for code-understanding agents, define a context engine, map the five-part series]
+  tech: [mcp]
+  depth: deep
+
+repo-to-graph-ast-vs-llm-extraction:
+  concepts: [AST extraction, LLM extraction, repo indexing, deterministic parsing, extraction accuracy]
+  prereqs: [agent-graph-layer-why-grep-embeddings-fell-short]
+  teaches: [compare AST-derived and LLM-extracted code graphs, choose a deterministic indexing pipeline, evaluate extraction accuracy at repo scale]
+  tech: []
+  depth: deep
+
+querying-code-graphs-blast-radius-localization:
+  concepts: [blast radius, localization, PageRank-ranked context, multi-hop retrieval, call graph queries]
+  prereqs: [repo-to-graph-ast-vs-llm-extraction, pagerank-eigenvectors, graph-theory-mathematics-of-connections]
+  teaches: [rank context with PageRank over a call graph, localize a bug with graph queries, compute blast radius, reduce tokens via graph-ranked retrieval]
+  tech: [networkx]
+  depth: deep
+
+graph-memory-temporal-agents-graphiti-cognee:
+  concepts: [temporal knowledge graph, bi-temporal facts, fact invalidation, agent memory, graphiti, cognee]
+  prereqs: [querying-code-graphs-blast-radius-localization, knowledge-graphs-practice]
+  teaches: [model evolving and contradicting facts over time, prefer fact invalidation over deletion, evaluate Graphiti and Cognee, judge when temporal graph memory is worth the cost]
+  tech: [graphiti, cognee, neo4j]
+  depth: deep
+
+graph-layer-in-production-mcp-build-vs-buy:
+  concepts: [local-first architecture, MCP transport, build vs buy, graph freshness, code egress]
+  prereqs: [graph-memory-temporal-agents-graphiti-cognee]
+  teaches: [decide build vs buy for a code graph layer, keep a graph fresh in production, ship a graph over MCP without code egress, judge when not to graphify at all]
+  tech: [mcp]
+  depth: deep
+
+# --- Series: Senior Engineering Judgment in the AI Era (5 parts) ---
+
+senior-infrastructure-distributed-systems-failure-networking:
+  concepts: [failure domains, blast radius, retry storms, thundering herd, infrastructure judgment]
+  prereqs: []
+  teaches: [reason about failure domains an AI coding tool will not, avoid retry-induced thundering herds, judge infrastructure trade-offs AI code generation glosses over]
+  tech: []
+  depth: deep
+
+senior-data-modeling-query-patterns-database-design:
+  concepts: [data modeling, query patterns, schema longevity, database design judgment]
+  prereqs: [senior-infrastructure-distributed-systems-failure-networking]
+  teaches: [shape a data model for years of query patterns, evaluate schema trade-offs an AI-generated CREATE TABLE hides]
+  tech: []
+  depth: deep
+
+senior-api-design-contracts-versioning-dx:
+  concepts: [API contracts, versioning, developer experience, REST]
+  prereqs: [senior-data-modeling-query-patterns-database-design]
+  teaches: [design an API as a contract rather than code, version without breaking consumers, weigh developer-experience trade-offs]
+  tech: []
+  depth: deep
+
+senior-distributed-theory-cap-pacelc-tradeoffs:
+  concepts: [CAP theorem, PACELC, consistency models, distributed trade-offs]
+  prereqs: [senior-api-design-contracts-versioning-dx]
+  teaches: [apply CAP and PACELC to a real system, spot when an AI-generated design quietly violates a consistency guarantee]
+  tech: []
+  depth: deep
+
+senior-product-engineering-scale-prioritization-architecture:
+  concepts: [scale judgment, prioritization, architecture as judgment, technical debt]
+  prereqs: [senior-distributed-theory-cap-pacelc-tradeoffs]
+  teaches: [decide what to build and how much to scale, weigh architectural trade-offs as a product discipline]
+  tech: []
+  depth: deep
+
+# --- Series: Enterprise Ontology / Banking Knowledge Graph (4 parts) ---
+
+tbox-abox-schema-facts-distinction:
+  concepts: [TBox, ABox, RBox, description logic, schema/facts split]
+  prereqs: [ontologies-building-knowledge-bases, knowledge-graphs-practice]
+  teaches: [separate schema from facts in a production knowledge graph, decide file layout and ownership by TBox/ABox, place SHACL correctly in the pipeline]
+  tech: [neo4j, rdf]
+  depth: deep
+
+modular-ontologies-core-domains-pattern:
+  concepts: [core + domains pattern, modular ontology, cross-cutting concepts]
+  prereqs: [tbox-abox-schema-facts-distinction]
+  teaches: [split an ontology into a stable core and orbiting domain modules, derive the operational rule for the split]
+  tech: [owl, rdf]
+  depth: deep
+
+ontology-production-pipeline-gcp:
+  concepts: [ontology CI/CD, YAML-to-OWL compilation, competency questions as tests]
+  prereqs: [modular-ontologies-core-domains-pattern]
+  teaches: [put an ontology in Git as source of truth, compile YAML into OWL/SHACL/JSON-Schema, run competency questions as CI tests]
+  tech: [shacl, owl, gcp]
+  depth: deep
+
+populating-knowledge-graph-llms-banking:
+  concepts: [schema-embedded extraction, Pydantic repair, pySHACL validation, entity resolution, idempotent MERGE]
+  prereqs: [ontology-production-pipeline-gcp]
+  teaches: [extract entities with a schema-embedded prompt, repair malformed LLM output with Pydantic, validate with pySHACL, write idempotent MERGE Cypher]
+  tech: [neo4j, pydantic, pyshacl, cypher]
+  depth: deep
+
+# --- Series: Knowledge Catalog & Knowledge Architecture ---
+
+agent-guardrails-field-guide:
+  concepts: [threat taxonomy, guardrail layers, blast radius reasoning]
+  prereqs: []
+  teaches: [build a layered guardrail defense for an agent, reason about blast radius, avoid anti-patterns that defeat guardrails]
+  tech: []
+  depth: deep
+
+google-cloud-next-2026-agent-native-stack:
+  concepts: [agent-native stack, Gemini Enterprise Agent Platform, agentic data cloud]
+  prereqs: [agent-guardrails-field-guide]
+  teaches: [map every Cloud Next 2026 announcement to what it replaces, decide what to actually adopt]
+  tech: [vertex-ai, gcp]
+  depth: deep
+
+gemini-enterprise-knowledge-catalog-deep-dive:
+  concepts: [Agent Platform control plane, Knowledge Catalog semantic spine, context graph]
+  prereqs: [google-cloud-next-2026-agent-native-stack]
+  teaches: [ground agent answers in the Knowledge Catalog, use the Agent Platform as a control plane]
+  tech: [vertex-ai, dataplex]
+  depth: deep
+
+knowledge-catalog-vs-ontologies:
+  concepts: [asset registry vs ontology, inferential reasoning, hybrid architecture]
+  prereqs: [gemini-enterprise-knowledge-catalog-deep-dive, ontologies-building-knowledge-bases]
+  teaches: [draw the boundary between a knowledge catalog and an ontology, design the honest hybrid architecture]
+  tech: [owl, dataplex]
+  depth: deep
+
+gemini-knowledge-catalog-workshop:
+  concepts: [catalog, enrich, search, context graph, Dataplex lineage]
+  prereqs: [gemini-enterprise-knowledge-catalog-deep-dive, knowledge-catalog-vs-ontologies]
+  teaches: [work catalog then enrich then search end to end, decide the catalog's boundaries against ontology, quality, and semantic layer]
+  tech: [dataplex, vertex-ai]
+  depth: deep
+
+knowledge-as-a-product:
+  concepts: [knowledge as a product, data mesh, ownership, SLA]
+  prereqs: []
+  teaches: [apply data-mesh product thinking to a knowledge base, define an owner, contract, and SLA for knowledge]
+  tech: []
+  depth: deep
+
+defining-the-knowledge-stack:
+  concepts: [knowledge assets, knowledge products, tools, pipelines, layered vocabulary]
+  prereqs: [knowledge-as-a-product]
+  teaches: [define the strata of a knowledge stack, use crisp vocabulary in org documents]
+  tech: []
+  depth: deep
+
+comparing-knowledge-bases-semantic-overlap:
+  concepts: [semantic overlap detection, MinHash, optimal transport, entity resolution]
+  prereqs: [knowledge-as-a-product]
+  teaches: [detect duplicate and overlapping knowledge bases, choose between exact-hash, MinHash, and embedding overlap methods]
+  tech: [minhash]
+  depth: deep
 ```
 
 <!-- AUTO-CATALOG:START - regenerated by build-knowledge-base.js, do not edit by hand -->
@@ -311,39 +513,42 @@ enterprise-agents-governance-security-business:
 
 Auto-generated index of every post by category, sorted most recent first. Use this when you need a complete inventory of what the blog covers — for example, when loaded as Claude Project knowledge and you cannot query `posts.json`.
 
-### field-notes (113 posts)
+### field-notes (116 posts)
 
+- **`openclaw-vs-hermes-self-hosted-agent-comparison`** *(deep)* — OpenClaw vs Hermes: Two Philosophies of the Self-Hosted Agent. Two open-source agents exploded in 2026 with opposite instincts: OpenClaw wants to do everything on your machine right now, Hermes wants to remember and compound. This is the honest head-to-head, with a decision matrix you can actually use. Concepts: agents, agentic ai, llms, open source, production ml, mlops.
+- **`hermes-self-improving-agent-persistent-memory`** *(deep)* — Hermes: The Self-Improving Agent That Remembers. Nous Research built a model lab. Then they built an agent that gets more capable the longer it runs, writing its own skills from experience and storing them next to a memory of who you are. This is the anatomy of Hermes, what its self-improvement actually is, and where the marketing outruns the mechanism. Concepts: agents, agentic ai, llms, mlops, production ml, automation.
+- **`openclaw-anatomy-viral-agent-platform`** *(deep)* — OpenClaw: Anatomy of the Agent Platform That Ate GitHub. In five months an open-source personal agent went from a solo developer's side project to the sixth most-starred repository on GitHub. This is a deep technical anatomy of OpenClaw: the Gateway that runs the whole show, the skills plugin model, vector-DB memory, the genuinely surprising things people built with it, and the failure modes that turned it into a favorite case study for AI security researchers. Concepts: agents, agentic ai, llms, open source, automation, tool use.
 - **`finops-llm-agents-token-economics`** *(deep)* — FinOps for AI Agents: Token Economics, Cost Observability, and a Bill You Can Explain. Token spend is the new cloud bill -- variable, usage-driven, and easy to ignore until it triples. This post applies the FinOps discipline to LLM and agent systems: the real cost equation of an agent task, unit economics that survive a CFO meeting, attribution and metering architecture, the optimization levers ranked by effort and impact, and a budget-aware agent loop in production-quality Python. Concepts: agents, agentic ai, llms, production ml, mlops, cloud computing.
 - **`bank-grade-agent-security-iam-gateways`** *(deep)* — Bank-Grade Agent Security: IAM, MCP Gateways, and Zero Trust at Enterprise Scale. Part 2 of the agent security series moves from the startup to the bank: enterprise IAM for agents as first-class principals, agent identity on Google Cloud, the MCP gateway pattern that never lets a client touch a server directly, zero trust with SPIFFE-style workload identity, and the audit machinery regulators actually ask for. Concepts: agents, agentic ai, security, authentication, oauth, enterprise ai.
 - **`agent-authentication-oauth-mcp-identity`** *(deep)* — Who Is Your Agent? OAuth, MCP Auth, and Identity for AI Agents — the Startup Playbook. AI agents are non-human identities that act with delegated human power, long after the login that granted it. This post — part 1 of a two-part series on agent security — rebuilds OAuth from the agent's point of view, walks through the MCP authorization spec requirement by requirement, and lays out a concrete identity architecture for a five-person startup shipping an agent that touches users' Gmail, Calendar, and CRM. Concepts: agents, agentic ai, ai engineering, security, authentication, oauth.
 - **`claude-certified-architect-professional-exam-guide`** *(deep)* — The Claude Certified Architect Professional Exam (CCAR-P): A Complete Study Guide. The Professional Architect certification is the hardest credential in Anthropic's track: seven domains, 63 scenario questions, and almost no code. This guide teaches the architecture reasoning, governance frameworks, and lifecycle discipline the exam actually tests, from someone who does this work in a regulated bank. Concepts: anthropic, certifications, llms, agents, agentic ai, ai governance.
 - **`claude-certified-developer-exam-guide`** *(deep)* — The Claude Certified Developer Exam: A Complete Study Guide. A domain-by-domain study guide for Anthropic's CCDV-F exam. Eight domains, real SDK code for every one of them, a worked mini-project, and a preparation plan built for working engineers. Concepts: anthropic, llms, agents, agentic ai, prompt engineering, mcp.
 - **`claude-certified-associate-exam-guide`** *(deep)* — The Claude Certified Associate Exam: A Complete Study Guide for CCAO-F. Anthropic's entry-level certification tests whether you can evaluate Claude's outputs, design workflows around it, and use it responsibly. This is the full study guide: every domain in blueprint order, the actual material behind each one, and how to walk into the exam ready to pass. Concepts: anthropic, certifications, llms, prompt engineering, evaluation, ai governance.
-- **`graph-layer-in-production-mcp-build-vs-buy`** *(deep)* — The Graph Layer in Production: MCP, Local-First, and Build vs Buy. The finale of the graph-layer series. Four posts argued that agents need a graph of your code. This one is about shipping it: why MCP became the universal transport, why the winning pattern is pre-computed and local-first with no code egress, how to keep the graph fresh, when it pays for itself, and the honest senior take on when not to graphify at all. Concepts: model context protocol, agents, knowledge graphs, software engineering, best practices, production ml.
-- **`graph-memory-temporal-agents-graphiti-cognee`** *(deep)* — Graph Memory: Giving Agents a Temporal Knowledge Graph. Vector memory retrieves text that looks like the past. It cannot tell you that the past changed. This is the fourth post in The Graph Layer for Agents: how to give an agent a memory that models evolving, contradicting facts over time as a bi-temporal knowledge graph, why fact invalidation beats deletion, what Graphiti and Cognee actually do, and the senior judgment of when none of this is worth the cost. Concepts: agents, knowledge graphs, agentic ai, rag, embeddings, vector databases.
-- **`querying-code-graphs-blast-radius-localization`** *(deep)* — Querying Code Graphs: Blast Radius, Localization, and Ranking Context. Part 3 of The Graph Layer for Agents. You have a code graph. Now what queries actually make an agent smarter? Localization, blast radius, PageRank-ranked context, and multi-hop retrieval, with real networkx over a call graph. The point is fewer tokens, fewer tool calls, better grounding. Concepts: knowledge graphs, agents, algorithms, software engineering, pagerank, rag.
-- **`repo-to-graph-ast-vs-llm-extraction`** *(deep)* — Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs. Part 2 of The Graph Layer for Agents. Two indexers point at the same Java repo. One finishes in eight seconds and answers every architecture question correctly. The other takes forty minutes, silently drops 377 files, and still gets some answers wrong. This is the story of how a repository actually becomes a graph, and why the boring deterministic path wins. Concepts: knowledge graphs, agents, software engineering, llms, rag, best practices.
-- **`agent-graph-layer-why-grep-embeddings-fell-short`** *(deep)* — The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough. Coding agents hit a hard ceiling with grep and vector embeddings, because neither can answer the questions that matter, what breaks if I touch this, who calls this, where does this decision actually live. The answer emerging across the industry in 2025 and 2026 is the context engine, a pre-analyzed queryable graph of your codebase served to the agent over MCP. This is part one of a five-part series, the map before the deep dives. Concepts: agents, agentic ai, knowledge graphs, rag, embeddings, model context protocol.
-- **`senior-product-engineering-scale-prioritization-architecture`** *(deep)* — Engineering for the Product: Scale, Prioritization, and Architecture as Judgment. The capstone of the senior-in-the-age-of-AI series. Implementation is cheap now, so the scarce skill moves up the stack: deciding what to build, how much to scale, which trade-off to take, and when generated code is subtly wrong. A field guide to engineering judgment as a product discipline, told through the lens of city planning. Concepts: software engineering, system design, software architecture, scalability, product engineering, technical debt.
-- **`senior-distributed-theory-cap-pacelc-tradeoffs`** *(deep)* — The Theory That Survives: CAP, PACELC, and the Trade-offs an AI Will Quietly Violate. Frameworks churn. The theorems that bound what a distributed system can do are permanent, and an AI coding tool will confidently generate a system that quietly violates the consistency model you actually needed. This is the theory with the longest shelf life, framed as a brass balance scale where every guarantee you add to one pan is paid for in another. Concepts: software engineering, system design, distributed systems, cap theorem, consistency, databases.
-- **`senior-api-design-contracts-versioning-dx`** *(deep)* — The Container, Not the Code: API Design as a Contract. An AI can generate endpoint handlers and an OpenAPI spec in seconds. But an API is a promise to other humans and systems, and promises are expensive to break. This is the third field note in a series on what stays scarce when the implementation becomes free: the contract, not the code, is the hard part. Concepts: software engineering, system design, api design, developer experience, versioning, rest.
-- **`senior-data-modeling-query-patterns-database-design`** *(deep)* — The Shelf That Outlives the Building: Data Modeling for the Senior Engineer. An AI will generate a CREATE TABLE statement in two seconds. It cannot tell you whether that table is the right shape for the queries you will run for the next ten years. The data model is the one decision that outlives every rewrite and is the most expensive to get wrong. This is the second post in a series on the judgment that stays scarce when machines write the code. Concepts: software engineering, system design, data engineering, data architecture, databases, sql.
-- **`senior-infrastructure-distributed-systems-failure-networking`** *(deep)* — The Grid Doesn't Care About Your Retry Loop: Infrastructure Judgment in the Age of AI Coding. An AI can scaffold a Kubernetes manifest or a retry loop in seconds. It cannot decide your failure domains, your blast radius, or whether your retry will trigger a thundering herd at 3am. This is the first post in a series on the senior judgment that survives the code generator, starting with the hardest place to be wrong: infrastructure. Concepts: software engineering, system design, distributed systems, infrastructure, cloud computing, reliability.
+- **`graph-layer-in-production-mcp-build-vs-buy`** *(deep)* — The Graph Layer in Production: MCP, Local-First, and Build vs Buy. The finale of the graph-layer series. Four posts argued that agents need a graph of your code. This one is about shipping it: why MCP became the universal transport, why the winning pattern is pre-computed and local-first with no code egress, how to keep the graph fresh, when it pays for itself, and the honest senior take on when not to graphify at all. Concepts: local-first architecture, MCP transport, build vs buy, graph freshness, code egress. Tech: mcp.
+- **`graph-memory-temporal-agents-graphiti-cognee`** *(deep)* — Graph Memory: Giving Agents a Temporal Knowledge Graph. Vector memory retrieves text that looks like the past. It cannot tell you that the past changed. This is the fourth post in The Graph Layer for Agents: how to give an agent a memory that models evolving, contradicting facts over time as a bi-temporal knowledge graph, why fact invalidation beats deletion, what Graphiti and Cognee actually do, and the senior judgment of when none of this is worth the cost. Concepts: temporal knowledge graph, bi-temporal facts, fact invalidation, agent memory, graphiti, cognee. Tech: graphiti, cognee, neo4j.
+- **`querying-code-graphs-blast-radius-localization`** *(deep)* — Querying Code Graphs: Blast Radius, Localization, and Ranking Context. Part 3 of The Graph Layer for Agents. You have a code graph. Now what queries actually make an agent smarter? Localization, blast radius, PageRank-ranked context, and multi-hop retrieval, with real networkx over a call graph. The point is fewer tokens, fewer tool calls, better grounding. Concepts: blast radius, localization, PageRank-ranked context, multi-hop retrieval, call graph queries. Tech: networkx.
+- **`repo-to-graph-ast-vs-llm-extraction`** *(deep)* — Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs. Part 2 of The Graph Layer for Agents. Two indexers point at the same Java repo. One finishes in eight seconds and answers every architecture question correctly. The other takes forty minutes, silently drops 377 files, and still gets some answers wrong. This is the story of how a repository actually becomes a graph, and why the boring deterministic path wins. Concepts: AST extraction, LLM extraction, repo indexing, deterministic parsing, extraction accuracy.
+- **`agent-graph-layer-why-grep-embeddings-fell-short`** *(deep)* — The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough. Coding agents hit a hard ceiling with grep and vector embeddings, because neither can answer the questions that matter, what breaks if I touch this, who calls this, where does this decision actually live. The answer emerging across the industry in 2025 and 2026 is the context engine, a pre-analyzed queryable graph of your codebase served to the agent over MCP. This is part one of a five-part series, the map before the deep dives. Concepts: context engine, code graph, grep limitations, embedding limitations, call graph, blast radius. Tech: mcp.
+- **`senior-product-engineering-scale-prioritization-architecture`** *(deep)* — Engineering for the Product: Scale, Prioritization, and Architecture as Judgment. The capstone of the senior-in-the-age-of-AI series. Implementation is cheap now, so the scarce skill moves up the stack: deciding what to build, how much to scale, which trade-off to take, and when generated code is subtly wrong. A field guide to engineering judgment as a product discipline, told through the lens of city planning. Concepts: scale judgment, prioritization, architecture as judgment, technical debt.
+- **`senior-distributed-theory-cap-pacelc-tradeoffs`** *(deep)* — The Theory That Survives: CAP, PACELC, and the Trade-offs an AI Will Quietly Violate. Frameworks churn. The theorems that bound what a distributed system can do are permanent, and an AI coding tool will confidently generate a system that quietly violates the consistency model you actually needed. This is the theory with the longest shelf life, framed as a brass balance scale where every guarantee you add to one pan is paid for in another. Concepts: CAP theorem, PACELC, consistency models, distributed trade-offs.
+- **`senior-api-design-contracts-versioning-dx`** *(deep)* — The Container, Not the Code: API Design as a Contract. An AI can generate endpoint handlers and an OpenAPI spec in seconds. But an API is a promise to other humans and systems, and promises are expensive to break. This is the third field note in a series on what stays scarce when the implementation becomes free: the contract, not the code, is the hard part. Concepts: API contracts, versioning, developer experience, REST.
+- **`senior-data-modeling-query-patterns-database-design`** *(deep)* — The Shelf That Outlives the Building: Data Modeling for the Senior Engineer. An AI will generate a CREATE TABLE statement in two seconds. It cannot tell you whether that table is the right shape for the queries you will run for the next ten years. The data model is the one decision that outlives every rewrite and is the most expensive to get wrong. This is the second post in a series on the judgment that stays scarce when machines write the code. Concepts: data modeling, query patterns, schema longevity, database design judgment.
+- **`senior-infrastructure-distributed-systems-failure-networking`** *(deep)* — The Grid Doesn't Care About Your Retry Loop: Infrastructure Judgment in the Age of AI Coding. An AI can scaffold a Kubernetes manifest or a retry loop in seconds. It cannot decide your failure domains, your blast radius, or whether your retry will trigger a thundering herd at 3am. This is the first post in a series on the senior judgment that survives the code generator, starting with the hardest place to be wrong: infrastructure. Concepts: failure domains, blast radius, retry storms, thundering herd, infrastructure judgment.
 - **`enterprise-agents-governance-security-business`** *(deep)* — The Enterprise Shield: Governance, Security, and Business Value of Agents. The strategic close to the agentic engineering arc. An agent that is fluent and clever but insecure, unaccountable, or untethered to a business metric should not ship. This is the shield a regulated bank wraps around a production agent: prompt-injection defense in depth, retrieval ACLs, PII masking, an incident protocol for a jailbreak in the wild, responsible-AI controls for proxy bias, system cards and red teaming to satisfy a security review, and the FinOps and ROI arguments that prove the thing earns its keep. Concepts: prompt injection, indirect prompt injection, input railing, output railing, retrieval acls, least privilege. Tech: presidio, nemo-guardrails, llama-guard.
 - **`operating-agents-eval-observability-scale`** *(deep)* — Operating Agents: Evaluation, Observability, and Scalability. An agent that demos beautifully is not a production service. This is the operations layer of agentic engineering: how to measure quality with RAGAS-style metrics, build regression gates that block bad deploys, make stochastic bugs reproducible, trace every decision for audit, and scale the whole thing without setting your token budget on fire. Concepts: rag evaluation, faithfulness, context recall, context precision, answer relevance, correctness. Tech: ragas, langsmith, gptcache, redis, docker.
 - **`agent-integration-protocols-mcp-and-a2a`** *(deep)* — Integration Protocols: How Agents Talk to the World and to Each Other. Every agent you build has to reach data it does not own and cooperate with agents it did not write. Do that with bespoke connectors and the cost explodes as M times N. This is the protocol layer of agentic engineering: MCP for tools and context, A2A for agent-to-agent collaboration, and why a standard beats a super-agent, a single model, or a shared vector database every time. Concepts: model context protocol, mcp, agent to agent, a2a, m by n integration, tool schema. Tech: mcp, anthropic-sdk, a2a.
 - **`agent-memory-and-retrieval-embeddings-to-rag`** *(deep)* — Agent Memory and Retrieval: From Embeddings to Production RAG. An agent's intelligence is mostly its context system: what it can remember across turns and what it can pull in from the outside. Memory and retrieval are one design surface. This is the engineering of that surface, from the geometry of embeddings to the production failures that decide whether your agent answers from today's policy or last year's deleted record. Concepts: embeddings, cosine similarity, knn, top_k, approximate nearest neighbors, hnsw. Tech: langchain, llamaindex, pgvector, neo4j.
 - **`agent-architecture-and-orchestration`** *(deep)* — Agent Architecture and Orchestration: Routers, Graphs, and Multi-Agent Workflows. Control flow is the part of agent engineering nobody puts in the demo and everybody fights with in production. This is a working tour of the topologies that matter, routers, hierarchical supervisors, consensus layers, and the cyclic graphs underneath them, plus the LangGraph, CrewAI, LangChain, and LlamaIndex machinery that makes them durable instead of brittle. Concepts: router, multi-agent, manager worker, voting consensus, langgraph, conditional edges. Tech: langgraph, langchain, crewai, llamaindex, litellm.
 - **`foundations-of-agentic-ai-llms-to-agents`** *(deep)* — Foundations of Agentic AI: How LLMs Think, and What Makes a Program an Agent. Part one of a six-part series on agentic AI engineering. We demystify what an LLM actually does when it thinks, why it can never be certain, and where the bright line falls between a hardcoded chain and a program that controls its own flow. Concepts: self-attention, tokenization, context window, hallucination, temperature, chain of thought. Tech: anthropic-sdk.
-- **`defining-the-knowledge-stack`** *(deep)* — Defining the Knowledge Stack: Assets, Products, Tools, and Pipelines. You cannot structure what you cannot define. Before an enterprise argues about which knowledge base to build, it needs crisp words for the strata involved: assets, products, tools, pipelines, and the discipline that binds them. This is the definitional companion to the knowledge-as-a-product argument, a layered vocabulary you can lift straight into your own org docs. Concepts: knowledge bases, knowledge engineering, knowledge management, data architecture, vector databases, knowledge graphs.
-- **`comparing-knowledge-bases-semantic-overlap`** *(deep)* — Comparing Knowledge Bases: Detecting Semantic and Textual Overlap Between Knowledge Products. A large organization rarely has one knowledge base. It has two FAQ spreadsheets that nobody realized were eighty percent the same, plus a vectorized KB and a structured one that may or may not be talking about the same things. This is the rigorous version of the question every governance review eventually asks, do these two knowledge bases overlap, and what should we do about it, worked from exact-duplicate hashing through MinHash, embeddings, optimal transport, and the contradiction case that usually matters most. Concepts: knowledge bases, knowledge management, embeddings, information retrieval, vector databases, entity resolution.
+- **`defining-the-knowledge-stack`** *(deep)* — Defining the Knowledge Stack: Assets, Products, Tools, and Pipelines. You cannot structure what you cannot define. Before an enterprise argues about which knowledge base to build, it needs crisp words for the strata involved: assets, products, tools, pipelines, and the discipline that binds them. This is the definitional companion to the knowledge-as-a-product argument, a layered vocabulary you can lift straight into your own org docs. Concepts: knowledge assets, knowledge products, tools, pipelines, layered vocabulary.
+- **`comparing-knowledge-bases-semantic-overlap`** *(deep)* — Comparing Knowledge Bases: Detecting Semantic and Textual Overlap Between Knowledge Products. A large organization rarely has one knowledge base. It has two FAQ spreadsheets that nobody realized were eighty percent the same, plus a vectorized KB and a structured one that may or may not be talking about the same things. This is the rigorous version of the question every governance review eventually asks, do these two knowledge bases overlap, and what should we do about it, worked from exact-duplicate hashing through MinHash, embeddings, optimal transport, and the contradiction case that usually matters most. Concepts: semantic overlap detection, MinHash, optimal transport, entity resolution. Tech: minhash.
 - **`adk-advanced-evolution-of-agent-engineering`** *(deep)* — ADK, Advanced: The Evolution of Agent Engineering. The state of the art for building agents in 2026 is Google's ADK. But the fastest way to understand it deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed by ADK, including its limits. Concepts: agents, agentic ai, llms, ai engineering, langchain, multi-agent.
 - **`redis-for-ai-buy-vs-build-gcp`** *(deep)* — Redis for AI on GCP: A Critical Buy-vs-Build Analysis. You already run everything on Google Cloud. Redis is selling an AI bundle -- agent memory, vector search, semantic caching, feature serving -- and it is one click away on the Marketplace. This is a skeptical procurement analysis of what you actually gain by adding it, where Memorystore and Vertex already cover you, and three POCs that would prove or disprove the value before you sign anything. Concepts: caching, vector databases, agents, feature store, production ml, gcp.
 - **`spanner-graph-for-knowledge-and-agents`** *(deep)* — Understanding Cloud Spanner: Graphs, Knowledge, and Where Ontologies Fit. Spanner was built to solve a problem most databases declare impossible: global scale, horizontal sharding, and external consistency at the same time. This is a field-notes tour of why it exists, how Spanner Graph layers a property graph on relational tables, and the honest answer to the question I keep getting asked: should your ontology and knowledge graph live in Spanner? Concepts: knowledge graphs, gcp, data architecture, distributed systems, graph databases, ontologies.
-- **`gemini-knowledge-catalog-workshop`** *(deep)* — The Definitive Knowledge Catalog Workshop: Catalog, Enrich, Search. A hands-on, lab-style walkthrough of Google's Knowledge Catalog, the Dataplex-lineage cataloging and AI-grounding layer. We work the three core moves end to end, catalog then enrich then search, explain how each works under the hood, and close with the hard usability questions: catalog everything or be selective, one catalog or many, and what the service genuinely does not solve. Concepts: knowledge engineering, data governance, gcp, knowledge bases, metadata, data architecture.
+- **`gemini-knowledge-catalog-workshop`** *(deep)* — The Definitive Knowledge Catalog Workshop: Catalog, Enrich, Search. A hands-on, lab-style walkthrough of Google's Knowledge Catalog, the Dataplex-lineage cataloging and AI-grounding layer. We work the three core moves end to end, catalog then enrich then search, explain how each works under the hood, and close with the hard usability questions: catalog everything or be selective, one catalog or many, and what the service genuinely does not solve. Concepts: catalog, enrich, search, context graph, Dataplex lineage. Tech: dataplex, vertex-ai.
 - **`vector-databases-indexes-to-vertex-search`** *(deep)* — Vector Databases Demystified: From Indexes to Vertex AI Vector Search. You have embeddings. Now you need to find the nearest ones among billions, in milliseconds, without melting your budget. This is the full story of how vector indexes emerge from that one constraint, how the major index families actually work, and how to run a production vector database on Google Cloud with Vertex AI Vector Search. Concepts: vector databases, embeddings, information retrieval, algorithms, rag, gcp.
 - **`enterprise-agent-governance-lifecycle`** *(deep)* — Curating and Governing an Enterprise Agent: A Lifecycle Operating Model. Most teams treat an agent like a product launch: build it, ship it, move on. A production agent is more like a warship. It gets designed, sea-trialed, and certified, and then it returns to the dry dock again and again for inspection and refit across its whole service life. This is the end-to-end operating model for curating and governing an enterprise agent, phase by phase, with owners, gates, artifacts, and the GCP services that help at each step. Concepts: agents, agentic ai, ai governance, enterprise ai, gcp, vertex ai.
-- **`knowledge-as-a-product`** *(deep)* — Knowledge as a Product: What a Knowledge Base Really Is, and How Large Organizations Should Build One. Most enterprises treat their knowledge base as a pile of documents bolted onto a vector store, then wonder why nobody trusts it. The fix is older than RAG and borrowed from data mesh: treat knowledge as a product, with an owner, a contract, an SLA, and a shelf you can actually find it on. This is the long version of that argument, applied to a large regulated bank. Concepts: knowledge bases, knowledge management, data architecture, data mesh, enterprise ai, data governance.
+- **`knowledge-as-a-product`** *(deep)* — Knowledge as a Product: What a Knowledge Base Really Is, and How Large Organizations Should Build One. Most enterprises treat their knowledge base as a pile of documents bolted onto a vector store, then wonder why nobody trusts it. The fix is older than RAG and borrowed from data mesh: treat knowledge as a product, with an owner, a contract, an SLA, and a shelf you can actually find it on. This is the long version of that argument, applied to a large regulated bank. Concepts: knowledge as a product, data mesh, ownership, SLA.
 - **`dev-environments-for-ai-teams`** *(deep)* — Where Your Code Should Live: Cloud Workstations, Workbench, Coder, and the AI Team's Dev Environment. The blog has eighty-something posts on what to build and almost nothing on where to build it. This is the missing one. For an AI engineering team in a regulated enterprise, the dev environment is not a personal preference, it is part of the architecture, and choosing it badly costs you GPUs, data residency, and your audit trail. Concepts: developer tools, cloud computing, gcp, docker, devops, ai engineering.
 - **`agent-architectures-productive-patterns`** *(deep)* — Agent Architectures: What Makes an Agent Productive. We put LLMs in a loop, gave them tools, and called them agents. But putting an engine in a chassis doesn't make a car. This is the engineering behind agent architectures—from single routers to multi-agent supervisors—and the enterprise tools and cloud services that turn brittle demos into productive enterprise systems. Concepts: agents, agentic ai, llms, best practices, ai engineering, production ml.
 - **`rl-algorithm-taxonomy-tour`** *(deep)* — The RL Algorithm Tree: A Practitioner's Tour from Policy Gradients to AlphaZero. The cert review showed you the silhouette of reinforcement learning. The tree the field actually uses has four branches, fifteen named algorithms, and a clean logic for which one to reach for. This is the tour through it, with the equation, the contribution, and the minimal skeleton for each. Concepts: reinforcement learning, deep learning, machine learning, algorithms, neural network theory, mathematics.
@@ -354,14 +559,14 @@ Auto-generated index of every post by category, sorted most recent first. Use th
 - **`google-adk-agent-development-deep-dive`** *(deep)* — Google ADK: Building Production Agents from First Principles. The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the four-pillar mental model, runnable code for every core abstraction, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Engine, and an honest comparison with the rest of the field. Concepts: agents, agentic ai, agent engineering, google cloud, cloud computing, ai engineering.
 - **`stack-recommendations-after-100-posts`** *(deep)* — The Stack I Would Adopt After 100 Posts: An Opinionated Manifesto. The hundredth post was the structural retrospective. This is the practical one. After a hundred posts of saying it depends, here is the stack I would actually pick today, the books and papers that earned their place on my shelf, the patterns that proved their weight, and the ones I would refuse to deploy a second time. Concepts: production ml, best practices, mlops, llms, rag, agents.
 - **`agent-engineering-disciplines`** *(deep)* — Agent Engineering as a Discipline: Six Roles That Just Got Names. By 2026 the people who keep production agents alive had stopped calling themselves AI engineers and started using more specific titles. Context Engineer. Memory Engineer. Harness Engineer. Tool Engineer. Eval Engineer. Identity and Policy Engineer. This post is a tour of those six disciplines: what each one owns, the artifacts they produce, the named effects they fight, the anti-patterns that keep biting, and an honest projection of which roles will consolidate, which will be absorbed by vendors, and which are LinkedIn theater. Concepts: agents, agentic ai, llms, production ml, best practices, software engineering.
-- **`knowledge-catalog-vs-ontologies`** *(deep)* — Knowledge Catalog vs Ontologies: A Confluence, Not a Replacement. Google's Knowledge Catalog and a domain ontology look like they answer the same question. They do not. One is an asset registry with governance and lineage; the other is a formal model of meaning with inferential reasoning. A mature knowledge layer almost always needs both, with a clear arrow of dependency between them. This post is the four-part arc's closing piece, naming the substitutions, the anti-patterns, and the honest hybrid architecture. Concepts: knowledge graphs, ontologies, ontology engineering, gcp, data architecture, agents.
-- **`gemini-enterprise-knowledge-catalog-deep-dive`** *(deep)* — Gemini Enterprise and the Knowledge Catalog: Two Buildings, Room by Room. The Cloud Next 26 overview gave you the map. This post zooms in on the two pieces that will reshape a Knowledge Data Engineer's day-to-day in the next twelve months: the Gemini Enterprise Agent Platform as a control plane, and the Knowledge Catalog as the semantic spine that grounds every agent answer in audited enterprise truth. Concepts: google cloud, vertex ai, agents, agentic ai, knowledge graphs, data architecture.
-- **`google-cloud-next-2026-agent-native-stack`** *(deep)* — Google Cloud Next 2026: The Agent-Native Stack, Decoded. On April 22, 2026, Sundar Pichai walked onstage at Mandalay Bay and quietly renamed Vertex AI. The new label, Gemini Enterprise Agent Platform, sounds like marketing. It is not. It is the most aggressive cloud reorganization since the original Compute Engine launch. This is the practitioner's deep dive into every announcement that matters, what it replaces, and what to actually adopt. Concepts: gcp, vertex ai, cloud computing, agents, agentic ai, llms.
-- **`agent-guardrails-field-guide`** *(deep)* — Guardrails for Agent Systems: A Field Guide. What goes wrong when an agent gets loose in production, and the layered defenses that actually keep it from doing damage. A practitioner's mental model: threat taxonomy, five guardrail layers with code, blast radius reasoning, the tooling landscape, evaluation, and the anti-patterns that defeat the whole effort. Concepts: agents, agentic ai, llms, production ml, best practices, evaluation.
-- **`populating-knowledge-graph-llms-banking`** *(deep)* — Populating a Knowledge Graph with LLMs: A Banking Case Study. There is an abyss between the GraphRAG paper and a pipeline that runs reliably in production. This post crosses that gap with a worked banking case — ingesting mortgage-loan documents into Neo4j with a schema-embedded extraction prompt, Pydantic repair, pySHACL validation, entity resolution, and idempotent MERGE Cypher. Concepts: knowledge graphs, llms, ontologies, information extraction, neo4j, entity resolution.
-- **`ontology-production-pipeline-gcp`** *(deep)* — Ontologies in Production: A CI/CD Pipeline for Enterprise Schemas on GCP. An ontology that lives on one engineer's laptop is not an ontology, it is a document. Putting one into production has its own architectural shape: Git as source of truth, YAML authored and compiled into OWL, SHACL, and JSON-Schema, CI that runs competency questions as tests, and GCP plumbing that treats the schema as code, not data. Concepts: ontology engineering, knowledge graphs, mlops, data engineering, ci/cd, cloud computing.
-- **`modular-ontologies-core-domains-pattern`** *(deep)* — Modular Ontologies: The Core + Domains Pattern for Enterprise Knowledge Graphs. An enterprise ontology is neither a single monolithic file nor a loose federation of domain silos. Real projects converge to Core + Domains: a small, stable core of cross-cutting concepts and orbiting modules per business line. This post derives the operational rule that governs that split, using banking as the grounded example. Concepts: knowledge graphs, ontology engineering, data architecture, best practices, owl, rdf.
-- **`tbox-abox-schema-facts-distinction`** *(deep)* — TBox and ABox: Why the Schema/Facts Split Matters in Production Knowledge Graphs. Most enterprise knowledge-graph projects fail at the same join: the place where the schema of the world meets the facts about the world. The Description-Logic distinction between TBox, ABox, and RBox is not academic pedantry. It is the operating model that tells you how to lay out files, who owns what, how often each piece changes, which tools to use, and where SHACL sits in the pipeline. This post grounds the theory in a banking knowledge graph and shows the concrete failure modes when teams collapse the distinction. Concepts: knowledge graphs, ontology engineering, data engineering, data architecture, neo4j, rdf.
+- **`knowledge-catalog-vs-ontologies`** *(deep)* — Knowledge Catalog vs Ontologies: A Confluence, Not a Replacement. Google's Knowledge Catalog and a domain ontology look like they answer the same question. They do not. One is an asset registry with governance and lineage; the other is a formal model of meaning with inferential reasoning. A mature knowledge layer almost always needs both, with a clear arrow of dependency between them. This post is the four-part arc's closing piece, naming the substitutions, the anti-patterns, and the honest hybrid architecture. Concepts: asset registry vs ontology, inferential reasoning, hybrid architecture. Tech: owl, dataplex.
+- **`gemini-enterprise-knowledge-catalog-deep-dive`** *(deep)* — Gemini Enterprise and the Knowledge Catalog: Two Buildings, Room by Room. The Cloud Next 26 overview gave you the map. This post zooms in on the two pieces that will reshape a Knowledge Data Engineer's day-to-day in the next twelve months: the Gemini Enterprise Agent Platform as a control plane, and the Knowledge Catalog as the semantic spine that grounds every agent answer in audited enterprise truth. Concepts: Agent Platform control plane, Knowledge Catalog semantic spine, context graph. Tech: vertex-ai, dataplex.
+- **`google-cloud-next-2026-agent-native-stack`** *(deep)* — Google Cloud Next 2026: The Agent-Native Stack, Decoded. On April 22, 2026, Sundar Pichai walked onstage at Mandalay Bay and quietly renamed Vertex AI. The new label, Gemini Enterprise Agent Platform, sounds like marketing. It is not. It is the most aggressive cloud reorganization since the original Compute Engine launch. This is the practitioner's deep dive into every announcement that matters, what it replaces, and what to actually adopt. Concepts: agent-native stack, Gemini Enterprise Agent Platform, agentic data cloud. Tech: vertex-ai, gcp.
+- **`agent-guardrails-field-guide`** *(deep)* — Guardrails for Agent Systems: A Field Guide. What goes wrong when an agent gets loose in production, and the layered defenses that actually keep it from doing damage. A practitioner's mental model: threat taxonomy, five guardrail layers with code, blast radius reasoning, the tooling landscape, evaluation, and the anti-patterns that defeat the whole effort. Concepts: threat taxonomy, guardrail layers, blast radius reasoning.
+- **`populating-knowledge-graph-llms-banking`** *(deep)* — Populating a Knowledge Graph with LLMs: A Banking Case Study. There is an abyss between the GraphRAG paper and a pipeline that runs reliably in production. This post crosses that gap with a worked banking case — ingesting mortgage-loan documents into Neo4j with a schema-embedded extraction prompt, Pydantic repair, pySHACL validation, entity resolution, and idempotent MERGE Cypher. Concepts: schema-embedded extraction, Pydantic repair, pySHACL validation, entity resolution, idempotent MERGE. Tech: neo4j, pydantic, pyshacl, cypher.
+- **`ontology-production-pipeline-gcp`** *(deep)* — Ontologies in Production: A CI/CD Pipeline for Enterprise Schemas on GCP. An ontology that lives on one engineer's laptop is not an ontology, it is a document. Putting one into production has its own architectural shape: Git as source of truth, YAML authored and compiled into OWL, SHACL, and JSON-Schema, CI that runs competency questions as tests, and GCP plumbing that treats the schema as code, not data. Concepts: ontology CI/CD, YAML-to-OWL compilation, competency questions as tests. Tech: shacl, owl, gcp.
+- **`modular-ontologies-core-domains-pattern`** *(deep)* — Modular Ontologies: The Core + Domains Pattern for Enterprise Knowledge Graphs. An enterprise ontology is neither a single monolithic file nor a loose federation of domain silos. Real projects converge to Core + Domains: a small, stable core of cross-cutting concepts and orbiting modules per business line. This post derives the operational rule that governs that split, using banking as the grounded example. Concepts: core + domains pattern, modular ontology, cross-cutting concepts. Tech: owl, rdf.
+- **`tbox-abox-schema-facts-distinction`** *(deep)* — TBox and ABox: Why the Schema/Facts Split Matters in Production Knowledge Graphs. Most enterprise knowledge-graph projects fail at the same join: the place where the schema of the world meets the facts about the world. The Description-Logic distinction between TBox, ABox, and RBox is not academic pedantry. It is the operating model that tells you how to lay out files, who owns what, how often each piece changes, which tools to use, and where SHACL sits in the pipeline. This post grounds the theory in a banking knowledge graph and shows the concrete failure modes when teams collapse the distinction. Concepts: TBox, ABox, RBox, description logic, schema/facts split. Tech: neo4j, rdf.
 - **`query-routing-agent-decisions`** *(deep)* — Query Routing: How the Agent Decides Where to Look. In a hybrid retrieval system with vector stores, graphs, SQL and APIs, the quality of each source matters less than the decision of which one to consult. This post walks through three routing strategies — LLM-only, explicit classifier, cascading fallback — and shows how to evaluate the router as a first-class component. Concepts: tool routing, query classification, retrieval evaluation, cascading retrieval, RAG. Tech: anthropic-sdk, langgraph.
 - **`ontology-to-agent-toolbox`** *(deep)* — From Ontology to Agent Toolbox: Turning Your Schema Into Tools. An ontology is not just a schema — it is the blueprint that tells you which tools to give your agent. This post walks through three levels of tool granularity, from a monolithic Cypher endpoint to domain-scoped tools derived class-by-class from an OWL ontology, with production-quality Python, guardrails, and role-based access. Concepts: ontology, tool granularity, agent toolbox, OWL, role-based access, guardrails. Tech: neo4j, anthropic-sdk, owl.
 - **`lookml-semantic-layer-data-modeling`** *(working)* — LookML: The Semantic Layer That Turns SQL Into a Product. Raw SQL tables are not data products. Between the warehouse and the business sits a translation layer that defines what metrics mean, how tables relate, and who can see what. LookML is one answer to that problem -- a code-based semantic modeling language that version-controls your analytics and opens the door to agentic, programmatic BI. Concepts: semantic layer, LookML, metric definitions, data modeling. Tech: looker, lookml, bigquery.

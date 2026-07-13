@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1783904184,
+  "generatedAt": 1783918340,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -913,6 +913,19 @@
       "audioUrl": "/blog/audio/field-notes/graph-neural-networks-learning-structured-data.mp3",
       "translationModel": ""
     },
+    "field-notes/hermes-self-improving-agent-persistent-memory": {
+      "slug": "hermes-self-improving-agent-persistent-memory",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "72c0b8792cdc127ed0ad4c64c447c26d515416bd7a265f54abdb6d2807004df0",
+      "sourceHash": "72c0b8792cdc127ed0ad4c64c447c26d515416bd7a265f54abdb6d2807004df0",
+      "durationSec": 1863.912,
+      "byteSize": 11183472,
+      "narrationWordCount": 4674,
+      "audioUrl": "/blog/audio/field-notes/hermes-self-improving-agent-persistent-memory.mp3",
+      "translationModel": ""
+    },
     "field-notes/knowledge-as-a-product": {
       "slug": "knowledge-as-a-product",
       "category": "field-notes",
@@ -1249,6 +1262,32 @@
       "byteSize": 9436464,
       "narrationWordCount": 3873,
       "audioUrl": "/blog/audio/field-notes/ontology-to-agent-toolbox.mp3",
+      "translationModel": ""
+    },
+    "field-notes/openclaw-anatomy-viral-agent-platform": {
+      "slug": "openclaw-anatomy-viral-agent-platform",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "1b34a24e6aff881ed633bc2d22dd7e6914fdb71ee059cea9e8c664ce8223eee2",
+      "sourceHash": "1b34a24e6aff881ed633bc2d22dd7e6914fdb71ee059cea9e8c664ce8223eee2",
+      "durationSec": 1918.296,
+      "byteSize": 11509776,
+      "narrationWordCount": 4958,
+      "audioUrl": "/blog/audio/field-notes/openclaw-anatomy-viral-agent-platform.mp3",
+      "translationModel": ""
+    },
+    "field-notes/openclaw-vs-hermes-self-hosted-agent-comparison": {
+      "slug": "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "94c757492a46674002fc4076051259cdd0621ecc9b699f4c68d13154b0c17e54",
+      "sourceHash": "94c757492a46674002fc4076051259cdd0621ecc9b699f4c68d13154b0c17e54",
+      "durationSec": 1581.288,
+      "byteSize": 9487728,
+      "narrationWordCount": 4085,
+      "audioUrl": "/blog/audio/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison.mp3",
       "translationModel": ""
     },
     "field-notes/operating-agents-eval-observability-scale": {
