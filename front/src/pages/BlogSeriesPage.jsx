@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Play, Pause, Download } from 'lucide-react';
 import { getSeriesWithPosts, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
+import { buildZip } from '../utils/zip';
 import { variants as motionVariants } from '../utils';
 
 const fadeInUp = motionVariants.fadeInUp();
@@ -18,11 +19,168 @@ const getImageUrl = (path) => {
   return `${base}/${path}`;
 };
 
-function SeriesStep({ post, isLast }) {
+// Absolute (R2) audio URLs pass through; relative paths resolve against PUBLIC_URL.
+const publicUrl = (path) => {
+  if (!path) return path;
+  if (/^https?:\/\//.test(path)) return path;
+  return `${process.env.PUBLIC_URL || ''}${path}`;
+};
+
+const formatTime = (seconds) => {
+  if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+  const total = Math.floor(seconds);
+  return `${Math.floor(total / 60)}:${(total % 60).toString().padStart(2, '0')}`;
+};
+
+// Reconstruct a portable, self-describing markdown file for the download bundle.
+const postToMarkdown = (post) => {
+  const front = [
+    '---',
+    `title: ${JSON.stringify(post.title || '')}`,
+    `date: ${JSON.stringify(post.date || '')}`,
+    `category: ${post.category || ''}`,
+    `slug: ${post.slug || ''}`,
+    `url: https://juanlara18.github.io/portfolio/#/blog/${post.slug || ''}`,
+    '---',
+    '',
+    '',
+  ].join('\n');
+  return front + (post.content || '').trim() + '\n';
+};
+
+// Compact, podcast-style inline player for a single series step. Sits above the
+// card's full-bleed link overlay (relative z-10) and stops click propagation so
+// interacting with the player never navigates to the post.
+function SeriesAudioBar({ post, playingSlug, setPlayingSlug }) {
+  const langs = ['en', 'es'].filter((l) => post.audio?.[l]?.url);
+  const [lang, setLang] = useState(langs[0] || null);
+  const track = lang ? post.audio[lang] : null;
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(track?.durationSec || 0);
+
+  // Pause this player whenever another step's player takes over.
+  useEffect(() => {
+    if (playingSlug !== post.slug && audioRef.current) audioRef.current.pause();
+  }, [playingSlug, post.slug]);
+
+  // Reset transport when the language (and thus the source) changes.
+  useEffect(() => {
+    const el = audioRef.current;
+    if (!el) return;
+    el.pause();
+    setIsPlaying(false);
+    setCurrent(0);
+    setDuration(track?.durationSec || 0);
+    el.load();
+  }, [track]);
+
+  if (!track) return null;
+
+  const stop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const toggle = (e) => {
+    stop(e);
+    const el = audioRef.current;
+    if (!el) return;
+    if (el.paused) {
+      setPlayingSlug(post.slug);
+      el.play().catch(() => setIsPlaying(false));
+    } else {
+      el.pause();
+    }
+  };
+
+  const onSeek = (e) => {
+    stop(e);
+    const el = audioRef.current;
+    if (!el || !duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+    el.currentTime = ratio * duration;
+    setCurrent(el.currentTime);
+  };
+
+  const pct = duration > 0 ? (current / duration) * 100 : 0;
+
+  return (
+    <div
+      onClick={stop}
+      className="relative z-10 mt-4 flex items-center gap-2.5 max-w-md"
+    >
+      <audio
+        ref={audioRef}
+        src={publicUrl(track.url)}
+        preload="none"
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onTimeUpdate={(e) => setCurrent(e.target.currentTime)}
+        onLoadedMetadata={(e) => setDuration(e.target.duration || track.durationSec || 0)}
+        onEnded={() => {
+          setIsPlaying(false);
+          setCurrent(0);
+        }}
+      />
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={isPlaying ? 'Pause narration' : 'Play narration'}
+        className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:focus:ring-brand-accent focus:ring-offset-2 dark:focus:ring-offset-brand-bg"
+      >
+        {isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
+      </button>
+      <button
+        type="button"
+        onClick={onSeek}
+        aria-label="Seek"
+        className="flex-1 h-1 bg-gray-200 dark:bg-cyan-400/15 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-1 focus:ring-cyan-700 dark:focus:ring-brand-accent"
+      >
+        <div
+          className="h-full bg-cyan-700 dark:bg-brand-accent transition-[width] duration-100"
+          style={{ width: `${pct}%` }}
+        />
+      </button>
+      <span className="font-mono text-[10px] text-gray-500 dark:text-brand-fg-muted tabular-nums flex-shrink-0">
+        {formatTime(current)} / {formatTime(duration)}
+      </span>
+      {langs.length > 1 && (
+        <div className="flex items-center flex-shrink-0" aria-label="Audio language">
+          {langs.map((l, i) => (
+            <span key={l} className="inline-flex items-center">
+              {i > 0 && <span className="mx-0.5 text-gray-400 dark:text-brand-fg-muted opacity-50">·</span>}
+              <button
+                type="button"
+                onClick={(e) => {
+                  stop(e);
+                  setLang(l);
+                }}
+                aria-pressed={l === lang}
+                className={`font-mono text-[10px] tracking-[0.1em] uppercase transition-colors focus:outline-none ${
+                  l === lang
+                    ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-2'
+                    : 'text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
+                }`}
+              >
+                {l.toUpperCase()}
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SeriesStep({ post, isLast, playingSlug, setPlayingSlug }) {
   const categoryConfig = BLOG_CONFIG.categories[post.category];
   const headerImagePath = post.headerImage || `/blog/headers/default-${post.category}.jpg`;
   const fallbackPath = '/blog/headers/default.jpg';
   const postUrl = `/blog/${post.category}/${post.slug}`;
+  const hasAudio = Boolean(post.audio?.en?.url || post.audio?.es?.url);
 
   return (
     <motion.li variants={fadeInUp} className="relative pl-14 sm:pl-16">
@@ -39,51 +197,61 @@ function SeriesStep({ post, isLast }) {
         {post.part}
       </span>
 
-      <article className="group relative flex gap-4 pb-8">
-        <div className="min-w-0 flex-1">
-          <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-cyan-700 dark:text-brand-accent mb-2">
-            Part {post.part} of {post.partsTotal}
-            <span className="mx-1.5 opacity-50">·</span>
-            {categoryConfig?.name || post.category}
-          </div>
+      <article className="group relative pb-8">
+        <div className="flex gap-4">
+          <div className="min-w-0 flex-1">
+            <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-cyan-700 dark:text-brand-accent mb-2">
+              Part {post.part} of {post.partsTotal}
+              <span className="mx-1.5 opacity-50">·</span>
+              {categoryConfig?.name || post.category}
+            </div>
 
-          <h3 className="font-bold text-xl md:text-2xl tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-2 group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
-            <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
-              {post.title.split(':')[0]}
-            </Link>
-          </h3>
+            <h3 className="font-bold text-xl md:text-2xl tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-2 group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
+              <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
+                {post.title.split(':')[0]}
+              </Link>
+            </h3>
 
-          <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
-            <span>{post.readingTime} min read</span>
-          </div>
+            <div className="font-mono text-[10px] tracking-[0.12em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
+              <span>{post.readingTime} min read</span>
+            </div>
 
-          <p
-            className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm overflow-hidden"
-            style={{
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-            }}
-          >
-            {post.excerpt}
-          </p>
-        </div>
-
-        {/* Thumbnail — hidden on the smallest screens to keep rows compact */}
-        <div className="hidden sm:block shrink-0 w-28 md:w-36 aspect-[16/9] overflow-hidden self-start">
-          <picture>
-            <source srcSet={getImageUrl(getWebPPath(headerImagePath))} type="image/webp" />
-            <img
-              src={getImageUrl(headerImagePath)}
-              alt={post.title}
-              loading="lazy"
-              onError={(e) => {
-                e.target.src = getImageUrl(fallbackPath);
+            <p
+              className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm overflow-hidden"
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
               }}
-              className="w-full h-full object-cover"
-            />
-          </picture>
+            >
+              {post.excerpt}
+            </p>
+          </div>
+
+          {/* Thumbnail — hidden on the smallest screens to keep rows compact */}
+          <div className="hidden sm:block shrink-0 w-28 md:w-36 aspect-[16/9] overflow-hidden self-start">
+            <picture>
+              <source srcSet={getImageUrl(getWebPPath(headerImagePath))} type="image/webp" />
+              <img
+                src={getImageUrl(headerImagePath)}
+                alt={post.title}
+                loading="lazy"
+                onError={(e) => {
+                  e.target.src = getImageUrl(fallbackPath);
+                }}
+                className="w-full h-full object-cover"
+              />
+            </picture>
+          </div>
         </div>
+
+        {hasAudio && (
+          <SeriesAudioBar
+            post={post}
+            playingSlug={playingSlug}
+            setPlayingSlug={setPlayingSlug}
+          />
+        )}
       </article>
     </motion.li>
   );
@@ -92,6 +260,24 @@ function SeriesStep({ post, isLast }) {
 export default function BlogSeriesPage() {
   const [series, setSeries] = useState([]);
   const [loading, setLoading] = useState(true);
+  // Only one step's audio plays at a time across the whole page.
+  const [playingSlug, setPlayingSlug] = useState(null);
+
+  const downloadSeries = (s) => {
+    const files = s.posts.map((p) => ({
+      name: `${String(p.part).padStart(2, '0')}-${p.slug}.md`,
+      text: postToMarkdown(p),
+    }));
+    const blob = buildZip(files);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${s.id}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
 
   useEffect(() => {
     let active = true;
@@ -190,13 +376,24 @@ export default function BlogSeriesPage() {
                   <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed max-w-2xl">
                     {s.description}
                   </p>
-                  <Link
-                    to={`/blog/${s.posts[0].category}/${s.posts[0].slug}`}
-                    className="inline-flex items-center gap-2 mt-4 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
-                  >
-                    <span>Start from part 1</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                  <div className="mt-4 flex items-center gap-5 flex-wrap">
+                    <Link
+                      to={`/blog/${s.posts[0].category}/${s.posts[0].slug}`}
+                      className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+                    >
+                      <span>Start from part 1</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => downloadSeries(s)}
+                      title="Download all posts in this series as markdown (.zip)"
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
+                    >
+                      <Download size={13} />
+                      <span>Download .md</span>
+                    </button>
+                  </div>
                 </motion.div>
 
                 <ol className="list-none m-0 p-0">
@@ -205,6 +402,8 @@ export default function BlogSeriesPage() {
                       key={post.slug}
                       post={post}
                       isLast={index === s.posts.length - 1}
+                      playingSlug={playingSlug}
+                      setPlayingSlug={setPlayingSlug}
                     />
                   ))}
                 </ol>
