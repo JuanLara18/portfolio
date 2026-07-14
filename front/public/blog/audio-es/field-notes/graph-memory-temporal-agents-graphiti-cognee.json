@@ -1,0 +1,13 @@
+{
+  "slug": "graph-memory-temporal-agents-graphiti-cognee",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "03ab98dbdccd9cfa17e31a945d8e17a4d9004707c057cd34f5cdd65840b9a401",
+  "sourceHash": "21195b247ab790a0bc66553015c49c2a28f5a8ad6098ab413f1ab41665120cb6",
+  "durationSec": 1471.128,
+  "byteSize": 8826768,
+  "narrationWordCount": 4143,
+  "audioUrl": "/blog/audio-es/field-notes/graph-memory-temporal-agents-graphiti-cognee.mp3",
+  "translationModel": "aya-expanse:8b"
+}

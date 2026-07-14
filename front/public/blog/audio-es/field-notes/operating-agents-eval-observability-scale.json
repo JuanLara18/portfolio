@@ -1,0 +1,13 @@
+{
+  "slug": "operating-agents-eval-observability-scale",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "68404e17fd2d6276d7edbe4188403905a28215da40eebee3c85c345829d21532",
+  "sourceHash": "64498db9f1219128dcc74d55644e42d7999135a4de8a6ff463cd816aa5bd8fe9",
+  "durationSec": 2298.024,
+  "byteSize": 13788144,
+  "narrationWordCount": 6428,
+  "audioUrl": "/blog/audio-es/field-notes/operating-agents-eval-observability-scale.mp3",
+  "translationModel": "aya-expanse:8b"
+}

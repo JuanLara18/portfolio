@@ -1,0 +1,13 @@
+{
+  "slug": "senior-infrastructure-distributed-systems-failure-networking",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "2bff4368979ad046f029ab28cf643c696ef98d931c7885f8392e3dafdcc516fa",
+  "sourceHash": "5edd7f90ef59c158a1b66f62aadbad7291dfa6dd447731a2298a49303be63829",
+  "durationSec": 2244.624,
+  "byteSize": 13467744,
+  "narrationWordCount": 6617,
+  "audioUrl": "/blog/audio-es/field-notes/senior-infrastructure-distributed-systems-failure-networking.mp3",
+  "translationModel": "aya-expanse:8b"
+}

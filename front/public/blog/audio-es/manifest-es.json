@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1783990803,
+  "generatedAt": 1784014460,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -275,6 +275,19 @@
       "narrationWordCount": 7334,
       "audioUrl": "/blog/audio-es/field-notes/agent-engineering-disciplines.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/agent-graph-layer-why-grep-embeddings-fell-short": {
+      "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "f7d0ee1287129cc591893fe78879c2c85906b1afb3bbe71be61660b96552539a",
+      "sourceHash": "e9f76fe52d9c3a367ef05d245b68d4a0397080b76897ff4e9cc6adba227cc00d",
+      "durationSec": 2009.616,
+      "byteSize": 12057696,
+      "narrationWordCount": 5737,
+      "audioUrl": "/blog/audio-es/field-notes/agent-graph-layer-why-grep-embeddings-fell-short.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/agent-guardrails-field-guide": {
       "slug": "agent-guardrails-field-guide",
@@ -809,6 +822,32 @@
       "audioUrl": "/blog/audio-es/field-notes/google-cloud-next-2026-agent-native-stack.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/graph-layer-in-production-mcp-build-vs-buy": {
+      "slug": "graph-layer-in-production-mcp-build-vs-buy",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "e870c1704e6525a98419d148c68b48c06f1e6b0dce4ac6a32957af5d32adb427",
+      "sourceHash": "97b941ad0a2f8f6939a4701c670acbfa2f9231b2276beaddd7f78ce804c12013",
+      "durationSec": 2146.488,
+      "byteSize": 12878928,
+      "narrationWordCount": 6165,
+      "audioUrl": "/blog/audio-es/field-notes/graph-layer-in-production-mcp-build-vs-buy.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/graph-memory-temporal-agents-graphiti-cognee": {
+      "slug": "graph-memory-temporal-agents-graphiti-cognee",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "03ab98dbdccd9cfa17e31a945d8e17a4d9004707c057cd34f5cdd65840b9a401",
+      "sourceHash": "21195b247ab790a0bc66553015c49c2a28f5a8ad6098ab413f1ab41665120cb6",
+      "durationSec": 1471.128,
+      "byteSize": 8826768,
+      "narrationWordCount": 4143,
+      "audioUrl": "/blog/audio-es/field-notes/graph-memory-temporal-agents-graphiti-cognee.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/graph-neural-networks-learning-structured-data": {
       "slug": "graph-neural-networks-learning-structured-data",
       "category": "field-notes",
@@ -1199,6 +1238,19 @@
       "audioUrl": "/blog/audio-es/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison.mp3",
       "translationModel": "aya-expanse:8b"
     },
+    "field-notes/operating-agents-eval-observability-scale": {
+      "slug": "operating-agents-eval-observability-scale",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "68404e17fd2d6276d7edbe4188403905a28215da40eebee3c85c345829d21532",
+      "sourceHash": "64498db9f1219128dcc74d55644e42d7999135a4de8a6ff463cd816aa5bd8fe9",
+      "durationSec": 2298.024,
+      "byteSize": 13788144,
+      "narrationWordCount": 6428,
+      "audioUrl": "/blog/audio-es/field-notes/operating-agents-eval-observability-scale.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/populating-knowledge-graph-llms-banking": {
       "slug": "populating-knowledge-graph-llms-banking",
       "category": "field-notes",
@@ -1263,6 +1315,19 @@
       "narrationWordCount": 3974,
       "audioUrl": "/blog/audio-es/field-notes/query-routing-agent-decisions.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/querying-code-graphs-blast-radius-localization": {
+      "slug": "querying-code-graphs-blast-radius-localization",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "b11acaf2349870a16651e47ad618a7637107a4c9d7fb45dbf606130e89e271cd",
+      "sourceHash": "c851fe99f07f325ce5b7fcb862fcd1ac1d1343a6c6e61380f1a465565894d1a0",
+      "durationSec": 2016.456,
+      "byteSize": 12098736,
+      "narrationWordCount": 5541,
+      "audioUrl": "/blog/audio-es/field-notes/querying-code-graphs-blast-radius-localization.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/rag-advanced-patterns": {
       "slug": "rag-advanced-patterns",
@@ -1342,6 +1407,19 @@
       "audioUrl": "/blog/audio-es/field-notes/reinforcement-learning-in-practice.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/repo-to-graph-ast-vs-llm-extraction": {
+      "slug": "repo-to-graph-ast-vs-llm-extraction",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "8c93b8b90b12a145db070cdfe67dc3a4c971df249e8884a1a448de80848bc8e3",
+      "sourceHash": "c75ed891ee67ee723d7cbf173a078799d6d79e911d9c16de12a2d0b17bb73f4e",
+      "durationSec": 1830.816,
+      "byteSize": 10984896,
+      "narrationWordCount": 4883,
+      "audioUrl": "/blog/audio-es/field-notes/repo-to-graph-ast-vs-llm-extraction.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/rl-algorithm-taxonomy-tour": {
       "slug": "rl-algorithm-taxonomy-tour",
       "category": "field-notes",
@@ -1367,6 +1445,71 @@
       "narrationWordCount": 5088,
       "audioUrl": "/blog/audio-es/field-notes/rlhf-dpo-alignment.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/senior-api-design-contracts-versioning-dx": {
+      "slug": "senior-api-design-contracts-versioning-dx",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "3d1742925af2808b9841f13e26ffd1ed009a0c9cf9ccc71e5322b502deda593a",
+      "sourceHash": "a5eaff882d28596112adee42bc66af7cd800608be66323a5fc531764f4347d6b",
+      "durationSec": 2268.984,
+      "byteSize": 13613904,
+      "narrationWordCount": 6378,
+      "audioUrl": "/blog/audio-es/field-notes/senior-api-design-contracts-versioning-dx.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/senior-data-modeling-query-patterns-database-design": {
+      "slug": "senior-data-modeling-query-patterns-database-design",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "29ff8178f3eceaa7ddb78f2753ff1a9c77c7dee8a2b32a86f9cfd3f48984a474",
+      "sourceHash": "f5cf500a9faf5b4963118a4dc6200d02bceca52a0f05c87254fd536e296af3dc",
+      "durationSec": 2364.576,
+      "byteSize": 14187456,
+      "narrationWordCount": 6790,
+      "audioUrl": "/blog/audio-es/field-notes/senior-data-modeling-query-patterns-database-design.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/senior-distributed-theory-cap-pacelc-tradeoffs": {
+      "slug": "senior-distributed-theory-cap-pacelc-tradeoffs",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "c6eece228b21b364190aa473acd22399a75250c17b3cd8b5d2bd708cf34df5bc",
+      "sourceHash": "5e4e2b47f4742f236a35017e2ae1cd81f20d7cd883b83d9004e5c434f821f84f",
+      "durationSec": 2026.56,
+      "byteSize": 12159360,
+      "narrationWordCount": 5777,
+      "audioUrl": "/blog/audio-es/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/senior-infrastructure-distributed-systems-failure-networking": {
+      "slug": "senior-infrastructure-distributed-systems-failure-networking",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "2bff4368979ad046f029ab28cf643c696ef98d931c7885f8392e3dafdcc516fa",
+      "sourceHash": "5edd7f90ef59c158a1b66f62aadbad7291dfa6dd447731a2298a49303be63829",
+      "durationSec": 2244.624,
+      "byteSize": 13467744,
+      "narrationWordCount": 6617,
+      "audioUrl": "/blog/audio-es/field-notes/senior-infrastructure-distributed-systems-failure-networking.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/senior-product-engineering-scale-prioritization-architecture": {
+      "slug": "senior-product-engineering-scale-prioritization-architecture",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1558aef46102e4682ae46810a0b42dfa2f10168467b7321247de1cafb09c89bd",
+      "sourceHash": "bdfd05214685775ce7c80ce7a2758c61523b650f45d71bd6665e71ae8ada5081",
+      "durationSec": 2359.056,
+      "byteSize": 14154336,
+      "narrationWordCount": 6665,
+      "audioUrl": "/blog/audio-es/field-notes/senior-product-engineering-scale-prioritization-architecture.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/software-engineering-classics": {
       "slug": "software-engineering-classics",

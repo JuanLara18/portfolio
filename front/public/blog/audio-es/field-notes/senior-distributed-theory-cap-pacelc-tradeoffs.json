@@ -1,0 +1,13 @@
+{
+  "slug": "senior-distributed-theory-cap-pacelc-tradeoffs",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "c6eece228b21b364190aa473acd22399a75250c17b3cd8b5d2bd708cf34df5bc",
+  "sourceHash": "5e4e2b47f4742f236a35017e2ae1cd81f20d7cd883b83d9004e5c434f821f84f",
+  "durationSec": 2026.56,
+  "byteSize": 12159360,
+  "narrationWordCount": 5777,
+  "audioUrl": "/blog/audio-es/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs.mp3",
+  "translationModel": "aya-expanse:8b"
+}

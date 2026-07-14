@@ -1,0 +1,13 @@
+{
+  "slug": "graph-layer-in-production-mcp-build-vs-buy",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e870c1704e6525a98419d148c68b48c06f1e6b0dce4ac6a32957af5d32adb427",
+  "sourceHash": "97b941ad0a2f8f6939a4701c670acbfa2f9231b2276beaddd7f78ce804c12013",
+  "durationSec": 2146.488,
+  "byteSize": 12878928,
+  "narrationWordCount": 6165,
+  "audioUrl": "/blog/audio-es/field-notes/graph-layer-in-production-mcp-build-vs-buy.mp3",
+  "translationModel": "aya-expanse:8b"
+}
