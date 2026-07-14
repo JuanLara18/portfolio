@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1783918340,
+  "generatedAt": 1783977728,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -664,6 +664,19 @@
       "byteSize": 14715072,
       "narrationWordCount": 6149,
       "audioUrl": "/blog/audio/field-notes/enterprise-agent-governance-lifecycle.mp3",
+      "translationModel": ""
+    },
+    "field-notes/enterprise-agent-memory-continuity-adk-geap": {
+      "slug": "enterprise-agent-memory-continuity-adk-geap",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "b8de66d1e628632579a50bec1b5c2505dfded8a20b1abe8800ae138f5cf4d291",
+      "sourceHash": "b8de66d1e628632579a50bec1b5c2505dfded8a20b1abe8800ae138f5cf4d291",
+      "durationSec": 2004.576,
+      "byteSize": 12027456,
+      "narrationWordCount": 5154,
+      "audioUrl": "/blog/audio/field-notes/enterprise-agent-memory-continuity-adk-geap.mp3",
       "translationModel": ""
     },
     "field-notes/enterprise-agents-governance-security-business": {
