@@ -2,13 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, BookOpen, Play, Pause, Download } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Play, Pause, Download, Gauge } from 'lucide-react';
 import { getSeriesWithPosts, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
 import { buildZip } from '../utils/zip';
 import { variants as motionVariants } from '../utils';
 
 const fadeInUp = motionVariants.fadeInUp();
 const staggerContainer = motionVariants.stagger();
+
+const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
 
 // Resolve a header image path against PUBLIC_URL (mirrors PostCard).
 const getImageUrl = (path) => {
@@ -56,14 +58,32 @@ function SeriesAudioBar({ post, playingSlug, setPlayingSlug }) {
   const [lang, setLang] = useState(langs[0] || null);
   const track = lang ? post.audio[lang] : null;
   const audioRef = useRef(null);
+  const barRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const [current, setCurrent] = useState(0);
   const [duration, setDuration] = useState(track?.durationSec || 0);
+  const [speedIndex, setSpeedIndex] = useState(0);
+  const [barVisible, setBarVisible] = useState(true);
+
+  const isActive = playingSlug === post.slug;
 
   // Pause this player whenever another step's player takes over.
   useEffect(() => {
-    if (playingSlug !== post.slug && audioRef.current) audioRef.current.pause();
-  }, [playingSlug, post.slug]);
+    if (!isActive && audioRef.current) audioRef.current.pause();
+  }, [isActive]);
+
+  // Track whether this player's inline bar is on screen (drives the floating control).
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return undefined;
+    const obs = new IntersectionObserver(
+      ([entry]) => setBarVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   // Reset transport when the language (and thus the source) changes.
   useEffect(() => {
@@ -74,6 +94,7 @@ function SeriesAudioBar({ post, playingSlug, setPlayingSlug }) {
     setCurrent(0);
     setDuration(track?.durationSec || 0);
     el.load();
+    el.playbackRate = SPEEDS[speedIndex];
   }, [track]);
 
   if (!track) return null;
@@ -83,16 +104,27 @@ function SeriesAudioBar({ post, playingSlug, setPlayingSlug }) {
     e.stopPropagation();
   };
 
+  const play = () => {
+    const el = audioRef.current;
+    if (!el) return;
+    setPlayingSlug(post.slug);
+    el.playbackRate = SPEEDS[speedIndex];
+    el.play().catch(() => setIsPlaying(false));
+  };
+
   const toggle = (e) => {
     stop(e);
     const el = audioRef.current;
     if (!el) return;
-    if (el.paused) {
-      setPlayingSlug(post.slug);
-      el.play().catch(() => setIsPlaying(false));
-    } else {
-      el.pause();
-    }
+    if (el.paused) play();
+    else el.pause();
+  };
+
+  const cycleSpeed = (e) => {
+    stop(e);
+    const next = (speedIndex + 1) % SPEEDS.length;
+    setSpeedIndex(next);
+    if (audioRef.current) audioRef.current.playbackRate = SPEEDS[next];
   };
 
   const onSeek = (e) => {
@@ -106,72 +138,111 @@ function SeriesAudioBar({ post, playingSlug, setPlayingSlug }) {
   };
 
   const pct = duration > 0 ? (current / duration) * 100 : 0;
+  const speed = SPEEDS[speedIndex];
+  const showFloating = hasStarted && isActive && !barVisible;
+  const floatingLabel = isPlaying
+    ? (lang === 'es' ? 'Pausar narración' : 'Pause narration')
+    : (lang === 'es' ? 'Reanudar narración' : 'Resume narration');
 
   return (
-    <div
-      onClick={stop}
-      className="relative z-10 mt-4 flex items-center gap-2.5 max-w-md"
-    >
-      <audio
-        ref={audioRef}
-        src={publicUrl(track.url)}
-        preload="none"
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-        onTimeUpdate={(e) => setCurrent(e.target.currentTime)}
-        onLoadedMetadata={(e) => setDuration(e.target.duration || track.durationSec || 0)}
-        onEnded={() => {
-          setIsPlaying(false);
-          setCurrent(0);
-        }}
-      />
+    <>
+      <div
+        ref={barRef}
+        onClick={stop}
+        className="relative z-10 mt-4 flex items-center gap-2 sm:gap-2.5 max-w-md"
+      >
+        <audio
+          ref={audioRef}
+          src={publicUrl(track.url)}
+          preload="none"
+          onPlay={() => {
+            setIsPlaying(true);
+            setHasStarted(true);
+          }}
+          onPause={() => setIsPlaying(false)}
+          onTimeUpdate={(e) => setCurrent(e.target.currentTime)}
+          onLoadedMetadata={(e) => {
+            setDuration(e.target.duration || track.durationSec || 0);
+            e.target.playbackRate = SPEEDS[speedIndex];
+          }}
+          onEnded={() => {
+            setIsPlaying(false);
+            setCurrent(0);
+          }}
+        />
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={isPlaying ? 'Pause narration' : 'Play narration'}
+          className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:focus:ring-brand-accent focus:ring-offset-2 dark:focus:ring-offset-brand-bg"
+        >
+          {isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
+        </button>
+        <button
+          type="button"
+          onClick={onSeek}
+          aria-label="Seek"
+          className="flex-1 h-1 bg-gray-200 dark:bg-cyan-400/15 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-1 focus:ring-cyan-700 dark:focus:ring-brand-accent"
+        >
+          <div
+            className="h-full bg-cyan-700 dark:bg-brand-accent transition-[width] duration-100"
+            style={{ width: `${pct}%` }}
+          />
+        </button>
+        <span className="font-mono text-[10px] text-gray-500 dark:text-brand-fg-muted tabular-nums flex-shrink-0">
+          {formatTime(current)} / {formatTime(duration)}
+        </span>
+        <button
+          type="button"
+          onClick={cycleSpeed}
+          aria-label={`Playback speed: ${speed}x`}
+          title="Change playback speed"
+          className="inline-flex items-center gap-0.5 font-mono text-[10px] tracking-[0.08em] uppercase text-gray-500 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors focus:outline-none flex-shrink-0"
+        >
+          <Gauge size={12} />
+          <span className="tabular-nums">{speed}x</span>
+        </button>
+        {langs.length > 1 && (
+          <div className="flex items-center flex-shrink-0" aria-label="Audio language">
+            {langs.map((l, i) => (
+              <span key={l} className="inline-flex items-center">
+                {i > 0 && <span className="mx-0.5 text-gray-400 dark:text-brand-fg-muted opacity-50">·</span>}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    stop(e);
+                    setLang(l);
+                  }}
+                  aria-pressed={l === lang}
+                  className={`font-mono text-[10px] tracking-[0.1em] uppercase transition-colors focus:outline-none ${
+                    l === lang
+                      ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-2'
+                      : 'text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Floating play/pause for the active track once its inline bar scrolls away. */}
       <button
         type="button"
         onClick={toggle}
-        aria-label={isPlaying ? 'Pause narration' : 'Play narration'}
-        className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:focus:ring-brand-accent focus:ring-offset-2 dark:focus:ring-offset-brand-bg"
+        aria-hidden={!showFloating}
+        tabIndex={showFloating ? 0 : -1}
+        aria-label={floatingLabel}
+        title={floatingLabel}
+        className={`fixed bottom-24 right-8 z-[199] w-12 h-12 bg-cyan-700 hover:bg-cyan-800 dark:bg-brand-accent dark:hover:bg-brand-accent-soft text-white dark:text-brand-bg rounded-full flex items-center justify-center shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:focus:ring-brand-accent focus:ring-offset-2 dark:focus:ring-offset-brand-bg ${
+          showFloating ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
+        }`}
       >
-        {isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
+        {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-0.5" />}
       </button>
-      <button
-        type="button"
-        onClick={onSeek}
-        aria-label="Seek"
-        className="flex-1 h-1 bg-gray-200 dark:bg-cyan-400/15 cursor-pointer relative overflow-hidden focus:outline-none focus:ring-1 focus:ring-cyan-700 dark:focus:ring-brand-accent"
-      >
-        <div
-          className="h-full bg-cyan-700 dark:bg-brand-accent transition-[width] duration-100"
-          style={{ width: `${pct}%` }}
-        />
-      </button>
-      <span className="font-mono text-[10px] text-gray-500 dark:text-brand-fg-muted tabular-nums flex-shrink-0">
-        {formatTime(current)} / {formatTime(duration)}
-      </span>
-      {langs.length > 1 && (
-        <div className="flex items-center flex-shrink-0" aria-label="Audio language">
-          {langs.map((l, i) => (
-            <span key={l} className="inline-flex items-center">
-              {i > 0 && <span className="mx-0.5 text-gray-400 dark:text-brand-fg-muted opacity-50">·</span>}
-              <button
-                type="button"
-                onClick={(e) => {
-                  stop(e);
-                  setLang(l);
-                }}
-                aria-pressed={l === lang}
-                className={`font-mono text-[10px] tracking-[0.1em] uppercase transition-colors focus:outline-none ${
-                  l === lang
-                    ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-2'
-                    : 'text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
-                }`}
-              >
-                {l.toUpperCase()}
-              </button>
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
+    </>
   );
 }
 
