@@ -7,6 +7,7 @@ import {
   BookOpen,
   Network,
   Layers,
+  Library,
   ArrowRight
 } from 'lucide-react';
 import { loadAllPosts, getAllTags, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
@@ -235,6 +236,13 @@ export default function BlogHomePage() {
               >
                 <Layers size={14} />
                 <span>Reading series</span>
+              </Link>
+              <Link
+                to="/blog/books"
+                className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+              >
+                <Library size={14} />
+                <span>Books and papers</span>
               </Link>
             </motion.div>
 

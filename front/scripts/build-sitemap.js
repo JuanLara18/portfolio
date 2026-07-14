@@ -73,6 +73,7 @@ function build() {
   entries.push(urlEntry(`${SITE_URL}/projects`, today, 'monthly', '0.8'));
   entries.push(urlEntry(`${SITE_URL}/blog`, today, 'weekly', '0.9'));
   entries.push(urlEntry(`${SITE_URL}/blog/series`, today, 'weekly', '0.7'));
+  entries.push(urlEntry(`${SITE_URL}/blog/books`, today, 'weekly', '0.7'));
 
   // Category pages (derived from post set).
   const categories = [...new Set(posts.map((p) => p.category).filter(Boolean))];

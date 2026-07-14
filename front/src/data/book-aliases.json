@@ -1,0 +1,34 @@
+{
+  "_comment": "Overrides for build-books.js. 'merge' maps a variant normalized key to a canonical normalized key; 'titles' overrides the display title for a canonical key; 'ignore' drops noisy keys. Keys are lowercased, alphanumeric, space-collapsed (see normKey). Only genuine subtitle/edition variants of the SAME work are merged here; same-prefix but different books (e.g. 'deep learning' vs 'deep learning on graphs') are intentionally kept separate.",
+  "merge": {
+    "designing machine learning systems and foundation model engineering": "designing machine learning systems",
+    "semantic web for the working ontologist effective modeling for linked data rdfs and owl": "semantic web for the working ontologist",
+    "semantic web for the working ontologist 3rd ed": "semantic web for the working ontologist",
+    "artificial intelligence a modern approach 4th ed": "artificial intelligence a modern approach",
+    "ai engineering": "ai engineering building applications with foundation models",
+    "graph databases new opportunities for connected data": "graph databases",
+    "building microservices 2nd ed": "building microservices",
+    "building microservices 2nd edition": "building microservices",
+    "the data warehouse toolkit the definitive guide to dimensional modeling": "the data warehouse toolkit",
+    "dama dmbok data management body of knowledge 2nd ed": "dama dmbok data management body of knowledge",
+    "dama dmbok data management body of knowledge 2nd edition": "dama dmbok data management body of knowledge",
+    "hands on machine learning with scikit learn keras and tensorflow third edition": "hands on machine learning with scikit learn keras and tensorflow",
+    "practical mlops operationalizing machine learning models": "practical mlops",
+    "site reliability engineering how google runs production systems": "site reliability engineering",
+    "the alignment problem machine learning and human values": "the alignment problem",
+    "building knowledge graphs a practitioner s guide": "building knowledge graphs",
+    "clean code a handbook of agile software craftsmanship": "clean code",
+    "database internals a deep dive into how distributed data systems work": "database internals",
+    "fourier analysis an introduction": "fourier analysis",
+    "human compatible artificial intelligence and the problem of control": "human compatible",
+    "monolith to microservices evolutionary patterns to transform your monolith": "monolith to microservices",
+    "python for data analysis 3rd edition": "python for data analysis",
+    "release it design and deploy production ready software": "release it",
+    "sql antipatterns avoiding the pitfalls of database programming": "sql antipatterns"
+  },
+  "titles": {
+    "designing machine learning systems": "Designing Machine Learning Systems",
+    "artificial intelligence a modern approach": "Artificial Intelligence: A Modern Approach"
+  },
+  "ignore": ["new", "why", "paper"]
+}
