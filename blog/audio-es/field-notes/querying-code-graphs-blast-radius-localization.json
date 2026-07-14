@@ -1,0 +1,13 @@
+{
+  "slug": "querying-code-graphs-blast-radius-localization",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "b11acaf2349870a16651e47ad618a7637107a4c9d7fb45dbf606130e89e271cd",
+  "sourceHash": "c851fe99f07f325ce5b7fcb862fcd1ac1d1343a6c6e61380f1a465565894d1a0",
+  "durationSec": 2016.456,
+  "byteSize": 12098736,
+  "narrationWordCount": 5541,
+  "audioUrl": "/blog/audio-es/field-notes/querying-code-graphs-blast-radius-localization.mp3",
+  "translationModel": "aya-expanse:8b"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "repo-to-graph-ast-vs-llm-extraction",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "8c93b8b90b12a145db070cdfe67dc3a4c971df249e8884a1a448de80848bc8e3",
+  "sourceHash": "c75ed891ee67ee723d7cbf173a078799d6d79e911d9c16de12a2d0b17bb73f4e",
+  "durationSec": 1830.816,
+  "byteSize": 10984896,
+  "narrationWordCount": 4883,
+  "audioUrl": "/blog/audio-es/field-notes/repo-to-graph-ast-vs-llm-extraction.mp3",
+  "translationModel": "aya-expanse:8b"
+}

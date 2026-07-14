@@ -1,0 +1,13 @@
+{
+  "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "f7d0ee1287129cc591893fe78879c2c85906b1afb3bbe71be61660b96552539a",
+  "sourceHash": "e9f76fe52d9c3a367ef05d245b68d4a0397080b76897ff4e9cc6adba227cc00d",
+  "durationSec": 2009.616,
+  "byteSize": 12057696,
+  "narrationWordCount": 5737,
+  "audioUrl": "/blog/audio-es/field-notes/agent-graph-layer-why-grep-embeddings-fell-short.mp3",
+  "translationModel": "aya-expanse:8b"
+}
