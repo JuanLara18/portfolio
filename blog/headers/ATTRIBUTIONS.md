@@ -83,3 +83,6 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `hermes-statue-header.jpg` — Photo by Quist, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hermes-Mercury.jpg) (CC BY-SA)
 - `brass-balance-header.jpg` — Photo by Auckland Museum Collections, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Balance,_letter_(51360064428).jpg) (CC BY 2.0)
 - `card-catalog-header.jpg` — Photo by MarkBuckawicki, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wooden_Card_Catalog_Furniture.jpg) (CC0)
+- `letterpress-typesetting-header.jpg` — Photo by Maggie Stephens, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Print_works_typesetting,_Beamish_Museum,_4_June_2011.jpg) (CC BY 2.0)
+- `roman-aqueduct-header.jpg` — Photo by Andrea Calabretta, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Roman_aqueduct_arches_near_Carthage.jpg) (CC BY 2.0)
+- `telephone-switchboard-header.jpg` — Photo by Gary Langebartels / FortepanIowa, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wisconsin_Bell_Telephone_Company_Switchboard.jpg) (CC BY-SA 4.0)

@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1783977728,
+  "generatedAt": 1785566271,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -640,6 +640,19 @@
       "audioUrl": "/blog/audio/field-notes/document-processing-ocr-layout.mp3",
       "translationModel": ""
     },
+    "field-notes/dont-reinvent-the-agent-open-source-composition": {
+      "slug": "dont-reinvent-the-agent-open-source-composition",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8e6a18b9f7e9cef9c508bfa71561596ad2449d89181a01752ffac3256bbe2daf",
+      "sourceHash": "8e6a18b9f7e9cef9c508bfa71561596ad2449d89181a01752ffac3256bbe2daf",
+      "durationSec": 1779.504,
+      "byteSize": 10677024,
+      "narrationWordCount": 3618,
+      "audioUrl": "/blog/audio/field-notes/dont-reinvent-the-agent-open-source-composition.mp3",
+      "translationModel": ""
+    },
     "field-notes/elevenlabs-voice-ai-engineering": {
       "slug": "elevenlabs-voice-ai-engineering",
       "category": "field-notes",
@@ -703,6 +716,19 @@
       "byteSize": 8115408,
       "narrationWordCount": 2937,
       "audioUrl": "/blog/audio/field-notes/enterprise-ai-platform-selection.mp3",
+      "translationModel": ""
+    },
+    "field-notes/enterprise-graph-mcp-architecture-gcp": {
+      "slug": "enterprise-graph-mcp-architecture-gcp",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "b02088215046d64db318b311e096da8d7f0f2ba50bc024b98889b76cd236331e",
+      "sourceHash": "b02088215046d64db318b311e096da8d7f0f2ba50bc024b98889b76cd236331e",
+      "durationSec": 1771.656,
+      "byteSize": 10629936,
+      "narrationWordCount": 4378,
+      "audioUrl": "/blog/audio/field-notes/enterprise-graph-mcp-architecture-gcp.mp3",
       "translationModel": ""
     },
     "field-notes/enterprise-knowledge-bases": {
@@ -1327,6 +1353,19 @@
       "byteSize": 8344368,
       "narrationWordCount": 3882,
       "audioUrl": "/blog/audio/field-notes/populating-knowledge-graph-llms-banking.mp3",
+      "translationModel": ""
+    },
+    "field-notes/production-graph-stack-agents-mcp-ontologies": {
+      "slug": "production-graph-stack-agents-mcp-ontologies",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "caadf930292070e89686e11954b23b47315dd2e6f30ce3544db5457b9e3205d0",
+      "sourceHash": "caadf930292070e89686e11954b23b47315dd2e6f30ce3544db5457b9e3205d0",
+      "durationSec": 2022.0,
+      "byteSize": 12132000,
+      "narrationWordCount": 4871,
+      "audioUrl": "/blog/audio/field-notes/production-graph-stack-agents-mcp-ontologies.mp3",
       "translationModel": ""
     },
     "field-notes/production-llm-agents-patterns": {

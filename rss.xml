@@ -9,8 +9,68 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Jun 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 20 Jul 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Don&apos;t Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition</guid>
+    <pubDate>Thu, 20 Jul 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Why senior AI architects stop building agent infrastructure from scratch, how to compose heavy-hitting open-source building blocks like superpowers, Mem0, Instructor, and turbovec, and critical trade-offs vs enterprise cloud platforms like GCP GEAP.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Open Source</category>
+    <category>Software Engineering</category>
+    <category>Model Context Protocol</category>
+    <category>Vector Databases</category>
+    <category>GCP</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>Best Practices</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/dont-reinvent-the-agent-open-source-composition.mp3" length="10677024" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp</guid>
+    <pubDate>Thu, 13 Jul 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[A practical blueprint for building an enterprise-wide, transversal Graph Context Engine on Google Cloud Platform using Cloud Spanner Graph, Dataplex Knowledge Catalog, and serverless MCP endpoints on Cloud Run.]]></description>
+    <category>field-notes</category>
+    <category>GCP</category>
+    <category>Knowledge Graphs</category>
+    <category>Model Context Protocol</category>
+    <category>Graph Databases</category>
+    <category>Agents</category>
+    <category>Data Architecture</category>
+    <category>Data Engineering</category>
+    <category>Cloud Computing</category>
+    <category>Data Governance</category>
+    <category>Infrastructure</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-graph-mcp-architecture-gcp.mp3" length="10629936" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies</guid>
+    <pubDate>Thu, 06 Jul 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Why pure vector embeddings fail at multi-hop reasoning in production, how Pragmatic Ontologies provide neurosymbolic grounding, and why modern agentic architectures choose MCP Tool Traversals over raw NL2Cypher.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>GraphRAG</category>
+    <category>Model Context Protocol</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>RAG</category>
+    <category>Ontologies</category>
+    <category>Infrastructure</category>
+    <category>Production ML</category>
+    <category>Vector Databases</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/production-graph-stack-agents-mcp-ontologies.mp3" length="12132000" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>The Agent That Remembers You: Continuity Engineering on ADK 2.0 and Gemini Enterprise</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</link>
