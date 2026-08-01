@@ -520,6 +520,13 @@ enterprise-graph-mcp-architecture-gcp:
   tech: [gcp, cloud-spanner, dataplex, cloud-run, mcp, fastmcp, opentelemetry]
   depth: deep
 
+agent-harness-build-fork-adopt-yc-qm:
+  concepts: [agent harness, harness vs framework, turn orchestration, predeclared command policy, security posture, multiplayer scoping, room as principal, deployment layer, divergence tax, context compaction, agent-computer interface]
+  prereqs: [dont-reinvent-the-agent-open-source-composition, production-llm-agents-patterns, bank-grade-agent-security-iam-gateways]
+  teaches: [distinguish a harness from a framework and a model, write a minimal agent loop and see what it lacks, enumerate the organizational modules a company-grade harness needs, decide between building forking and adopting at the harness layer, keep a fork upgradable with a deployment-layer boundary, test policy gates and unattended turns]
+  tech: [qm, pi, opencode, claude-code, codex, postgres, fly-io, aws]
+  depth: deep
+
 dont-reinvent-the-agent-open-source-composition:
   concepts: [open-source composition, adopt vs wrap vs fork, agent control plane, structured outputs, agent memory, vector quantization, microVM sandboxing, maintenance cost, build vs buy]
   prereqs: [model-context-protocol, production-llm-agents-patterns]
@@ -534,8 +541,9 @@ dont-reinvent-the-agent-open-source-composition:
 
 Auto-generated index of every post by category, sorted most recent first. Use this when you need a complete inventory of what the blog covers — for example, when loaded as Claude Project knowledge and you cannot query `posts.json`.
 
-### field-notes (120 posts)
+### field-notes (121 posts)
 
+- **`agent-harness-build-fork-adopt-yc-qm`** *(deep)* — Anatomy of an Agent Harness: Reading YC's QM and Deciding When to Build, Fork, or Adopt. Y Combinator open-sourced the multi-agent harness that runs its own company. Reading the source settles an argument: the agent loop is the easy part, and the other forty-six directories are the reason you should not write one from scratch. Concepts: agent harness, harness vs framework, turn orchestration, predeclared command policy, security posture, multiplayer scoping. Tech: qm, pi, opencode, claude-code, codex, postgres, fly-io, aws.
 - **`dont-reinvent-the-agent-open-source-composition`** *(deep)* — Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems. Why senior AI architects stop building agent infrastructure from scratch, how to compose heavy-hitting open-source building blocks like superpowers, Mem0, Instructor, and turbovec, and critical trade-offs vs enterprise cloud platforms like GCP GEAP. Concepts: open-source composition, adopt vs wrap vs fork, agent control plane, structured outputs, agent memory, vector quantization. Tech: mcp, fastmcp, instructor, mem0, graphiti, turbovec, e2b, ollama, gcp.
 - **`enterprise-graph-mcp-architecture-gcp`** *(deep)* — Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run. A practical blueprint for building an enterprise-wide, transversal Graph Context Engine on Google Cloud Platform using Cloud Spanner Graph, Dataplex Knowledge Catalog, and serverless MCP endpoints on Cloud Run. Concepts: transversal context engine, Cloud Spanner Graph, GQL, Dataplex Knowledge Catalog, serverless MCP, ABAC. Tech: gcp, cloud-spanner, dataplex, cloud-run, mcp, fastmcp, opentelemetry.
 - **`production-graph-stack-agents-mcp-ontologies`** *(deep)* — The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines. Why pure vector embeddings fail at multi-hop reasoning in production, how Pragmatic Ontologies provide neurosymbolic grounding, and why modern agentic architectures choose MCP Tool Traversals over raw NL2Cypher. Concepts: pragmatic ontology, LightRAG, GraphRAG, MCP tool traversal, NL2Cypher, neurosymbolic grounding. Tech: lightrag, neo4j, mcp, qdrant.

@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-08-01T06:38:22.786Z",
+  "generated_at": "2026-08-01T07:00:17.536Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,18 +8,81 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 149,
-    "augmented_posts": 46,
+    "total_posts": 150,
+    "augmented_posts": 47,
     "by_category": {
-      "field-notes": 120,
+      "field-notes": 121,
       "research": 13,
       "curiosities": 16
     },
-    "concepts_indexed": 462,
-    "tech_indexed": 49,
-    "prereq_edges": 75
+    "concepts_indexed": 473,
+    "tech_indexed": 56,
+    "prereq_edges": 78
   },
   "posts": {
+    "agent-harness-build-fork-adopt-yc-qm": {
+      "title": "Anatomy of an Agent Harness: Reading YC's QM and Deciding When to Build, Fork, or Adopt",
+      "date": "2028-07-27",
+      "category": "field-notes",
+      "tags": [
+        "Agents",
+        "Agentic AI",
+        "Open Source",
+        "Software Engineering",
+        "Agent Engineering",
+        "Multi-Agent",
+        "Infrastructure",
+        "Production ML",
+        "Software Architecture",
+        "Best Practices"
+      ],
+      "excerpt": "Y Combinator open-sourced the multi-agent harness that runs its own company. Reading the source settles an argument: the agent loop is the easy part, and the other forty-six directories are the reason you should not write one from scratch.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-harness-build-fork-adopt-yc-qm",
+      "source_path": "front/public/blog/posts/field-notes/agent-harness-build-fork-adopt-yc-qm.md",
+      "reading_minutes": 23,
+      "word_count": 5600,
+      "concepts": [
+        "agent harness",
+        "harness vs framework",
+        "turn orchestration",
+        "predeclared command policy",
+        "security posture",
+        "multiplayer scoping",
+        "room as principal",
+        "deployment layer",
+        "divergence tax",
+        "context compaction",
+        "agent-computer interface"
+      ],
+      "prereqs": [
+        "dont-reinvent-the-agent-open-source-composition",
+        "production-llm-agents-patterns",
+        "bank-grade-agent-security-iam-gateways"
+      ],
+      "teaches": [
+        "distinguish a harness from a framework and a model",
+        "write a minimal agent loop and see what it lacks",
+        "enumerate the organizational modules a company-grade harness needs",
+        "decide between building forking and adopting at the harness layer",
+        "keep a fork upgradable with a deployment-layer boundary",
+        "test policy gates and unattended turns"
+      ],
+      "tech": [
+        "qm",
+        "pi",
+        "opencode",
+        "claude-code",
+        "codex",
+        "postgres",
+        "fly-io",
+        "aws"
+      ],
+      "depth": "deep",
+      "audio_available": [
+        "en"
+      ],
+      "augmented": true
+    },
     "dont-reinvent-the-agent-open-source-composition": {
       "title": "Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems",
       "date": "2028-07-20",
@@ -1688,8 +1751,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": false
     },
@@ -1962,8 +2024,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": true
     },
@@ -3342,8 +3403,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": false
     },
@@ -3676,8 +3736,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": false
     },
@@ -4154,8 +4213,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": false
     },
@@ -4202,8 +4260,7 @@
       ],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": true
     },
@@ -4292,8 +4349,7 @@
       ],
       "depth": "working",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": true
     },
@@ -4844,8 +4900,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": false
     },
@@ -5192,8 +5247,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": false
     },
@@ -6266,8 +6320,7 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en",
-        "es"
+        "en"
       ],
       "augmented": false
     },
@@ -6677,6 +6730,72 @@
     }
   },
   "concept_index": {
+    "agent harness": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "harness vs framework": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "turn orchestration": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "predeclared command policy": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "security posture": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "multiplayer scoping": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "room as principal": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "deployment layer": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "divergence tax": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "context compaction": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
+    "agent-computer interface": [
+      {
+        "slug": "agent-harness-build-fork-adopt-yc-qm",
+        "depth": "deep"
+      }
+    ],
     "open-source composition": [
       {
         "slug": "dont-reinvent-the-agent-open-source-composition",
@@ -12791,6 +12910,31 @@
     ]
   },
   "tech_index": {
+    "qm": [
+      "agent-harness-build-fork-adopt-yc-qm"
+    ],
+    "pi": [
+      "agent-harness-build-fork-adopt-yc-qm"
+    ],
+    "opencode": [
+      "agent-harness-build-fork-adopt-yc-qm"
+    ],
+    "claude-code": [
+      "agent-harness-build-fork-adopt-yc-qm",
+      "claude-code-complete-guide"
+    ],
+    "codex": [
+      "agent-harness-build-fork-adopt-yc-qm"
+    ],
+    "postgres": [
+      "agent-harness-build-fork-adopt-yc-qm"
+    ],
+    "fly-io": [
+      "agent-harness-build-fork-adopt-yc-qm"
+    ],
+    "aws": [
+      "agent-harness-build-fork-adopt-yc-qm"
+    ],
     "mcp": [
       "agent-graph-layer-why-grep-embeddings-fell-short",
       "agent-integration-protocols-mcp-and-a2a",
@@ -12980,9 +13124,6 @@
     "pytorch-geometric": [
       "graph-neural-networks-learning-structured-data"
     ],
-    "claude-code": [
-      "claude-code-complete-guide"
-    ],
     "protege": [
       "ontologies-building-knowledge-bases"
     ]
@@ -12996,6 +13137,7 @@
       "agent-engineering-disciplines",
       "agent-graph-layer-why-grep-embeddings-fell-short",
       "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
       "agent-integration-protocols-mcp-and-a2a",
       "agent-memory-and-retrieval-embeddings-to-rag",
       "bank-grade-agent-security-iam-gateways",
@@ -13047,6 +13189,7 @@
       "agent-engineering-disciplines",
       "agent-graph-layer-why-grep-embeddings-fell-short",
       "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
       "agent-integration-protocols-mcp-and-a2a",
       "agent-memory-and-retrieval-embeddings-to-rag",
       "bank-grade-agent-security-iam-gateways",
@@ -13085,6 +13228,7 @@
       "senior-product-engineering-scale-prioritization-architecture"
     ],
     "Open Source": [
+      "agent-harness-build-fork-adopt-yc-qm",
       "dont-reinvent-the-agent-open-source-composition",
       "hermes-self-improving-agent-persistent-memory",
       "local-llm-inference-tools",
@@ -13098,6 +13242,7 @@
       "agent-engineering-disciplines",
       "agent-graph-layer-why-grep-embeddings-fell-short",
       "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
       "agent-integration-protocols-mcp-and-a2a",
       "application-data-flow-replicas-backups",
       "bash-daily-driver-ml-engineer",
@@ -13134,6 +13279,161 @@
       "software-engineering-classics",
       "stack-recommendations-after-100-posts",
       "structuring-ml-projects"
+    ],
+    "Agent Engineering": [
+      "adk-advanced-evolution-of-agent-engineering",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "google-adk-agent-development-deep-dive"
+    ],
+    "Multi-Agent": [
+      "adk-advanced-evolution-of-agent-engineering",
+      "agent-architecture-and-orchestration",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "google-adk-agent-development-deep-dive",
+      "langgraph-multi-agent-workflows",
+      "production-llm-agents-patterns",
+      "reinforcement-learning-first-principles"
+    ],
+    "Infrastructure": [
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "apache-airflow-orchestration",
+      "application-data-flow-replicas-backups",
+      "cloud-ml-infrastructure",
+      "computational-resources-ml",
+      "dev-environments-for-ai-teams",
+      "docker-for-ml-engineers",
+      "enterprise-ai-platform-selection",
+      "enterprise-graph-mcp-architecture-gcp",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "kubernetes-minimum-subset-ml",
+      "llm-caching-four-layers",
+      "local-llm-inference-tools",
+      "network-fundamentals-every-concept",
+      "production-graph-stack-agents-mcp-ontologies",
+      "redis-for-ai-buy-vs-build-gcp",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "stack-recommendations-after-100-posts",
+      "terraform-infrastructure-as-code",
+      "vector-db-benchmarks"
+    ],
+    "Production ML": [
+      "agent-architecture-and-orchestration",
+      "agent-architectures-productive-patterns",
+      "agent-authentication-oauth-mcp-identity",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "bank-grade-agent-security-iam-gateways",
+      "claude-certified-architect-professional-exam-guide",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "docker-for-ml-engineers",
+      "document-processing-ocr-layout",
+      "dont-reinvent-the-agent-open-source-composition",
+      "elevenlabs-voice-ai-engineering",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-agents-governance-security-business",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "fine-tuning-gemma4-lora-qlora",
+      "finops-llm-agents-token-economics",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "hermes-self-improving-agent-persistent-memory",
+      "kubernetes-minimum-subset-ml",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-as-a-judge",
+      "llm-caching-four-layers",
+      "local-llm-inference-tools",
+      "mcp-production-enterprise",
+      "ml-metrics-evaluation-monitoring",
+      "ontology-to-agent-toolbox",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "operating-agents-eval-observability-scale",
+      "populating-knowledge-graph-llms-banking",
+      "production-graph-stack-agents-mcp-ontologies",
+      "production-llm-agents-patterns",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns",
+      "rag-building-production-systems",
+      "ragas-evaluating-rag",
+      "redis-for-ai-buy-vs-build-gcp",
+      "reinforcement-learning-in-practice",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "Software Architecture": [
+      "agent-harness-build-fork-adopt-yc-qm",
+      "senior-product-engineering-scale-prioritization-architecture",
+      "software-engineering-classics"
+    ],
+    "Best Practices": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-architecture-and-orchestration",
+      "agent-architectures-productive-patterns",
+      "agent-authentication-oauth-mcp-identity",
+      "agent-engineering-disciplines",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "application-data-flow-replicas-backups",
+      "claude-certified-architect-professional-exam-guide",
+      "claude-certified-associate-exam-guide",
+      "claude-certified-developer-exam-guide",
+      "dama-dmbok-data-governance",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "dev-environments-for-ai-teams",
+      "dont-reinvent-the-agent-open-source-composition",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-agents-governance-security-business",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "finops-llm-agents-token-economics",
+      "foundations-of-agentic-ai-llms-to-agents",
+      "gemini-knowledge-catalog-workshop",
+      "git-and-github-complete-guide",
+      "google-cloud-certifications-2026-roadmap",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "knowledge-as-a-product",
+      "knowledge-catalog-vs-ontologies",
+      "lookml-semantic-layer-data-modeling",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "ml-cert-review-part-1-foundations",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "ml-metrics-evaluation-monitoring",
+      "modular-ontologies-core-domains-pattern",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "operating-agents-eval-observability-scale",
+      "python-beyond-the-basics",
+      "querying-code-graphs-blast-radius-localization",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "senior-api-design-contracts-versioning-dx",
+      "senior-data-modeling-query-patterns-database-design",
+      "senior-distributed-theory-cap-pacelc-tradeoffs",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "senior-product-engineering-scale-prioritization-architecture",
+      "software-engineering-classics",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "terraform-infrastructure-as-code"
     ],
     "Model Context Protocol": [
       "agent-graph-layer-why-grep-embeddings-fell-short",
@@ -13187,60 +13487,6 @@
       "vector-databases-indexes-to-vertex-search",
       "vertex-ai-gcp-ml-platform-cli"
     ],
-    "Production ML": [
-      "agent-architecture-and-orchestration",
-      "agent-architectures-productive-patterns",
-      "agent-authentication-oauth-mcp-identity",
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "agent-integration-protocols-mcp-and-a2a",
-      "bank-grade-agent-security-iam-gateways",
-      "claude-certified-architect-professional-exam-guide",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "docker-for-ml-engineers",
-      "document-processing-ocr-layout",
-      "dont-reinvent-the-agent-open-source-composition",
-      "elevenlabs-voice-ai-engineering",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-agents-governance-security-business",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "fine-tuning-gemma4-lora-qlora",
-      "finops-llm-agents-token-economics",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "hermes-self-improving-agent-persistent-memory",
-      "kubernetes-minimum-subset-ml",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-as-a-judge",
-      "llm-caching-four-layers",
-      "local-llm-inference-tools",
-      "mcp-production-enterprise",
-      "ml-metrics-evaluation-monitoring",
-      "ontology-to-agent-toolbox",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "operating-agents-eval-observability-scale",
-      "populating-knowledge-graph-llms-banking",
-      "production-graph-stack-agents-mcp-ontologies",
-      "production-llm-agents-patterns",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns",
-      "rag-building-production-systems",
-      "ragas-evaluating-rag",
-      "redis-for-ai-buy-vs-build-gcp",
-      "reinforcement-learning-in-practice",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks",
-      "vertex-ai-gcp-ml-platform-cli"
-    ],
     "MLOps": [
       "agent-architectures-productive-patterns",
       "agent-engineering-disciplines",
@@ -13277,59 +13523,6 @@
       "stack-recommendations-after-100-posts",
       "structuring-ml-projects",
       "vertex-ai-gcp-ml-platform-cli"
-    ],
-    "Best Practices": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-architecture-and-orchestration",
-      "agent-architectures-productive-patterns",
-      "agent-authentication-oauth-mcp-identity",
-      "agent-engineering-disciplines",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-guardrails-field-guide",
-      "agent-integration-protocols-mcp-and-a2a",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "application-data-flow-replicas-backups",
-      "claude-certified-architect-professional-exam-guide",
-      "claude-certified-associate-exam-guide",
-      "claude-certified-developer-exam-guide",
-      "dama-dmbok-data-governance",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "dev-environments-for-ai-teams",
-      "dont-reinvent-the-agent-open-source-composition",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-agents-governance-security-business",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "finops-llm-agents-token-economics",
-      "foundations-of-agentic-ai-llms-to-agents",
-      "gemini-knowledge-catalog-workshop",
-      "git-and-github-complete-guide",
-      "google-cloud-certifications-2026-roadmap",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "knowledge-as-a-product",
-      "knowledge-catalog-vs-ontologies",
-      "lookml-semantic-layer-data-modeling",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "ml-cert-review-part-1-foundations",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "ml-metrics-evaluation-monitoring",
-      "modular-ontologies-core-domains-pattern",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "operating-agents-eval-observability-scale",
-      "python-beyond-the-basics",
-      "querying-code-graphs-blast-radius-localization",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "senior-api-design-contracts-versioning-dx",
-      "senior-data-modeling-query-patterns-database-design",
-      "senior-distributed-theory-cap-pacelc-tradeoffs",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "senior-product-engineering-scale-prioritization-architecture",
-      "software-engineering-classics",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "terraform-infrastructure-as-code"
     ],
     "Knowledge Graphs": [
       "100-posts-knowledge-graph-retrospective",
@@ -13456,31 +13649,6 @@
       "gemini-knowledge-catalog-workshop",
       "knowledge-as-a-product",
       "lookml-semantic-layer-data-modeling"
-    ],
-    "Infrastructure": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "apache-airflow-orchestration",
-      "application-data-flow-replicas-backups",
-      "cloud-ml-infrastructure",
-      "computational-resources-ml",
-      "dev-environments-for-ai-teams",
-      "docker-for-ml-engineers",
-      "enterprise-ai-platform-selection",
-      "enterprise-graph-mcp-architecture-gcp",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "kubernetes-minimum-subset-ml",
-      "llm-caching-four-layers",
-      "local-llm-inference-tools",
-      "network-fundamentals-every-concept",
-      "production-graph-stack-agents-mcp-ontologies",
-      "redis-for-ai-buy-vs-build-gcp",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "stack-recommendations-after-100-posts",
-      "terraform-infrastructure-as-code",
-      "vector-db-benchmarks"
     ],
     "GraphRAG": [
       "knowledge-graphs-practice",
@@ -13981,10 +14149,6 @@
       "senior-infrastructure-distributed-systems-failure-networking",
       "senior-product-engineering-scale-prioritization-architecture"
     ],
-    "Software Architecture": [
-      "senior-product-engineering-scale-prioritization-architecture",
-      "software-engineering-classics"
-    ],
     "Scalability": [
       "senior-product-engineering-scale-prioritization-architecture"
     ],
@@ -14064,15 +14228,6 @@
     "Networking": [
       "network-fundamentals-every-concept",
       "senior-infrastructure-distributed-systems-failure-networking"
-    ],
-    "Multi-Agent": [
-      "adk-advanced-evolution-of-agent-engineering",
-      "agent-architecture-and-orchestration",
-      "agent-integration-protocols-mcp-and-a2a",
-      "google-adk-agent-development-deep-dive",
-      "langgraph-multi-agent-workflows",
-      "production-llm-agents-patterns",
-      "reinforcement-learning-first-principles"
     ],
     "LangChain": [
       "adk-advanced-evolution-of-agent-engineering",
@@ -14171,10 +14326,6 @@
       "apache-airflow-orchestration",
       "kubernetes-minimum-subset-ml",
       "langgraph-multi-agent-workflows"
-    ],
-    "Agent Engineering": [
-      "adk-advanced-evolution-of-agent-engineering",
-      "google-adk-agent-development-deep-dive"
     ],
     "LLM Frameworks": [
       "adk-advanced-evolution-of-agent-engineering",
@@ -14995,6 +15146,7 @@
       "agent-engineering-disciplines",
       "agent-graph-layer-why-grep-embeddings-fell-short",
       "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
       "agent-integration-protocols-mcp-and-a2a",
       "agent-memory-and-retrieval-embeddings-to-rag",
       "ai-poc-enterprise-evaluation",
@@ -15178,12 +15330,20 @@
         "to": "foundations-of-agentic-ai-llms-to-agents"
       },
       {
+        "from": "bank-grade-agent-security-iam-gateways",
+        "to": "agent-harness-build-fork-adopt-yc-qm"
+      },
+      {
         "from": "dbt-analytics-engineering",
         "to": "lookml-semantic-layer-data-modeling"
       },
       {
         "from": "dimensional-modeling-kimball",
         "to": "lookml-semantic-layer-data-modeling"
+      },
+      {
+        "from": "dont-reinvent-the-agent-open-source-composition",
+        "to": "agent-harness-build-fork-adopt-yc-qm"
       },
       {
         "from": "embeddings-geometry-of-meaning",
@@ -15368,6 +15528,10 @@
       {
         "from": "production-graph-stack-agents-mcp-ontologies",
         "to": "enterprise-graph-mcp-architecture-gcp"
+      },
+      {
+        "from": "production-llm-agents-patterns",
+        "to": "agent-harness-build-fork-adopt-yc-qm"
       },
       {
         "from": "production-llm-agents-patterns",
