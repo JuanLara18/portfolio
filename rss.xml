@@ -9,8 +9,28 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jul 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jul 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Anatomy of an Agent Harness: Reading YC&apos;s QM and Deciding When to Build, Fork, or Adopt</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm</guid>
+    <pubDate>Thu, 27 Jul 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Y Combinator open-sourced the multi-agent harness that runs its own company. Reading the source settles an argument: the agent loop is the easy part, and the other forty-six directories are the reason you should not write one from scratch.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Open Source</category>
+    <category>Software Engineering</category>
+    <category>Agent Engineering</category>
+    <category>Multi-Agent</category>
+    <category>Infrastructure</category>
+    <category>Production ML</category>
+    <category>Software Architecture</category>
+    <category>Best Practices</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/agent-harness-build-fork-adopt-yc-qm.mp3" length="7433856" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Don&apos;t Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition</link>

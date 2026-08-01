@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1785566271,
+  "generatedAt": 1785567568,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -300,6 +300,19 @@
       "byteSize": 13489056,
       "narrationWordCount": 5497,
       "audioUrl": "/blog/audio/field-notes/agent-guardrails-field-guide.mp3",
+      "translationModel": ""
+    },
+    "field-notes/agent-harness-build-fork-adopt-yc-qm": {
+      "slug": "agent-harness-build-fork-adopt-yc-qm",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "620a2e126d24943e29a60aaf934293e765b3bbfa6b54d427a3ea62716f4e0a12",
+      "sourceHash": "620a2e126d24943e29a60aaf934293e765b3bbfa6b54d427a3ea62716f4e0a12",
+      "durationSec": 1238.976,
+      "byteSize": 7433856,
+      "narrationWordCount": 3206,
+      "audioUrl": "/blog/audio/field-notes/agent-harness-build-fork-adopt-yc-qm.mp3",
       "translationModel": ""
     },
     "field-notes/agent-integration-protocols-mcp-and-a2a": {

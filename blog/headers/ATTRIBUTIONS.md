@@ -86,3 +86,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `letterpress-typesetting-header.jpg` — Photo by Maggie Stephens, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Print_works_typesetting,_Beamish_Museum,_4_June_2011.jpg) (CC BY 2.0)
 - `roman-aqueduct-header.jpg` — Photo by Andrea Calabretta, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Roman_aqueduct_arches_near_Carthage.jpg) (CC BY 2.0)
 - `telephone-switchboard-header.jpg` — Photo by Gary Langebartels / FortepanIowa, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wisconsin_Bell_Telephone_Company_Switchboard.jpg) (CC BY-SA 4.0)
+- `single-harness-plate-header.jpg` — Plate XXII from *Riding and Driving* (1905), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Riding_and_driving_(1905)_(14767210532).jpg) (No known copyright restrictions)

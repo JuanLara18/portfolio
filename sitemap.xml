@@ -55,6 +55,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm</loc>
+    <lastmod>2028-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition</loc>
     <lastmod>2028-07-20</lastmod>
     <changefreq>monthly</changefreq>
