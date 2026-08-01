@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-14T02:06:46.202Z",
+  "generatedAt": "2026-08-01T05:52:13.181Z",
   "stats": {
-    "books": 255,
-    "papers": 227,
-    "bookMentions": 497,
-    "paperMentions": 296
+    "books": 261,
+    "papers": 232,
+    "bookMentions": 508,
+    "paperMentions": 305
   },
   "books": [
     {
@@ -857,6 +857,52 @@
       ]
     },
     {
+      "key": "graph databases",
+      "title": "Graph Databases: New Opportunities for Connected Data",
+      "authors": "Robinson, I., Webber, J., & Eifrem, E.",
+      "year": "2015",
+      "url": "",
+      "arxivId": "",
+      "count": 7,
+      "posts": [
+        {
+          "slug": "enterprise-graph-mcp-architecture-gcp",
+          "title": "Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run",
+          "category": "field-notes"
+        },
+        {
+          "slug": "production-graph-stack-agents-mcp-ontologies",
+          "title": "The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines",
+          "category": "field-notes"
+        },
+        {
+          "slug": "graph-layer-in-production-mcp-build-vs-buy",
+          "title": "The Graph Layer in Production: MCP, Local-First, and Build vs Buy",
+          "category": "field-notes"
+        },
+        {
+          "slug": "graph-memory-temporal-agents-graphiti-cognee",
+          "title": "Graph Memory: Giving Agents a Temporal Knowledge Graph",
+          "category": "field-notes"
+        },
+        {
+          "slug": "repo-to-graph-ast-vs-llm-extraction",
+          "title": "Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs",
+          "category": "field-notes"
+        },
+        {
+          "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
+          "title": "The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough",
+          "category": "field-notes"
+        },
+        {
+          "slug": "knowledge-graphs-practice",
+          "title": "Knowledge Graphs in Practice: From Documents to Queryable Intelligence",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "knowledge graphs",
       "title": "Knowledge Graphs",
       "authors": "Hogan, A., Blomqvist, E., Cochez, M., et al.",
@@ -980,42 +1026,6 @@
         {
           "slug": "dama-dmbok-data-governance",
           "title": "DAMA DMBOK: The Data Governance Framework Every Data Engineer Should Know",
-          "category": "field-notes"
-        }
-      ]
-    },
-    {
-      "key": "graph databases",
-      "title": "Graph Databases: New Opportunities for Connected Data",
-      "authors": "Robinson, I., Webber, J., & Eifrem, E.",
-      "year": "2015",
-      "url": "",
-      "arxivId": "",
-      "count": 5,
-      "posts": [
-        {
-          "slug": "graph-layer-in-production-mcp-build-vs-buy",
-          "title": "The Graph Layer in Production: MCP, Local-First, and Build vs Buy",
-          "category": "field-notes"
-        },
-        {
-          "slug": "graph-memory-temporal-agents-graphiti-cognee",
-          "title": "Graph Memory: Giving Agents a Temporal Knowledge Graph",
-          "category": "field-notes"
-        },
-        {
-          "slug": "repo-to-graph-ast-vs-llm-extraction",
-          "title": "Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs",
-          "category": "field-notes"
-        },
-        {
-          "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
-          "title": "The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough",
-          "category": "field-notes"
-        },
-        {
-          "slug": "knowledge-graphs-practice",
-          "title": "Knowledge Graphs in Practice: From Documents to Queryable Intelligence",
           "category": "field-notes"
         }
       ]
@@ -1591,6 +1601,27 @@
       ]
     },
     {
+      "key": "agentic systems in production",
+      "title": "Agentic Systems in Production",
+      "authors": "Barr, J.",
+      "year": "2025",
+      "url": "",
+      "arxivId": "",
+      "count": 2,
+      "posts": [
+        {
+          "slug": "dont-reinvent-the-agent-open-source-composition",
+          "title": "Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems",
+          "category": "field-notes"
+        },
+        {
+          "slug": "production-graph-stack-agents-mcp-ontologies",
+          "title": "The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "algebraic number theory and fermat s last theorem",
       "title": "Algebraic Number Theory and Fermat's Last Theorem",
       "authors": "Stewart, I. and Tall, D.",
@@ -1759,6 +1790,27 @@
       ]
     },
     {
+      "key": "dive into deep learning",
+      "title": "Dive into Deep Learning",
+      "authors": "Zhang, A., Lipton, Z. C., Li, M., & Smola, A. J.",
+      "year": "2024",
+      "url": "",
+      "arxivId": "",
+      "count": 2,
+      "posts": [
+        {
+          "slug": "dont-reinvent-the-agent-open-source-composition",
+          "title": "Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems",
+          "category": "field-notes"
+        },
+        {
+          "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
+          "title": "ML Cert Review, Part II: Deep Learning, Scale, NLP, RL, and Explainability",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "fluent python",
       "title": "Fluent Python",
       "authors": "Ramalho, L.",
@@ -1775,6 +1827,27 @@
         {
           "slug": "python-beyond-the-basics",
           "title": "Python Beyond the Basics: The Language Behind the Language",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
+      "key": "graph algorithms practical examples in apache spark and neo4j",
+      "title": "Graph Algorithms: Practical Examples in Apache Spark and Neo4j",
+      "authors": "Needtham, M., & Hodler, A. E.",
+      "year": "2019",
+      "url": "",
+      "arxivId": "",
+      "count": 2,
+      "posts": [
+        {
+          "slug": "production-graph-stack-agents-mcp-ontologies",
+          "title": "The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines",
+          "category": "field-notes"
+        },
+        {
+          "slug": "spanner-graph-for-knowledge-and-agents",
+          "title": "Understanding Cloud Spanner: Graphs, Knowledge, and Where Ontologies Fit",
           "category": "field-notes"
         }
       ]
@@ -2450,6 +2523,22 @@
       ]
     },
     {
+      "key": "an introduction to description logics",
+      "title": "An Introduction to Description Logics",
+      "authors": "Baader, F., Horrocks, I., Lutz, C., & Sattler, U.",
+      "year": "2017",
+      "url": "",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "production-graph-stack-agents-mcp-ontologies",
+          "title": "The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "an introduction to godel s theorems",
       "title": "An Introduction to Gödel's Theorems",
       "authors": "Smith, P.",
@@ -2610,6 +2699,22 @@
       ]
     },
     {
+      "key": "building data lakes with google cloud platform",
+      "title": "Building Data Lakes with Google Cloud Platform",
+      "authors": "Krishnan, W.",
+      "year": "2023",
+      "url": "",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "enterprise-graph-mcp-architecture-gcp",
+          "title": "Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "building evolutionary architectures automated software governance",
       "title": "Building Evolutionary Architectures: Automated Software Governance",
       "authors": "Ford, N., Parsons, R., Kua, P., & Sadalage, P.",
@@ -2733,6 +2838,22 @@
         {
           "slug": "knowledge-catalog-vs-ontologies",
           "title": "Knowledge Catalog vs Ontologies: A Confluence, Not a Replacement",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
+      "key": "building secure and reliable systems",
+      "title": "Building Secure and Reliable Systems",
+      "authors": "Henderson, C.",
+      "year": "2020",
+      "url": "",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "enterprise-graph-mcp-architecture-gcp",
+          "title": "Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run",
           "category": "field-notes"
         }
       ]
@@ -3266,22 +3387,6 @@
       ]
     },
     {
-      "key": "dive into deep learning",
-      "title": "Dive into Deep Learning",
-      "authors": "Zhang, A., Lipton, Z. C., Li, M., and Smola, A. J.",
-      "year": "2023",
-      "url": "",
-      "arxivId": "",
-      "count": 1,
-      "posts": [
-        {
-          "slug": "ml-cert-review-part-2-deep-learning-and-beyond",
-          "title": "ML Cert Review, Part II: Deep Learning, Scale, NLP, RL, and Explainability",
-          "category": "field-notes"
-        }
-      ]
-    },
-    {
       "key": "divergent series",
       "title": "Divergent Series",
       "authors": "Hardy, G.H.",
@@ -3714,22 +3819,6 @@
       ]
     },
     {
-      "key": "graph algorithms practical examples in apache spark and neo4j",
-      "title": "Graph Algorithms: Practical Examples in Apache Spark and Neo4j",
-      "authors": "Hodler, A. E., & Needham, M.",
-      "year": "2019",
-      "url": "",
-      "arxivId": "",
-      "count": 1,
-      "posts": [
-        {
-          "slug": "spanner-graph-for-knowledge-and-agents",
-          "title": "Understanding Cloud Spanner: Graphs, Knowledge, and Where Ontologies Fit",
-          "category": "field-notes"
-        }
-      ]
-    },
-    {
       "key": "graph representation learning",
       "title": "Graph Representation Learning",
       "authors": "Hamilton, W. L.",
@@ -4077,6 +4166,22 @@
         {
           "slug": "agent-guardrails-field-guide",
           "title": "Guardrails for Agent Systems: A Field Guide",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
+      "key": "llms from scratch building chatgpt like models in pytorch",
+      "title": "LLMs from Scratch: Building ChatGPT-Like Models in PyTorch",
+      "authors": "Raschka, S.",
+      "year": "2025",
+      "url": "",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "dont-reinvent-the-agent-open-source-composition",
+          "title": "Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems",
           "category": "field-notes"
         }
       ]
@@ -4754,6 +4859,22 @@
       ]
     },
     {
+      "key": "spanner google s globally distributed database",
+      "title": "Spanner: Google’s Globally-Distributed Database",
+      "authors": "Corbett, J. C., et al.",
+      "year": "2013",
+      "url": "",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "enterprise-graph-mcp-architecture-gcp",
+          "title": "Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "sql performance explained",
       "title": "SQL Performance Explained",
       "authors": "Winand, M.",
@@ -5356,6 +5477,57 @@
       ]
     },
     {
+      "key": "2404.16130",
+      "title": "From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
+      "authors": "Edge, D., et al.",
+      "year": "2024",
+      "url": "https://arxiv.org/abs/2404.16130",
+      "arxivId": "2404.16130",
+      "count": 8,
+      "posts": [
+        {
+          "slug": "enterprise-graph-mcp-architecture-gcp",
+          "title": "Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run",
+          "category": "field-notes"
+        },
+        {
+          "slug": "production-graph-stack-agents-mcp-ontologies",
+          "title": "The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines",
+          "category": "field-notes"
+        },
+        {
+          "slug": "repo-to-graph-ast-vs-llm-extraction",
+          "title": "Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs",
+          "category": "field-notes"
+        },
+        {
+          "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
+          "title": "The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough",
+          "category": "field-notes"
+        },
+        {
+          "slug": "agent-memory-and-retrieval-embeddings-to-rag",
+          "title": "Agent Memory and Retrieval: From Embeddings to Production RAG",
+          "category": "field-notes"
+        },
+        {
+          "slug": "populating-knowledge-graph-llms-banking",
+          "title": "Populating a Knowledge Graph with LLMs: A Banking Case Study",
+          "category": "field-notes"
+        },
+        {
+          "slug": "ontology-grounded-rag-chunks-in-nodes",
+          "title": "Ontology-Grounded RAG: Why Chunks-in-Nodes Matter More Than the Ontology Itself",
+          "category": "research"
+        },
+        {
+          "slug": "knowledge-graphs-practice",
+          "title": "Knowledge Graphs in Practice: From Documents to Queryable Intelligence",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "2302.04761",
       "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
       "authors": "Schick, T., et al.",
@@ -5402,47 +5574,6 @@
       ]
     },
     {
-      "key": "2404.16130",
-      "title": "From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
-      "authors": "Edge, D., et al.",
-      "year": "2024",
-      "url": "https://arxiv.org/abs/2404.16130",
-      "arxivId": "2404.16130",
-      "count": 6,
-      "posts": [
-        {
-          "slug": "repo-to-graph-ast-vs-llm-extraction",
-          "title": "Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs",
-          "category": "field-notes"
-        },
-        {
-          "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
-          "title": "The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough",
-          "category": "field-notes"
-        },
-        {
-          "slug": "agent-memory-and-retrieval-embeddings-to-rag",
-          "title": "Agent Memory and Retrieval: From Embeddings to Production RAG",
-          "category": "field-notes"
-        },
-        {
-          "slug": "populating-knowledge-graph-llms-banking",
-          "title": "Populating a Knowledge Graph with LLMs: A Banking Case Study",
-          "category": "field-notes"
-        },
-        {
-          "slug": "ontology-grounded-rag-chunks-in-nodes",
-          "title": "Ontology-Grounded RAG: Why Chunks-in-Nodes Matter More Than the Ontology Itself",
-          "category": "research"
-        },
-        {
-          "slug": "knowledge-graphs-practice",
-          "title": "Knowledge Graphs in Practice: From Documents to Queryable Intelligence",
-          "category": "field-notes"
-        }
-      ]
-    },
-    {
       "key": "2307.03172",
       "title": "Lost in the Middle: How Language Models Use Long Contexts",
       "authors": "Liu, N. F. et al.",
@@ -5484,6 +5615,42 @@
       ]
     },
     {
+      "key": "2302.12173",
+      "title": "Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+      "authors": "Greshake, K., et al.",
+      "year": "2023",
+      "url": "https://arxiv.org/abs/2302.12173",
+      "arxivId": "2302.12173",
+      "count": 5,
+      "posts": [
+        {
+          "slug": "dont-reinvent-the-agent-open-source-composition",
+          "title": "Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems",
+          "category": "field-notes"
+        },
+        {
+          "slug": "openclaw-anatomy-viral-agent-platform",
+          "title": "OpenClaw: Anatomy of the Agent Platform That Ate GitHub",
+          "category": "field-notes"
+        },
+        {
+          "slug": "claude-certified-developer-exam-guide",
+          "title": "The Claude Certified Developer Exam: A Complete Study Guide",
+          "category": "field-notes"
+        },
+        {
+          "slug": "enterprise-agents-governance-security-business",
+          "title": "The Enterprise Shield: Governance, Security, and Business Value of Agents",
+          "category": "field-notes"
+        },
+        {
+          "slug": "agent-guardrails-field-guide",
+          "title": "Guardrails for Agent Systems: A Field Guide",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "2003.02320",
       "title": "Knowledge Graphs",
       "authors": "Hogan, A., Blomqvist, E., Cochez, M., et al.",
@@ -5515,32 +5682,32 @@
       ]
     },
     {
-      "key": "2302.12173",
-      "title": "Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
-      "authors": "Greshake, K., et al.",
+      "key": "2303.11366",
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "authors": "Shinn, N., et al.",
       "year": "2023",
-      "url": "https://arxiv.org/abs/2302.12173",
-      "arxivId": "2302.12173",
+      "url": "https://arxiv.org/abs/2303.11366",
+      "arxivId": "2303.11366",
       "count": 4,
       "posts": [
         {
-          "slug": "openclaw-anatomy-viral-agent-platform",
-          "title": "OpenClaw: Anatomy of the Agent Platform That Ate GitHub",
+          "slug": "dont-reinvent-the-agent-open-source-composition",
+          "title": "Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems",
           "category": "field-notes"
         },
         {
-          "slug": "claude-certified-developer-exam-guide",
-          "title": "The Claude Certified Developer Exam: A Complete Study Guide",
+          "slug": "agent-architecture-and-orchestration",
+          "title": "Agent Architecture and Orchestration: Routers, Graphs, and Multi-Agent Workflows",
           "category": "field-notes"
         },
         {
-          "slug": "enterprise-agents-governance-security-business",
-          "title": "The Enterprise Shield: Governance, Security, and Business Value of Agents",
+          "slug": "production-llm-agents-patterns",
+          "title": "Production LLM Agents: Patterns That Survive Contact With Users",
           "category": "field-notes"
         },
         {
-          "slug": "agent-guardrails-field-guide",
-          "title": "Guardrails for Agent Systems: A Field Guide",
+          "slug": "claude-code-complete-guide",
+          "title": "Claude Code: The Complete Guide to Becoming a Power User of the AI That Codes With You",
           "category": "field-notes"
         }
       ]
@@ -5775,32 +5942,6 @@
         {
           "slug": "ai-poc-enterprise-evaluation",
           "title": "Enterprise AI PoCs: From Vendor Demos to Decisions You Can Defend",
-          "category": "field-notes"
-        }
-      ]
-    },
-    {
-      "key": "2303.11366",
-      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
-      "authors": "Shinn, N., et al.",
-      "year": "2023",
-      "url": "https://arxiv.org/abs/2303.11366",
-      "arxivId": "2303.11366",
-      "count": 3,
-      "posts": [
-        {
-          "slug": "agent-architecture-and-orchestration",
-          "title": "Agent Architecture and Orchestration: Routers, Graphs, and Multi-Agent Workflows",
-          "category": "field-notes"
-        },
-        {
-          "slug": "production-llm-agents-patterns",
-          "title": "Production LLM Agents: Patterns That Survive Contact With Users",
-          "category": "field-notes"
-        },
-        {
-          "slug": "claude-code-complete-guide",
-          "title": "Claude Code: The Complete Guide to Becoming a Power User of the AI That Codes With You",
           "category": "field-notes"
         }
       ]
@@ -6425,6 +6566,22 @@
           "slug": "emotion-concepts-in-llms",
           "title": "When Models Feel: Inside Anthropic's Paper on Emotion Concepts in LLMs",
           "category": "research"
+        }
+      ]
+    },
+    {
+      "key": "2405.12345",
+      "title": "Active Data Governance via Living Knowledge Catalogs",
+      "authors": "Vernie, B., et al.",
+      "year": "2024",
+      "url": "https://arxiv.org/abs/2405.12345",
+      "arxivId": "2405.12345",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "enterprise-graph-mcp-architecture-gcp",
+          "title": "Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run",
+          "category": "field-notes"
         }
       ]
     },
@@ -7789,6 +7946,22 @@
       ]
     },
     {
+      "key": "iso iec 39075 information technology database languages gql",
+      "title": "ISO/IEC 39075: Information Technology — Database Languages — GQL",
+      "authors": "Deutsch, A., et al.",
+      "year": "2022",
+      "url": "https://www.iso.org/standard/76587.html",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "enterprise-graph-mcp-architecture-gcp",
+          "title": "Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "jax composable transformations of python numpy programs",
       "title": "JAX: Composable Transformations of Python+NumPy Programs",
       "authors": "Bradbury, J. et al.",
@@ -7885,6 +8058,22 @@
       ]
     },
     {
+      "key": "lazygraphrag deferred indexing for dynamic knowledge graphs",
+      "title": "LazyGraphRAG: Deferred Indexing for Dynamic Knowledge Graphs",
+      "authors": "Chen, Y., et al.",
+      "year": "2025",
+      "url": "https://example.com/lazygraphrag",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "production-graph-stack-agents-mcp-ontologies",
+          "title": "The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
       "key": "2103.00020",
       "title": "Learning Transferable Visual Models From Natural Language Supervision",
       "authors": "Radford, A. et al.",
@@ -7896,6 +8085,22 @@
         {
           "slug": "multimodal-embeddings-metric-problem",
           "title": "Multimodal Embeddings: One Vector Space for Everything, and the Metric Problem Nobody Talks About",
+          "category": "field-notes"
+        }
+      ]
+    },
+    {
+      "key": "2410.05779",
+      "title": "LightRAG: Simple and Fast Retrieval-Augmented Generation",
+      "authors": "Guo, Z., et al.",
+      "year": "2024",
+      "url": "https://arxiv.org/abs/2410.05779",
+      "arxivId": "2410.05779",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "production-graph-stack-agents-mcp-ontologies",
+          "title": "The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines",
           "category": "field-notes"
         }
       ]
@@ -9177,6 +9382,22 @@
           "slug": "mamba-selective-state-spaces",
           "title": "Mamba: The Paper That Asked If Attention Was Really All You Need",
           "category": "research"
+        }
+      ]
+    },
+    {
+      "key": "turboquant data oblivious vector quantization for high speed nearest neighbor search",
+      "title": "TurboQuant: Data-Oblivious Vector Quantization for High-Speed Nearest Neighbor Search",
+      "authors": "Guo, Z., et al.",
+      "year": "2026",
+      "url": "https://openreview.net/forum?id=turboquant2026",
+      "arxivId": "",
+      "count": 1,
+      "posts": [
+        {
+          "slug": "dont-reinvent-the-agent-open-source-composition",
+          "title": "Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems",
+          "category": "field-notes"
         }
       ]
     },
