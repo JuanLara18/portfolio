@@ -9,8 +9,140 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Jul 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 14 Sep 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Organizational Network Analysis: The Company Graph Nobody Drew</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph</guid>
+    <pubDate>Thu, 14 Sep 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every company has two structures: the org chart someone designed, and the collaboration network that actually emerged. Part 4 of Graph Analytics in Production applies centrality, community detection, and structural holes to the organization itself, and spends as much time on the ethics as on the algorithms, because this is the one graph where getting the governance wrong hurts people.]]></description>
+    <category>field-notes</category>
+    <category>Graph Theory</category>
+    <category>Knowledge Graphs</category>
+    <category>Data Governance</category>
+    <category>Data Science</category>
+    <category>Algorithms</category>
+    <category>Best Practices</category>
+    <category>Data Architecture</category>
+    <category>Statistics</category>
+    <category>Enterprise Data</category>
+    <category>Data Quality</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Node Embeddings: FastRP, Node2Vec, and GraphSAGE in Production</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage</guid>
+    <pubDate>Thu, 07 Sep 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part 3 of Graph Analytics in Production. Centrality gives you one number per node; embeddings give you a hundred and twenty-eight. This post covers what those numbers actually preserve, why FastRP wins on cost through the Johnson-Lindenstrauss lemma, when Node2Vec's p and q knobs are worth their price, why GraphSAGE is the only inductive option, and the temporal leakage trap that makes offline metrics beautiful and production metrics honest.]]></description>
+    <category>field-notes</category>
+    <category>Embeddings</category>
+    <category>Neo4j</category>
+    <category>Graph Databases</category>
+    <category>Machine Learning</category>
+    <category>Representation Learning</category>
+    <category>Knowledge Graphs</category>
+    <category>Production ML</category>
+    <category>Algorithms</category>
+    <category>Linear Algebra</category>
+    <category>Graph Theory</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Centrality and Communities in Practice</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice</guid>
+    <pubDate>Thu, 31 Aug 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The theory says betweenness finds brokers and modularity finds communities. Production says your top broker is the IT helpdesk service account and your communities change every time you rerun the job. This is the practitioner's guide to centrality and community detection on real graphs: which measure answers which question, why betweenness will not scale, what the PageRank knobs actually control, the resolution limit you cannot tune away, and why you must never ship a community ID as a stable key.]]></description>
+    <category>field-notes</category>
+    <category>Graph Theory</category>
+    <category>Neo4j</category>
+    <category>Algorithms</category>
+    <category>Knowledge Graphs</category>
+    <category>Graph Databases</category>
+    <category>Data Science</category>
+    <category>Production ML</category>
+    <category>Mathematics</category>
+    <category>Statistics</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Graph Analytics at Scale: The GDS Execution Model</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model</guid>
+    <pubDate>Thu, 24 Aug 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Most engineers meet graph algorithms as textbook pseudocode, then try to run one on a real graph and discover the algorithm was never the hard part. Part 1 of a series on graph analytics in production: why transactional storage is the wrong shape, what CSR actually is, how projections decide both your memory bill and your answer, the five execution modes, and the serverless shift that takes the graph database off the critical path.]]></description>
+    <category>field-notes</category>
+    <category>Neo4j</category>
+    <category>Graph Databases</category>
+    <category>Knowledge Graphs</category>
+    <category>Algorithms</category>
+    <category>Data Engineering</category>
+    <category>Production ML</category>
+    <category>Graph Theory</category>
+    <category>Data Architecture</category>
+    <category>Infrastructure</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Choosing a Graph Engine in 2026</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026</guid>
+    <pubDate>Thu, 17 Aug 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part 3 of Graph Engines Under the Hood. Not a feature matrix, but a decision framework: four questions about your workload that actually determine the answer, an honest survey of where every engine category sits in 2026, the cautionary tale of Kuzu's disappearance, and the uncomfortable case that you may not need a graph database at all.]]></description>
+    <category>field-notes</category>
+    <category>Graph Databases</category>
+    <category>Neo4j</category>
+    <category>Data Architecture</category>
+    <category>Infrastructure</category>
+    <category>Cloud Computing</category>
+    <category>Knowledge Graphs</category>
+    <category>Databases</category>
+    <category>Best Practices</category>
+    <category>Data Engineering</category>
+    <category>Benchmarks</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>GQL: The First New ISO Query Language Standard Since SQL</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq</guid>
+    <pubDate>Thu, 10 Aug 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[In April 2024, ISO published GQL as ISO/IEC 39075 — the first genuinely new database query language standard since SQL in 1987. Thirty-seven years. Part 2 of Graph Engines Under the Hood looks at what GQL actually standardizes, how it diverges from Cypher, why SQL/PGQ matters more than most teams realize, and how much of it is really implemented in 2026.]]></description>
+    <category>field-notes</category>
+    <category>Graph Databases</category>
+    <category>SQL</category>
+    <category>Knowledge Graphs</category>
+    <category>Neo4j</category>
+    <category>Data Architecture</category>
+    <category>Data Engineering</category>
+    <category>Databases</category>
+    <category>Best Practices</category>
+    <category>Software Engineering</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Inside a Graph Engine: Index-Free Adjacency and Why a Traversal Is Not a Join</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency</guid>
+    <pubDate>Thu, 03 Aug 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Everyone repeats that graph databases are faster for connected data, and almost nobody says why. This is the mechanical answer: fixed-size records, physical pointers, offset arithmetic, and the doubly-linked relationship chain that turns a hop into a dereference. Plus the honest accounting of what it costs, when a columnar relational engine still wins, and why traversal-as-matrix-multiply is a genuinely different machine.]]></description>
+    <category>field-notes</category>
+    <category>Graph Databases</category>
+    <category>Neo4j</category>
+    <category>Data Architecture</category>
+    <category>Databases</category>
+    <category>Algorithms</category>
+    <category>Data Structures</category>
+    <category>Software Engineering</category>
+    <category>Knowledge Graphs</category>
+    <category>Infrastructure</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Anatomy of an Agent Harness: Reading YC&apos;s QM and Deciding When to Build, Fork, or Adopt</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm</link>
