@@ -9,8 +9,122 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Sep 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Oct 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Golden Paths for Agents: Multi-Tenancy, Self-Service, and the Platform as Product</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy</guid>
+    <pubDate>Thu, 26 Oct 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The four previous parts of this series described components: a control plane, a runtime, a sandbox, a tool plane. This one describes the discipline that turns components into a platform. Golden paths for agent teams, multi-tenancy that survives a shared vector store, policy as code instead of policy as wiki page, cost attribution that keeps the platform politically alive, and the honest organizational problem underneath all of it.]]></description>
+    <category>field-notes</category>
+    <category>Platform Engineering</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Enterprise AI</category>
+    <category>Data Governance</category>
+    <category>Infrastructure</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>Best Practices</category>
+    <category>Cloud Computing</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Tool Plane: MCP Registry, Gateway, and Governing Ten Thousand Servers</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane</guid>
+    <pubDate>Thu, 19 Oct 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Choosing MCP as your tool interface is the easy decision and the right one. It is also where the platform problems begin. Part 4 of The Agent Platform builds the tool plane: an internal registry that says what exists, a gateway that decides who may call it, credential brokering so agents never hold secrets, versioning that survives schema drift, and a curation discipline for a world with more than ten thousand public servers.]]></description>
+    <category>field-notes</category>
+    <category>Model Context Protocol</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Platform Engineering</category>
+    <category>Enterprise AI</category>
+    <category>Security</category>
+    <category>Infrastructure</category>
+    <category>Data Governance</category>
+    <category>Best Practices</category>
+    <category>Production ML</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Sandboxing Agents: microVMs, gVisor, and the Isolation Boundary That Actually Holds</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor</guid>
+    <pubDate>Thu, 12 Oct 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part 3 of The Agent Platform. When an agent executes code, the container boundary is not enough — namespaces and cgroups were built for resource isolation, not security. This is the engineering guide to microVMs, gVisor, and hardened containers: the mechanism of each, the cold start versus isolation tradeoff, the egress control everyone forgets, and how to match isolation strength to what the agent is actually trusted with.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Platform Engineering</category>
+    <category>Security</category>
+    <category>Infrastructure</category>
+    <category>Docker</category>
+    <category>Kubernetes</category>
+    <category>Cloud Computing</category>
+    <category>Production ML</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Agent Runtime: Sessions, State, and Where the Turn Loop Actually Executes</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology</guid>
+    <pubDate>Thu, 05 Oct 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Everyone argues about frameworks. Almost nobody asks where the turn loop physically runs, what happens to a session between turns, or what breaks when a pod is rescheduled mid-conversation. Part two of The Agent Platform: the runtime is the least glamorous and most consequential choice you will make.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Platform Engineering</category>
+    <category>Infrastructure</category>
+    <category>Distributed Systems</category>
+    <category>Production ML</category>
+    <category>Cloud Computing</category>
+    <category>Kubernetes</category>
+    <category>Best Practices</category>
+    <category>Enterprise AI</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Agent Platform: Control Plane, Data Plane, and Everything You Have to Own</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane</guid>
+    <pubDate>Thu, 28 Sep 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Almost everything written about agents is written from the seat of the team building one. This series is written from the other seat: the platform engineer who has to host everyone else's. Part one maps the ten layers of an agent platform, separates control plane from data plane, and is honest about what an LLM firewall does not solve.]]></description>
+    <category>field-notes</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Infrastructure</category>
+    <category>Platform Engineering</category>
+    <category>Enterprise AI</category>
+    <category>Production ML</category>
+    <category>Model Context Protocol</category>
+    <category>Security</category>
+    <category>Data Architecture</category>
+    <category>Best Practices</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Graph Fraud Detection: Rings, Synthetic Identity, and the Pipeline That Ships</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity</guid>
+    <pubDate>Thu, 21 Sep 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Part 5 of Graph Analytics in Production. Fraud is where graphs earn their keep, because the signal is structurally invisible to a row-wise model — a ring sits six hops deep and no amount of feature engineering on a flat table recovers it. This is the working guide: the four typologies and their graph signatures, which shared attributes should become edges and which are pure supernode poison, the community-plus-embeddings-plus-gradient-boosting pipeline that actually reaches production, why precision at the alert budget is the only metric your operation feels, and why the model decays faster here than anywhere else you have deployed.]]></description>
+    <category>field-notes</category>
+    <category>Knowledge Graphs</category>
+    <category>Neo4j</category>
+    <category>Graph Databases</category>
+    <category>Machine Learning</category>
+    <category>Production ML</category>
+    <category>Algorithms</category>
+    <category>Evaluation</category>
+    <category>Best Practices</category>
+    <category>Data Science</category>
+    <category>Graph Theory</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Organizational Network Analysis: The Company Graph Nobody Drew</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph</link>

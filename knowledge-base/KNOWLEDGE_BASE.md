@@ -33,6 +33,7 @@ Curated sequences for common goals. Each path is a slug list in the suggested or
 6. query-routing-agent-decisions
 
 ### Build your first LLM agent
+The builder's path. For the operator's counterpart — hosting other teams' agents — see "Run an agent platform" below.
 1. model-context-protocol
 2. production-llm-agents-patterns
 3. langgraph-multi-agent-workflows
@@ -45,7 +46,8 @@ Curated sequences for common goals. Each path is a slug list in the suggested or
 2. knowledge-base-curation
 3. ontologies-building-knowledge-bases
 4. knowledge-graphs-practice
-5. ontology-to-agent-toolbox
+5. choosing-a-graph-engine-2026
+6. ontology-to-agent-toolbox
 
 ### Modern data engineering stack
 1. data-engineering-fundamentals
@@ -89,18 +91,52 @@ Curated sequences for common goals. Each path is a slug list in the suggested or
 8. llm-caching-four-layers
 9. llm-benchmarks
 
-### Graph theory thread (curiosity → applied → agentic)
-The same eigenvector math that ranked the early web now ranks context for a coding agent.
+### Graph theory thread (the spine)
+The same eigenvector math that ranked the early web now ranks context for a coding agent, scores a fraud ring, and maps an organization. These five are the shared foundation; after them, branch into whichever graph series matches the problem.
 1. graph-theory-mathematics-of-connections
 2. network-science-communities-centrality
 3. pagerank-eigenvectors
-4. graph-neural-networks-learning-structured-data
-5. knowledge-graphs-practice
-6. agent-graph-layer-why-grep-embeddings-fell-short
-7. repo-to-graph-ast-vs-llm-extraction
-8. querying-code-graphs-blast-radius-localization
-9. graph-memory-temporal-agents-graphiti-cognee
-10. graph-layer-in-production-mcp-build-vs-buy
+4. knowledge-graphs-practice
+5. graph-neural-networks-learning-structured-data
+
+Branches from here: **Graph Engines Under the Hood** for storage and query engines, **Graph Analytics in Production** for computing over the graph, **The Graph Layer for Agents** for coding agents, **Enterprise Ontology / Banking Knowledge Graph** for schema-first enterprise modelling.
+
+### Choose and run a graph database
+From the data model down to the engine and the query language.
+1. knowledge-graphs-practice
+2. graph-engine-internals-index-free-adjacency
+3. gql-standard-cypher-sqlpgq
+4. choosing-a-graph-engine-2026
+5. spanner-graph-for-knowledge-and-agents
+
+### Graph analytics for fraud and risk
+The applied arc a financial-services engineer actually needs, from the math to the alert queue.
+1. graph-theory-mathematics-of-connections
+2. network-science-communities-centrality
+3. graph-analytics-gds-execution-model
+4. centrality-communities-in-practice
+5. node-embeddings-fastrp-node2vec-graphsage
+6. graph-fraud-detection-rings-synthetic-identity
+
+### Run an agent platform
+The operator's path: hosting other teams' agents rather than building one. Pairs with "Build your first LLM agent" above.
+1. agent-platform-control-plane-data-plane
+2. agent-runtime-sessions-state-topology
+3. sandboxing-agents-microvm-gvisor
+4. mcp-registry-gateway-tool-plane
+5. agent-golden-paths-multi-tenancy
+6. operating-agents-eval-observability-scale
+7. finops-llm-agents-token-economics
+8. enterprise-agent-governance-lifecycle
+
+### Secure an agent system
+Cross-cutting path assembled from the security posts, ordered from threat model to enforcement.
+1. agent-guardrails-field-guide
+2. enterprise-agents-governance-security-business
+3. agent-authentication-oauth-mcp-identity
+4. bank-grade-agent-security-iam-gateways
+5. sandboxing-agents-microvm-gvisor
+6. mcp-registry-gateway-tool-plane
 
 ### The Graph Layer for Agents (five-part series)
 Why grep and embeddings stop being enough for coding agents, and what replaces them.
@@ -116,12 +152,21 @@ How a graph engine actually works underneath, what the query standard changed, a
 2. gql-standard-cypher-sqlpgq
 3. choosing-a-graph-engine-2026
 
-### Graph Analytics in Production (four-part series)
-Computing over a graph rather than modelling it: the execution model, the algorithms, the embeddings, and an applied case.
+### Graph Analytics in Production (five-part series)
+Computing over a graph rather than modelling it: the execution model, the algorithms, the embeddings, and the applied cases.
 1. graph-analytics-gds-execution-model
 2. centrality-communities-in-practice
 3. node-embeddings-fastrp-node2vec-graphsage
 4. organizational-network-analysis-company-graph
+5. graph-fraud-detection-rings-synthetic-identity
+
+### The Agent Platform (five-part series)
+The platform engineer's view rather than the agent builder's: operating the substrate that other teams' agents run on.
+1. agent-platform-control-plane-data-plane
+2. agent-runtime-sessions-state-topology
+3. sandboxing-agents-microvm-gvisor
+4. mcp-registry-gateway-tool-plane
+5. agent-golden-paths-multi-tenancy
 
 ### Senior Engineering Judgment in the AI Era (five-part series)
 What stays scarce when an AI can generate the code: infrastructure, data modeling, API contracts, distributed-systems theory, and product judgment.
@@ -163,7 +208,8 @@ The four-part arc on Google's Knowledge Catalog vs ontologies, plus the hands-on
 - **Anthropic / Claude**: claude-code-complete-guide, model-context-protocol, mcp-production-enterprise, mcp-server-nl-to-powerbi-dashboard
 - **LangChain / LangGraph / LlamaIndex**: langgraph-multi-agent-workflows, llamaindex-langchain-llm-frameworks
 - **Neo4j / graph DBs**: knowledge-graphs-practice, ontology-to-agent-toolbox, graph-engine-internals-index-free-adjacency, gql-standard-cypher-sqlpgq, choosing-a-graph-engine-2026
-- **Graph analytics / GDS**: graph-analytics-gds-execution-model, centrality-communities-in-practice, node-embeddings-fastrp-node2vec-graphsage, organizational-network-analysis-company-graph
+- **Graph analytics / GDS**: graph-analytics-gds-execution-model, centrality-communities-in-practice, node-embeddings-fastrp-node2vec-graphsage, organizational-network-analysis-company-graph, graph-fraud-detection-rings-synthetic-identity
+- **Agent platform / platform engineering**: agent-platform-control-plane-data-plane, agent-runtime-sessions-state-topology, sandboxing-agents-microvm-gvisor, mcp-registry-gateway-tool-plane, agent-golden-paths-multi-tenancy
 - **dbt / warehouse modeling**: dbt-analytics-engineering, dimensional-modeling-kimball, lookml-semantic-layer-data-modeling
 - **Spark / pandas / DuckDB**: apache-spark-ecosystem-guide, sql-pandas-pyspark-duckdb
 - **Docker / Kubernetes**: docker-for-ml-engineers, kubernetes-minimum-subset-ml
@@ -211,6 +257,48 @@ Per-post enrichment that supplements frontmatter. Edit the YAML block below to a
 Add new entries as you publish or as you want to enrich an older post. The build script re-derives `concept_index`, `prereq_graph`, and `tech_index` from this block on every run.
 
 ```yaml
+agent-platform-control-plane-data-plane:
+  concepts: [agent platform, control plane versus data plane, platform layers, non-human identity, Model Armor, defence in depth, OWASP agentic top 10]
+  prereqs: [agent-architecture-and-orchestration, model-context-protocol, agent-guardrails-field-guide]
+  teaches: [separate control plane from data plane for agents, enumerate the platform layers an agent needs, assign ownership between platform and agent teams, place an LLM firewall without over-trusting it]
+  tech: [model-armor, bedrock-agentcore, vertex-agent-engine, azure-ai-foundry, mcp]
+  depth: deep
+
+agent-runtime-sessions-state-topology:
+  concepts: [turn loop, session state, checkpointing, durable execution, session affinity, idempotency, per-tenant fairness]
+  prereqs: [agent-platform-control-plane-data-plane, agent-harness-build-fork-adopt-yc-qm, senior-infrastructure-distributed-systems-failure-networking]
+  teaches: [choose an execution topology for agents, externalise session state, make tool calls idempotent under retry, resume a turn after failure, compare managed agent runtimes]
+  tech: [bedrock-agentcore, vertex-agent-engine, azure-ai-foundry, temporal, langgraph, kubernetes]
+  depth: deep
+
+sandboxing-agents-microvm-gvisor:
+  concepts: [execution isolation, microVM, gVisor, Kata Containers, cold start versus isolation, egress control, token exchange]
+  prereqs: [agent-platform-control-plane-data-plane, docker-for-ml-engineers, kubernetes-minimum-subset-ml]
+  teaches: [explain why a container is not a security boundary, choose between microVM and gVisor and hardened containers, control sandbox egress, keep secrets out of the sandbox, match isolation strength to trust]
+  tech: [firecracker, gvisor, kata-containers, e2b, daytona, modal]
+  depth: deep
+
+mcp-registry-gateway-tool-plane:
+  concepts: [MCP registry, MCP gateway, credential brokering, tool visibility as attack surface, schema drift, tool curation, supply-chain risk, tool poisoning]
+  prereqs: [mcp-production-enterprise, agent-platform-control-plane-data-plane, ontology-to-agent-toolbox]
+  teaches: [separate registry from gateway, design a registry entry schema, broker credentials so agents hold no secrets, version and deprecate a tool safely, curate a third-party server catalog]
+  tech: [mcp, mcp-gateway, mcp-registry]
+  depth: deep
+
+agent-golden-paths-multi-tenancy:
+  concepts: [platform as product, golden paths, agents as non-human persona, multi-tenancy, tenant data isolation, cost attribution, policy as code, paved road versus walled garden]
+  prereqs: [agent-platform-control-plane-data-plane, mcp-registry-gateway-tool-plane, finops-llm-agents-token-economics, enterprise-agent-governance-lifecycle]
+  teaches: [design a golden path for an agent team, isolate tenants sharing a knowledge base, attribute token spend to a tenant, enforce guardrails as admission control, measure platform adoption]
+  tech: [kubernetes, opa, terraform, mcp]
+  depth: deep
+
+graph-fraud-detection-rings-synthetic-identity:
+  concepts: [fraud rings, synthetic identity, layering, shared-attribute edges, supernode risk, graph features for gradient boosting, precision at alert budget, subgraph as explanation]
+  prereqs: [centrality-communities-in-practice, node-embeddings-fastrp-node2vec-graphsage, graph-neural-networks-learning-structured-data]
+  teaches: [model shared-attribute edges without creating supernodes, combine communities and embeddings with gradient boosting, decide when a GNN earns its cost, optimise for precision at the alert budget, explain a flag with a traversal path]
+  tech: [neo4j, gds, xgboost, pytorch-geometric]
+  depth: deep
+
 graph-engine-internals-index-free-adjacency:
   concepts: [index-free adjacency, record layout, pointer chasing, supernode problem, traversal cost, GraphBLAS]
   prereqs: [knowledge-graphs-practice]
@@ -604,8 +692,14 @@ dont-reinvent-the-agent-open-source-composition:
 
 Auto-generated index of every post by category, sorted most recent first. Use this when you need a complete inventory of what the blog covers — for example, when loaded as Claude Project knowledge and you cannot query `posts.json`.
 
-### field-notes (128 posts)
+### field-notes (134 posts)
 
+- **`agent-golden-paths-multi-tenancy`** *(deep)* — Golden Paths for Agents: Multi-Tenancy, Self-Service, and the Platform as Product. The four previous parts of this series described components: a control plane, a runtime, a sandbox, a tool plane. This one describes the discipline that turns components into a platform. Golden paths for agent teams, multi-tenancy that survives a shared vector store, policy as code instead of policy as wiki page, cost attribution that keeps the platform politically alive, and the honest organizational problem underneath all of it. Concepts: platform as product, golden paths, agents as non-human persona, multi-tenancy, tenant data isolation, cost attribution. Tech: kubernetes, opa, terraform, mcp.
+- **`mcp-registry-gateway-tool-plane`** *(deep)* — The Tool Plane: MCP Registry, Gateway, and Governing Ten Thousand Servers. Choosing MCP as your tool interface is the easy decision and the right one. It is also where the platform problems begin. Part 4 of The Agent Platform builds the tool plane: an internal registry that says what exists, a gateway that decides who may call it, credential brokering so agents never hold secrets, versioning that survives schema drift, and a curation discipline for a world with more than ten thousand public servers. Concepts: MCP registry, MCP gateway, credential brokering, tool visibility as attack surface, schema drift, tool curation. Tech: mcp, mcp-gateway, mcp-registry.
+- **`sandboxing-agents-microvm-gvisor`** *(deep)* — Sandboxing Agents: microVMs, gVisor, and the Isolation Boundary That Actually Holds. Part 3 of The Agent Platform. When an agent executes code, the container boundary is not enough — namespaces and cgroups were built for resource isolation, not security. This is the engineering guide to microVMs, gVisor, and hardened containers: the mechanism of each, the cold start versus isolation tradeoff, the egress control everyone forgets, and how to match isolation strength to what the agent is actually trusted with. Concepts: execution isolation, microVM, gVisor, Kata Containers, cold start versus isolation, egress control. Tech: firecracker, gvisor, kata-containers, e2b, daytona, modal.
+- **`agent-runtime-sessions-state-topology`** *(deep)* — The Agent Runtime: Sessions, State, and Where the Turn Loop Actually Executes. Everyone argues about frameworks. Almost nobody asks where the turn loop physically runs, what happens to a session between turns, or what breaks when a pod is rescheduled mid-conversation. Part two of The Agent Platform: the runtime is the least glamorous and most consequential choice you will make. Concepts: turn loop, session state, checkpointing, durable execution, session affinity, idempotency. Tech: bedrock-agentcore, vertex-agent-engine, azure-ai-foundry, temporal, langgraph, kubernetes.
+- **`agent-platform-control-plane-data-plane`** *(deep)* — The Agent Platform: Control Plane, Data Plane, and Everything You Have to Own. Almost everything written about agents is written from the seat of the team building one. This series is written from the other seat: the platform engineer who has to host everyone else's. Part one maps the ten layers of an agent platform, separates control plane from data plane, and is honest about what an LLM firewall does not solve. Concepts: agent platform, control plane versus data plane, platform layers, non-human identity, Model Armor, defence in depth. Tech: model-armor, bedrock-agentcore, vertex-agent-engine, azure-ai-foundry, mcp.
+- **`graph-fraud-detection-rings-synthetic-identity`** *(deep)* — Graph Fraud Detection: Rings, Synthetic Identity, and the Pipeline That Ships. Part 5 of Graph Analytics in Production. Fraud is where graphs earn their keep, because the signal is structurally invisible to a row-wise model — a ring sits six hops deep and no amount of feature engineering on a flat table recovers it. This is the working guide: the four typologies and their graph signatures, which shared attributes should become edges and which are pure supernode poison, the community-plus-embeddings-plus-gradient-boosting pipeline that actually reaches production, why precision at the alert budget is the only metric your operation feels, and why the model decays faster here than anywhere else you have deployed. Concepts: fraud rings, synthetic identity, layering, shared-attribute edges, supernode risk, graph features for gradient boosting. Tech: neo4j, gds, xgboost, pytorch-geometric.
 - **`organizational-network-analysis-company-graph`** *(deep)* — Organizational Network Analysis: The Company Graph Nobody Drew. Every company has two structures: the org chart someone designed, and the collaboration network that actually emerged. Part 4 of Graph Analytics in Production applies centrality, community detection, and structural holes to the organization itself, and spends as much time on the ethics as on the algorithms, because this is the one graph where getting the governance wrong hurts people. Concepts: organizational network analysis, structural holes, E-I index, key-person risk, structural re-identification, employee analytics governance. Tech: networkx, neo4j, gds.
 - **`node-embeddings-fastrp-node2vec-graphsage`** *(deep)* — Node Embeddings: FastRP, Node2Vec, and GraphSAGE in Production. Part 3 of Graph Analytics in Production. Centrality gives you one number per node; embeddings give you a hundred and twenty-eight. This post covers what those numbers actually preserve, why FastRP wins on cost through the Johnson-Lindenstrauss lemma, when Node2Vec's p and q knobs are worth their price, why GraphSAGE is the only inductive option, and the temporal leakage trap that makes offline metrics beautiful and production metrics honest. Concepts: node embeddings, Johnson-Lindenstrauss lemma, FastRP, Node2Vec, GraphSAGE, transductive versus inductive. Tech: neo4j, gds, pytorch-geometric.
 - **`centrality-communities-in-practice`** *(deep)* — Centrality and Communities in Practice. The theory says betweenness finds brokers and modularity finds communities. Production says your top broker is the IT helpdesk service account and your communities change every time you rerun the job. This is the practitioner's guide to centrality and community detection on real graphs: which measure answers which question, why betweenness will not scale, what the PageRank knobs actually control, the resolution limit you cannot tune away, and why you must never ship a community ID as a stable key. Concepts: centrality selection, approximate betweenness, personalized PageRank, resolution limit, Leiden, partition stability. Tech: neo4j, gds, networkx.
