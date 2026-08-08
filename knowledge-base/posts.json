@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-08-01T07:00:17.536Z",
+  "generated_at": "2026-08-08T03:22:55.948Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,18 +8,365 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 150,
-    "augmented_posts": 47,
+    "total_posts": 157,
+    "augmented_posts": 54,
     "by_category": {
-      "field-notes": 121,
+      "field-notes": 128,
       "research": 13,
       "curiosities": 16
     },
-    "concepts_indexed": 473,
-    "tech_indexed": 56,
-    "prereq_edges": 78
+    "concepts_indexed": 514,
+    "tech_indexed": 66,
+    "prereq_edges": 95
   },
   "posts": {
+    "organizational-network-analysis-company-graph": {
+      "title": "Organizational Network Analysis: The Company Graph Nobody Drew",
+      "date": "2028-09-14",
+      "category": "field-notes",
+      "tags": [
+        "Graph Theory",
+        "Knowledge Graphs",
+        "Data Governance",
+        "Data Science",
+        "Algorithms",
+        "Best Practices",
+        "Data Architecture",
+        "Statistics",
+        "Enterprise Data",
+        "Data Quality"
+      ],
+      "excerpt": "Every company has two structures: the org chart someone designed, and the collaboration network that actually emerged. Part 4 of Graph Analytics in Production applies centrality, community detection, and structural holes to the organization itself, and spends as much time on the ethics as on the algorithms, because this is the one graph where getting the governance wrong hurts people.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/organizational-network-analysis-company-graph",
+      "source_path": "front/public/blog/posts/field-notes/organizational-network-analysis-company-graph.md",
+      "reading_minutes": 33,
+      "word_count": 7089,
+      "concepts": [
+        "organizational network analysis",
+        "structural holes",
+        "E-I index",
+        "key-person risk",
+        "structural re-identification",
+        "employee analytics governance"
+      ],
+      "prereqs": [
+        "centrality-communities-in-practice",
+        "network-science-communities-centrality",
+        "dama-dmbok-data-governance"
+      ],
+      "teaches": [
+        "build a collaboration graph from communication metadata",
+        "weight organizational edges",
+        "read brokerage and silo measures",
+        "apply minimum aggregation thresholds",
+        "ground employee analytics in a lawful basis"
+      ],
+      "tech": [
+        "networkx",
+        "neo4j",
+        "gds"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "node-embeddings-fastrp-node2vec-graphsage": {
+      "title": "Node Embeddings: FastRP, Node2Vec, and GraphSAGE in Production",
+      "date": "2028-09-07",
+      "category": "field-notes",
+      "tags": [
+        "Embeddings",
+        "Neo4j",
+        "Graph Databases",
+        "Machine Learning",
+        "Representation Learning",
+        "Knowledge Graphs",
+        "Production ML",
+        "Algorithms",
+        "Linear Algebra",
+        "Graph Theory"
+      ],
+      "excerpt": "Part 3 of Graph Analytics in Production. Centrality gives you one number per node; embeddings give you a hundred and twenty-eight. This post covers what those numbers actually preserve, why FastRP wins on cost through the Johnson-Lindenstrauss lemma, when Node2Vec's p and q knobs are worth their price, why GraphSAGE is the only inductive option, and the temporal leakage trap that makes offline metrics beautiful and production metrics honest.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/node-embeddings-fastrp-node2vec-graphsage",
+      "source_path": "front/public/blog/posts/field-notes/node-embeddings-fastrp-node2vec-graphsage.md",
+      "reading_minutes": 32,
+      "word_count": 6927,
+      "concepts": [
+        "node embeddings",
+        "Johnson-Lindenstrauss lemma",
+        "FastRP",
+        "Node2Vec",
+        "GraphSAGE",
+        "transductive versus inductive",
+        "temporal leakage"
+      ],
+      "prereqs": [
+        "graph-analytics-gds-execution-model",
+        "embeddings-geometry-of-meaning",
+        "graph-neural-networks-learning-structured-data"
+      ],
+      "teaches": [
+        "choose between transductive and inductive embeddings",
+        "size an embedding dimension empirically",
+        "avoid temporal leakage in evaluation",
+        "concatenate graph embeddings with tabular features"
+      ],
+      "tech": [
+        "neo4j",
+        "gds",
+        "pytorch-geometric"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "centrality-communities-in-practice": {
+      "title": "Centrality and Communities in Practice",
+      "date": "2028-08-31",
+      "category": "field-notes",
+      "tags": [
+        "Graph Theory",
+        "Neo4j",
+        "Algorithms",
+        "Knowledge Graphs",
+        "Graph Databases",
+        "Data Science",
+        "Production ML",
+        "Mathematics",
+        "Statistics",
+        "Best Practices"
+      ],
+      "excerpt": "The theory says betweenness finds brokers and modularity finds communities. Production says your top broker is the IT helpdesk service account and your communities change every time you rerun the job. This is the practitioner's guide to centrality and community detection on real graphs: which measure answers which question, why betweenness will not scale, what the PageRank knobs actually control, the resolution limit you cannot tune away, and why you must never ship a community ID as a stable key.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/centrality-communities-in-practice",
+      "source_path": "front/public/blog/posts/field-notes/centrality-communities-in-practice.md",
+      "reading_minutes": 36,
+      "word_count": 7786,
+      "concepts": [
+        "centrality selection",
+        "approximate betweenness",
+        "personalized PageRank",
+        "resolution limit",
+        "Leiden",
+        "partition stability"
+      ],
+      "prereqs": [
+        "graph-analytics-gds-execution-model",
+        "network-science-communities-centrality",
+        "pagerank-eigenvectors"
+      ],
+      "teaches": [
+        "pick a centrality measure for a business question",
+        "scale betweenness with sampling",
+        "tune PageRank damping",
+        "prefer Leiden over Louvain",
+        "measure partition stability",
+        "validate communities without ground truth"
+      ],
+      "tech": [
+        "neo4j",
+        "gds",
+        "networkx"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "graph-analytics-gds-execution-model": {
+      "title": "Graph Analytics at Scale: The GDS Execution Model",
+      "date": "2028-08-24",
+      "category": "field-notes",
+      "tags": [
+        "Neo4j",
+        "Graph Databases",
+        "Knowledge Graphs",
+        "Algorithms",
+        "Data Engineering",
+        "Production ML",
+        "Graph Theory",
+        "Data Architecture",
+        "Infrastructure",
+        "Best Practices"
+      ],
+      "excerpt": "Most engineers meet graph algorithms as textbook pseudocode, then try to run one on a real graph and discover the algorithm was never the hard part. Part 1 of a series on graph analytics in production: why transactional storage is the wrong shape, what CSR actually is, how projections decide both your memory bill and your answer, the five execution modes, and the serverless shift that takes the graph database off the critical path.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-analytics-gds-execution-model",
+      "source_path": "front/public/blog/posts/field-notes/graph-analytics-gds-execution-model.md",
+      "reading_minutes": 30,
+      "word_count": 6506,
+      "concepts": [
+        "graph projection",
+        "CSR representation",
+        "execution modes",
+        "memory estimation",
+        "algorithm catalog",
+        "serverless graph analytics"
+      ],
+      "prereqs": [
+        "knowledge-graphs-practice",
+        "network-science-communities-centrality"
+      ],
+      "teaches": [
+        "project a subgraph into memory",
+        "choose an execution mode",
+        "estimate memory before running",
+        "chain algorithms with mutate",
+        "run graph analytics on non-Neo4j sources"
+      ],
+      "tech": [
+        "neo4j",
+        "gds",
+        "graphdatascience",
+        "aura"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "choosing-a-graph-engine-2026": {
+      "title": "Choosing a Graph Engine in 2026",
+      "date": "2028-08-17",
+      "category": "field-notes",
+      "tags": [
+        "Graph Databases",
+        "Neo4j",
+        "Data Architecture",
+        "Infrastructure",
+        "Cloud Computing",
+        "Knowledge Graphs",
+        "Databases",
+        "Best Practices",
+        "Data Engineering",
+        "Benchmarks"
+      ],
+      "excerpt": "Part 3 of Graph Engines Under the Hood. Not a feature matrix, but a decision framework: four questions about your workload that actually determine the answer, an honest survey of where every engine category sits in 2026, the cautionary tale of Kuzu's disappearance, and the uncomfortable case that you may not need a graph database at all.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/choosing-a-graph-engine-2026",
+      "source_path": "front/public/blog/posts/field-notes/choosing-a-graph-engine-2026.md",
+      "reading_minutes": 32,
+      "word_count": 6774,
+      "concepts": [
+        "engine selection",
+        "workload profiling",
+        "graph-on-relational",
+        "embedded graph databases",
+        "total cost of ownership"
+      ],
+      "prereqs": [
+        "graph-engine-internals-index-free-adjacency",
+        "gql-standard-cypher-sqlpgq",
+        "spanner-graph-for-knowledge-and-agents"
+      ],
+      "teaches": [
+        "profile a graph workload",
+        "choose between native and embedded and managed engines",
+        "recognise when no graph database is needed",
+        "budget operational cost"
+      ],
+      "tech": [
+        "neo4j",
+        "memgraph",
+        "falkordb",
+        "ladybugdb",
+        "cloud-spanner",
+        "neptune",
+        "puppygraph"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "gql-standard-cypher-sqlpgq": {
+      "title": "GQL: The First New ISO Query Language Standard Since SQL",
+      "date": "2028-08-10",
+      "category": "field-notes",
+      "tags": [
+        "Graph Databases",
+        "SQL",
+        "Knowledge Graphs",
+        "Neo4j",
+        "Data Architecture",
+        "Data Engineering",
+        "Databases",
+        "Best Practices",
+        "Software Engineering"
+      ],
+      "excerpt": "In April 2024, ISO published GQL as ISO/IEC 39075 — the first genuinely new database query language standard since SQL in 1987. Thirty-seven years. Part 2 of Graph Engines Under the Hood looks at what GQL actually standardizes, how it diverges from Cypher, why SQL/PGQ matters more than most teams realize, and how much of it is really implemented in 2026.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/gql-standard-cypher-sqlpgq",
+      "source_path": "front/public/blog/posts/field-notes/gql-standard-cypher-sqlpgq.md",
+      "reading_minutes": 30,
+      "word_count": 6383,
+      "concepts": [
+        "GQL",
+        "ISO/IEC 39075",
+        "SQL/PGQ",
+        "graph pattern matching",
+        "query portability",
+        "vendor lock-in"
+      ],
+      "prereqs": [
+        "graph-engine-internals-index-free-adjacency",
+        "knowledge-graphs-practice"
+      ],
+      "teaches": [
+        "read and write GQL",
+        "query a property graph over relational tables with SQL/PGQ",
+        "isolate vendor extensions",
+        "assess query portability"
+      ],
+      "tech": [
+        "gql",
+        "cypher",
+        "sql",
+        "postgres"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "graph-engine-internals-index-free-adjacency": {
+      "title": "Inside a Graph Engine: Index-Free Adjacency and Why a Traversal Is Not a Join",
+      "date": "2028-08-03",
+      "category": "field-notes",
+      "tags": [
+        "Graph Databases",
+        "Neo4j",
+        "Data Architecture",
+        "Databases",
+        "Algorithms",
+        "Data Structures",
+        "Software Engineering",
+        "Knowledge Graphs",
+        "Infrastructure",
+        "Best Practices"
+      ],
+      "excerpt": "Everyone repeats that graph databases are faster for connected data, and almost nobody says why. This is the mechanical answer: fixed-size records, physical pointers, offset arithmetic, and the doubly-linked relationship chain that turns a hop into a dereference. Plus the honest accounting of what it costs, when a columnar relational engine still wins, and why traversal-as-matrix-multiply is a genuinely different machine.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-engine-internals-index-free-adjacency",
+      "source_path": "front/public/blog/posts/field-notes/graph-engine-internals-index-free-adjacency.md",
+      "reading_minutes": 31,
+      "word_count": 6686,
+      "concepts": [
+        "index-free adjacency",
+        "record layout",
+        "pointer chasing",
+        "supernode problem",
+        "traversal cost",
+        "GraphBLAS"
+      ],
+      "prereqs": [
+        "knowledge-graphs-practice"
+      ],
+      "teaches": [
+        "reason about traversal cost versus join cost",
+        "read a graph store record layout",
+        "diagnose supernode bottlenecks",
+        "tell native from layered graph engines"
+      ],
+      "tech": [
+        "neo4j",
+        "falkordb"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
     "agent-harness-build-fork-adopt-yc-qm": {
       "title": "Anatomy of an Agent Harness: Reading YC's QM and Deciding When to Build, Fork, or Adopt",
       "date": "2028-07-27",
@@ -1751,7 +2098,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -2024,7 +2372,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": true
     },
@@ -3403,7 +3752,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -3736,7 +4086,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -4213,7 +4564,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -4260,7 +4612,8 @@
       ],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": true
     },
@@ -4349,7 +4702,8 @@
       ],
       "depth": "working",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": true
     },
@@ -4900,7 +5254,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -5247,7 +5602,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -6320,7 +6676,8 @@
       "tech": [],
       "depth": "deep",
       "audio_available": [
-        "en"
+        "en",
+        "es"
       ],
       "augmented": false
     },
@@ -6730,6 +7087,262 @@
     }
   },
   "concept_index": {
+    "organizational network analysis": [
+      {
+        "slug": "organizational-network-analysis-company-graph",
+        "depth": "deep"
+      }
+    ],
+    "structural holes": [
+      {
+        "slug": "organizational-network-analysis-company-graph",
+        "depth": "deep"
+      }
+    ],
+    "e-i index": [
+      {
+        "slug": "organizational-network-analysis-company-graph",
+        "depth": "deep"
+      }
+    ],
+    "key-person risk": [
+      {
+        "slug": "organizational-network-analysis-company-graph",
+        "depth": "deep"
+      }
+    ],
+    "structural re-identification": [
+      {
+        "slug": "organizational-network-analysis-company-graph",
+        "depth": "deep"
+      }
+    ],
+    "employee analytics governance": [
+      {
+        "slug": "organizational-network-analysis-company-graph",
+        "depth": "deep"
+      }
+    ],
+    "node embeddings": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      }
+    ],
+    "johnson-lindenstrauss lemma": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      }
+    ],
+    "fastrp": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      }
+    ],
+    "node2vec": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      }
+    ],
+    "graphsage": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      }
+    ],
+    "transductive versus inductive": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      }
+    ],
+    "temporal leakage": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      }
+    ],
+    "centrality selection": [
+      {
+        "slug": "centrality-communities-in-practice",
+        "depth": "deep"
+      }
+    ],
+    "approximate betweenness": [
+      {
+        "slug": "centrality-communities-in-practice",
+        "depth": "deep"
+      }
+    ],
+    "personalized pagerank": [
+      {
+        "slug": "centrality-communities-in-practice",
+        "depth": "deep"
+      }
+    ],
+    "resolution limit": [
+      {
+        "slug": "centrality-communities-in-practice",
+        "depth": "deep"
+      }
+    ],
+    "leiden": [
+      {
+        "slug": "centrality-communities-in-practice",
+        "depth": "deep"
+      }
+    ],
+    "partition stability": [
+      {
+        "slug": "centrality-communities-in-practice",
+        "depth": "deep"
+      }
+    ],
+    "graph projection": [
+      {
+        "slug": "graph-analytics-gds-execution-model",
+        "depth": "deep"
+      }
+    ],
+    "csr representation": [
+      {
+        "slug": "graph-analytics-gds-execution-model",
+        "depth": "deep"
+      }
+    ],
+    "execution modes": [
+      {
+        "slug": "graph-analytics-gds-execution-model",
+        "depth": "deep"
+      }
+    ],
+    "memory estimation": [
+      {
+        "slug": "graph-analytics-gds-execution-model",
+        "depth": "deep"
+      }
+    ],
+    "algorithm catalog": [
+      {
+        "slug": "graph-analytics-gds-execution-model",
+        "depth": "deep"
+      }
+    ],
+    "serverless graph analytics": [
+      {
+        "slug": "graph-analytics-gds-execution-model",
+        "depth": "deep"
+      }
+    ],
+    "engine selection": [
+      {
+        "slug": "choosing-a-graph-engine-2026",
+        "depth": "deep"
+      }
+    ],
+    "workload profiling": [
+      {
+        "slug": "choosing-a-graph-engine-2026",
+        "depth": "deep"
+      }
+    ],
+    "graph-on-relational": [
+      {
+        "slug": "choosing-a-graph-engine-2026",
+        "depth": "deep"
+      }
+    ],
+    "embedded graph databases": [
+      {
+        "slug": "choosing-a-graph-engine-2026",
+        "depth": "deep"
+      }
+    ],
+    "total cost of ownership": [
+      {
+        "slug": "choosing-a-graph-engine-2026",
+        "depth": "deep"
+      }
+    ],
+    "gql": [
+      {
+        "slug": "enterprise-graph-mcp-architecture-gcp",
+        "depth": "deep"
+      },
+      {
+        "slug": "gql-standard-cypher-sqlpgq",
+        "depth": "deep"
+      }
+    ],
+    "iso/iec 39075": [
+      {
+        "slug": "gql-standard-cypher-sqlpgq",
+        "depth": "deep"
+      }
+    ],
+    "sql/pgq": [
+      {
+        "slug": "gql-standard-cypher-sqlpgq",
+        "depth": "deep"
+      }
+    ],
+    "graph pattern matching": [
+      {
+        "slug": "gql-standard-cypher-sqlpgq",
+        "depth": "deep"
+      }
+    ],
+    "query portability": [
+      {
+        "slug": "gql-standard-cypher-sqlpgq",
+        "depth": "deep"
+      }
+    ],
+    "vendor lock-in": [
+      {
+        "slug": "gql-standard-cypher-sqlpgq",
+        "depth": "deep"
+      }
+    ],
+    "index-free adjacency": [
+      {
+        "slug": "graph-engine-internals-index-free-adjacency",
+        "depth": "deep"
+      }
+    ],
+    "record layout": [
+      {
+        "slug": "graph-engine-internals-index-free-adjacency",
+        "depth": "deep"
+      }
+    ],
+    "pointer chasing": [
+      {
+        "slug": "graph-engine-internals-index-free-adjacency",
+        "depth": "deep"
+      }
+    ],
+    "supernode problem": [
+      {
+        "slug": "graph-engine-internals-index-free-adjacency",
+        "depth": "deep"
+      }
+    ],
+    "traversal cost": [
+      {
+        "slug": "graph-engine-internals-index-free-adjacency",
+        "depth": "deep"
+      }
+    ],
+    "graphblas": [
+      {
+        "slug": "graph-engine-internals-index-free-adjacency",
+        "depth": "deep"
+      }
+    ],
     "agent harness": [
       {
         "slug": "agent-harness-build-fork-adopt-yc-qm",
@@ -6865,12 +7478,6 @@
       }
     ],
     "cloud spanner graph": [
-      {
-        "slug": "enterprise-graph-mcp-architecture-gcp",
-        "depth": "deep"
-      }
-    ],
-    "gql": [
       {
         "slug": "enterprise-graph-mcp-architecture-gcp",
         "depth": "deep"
@@ -12910,6 +13517,77 @@
     ]
   },
   "tech_index": {
+    "networkx": [
+      "centrality-communities-in-practice",
+      "organizational-network-analysis-company-graph",
+      "querying-code-graphs-blast-radius-localization"
+    ],
+    "neo4j": [
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "knowledge-graphs-practice",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "ontology-to-agent-toolbox",
+      "organizational-network-analysis-company-graph",
+      "populating-knowledge-graph-llms-banking",
+      "production-graph-stack-agents-mcp-ontologies",
+      "tbox-abox-schema-facts-distinction"
+    ],
+    "gds": [
+      "centrality-communities-in-practice",
+      "graph-analytics-gds-execution-model",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "organizational-network-analysis-company-graph"
+    ],
+    "pytorch-geometric": [
+      "graph-neural-networks-learning-structured-data",
+      "node-embeddings-fastrp-node2vec-graphsage"
+    ],
+    "graphdatascience": [
+      "graph-analytics-gds-execution-model"
+    ],
+    "aura": [
+      "graph-analytics-gds-execution-model"
+    ],
+    "memgraph": [
+      "choosing-a-graph-engine-2026"
+    ],
+    "falkordb": [
+      "choosing-a-graph-engine-2026",
+      "graph-engine-internals-index-free-adjacency"
+    ],
+    "ladybugdb": [
+      "choosing-a-graph-engine-2026"
+    ],
+    "cloud-spanner": [
+      "choosing-a-graph-engine-2026",
+      "enterprise-graph-mcp-architecture-gcp"
+    ],
+    "neptune": [
+      "choosing-a-graph-engine-2026"
+    ],
+    "puppygraph": [
+      "choosing-a-graph-engine-2026"
+    ],
+    "gql": [
+      "gql-standard-cypher-sqlpgq"
+    ],
+    "cypher": [
+      "gql-standard-cypher-sqlpgq",
+      "knowledge-graphs-practice",
+      "populating-knowledge-graph-llms-banking"
+    ],
+    "sql": [
+      "gql-standard-cypher-sqlpgq"
+    ],
+    "postgres": [
+      "agent-harness-build-fork-adopt-yc-qm",
+      "gql-standard-cypher-sqlpgq"
+    ],
     "qm": [
       "agent-harness-build-fork-adopt-yc-qm"
     ],
@@ -12924,9 +13602,6 @@
       "claude-code-complete-guide"
     ],
     "codex": [
-      "agent-harness-build-fork-adopt-yc-qm"
-    ],
-    "postgres": [
       "agent-harness-build-fork-adopt-yc-qm"
     ],
     "fly-io": [
@@ -12974,9 +13649,6 @@
       "google-cloud-next-2026-agent-native-stack",
       "ontology-production-pipeline-gcp"
     ],
-    "cloud-spanner": [
-      "enterprise-graph-mcp-architecture-gcp"
-    ],
     "dataplex": [
       "enterprise-graph-mcp-architecture-gcp",
       "gemini-enterprise-knowledge-catalog-deep-dive",
@@ -12992,23 +13664,11 @@
     "lightrag": [
       "production-graph-stack-agents-mcp-ontologies"
     ],
-    "neo4j": [
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "knowledge-graphs-practice",
-      "ontology-to-agent-toolbox",
-      "populating-knowledge-graph-llms-banking",
-      "production-graph-stack-agents-mcp-ontologies",
-      "tbox-abox-schema-facts-distinction"
-    ],
     "qdrant": [
       "production-graph-stack-agents-mcp-ontologies"
     ],
     "cognee": [
       "graph-memory-temporal-agents-graphiti-cognee"
-    ],
-    "networkx": [
-      "querying-code-graphs-blast-radius-localization"
     ],
     "presidio": [
       "enterprise-agents-governance-security-business"
@@ -13096,10 +13756,6 @@
     "pyshacl": [
       "populating-knowledge-graph-llms-banking"
     ],
-    "cypher": [
-      "knowledge-graphs-practice",
-      "populating-knowledge-graph-llms-banking"
-    ],
     "shacl": [
       "ontology-production-pipeline-gcp"
     ],
@@ -13121,14 +13777,575 @@
     "pytorch": [
       "graph-neural-networks-learning-structured-data"
     ],
-    "pytorch-geometric": [
-      "graph-neural-networks-learning-structured-data"
-    ],
     "protege": [
       "ontologies-building-knowledge-bases"
     ]
   },
   "tag_index": {
+    "Graph Theory": [
+      "100-posts-knowledge-graph-retrospective",
+      "centrality-communities-in-practice",
+      "graph-analytics-gds-execution-model",
+      "graph-neural-networks-learning-structured-data",
+      "graph-theory-mathematics-of-connections",
+      "network-science-communities-centrality",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "organizational-network-analysis-company-graph",
+      "pagerank-eigenvectors",
+      "querying-code-graphs-blast-radius-localization"
+    ],
+    "Knowledge Graphs": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
+      "defining-the-knowledge-stack",
+      "enterprise-graph-mcp-architecture-gcp",
+      "enterprise-knowledge-bases",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "graph-neural-networks-learning-structured-data",
+      "knowledge-as-a-product",
+      "knowledge-catalog-vs-ontologies",
+      "knowledge-graphs-practice",
+      "modular-ontologies-core-domains-pattern",
+      "network-science-communities-centrality",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "ontologies-building-knowledge-bases",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-production-pipeline-gcp",
+      "ontology-to-agent-toolbox",
+      "organizational-network-analysis-company-graph",
+      "pagerank-eigenvectors",
+      "populating-knowledge-graph-llms-banking",
+      "production-graph-stack-agents-mcp-ontologies",
+      "query-routing-agent-decisions",
+      "querying-code-graphs-blast-radius-localization",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "spanner-graph-for-knowledge-and-agents",
+      "tbox-abox-schema-facts-distinction"
+    ],
+    "Data Governance": [
+      "application-data-flow-replicas-backups",
+      "dama-dmbok-data-governance",
+      "data-silos-breaking-information-barriers",
+      "enterprise-graph-mcp-architecture-gcp",
+      "gemini-knowledge-catalog-workshop",
+      "knowledge-as-a-product",
+      "lookml-semantic-layer-data-modeling",
+      "organizational-network-analysis-company-graph"
+    ],
+    "Data Science": [
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "network-science-communities-centrality",
+      "organizational-network-analysis-company-graph"
+    ],
+    "Algorithms": [
+      "100-posts-knowledge-graph-retrospective",
+      "algebraic-number-theory-when-factorization-breaks",
+      "attention-is-all-you-need",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "collatz-conjecture",
+      "content-addressable-hash-as-engineering-tool",
+      "fermat-n4-infinite-descent",
+      "files-under-the-hood",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-neural-networks-learning-structured-data",
+      "graph-theory-mathematics-of-connections",
+      "mamba-selective-state-spaces",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "organizational-network-analysis-company-graph",
+      "pagerank-eigenvectors",
+      "querying-code-graphs-blast-radius-localization",
+      "ramanujan-constant-almost-integer",
+      "regex-engines-finite-automata",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete",
+      "the-manifold-hypothesis",
+      "vector-databases-indexes-to-vertex-search"
+    ],
+    "Best Practices": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-architecture-and-orchestration",
+      "agent-architectures-productive-patterns",
+      "agent-authentication-oauth-mcp-identity",
+      "agent-engineering-disciplines",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "application-data-flow-replicas-backups",
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
+      "claude-certified-architect-professional-exam-guide",
+      "claude-certified-associate-exam-guide",
+      "claude-certified-developer-exam-guide",
+      "dama-dmbok-data-governance",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "dev-environments-for-ai-teams",
+      "dont-reinvent-the-agent-open-source-composition",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-agents-governance-security-business",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "finops-llm-agents-token-economics",
+      "foundations-of-agentic-ai-llms-to-agents",
+      "gemini-knowledge-catalog-workshop",
+      "git-and-github-complete-guide",
+      "google-cloud-certifications-2026-roadmap",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "knowledge-as-a-product",
+      "knowledge-catalog-vs-ontologies",
+      "lookml-semantic-layer-data-modeling",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "ml-cert-review-part-1-foundations",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "ml-metrics-evaluation-monitoring",
+      "modular-ontologies-core-domains-pattern",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "operating-agents-eval-observability-scale",
+      "organizational-network-analysis-company-graph",
+      "python-beyond-the-basics",
+      "querying-code-graphs-blast-radius-localization",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "senior-api-design-contracts-versioning-dx",
+      "senior-data-modeling-query-patterns-database-design",
+      "senior-distributed-theory-cap-pacelc-tradeoffs",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "senior-product-engineering-scale-prioritization-architecture",
+      "software-engineering-classics",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "terraform-infrastructure-as-code"
+    ],
+    "Data Architecture": [
+      "application-data-flow-replicas-backups",
+      "choosing-a-graph-engine-2026",
+      "claude-certified-architect-professional-exam-guide",
+      "comparing-knowledge-bases-semantic-overlap",
+      "dama-dmbok-data-governance",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "defining-the-knowledge-stack",
+      "dimensional-modeling-kimball",
+      "enterprise-graph-mcp-architecture-gcp",
+      "enterprise-knowledge-bases",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "gemini-knowledge-catalog-workshop",
+      "google-cloud-next-2026-agent-native-stack",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "knowledge-as-a-product",
+      "knowledge-catalog-vs-ontologies",
+      "knowledge-graphs-practice",
+      "lakehouse-architecture",
+      "lookml-semantic-layer-data-modeling",
+      "modular-ontologies-core-domains-pattern",
+      "ontologies-building-knowledge-bases",
+      "ontology-production-pipeline-gcp",
+      "organizational-network-analysis-company-graph",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "senior-data-modeling-query-patterns-database-design",
+      "spanner-graph-for-knowledge-and-agents",
+      "tbox-abox-schema-facts-distinction",
+      "vector-databases-indexes-to-vertex-search"
+    ],
+    "Statistics": [
+      "100-posts-knowledge-graph-retrospective",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "organizational-network-analysis-company-graph"
+    ],
+    "Enterprise Data": [
+      "dama-dmbok-data-governance",
+      "data-silos-breaking-information-barriers",
+      "ontologies-building-knowledge-bases",
+      "organizational-network-analysis-company-graph"
+    ],
+    "Data Quality": [
+      "application-data-flow-replicas-backups",
+      "benfords-law",
+      "dama-dmbok-data-governance",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "knowledge-base-curation",
+      "organizational-network-analysis-company-graph"
+    ],
+    "Embeddings": [
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "attention-is-all-you-need",
+      "bert-pre-training-bidirectional-transformers",
+      "comparing-knowledge-bases-semantic-overlap",
+      "defining-the-knowledge-stack",
+      "document-processing-ocr-layout",
+      "embeddings-geometry-of-meaning",
+      "enterprise-knowledge-bases",
+      "fine-tuning-embeddings",
+      "fourier-transform",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "graph-neural-networks-learning-structured-data",
+      "knowledge-base-curation",
+      "knowledge-graphs-practice",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-caching-four-layers",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "query-routing-agent-decisions",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
+      "the-manifold-hypothesis",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks"
+    ],
+    "Neo4j": [
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "knowledge-graphs-practice",
+      "modular-ontologies-core-domains-pattern",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-to-agent-toolbox",
+      "populating-knowledge-graph-llms-banking",
+      "tbox-abox-schema-facts-distinction"
+    ],
+    "Graph Databases": [
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
+      "enterprise-graph-mcp-architecture-gcp",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "spanner-graph-for-knowledge-and-agents"
+    ],
+    "Machine Learning": [
+      "cloud-ml-infrastructure",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "elevenlabs-voice-ai-engineering",
+      "experiment-tracking-mlops",
+      "graph-neural-networks-learning-structured-data",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "ml-cert-review-part-1-foundations",
+      "ml-libraries-under-the-hood",
+      "ml-metrics-evaluation-monitoring",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "pytorch-tensorflow-deep-learning-frameworks",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rlhf-dpo-alignment",
+      "vertex-ai-gcp-ml-platform-cli",
+      "working-with-ml-models"
+    ],
+    "Representation Learning": [
+      "attention-is-all-you-need",
+      "embeddings-geometry-of-meaning",
+      "fourier-transform",
+      "graph-neural-networks-learning-structured-data",
+      "multimodal-embeddings-metric-problem",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "the-manifold-hypothesis"
+    ],
+    "Production ML": [
+      "agent-architecture-and-orchestration",
+      "agent-architectures-productive-patterns",
+      "agent-authentication-oauth-mcp-identity",
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "bank-grade-agent-security-iam-gateways",
+      "centrality-communities-in-practice",
+      "claude-certified-architect-professional-exam-guide",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "docker-for-ml-engineers",
+      "document-processing-ocr-layout",
+      "dont-reinvent-the-agent-open-source-composition",
+      "elevenlabs-voice-ai-engineering",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-agents-governance-security-business",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "fine-tuning-gemma4-lora-qlora",
+      "finops-llm-agents-token-economics",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "graph-analytics-gds-execution-model",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "hermes-self-improving-agent-persistent-memory",
+      "kubernetes-minimum-subset-ml",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-as-a-judge",
+      "llm-caching-four-layers",
+      "local-llm-inference-tools",
+      "mcp-production-enterprise",
+      "ml-metrics-evaluation-monitoring",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "ontology-to-agent-toolbox",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "operating-agents-eval-observability-scale",
+      "populating-knowledge-graph-llms-banking",
+      "production-graph-stack-agents-mcp-ontologies",
+      "production-llm-agents-patterns",
+      "query-routing-agent-decisions",
+      "rag-advanced-patterns",
+      "rag-building-production-systems",
+      "ragas-evaluating-rag",
+      "redis-for-ai-buy-vs-build-gcp",
+      "reinforcement-learning-in-practice",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "Linear Algebra": [
+      "algebraic-number-theory-when-factorization-breaks",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
+      "ml-cert-review-part-1-foundations",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "pagerank-eigenvectors",
+      "the-manifold-hypothesis"
+    ],
+    "Mathematics": [
+      "100-posts-knowledge-graph-retrospective",
+      "algebraic-number-theory-when-factorization-breaks",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "collatz-conjecture",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-theory-mathematics-of-connections",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "pagerank-eigenvectors",
+      "ramanujan-constant-almost-integer",
+      "regex-engines-finite-automata",
+      "reinforcement-learning-first-principles",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "scaling-laws-neural-language-models",
+      "shannon-number-chess-game-tree",
+      "sum-of-naturals-minus-one-twelfth",
+      "tetris-np-complete",
+      "the-manifold-hypothesis"
+    ],
+    "Data Engineering": [
+      "100-posts-knowledge-graph-retrospective",
+      "ai-poc-enterprise-evaluation",
+      "apache-airflow-orchestration",
+      "apache-spark-ecosystem-guide",
+      "application-data-flow-replicas-backups",
+      "choosing-a-graph-engine-2026",
+      "dama-dmbok-data-governance",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "dbt-analytics-engineering",
+      "dimensional-modeling-kimball",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-graph-mcp-architecture-gcp",
+      "files-under-the-hood",
+      "google-cloud-certifications-2026-roadmap",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "lakehouse-architecture",
+      "lookml-semantic-layer-data-modeling",
+      "ml-libraries-under-the-hood",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-production-pipeline-gcp",
+      "populating-knowledge-graph-llms-banking",
+      "senior-data-modeling-query-patterns-database-design",
+      "sql-pandas-pyspark-duckdb",
+      "tbox-abox-schema-facts-distinction",
+      "text-to-sql"
+    ],
+    "Infrastructure": [
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "apache-airflow-orchestration",
+      "application-data-flow-replicas-backups",
+      "choosing-a-graph-engine-2026",
+      "cloud-ml-infrastructure",
+      "computational-resources-ml",
+      "dev-environments-for-ai-teams",
+      "docker-for-ml-engineers",
+      "enterprise-ai-platform-selection",
+      "enterprise-graph-mcp-architecture-gcp",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "kubernetes-minimum-subset-ml",
+      "llm-caching-four-layers",
+      "local-llm-inference-tools",
+      "network-fundamentals-every-concept",
+      "production-graph-stack-agents-mcp-ontologies",
+      "redis-for-ai-buy-vs-build-gcp",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "stack-recommendations-after-100-posts",
+      "terraform-infrastructure-as-code",
+      "vector-db-benchmarks"
+    ],
+    "Cloud Computing": [
+      "agent-architectures-productive-patterns",
+      "ai-poc-enterprise-evaluation",
+      "application-data-flow-replicas-backups",
+      "bank-grade-agent-security-iam-gateways",
+      "choosing-a-graph-engine-2026",
+      "cloud-ml-infrastructure",
+      "computational-resources-ml",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "dev-environments-for-ai-teams",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-ai-platform-selection",
+      "enterprise-graph-mcp-architecture-gcp",
+      "finops-llm-agents-token-economics",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "google-cloud-next-2026-agent-native-stack",
+      "knowledge-as-a-product",
+      "kubernetes-minimum-subset-ml",
+      "lakehouse-architecture",
+      "network-fundamentals-every-concept",
+      "ontology-production-pipeline-gcp",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "stack-recommendations-after-100-posts",
+      "terraform-infrastructure-as-code",
+      "vector-databases-indexes-to-vertex-search",
+      "vertex-ai-gcp-ml-platform-cli"
+    ],
+    "Databases": [
+      "choosing-a-graph-engine-2026",
+      "gql-standard-cypher-sqlpgq",
+      "graph-engine-internals-index-free-adjacency",
+      "senior-data-modeling-query-patterns-database-design",
+      "senior-distributed-theory-cap-pacelc-tradeoffs"
+    ],
+    "Benchmarks": [
+      "ai-poc-enterprise-evaluation",
+      "choosing-a-graph-engine-2026",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "ragas-evaluating-rag",
+      "vector-db-benchmarks"
+    ],
+    "SQL": [
+      "apache-spark-ecosystem-guide",
+      "dbt-analytics-engineering",
+      "dimensional-modeling-kimball",
+      "gql-standard-cypher-sqlpgq",
+      "lookml-semantic-layer-data-modeling",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "senior-data-modeling-query-patterns-database-design",
+      "spanner-graph-for-knowledge-and-agents",
+      "sql-pandas-pyspark-duckdb",
+      "text-to-sql"
+    ],
+    "Software Engineering": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-architecture-and-orchestration",
+      "agent-architectures-productive-patterns",
+      "agent-engineering-disciplines",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "application-data-flow-replicas-backups",
+      "bash-daily-driver-ml-engineer",
+      "claude-certified-developer-exam-guide",
+      "content-addressable-hash-as-engineering-tool",
+      "dbt-analytics-engineering",
+      "dev-environments-for-ai-teams",
+      "dont-reinvent-the-agent-open-source-composition",
+      "files-under-the-hood",
+      "git-and-github-complete-guide",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-certifications-2026-roadmap",
+      "gql-standard-cypher-sqlpgq",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "hermes-self-improving-agent-persistent-memory",
+      "mcp-production-enterprise",
+      "ml-libraries-under-the-hood",
+      "model-context-protocol",
+      "modular-ontologies-core-domains-pattern",
+      "network-fundamentals-every-concept",
+      "ontology-production-pipeline-gcp",
+      "ontology-to-agent-toolbox",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "production-llm-agents-patterns",
+      "python-beyond-the-basics",
+      "querying-code-graphs-blast-radius-localization",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "senior-api-design-contracts-versioning-dx",
+      "senior-data-modeling-query-patterns-database-design",
+      "senior-distributed-theory-cap-pacelc-tradeoffs",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "senior-product-engineering-scale-prioritization-architecture",
+      "software-engineering-classics",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects"
+    ],
+    "Data Structures": [
+      "content-addressable-hash-as-engineering-tool",
+      "files-under-the-hood",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-theory-mathematics-of-connections",
+      "pagerank-eigenvectors",
+      "python-beyond-the-basics"
+    ],
     "Agents": [
       "adk-advanced-evolution-of-agent-engineering",
       "agent-architecture-and-orchestration",
@@ -13235,51 +14452,6 @@
       "openclaw-anatomy-viral-agent-platform",
       "openclaw-vs-hermes-self-hosted-agent-comparison"
     ],
-    "Software Engineering": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-architecture-and-orchestration",
-      "agent-architectures-productive-patterns",
-      "agent-engineering-disciplines",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-guardrails-field-guide",
-      "agent-harness-build-fork-adopt-yc-qm",
-      "agent-integration-protocols-mcp-and-a2a",
-      "application-data-flow-replicas-backups",
-      "bash-daily-driver-ml-engineer",
-      "claude-certified-developer-exam-guide",
-      "content-addressable-hash-as-engineering-tool",
-      "dbt-analytics-engineering",
-      "dev-environments-for-ai-teams",
-      "dont-reinvent-the-agent-open-source-composition",
-      "files-under-the-hood",
-      "git-and-github-complete-guide",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "hermes-self-improving-agent-persistent-memory",
-      "mcp-production-enterprise",
-      "ml-libraries-under-the-hood",
-      "model-context-protocol",
-      "modular-ontologies-core-domains-pattern",
-      "network-fundamentals-every-concept",
-      "ontology-production-pipeline-gcp",
-      "ontology-to-agent-toolbox",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "production-llm-agents-patterns",
-      "python-beyond-the-basics",
-      "querying-code-graphs-blast-radius-localization",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "senior-api-design-contracts-versioning-dx",
-      "senior-data-modeling-query-patterns-database-design",
-      "senior-distributed-theory-cap-pacelc-tradeoffs",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "senior-product-engineering-scale-prioritization-architecture",
-      "software-engineering-classics",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects"
-    ],
     "Agent Engineering": [
       "adk-advanced-evolution-of-agent-engineering",
       "agent-harness-build-fork-adopt-yc-qm",
@@ -13295,145 +14467,10 @@
       "production-llm-agents-patterns",
       "reinforcement-learning-first-principles"
     ],
-    "Infrastructure": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "agent-harness-build-fork-adopt-yc-qm",
-      "apache-airflow-orchestration",
-      "application-data-flow-replicas-backups",
-      "cloud-ml-infrastructure",
-      "computational-resources-ml",
-      "dev-environments-for-ai-teams",
-      "docker-for-ml-engineers",
-      "enterprise-ai-platform-selection",
-      "enterprise-graph-mcp-architecture-gcp",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "kubernetes-minimum-subset-ml",
-      "llm-caching-four-layers",
-      "local-llm-inference-tools",
-      "network-fundamentals-every-concept",
-      "production-graph-stack-agents-mcp-ontologies",
-      "redis-for-ai-buy-vs-build-gcp",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "stack-recommendations-after-100-posts",
-      "terraform-infrastructure-as-code",
-      "vector-db-benchmarks"
-    ],
-    "Production ML": [
-      "agent-architecture-and-orchestration",
-      "agent-architectures-productive-patterns",
-      "agent-authentication-oauth-mcp-identity",
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "agent-harness-build-fork-adopt-yc-qm",
-      "agent-integration-protocols-mcp-and-a2a",
-      "bank-grade-agent-security-iam-gateways",
-      "claude-certified-architect-professional-exam-guide",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "docker-for-ml-engineers",
-      "document-processing-ocr-layout",
-      "dont-reinvent-the-agent-open-source-composition",
-      "elevenlabs-voice-ai-engineering",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-agents-governance-security-business",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "fine-tuning-gemma4-lora-qlora",
-      "finops-llm-agents-token-economics",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "hermes-self-improving-agent-persistent-memory",
-      "kubernetes-minimum-subset-ml",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-as-a-judge",
-      "llm-caching-four-layers",
-      "local-llm-inference-tools",
-      "mcp-production-enterprise",
-      "ml-metrics-evaluation-monitoring",
-      "ontology-to-agent-toolbox",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "operating-agents-eval-observability-scale",
-      "populating-knowledge-graph-llms-banking",
-      "production-graph-stack-agents-mcp-ontologies",
-      "production-llm-agents-patterns",
-      "query-routing-agent-decisions",
-      "rag-advanced-patterns",
-      "rag-building-production-systems",
-      "ragas-evaluating-rag",
-      "redis-for-ai-buy-vs-build-gcp",
-      "reinforcement-learning-in-practice",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks",
-      "vertex-ai-gcp-ml-platform-cli"
-    ],
     "Software Architecture": [
       "agent-harness-build-fork-adopt-yc-qm",
       "senior-product-engineering-scale-prioritization-architecture",
       "software-engineering-classics"
-    ],
-    "Best Practices": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-architecture-and-orchestration",
-      "agent-architectures-productive-patterns",
-      "agent-authentication-oauth-mcp-identity",
-      "agent-engineering-disciplines",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-guardrails-field-guide",
-      "agent-harness-build-fork-adopt-yc-qm",
-      "agent-integration-protocols-mcp-and-a2a",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "application-data-flow-replicas-backups",
-      "claude-certified-architect-professional-exam-guide",
-      "claude-certified-associate-exam-guide",
-      "claude-certified-developer-exam-guide",
-      "dama-dmbok-data-governance",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "dev-environments-for-ai-teams",
-      "dont-reinvent-the-agent-open-source-composition",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-agents-governance-security-business",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "finops-llm-agents-token-economics",
-      "foundations-of-agentic-ai-llms-to-agents",
-      "gemini-knowledge-catalog-workshop",
-      "git-and-github-complete-guide",
-      "google-cloud-certifications-2026-roadmap",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "knowledge-as-a-product",
-      "knowledge-catalog-vs-ontologies",
-      "lookml-semantic-layer-data-modeling",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "ml-cert-review-part-1-foundations",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "ml-metrics-evaluation-monitoring",
-      "modular-ontologies-core-domains-pattern",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "operating-agents-eval-observability-scale",
-      "python-beyond-the-basics",
-      "querying-code-graphs-blast-radius-localization",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "senior-api-design-contracts-versioning-dx",
-      "senior-data-modeling-query-patterns-database-design",
-      "senior-distributed-theory-cap-pacelc-tradeoffs",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "senior-product-engineering-scale-prioritization-architecture",
-      "software-engineering-classics",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "terraform-infrastructure-as-code"
     ],
     "Model Context Protocol": [
       "agent-graph-layer-why-grep-embeddings-fell-short",
@@ -13523,132 +14560,6 @@
       "stack-recommendations-after-100-posts",
       "structuring-ml-projects",
       "vertex-ai-gcp-ml-platform-cli"
-    ],
-    "Knowledge Graphs": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "defining-the-knowledge-stack",
-      "enterprise-graph-mcp-architecture-gcp",
-      "enterprise-knowledge-bases",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "graph-neural-networks-learning-structured-data",
-      "knowledge-as-a-product",
-      "knowledge-catalog-vs-ontologies",
-      "knowledge-graphs-practice",
-      "modular-ontologies-core-domains-pattern",
-      "network-science-communities-centrality",
-      "ontologies-building-knowledge-bases",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-production-pipeline-gcp",
-      "ontology-to-agent-toolbox",
-      "pagerank-eigenvectors",
-      "populating-knowledge-graph-llms-banking",
-      "production-graph-stack-agents-mcp-ontologies",
-      "query-routing-agent-decisions",
-      "querying-code-graphs-blast-radius-localization",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "spanner-graph-for-knowledge-and-agents",
-      "tbox-abox-schema-facts-distinction"
-    ],
-    "Graph Databases": [
-      "enterprise-graph-mcp-architecture-gcp",
-      "spanner-graph-for-knowledge-and-agents"
-    ],
-    "Data Architecture": [
-      "application-data-flow-replicas-backups",
-      "claude-certified-architect-professional-exam-guide",
-      "comparing-knowledge-bases-semantic-overlap",
-      "dama-dmbok-data-governance",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "defining-the-knowledge-stack",
-      "dimensional-modeling-kimball",
-      "enterprise-graph-mcp-architecture-gcp",
-      "enterprise-knowledge-bases",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "gemini-knowledge-catalog-workshop",
-      "google-cloud-next-2026-agent-native-stack",
-      "knowledge-as-a-product",
-      "knowledge-catalog-vs-ontologies",
-      "knowledge-graphs-practice",
-      "lakehouse-architecture",
-      "lookml-semantic-layer-data-modeling",
-      "modular-ontologies-core-domains-pattern",
-      "ontologies-building-knowledge-bases",
-      "ontology-production-pipeline-gcp",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "senior-data-modeling-query-patterns-database-design",
-      "spanner-graph-for-knowledge-and-agents",
-      "tbox-abox-schema-facts-distinction",
-      "vector-databases-indexes-to-vertex-search"
-    ],
-    "Data Engineering": [
-      "100-posts-knowledge-graph-retrospective",
-      "ai-poc-enterprise-evaluation",
-      "apache-airflow-orchestration",
-      "apache-spark-ecosystem-guide",
-      "application-data-flow-replicas-backups",
-      "dama-dmbok-data-governance",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "dbt-analytics-engineering",
-      "dimensional-modeling-kimball",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-graph-mcp-architecture-gcp",
-      "files-under-the-hood",
-      "google-cloud-certifications-2026-roadmap",
-      "lakehouse-architecture",
-      "lookml-semantic-layer-data-modeling",
-      "ml-libraries-under-the-hood",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-production-pipeline-gcp",
-      "populating-knowledge-graph-llms-banking",
-      "senior-data-modeling-query-patterns-database-design",
-      "sql-pandas-pyspark-duckdb",
-      "tbox-abox-schema-facts-distinction",
-      "text-to-sql"
-    ],
-    "Cloud Computing": [
-      "agent-architectures-productive-patterns",
-      "ai-poc-enterprise-evaluation",
-      "application-data-flow-replicas-backups",
-      "bank-grade-agent-security-iam-gateways",
-      "cloud-ml-infrastructure",
-      "computational-resources-ml",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "dev-environments-for-ai-teams",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-ai-platform-selection",
-      "enterprise-graph-mcp-architecture-gcp",
-      "finops-llm-agents-token-economics",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-certifications-2026-roadmap",
-      "google-cloud-next-2026-agent-native-stack",
-      "knowledge-as-a-product",
-      "kubernetes-minimum-subset-ml",
-      "lakehouse-architecture",
-      "network-fundamentals-every-concept",
-      "ontology-production-pipeline-gcp",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "stack-recommendations-after-100-posts",
-      "terraform-infrastructure-as-code",
-      "vector-databases-indexes-to-vertex-search",
-      "vertex-ai-gcp-ml-platform-cli"
-    ],
-    "Data Governance": [
-      "application-data-flow-replicas-backups",
-      "dama-dmbok-data-governance",
-      "data-silos-breaking-information-barriers",
-      "enterprise-graph-mcp-architecture-gcp",
-      "gemini-knowledge-catalog-workshop",
-      "knowledge-as-a-product",
-      "lookml-semantic-layer-data-modeling"
     ],
     "GraphRAG": [
       "knowledge-graphs-practice",
@@ -13849,24 +14760,6 @@
       "enterprise-agents-governance-security-business",
       "magnifica-humanitas-ai-encyclical-analysis"
     ],
-    "Machine Learning": [
-      "cloud-ml-infrastructure",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "elevenlabs-voice-ai-engineering",
-      "experiment-tracking-mlops",
-      "graph-neural-networks-learning-structured-data",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "ml-cert-review-part-1-foundations",
-      "ml-libraries-under-the-hood",
-      "ml-metrics-evaluation-monitoring",
-      "pytorch-tensorflow-deep-learning-frameworks",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rlhf-dpo-alignment",
-      "vertex-ai-gcp-ml-platform-cli",
-      "working-with-ml-models"
-    ],
     "Enterprise AI": [
       "ai-poc-enterprise-evaluation",
       "bank-grade-agent-security-iam-gateways",
@@ -14048,34 +14941,6 @@
       "enterprise-ai-platform-selection",
       "knowledge-as-a-product"
     ],
-    "Embeddings": [
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "comparing-knowledge-bases-semantic-overlap",
-      "defining-the-knowledge-stack",
-      "document-processing-ocr-layout",
-      "embeddings-geometry-of-meaning",
-      "enterprise-knowledge-bases",
-      "fine-tuning-embeddings",
-      "fourier-transform",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "graph-neural-networks-learning-structured-data",
-      "knowledge-base-curation",
-      "knowledge-graphs-practice",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-caching-four-layers",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "query-routing-agent-decisions",
-      "rag-building-production-systems",
-      "rag-retrieval-augmented-generation",
-      "the-manifold-hypothesis",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks"
-    ],
     "Information Retrieval": [
       "100-posts-knowledge-graph-retrospective",
       "agent-graph-layer-why-grep-embeddings-fell-short",
@@ -14100,46 +14965,7 @@
       "vector-databases-indexes-to-vertex-search",
       "vector-db-benchmarks"
     ],
-    "Algorithms": [
-      "100-posts-knowledge-graph-retrospective",
-      "algebraic-number-theory-when-factorization-breaks",
-      "attention-is-all-you-need",
-      "benfords-law",
-      "collatz-conjecture",
-      "content-addressable-hash-as-engineering-tool",
-      "fermat-n4-infinite-descent",
-      "files-under-the-hood",
-      "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-neural-networks-learning-structured-data",
-      "graph-theory-mathematics-of-connections",
-      "mamba-selective-state-spaces",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "pagerank-eigenvectors",
-      "querying-code-graphs-blast-radius-localization",
-      "ramanujan-constant-almost-integer",
-      "regex-engines-finite-automata",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete",
-      "the-manifold-hypothesis",
-      "vector-databases-indexes-to-vertex-search"
-    ],
     "PageRank": [
-      "querying-code-graphs-blast-radius-localization"
-    ],
-    "Graph Theory": [
-      "100-posts-knowledge-graph-retrospective",
-      "graph-neural-networks-learning-structured-data",
-      "graph-theory-mathematics-of-connections",
-      "network-science-communities-centrality",
-      "pagerank-eigenvectors",
       "querying-code-graphs-blast-radius-localization"
     ],
     "System Design": [
@@ -14176,10 +15002,6 @@
     "Consistency": [
       "senior-distributed-theory-cap-pacelc-tradeoffs"
     ],
-    "Databases": [
-      "senior-data-modeling-query-patterns-database-design",
-      "senior-distributed-theory-cap-pacelc-tradeoffs"
-    ],
     "Trade-offs": [
       "senior-distributed-theory-cap-pacelc-tradeoffs"
     ],
@@ -14197,17 +15019,6 @@
     ],
     "Backend Engineering": [
       "senior-api-design-contracts-versioning-dx"
-    ],
-    "SQL": [
-      "apache-spark-ecosystem-guide",
-      "dbt-analytics-engineering",
-      "dimensional-modeling-kimball",
-      "lookml-semantic-layer-data-modeling",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "senior-data-modeling-query-patterns-database-design",
-      "spanner-graph-for-knowledge-and-agents",
-      "sql-pandas-pyspark-duckdb",
-      "text-to-sql"
     ],
     "Data Modeling": [
       "dama-dmbok-data-governance",
@@ -14370,30 +15181,6 @@
       "shannon-number-chess-game-tree",
       "vector-databases-indexes-to-vertex-search"
     ],
-    "Mathematics": [
-      "100-posts-knowledge-graph-retrospective",
-      "algebraic-number-theory-when-factorization-breaks",
-      "benfords-law",
-      "collatz-conjecture",
-      "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
-      "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-theory-mathematics-of-connections",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "pagerank-eigenvectors",
-      "ramanujan-constant-almost-integer",
-      "regex-engines-finite-automata",
-      "reinforcement-learning-first-principles",
-      "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
-      "scaling-laws-neural-language-models",
-      "shannon-number-chess-game-tree",
-      "sum-of-naturals-minus-one-twelfth",
-      "tetris-np-complete",
-      "the-manifold-hypothesis"
-    ],
     "Computer Science": [
       "100-posts-knowledge-graph-retrospective",
       "algebraic-number-theory-when-factorization-breaks",
@@ -14543,21 +15330,6 @@
     "RNNs": [
       "ml-cert-review-part-2-deep-learning-and-beyond"
     ],
-    "Statistics": [
-      "100-posts-knowledge-graph-retrospective",
-      "benfords-law",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality"
-    ],
-    "Linear Algebra": [
-      "algebraic-number-theory-when-factorization-breaks",
-      "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
-      "fourier-transform",
-      "ml-cert-review-part-1-foundations",
-      "pagerank-eigenvectors",
-      "the-manifold-hypothesis"
-    ],
     "Google Cloud": [
       "gemini-enterprise-knowledge-catalog-deep-dive",
       "google-adk-agent-development-deep-dive",
@@ -14576,14 +15348,6 @@
       "populating-knowledge-graph-llms-banking",
       "rag-building-production-systems",
       "text-to-sql"
-    ],
-    "Data Quality": [
-      "application-data-flow-replicas-backups",
-      "benfords-law",
-      "dama-dmbok-data-governance",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "knowledge-base-curation"
     ],
     "Data Lakehouse": [
       "application-data-flow-replicas-backups",
@@ -14607,14 +15371,6 @@
     ],
     "Information Extraction": [
       "populating-knowledge-graph-llms-banking"
-    ],
-    "Neo4j": [
-      "knowledge-graphs-practice",
-      "modular-ontologies-core-domains-pattern",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-to-agent-toolbox",
-      "populating-knowledge-graph-llms-banking",
-      "tbox-abox-schema-facts-distinction"
     ],
     "SHACL": [
       "ontology-production-pipeline-gcp",
@@ -14663,11 +15419,6 @@
       "network-science-communities-centrality",
       "pagerank-eigenvectors"
     ],
-    "Data Science": [
-      "benfords-law",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "network-science-communities-centrality"
-    ],
     "Topology": [
       "algebraic-number-theory-when-factorization-breaks",
       "graph-theory-mathematics-of-connections",
@@ -14678,13 +15429,6 @@
       "graph-theory-mathematics-of-connections",
       "rubiks-cube-group-theory",
       "shannon-number-chess-game-tree"
-    ],
-    "Data Structures": [
-      "content-addressable-hash-as-engineering-tool",
-      "files-under-the-hood",
-      "graph-theory-mathematics-of-connections",
-      "pagerank-eigenvectors",
-      "python-beyond-the-basics"
     ],
     "Number Theory": [
       "algebraic-number-theory-when-factorization-breaks",
@@ -14711,14 +15455,6 @@
     "Geometry": [
       "algebraic-number-theory-when-factorization-breaks",
       "fermat-n4-infinite-descent",
-      "the-manifold-hypothesis"
-    ],
-    "Representation Learning": [
-      "attention-is-all-you-need",
-      "embeddings-geometry-of-meaning",
-      "fourier-transform",
-      "graph-neural-networks-learning-structured-data",
-      "multimodal-embeddings-metric-problem",
       "the-manifold-hypothesis"
     ],
     "Fraud Detection": [
@@ -14791,15 +15527,6 @@
     ],
     "CLIP": [
       "multimodal-embeddings-metric-problem"
-    ],
-    "Benchmarks": [
-      "ai-poc-enterprise-evaluation",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "ragas-evaluating-rag",
-      "vector-db-benchmarks"
     ],
     "Bash": [
       "bash-daily-driver-ml-engineer"
@@ -14917,11 +15644,6 @@
     "Document Processing": [
       "document-processing-ocr-layout",
       "knowledge-base-curation"
-    ],
-    "Enterprise Data": [
-      "dama-dmbok-data-governance",
-      "data-silos-breaking-information-barriers",
-      "ontologies-building-knowledge-bases"
     ],
     "Apache Spark": [
       "apache-spark-ecosystem-guide"
@@ -15155,6 +15877,8 @@
       "application-data-flow-replicas-backups",
       "bank-grade-agent-security-iam-gateways",
       "bash-daily-driver-ml-engineer",
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
       "claude-certified-architect-professional-exam-guide",
       "claude-certified-associate-exam-guide",
       "claude-certified-developer-exam-guide",
@@ -15194,6 +15918,9 @@
       "google-adk-agent-development-deep-dive",
       "google-cloud-certifications-2026-roadmap",
       "google-cloud-next-2026-agent-native-stack",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
       "graph-layer-in-production-mcp-build-vs-buy",
       "graph-memory-temporal-agents-graphiti-cognee",
       "graph-neural-networks-learning-structured-data",
@@ -15221,12 +15948,14 @@
       "mteb-embedding-benchmarks",
       "multimodal-embeddings-metric-problem",
       "network-fundamentals-every-concept",
+      "node-embeddings-fastrp-node2vec-graphsage",
       "ontologies-building-knowledge-bases",
       "ontology-production-pipeline-gcp",
       "ontology-to-agent-toolbox",
       "openclaw-anatomy-viral-agent-platform",
       "openclaw-vs-hermes-self-hosted-agent-comparison",
       "operating-agents-eval-observability-scale",
+      "organizational-network-analysis-company-graph",
       "populating-knowledge-graph-llms-banking",
       "production-graph-stack-agents-mcp-ontologies",
       "production-llm-agents-patterns",
@@ -15334,6 +16063,14 @@
         "to": "agent-harness-build-fork-adopt-yc-qm"
       },
       {
+        "from": "centrality-communities-in-practice",
+        "to": "organizational-network-analysis-company-graph"
+      },
+      {
+        "from": "dama-dmbok-data-governance",
+        "to": "organizational-network-analysis-company-graph"
+      },
+      {
         "from": "dbt-analytics-engineering",
         "to": "lookml-semantic-layer-data-modeling"
       },
@@ -15348,6 +16085,10 @@
       {
         "from": "embeddings-geometry-of-meaning",
         "to": "agent-memory-and-retrieval-embeddings-to-rag"
+      },
+      {
+        "from": "embeddings-geometry-of-meaning",
+        "to": "node-embeddings-fastrp-node2vec-graphsage"
       },
       {
         "from": "embeddings-geometry-of-meaning",
@@ -15382,8 +16123,32 @@
         "to": "gemini-enterprise-knowledge-catalog-deep-dive"
       },
       {
+        "from": "gql-standard-cypher-sqlpgq",
+        "to": "choosing-a-graph-engine-2026"
+      },
+      {
+        "from": "graph-analytics-gds-execution-model",
+        "to": "centrality-communities-in-practice"
+      },
+      {
+        "from": "graph-analytics-gds-execution-model",
+        "to": "node-embeddings-fastrp-node2vec-graphsage"
+      },
+      {
+        "from": "graph-engine-internals-index-free-adjacency",
+        "to": "choosing-a-graph-engine-2026"
+      },
+      {
+        "from": "graph-engine-internals-index-free-adjacency",
+        "to": "gql-standard-cypher-sqlpgq"
+      },
+      {
         "from": "graph-memory-temporal-agents-graphiti-cognee",
         "to": "graph-layer-in-production-mcp-build-vs-buy"
+      },
+      {
+        "from": "graph-neural-networks-learning-structured-data",
+        "to": "node-embeddings-fastrp-node2vec-graphsage"
       },
       {
         "from": "graph-theory-mathematics-of-connections",
@@ -15416,6 +16181,18 @@
       {
         "from": "knowledge-graphs-practice",
         "to": "agent-graph-layer-why-grep-embeddings-fell-short"
+      },
+      {
+        "from": "knowledge-graphs-practice",
+        "to": "gql-standard-cypher-sqlpgq"
+      },
+      {
+        "from": "knowledge-graphs-practice",
+        "to": "graph-analytics-gds-execution-model"
+      },
+      {
+        "from": "knowledge-graphs-practice",
+        "to": "graph-engine-internals-index-free-adjacency"
       },
       {
         "from": "knowledge-graphs-practice",
@@ -15502,6 +16279,18 @@
         "to": "ontology-production-pipeline-gcp"
       },
       {
+        "from": "network-science-communities-centrality",
+        "to": "centrality-communities-in-practice"
+      },
+      {
+        "from": "network-science-communities-centrality",
+        "to": "graph-analytics-gds-execution-model"
+      },
+      {
+        "from": "network-science-communities-centrality",
+        "to": "organizational-network-analysis-company-graph"
+      },
+      {
         "from": "ontologies-building-knowledge-bases",
         "to": "knowledge-catalog-vs-ontologies"
       },
@@ -15520,6 +16309,10 @@
       {
         "from": "operating-agents-eval-observability-scale",
         "to": "enterprise-agents-governance-security-business"
+      },
+      {
+        "from": "pagerank-eigenvectors",
+        "to": "centrality-communities-in-practice"
       },
       {
         "from": "pagerank-eigenvectors",
@@ -15600,6 +16393,10 @@
       {
         "from": "senior-infrastructure-distributed-systems-failure-networking",
         "to": "senior-data-modeling-query-patterns-database-design"
+      },
+      {
+        "from": "spanner-graph-for-knowledge-and-agents",
+        "to": "choosing-a-graph-engine-2026"
       },
       {
         "from": "spanner-graph-for-knowledge-and-agents",

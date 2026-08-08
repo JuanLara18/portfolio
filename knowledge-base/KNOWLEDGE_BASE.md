@@ -110,6 +110,19 @@ Why grep and embeddings stop being enough for coding agents, and what replaces t
 4. graph-memory-temporal-agents-graphiti-cognee
 5. graph-layer-in-production-mcp-build-vs-buy
 
+### Graph Engines Under the Hood (three-part series)
+How a graph engine actually works underneath, what the query standard changed, and how to pick one.
+1. graph-engine-internals-index-free-adjacency
+2. gql-standard-cypher-sqlpgq
+3. choosing-a-graph-engine-2026
+
+### Graph Analytics in Production (four-part series)
+Computing over a graph rather than modelling it: the execution model, the algorithms, the embeddings, and an applied case.
+1. graph-analytics-gds-execution-model
+2. centrality-communities-in-practice
+3. node-embeddings-fastrp-node2vec-graphsage
+4. organizational-network-analysis-company-graph
+
 ### Senior Engineering Judgment in the AI Era (five-part series)
 What stays scarce when an AI can generate the code: infrastructure, data modeling, API contracts, distributed-systems theory, and product judgment.
 1. senior-infrastructure-distributed-systems-failure-networking
@@ -149,7 +162,8 @@ The four-part arc on Google's Knowledge Catalog vs ontologies, plus the hands-on
 - **GCP**: gcp-ai-stack-vertex-alloydb-knowledge-pipeline, vertex-ai-gcp-ml-platform-cli, cloud-ml-infrastructure
 - **Anthropic / Claude**: claude-code-complete-guide, model-context-protocol, mcp-production-enterprise, mcp-server-nl-to-powerbi-dashboard
 - **LangChain / LangGraph / LlamaIndex**: langgraph-multi-agent-workflows, llamaindex-langchain-llm-frameworks
-- **Neo4j / graph DBs**: knowledge-graphs-practice, ontology-to-agent-toolbox
+- **Neo4j / graph DBs**: knowledge-graphs-practice, ontology-to-agent-toolbox, graph-engine-internals-index-free-adjacency, gql-standard-cypher-sqlpgq, choosing-a-graph-engine-2026
+- **Graph analytics / GDS**: graph-analytics-gds-execution-model, centrality-communities-in-practice, node-embeddings-fastrp-node2vec-graphsage, organizational-network-analysis-company-graph
 - **dbt / warehouse modeling**: dbt-analytics-engineering, dimensional-modeling-kimball, lookml-semantic-layer-data-modeling
 - **Spark / pandas / DuckDB**: apache-spark-ecosystem-guide, sql-pandas-pyspark-duckdb
 - **Docker / Kubernetes**: docker-for-ml-engineers, kubernetes-minimum-subset-ml
@@ -197,6 +211,55 @@ Per-post enrichment that supplements frontmatter. Edit the YAML block below to a
 Add new entries as you publish or as you want to enrich an older post. The build script re-derives `concept_index`, `prereq_graph`, and `tech_index` from this block on every run.
 
 ```yaml
+graph-engine-internals-index-free-adjacency:
+  concepts: [index-free adjacency, record layout, pointer chasing, supernode problem, traversal cost, GraphBLAS]
+  prereqs: [knowledge-graphs-practice]
+  teaches: [reason about traversal cost versus join cost, read a graph store record layout, diagnose supernode bottlenecks, tell native from layered graph engines]
+  tech: [neo4j, falkordb]
+  depth: deep
+
+gql-standard-cypher-sqlpgq:
+  concepts: [GQL, ISO/IEC 39075, SQL/PGQ, graph pattern matching, query portability, vendor lock-in]
+  prereqs: [graph-engine-internals-index-free-adjacency, knowledge-graphs-practice]
+  teaches: [read and write GQL, query a property graph over relational tables with SQL/PGQ, isolate vendor extensions, assess query portability]
+  tech: [gql, cypher, sql, postgres]
+  depth: deep
+
+choosing-a-graph-engine-2026:
+  concepts: [engine selection, workload profiling, graph-on-relational, embedded graph databases, total cost of ownership]
+  prereqs: [graph-engine-internals-index-free-adjacency, gql-standard-cypher-sqlpgq, spanner-graph-for-knowledge-and-agents]
+  teaches: [profile a graph workload, choose between native and embedded and managed engines, recognise when no graph database is needed, budget operational cost]
+  tech: [neo4j, memgraph, falkordb, ladybugdb, cloud-spanner, neptune, puppygraph]
+  depth: deep
+
+graph-analytics-gds-execution-model:
+  concepts: [graph projection, CSR representation, execution modes, memory estimation, algorithm catalog, serverless graph analytics]
+  prereqs: [knowledge-graphs-practice, network-science-communities-centrality]
+  teaches: [project a subgraph into memory, choose an execution mode, estimate memory before running, chain algorithms with mutate, run graph analytics on non-Neo4j sources]
+  tech: [neo4j, gds, graphdatascience, aura]
+  depth: deep
+
+centrality-communities-in-practice:
+  concepts: [centrality selection, approximate betweenness, personalized PageRank, resolution limit, Leiden, partition stability]
+  prereqs: [graph-analytics-gds-execution-model, network-science-communities-centrality, pagerank-eigenvectors]
+  teaches: [pick a centrality measure for a business question, scale betweenness with sampling, tune PageRank damping, prefer Leiden over Louvain, measure partition stability, validate communities without ground truth]
+  tech: [neo4j, gds, networkx]
+  depth: deep
+
+node-embeddings-fastrp-node2vec-graphsage:
+  concepts: [node embeddings, Johnson-Lindenstrauss lemma, FastRP, Node2Vec, GraphSAGE, transductive versus inductive, temporal leakage]
+  prereqs: [graph-analytics-gds-execution-model, embeddings-geometry-of-meaning, graph-neural-networks-learning-structured-data]
+  teaches: [choose between transductive and inductive embeddings, size an embedding dimension empirically, avoid temporal leakage in evaluation, concatenate graph embeddings with tabular features]
+  tech: [neo4j, gds, pytorch-geometric]
+  depth: deep
+
+organizational-network-analysis-company-graph:
+  concepts: [organizational network analysis, structural holes, E-I index, key-person risk, structural re-identification, employee analytics governance]
+  prereqs: [centrality-communities-in-practice, network-science-communities-centrality, dama-dmbok-data-governance]
+  teaches: [build a collaboration graph from communication metadata, weight organizational edges, read brokerage and silo measures, apply minimum aggregation thresholds, ground employee analytics in a lawful basis]
+  tech: [networkx, neo4j, gds]
+  depth: deep
+
 query-routing-agent-decisions:
   concepts: [tool routing, query classification, retrieval evaluation, cascading retrieval, RAG]
   prereqs: [rag-retrieval-augmented-generation, production-llm-agents-patterns, model-context-protocol]
@@ -541,8 +604,15 @@ dont-reinvent-the-agent-open-source-composition:
 
 Auto-generated index of every post by category, sorted most recent first. Use this when you need a complete inventory of what the blog covers — for example, when loaded as Claude Project knowledge and you cannot query `posts.json`.
 
-### field-notes (121 posts)
+### field-notes (128 posts)
 
+- **`organizational-network-analysis-company-graph`** *(deep)* — Organizational Network Analysis: The Company Graph Nobody Drew. Every company has two structures: the org chart someone designed, and the collaboration network that actually emerged. Part 4 of Graph Analytics in Production applies centrality, community detection, and structural holes to the organization itself, and spends as much time on the ethics as on the algorithms, because this is the one graph where getting the governance wrong hurts people. Concepts: organizational network analysis, structural holes, E-I index, key-person risk, structural re-identification, employee analytics governance. Tech: networkx, neo4j, gds.
+- **`node-embeddings-fastrp-node2vec-graphsage`** *(deep)* — Node Embeddings: FastRP, Node2Vec, and GraphSAGE in Production. Part 3 of Graph Analytics in Production. Centrality gives you one number per node; embeddings give you a hundred and twenty-eight. This post covers what those numbers actually preserve, why FastRP wins on cost through the Johnson-Lindenstrauss lemma, when Node2Vec's p and q knobs are worth their price, why GraphSAGE is the only inductive option, and the temporal leakage trap that makes offline metrics beautiful and production metrics honest. Concepts: node embeddings, Johnson-Lindenstrauss lemma, FastRP, Node2Vec, GraphSAGE, transductive versus inductive. Tech: neo4j, gds, pytorch-geometric.
+- **`centrality-communities-in-practice`** *(deep)* — Centrality and Communities in Practice. The theory says betweenness finds brokers and modularity finds communities. Production says your top broker is the IT helpdesk service account and your communities change every time you rerun the job. This is the practitioner's guide to centrality and community detection on real graphs: which measure answers which question, why betweenness will not scale, what the PageRank knobs actually control, the resolution limit you cannot tune away, and why you must never ship a community ID as a stable key. Concepts: centrality selection, approximate betweenness, personalized PageRank, resolution limit, Leiden, partition stability. Tech: neo4j, gds, networkx.
+- **`graph-analytics-gds-execution-model`** *(deep)* — Graph Analytics at Scale: The GDS Execution Model. Most engineers meet graph algorithms as textbook pseudocode, then try to run one on a real graph and discover the algorithm was never the hard part. Part 1 of a series on graph analytics in production: why transactional storage is the wrong shape, what CSR actually is, how projections decide both your memory bill and your answer, the five execution modes, and the serverless shift that takes the graph database off the critical path. Concepts: graph projection, CSR representation, execution modes, memory estimation, algorithm catalog, serverless graph analytics. Tech: neo4j, gds, graphdatascience, aura.
+- **`choosing-a-graph-engine-2026`** *(deep)* — Choosing a Graph Engine in 2026. Part 3 of Graph Engines Under the Hood. Not a feature matrix, but a decision framework: four questions about your workload that actually determine the answer, an honest survey of where every engine category sits in 2026, the cautionary tale of Kuzu's disappearance, and the uncomfortable case that you may not need a graph database at all. Concepts: engine selection, workload profiling, graph-on-relational, embedded graph databases, total cost of ownership. Tech: neo4j, memgraph, falkordb, ladybugdb, cloud-spanner, neptune, puppygraph.
+- **`gql-standard-cypher-sqlpgq`** *(deep)* — GQL: The First New ISO Query Language Standard Since SQL. In April 2024, ISO published GQL as ISO/IEC 39075 — the first genuinely new database query language standard since SQL in 1987. Thirty-seven years. Part 2 of Graph Engines Under the Hood looks at what GQL actually standardizes, how it diverges from Cypher, why SQL/PGQ matters more than most teams realize, and how much of it is really implemented in 2026. Concepts: GQL, ISO/IEC 39075, SQL/PGQ, graph pattern matching, query portability, vendor lock-in. Tech: gql, cypher, sql, postgres.
+- **`graph-engine-internals-index-free-adjacency`** *(deep)* — Inside a Graph Engine: Index-Free Adjacency and Why a Traversal Is Not a Join. Everyone repeats that graph databases are faster for connected data, and almost nobody says why. This is the mechanical answer: fixed-size records, physical pointers, offset arithmetic, and the doubly-linked relationship chain that turns a hop into a dereference. Plus the honest accounting of what it costs, when a columnar relational engine still wins, and why traversal-as-matrix-multiply is a genuinely different machine. Concepts: index-free adjacency, record layout, pointer chasing, supernode problem, traversal cost, GraphBLAS. Tech: neo4j, falkordb.
 - **`agent-harness-build-fork-adopt-yc-qm`** *(deep)* — Anatomy of an Agent Harness: Reading YC's QM and Deciding When to Build, Fork, or Adopt. Y Combinator open-sourced the multi-agent harness that runs its own company. Reading the source settles an argument: the agent loop is the easy part, and the other forty-six directories are the reason you should not write one from scratch. Concepts: agent harness, harness vs framework, turn orchestration, predeclared command policy, security posture, multiplayer scoping. Tech: qm, pi, opencode, claude-code, codex, postgres, fly-io, aws.
 - **`dont-reinvent-the-agent-open-source-composition`** *(deep)* — Don't Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems. Why senior AI architects stop building agent infrastructure from scratch, how to compose heavy-hitting open-source building blocks like superpowers, Mem0, Instructor, and turbovec, and critical trade-offs vs enterprise cloud platforms like GCP GEAP. Concepts: open-source composition, adopt vs wrap vs fork, agent control plane, structured outputs, agent memory, vector quantization. Tech: mcp, fastmcp, instructor, mem0, graphiti, turbovec, e2b, ollama, gcp.
 - **`enterprise-graph-mcp-architecture-gcp`** *(deep)* — Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run. A practical blueprint for building an enterprise-wide, transversal Graph Context Engine on Google Cloud Platform using Cloud Spanner Graph, Dataplex Knowledge Catalog, and serverless MCP endpoints on Cloud Run. Concepts: transversal context engine, Cloud Spanner Graph, GQL, Dataplex Knowledge Catalog, serverless MCP, ABAC. Tech: gcp, cloud-spanner, dataplex, cloud-run, mcp, fastmcp, opentelemetry.
