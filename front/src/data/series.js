@@ -1,6 +1,6 @@
 // Curated narrative reading series for the blog.
 //
-// Each entry is an ordered arc of posts that build on one another ("Part 1/2/3").
+// Each entry is an ordered arc of posts that build on one another.
 // This is the single source of truth for the /blog/series page. Membership and
 // order are curated here (rather than per-post frontmatter) so the reading order
 // is explicit and easy to fix when an arc's prose numbering is inconsistent.
@@ -8,60 +8,154 @@
 // `posts` are post slugs. The category is resolved at render time by joining
 // against blogData.json, so only the slug is needed here. Slugs that no longer
 // exist are dropped defensively by getSeriesWithPosts() in blogUtils.js.
+//
+// Posts may appear in more than one series — series are reading *paths*, not
+// partitions.
 
 export const SERIES = [
+  // ── ML & Deep Learning ────────────────────────────────────────────────
   {
-    id: 'agentic-ai-engineering',
-    title: 'Agentic AI Engineering, end to end',
+    id: 'foundations-of-ml',
+    title: 'Machine Learning from First Principles',
     description:
-      'A six-part path through building production agents: how LLMs actually think, ' +
-      'architecture and orchestration, memory and retrieval, the integration protocols ' +
-      'that connect them, operating them at scale, and the enterprise shield of ' +
-      'governance, security, and business value.',
+      'Everything you need before touching an LLM: the full ML stack from Python and ' +
+      'libraries to hardware, models, evaluation, experiment tracking, and a certification ' +
+      'review as capstone.',
     posts: [
-      'foundations-of-agentic-ai-llms-to-agents',
-      'agent-architecture-and-orchestration',
-      'agent-memory-and-retrieval-embeddings-to-rag',
-      'agent-integration-protocols-mcp-and-a2a',
-      'operating-agents-eval-observability-scale',
-      'enterprise-agents-governance-security-business',
+      'python-beyond-the-basics',
+      'structuring-ml-projects',
+      'ml-libraries-under-the-hood',
+      'computational-resources-ml',
+      'working-with-ml-models',
+      'ml-metrics-evaluation-monitoring',
+      'experiment-tracking-mlops',
+      'ml-cert-review-part-1-foundations',
+      'ml-cert-review-part-2-deep-learning-and-beyond',
     ],
   },
   {
-    id: 'production-rag',
-    title: 'RAG, from foundations to production',
+    id: 'deep-learning-architectures',
+    title: 'Deep Learning Architectures: The Papers That Shaped the Field',
     description:
-      'The full arc of retrieval-augmented generation: the core idea, building a real pipeline, the advanced patterns that survive production, and how to evaluate the whole thing.',
+      'The papers and architectures that changed everything, read closely: from the ' +
+      'manifold hypothesis and embeddings through scaling laws, Transformers, BERT, T5, ' +
+      'building GPT from scratch with Karpathy, to the Mamba alternative.',
+    posts: [
+      'the-manifold-hypothesis',
+      'embeddings-geometry-of-meaning',
+      'scaling-laws-neural-language-models',
+      'attention-is-all-you-need',
+      'bert-pre-training-bidirectional-transformers',
+      't5-text-to-text-transfer-transformer',
+      'microgpt-reading-karpathy',
+      'mamba-selective-state-spaces',
+    ],
+  },
+  {
+    id: 'reinforcement-learning',
+    title: 'Reinforcement Learning: Theory to Implementation',
+    description:
+      'RL from first principles to running code on GPUs: theory, algorithm taxonomy, ' +
+      'PyTorch implementation, and the bridge to LLM alignment via RLHF and DPO.',
+    posts: [
+      'reinforcement-learning-first-principles',
+      'rl-algorithm-taxonomy-tour',
+      'reinforcement-learning-in-practice',
+      'rlhf-dpo-alignment',
+    ],
+  },
+
+  // ── RAG & Retrieval ───────────────────────────────────────────────────
+  {
+    id: 'production-rag',
+    title: 'RAG: From Paper to Production',
+    description:
+      'The full arc of retrieval-augmented generation: the core idea, building a real ' +
+      'pipeline, the advanced patterns that survive production, grounding retrieval in ' +
+      'ontologies, intelligent query routing, LLM caching, and evaluating the whole thing.',
     posts: [
       'rag-retrieval-augmented-generation',
       'rag-building-production-systems',
       'rag-advanced-patterns',
+      'ontology-grounded-rag-chunks-in-nodes',
+      'query-routing-agent-decisions',
+      'llm-caching-four-layers',
       'ragas-evaluating-rag',
     ],
   },
   {
-    id: 'ontology-engineering',
-    title: 'Ontology engineering, end to end',
+    id: 'embeddings-and-retrieval',
+    title: 'Embeddings & Vector Search: The Retrieval Stack',
     description:
-      'Building knowledge graphs the disciplined way: separating schema from facts, keeping the model modular, shipping it on GCP, grounding RAG in it, and populating it from real documents with LLMs.',
+      'Everything between the text and the vector that reaches the model: what embeddings ' +
+      'are, how to fine-tune them, the multimodal frontier, benchmarks, where to store them, ' +
+      'and how documents enter the pipeline.',
     posts: [
+      'embeddings-geometry-of-meaning',
+      'fine-tuning-embeddings',
+      'multimodal-embeddings-metric-problem',
+      'mteb-embedding-benchmarks',
+      'vector-databases-indexes-to-vertex-search',
+      'vector-db-benchmarks',
+      'document-processing-ocr-layout',
+    ],
+  },
+
+  // ── Knowledge Engineering ─────────────────────────────────────────────
+  {
+    id: 'ontology-engineering',
+    title: 'Ontology Engineering, End to End',
+    description:
+      'Building knowledge graphs the disciplined way: foundations, separating schema from ' +
+      'facts, keeping the model modular, shipping it on GCP, grounding RAG in it, populating ' +
+      'it from real documents with LLMs, and turning the ontology into an agent toolbox.',
+    posts: [
+      'ontologies-building-knowledge-bases',
       'tbox-abox-schema-facts-distinction',
       'modular-ontologies-core-domains-pattern',
       'ontology-production-pipeline-gcp',
       'ontology-grounded-rag-chunks-in-nodes',
       'populating-knowledge-graph-llms-banking',
+      'ontology-to-agent-toolbox',
     ],
   },
   {
-    id: 'knowledge-catalog-arc',
-    title: 'The agent-native knowledge stack',
+    id: 'knowledge-systems',
+    title: 'The Knowledge Stack: From Data Governance to Agent-Ready Knowledge',
     description:
-      'A four-part arc on the modern agentic data layer: the guardrails every production agent needs, what Google launched at Cloud Next 2026, the Gemini Enterprise and Knowledge Catalog primitives, and how the Catalog and ontologies fit together.',
+      'The complete path from raw data to knowledge an agent can use: breaking silos, ' +
+      'data governance, knowledge graphs in practice, enterprise knowledge bases, curation, ' +
+      'defining the stack, knowledge as a product, and measuring semantic overlap.',
     posts: [
-      'agent-guardrails-field-guide',
-      'google-cloud-next-2026-agent-native-stack',
-      'gemini-enterprise-knowledge-catalog-deep-dive',
-      'knowledge-catalog-vs-ontologies',
+      'data-silos-breaking-information-barriers',
+      'dama-dmbok-data-governance',
+      'knowledge-graphs-practice',
+      'enterprise-knowledge-bases',
+      'knowledge-base-curation',
+      'defining-the-knowledge-stack',
+      'knowledge-as-a-product',
+      'comparing-knowledge-bases-semantic-overlap',
+    ],
+  },
+
+  // ── Graph Engineering ─────────────────────────────────────────────────
+  {
+    id: 'graph-engineering',
+    title: 'Graph Engineering: From Engine Internals to Analytics at Scale',
+    description:
+      'Graphs as infrastructure: how a graph engine stores and traverses data, the new ' +
+      'GQL query standard, choosing an engine in 2026, the GDS execution model, centrality ' +
+      'and community detection, node embeddings, graph neural networks, and a full fraud ' +
+      'detection pipeline.',
+    posts: [
+      'graph-engine-internals-index-free-adjacency',
+      'gql-standard-cypher-sqlpgq',
+      'choosing-a-graph-engine-2026',
+      'graph-analytics-gds-execution-model',
+      'centrality-communities-in-practice',
+      'node-embeddings-fastrp-node2vec-graphsage',
+      'graph-neural-networks-learning-structured-data',
+      'graph-fraud-detection-rings-synthetic-identity',
     ],
   },
   {
@@ -79,9 +173,149 @@ export const SERIES = [
       'graph-layer-in-production-mcp-build-vs-buy',
     ],
   },
+
+  // ── Agentic AI ────────────────────────────────────────────────────────
+  {
+    id: 'agentic-ai-foundations',
+    title: 'Agentic AI Engineering, End to End',
+    description:
+      'Building, operating, and governing production agents: how LLMs become agents, ' +
+      'architecture and orchestration, productive patterns, memory and retrieval, the ' +
+      'integration protocols that connect them, the engineering disciplines underneath, ' +
+      'operating them at scale, and the enterprise shield of governance and business value.',
+    posts: [
+      'foundations-of-agentic-ai-llms-to-agents',
+      'agent-architecture-and-orchestration',
+      'agent-architectures-productive-patterns',
+      'agent-memory-and-retrieval-embeddings-to-rag',
+      'agent-integration-protocols-mcp-and-a2a',
+      'agent-engineering-disciplines',
+      'operating-agents-eval-observability-scale',
+      'enterprise-agents-governance-security-business',
+    ],
+  },
+  {
+    id: 'agent-platform',
+    title: 'The Agent Platform: Building the Runtime Layer',
+    description:
+      'Control plane, runtime, sandbox, tool plane, golden paths. The five layers of ' +
+      'infrastructure that production agents need, from resource provisioning to multi-tenancy.',
+    posts: [
+      'agent-platform-control-plane-data-plane',
+      'agent-runtime-sessions-state-topology',
+      'sandboxing-agents-microvm-gvisor',
+      'mcp-registry-gateway-tool-plane',
+      'agent-golden-paths-multi-tenancy',
+    ],
+  },
+  {
+    id: 'agent-security-finops',
+    title: 'Securing and Financing AI Agents',
+    description:
+      'Identity, security, guardrails, governance, and the real economics of operating ' +
+      'agents: from field-guide guardrails and OAuth/MCP identity to bank-grade IAM, ' +
+      'enterprise lifecycle governance, and FinOps token economics.',
+    posts: [
+      'agent-guardrails-field-guide',
+      'agent-authentication-oauth-mcp-identity',
+      'bank-grade-agent-security-iam-gateways',
+      'enterprise-agent-governance-lifecycle',
+      'finops-llm-agents-token-economics',
+    ],
+  },
+  {
+    id: 'agent-tooling-ecosystem',
+    title: 'The Agent Tooling Landscape: Frameworks, Platforms, and Build-vs-Buy',
+    description:
+      'The real ecosystem: Google ADK in depth, LangGraph workflows, open-source agent ' +
+      'composition, the build-vs-fork-vs-adopt decision, and a head-to-head comparison of ' +
+      'self-hosted agent platforms.',
+    posts: [
+      'google-adk-agent-development-deep-dive',
+      'adk-advanced-evolution-of-agent-engineering',
+      'langgraph-multi-agent-workflows',
+      'dont-reinvent-the-agent-open-source-composition',
+      'agent-harness-build-fork-adopt-yc-qm',
+      'openclaw-anatomy-viral-agent-platform',
+      'hermes-self-improving-agent-persistent-memory',
+      'openclaw-vs-hermes-self-hosted-agent-comparison',
+    ],
+  },
+  {
+    id: 'mcp-in-depth',
+    title: 'Model Context Protocol: From Concept to Enterprise',
+    description:
+      'MCP end to end: the protocol itself, running it in production, building a real ' +
+      'MCP server (NL-to-PowerBI), and the registry and gateway that scale it.',
+    posts: [
+      'model-context-protocol',
+      'mcp-production-enterprise',
+      'mcp-server-nl-to-powerbi-dashboard',
+      'mcp-registry-gateway-tool-plane',
+    ],
+  },
+
+  // ── Data Engineering ──────────────────────────────────────────────────
+  {
+    id: 'data-engineering-stack',
+    title: 'The Modern Data Engineering Stack',
+    description:
+      'From fundamentals to the full modern stack: query tools, dimensional modeling, ' +
+      'lakehouse architecture, Spark, Airflow orchestration, dbt transformations, and ' +
+      'the LookML semantic layer.',
+    posts: [
+      'data-engineering-fundamentals',
+      'sql-pandas-pyspark-duckdb',
+      'dimensional-modeling-kimball',
+      'lakehouse-architecture',
+      'apache-spark-ecosystem-guide',
+      'apache-airflow-orchestration',
+      'dbt-analytics-engineering',
+      'lookml-semantic-layer-data-modeling',
+    ],
+  },
+
+  // ── Google Cloud for AI ───────────────────────────────────────────────
+  {
+    id: 'google-cloud-for-ai',
+    title: 'Google Cloud for AI: Vertex, Knowledge Catalog, and the Agent Stack',
+    description:
+      'The GCP AI platform from infrastructure to agent-native services: Vertex AI, the ' +
+      'GCP AI stack with AlloyDB, what Google launched at Cloud Next 2026, the Gemini ' +
+      'Enterprise and Knowledge Catalog primitives, the hands-on workshop, and how the ' +
+      'Catalog and ontologies fit together.',
+    posts: [
+      'vertex-ai-gcp-ml-platform-cli',
+      'gcp-ai-stack-vertex-alloydb-knowledge-pipeline',
+      'google-cloud-next-2026-agent-native-stack',
+      'gemini-enterprise-knowledge-catalog-deep-dive',
+      'gemini-knowledge-catalog-workshop',
+      'knowledge-catalog-vs-ontologies',
+    ],
+  },
+
+  // ── DevOps & Infrastructure ───────────────────────────────────────────
+  {
+    id: 'devops-infra-for-ml',
+    title: 'DevOps & Infrastructure for ML Engineers',
+    description:
+      'The infrastructure toolkit every ML engineer needs: shell, version control, ' +
+      'containers, orchestration, infrastructure as code, networking, and dev environments.',
+    posts: [
+      'bash-daily-driver-ml-engineer',
+      'git-and-github-complete-guide',
+      'docker-for-ml-engineers',
+      'kubernetes-minimum-subset-ml',
+      'terraform-infrastructure-as-code',
+      'network-fundamentals-every-concept',
+      'dev-environments-for-ai-teams',
+    ],
+  },
+
+  // ── Software Engineering Judgment ─────────────────────────────────────
   {
     id: 'senior-judgment-ai-era',
-    title: 'Senior engineering judgment in the AI era',
+    title: 'Senior Engineering Judgment in the AI Era',
     description:
       'What stays scarce when an AI can generate the code in seconds: infrastructure and ' +
       'failure domains, data modeling that outlives the app, API contracts, the distributed-' +
@@ -94,25 +328,35 @@ export const SERIES = [
       'senior-product-engineering-scale-prioritization-architecture',
     ],
   },
-  {
-    id: 'ml-cert-review',
-    title: 'ML certification review',
-    description:
-      'A two-part tour through the machine learning foundations and the deep learning material worth knowing, framed as a focused certification review.',
-    posts: [
-      'ml-cert-review-part-1-foundations',
-      'ml-cert-review-part-2-deep-learning-and-beyond',
-    ],
-  },
+
+  // ── Mathematical Curiosities ──────────────────────────────────────────
   {
     id: 'algebraic-number-theory',
-    title: 'When factorization breaks: an algebraic number theory thread',
+    title: 'When Factorization Breaks: An Algebraic Number Theory Thread',
     description:
-      'A three-part mathematical journey: how unique factorization fails, Fermat for n=4 by infinite descent, and the almost-integer mystery of the Ramanujan constant.',
+      'A three-part mathematical journey: how unique factorization fails, Fermat for ' +
+      'n=4 by infinite descent, and the almost-integer mystery of the Ramanujan constant.',
     posts: [
       'algebraic-number-theory-when-factorization-breaks',
       'fermat-n4-infinite-descent',
       'ramanujan-constant-almost-integer',
+    ],
+  },
+  {
+    id: 'mathematical-curiosities',
+    title: 'Mathematics & Computer Science Curiosities',
+    description:
+      'Where math meets computation: graph theory and network science, PageRank and ' +
+      'eigenvectors, the Fourier transform, regex engines as finite automata, why Tetris ' +
+      'is NP-complete, and the game tree behind chess.',
+    posts: [
+      'graph-theory-mathematics-of-connections',
+      'network-science-communities-centrality',
+      'pagerank-eigenvectors',
+      'fourier-transform',
+      'regex-engines-finite-automata',
+      'tetris-np-complete',
+      'shannon-number-chess-game-tree',
     ],
   },
 ];
