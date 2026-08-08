@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1785567568,
+  "generatedAt": 1786166732,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -276,6 +276,19 @@
       "audioUrl": "/blog/audio/field-notes/agent-engineering-disciplines.mp3",
       "translationModel": ""
     },
+    "field-notes/agent-golden-paths-multi-tenancy": {
+      "slug": "agent-golden-paths-multi-tenancy",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "96e7812ffdd25381f025491df5596d599e34f49749ec8464c5482fc5c8cba6de",
+      "sourceHash": "96e7812ffdd25381f025491df5596d599e34f49749ec8464c5482fc5c8cba6de",
+      "durationSec": 2390.76,
+      "byteSize": 14344560,
+      "narrationWordCount": 6003,
+      "audioUrl": "/blog/audio/field-notes/agent-golden-paths-multi-tenancy.mp3",
+      "translationModel": ""
+    },
     "field-notes/agent-graph-layer-why-grep-embeddings-fell-short": {
       "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
       "category": "field-notes",
@@ -339,6 +352,32 @@
       "byteSize": 11414736,
       "narrationWordCount": 4923,
       "audioUrl": "/blog/audio/field-notes/agent-memory-and-retrieval-embeddings-to-rag.mp3",
+      "translationModel": ""
+    },
+    "field-notes/agent-platform-control-plane-data-plane": {
+      "slug": "agent-platform-control-plane-data-plane",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "99048cde7dec92887ae278687e7a665c9ae302c62e081e22f4895f8028fa9bc1",
+      "sourceHash": "99048cde7dec92887ae278687e7a665c9ae302c62e081e22f4895f8028fa9bc1",
+      "durationSec": 2538.576,
+      "byteSize": 15231456,
+      "narrationWordCount": 6374,
+      "audioUrl": "/blog/audio/field-notes/agent-platform-control-plane-data-plane.mp3",
+      "translationModel": ""
+    },
+    "field-notes/agent-runtime-sessions-state-topology": {
+      "slug": "agent-runtime-sessions-state-topology",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "e3a463703a567c26cdf1fb57e5591eb998cf781caa86b935222a44f1fc85ef1e",
+      "sourceHash": "e3a463703a567c26cdf1fb57e5591eb998cf781caa86b935222a44f1fc85ef1e",
+      "durationSec": 2419.104,
+      "byteSize": 14514624,
+      "narrationWordCount": 5917,
+      "audioUrl": "/blog/audio/field-notes/agent-runtime-sessions-state-topology.mp3",
       "translationModel": ""
     },
     "field-notes/ai-poc-enterprise-evaluation": {
@@ -417,6 +456,32 @@
       "byteSize": 7273872,
       "narrationWordCount": 2943,
       "audioUrl": "/blog/audio/field-notes/bash-daily-driver-ml-engineer.mp3",
+      "translationModel": ""
+    },
+    "field-notes/centrality-communities-in-practice": {
+      "slug": "centrality-communities-in-practice",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "9eb29f82bad6a25a2a500c8c5b8a0a082acc03a5ba8f6ad7c878b78bfa958e9c",
+      "sourceHash": "9eb29f82bad6a25a2a500c8c5b8a0a082acc03a5ba8f6ad7c878b78bfa958e9c",
+      "durationSec": 2614.032,
+      "byteSize": 15684192,
+      "narrationWordCount": 6303,
+      "audioUrl": "/blog/audio/field-notes/centrality-communities-in-practice.mp3",
+      "translationModel": ""
+    },
+    "field-notes/choosing-a-graph-engine-2026": {
+      "slug": "choosing-a-graph-engine-2026",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "532b64d7acc216a7034141e3966394a5e5b5bd4555a251de2be82dd4d659e7f5",
+      "sourceHash": "532b64d7acc216a7034141e3966394a5e5b5bd4555a251de2be82dd4d659e7f5",
+      "durationSec": 2230.032,
+      "byteSize": 13380192,
+      "narrationWordCount": 5470,
+      "audioUrl": "/blog/audio/field-notes/choosing-a-graph-engine-2026.mp3",
       "translationModel": ""
     },
     "field-notes/claude-certified-architect-professional-exam-guide": {
@@ -926,6 +991,58 @@
       "audioUrl": "/blog/audio/field-notes/google-cloud-next-2026-agent-native-stack.mp3",
       "translationModel": ""
     },
+    "field-notes/gql-standard-cypher-sqlpgq": {
+      "slug": "gql-standard-cypher-sqlpgq",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "88a2c41523d5c76b631d264922d42f64f2c88356f63d2e2471c663a5fc8621a8",
+      "sourceHash": "88a2c41523d5c76b631d264922d42f64f2c88356f63d2e2471c663a5fc8621a8",
+      "durationSec": 2237.16,
+      "byteSize": 13422960,
+      "narrationWordCount": 5228,
+      "audioUrl": "/blog/audio/field-notes/gql-standard-cypher-sqlpgq.mp3",
+      "translationModel": ""
+    },
+    "field-notes/graph-analytics-gds-execution-model": {
+      "slug": "graph-analytics-gds-execution-model",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "2c08c726909eee61682157746c2bb2a58ea261b70cc7a3a710d95fe3f995d104",
+      "sourceHash": "2c08c726909eee61682157746c2bb2a58ea261b70cc7a3a710d95fe3f995d104",
+      "durationSec": 2251.104,
+      "byteSize": 13506624,
+      "narrationWordCount": 5511,
+      "audioUrl": "/blog/audio/field-notes/graph-analytics-gds-execution-model.mp3",
+      "translationModel": ""
+    },
+    "field-notes/graph-engine-internals-index-free-adjacency": {
+      "slug": "graph-engine-internals-index-free-adjacency",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "d8d887c841a703bbf4e895edb087d94c53ca11f3b404ce6c6394cf4edc6ce8b1",
+      "sourceHash": "d8d887c841a703bbf4e895edb087d94c53ca11f3b404ce6c6394cf4edc6ce8b1",
+      "durationSec": 2181.888,
+      "byteSize": 13091328,
+      "narrationWordCount": 5523,
+      "audioUrl": "/blog/audio/field-notes/graph-engine-internals-index-free-adjacency.mp3",
+      "translationModel": ""
+    },
+    "field-notes/graph-fraud-detection-rings-synthetic-identity": {
+      "slug": "graph-fraud-detection-rings-synthetic-identity",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "b30a477d604647cc0191cfd1e7903c4515cce9e50fb4d2bfbed1f31bc284a0db",
+      "sourceHash": "b30a477d604647cc0191cfd1e7903c4515cce9e50fb4d2bfbed1f31bc284a0db",
+      "durationSec": 2649.816,
+      "byteSize": 15898896,
+      "narrationWordCount": 6560,
+      "audioUrl": "/blog/audio/field-notes/graph-fraud-detection-rings-synthetic-identity.mp3",
+      "translationModel": ""
+    },
     "field-notes/graph-layer-in-production-mcp-build-vs-buy": {
       "slug": "graph-layer-in-production-mcp-build-vs-buy",
       "category": "field-notes",
@@ -1147,6 +1264,19 @@
       "audioUrl": "/blog/audio/field-notes/mcp-production-enterprise.mp3",
       "translationModel": ""
     },
+    "field-notes/mcp-registry-gateway-tool-plane": {
+      "slug": "mcp-registry-gateway-tool-plane",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "296d84aad18ab2a069d5fa3068455077404422ccbf16b60628f26ac040362632",
+      "sourceHash": "296d84aad18ab2a069d5fa3068455077404422ccbf16b60628f26ac040362632",
+      "durationSec": 2893.896,
+      "byteSize": 17363376,
+      "narrationWordCount": 7066,
+      "audioUrl": "/blog/audio/field-notes/mcp-registry-gateway-tool-plane.mp3",
+      "translationModel": ""
+    },
     "field-notes/mcp-server-nl-to-powerbi-dashboard": {
       "slug": "mcp-server-nl-to-powerbi-dashboard",
       "category": "field-notes",
@@ -1277,6 +1407,19 @@
       "audioUrl": "/blog/audio/field-notes/network-fundamentals-every-concept.mp3",
       "translationModel": ""
     },
+    "field-notes/node-embeddings-fastrp-node2vec-graphsage": {
+      "slug": "node-embeddings-fastrp-node2vec-graphsage",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "1c5098bc8d543f38edd3182817f8c7f4e9fb9f9b8515d65aa003682355c0b5dc",
+      "sourceHash": "1c5098bc8d543f38edd3182817f8c7f4e9fb9f9b8515d65aa003682355c0b5dc",
+      "durationSec": 2345.568,
+      "byteSize": 14073408,
+      "narrationWordCount": 5676,
+      "audioUrl": "/blog/audio/field-notes/node-embeddings-fastrp-node2vec-graphsage.mp3",
+      "translationModel": ""
+    },
     "field-notes/ontologies-building-knowledge-bases": {
       "slug": "ontologies-building-knowledge-bases",
       "category": "field-notes",
@@ -1353,6 +1496,19 @@
       "byteSize": 13700160,
       "narrationWordCount": 5825,
       "audioUrl": "/blog/audio/field-notes/operating-agents-eval-observability-scale.mp3",
+      "translationModel": ""
+    },
+    "field-notes/organizational-network-analysis-company-graph": {
+      "slug": "organizational-network-analysis-company-graph",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "9a2f3a009ad22a00732e734826209047387569366bad6860fbbe12aab2a49463",
+      "sourceHash": "9a2f3a009ad22a00732e734826209047387569366bad6860fbbe12aab2a49463",
+      "durationSec": 2377.656,
+      "byteSize": 14265936,
+      "narrationWordCount": 5903,
+      "audioUrl": "/blog/audio/field-notes/organizational-network-analysis-company-graph.mp3",
       "translationModel": ""
     },
     "field-notes/populating-knowledge-graph-llms-banking": {
@@ -1561,6 +1717,19 @@
       "byteSize": 11774448,
       "narrationWordCount": 4458,
       "audioUrl": "/blog/audio/field-notes/rlhf-dpo-alignment.mp3",
+      "translationModel": ""
+    },
+    "field-notes/sandboxing-agents-microvm-gvisor": {
+      "slug": "sandboxing-agents-microvm-gvisor",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "7563a90c1ca1e537564fad31a4e6385184cfc1e9747500bd48a9143aaab0fd74",
+      "sourceHash": "7563a90c1ca1e537564fad31a4e6385184cfc1e9747500bd48a9143aaab0fd74",
+      "durationSec": 2522.832,
+      "byteSize": 15136992,
+      "narrationWordCount": 6131,
+      "audioUrl": "/blog/audio/field-notes/sandboxing-agents-microvm-gvisor.mp3",
       "translationModel": ""
     },
     "field-notes/senior-api-design-contracts-versioning-dx": {

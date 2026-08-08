@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-08-08T03:59:50.006Z",
+  "generated_at": "2026-08-08T05:26:12.040Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -71,7 +71,9 @@
         "mcp"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "mcp-registry-gateway-tool-plane": {
@@ -123,7 +125,9 @@
         "mcp-registry"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "sandboxing-agents-microvm-gvisor": {
@@ -177,7 +181,9 @@
         "modal"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "agent-runtime-sessions-state-topology": {
@@ -231,7 +237,9 @@
         "kubernetes"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "agent-platform-control-plane-data-plane": {
@@ -283,7 +291,9 @@
         "mcp"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "graph-fraud-detection-rings-synthetic-identity": {
@@ -336,7 +346,9 @@
         "pytorch-geometric"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "organizational-network-analysis-company-graph": {
@@ -386,7 +398,9 @@
         "gds"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "node-embeddings-fastrp-node2vec-graphsage": {
@@ -436,7 +450,9 @@
         "pytorch-geometric"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "centrality-communities-in-practice": {
@@ -487,7 +503,9 @@
         "networkx"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "graph-analytics-gds-execution-model": {
@@ -537,7 +555,9 @@
         "aura"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "choosing-a-graph-engine-2026": {
@@ -589,7 +609,9 @@
         "puppygraph"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "gql-standard-cypher-sqlpgq": {
@@ -637,7 +659,9 @@
         "postgres"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "graph-engine-internals-index-free-adjacency": {
@@ -683,7 +707,9 @@
         "falkordb"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "agent-harness-build-fork-adopt-yc-qm": {
