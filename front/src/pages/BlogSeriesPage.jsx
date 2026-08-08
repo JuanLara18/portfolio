@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
-import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, BookOpen, Play, Pause, Download, Gauge } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, ArrowRight, BookOpen, Play, Pause, Download, Gauge, ChevronDown } from 'lucide-react';
 import { getSeriesWithPosts, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
 import { buildZip } from '../utils/zip';
 import { variants as motionVariants } from '../utils';
@@ -333,6 +333,8 @@ export default function BlogSeriesPage() {
   const [loading, setLoading] = useState(true);
   // Only one step's audio plays at a time across the whole page.
   const [playingSlug, setPlayingSlug] = useState(null);
+  // Accordion: which series is currently expanded (null = all collapsed).
+  const [expandedId, setExpandedId] = useState(null);
 
   const downloadSeries = (s) => {
     const files = s.posts.map((p) => ({
@@ -373,7 +375,7 @@ export default function BlogSeriesPage() {
     <>
       <SEO
         title="Reading Series · Juan Lara"
-        description="Curated, multi-part reading series from the blog — ordered arcs on RAG, ontology engineering, the agent-native knowledge stack, ML fundamentals, and number theory."
+        description="Curated, multi-part reading series from the blog — ordered arcs on RAG, agents, graph engineering, knowledge systems, ML fundamentals, data engineering, and more."
         canonical="https://juanlara18.github.io/portfolio/#/blog/series"
         breadcrumbs={[
           { name: 'Blog', url: 'https://juanlara18.github.io/portfolio/#/blog' },
@@ -428,58 +430,103 @@ export default function BlogSeriesPage() {
         ) : series.length === 0 ? (
           <p className="text-gray-600 dark:text-brand-fg-muted">No reading series available yet.</p>
         ) : (
-          <div className="space-y-16 sm:space-y-20">
-            {series.map((s) => (
-              <motion.section
-                key={s.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-                variants={staggerContainer}
-              >
-                <motion.div variants={fadeInUp} className="mb-8 pb-6 border-b border-gray-200/60 dark:border-white/[0.08]">
-                  <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
-                    {s.partsTotal} parts
-                  </div>
-                  <h2 className="font-bold text-2xl md:text-3xl tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-3">
-                    {s.title}
-                  </h2>
-                  <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed max-w-2xl">
-                    {s.description}
-                  </p>
-                  <div className="mt-4 flex items-center gap-5 flex-wrap">
-                    <Link
-                      to={`/blog/${s.posts[0].category}/${s.posts[0].slug}`}
-                      className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
-                    >
-                      <span>Start from part 1</span>
-                      <ArrowRight size={14} />
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => downloadSeries(s)}
-                      title="Download all posts in this series as markdown (.zip)"
-                      className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
-                    >
-                      <Download size={13} />
-                      <span>Download .md</span>
-                    </button>
-                  </div>
-                </motion.div>
+          <div className="space-y-4 sm:space-y-5">
+            {series.map((s) => {
+              const isExpanded = expandedId === s.id;
+              return (
+                <motion.section
+                  key={s.id}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-40px' }}
+                  variants={staggerContainer}
+                  className="border border-gray-200/60 dark:border-white/[0.08] rounded-lg overflow-hidden"
+                >
+                  {/* Clickable header — always visible */}
+                  <button
+                    type="button"
+                    onClick={() => setExpandedId(isExpanded ? null : s.id)}
+                    className="w-full text-left px-5 sm:px-7 py-5 sm:py-6 cursor-pointer hover:bg-gray-50/50 dark:hover:bg-white/[0.02] transition-colors"
+                  >
+                    <motion.div variants={fadeInUp}>
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="min-w-0 flex-1">
+                          <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">
+                            {s.partsTotal} parts
+                          </div>
+                          <h2 className="font-bold text-xl md:text-2xl tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-2">
+                            {s.title}
+                          </h2>
+                          <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed max-w-2xl text-sm">
+                            {s.description}
+                          </p>
+                        </div>
+                        <ChevronDown
+                          size={20}
+                          className={`flex-shrink-0 mt-1 text-gray-400 dark:text-brand-fg-muted transition-transform duration-300 ${
+                            isExpanded ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </div>
+                    </motion.div>
+                  </button>
 
-                <ol className="list-none m-0 p-0">
-                  {s.posts.map((post, index) => (
-                    <SeriesStep
-                      key={post.slug}
-                      post={post}
-                      isLast={index === s.posts.length - 1}
-                      playingSlug={playingSlug}
-                      setPlayingSlug={setPlayingSlug}
-                    />
-                  ))}
-                </ol>
-              </motion.section>
-            ))}
+                  {/* Collapsible content */}
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 sm:px-7 pb-6">
+                          <div className="flex items-center gap-5 flex-wrap mb-6 pt-1 border-t border-gray-200/60 dark:border-white/[0.08] pt-5">
+                            <Link
+                              to={`/blog/${s.posts[0].category}/${s.posts[0].slug}`}
+                              className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+                            >
+                              <span>Start from part 1</span>
+                              <ArrowRight size={14} />
+                            </Link>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                downloadSeries(s);
+                              }}
+                              title="Download all posts in this series as markdown (.zip)"
+                              className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
+                            >
+                              <Download size={13} />
+                              <span>Download .md</span>
+                            </button>
+                          </div>
+
+                          <motion.ol
+                            className="list-none m-0 p-0"
+                            initial="hidden"
+                            animate="visible"
+                            variants={staggerContainer}
+                          >
+                            {s.posts.map((post, index) => (
+                              <SeriesStep
+                                key={post.slug}
+                                post={post}
+                                isLast={index === s.posts.length - 1}
+                                playingSlug={playingSlug}
+                                setPlayingSlug={setPlayingSlug}
+                              />
+                            ))}
+                          </motion.ol>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.section>
+              );
+            })}
           </div>
         )}
       </div>
