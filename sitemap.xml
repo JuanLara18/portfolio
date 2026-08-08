@@ -55,6 +55,42 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy</loc>
+    <lastmod>2028-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane</loc>
+    <lastmod>2028-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor</loc>
+    <lastmod>2028-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology</loc>
+    <lastmod>2028-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane</loc>
+    <lastmod>2028-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity</loc>
+    <lastmod>2028-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph</loc>
     <lastmod>2028-09-14</lastmod>
     <changefreq>monthly</changefreq>
