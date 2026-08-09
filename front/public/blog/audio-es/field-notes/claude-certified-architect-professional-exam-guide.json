@@ -1,0 +1,13 @@
+{
+  "slug": "claude-certified-architect-professional-exam-guide",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1fefa2803fba526d18734aa4ae2de4e42af8fe08f3c055462f6fb64e4a731991",
+  "sourceHash": "1e6665ad6b15611aec7311484f23577256027604fcf19194ec0ba8d53ce768e2",
+  "durationSec": 2705.04,
+  "byteSize": 16230240,
+  "narrationWordCount": 7240,
+  "audioUrl": "/blog/audio-es/field-notes/claude-certified-architect-professional-exam-guide.mp3",
+  "translationModel": "aya-expanse:8b"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "agent-harness-build-fork-adopt-yc-qm",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "75d02a70e0b0fc4397858a72cc3e59a630e7623d62d2a02a8c4197d07ffe6971",
+  "sourceHash": "620a2e126d24943e29a60aaf934293e765b3bbfa6b54d427a3ea62716f4e0a12",
+  "durationSec": 1214.688,
+  "byteSize": 7288128,
+  "narrationWordCount": 3317,
+  "audioUrl": "/blog/audio-es/field-notes/agent-harness-build-fork-adopt-yc-qm.mp3",
+  "translationModel": "aya-expanse:8b"
+}

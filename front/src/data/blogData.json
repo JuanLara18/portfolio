@@ -29,6 +29,12 @@
           "durationSec": 2390.76,
           "byteSize": 14344560,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/agent-golden-paths-multi-tenancy.mp3",
+          "durationSec": 2378.352,
+          "byteSize": 14270112,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -61,6 +67,12 @@
           "durationSec": 2893.896,
           "byteSize": 17363376,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/mcp-registry-gateway-tool-plane.mp3",
+          "durationSec": 2868.84,
+          "byteSize": 17213040,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -93,6 +105,12 @@
           "durationSec": 2522.832,
           "byteSize": 15136992,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/sandboxing-agents-microvm-gvisor.mp3",
+          "durationSec": 2461.608,
+          "byteSize": 14769648,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -125,6 +143,12 @@
           "durationSec": 2419.104,
           "byteSize": 14514624,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/agent-runtime-sessions-state-topology.mp3",
+          "durationSec": 2452.824,
+          "byteSize": 14716944,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -157,6 +181,12 @@
           "durationSec": 2538.576,
           "byteSize": 15231456,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/agent-platform-control-plane-data-plane.mp3",
+          "durationSec": 2587.104,
+          "byteSize": 15522624,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -189,6 +219,12 @@
           "durationSec": 2649.816,
           "byteSize": 15898896,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/graph-fraud-detection-rings-synthetic-identity.mp3",
+          "durationSec": 2626.272,
+          "byteSize": 15757632,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -221,6 +257,12 @@
           "durationSec": 2377.656,
           "byteSize": 14265936,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/organizational-network-analysis-company-graph.mp3",
+          "durationSec": 2329.776,
+          "byteSize": 13978656,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -253,6 +295,12 @@
           "durationSec": 2345.568,
           "byteSize": 14073408,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/node-embeddings-fastrp-node2vec-graphsage.mp3",
+          "durationSec": 2349.48,
+          "byteSize": 14096880,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -285,6 +333,12 @@
           "durationSec": 2614.032,
           "byteSize": 15684192,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/centrality-communities-in-practice.mp3",
+          "durationSec": 2583.36,
+          "byteSize": 15500160,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -317,6 +371,12 @@
           "durationSec": 2251.104,
           "byteSize": 13506624,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/graph-analytics-gds-execution-model.mp3",
+          "durationSec": 2260.752,
+          "byteSize": 13564512,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -349,6 +409,12 @@
           "durationSec": 2230.032,
           "byteSize": 13380192,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/choosing-a-graph-engine-2026.mp3",
+          "durationSec": 2210.88,
+          "byteSize": 13265280,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -380,6 +446,12 @@
           "durationSec": 2237.16,
           "byteSize": 13422960,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/gql-standard-cypher-sqlpgq.mp3",
+          "durationSec": 2216.736,
+          "byteSize": 13300416,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -412,6 +484,12 @@
           "durationSec": 2181.888,
           "byteSize": 13091328,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/graph-engine-internals-index-free-adjacency.mp3",
+          "durationSec": 2157.336,
+          "byteSize": 12944016,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -444,6 +522,12 @@
           "durationSec": 1238.976,
           "byteSize": 7433856,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/agent-harness-build-fork-adopt-yc-qm.mp3",
+          "durationSec": 1214.688,
+          "byteSize": 7288128,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -476,6 +560,12 @@
           "durationSec": 1779.504,
           "byteSize": 10677024,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/dont-reinvent-the-agent-open-source-composition.mp3",
+          "durationSec": 1655.112,
+          "byteSize": 9930672,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -508,6 +598,12 @@
           "durationSec": 1771.656,
           "byteSize": 10629936,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/enterprise-graph-mcp-architecture-gcp.mp3",
+          "durationSec": 1739.616,
+          "byteSize": 10437696,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -540,6 +636,12 @@
           "durationSec": 2022,
           "byteSize": 12132000,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/production-graph-stack-agents-mcp-ontologies.mp3",
+          "durationSec": 1991.496,
+          "byteSize": 11948976,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -727,6 +829,12 @@
           "durationSec": 2194.2,
           "byteSize": 13165200,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/magnifica-humanitas-ai-encyclical-analysis.mp3",
+          "durationSec": 2079.24,
+          "byteSize": 12475440,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -759,6 +867,12 @@
           "durationSec": 2075.616,
           "byteSize": 12453696,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/finops-llm-agents-token-economics.mp3",
+          "durationSec": 2102.712,
+          "byteSize": 12616272,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -793,6 +907,12 @@
           "durationSec": 2138.592,
           "byteSize": 12831552,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/bank-grade-agent-security-iam-gateways.mp3",
+          "durationSec": 2161.296,
+          "byteSize": 12967776,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -867,6 +987,12 @@
           "durationSec": 2670.312,
           "byteSize": 16021872,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/claude-certified-architect-professional-exam-guide.mp3",
+          "durationSec": 2705.04,
+          "byteSize": 16230240,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -901,6 +1027,12 @@
           "durationSec": 1841.448,
           "byteSize": 11048688,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/claude-certified-developer-exam-guide.mp3",
+          "durationSec": 1865.952,
+          "byteSize": 11195712,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -933,6 +1065,12 @@
           "durationSec": 2449.488,
           "byteSize": 14696928,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/claude-certified-associate-exam-guide.mp3",
+          "durationSec": 2461.488,
+          "byteSize": 14768928,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -1693,8 +1831,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/redis-for-ai-buy-vs-build-gcp.mp3",
-          "durationSec": 1892.136,
-          "byteSize": 11352816,
+          "durationSec": 1900.272,
+          "byteSize": 11401632,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -1928,8 +2066,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/knowledge-as-a-product.mp3",
-          "durationSec": 2218.104,
-          "byteSize": 13308624,
+          "durationSec": 2234.832,
+          "byteSize": 13408992,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -3115,8 +3253,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/vertex-ai-gcp-ml-platform-cli.mp3",
-          "durationSec": 1880.184,
-          "byteSize": 11281104,
+          "durationSec": 1965.096,
+          "byteSize": 11790576,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -3414,8 +3552,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/llm-caching-four-layers.mp3",
-          "durationSec": 1544.64,
-          "byteSize": 9267840,
+          "durationSec": 1576.488,
+          "byteSize": 9458928,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -3831,8 +3969,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/knowledge-base-curation.mp3",
-          "durationSec": 1426.224,
-          "byteSize": 8557344,
+          "durationSec": 1434.6,
+          "byteSize": 8607600,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -3869,8 +4007,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/knowledge-graphs-practice.mp3",
-          "durationSec": 1355.616,
-          "byteSize": 8133696,
+          "durationSec": 1368.192,
+          "byteSize": 8209152,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -3944,8 +4082,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/ontologies-building-knowledge-bases.mp3",
-          "durationSec": 1492.296,
-          "byteSize": 8953776,
+          "durationSec": 1500.456,
+          "byteSize": 9002736,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -4433,8 +4571,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/local-llm-inference-tools.mp3",
-          "durationSec": 827.328,
-          "byteSize": 4963968,
+          "durationSec": 850.152,
+          "byteSize": 5100912,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -4739,8 +4877,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3",
-          "durationSec": 3081.096,
-          "byteSize": 18486576,
+          "durationSec": 2711.688,
+          "byteSize": 16270128,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -5680,8 +5818,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/ml-metrics-evaluation-monitoring.mp3",
-          "durationSec": 756.144,
-          "byteSize": 4536864,
+          "durationSec": 679.488,
+          "byteSize": 4076928,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -6049,6 +6187,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-08-08T05:26:11.820Z",
+  "lastUpdated": "2026-08-09T07:56:58.527Z",
   "totalPosts": 163
 }

@@ -1,0 +1,13 @@
+{
+  "slug": "centrality-communities-in-practice",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "f9880681ef10dd7b993fcc45cf5c718f95b41a48f7eaae3727545514bd4e3cdd",
+  "sourceHash": "9eb29f82bad6a25a2a500c8c5b8a0a082acc03a5ba8f6ad7c878b78bfa958e9c",
+  "durationSec": 2583.36,
+  "byteSize": 15500160,
+  "narrationWordCount": 6979,
+  "audioUrl": "/blog/audio-es/field-notes/centrality-communities-in-practice.mp3",
+  "translationModel": "aya-expanse:8b"
+}

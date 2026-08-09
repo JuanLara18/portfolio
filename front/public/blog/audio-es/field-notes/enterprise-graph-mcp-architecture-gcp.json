@@ -1,0 +1,13 @@
+{
+  "slug": "enterprise-graph-mcp-architecture-gcp",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1929fbf7956e6bf3b92d5f9600fc681371ae8b029af0d20d71b4cf66b0275649",
+  "sourceHash": "b02088215046d64db318b311e096da8d7f0f2ba50bc024b98889b76cd236331e",
+  "durationSec": 1739.616,
+  "byteSize": 10437696,
+  "narrationWordCount": 4848,
+  "audioUrl": "/blog/audio-es/field-notes/enterprise-graph-mcp-architecture-gcp.mp3",
+  "translationModel": "aya-expanse:8b"
+}

@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1784014460,
+  "generatedAt": 1786262161,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -276,6 +276,19 @@
       "audioUrl": "/blog/audio-es/field-notes/agent-engineering-disciplines.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/agent-golden-paths-multi-tenancy": {
+      "slug": "agent-golden-paths-multi-tenancy",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "d6ff89b053e1e22a6a3da7bf8706e6828d245b0bd8dbcda92c3f1fd1842121d1",
+      "sourceHash": "96e7812ffdd25381f025491df5596d599e34f49749ec8464c5482fc5c8cba6de",
+      "durationSec": 2378.352,
+      "byteSize": 14270112,
+      "narrationWordCount": 6852,
+      "audioUrl": "/blog/audio-es/field-notes/agent-golden-paths-multi-tenancy.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/agent-graph-layer-why-grep-embeddings-fell-short": {
       "slug": "agent-graph-layer-why-grep-embeddings-fell-short",
       "category": "field-notes",
@@ -302,6 +315,19 @@
       "audioUrl": "/blog/audio-es/field-notes/agent-guardrails-field-guide.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/agent-harness-build-fork-adopt-yc-qm": {
+      "slug": "agent-harness-build-fork-adopt-yc-qm",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "75d02a70e0b0fc4397858a72cc3e59a630e7623d62d2a02a8c4197d07ffe6971",
+      "sourceHash": "620a2e126d24943e29a60aaf934293e765b3bbfa6b54d427a3ea62716f4e0a12",
+      "durationSec": 1214.688,
+      "byteSize": 7288128,
+      "narrationWordCount": 3317,
+      "audioUrl": "/blog/audio-es/field-notes/agent-harness-build-fork-adopt-yc-qm.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/agent-integration-protocols-mcp-and-a2a": {
       "slug": "agent-integration-protocols-mcp-and-a2a",
       "category": "field-notes",
@@ -327,6 +353,32 @@
       "narrationWordCount": 5584,
       "audioUrl": "/blog/audio-es/field-notes/agent-memory-and-retrieval-embeddings-to-rag.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/agent-platform-control-plane-data-plane": {
+      "slug": "agent-platform-control-plane-data-plane",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1fb25fb9b73d9a199f91028ba8bac6f4b529685bb86c491608f9cb880f9c7b2c",
+      "sourceHash": "99048cde7dec92887ae278687e7a665c9ae302c62e081e22f4895f8028fa9bc1",
+      "durationSec": 2587.104,
+      "byteSize": 15522624,
+      "narrationWordCount": 7342,
+      "audioUrl": "/blog/audio-es/field-notes/agent-platform-control-plane-data-plane.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/agent-runtime-sessions-state-topology": {
+      "slug": "agent-runtime-sessions-state-topology",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "cb11cb948ed8987a85fb28b64218733f11be2b91523a62a52f9c262c7534773d",
+      "sourceHash": "e3a463703a567c26cdf1fb57e5591eb998cf781caa86b935222a44f1fc85ef1e",
+      "durationSec": 2452.824,
+      "byteSize": 14716944,
+      "narrationWordCount": 6843,
+      "audioUrl": "/blog/audio-es/field-notes/agent-runtime-sessions-state-topology.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/ai-poc-enterprise-evaluation": {
       "slug": "ai-poc-enterprise-evaluation",
@@ -380,6 +432,19 @@
       "audioUrl": "/blog/audio-es/field-notes/application-data-flow-replicas-backups.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/bank-grade-agent-security-iam-gateways": {
+      "slug": "bank-grade-agent-security-iam-gateways",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "773f74e1ddd93213e9b2ab3c99b533f6c59f8bb248630b24ea55b2e650e044e2",
+      "sourceHash": "51faf0f588b1c7f2b92e5a38d43b5c56badea7d57e29fa1e6e67cf05439b8628",
+      "durationSec": 2161.296,
+      "byteSize": 12967776,
+      "narrationWordCount": 5967,
+      "audioUrl": "/blog/audio-es/field-notes/bank-grade-agent-security-iam-gateways.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/bash-daily-driver-ml-engineer": {
       "slug": "bash-daily-driver-ml-engineer",
       "category": "field-notes",
@@ -392,6 +457,71 @@
       "narrationWordCount": 3223,
       "audioUrl": "/blog/audio-es/field-notes/bash-daily-driver-ml-engineer.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/centrality-communities-in-practice": {
+      "slug": "centrality-communities-in-practice",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "f9880681ef10dd7b993fcc45cf5c718f95b41a48f7eaae3727545514bd4e3cdd",
+      "sourceHash": "9eb29f82bad6a25a2a500c8c5b8a0a082acc03a5ba8f6ad7c878b78bfa958e9c",
+      "durationSec": 2583.36,
+      "byteSize": 15500160,
+      "narrationWordCount": 6979,
+      "audioUrl": "/blog/audio-es/field-notes/centrality-communities-in-practice.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/choosing-a-graph-engine-2026": {
+      "slug": "choosing-a-graph-engine-2026",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "8f897a9b6e53ace6bbf6387c29c4f4cd4f04a09d74a76be13e1fc613fe92ba5d",
+      "sourceHash": "532b64d7acc216a7034141e3966394a5e5b5bd4555a251de2be82dd4d659e7f5",
+      "durationSec": 2210.88,
+      "byteSize": 13265280,
+      "narrationWordCount": 6305,
+      "audioUrl": "/blog/audio-es/field-notes/choosing-a-graph-engine-2026.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/claude-certified-architect-professional-exam-guide": {
+      "slug": "claude-certified-architect-professional-exam-guide",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1fefa2803fba526d18734aa4ae2de4e42af8fe08f3c055462f6fb64e4a731991",
+      "sourceHash": "1e6665ad6b15611aec7311484f23577256027604fcf19194ec0ba8d53ce768e2",
+      "durationSec": 2705.04,
+      "byteSize": 16230240,
+      "narrationWordCount": 7240,
+      "audioUrl": "/blog/audio-es/field-notes/claude-certified-architect-professional-exam-guide.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/claude-certified-associate-exam-guide": {
+      "slug": "claude-certified-associate-exam-guide",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "345bb7b77404c958f67eb5e1e4161a18102e4d43f3b329395ee6c1609a613eba",
+      "sourceHash": "ba75dcd0eca1926e92bf37ca88c8ba6d93f4c15505d8749a261e0393acdaf4dd",
+      "durationSec": 2461.488,
+      "byteSize": 14768928,
+      "narrationWordCount": 6638,
+      "audioUrl": "/blog/audio-es/field-notes/claude-certified-associate-exam-guide.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/claude-certified-developer-exam-guide": {
+      "slug": "claude-certified-developer-exam-guide",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "9b3c13becd5431ad7141bc8b27145520964120f390fb810cd62ce99ec666e15a",
+      "sourceHash": "d68c67e5387a1fdeb65176c41589b5bc92538776ce765f1864d22398b56e3d87",
+      "durationSec": 1865.952,
+      "byteSize": 11195712,
+      "narrationWordCount": 5007,
+      "audioUrl": "/blog/audio-es/field-notes/claude-certified-developer-exam-guide.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/claude-code-complete-guide": {
       "slug": "claude-code-complete-guide",
@@ -588,6 +718,19 @@
       "audioUrl": "/blog/audio-es/field-notes/document-processing-ocr-layout.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/dont-reinvent-the-agent-open-source-composition": {
+      "slug": "dont-reinvent-the-agent-open-source-composition",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "091a036540367da2e887ff5a916764f29d9ee8d728acd67982321f60a7d67e1a",
+      "sourceHash": "8e6a18b9f7e9cef9c508bfa71561596ad2449d89181a01752ffac3256bbe2daf",
+      "durationSec": 1655.112,
+      "byteSize": 9930672,
+      "narrationWordCount": 4246,
+      "audioUrl": "/blog/audio-es/field-notes/dont-reinvent-the-agent-open-source-composition.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/elevenlabs-voice-ai-engineering": {
       "slug": "elevenlabs-voice-ai-engineering",
       "category": "field-notes",
@@ -652,6 +795,19 @@
       "narrationWordCount": 3411,
       "audioUrl": "/blog/audio-es/field-notes/enterprise-ai-platform-selection.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/enterprise-graph-mcp-architecture-gcp": {
+      "slug": "enterprise-graph-mcp-architecture-gcp",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1929fbf7956e6bf3b92d5f9600fc681371ae8b029af0d20d71b4cf66b0275649",
+      "sourceHash": "b02088215046d64db318b311e096da8d7f0f2ba50bc024b98889b76cd236331e",
+      "durationSec": 1739.616,
+      "byteSize": 10437696,
+      "narrationWordCount": 4848,
+      "audioUrl": "/blog/audio-es/field-notes/enterprise-graph-mcp-architecture-gcp.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/enterprise-knowledge-bases": {
       "slug": "enterprise-knowledge-bases",
@@ -718,6 +874,19 @@
       "audioUrl": "/blog/audio-es/field-notes/fine-tuning-gemma4-lora-qlora.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/finops-llm-agents-token-economics": {
+      "slug": "finops-llm-agents-token-economics",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "bfb9d8310e3046d1548502d7d23a4ef0df9f5a768bc4a672b31853da00d6a3a5",
+      "sourceHash": "c4aaf38cb88e3df12a60a2ba05fbf6d99e65f31d78ac491430ec68ae254b2159",
+      "durationSec": 2102.712,
+      "byteSize": 12616272,
+      "narrationWordCount": 5940,
+      "audioUrl": "/blog/audio-es/field-notes/finops-llm-agents-token-economics.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/foundations-of-agentic-ai-llms-to-agents": {
       "slug": "foundations-of-agentic-ai-llms-to-agents",
       "category": "field-notes",
@@ -736,13 +905,13 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "e0cced6fa4ed1be662752dc99e61ecf10306288a4258a8f3d538f0d3708bdb9c",
-      "sourceHash": "6adcbd1cb713c2a2d18736aba687bb1714f55e8eb398045be2483a65ce783bc0",
-      "durationSec": 3081.096,
-      "byteSize": 18486576,
-      "narrationWordCount": 6518,
+      "hash": "a23eb4004d04a7de1393693a5cb8304db9287661c364f904ba943c9ec4606b83",
+      "sourceHash": "bfb713611e11e0b8e6e08b5af70f3ffaf184671bb99876d716173ce7b647ce3f",
+      "durationSec": 2711.688,
+      "byteSize": 16270128,
+      "narrationWordCount": 6474,
       "audioUrl": "/blog/audio-es/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/gemini-enterprise-knowledge-catalog-deep-dive": {
       "slug": "gemini-enterprise-knowledge-catalog-deep-dive",
@@ -822,6 +991,58 @@
       "audioUrl": "/blog/audio-es/field-notes/google-cloud-next-2026-agent-native-stack.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/gql-standard-cypher-sqlpgq": {
+      "slug": "gql-standard-cypher-sqlpgq",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "de562e536a215b2303867724c9348404308e5540cf12dc0aaac864e191ce7538",
+      "sourceHash": "88a2c41523d5c76b631d264922d42f64f2c88356f63d2e2471c663a5fc8621a8",
+      "durationSec": 2216.736,
+      "byteSize": 13300416,
+      "narrationWordCount": 5937,
+      "audioUrl": "/blog/audio-es/field-notes/gql-standard-cypher-sqlpgq.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/graph-analytics-gds-execution-model": {
+      "slug": "graph-analytics-gds-execution-model",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "d06626df374a50a7eb1dff3e7ec92b0fde78c5f786dfc202494ac91f9ed33acb",
+      "sourceHash": "2c08c726909eee61682157746c2bb2a58ea261b70cc7a3a710d95fe3f995d104",
+      "durationSec": 2260.752,
+      "byteSize": 13564512,
+      "narrationWordCount": 6273,
+      "audioUrl": "/blog/audio-es/field-notes/graph-analytics-gds-execution-model.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/graph-engine-internals-index-free-adjacency": {
+      "slug": "graph-engine-internals-index-free-adjacency",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "bbf4e0bc897e115320b2fb72a930294025fa5b0f6a3913f01d7077693c955f85",
+      "sourceHash": "d8d887c841a703bbf4e895edb087d94c53ca11f3b404ce6c6394cf4edc6ce8b1",
+      "durationSec": 2157.336,
+      "byteSize": 12944016,
+      "narrationWordCount": 6101,
+      "audioUrl": "/blog/audio-es/field-notes/graph-engine-internals-index-free-adjacency.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/graph-fraud-detection-rings-synthetic-identity": {
+      "slug": "graph-fraud-detection-rings-synthetic-identity",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "0f8dd7783740ed881f3e1fb3d80a7683aa00b3f786c86d36fe9d99fec1fc2285",
+      "sourceHash": "b30a477d604647cc0191cfd1e7903c4515cce9e50fb4d2bfbed1f31bc284a0db",
+      "durationSec": 2626.272,
+      "byteSize": 15757632,
+      "narrationWordCount": 7356,
+      "audioUrl": "/blog/audio-es/field-notes/graph-fraud-detection-rings-synthetic-identity.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/graph-layer-in-production-mcp-build-vs-buy": {
       "slug": "graph-layer-in-production-mcp-build-vs-buy",
       "category": "field-notes",
@@ -879,26 +1100,26 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "dfaa43b1b883df26788c8cb265f5bb324c789f99ddd1cd016cee144774196798",
-      "sourceHash": "38bc1be451ea918f7d1927170222dce675770bcb2dd34eecf1ea5b1875e47392",
-      "durationSec": 2218.104,
-      "byteSize": 13308624,
-      "narrationWordCount": 6245,
+      "hash": "1358a67afd1544fd74e3f69f2a6971195fa73fbda0ec9b1fad1da7055b7b5dd1",
+      "sourceHash": "dfb952d29bd596e96bf7de3b6ec4ad8b513b24994017837beb6f3da4056b355b",
+      "durationSec": 2234.832,
+      "byteSize": 13408992,
+      "narrationWordCount": 6257,
       "audioUrl": "/blog/audio-es/field-notes/knowledge-as-a-product.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/knowledge-base-curation": {
       "slug": "knowledge-base-curation",
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "1769592d4508d57b66bdcf3b5635e3dd3cd1c6d7f44d56c8bd05a1a00d6dd961",
-      "sourceHash": "aca3892c9b0219c1f29e791c44bea019c8dd7497975f6896dcf135e766275fdc",
-      "durationSec": 1426.224,
-      "byteSize": 8557344,
-      "narrationWordCount": 3577,
+      "hash": "56ded32e79ab8032ae46a6001875c823892e457493f34767b5ea05f998de7979",
+      "sourceHash": "02ff7c365d33f155c6fa840fe86190ddf86d3ea57f6707c25161ca515175d5da",
+      "durationSec": 1434.6,
+      "byteSize": 8607600,
+      "narrationWordCount": 3618,
       "audioUrl": "/blog/audio-es/field-notes/knowledge-base-curation.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/knowledge-catalog-vs-ontologies": {
       "slug": "knowledge-catalog-vs-ontologies",
@@ -918,13 +1139,13 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "70b0dda38cd0493ba21489a7e1f0059692085cc6cb982d1dc2d2222cf8cb06bb",
-      "sourceHash": "08e2af026702dbf8cd8c98ab9b5c4153fdf91c9aa6d3f65cfb9f67be7208a0ec",
-      "durationSec": 1355.616,
-      "byteSize": 8133696,
-      "narrationWordCount": 3239,
+      "hash": "d08a2e782f94b04c3565dff37522671c00a570e8cf6e548828833a93bb8bf022",
+      "sourceHash": "f98566eaf002af2d5fcac7b38bb7a944360576162457e5785485ddc095dc3a78",
+      "durationSec": 1368.192,
+      "byteSize": 8209152,
+      "narrationWordCount": 3226,
       "audioUrl": "/blog/audio-es/field-notes/knowledge-graphs-practice.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/kubernetes-minimum-subset-ml": {
       "slug": "kubernetes-minimum-subset-ml",
@@ -996,26 +1217,26 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "cdc6ad7495efe2deba91f14151e9b35c6e0ce05825bc9f7c3ee679fb5c7e0d1b",
-      "sourceHash": "96a7419f04fce3618f057e2183b20ce7e5140553139a64433b95d22df6edf3b4",
-      "durationSec": 1544.64,
-      "byteSize": 9267840,
-      "narrationWordCount": 3970,
+      "hash": "02a045ab5dd279c794746dc7ca628eaf55635f5af39a9c34a59c3ac7ff92aaa8",
+      "sourceHash": "14f5b6c151b89d74bce83d0586d2f5a295458e9c60eb3ab99edbd3ddbdb45349",
+      "durationSec": 1576.488,
+      "byteSize": 9458928,
+      "narrationWordCount": 4060,
       "audioUrl": "/blog/audio-es/field-notes/llm-caching-four-layers.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/local-llm-inference-tools": {
       "slug": "local-llm-inference-tools",
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "be3e0956fff6dd5c8a87c7c520c8d78bae294cea9586dd0fdd6fe6038bea4d82",
-      "sourceHash": "f5ab9dee3bd98c305f13cf951b4d04e8122b47a5b8ac9e9144d914dc140e95d6",
-      "durationSec": 827.328,
-      "byteSize": 4963968,
-      "narrationWordCount": 2179,
+      "hash": "17fa8eb3391c9b806dd57ec8468bfa5f83291354c03d4acb1d64a8578137b223",
+      "sourceHash": "f085eb0de06f98a7a7d2c004ae50d190c1bc04777ca7ec2ee5ce626253f708ac",
+      "durationSec": 850.152,
+      "byteSize": 5100912,
+      "narrationWordCount": 2176,
       "audioUrl": "/blog/audio-es/field-notes/local-llm-inference-tools.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/lookml-semantic-layer-data-modeling": {
       "slug": "lookml-semantic-layer-data-modeling",
@@ -1042,6 +1263,19 @@
       "narrationWordCount": 1786,
       "audioUrl": "/blog/audio-es/field-notes/mcp-production-enterprise.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/mcp-registry-gateway-tool-plane": {
+      "slug": "mcp-registry-gateway-tool-plane",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "50ce083b5ab26dcf03822ca6fb5064df52625e553808727d86e8edfe133cb395",
+      "sourceHash": "296d84aad18ab2a069d5fa3068455077404422ccbf16b60628f26ac040362632",
+      "durationSec": 2868.84,
+      "byteSize": 17213040,
+      "narrationWordCount": 7921,
+      "audioUrl": "/blog/audio-es/field-notes/mcp-registry-gateway-tool-plane.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/mcp-server-nl-to-powerbi-dashboard": {
       "slug": "mcp-server-nl-to-powerbi-dashboard",
@@ -1100,13 +1334,13 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "5d0ef2d0e1d8999de660f5adb8cc62f72cac183e9b8964ec746c1a36fdd31ada",
-      "sourceHash": "845faa27b444abdcaf62564bdd01639fab11a8fea59c51d8aaf8fc0c478b6e6a",
-      "durationSec": 756.144,
-      "byteSize": 4536864,
-      "narrationWordCount": 1689,
+      "hash": "6fbc8bd6774a297db6ba3af6a7c1397731fcd3524384e124cefe8ce04137096c",
+      "sourceHash": "3ba999b2eaafb574247b36cb288ac10d6082a7c03b0f5a54496a3c35c088f802",
+      "durationSec": 679.488,
+      "byteSize": 4076928,
+      "narrationWordCount": 1455,
       "audioUrl": "/blog/audio-es/field-notes/ml-metrics-evaluation-monitoring.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/model-context-protocol": {
       "slug": "model-context-protocol",
@@ -1173,18 +1407,31 @@
       "audioUrl": "/blog/audio-es/field-notes/network-fundamentals-every-concept.mp3",
       "translationModel": "gemma4:latest"
     },
+    "field-notes/node-embeddings-fastrp-node2vec-graphsage": {
+      "slug": "node-embeddings-fastrp-node2vec-graphsage",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "1b4f735531cc322ce15b0cd270e62ea2b9c8dfa60d86620aef04a5cd5ca694eb",
+      "sourceHash": "1c5098bc8d543f38edd3182817f8c7f4e9fb9f9b8515d65aa003682355c0b5dc",
+      "durationSec": 2349.48,
+      "byteSize": 14096880,
+      "narrationWordCount": 6218,
+      "audioUrl": "/blog/audio-es/field-notes/node-embeddings-fastrp-node2vec-graphsage.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/ontologies-building-knowledge-bases": {
       "slug": "ontologies-building-knowledge-bases",
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "cf807c3b74ece1d33f66e20958e7df3d65ed5b625205d8b0f241f2e049f60714",
-      "sourceHash": "8d3d01c2fcace1bb626234dcbc62eeb40e2260d4f33bc0a6a2f4296a19fdb437",
-      "durationSec": 1492.296,
-      "byteSize": 8953776,
-      "narrationWordCount": 3647,
+      "hash": "b63cc1f667c54e77872f7992f842b8a47c07b5ba1d12be1bffff90ab37149f54",
+      "sourceHash": "e39a188607574bffd7e6e68793d72c039d097d49aa16a1c50cefcf61846033f0",
+      "durationSec": 1500.456,
+      "byteSize": 9002736,
+      "narrationWordCount": 3638,
       "audioUrl": "/blog/audio-es/field-notes/ontologies-building-knowledge-bases.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/ontology-production-pipeline-gcp": {
       "slug": "ontology-production-pipeline-gcp",
@@ -1251,6 +1498,19 @@
       "audioUrl": "/blog/audio-es/field-notes/operating-agents-eval-observability-scale.mp3",
       "translationModel": "aya-expanse:8b"
     },
+    "field-notes/organizational-network-analysis-company-graph": {
+      "slug": "organizational-network-analysis-company-graph",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "5d4781d2b92b18ec6d9c0b8cf541f34a209e0bcfcde409dd4caf80d5dd2e1d45",
+      "sourceHash": "9a2f3a009ad22a00732e734826209047387569366bad6860fbbe12aab2a49463",
+      "durationSec": 2329.776,
+      "byteSize": 13978656,
+      "narrationWordCount": 6450,
+      "audioUrl": "/blog/audio-es/field-notes/organizational-network-analysis-company-graph.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "field-notes/populating-knowledge-graph-llms-banking": {
       "slug": "populating-knowledge-graph-llms-banking",
       "category": "field-notes",
@@ -1262,6 +1522,19 @@
       "byteSize": 9915840,
       "narrationWordCount": 4295,
       "audioUrl": "/blog/audio-es/field-notes/populating-knowledge-graph-llms-banking.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "field-notes/production-graph-stack-agents-mcp-ontologies": {
+      "slug": "production-graph-stack-agents-mcp-ontologies",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "e5e8f34fafe1658310e670fa06484c8186eae689f8e0c3f2b38a019cc7d4874f",
+      "sourceHash": "caadf930292070e89686e11954b23b47315dd2e6f30ce3544db5457b9e3205d0",
+      "durationSec": 1991.496,
+      "byteSize": 11948976,
+      "narrationWordCount": 5542,
+      "audioUrl": "/blog/audio-es/field-notes/production-graph-stack-agents-mcp-ontologies.mp3",
       "translationModel": "aya-expanse:8b"
     },
     "field-notes/production-llm-agents-patterns": {
@@ -1373,13 +1646,13 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "d84ed8982f0ea90629181ee8dc23982f3d7fb6ee9a037a81a343864680daf2e9",
-      "sourceHash": "08d35ad4acde7893aad2dff09e818555bbba7d01ffd875f60907e904a364b48a",
-      "durationSec": 1892.136,
-      "byteSize": 11352816,
-      "narrationWordCount": 5225,
+      "hash": "ebf29d5176322559bdf1e7b4909199a6f45da2b8a942e1fa4e961879c1f4689a",
+      "sourceHash": "a6f2179fb3c026782ae5dacd8e73856598b60929bbe3ced086e482eca00b8d14",
+      "durationSec": 1900.272,
+      "byteSize": 11401632,
+      "narrationWordCount": 5150,
       "audioUrl": "/blog/audio-es/field-notes/redis-for-ai-buy-vs-build-gcp.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/reinforcement-learning-first-principles": {
       "slug": "reinforcement-learning-first-principles",
@@ -1445,6 +1718,19 @@
       "narrationWordCount": 5088,
       "audioUrl": "/blog/audio-es/field-notes/rlhf-dpo-alignment.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/sandboxing-agents-microvm-gvisor": {
+      "slug": "sandboxing-agents-microvm-gvisor",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "a514ab87d0c52fe81c73f0b3e66ca0a27ec8456bc02d4d29a691ef03bd170127",
+      "sourceHash": "7563a90c1ca1e537564fad31a4e6385184cfc1e9747500bd48a9143aaab0fd74",
+      "durationSec": 2461.608,
+      "byteSize": 14769648,
+      "narrationWordCount": 6987,
+      "audioUrl": "/blog/audio-es/field-notes/sandboxing-agents-microvm-gvisor.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/senior-api-design-contracts-versioning-dx": {
       "slug": "senior-api-design-contracts-versioning-dx",
@@ -1646,13 +1932,13 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "69d0b5b4fb92a66afc4685449821a5617d6bc454017d88d1ca2b4290b7104260",
-      "sourceHash": "9a5d97cf3435cb153ab55632ec5b5a684b9a10607d183a9a886bc892e3dd4f79",
-      "durationSec": 1880.184,
-      "byteSize": 11281104,
-      "narrationWordCount": 4712,
+      "hash": "a3671f72e5afa79d760537310e16157a71472b0e964964aa759ce2bb859633c9",
+      "sourceHash": "804a8e9714384c2bbe63d78f24987aaa3114288dcf03b1a2fa3569a76963e70a",
+      "durationSec": 1965.096,
+      "byteSize": 11790576,
+      "narrationWordCount": 4904,
       "audioUrl": "/blog/audio-es/field-notes/vertex-ai-gcp-ml-platform-cli.mp3",
-      "translationModel": "gemma4:latest"
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/working-with-ml-models": {
       "slug": "working-with-ml-models",
@@ -1731,6 +2017,19 @@
       "narrationWordCount": 3956,
       "audioUrl": "/blog/audio-es/research/llm-as-a-judge.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "research/magnifica-humanitas-ai-encyclical-analysis": {
+      "slug": "magnifica-humanitas-ai-encyclical-analysis",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "97ac54cd9474bcc814983d94f0f828fdacd7564b95d245c31525dfcd7fe45192",
+      "sourceHash": "436b7320d790eadf98e6d9a1d257f6629cdc48624341ee2b98141e0cd2e7291b",
+      "durationSec": 2079.24,
+      "byteSize": 12475440,
+      "narrationWordCount": 5551,
+      "audioUrl": "/blog/audio-es/research/magnifica-humanitas-ai-encyclical-analysis.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "research/mamba-selective-state-spaces": {
       "slug": "mamba-selective-state-spaces",

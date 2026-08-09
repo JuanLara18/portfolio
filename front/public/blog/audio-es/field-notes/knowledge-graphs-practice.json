@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "70b0dda38cd0493ba21489a7e1f0059692085cc6cb982d1dc2d2222cf8cb06bb",
-  "sourceHash": "08e2af026702dbf8cd8c98ab9b5c4153fdf91c9aa6d3f65cfb9f67be7208a0ec",
-  "durationSec": 1355.616,
-  "byteSize": 8133696,
-  "narrationWordCount": 3239,
+  "hash": "d08a2e782f94b04c3565dff37522671c00a570e8cf6e548828833a93bb8bf022",
+  "sourceHash": "f98566eaf002af2d5fcac7b38bb7a944360576162457e5785485ddc095dc3a78",
+  "durationSec": 1368.192,
+  "byteSize": 8209152,
+  "narrationWordCount": 3226,
   "audioUrl": "/blog/audio-es/field-notes/knowledge-graphs-practice.mp3",
-  "translationModel": "gemma4:latest"
+  "translationModel": "aya-expanse:8b"
 }

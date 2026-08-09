@@ -1,0 +1,13 @@
+{
+  "slug": "node-embeddings-fastrp-node2vec-graphsage",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1b4f735531cc322ce15b0cd270e62ea2b9c8dfa60d86620aef04a5cd5ca694eb",
+  "sourceHash": "1c5098bc8d543f38edd3182817f8c7f4e9fb9f9b8515d65aa003682355c0b5dc",
+  "durationSec": 2349.48,
+  "byteSize": 14096880,
+  "narrationWordCount": 6218,
+  "audioUrl": "/blog/audio-es/field-notes/node-embeddings-fastrp-node2vec-graphsage.mp3",
+  "translationModel": "aya-expanse:8b"
+}

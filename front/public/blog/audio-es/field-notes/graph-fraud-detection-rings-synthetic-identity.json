@@ -1,0 +1,13 @@
+{
+  "slug": "graph-fraud-detection-rings-synthetic-identity",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "0f8dd7783740ed881f3e1fb3d80a7683aa00b3f786c86d36fe9d99fec1fc2285",
+  "sourceHash": "b30a477d604647cc0191cfd1e7903c4515cce9e50fb4d2bfbed1f31bc284a0db",
+  "durationSec": 2626.272,
+  "byteSize": 15757632,
+  "narrationWordCount": 7356,
+  "audioUrl": "/blog/audio-es/field-notes/graph-fraud-detection-rings-synthetic-identity.mp3",
+  "translationModel": "aya-expanse:8b"
+}
