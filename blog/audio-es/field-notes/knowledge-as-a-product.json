@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "dfaa43b1b883df26788c8cb265f5bb324c789f99ddd1cd016cee144774196798",
-  "sourceHash": "38bc1be451ea918f7d1927170222dce675770bcb2dd34eecf1ea5b1875e47392",
-  "durationSec": 2218.104,
-  "byteSize": 13308624,
-  "narrationWordCount": 6245,
+  "hash": "1358a67afd1544fd74e3f69f2a6971195fa73fbda0ec9b1fad1da7055b7b5dd1",
+  "sourceHash": "dfb952d29bd596e96bf7de3b6ec4ad8b513b24994017837beb6f3da4056b355b",
+  "durationSec": 2234.832,
+  "byteSize": 13408992,
+  "narrationWordCount": 6257,
   "audioUrl": "/blog/audio-es/field-notes/knowledge-as-a-product.mp3",
-  "translationModel": "gemma4:latest"
+  "translationModel": "aya-expanse:8b"
 }

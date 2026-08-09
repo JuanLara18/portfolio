@@ -1,0 +1,13 @@
+{
+  "slug": "organizational-network-analysis-company-graph",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "5d4781d2b92b18ec6d9c0b8cf541f34a209e0bcfcde409dd4caf80d5dd2e1d45",
+  "sourceHash": "9a2f3a009ad22a00732e734826209047387569366bad6860fbbe12aab2a49463",
+  "durationSec": 2329.776,
+  "byteSize": 13978656,
+  "narrationWordCount": 6450,
+  "audioUrl": "/blog/audio-es/field-notes/organizational-network-analysis-company-graph.mp3",
+  "translationModel": "aya-expanse:8b"
+}

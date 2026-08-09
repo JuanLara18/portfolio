@@ -1,0 +1,13 @@
+{
+  "slug": "production-graph-stack-agents-mcp-ontologies",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e5e8f34fafe1658310e670fa06484c8186eae689f8e0c3f2b38a019cc7d4874f",
+  "sourceHash": "caadf930292070e89686e11954b23b47315dd2e6f30ce3544db5457b9e3205d0",
+  "durationSec": 1991.496,
+  "byteSize": 11948976,
+  "narrationWordCount": 5542,
+  "audioUrl": "/blog/audio-es/field-notes/production-graph-stack-agents-mcp-ontologies.mp3",
+  "translationModel": "aya-expanse:8b"
+}

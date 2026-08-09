@@ -1,0 +1,13 @@
+{
+  "slug": "claude-certified-developer-exam-guide",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "9b3c13becd5431ad7141bc8b27145520964120f390fb810cd62ce99ec666e15a",
+  "sourceHash": "d68c67e5387a1fdeb65176c41589b5bc92538776ce765f1864d22398b56e3d87",
+  "durationSec": 1865.952,
+  "byteSize": 11195712,
+  "narrationWordCount": 5007,
+  "audioUrl": "/blog/audio-es/field-notes/claude-certified-developer-exam-guide.mp3",
+  "translationModel": "aya-expanse:8b"
+}

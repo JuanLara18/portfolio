@@ -1,0 +1,13 @@
+{
+  "slug": "agent-runtime-sessions-state-topology",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "cb11cb948ed8987a85fb28b64218733f11be2b91523a62a52f9c262c7534773d",
+  "sourceHash": "e3a463703a567c26cdf1fb57e5591eb998cf781caa86b935222a44f1fc85ef1e",
+  "durationSec": 2452.824,
+  "byteSize": 14716944,
+  "narrationWordCount": 6843,
+  "audioUrl": "/blog/audio-es/field-notes/agent-runtime-sessions-state-topology.mp3",
+  "translationModel": "aya-expanse:8b"
+}

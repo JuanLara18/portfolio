@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "69d0b5b4fb92a66afc4685449821a5617d6bc454017d88d1ca2b4290b7104260",
-  "sourceHash": "9a5d97cf3435cb153ab55632ec5b5a684b9a10607d183a9a886bc892e3dd4f79",
-  "durationSec": 1880.184,
-  "byteSize": 11281104,
-  "narrationWordCount": 4712,
+  "hash": "a3671f72e5afa79d760537310e16157a71472b0e964964aa759ce2bb859633c9",
+  "sourceHash": "804a8e9714384c2bbe63d78f24987aaa3114288dcf03b1a2fa3569a76963e70a",
+  "durationSec": 1965.096,
+  "byteSize": 11790576,
+  "narrationWordCount": 4904,
   "audioUrl": "/blog/audio-es/field-notes/vertex-ai-gcp-ml-platform-cli.mp3",
-  "translationModel": "gemma4:latest"
+  "translationModel": "aya-expanse:8b"
 }

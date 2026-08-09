@@ -1,0 +1,13 @@
+{
+  "slug": "sandboxing-agents-microvm-gvisor",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a514ab87d0c52fe81c73f0b3e66ca0a27ec8456bc02d4d29a691ef03bd170127",
+  "sourceHash": "7563a90c1ca1e537564fad31a4e6385184cfc1e9747500bd48a9143aaab0fd74",
+  "durationSec": 2461.608,
+  "byteSize": 14769648,
+  "narrationWordCount": 6987,
+  "audioUrl": "/blog/audio-es/field-notes/sandboxing-agents-microvm-gvisor.mp3",
+  "translationModel": "aya-expanse:8b"
+}

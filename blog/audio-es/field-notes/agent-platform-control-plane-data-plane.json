@@ -1,0 +1,13 @@
+{
+  "slug": "agent-platform-control-plane-data-plane",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1fb25fb9b73d9a199f91028ba8bac6f4b529685bb86c491608f9cb880f9c7b2c",
+  "sourceHash": "99048cde7dec92887ae278687e7a665c9ae302c62e081e22f4895f8028fa9bc1",
+  "durationSec": 2587.104,
+  "byteSize": 15522624,
+  "narrationWordCount": 7342,
+  "audioUrl": "/blog/audio-es/field-notes/agent-platform-control-plane-data-plane.mp3",
+  "translationModel": "aya-expanse:8b"
+}

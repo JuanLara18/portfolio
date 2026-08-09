@@ -1,0 +1,13 @@
+{
+  "slug": "bank-grade-agent-security-iam-gateways",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "773f74e1ddd93213e9b2ab3c99b533f6c59f8bb248630b24ea55b2e650e044e2",
+  "sourceHash": "51faf0f588b1c7f2b92e5a38d43b5c56badea7d57e29fa1e6e67cf05439b8628",
+  "durationSec": 2161.296,
+  "byteSize": 12967776,
+  "narrationWordCount": 5967,
+  "audioUrl": "/blog/audio-es/field-notes/bank-grade-agent-security-iam-gateways.mp3",
+  "translationModel": "aya-expanse:8b"
+}

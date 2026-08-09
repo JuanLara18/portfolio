@@ -1,0 +1,13 @@
+{
+  "slug": "magnifica-humanitas-ai-encyclical-analysis",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "97ac54cd9474bcc814983d94f0f828fdacd7564b95d245c31525dfcd7fe45192",
+  "sourceHash": "436b7320d790eadf98e6d9a1d257f6629cdc48624341ee2b98141e0cd2e7291b",
+  "durationSec": 2079.24,
+  "byteSize": 12475440,
+  "narrationWordCount": 5551,
+  "audioUrl": "/blog/audio-es/research/magnifica-humanitas-ai-encyclical-analysis.mp3",
+  "translationModel": "aya-expanse:8b"
+}

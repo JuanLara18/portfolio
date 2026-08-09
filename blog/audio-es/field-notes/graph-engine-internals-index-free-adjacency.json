@@ -1,0 +1,13 @@
+{
+  "slug": "graph-engine-internals-index-free-adjacency",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "bbf4e0bc897e115320b2fb72a930294025fa5b0f6a3913f01d7077693c955f85",
+  "sourceHash": "d8d887c841a703bbf4e895edb087d94c53ca11f3b404ce6c6394cf4edc6ce8b1",
+  "durationSec": 2157.336,
+  "byteSize": 12944016,
+  "narrationWordCount": 6101,
+  "audioUrl": "/blog/audio-es/field-notes/graph-engine-internals-index-free-adjacency.mp3",
+  "translationModel": "aya-expanse:8b"
+}

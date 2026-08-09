@@ -1,0 +1,13 @@
+{
+  "slug": "agent-golden-paths-multi-tenancy",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "d6ff89b053e1e22a6a3da7bf8706e6828d245b0bd8dbcda92c3f1fd1842121d1",
+  "sourceHash": "96e7812ffdd25381f025491df5596d599e34f49749ec8464c5482fc5c8cba6de",
+  "durationSec": 2378.352,
+  "byteSize": 14270112,
+  "narrationWordCount": 6852,
+  "audioUrl": "/blog/audio-es/field-notes/agent-golden-paths-multi-tenancy.mp3",
+  "translationModel": "aya-expanse:8b"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "mcp-registry-gateway-tool-plane",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "50ce083b5ab26dcf03822ca6fb5064df52625e553808727d86e8edfe133cb395",
+  "sourceHash": "296d84aad18ab2a069d5fa3068455077404422ccbf16b60628f26ac040362632",
+  "durationSec": 2868.84,
+  "byteSize": 17213040,
+  "narrationWordCount": 7921,
+  "audioUrl": "/blog/audio-es/field-notes/mcp-registry-gateway-tool-plane.mp3",
+  "translationModel": "aya-expanse:8b"
+}

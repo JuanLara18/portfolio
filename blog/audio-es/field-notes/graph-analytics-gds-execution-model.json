@@ -1,0 +1,13 @@
+{
+  "slug": "graph-analytics-gds-execution-model",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "d06626df374a50a7eb1dff3e7ec92b0fde78c5f786dfc202494ac91f9ed33acb",
+  "sourceHash": "2c08c726909eee61682157746c2bb2a58ea261b70cc7a3a710d95fe3f995d104",
+  "durationSec": 2260.752,
+  "byteSize": 13564512,
+  "narrationWordCount": 6273,
+  "audioUrl": "/blog/audio-es/field-notes/graph-analytics-gds-execution-model.mp3",
+  "translationModel": "aya-expanse:8b"
+}
