@@ -145,13 +145,33 @@ _LEADING_PREAMBLE_RE = re.compile(
     r"^(?:here'?s?\s+the\s+(?:spanish\s+)?translation[:\s]*|aquí\s+está\s+la\s+traducción[:\s]*|aquí\s+tienes\s+la\s+traducción[:\s]*|traducción[:\s]*)",
     re.IGNORECASE,
 )
+# Same shapes md_to_speech.strip_lists_and_quotes removes from the English
+# narration, so a re-introduced marker is stripped the same way it was.
+_LIST_BULLET_RE = re.compile(r"^(\s*)[-*+]\s+", re.MULTILINE)
+_LIST_NUM_RE = re.compile(r"^(\s*)\d+\.\s+", re.MULTILINE)
 
 
-def _clean_translation(text: str) -> str:
+def _strip_reintroduced_lists(text: str, source: str) -> str:
+    """Remove list markers the model added back that the source did not have.
+
+    The narration fed to us is already de-bulleted, but 7-8B models drift back
+    to list formatting on enumerated content. Only strip a marker shape when
+    the source chunk has none of it — some posts legitimately start lines with
+    an operator (e.g. "* gives you multiplication") and those must survive.
+    """
+    if not _LIST_BULLET_RE.search(source):
+        text = _LIST_BULLET_RE.sub(r"\1", text)
+    if not _LIST_NUM_RE.search(source):
+        text = _LIST_NUM_RE.sub(r"\1", text)
+    return text
+
+
+def _clean_translation(text: str, source: str = "") -> str:
     """Strip markdown artifacts some models insert despite instructions."""
     text = _MARKDOWN_EMPH_RE.sub(r"\1", text)
     text = _BACKTICK_RE.sub(r"\1", text)
     text = _LEADING_PREAMBLE_RE.sub("", text.lstrip()).lstrip()
+    text = _strip_reintroduced_lists(text, source)
     # Collapse 3+ newlines to a single blank line.
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
@@ -172,7 +192,7 @@ def translate_narration(
             print(f"  chunk {i}/{len(chunks)} ({len(chunk)} chars)...", flush=True)
         t0 = time.time()
         translated = _call_ollama(chunk, model=model, system=system)
-        translated = _clean_translation(translated)
+        translated = _clean_translation(translated, source=chunk)
         if verbose:
             print(f"    done in {time.time() - t0:.1f}s ({len(translated)} chars)")
         out_parts.append(translated)
