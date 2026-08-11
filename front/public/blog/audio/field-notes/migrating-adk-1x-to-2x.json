@@ -1,0 +1,13 @@
+{
+  "slug": "migrating-adk-1x-to-2x",
+  "category": "field-notes",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "df269537356a8ddfb330d607fa779c391e49a5d01e8f0a381d57255ab18724d2",
+  "sourceHash": "df269537356a8ddfb330d607fa779c391e49a5d01e8f0a381d57255ab18724d2",
+  "durationSec": 1644.24,
+  "byteSize": 9865440,
+  "narrationWordCount": 5175,
+  "audioUrl": "/blog/audio/field-notes/migrating-adk-1x-to-2x.mp3",
+  "translationModel": ""
+}
