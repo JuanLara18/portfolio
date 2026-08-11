@@ -2,7 +2,7 @@
 title: "Gemini Enterprise and the Knowledge Catalog: Two Buildings, Room by Room"
 date: "2027-07-22"
 excerpt: "The Cloud Next 26 overview gave you the map. This post zooms in on the two pieces that will reshape a Knowledge Data Engineer's day-to-day in the next twelve months: the Gemini Enterprise Agent Platform as a control plane, and the Knowledge Catalog as the semantic spine that grounds every agent answer in audited enterprise truth."
-tags: ["Google Cloud", "Vertex AI", "Agents", "Agentic AI", "Knowledge Graphs", "Data Architecture", "Production ML", "Infrastructure", "RAG", "MLOps", "MCP", "Knowledge Engineering"]
+tags: ["Google Cloud", "Vertex AI", "Google ADK", "Agents", "Agentic AI", "Knowledge Graphs", "Data Architecture", "Production ML", "Infrastructure", "RAG", "MCP", "Knowledge Engineering"]
 headerImage: "/blog/headers/card-catalog-drawers-header.jpg"
 readingTimeMinutes: 28
 slug: gemini-enterprise-knowledge-catalog-deep-dive

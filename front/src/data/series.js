@@ -224,15 +224,30 @@ export const SERIES = [
     ],
   },
   {
+    id: 'adk-in-depth',
+    title: 'Google ADK in Depth',
+    description:
+      'The Agent Development Kit end to end, from the four-pillar mental model to the ' +
+      'graph-based Workflow Runtime that landed in ADK 2.0: deterministic orchestration, ' +
+      'the breaking changes worth planning for, why the framework is shaped the way it is, ' +
+      'and engineering durable memory on top of the Gemini Enterprise Agent Platform.',
+    posts: [
+      'google-adk-agent-development-deep-dive',
+      'adk-graph-workflows-deterministic-orchestration',
+      'migrating-adk-1x-to-2x',
+      'adk-advanced-evolution-of-agent-engineering',
+      'enterprise-agent-memory-continuity-adk-geap',
+    ],
+  },
+  {
     id: 'agent-tooling-ecosystem',
     title: 'The Agent Tooling Landscape: Frameworks, Platforms, and Build-vs-Buy',
     description:
-      'The real ecosystem: Google ADK in depth, LangGraph workflows, open-source agent ' +
-      'composition, the build-vs-fork-vs-adopt decision, and a head-to-head comparison of ' +
-      'self-hosted agent platforms.',
+      'The real ecosystem: LangGraph workflows, open-source agent composition, the ' +
+      'build-vs-fork-vs-adopt decision, and a head-to-head comparison of self-hosted agent ' +
+      'platforms. Google ADK gets its own arc in Google ADK in Depth.',
     posts: [
       'google-adk-agent-development-deep-dive',
-      'adk-advanced-evolution-of-agent-engineering',
       'langgraph-multi-agent-workflows',
       'dont-reinvent-the-agent-open-source-composition',
       'agent-harness-build-fork-adopt-yc-qm',

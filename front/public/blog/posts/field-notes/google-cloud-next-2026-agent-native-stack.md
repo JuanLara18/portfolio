@@ -2,7 +2,7 @@
 title: "Google Cloud Next 2026: The Agent-Native Stack, Decoded"
 date: "2027-07-15"
 excerpt: "On April 22, 2026, Sundar Pichai walked onstage at Mandalay Bay and quietly renamed Vertex AI. The new label, Gemini Enterprise Agent Platform, sounds like marketing. It is not. It is the most aggressive cloud reorganization since the original Compute Engine launch. This is the practitioner's deep dive into every announcement that matters, what it replaces, and what to actually adopt."
-tags: ["GCP", "Vertex AI", "Cloud Computing", "Agents", "Agentic AI", "LLMs", "Infrastructure", "MLOps", "MCP", "RAG", "Production ML", "Data Architecture"]
+tags: ["GCP", "Vertex AI", "Google ADK", "Cloud Computing", "Agents", "Agentic AI", "LLMs", "Infrastructure", "MLOps", "MCP", "RAG", "Production ML"]
 headerImage: "/blog/headers/las-vegas-convention-center-header.jpg"
 readingTimeMinutes: 30
 slug: google-cloud-next-2026-agent-native-stack
