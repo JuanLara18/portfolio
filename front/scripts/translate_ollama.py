@@ -149,20 +149,28 @@ _LEADING_PREAMBLE_RE = re.compile(
 # narration, so a re-introduced marker is stripped the same way it was.
 _LIST_BULLET_RE = re.compile(r"^(\s*)[-*+]\s+", re.MULTILINE)
 _LIST_NUM_RE = re.compile(r"^(\s*)\d+\.\s+", re.MULTILINE)
+# md_to_speech.rewrite_headers turns every ATX heading into a plain sentence,
+# so a "## " in the translation is always the model re-adding structure.
+_ATX_HEADING_RE = re.compile(r"^(\s*)#{1,6}\s+", re.MULTILINE)
 
 
-def _strip_reintroduced_lists(text: str, source: str) -> str:
-    """Remove list markers the model added back that the source did not have.
+def _strip_reintroduced_markers(text: str, source: str) -> str:
+    """Remove block markers the model added back that the source did not have.
 
-    The narration fed to us is already de-bulleted, but 7-8B models drift back
-    to list formatting on enumerated content. Only strip a marker shape when
-    the source chunk has none of it — some posts legitimately start lines with
-    an operator (e.g. "* gives you multiplication") and those must survive.
+    The narration fed to us is already de-bulleted and de-headed, but 7-8B
+    models drift back to markdown structure on enumerated or sectioned content.
+    Only strip a marker shape when the source chunk has none of it — some posts
+    legitimately start lines with an operator (e.g. "* gives you
+    multiplication") or a hash, and those must survive.
     """
     if not _LIST_BULLET_RE.search(source):
         text = _LIST_BULLET_RE.sub(r"\1", text)
     if not _LIST_NUM_RE.search(source):
         text = _LIST_NUM_RE.sub(r"\1", text)
+    if not _ATX_HEADING_RE.search(source):
+        # Keep the heading text as its own sentence, matching what
+        # rewrite_headers produced on the English side.
+        text = _ATX_HEADING_RE.sub(r"\1", text)
     return text
 
 
@@ -171,7 +179,7 @@ def _clean_translation(text: str, source: str = "") -> str:
     text = _MARKDOWN_EMPH_RE.sub(r"\1", text)
     text = _BACKTICK_RE.sub(r"\1", text)
     text = _LEADING_PREAMBLE_RE.sub("", text.lstrip()).lstrip()
-    text = _strip_reintroduced_lists(text, source)
+    text = _strip_reintroduced_markers(text, source)
     # Collapse 3+ newlines to a single blank line.
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
