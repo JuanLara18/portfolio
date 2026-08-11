@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1786166732,
+  "generatedAt": 1786406600,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -216,12 +216,25 @@
       "category": "field-notes",
       "lang": "en",
       "voice": "en-US-AndrewMultilingualNeural",
-      "hash": "0acec20e1009784124da94785419782a600d4ebda7e048b0c2c79fd5ecdc3287",
-      "sourceHash": "0acec20e1009784124da94785419782a600d4ebda7e048b0c2c79fd5ecdc3287",
-      "durationSec": 1770.0,
-      "byteSize": 10620000,
-      "narrationWordCount": 4845,
+      "hash": "1f2c1eebb6ac3ad14f73e4347c9e294b5aa1ae4eb5e029f84ebae6e73b70cde5",
+      "sourceHash": "1f2c1eebb6ac3ad14f73e4347c9e294b5aa1ae4eb5e029f84ebae6e73b70cde5",
+      "durationSec": 2897.28,
+      "byteSize": 17383680,
+      "narrationWordCount": 7010,
       "audioUrl": "/blog/audio/field-notes/adk-advanced-evolution-of-agent-engineering.mp3",
+      "translationModel": ""
+    },
+    "field-notes/adk-graph-workflows-deterministic-orchestration": {
+      "slug": "adk-graph-workflows-deterministic-orchestration",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "5ba1e7d7461fea059d065e8cfbc1740c11ebd7af2cd70e992eec6665c20ff2a3",
+      "sourceHash": "5ba1e7d7461fea059d065e8cfbc1740c11ebd7af2cd70e992eec6665c20ff2a3",
+      "durationSec": 2484.888,
+      "byteSize": 14909328,
+      "narrationWordCount": 6214,
+      "audioUrl": "/blog/audio/field-notes/adk-graph-workflows-deterministic-orchestration.mp3",
       "translationModel": ""
     },
     "field-notes/agent-architecture-and-orchestration": {
@@ -762,11 +775,11 @@
       "category": "field-notes",
       "lang": "en",
       "voice": "en-US-AndrewMultilingualNeural",
-      "hash": "b8de66d1e628632579a50bec1b5c2505dfded8a20b1abe8800ae138f5cf4d291",
-      "sourceHash": "b8de66d1e628632579a50bec1b5c2505dfded8a20b1abe8800ae138f5cf4d291",
-      "durationSec": 2004.576,
-      "byteSize": 12027456,
-      "narrationWordCount": 5154,
+      "hash": "9ecfb72d3b2ca033a616a2260ef2403449e233cf8d0b6e819852e8524cac99d5",
+      "sourceHash": "9ecfb72d3b2ca033a616a2260ef2403449e233cf8d0b6e819852e8524cac99d5",
+      "durationSec": 2694.0,
+      "byteSize": 16164000,
+      "narrationWordCount": 6866,
       "audioUrl": "/blog/audio/field-notes/enterprise-agent-memory-continuity-adk-geap.mp3",
       "translationModel": ""
     },
@@ -957,11 +970,11 @@
       "category": "field-notes",
       "lang": "en",
       "voice": "en-US-AndrewMultilingualNeural",
-      "hash": "671e50f37f4f63558bab0544c9337d3c52a392f114390bfdfa7d03163eac6460",
-      "sourceHash": "671e50f37f4f63558bab0544c9337d3c52a392f114390bfdfa7d03163eac6460",
-      "durationSec": 1443.48,
-      "byteSize": 8660880,
-      "narrationWordCount": 3891,
+      "hash": "7b53c7e72fa310a460428bc01d01aab0f480f55c64c223933d20813de7f76d7d",
+      "sourceHash": "7b53c7e72fa310a460428bc01d01aab0f480f55c64c223933d20813de7f76d7d",
+      "durationSec": 2451.456,
+      "byteSize": 14708736,
+      "narrationWordCount": 6142,
       "audioUrl": "/blog/audio/field-notes/google-adk-agent-development-deep-dive.mp3",
       "translationModel": ""
     },
@@ -1288,6 +1301,19 @@
       "byteSize": 8247456,
       "narrationWordCount": 3179,
       "audioUrl": "/blog/audio/field-notes/mcp-server-nl-to-powerbi-dashboard.mp3",
+      "translationModel": ""
+    },
+    "field-notes/migrating-adk-1x-to-2x": {
+      "slug": "migrating-adk-1x-to-2x",
+      "category": "field-notes",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "df269537356a8ddfb330d607fa779c391e49a5d01e8f0a381d57255ab18724d2",
+      "sourceHash": "df269537356a8ddfb330d607fa779c391e49a5d01e8f0a381d57255ab18724d2",
+      "durationSec": 1644.24,
+      "byteSize": 9865440,
+      "narrationWordCount": 5175,
+      "audioUrl": "/blog/audio/field-notes/migrating-adk-1x-to-2x.mp3",
       "translationModel": ""
     },
     "field-notes/ml-cert-review-part-1-foundations": {
