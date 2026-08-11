@@ -1,12 +1,12 @@
 ---
 title: "The Agent That Remembers You: Continuity Engineering on ADK 2.0 and Gemini Enterprise"
 date: "2028-06-29"
-excerpt: "Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph and the Anthropic and OpenAI SDKs."
-tags: ["Agents", "Agentic AI", "LLMs", "Production ML", "MLOps", "RAG", "Knowledge Bases", "BigQuery", "Cloud Computing", "Data Engineering", "Best Practices"]
+excerpt: "Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph, the Anthropic and OpenAI SDKs, and Bedrock AgentCore."
+tags: ["Agents", "Agentic AI", "Google ADK", "LLMs", "Production ML", "MLOps", "RAG", "Knowledge Bases", "BigQuery", "Cloud Computing", "Data Engineering", "Best Practices"]
 headerImage: "/blog/headers/card-catalog-header.jpg"
-readingTimeMinutes: 29
+readingTimeMinutes: 31
 slug: enterprise-agent-memory-continuity-adk-geap
-estimatedWordCount: 6800
+estimatedWordCount: 7705
 ---
 
 # The Agent That Remembers You: Continuity Engineering on ADK 2.0 and Gemini Enterprise
@@ -36,7 +36,7 @@ quadrantChart
     quadrant-4 Durable facts
     Session state: [0.18, 0.32]
     Temp state: [0.1, 0.45]
-    Vertex Memory Bank: [0.82, 0.3]
+    Memory Bank: [0.82, 0.3]
     ADK artifacts: [0.78, 0.18]
     OpenClaw user notes: [0.7, 0.28]
     Hermes skill files: [0.85, 0.82]
@@ -45,7 +45,9 @@ quadrantChart
 
 The bottom-left quadrant is **working memory**: the current conversation. In ADK this is the `Session` — a `session_id`, an append-only list of `Event` objects (user messages, tool calls, model responses), and a mutable `state` dictionary the agent scribbles in as it works. It is precise, it is cheap, and it dies when the conversation ends unless you deliberately persist it. Everyone builds this by default; nobody confuses it with a relationship.
 
-The bottom-right quadrant is **durable facts**: things worth remembering *about a user or a domain* across conversations. "This VP measures the business in weekly active seats, not monthly revenue." "The finance mart's canonical date column is `close_date`, not `created_at`." OpenClaw's "user notes" — vectorized snippets stored in Chroma or Milvus and retrieved by similarity — live here. So does Google's **Vertex AI Memory Bank**, which I will come back to. This is the quadrant that produces the feeling of *being known*.
+Working memory has a failure mode that is worth naming here rather than discovering in production: it grows. A quarter-close conversation with a VP is forty turns of SQL, schema dumps, and chart specs, and by turn forty the event log is both expensive to resend and too long for the model to attend to well. There are two distinct answers to that, they solve different problems, and ADK now ships both as managed features — I will come back to them by name in the next section, because they are the clearest example of a layer whose ownership you should *not* take on yourself.
+
+The bottom-right quadrant is **durable facts**: things worth remembering *about a user or a domain* across conversations. "This VP measures the business in weekly active seats, not monthly revenue." "The finance mart's canonical date column is `close_date`, not `created_at`." OpenClaw's "user notes" — vectorized snippets stored in Chroma or Milvus and retrieved by similarity — live here. So does Google's **Memory Bank**, which I will come back to. This is the quadrant that produces the feeling of *being known*.
 
 The top-right quadrant is **durable procedures**: not facts but *know-how*. This is where Hermes made its bet — the `SKILL.md` file that captures "here is how I successfully migrated a schema, including the two things that went wrong." It is memory of *how to do something*, written down so it can be replayed and improved. Almost no enterprise agent has this, and it is the hardest and most interesting quadrant to reach responsibly.
 
@@ -64,11 +66,43 @@ Let me lay out the parts, because knowing their exact shape is what lets you avo
 - A bare key like `state["draft_query"]` is **session-scoped**. It vanishes with the conversation.
 - `state["user:preferred_granularity"]` is **user-scoped**. It follows one user across every session they ever have with this app.
 - `state["app:fiscal_year_start"]` is **app-scoped**. It is shared across every user of the agent.
-- `state["temp:raw_api_blob"]` is **temporary**. It is explicitly never persisted, even when everything else is.
+- `state["temp:raw_api_blob"]` is **temporary**. It is scoped to the current *invocation* and discarded when it completes, so it is never persisted even when everything else is.
 
-That prefix convention is doing quiet, load-bearing work. It is, in miniature, the entire multi-tenant memory problem — *whose* memory is this? — solved at the key level. We will lean on it hard.
+That prefix convention is doing quiet, load-bearing work. It is, in miniature, the entire multi-tenant memory problem — *whose* memory is this? — solved at the key level. We will lean on it hard. One caveat that is easy to miss and expensive to learn: the prefixes describe *scope*, not *storage*. They only actually survive a restart when you are running a persistent `SessionService` — `DatabaseSessionService` or the managed `VertexAiSessionService`. Under `InMemorySessionService` the docs are explicit that prefixed state is held in process and lost when the process dies, which means a local demo will happily convince you that `user:` memory works before you have configured anything that would make it true.
 
-**Vertex AI Memory Bank.** This is the managed durable-facts store, and it is more clever than a vector database. You do not write memories to it directly; you hand it *completed sessions*, and a Gemini model reads the transcript and **extracts** what is worth keeping — the durable facts, distilled from the chatter. The relevant ADK surface is small:
+**Context compression and model context caching.** These are the two managed answers to the growth problem I flagged in the taxonomy, and they are worth separating because engineers routinely reach for one when they need the other.
+
+*Context compression* — compaction, in the ADK docs — answers "the session got too long." It summarizes older event history in place, keeping the recent raw turns verbatim, so the agent retains the thread of the conversation without carrying every token of it. You configure it on the `App` object that wraps your root agent, and you can point the summarization at a cheap model rather than your reasoning model. The primary knobs are token-based (`token_threshold` to trigger compaction, `event_retention_size` for how many recent raw events to keep untouched), with a supplementary sliding-window mode (`compaction_interval` turns between compactions, `overlap_size` events kept as overlapping context).
+
+*Model context caching* answers a different question: "we resend the same prefix every single turn." Your BI agent's instruction block, its tool schemas, and the schema dump for `fct_subscription_seats` do not change between turn three and turn thirty, and you are paying full input price for them thirty times. Caching is configured on the same `App` object and is supported on Gemini 2.0 and higher.
+
+```python
+from google.adk.apps.app import App, EventsCompactionConfig
+from google.adk.apps.llm_event_summarizer import LlmEventSummarizer
+from google.adk.agents.context_cache_config import ContextCacheConfig
+from google.adk.models import Gemini
+
+app = App(
+    name="bi_agent_app",
+    root_agent=bi_agent,
+    # Summarize old history with a cheap model, keep the recent turns raw.
+    events_compaction_config=EventsCompactionConfig(
+        compaction_interval=3,
+        overlap_size=1,
+        summarizer=LlmEventSummarizer(llm=Gemini(model="gemini-flash-latest")),
+    ),
+    # Stop paying full price for a prefix that never changes.
+    context_cache_config=ContextCacheConfig(
+        min_tokens=2048,      # only cache when it is worth it
+        ttl_seconds=600,
+        cache_intervals=5,    # reuse the same cache this many invocations
+    ),
+)
+```
+
+The reason these belong in the post is not the API. It is that their existence sharpens the argument about layers. Compression is a *lossy transformation of working memory*; caching is a *cost optimization on the transport*. Neither is durable memory, and neither will make your agent know that Ana measures seats. Decide that summarizing the session *is* your memory strategy and you get an agent that forgets more slowly and still forgets. Compression and caching keep the ephemeral quadrant affordable; Memory Bank and artifacts move information *out* of it into something that survives.
+
+**Memory Bank.** This is the managed durable-facts store, and it is more clever than a vector database. You do not write memories to it directly; you hand it *completed sessions*, and a Gemini model reads the transcript and **extracts** what is worth keeping — the durable facts, distilled from the chatter. The relevant ADK surface is small:
 
 ```python
 from google.adk.memory import VertexAiMemoryBankService
@@ -93,7 +127,9 @@ response = await memory_service.search_memory(
 
 Note the `user_id` in `search_memory`. Memory Bank is namespaced by user out of the box. Ana's extracted facts are retrieved only for Ana. That single parameter is the difference between "an agent that knows its users" and "a data breach."
 
-There are two sibling services worth knowing so you pick correctly: `VertexAiRagMemoryService` gives you classic vector-indexed retrieval over documents (the right tool when the durable knowledge is a *corpus*, not *conversation-derived facts*), and `InMemoryMemoryService` does keyword matching in process for local development. Same interface, three storage strategies. Choose by what your durable knowledge actually is.
+Two details on the write path are worth having in your head before you design around it. `add_session_to_memory` takes a whole completed session, which is the right granularity at the end of a conversation but wasteful mid-flight; for that there is `add_events_to_memory`, which appends the recent turn's deltas without re-ingesting everything you already sent. And both accept a `custom_metadata` dictionary, which is how you tag a memory with the provenance you will want later when someone asks *why* the agent believes something.
+
+There are two sibling services worth knowing so you pick correctly: `VertexAiRagMemoryService` gives you classic vector-indexed retrieval over a RAG corpus with `similarity_top_k` and a distance threshold (the right tool when the durable knowledge is a *corpus*, not *conversation-derived facts*), and `InMemoryMemoryService` does keyword matching in process for local development. Same interface, three storage strategies. Choose by what your durable knowledge actually is.
 
 **Artifacts.** Facts are not the only thing worth keeping. Agents *produce* things — a chart, a compiled report, a `.sql` file, a dashboard specification. In ADK these are **artifacts**: named, versioned binary blobs with a MIME type, stored through an `ArtifactService`. `InMemoryArtifactService` for dev, `GcsArtifactService` for production (it writes to a Cloud Storage bucket). The API is deliberately filesystem-shaped:
 
@@ -112,14 +148,18 @@ async def save_dashboard(spec_json: bytes, tool_context) -> dict:
 
 And here is the detail that makes artifacts a memory primitive and not just a file dump: the **same `user:` prefix convention** applies to filenames. `save_artifact("dashboard.json", ...)` is scoped to the current session and disappears with it. `save_artifact("user:latest_dashboard.json", ...)` follows the user across every session. One character decides whether the VP's dashboard is a throwaway or a durable possession.
 
-**Agent Runtime.** Finally, the thing that runs all of this in production. GEAP's Agent Runtime is a managed environment that deploys your ADK agent and, critically, *provisions the Sessions, Memory Bank, and Artifact services for you*, wires in an agent identity for IAM, and adds tracing. It gives you sub-second cold starts, per-instance scaling controls, and — the feature that quietly matters most for continuity — support for **long-running agents that stay resident for days**. An agent that can live for days is an agent that can hold a working context across a VP's whole quarter-close week, not just a single chat.
+**Agent Runtime.** Finally, the thing that runs all of this in production. Note the name, because it changed: what was called **Vertex AI Agent Engine** was renamed **Agent Runtime** when Google folded the developer platform into the Gemini Enterprise Agent Platform at Cloud Next in April 2026, GA under the new name on April 22. The underlying API resource is still literally `ReasoningEngine` for backwards compatibility, and ADK constructor arguments still say `agent_engine_id`, so you will meet all three vintages of the name in one afternoon of reading. There is only one product.
+
+It is a managed environment that deploys your ADK agent and, critically, *provisions the Sessions, Memory Bank, and Artifact services for you*, wires in an agent identity for IAM, and adds tracing. You get sub-second cold starts, per-instance scaling controls, and — the feature that matters most here — support for **long-running operations lasting up to seven days**, state maintained across the whole window, Memory Bank behind it for anything longer. Seven days is not an arbitrary number to a BI agent: it is the shape of a quarter-close week. An agent resident that long holds a working context across the whole exercise instead of restarting from zero every morning.
 
 ```python
-from vertexai import agent_engines
+import vertexai
 from vertexai import types as ve_types   # note: NOT google.genai.types
 
-remote_agent = agent_engines.create(
-    agent=root_agent,
+client = vertexai.Client(project="my-project", location="us-central1")
+
+remote_agent = client.agent_engines.create(
+    agent=app,   # the App object from above, root_agent wrapped with its context config
     config={
         "requirements": ["google-cloud-aiplatform[agent_engines,adk]", "google-adk>=2.0"],
         "staging_bucket": "gs://my-agent-staging",
@@ -129,7 +169,9 @@ remote_agent = agent_engines.create(
 )
 ```
 
-That is the whole deploy call. Scaling and resource controls — minimum instances (0 to 10, keep at least one warm for latency), maximum instances (1 to 1000), CPU and memory limits, and container concurrency — are Agent Runtime resource settings you configure on the runtime rather than kwargs on `create`, and long-running agents are enabled at the runtime level too. A precision note worth internalizing, because it is exactly the kind of thing that rots: the *content* types (`Part`, `Content`) come from the Google Gen AI SDK, `from google.genai import types`, while *deployment* types like `IdentityType` still live under `from vertexai import types`. Two modules named `types`, two different jobs. Keep them straight.
+Two things about that call are easy to get wrong. First, it is **client-based**: `client.agent_engines.create(...)` on a `vertexai.Client`, not the module-level `agent_engines.create(...)` that older tutorials show. Second, `identity_type` is what gives the deployed agent its own first-class principal — a dedicated agent identity with its own SPIFFE ID and certificate — rather than a borrowed service account. For a multi-tenant memory system that is the security model, not a nicety.
+
+Scaling and resource controls are runtime settings rather than kwargs you pass here: minimum instances (0 to 10, default 1 — keep one warm for latency), maximum instances (1 to 1000, default 100), CPU and memory limits per container, and container concurrency, which for async ADK agents the docs suggest starting at a multiple of nine. A precision note worth internalizing, because it is exactly the kind of thing that rots: the *content* types (`Part`, `Content`) come from the Google Gen AI SDK, `from google.genai import types`, while *deployment* types like `IdentityType` still live under `from vertexai import types`. Two modules named `types`, two different jobs. Keep them straight.
 
 Put the parts side by side and the shape of the work becomes clear. Google gives you working memory, durable-fact memory, artifact memory, and a runtime that hosts all three with identity and isolation. What Google does *not* do — what it cannot do, because it is domain-specific judgment — is decide **what your agent should remember, at what scope, and when**. That decision is the entire craft.
 
@@ -137,15 +179,26 @@ Put the parts side by side and the shape of the work becomes clear. Google gives
 
 Before we build, a word so this does not read as an advertisement for one vendor. The four needs — working memory, durable facts, durable procedures and outputs, and a governed way to change behavior — are universal. Every serious agent framework has grown an answer to each. What differs is how much is *managed* for you versus how much you *assemble*.
 
-| Need | ADK and GEAP | LangGraph | Anthropic SDK | OpenAI Agents SDK |
-| --- | --- | --- | --- | --- |
-| Working memory | `Session` and `state` | checkpointer, thread scoped | messages plus context editing | `Session`, SQLite or Conversations |
-| Durable facts across sessions | Memory Bank, a model extracts them | `store`, plus a reflection step or LangMem | memory tool, the agent writes files | assemble it, vector store or a memory service |
-| Scope and isolation | `user:` `app:` `temp:` prefixes | store namespace tuples, like a path | your filesystem layout | your own keying |
-| Durable procedures and outputs | Artifact service, versioned | `store` or external storage | memory files | files and containers |
-| Human approval gate | ADK 2.0 pause and resume | `interrupt()` | your own loop | your own loop |
+| Need | ADK and GEAP | LangGraph 1.x | Claude Agent SDK | OpenAI Agents SDK and AgentKit | Bedrock AgentCore |
+| --- | --- | --- | --- | --- | --- |
+| Working memory | `Session`, `state`, managed compaction | checkpointer, thread scoped | messages, subagent context windows | `Session`, SQLite or Conversations | short term memory per session |
+| Durable facts across sessions | Memory Bank, a model extracts them | `store`, plus a reflection step or LangMem | memory tool, the agent writes files | assemble it, vector store or a memory service | long term memory strategies, managed extraction |
+| Scope and isolation | `user:` `app:` `temp:` prefixes | store namespace tuples, like a path | your filesystem layout, per subagent context | your own keying | memory branching inside one memory resource |
+| Durable procedures and outputs | Artifact service, versioned | `store` or external storage | folder based Skills, memory files | files and sandbox workspaces | your own storage |
+| Survive a crash mid run | Agent Runtime, up to seven days | durable execution, resumes where it stopped | session resume and hooks | snapshotting and rehydration, or Temporal | managed runtime sessions |
+| Human approval gate | ADK 2.0 pause and resume | `interrupt()` | hooks and permission callbacks | your own loop, or Temporal signals | your own loop |
 
-The columns are not interchangeable, and the differences are instructive rather than cosmetic. LangGraph makes the *graph* the first-class object and hangs memory off it as a `store` namespaced by tuples like `("users", "ana", "facts")` — which is why its `interrupt()` is the cleanest human-in-the-loop model in the field. Anthropic hands the agent a memory *directory* and lets it decide what to write, the closest thing to Hermes in a mainstream SDK. OpenAI gives you excellent working-memory sessions and leaves durable cross-user memory for you to build. ADK's distinctive bet is that inside an *enterprise* the extraction, the versioning, the isolation, and the identity should be managed and audited rather than hand-rolled. Read the rest of this post through that lens: the primitives below are Google's, but the *decisions* transfer to whichever column you live in.
+The columns are not interchangeable, and the differences are instructive rather than cosmetic.
+
+**LangGraph** makes the *graph* the first-class object and hangs memory off it as a `store` namespaced by tuples like `("users", "ana", "facts")`. In 1.x its headline property is **durable execution**: the persistence layer checkpoints a `StateSnapshot` at every super-step, so a workflow interrupted by a crash or by a human resumes *exactly where it left off* rather than replaying from the start. Short-term working memory and long-term cross-session memory are both first-class concerns rather than add-ons, and `interrupt()` remains the cleanest human-in-the-loop primitive in the field precisely because it rides on that same checkpoint machinery.
+
+**Anthropic's Claude Agent SDK** takes the opposite instinct: hand the agent a filesystem and get out of the way. Subagents get *isolated context windows*, so a research subagent can burn a hundred thousand tokens without polluting the lead agent's context — a memory-isolation mechanism dressed as an orchestration feature. Lifecycle hooks fire deterministically at defined points, which is where your governance goes. Skills are folders on disk, the closest thing to Hermes's self-written procedures in a mainstream SDK. Two 2026 additions push it further toward this post's subject: **Dynamic Workflows**, where a lead agent plans and fans out tens to hundreds of parallel subagents inside a single session, and **Performance Outcomes**, where a separate grader scores the artifact against a rubric and sends subagents back to revise until it passes. **Managed Agents** sit on the same primitives and add a scheduler, rubric-based outcome grading, and — the one I cannot stop thinking about — a **dreaming pass**: a scheduled job that reviews past sessions and memory stores, extracts patterns, and curates what the agent keeps. That is `add_session_to_memory` promoted from a callback into background consolidation: Memory Bank's extraction on a cron, aimed at procedures as well as facts. If you want to see where the compounding thesis of this post is heading, watch that feature.
+
+**OpenAI** gives you strong working-memory sessions in the Agents SDK, with AgentKit layered on for building and deploying, and has invested in durability rather than memory semantics: agent state is externalized, and built-in **snapshotting and rehydration** mean losing a sandbox container does not lose the run — state is restored in a fresh container from the last checkpoint. For real orchestration guarantees there is a **Temporal integration that went GA on March 23, 2026**. Durable cross-user memory is still yours to build.
+
+**AWS** deserves the mention this post would otherwise skip, because Bedrock **AgentCore** (GA October 2025) attacks exactly the problem the rest of this essay is about. It is a framework-neutral managed runtime — LangGraph, CrewAI, Strands, or your own loop — and its **Memory Branching** lets multiple specialized agents keep *isolated memory contexts while sharing one memory resource*. The analogy the docs reach for is Git: one repository, many branches, every agent sharing a `memory_id` and `session_id` while working in its own `branch_name`. That is a genuinely different answer to isolation than ADK's key prefixes. Google isolates by *namespace*; AWS isolates by *branch*, which additionally gives you a merge story prefixes do not have. If your problem is many agents over one shared context rather than many users over one shared agent, that shape may fit better.
+
+ADK's distinctive bet, against all of these, is that inside an *enterprise* the extraction, the versioning, the isolation, and the identity should be managed and audited rather than hand-rolled. Read the rest of this post through that lens: the primitives below are Google's, but the *decisions* transfer to whichever column you live in.
 
 Let us make it, for a real agent.
 
@@ -175,14 +228,14 @@ bi_agent = Agent(
 )
 ```
 
-That `bq_toolset` is not one tool but a suite, and the specific members matter for a BI use case, so let me name the ones that earn their place:
+That `bq_toolset` is not one tool but a suite of eleven, hand-written to be model-friendly rather than auto-generated from the API surface, and the specific members matter for a BI use case, so let me name the ones that earn their place:
 
 - `search_catalog` — Dataplex-powered semantic search over your data catalog. The VP says "seat expansion"; this is what finds the `fct_subscription_seats` table without the VP knowing it exists. This is the single most underrated tool in the set, because in a real warehouse the hard part is never the SQL, it is *finding the right table among four thousand*.
 - `get_table_info` / `list_table_ids` — schema discovery, so the model writes correct column names instead of hallucinating them.
 - `execute_sql` — runs the query the model composes.
 - `ask_data_insights` — a natural-language-to-answer path for when you want a number, not a query.
-- `forecast` — wraps BigQuery ML time-series forecasting. "Project seat growth to year-end" becomes a real statistical forecast, not the model guessing.
-- `detect_anomalies` and `analyze_contribution` — the tools that turn a dashboard from decoration into insight. Contribution analysis in particular ("*what drove* the seat jump?") is exactly the follow-up question a VP asks second.
+- `forecast` — wraps BigQuery's `AI.FORECAST` function. "Project seat growth to year-end" becomes a real statistical forecast, not the model guessing.
+- `detect_anomalies` and `analyze_contribution` — anomaly detection over a time series and BigQuery ML contribution analysis respectively; the tools that turn a dashboard from decoration into insight. Contribution analysis in particular ("*what drove* the seat jump?") is exactly the follow-up question a VP asks second.
 
 So far this is a competent, *stateless* BI agent. It would answer identically for everyone, forever. Now we make it produce something durable. When the agent finishes composing a view, it should not just stream chart JSON into the chat and forget it. It should save a **dashboard artifact**:
 
@@ -199,7 +252,7 @@ async def publish_dashboard(
     part = types.Part.from_bytes(data=blob, mime_type="application/json")
 
     # user: prefix -> this dashboard belongs to the VP across all sessions.
-    filename = f"user:dashboard::{slugify(title)}.json"
+    filename = f"user:dashboard_{slugify(title)}.json"
     version = await tool_context.save_artifact(filename, part)
 
     # Leave a breadcrumb in user-scoped state so the agent can list them later.
@@ -221,7 +274,7 @@ flowchart TD
     AG -->|search_catalog, execute_sql, forecast| BQ[(BigQuery warehouse)]
     AG -->|save user dashboard| ART[Artifact Service]
     ART --> GCS[(Cloud Storage bucket)]
-    AG -->|read known metrics| MEM[Vertex Memory Bank]
+    AG -->|read known metrics| MEM[Memory Bank]
     AG -->|user and app scoped keys| ST[Session state]
     RT -->|end of conversation| MEM
     classDef g fill:#e8f0fe,stroke:#4285f4;
@@ -236,7 +289,7 @@ Ana is a VP of Sales. She has talked to the BI agent maybe forty times. Every si
 
 The mechanism is Memory Bank, and the discipline is knowing *what* to feed it and *when* to read it back. Let me walk the full loop of a single conversation, then show it as a sequence.
 
-At the **start** of Ana's turn, before the model plans anything, we want her durable facts in context. ADK gives you two documented ways to do this. The blunt, reliable one is the `preload_memory` tool: drop it into the agent's tool list and ADK runs a memory search at the top of each turn and injects the results automatically. The surgical one is to call `search_memory` yourself from *inside a tool* via the `ToolContext`, so you control the query and how the results are framed:
+At the **start** of Ana's turn, before the model plans anything, we want her durable facts in context. ADK gives you three documented ways to do this, and they differ in who decides. `preload_memory` is the blunt, reliable one: drop it into the agent's tool list and ADK runs a memory search at the top of each turn and injects the results automatically — no agency required. `load_memory` is the same retrieval exposed as an ordinary tool, so the *model* chooses when past context is worth fetching, which is cheaper and less reliable. The surgical option is to call `search_memory` yourself from *inside a tool* via the `ToolContext`, so *you* control the query and how the results are framed:
 
 ```python
 from google.adk.tools import preload_memory
@@ -339,7 +392,7 @@ async def capture_runbook(
 
     # user: scope -> the engineer owns their runbook immediately, versioned.
     version = await tool_context.save_artifact(
-        f"user:runbook::{slugify(symptom)}.json", part
+        f"user:runbook_{slugify(symptom)}.json", part
     )
     # But its VALUE is to the whole rotation. Queue it for promotion.
     # The agent may NOT activate a fleet-wide procedure on its own.
@@ -357,17 +410,19 @@ Everything so far buys per-user continuity: each VP gets an agent that learns *t
 
 Here is the distinction that unlocks it. Per-user memory improves the *individual experience* but, by design, is walled off — Ana's facts must not change Marco's agent. So per-user memory *cannot* be the mechanism by which the product improves for everyone. For that you need to learn across users, at the `app:` scope, and you need to do it deliberately, because aggregating across users is exactly where privacy and governance bite.
 
-The raw material is already being produced. ADK 2.0's **BigQuery Agent Analytics** plugin streams every interaction — every LLM call, tool call, latency, token count, and outcome — into BigQuery views (`v_llm_request`, `v_tool_completed`, and friends) with essentially one line of configuration. Your agent is, without any extra work, generating a rich event log of how ten thousand conversations actually went. That log is a goldmine for *product-level* improvement:
+The raw material is already being produced. The **BigQuery Agent Analytics** plugin streams every interaction — every LLM call, tool call, latency, token count, and outcome — into BigQuery with essentially one line of configuration, and by default it also creates flat, per-event-type views (`v_llm_request`, `v_tool_completed`, and friends) that unnest the JSON payload into typed columns while keeping the identity headers you actually join on: `timestamp`, `session_id`, `invocation_id`, `user_id`, `trace_id`. ADK 2.0 added workflow-aware views on top of that — `v_agent_transfer`, `v_agent_state_checkpoint`, `v_event_compaction`, `v_tool_paused` — plus `pause_kind` and `function_call_id` columns on `v_tool_completed`. Note that `v_event_compaction` view: your context-compression decisions are themselves telemetry you can audit, which is the sort of thing you only appreciate after a summarizer has quietly eaten a detail you needed.
+
+Your agent is, without any extra work, generating a rich event log of how ten thousand conversations actually went. That log is a goldmine for *product-level* improvement. The shape of the query is this — treat the column names as a sketch, since they track the plugin version:
 
 ```sql
 -- Which tables do people ask for that our catalog search keeps missing?
 SELECT
-  JSON_VALUE(payload, '$.query') AS user_query,
+  tool_args_json AS attempted_lookup,
   COUNT(*) AS attempts,
   COUNTIF(status = 'error') AS failures
 FROM `bi_agent_analytics.v_tool_completed`
 WHERE tool_name = 'search_catalog'
-GROUP BY user_query
+GROUP BY attempted_lookup
 HAVING failures > 0
 ORDER BY attempts DESC
 LIMIT 50;
@@ -375,7 +430,7 @@ LIMIT 50;
 
 Run that and you are not guessing at what to improve — you are reading it. The failures cluster: a whole segment of the business uses a term your catalog does not map to a table. The fix is not to redeploy a smarter model. It is to write one `app:`-scoped fact — a synonym mapping, a canonical-metric glossary — that *every* user's agent now benefits from. This is the fleet analogue of a Hermes skill: a piece of durable know-how, learned from experience, that raises the floor for everyone. The difference is the governance gate. A Hermes-style agent writes its own skills and runs them. An enterprise agent should *propose* the improvement and let a human approve it.
 
-And here ADK 2.0 hands you exactly the right tool, almost as if it were designed for this: the **pause/resume human-in-the-loop** capability. The graph-based Workflow Runtime can pause an execution, surface a proposed change through the ADK Web UI, wait for a human to approve or reject it, and then resume. The candidate can be either kind of durable knowledge we have met — a synonym mapping mined from the BI agent's failures, or a runbook the on-call agent captured and queued — and the gate is identical. So the self-improvement loop for the fleet looks like this:
+And here ADK 2.0 hands you exactly the right tool, almost as if it were designed for this: the **pause/resume human-in-the-loop** capability. Because the graph-based Workflow Runtime catches exceptions itself in order to drive retries, telemetry, and HITL pauses, it can suspend an execution mid-graph, surface a proposed change for review, wait for a human to approve or reject it, and then resume — with the pause itself landing in the analytics as a `v_tool_paused` row. The candidate can be either kind of durable knowledge we have met — a synonym mapping mined from the BI agent's failures, or a runbook the on-call agent captured and queued — and the gate is identical. (I unpack the Workflow Runtime and its node model properly in [ADK graph workflows and deterministic orchestration](https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration); here I only need the pause.) So the self-improvement loop for the fleet looks like this:
 
 ```mermaid
 stateDiagram-v2
@@ -389,7 +444,7 @@ stateDiagram-v2
     Discarding --> Observing
 ```
 
-*If that interruptible loop feels familiar from elsewhere, it should: LangGraph's `interrupt()` pioneered the pattern, persisting graph state to a database so an agent can wait minutes, hours, or days for a human without holding compute. Anthropic and OpenAI leave the approval gate for you to build in your own loop. ADK 2.0's contribution is not the idea but the packaging — the same pause-and-resume, managed inside the enterprise runtime with the identity and audit trail already attached.*
+*If that interruptible loop feels familiar from elsewhere, it should: LangGraph's `interrupt()` pioneered the pattern, checkpointing graph state at every super-step so an agent can wait minutes, hours, or days for a human without holding compute — the same machinery that lets a crashed run resume exactly where it stopped. OpenAI gets the equivalent durability from snapshotting and rehydration, or from Temporal when you want real workflow guarantees, but leaves the approval semantics to you. Anthropic puts the gate in deterministic lifecycle hooks. ADK 2.0's contribution is not the idea but the packaging — the same pause-and-resume, managed inside the enterprise runtime with the identity and audit trail already attached.*
 
 That loop is the honest, enterprise-appropriate version of "self-improving." It compounds like Hermes — experience becomes durable capability — but every increment passes a human gate and lands in a governed, versioned, auditable scope. You escape "it only improves when I redeploy" not by making the model rewrite itself unsupervised, but by turning the *organization's* accumulated experience into `app:`-scoped knowledge, continuously, with a person in the loop. The agent gets better every week. Nobody ships a new model to make that happen.
 
@@ -407,16 +462,19 @@ But you do not have to wait for any of that to build something that feels alive.
 
 If you want to build the agent in this post, here is the honest checklist and the places I stubbed my toes.
 
-**Prerequisites.** A Google Cloud project with Vertex AI and BigQuery enabled; ADK 2.0 (`google-adk>=2.0`); an Agent Engine instance to back Memory Bank and to host the runtime; a GCS bucket for `GcsArtifactService`; and IAM roles wired so the agent's service identity can read the specific BigQuery datasets you intend to expose and nothing more.
+**Prerequisites.** A Google Cloud project with the Gemini Enterprise Agent Platform (formerly Vertex AI) and BigQuery enabled; ADK 2.x — everything here is written against the 2.6 line, and the 1.x branch is still separately maintained if you are not ready to move; an Agent Runtime instance to back Memory Bank and to host the agent; a GCS bucket for `GcsArtifactService`; and IAM roles wired so the agent's own identity can read the specific BigQuery datasets you intend to expose and nothing more.
 
 **Gotchas, learned the hard way.**
 
 - **Scope every key on purpose.** The difference between `dashboard.json` and `user:dashboard.json` is one string and a completely different product. Decide scope at design time, in writing, for every piece of state and every artifact. An un-prefixed key that should have been `user:` is a feature that silently does not work; an un-prefixed key that should have been `temp:` is a slow storage leak.
+- **Prefixes describe scope, not storage.** `user:` and `app:` only survive a restart under a persistent `SessionService` — `DatabaseSessionService` or the managed one. On `InMemorySessionService` they work perfectly in your demo and vanish with the process. Test persistence on the backend you will actually deploy.
+- **The 2.0 session schema is a one-way door on rigid backends.** ADK 2.0 added `node_info` and `output` fields to `Event`. Sessions written by 2.0 are readable by ADK 1.28+, which ignores the extra fields, but they are *not* compatible with older 1.x, and if you implemented a custom `BaseSessionService` over rigid SQL columns rather than a JSON blob, inserting a 2.0 event will fail on insertion or ORM deserialization. Migrate the schema and update every reader *before* you write a single 2.0 session into a shared store. For a system whose whole value proposition is durable memory, a store you can write but not read back is the worst possible failure. I walk through this and the rest of the upgrade in [migrating ADK 1.x to 2.x](https://juanlara18.github.io/portfolio/#/blog/migrating-adk-1x-to-2x).
+- **Compaction is lossy, and it is a memory decision.** Turning on `events_compaction_config` means a model is deciding which parts of the conversation stop existing. That is usually right and occasionally catastrophic — the detail it drops is sometimes the one the next tool call needed. Audit it through the `v_event_compaction` view, and if a fact matters beyond this session, write it to memory or an artifact rather than trusting it to survive a summarizer.
 - **Memory Bank stores what a model decided, not what the user said.** Sample extracted memories in your evals. Give users a delete button. Assume it will sometimes be wrong and design so that wrong is recoverable.
 - **`add_session_to_memory` is a write to production.** Do not call it on every trivial session reflexively. Call it when a session contains something worth keeping. Extraction costs a model call and, more importantly, extraction *pollutes* if you feed it noise.
 - **BigQuery permissions are the real security boundary.** The agent is exactly as safe as the IAM grants on its identity. `search_catalog` will happily surface a table the VP should never see if the agent's identity can read it. Scope dataset access to the agent's role, not to the humans behind it.
-- **Long-running agents hold state you must reason about.** An agent resident for days is wonderful for continuity and a liability if its in-memory working state drifts. Persist what matters through the managed services; treat the resident process as a cache, not a source of truth.
-- **Use the current SDKs, and know which is which.** The generative modules of the old Vertex AI SDK (`vertexai.generative_models` and friends) were deprecated in June 2025 and *removed* on June 24, 2026. Content types now come from the Google Gen AI SDK (`from google.genai import types`). Agent *deployment* and identity types still live under `from vertexai import agent_engines` / `from vertexai import types`. Copy-pasting a 2024 tutorial is the fastest way to write code that no longer imports.
+- **Long-running agents hold state you must reason about.** An operation resident for up to seven days is wonderful for continuity and a liability if its in-memory working state drifts. Persist what matters through the managed services; treat the resident process as a cache, not a source of truth.
+- **Use the current SDKs, and know which is which.** The generative modules of the old Vertex AI SDK — `vertexai.generative_models`, `vertexai.language_models`, `vertexai.tuning`, `vertexai.caching` and friends — were deprecated on June 24, 2025 and removed exactly a year later. Content types now come from the Google Gen AI SDK (`from google.genai import types`). Agent *deployment* and identity types still live under `vertexai`, and the deployment surface is client-based (`vertexai.Client()`, then `client.agent_engines.create(...)`), not module-level. Copy-pasting an older tutorial is the fastest way to write code that no longer imports.
 - **Test the isolation, not just the happy path.** Write an explicit test that runs a query as user A, then user B, and asserts that none of A's memories, artifacts, or state keys are visible to B. Multi-tenant leakage is the failure that will not show up in a demo and will end your project.
 
 ## Going Deeper
@@ -433,10 +491,15 @@ If you want to build the agent in this post, here is the honest checklist and th
 - [Gemini Enterprise Agent Platform documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform) — the canonical reference for Agent Runtime, deployment, and the managed memory services.
 - [ADK documentation: Sessions, State, and Memory](https://adk.dev/sessions/memory/) — exact API surfaces for `MemoryService`, `Session`, and state scoping.
 - [ADK documentation: Artifacts](https://adk.dev/artifacts/) — the artifact service, versioning, and the `user:` scoping convention.
+- [ADK documentation: Context compression](https://adk.dev/context/compaction/) — `EventsCompactionConfig`, the token-based and sliding-window modes, and how to point summarization at a cheaper model.
+- [ADK documentation: Model context caching](https://adk.dev/context/caching/) — `ContextCacheConfig`, its `min_tokens` / `ttl_seconds` / `cache_intervals` knobs, and when caching actually pays.
+- [ADK documentation: Migrate sessions](https://adk.dev/sessions/session/migrate/) — the `node_info` and `output` schema change and what it means for existing stores.
 - [Introducing BigQuery Agent Analytics](https://cloud.google.com/blog/products/data-analytics/introducing-bigquery-agent-analytics) — how to stream agent telemetry into BigQuery for the fleet-improvement loop.
-- [LangGraph persistence: checkpointers and long-term memory store](https://docs.langchain.com/oss/python/langgraph/persistence) — the same working-memory-versus-durable-memory split, with namespaced stores and `interrupt()` for human-in-the-loop.
-- [Anthropic memory tool documentation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool) — the agent-authored, file-based memory model that most resembles Hermes.
+- [LangGraph durable execution](https://docs.langchain.com/oss/python/langgraph/durable-execution) — checkpointed super-steps, resuming exactly where a run stopped, and `interrupt()` for human-in-the-loop.
+- [Claude Agent SDK documentation](https://platform.claude.com/docs/en/api/agent-sdk/overview) — subagents with isolated context windows, lifecycle hooks, and folder-based Skills; the agent-authored memory model that most resembles Hermes.
 - [OpenAI Agents SDK: Sessions](https://openai.github.io/openai-agents-python/sessions/) — working-memory sessions over the Responses and Conversations APIs, and where you must add durable memory yourself.
+- [Temporal: durable execution for the OpenAI Agents SDK](https://temporal.io/blog/announcing-openai-agents-sdk-integration) — the integration that went GA in March 2026, and a good primer on what durability buys an agent.
+- [Amazon Bedrock AgentCore Memory](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/harness-memory.html) — memory branching, and the closest published answer to isolating many agents inside one shared memory resource.
 
 **Videos:**
 - [Google I/O 2026 developer keynote](https://www.youtube.com/results?search_query=google+io+2026+developer+keynote) — the ADK 2.0 and Gemini Enterprise Agent Platform announcements in context.

@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "b8de66d1e628632579a50bec1b5c2505dfded8a20b1abe8800ae138f5cf4d291",
-  "sourceHash": "b8de66d1e628632579a50bec1b5c2505dfded8a20b1abe8800ae138f5cf4d291",
-  "durationSec": 2004.576,
-  "byteSize": 12027456,
-  "narrationWordCount": 5154,
+  "hash": "9ecfb72d3b2ca033a616a2260ef2403449e233cf8d0b6e819852e8524cac99d5",
+  "sourceHash": "9ecfb72d3b2ca033a616a2260ef2403449e233cf8d0b6e819852e8524cac99d5",
+  "durationSec": 2694.0,
+  "byteSize": 16164000,
+  "narrationWordCount": 6866,
   "audioUrl": "/blog/audio/field-notes/enterprise-agent-memory-continuity-adk-geap.mp3",
   "translationModel": ""
 }
