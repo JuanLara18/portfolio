@@ -9,8 +9,51 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Oct 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Nov 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Migrating from ADK 1.x to 2.0: The Breaking Changes That Actually Break You</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x</guid>
+    <pubDate>Thu, 09 Nov 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[ADK 2.0 replaced the execution model, not just the feature set. Three of its breaking changes do not raise an exception: your orchestration override gets bypassed, your event appends stop routing, and your exception handler eats the framework's retries. This is the migration guide, including the database work everyone underestimates and the honest case for staying on 1.x.]]></description>
+    <category>field-notes</category>
+    <category>Google ADK</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Agent Engineering</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>AI Engineering</category>
+    <category>GCP</category>
+    <category>Deployment</category>
+    <category>Databases</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/migrating-adk-1x-to-2x.mp3" length="9865440" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Graph Workflows in ADK 2.0: Putting Control Flow Back in Code</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration</guid>
+    <pubDate>Thu, 02 Nov 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[ADK 2.0 replaced the agent hierarchy with a graph. Agents, tools and plain functions are all nodes now, edges are written in Python rather than negotiated with a prompt, and every node can choose independently whether a model or a compiler decides what happens next. This is the deep dive on the Workflow runtime: routes, typed data flow, JoinNode fan-in, retries and timeouts, human-in-the-loop pauses, dynamic workflows with automatic checkpointing, and an honest look at where LangGraph still wins.]]></description>
+    <category>field-notes</category>
+    <category>Google ADK</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Orchestration</category>
+    <category>Multi-Agent</category>
+    <category>LangGraph</category>
+    <category>AI Engineering</category>
+    <category>Production ML</category>
+    <category>Software Engineering</category>
+    <category>Best Practices</category>
+    <category>GCP</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/adk-graph-workflows-deterministic-orchestration.mp3" length="14909328" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Golden Paths for Agents: Multi-Tenancy, Self-Service, and the Platform as Product</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy</link>
@@ -355,10 +398,11 @@
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</guid>
     <pubDate>Thu, 29 Jun 2028 00:00:00 GMT</pubDate>
-    <description><![CDATA[Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph and the Anthropic and OpenAI SDKs.]]></description>
+    <description><![CDATA[Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph, the Anthropic and OpenAI SDKs, and Bedrock AgentCore.]]></description>
     <category>field-notes</category>
     <category>Agents</category>
     <category>Agentic AI</category>
+    <category>Google ADK</category>
     <category>LLMs</category>
     <category>Production ML</category>
     <category>MLOps</category>
@@ -368,7 +412,7 @@
     <category>Cloud Computing</category>
     <category>Data Engineering</category>
     <category>Best Practices</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-agent-memory-continuity-adk-geap.mp3" length="12027456" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/enterprise-agent-memory-continuity-adk-geap.mp3" length="16164000" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -947,12 +991,13 @@
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</guid>
     <pubDate>Thu, 09 Dec 2027 00:00:00 GMT</pubDate>
-    <description><![CDATA[The state of the art for building agents in 2026 is Google's ADK. But the fastest way to understand it deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed by ADK, including its limits.]]></description>
+    <description><![CDATA[The fastest way to understand Google's ADK deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, through the graph based Workflow Runtime that arrived in ADK 2.0, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed, including its limits.]]></description>
     <category>field-notes</category>
     <category>Agents</category>
     <category>Agentic AI</category>
     <category>LLMs</category>
     <category>AI Engineering</category>
+    <category>Google ADK</category>
     <category>LangChain</category>
     <category>Multi-Agent</category>
     <category>Orchestration</category>
@@ -960,7 +1005,7 @@
     <category>Tool Use</category>
     <category>GCP</category>
     <category>LLM Frameworks</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/adk-advanced-evolution-of-agent-engineering.mp3" length="10620000" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/adk-advanced-evolution-of-agent-engineering.mp3" length="17383680" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1254,13 +1299,13 @@
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</guid>
     <pubDate>Thu, 26 Aug 2027 00:00:00 GMT</pubDate>
-    <description><![CDATA[The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the four-pillar mental model, runnable code for every core abstraction, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Engine, and an honest comparison with the rest of the field.]]></description>
+    <description><![CDATA[The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the pillar mental model as it stands after ADK 2.0, runnable code for every core abstraction, graph workflows, skills, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Runtime, and an honest comparison with the rest of the field.]]></description>
     <category>field-notes</category>
     <category>Agents</category>
     <category>Agentic AI</category>
     <category>Agent Engineering</category>
+    <category>Google ADK</category>
     <category>Google Cloud</category>
-    <category>Cloud Computing</category>
     <category>AI Engineering</category>
     <category>LLMs</category>
     <category>Multi-Agent</category>
@@ -1268,7 +1313,7 @@
     <category>Software Engineering</category>
     <category>Tool Use</category>
     <category>MLOps</category>
-    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/google-adk-agent-development-deep-dive.mp3" length="8660880" type="audio/mpeg" />
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/google-adk-agent-development-deep-dive.mp3" length="14708736" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>
   <item>
@@ -1366,6 +1411,7 @@
     <category>field-notes</category>
     <category>Google Cloud</category>
     <category>Vertex AI</category>
+    <category>Google ADK</category>
     <category>Agents</category>
     <category>Agentic AI</category>
     <category>Knowledge Graphs</category>
@@ -1373,7 +1419,6 @@
     <category>Production ML</category>
     <category>Infrastructure</category>
     <category>RAG</category>
-    <category>MLOps</category>
     <category>MCP</category>
     <category>Knowledge Engineering</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/gemini-enterprise-knowledge-catalog-deep-dive.mp3" length="10177488" type="audio/mpeg" />
@@ -1388,6 +1433,7 @@
     <category>field-notes</category>
     <category>GCP</category>
     <category>Vertex AI</category>
+    <category>Google ADK</category>
     <category>Cloud Computing</category>
     <category>Agents</category>
     <category>Agentic AI</category>
@@ -1397,7 +1443,6 @@
     <category>MCP</category>
     <category>RAG</category>
     <category>Production ML</category>
-    <category>Data Architecture</category>
     <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/google-cloud-next-2026-agent-native-stack.mp3" length="10720080" type="audio/mpeg" />
     <dc:creator>Juan Lara</dc:creator>
   </item>

@@ -1,12 +1,12 @@
 ---
 title: "Google ADK: Building Production Agents from First Principles"
 date: "2027-08-26"
-excerpt: "The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the four-pillar mental model, runnable code for every core abstraction, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Engine, and an honest comparison with the rest of the field."
-tags: ["Agents", "Agentic AI", "Agent Engineering", "Google Cloud", "Cloud Computing", "AI Engineering", "LLMs", "Multi-Agent", "Production ML", "Software Engineering", "Tool Use", "MLOps"]
+excerpt: "The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the pillar mental model as it stands after ADK 2.0, runnable code for every core abstraction, graph workflows, skills, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Runtime, and an honest comparison with the rest of the field."
+tags: ["Agents", "Agentic AI", "Agent Engineering", "Google ADK", "Google Cloud", "AI Engineering", "LLMs", "Multi-Agent", "Production ML", "Software Engineering", "Tool Use", "MLOps"]
 headerImage: "/blog/headers/vintage-workshop-header.jpg"
-readingTimeMinutes: 28
+readingTimeMinutes: 27
 slug: google-adk-agent-development-deep-dive
-estimatedWordCount: 7100
+estimatedWordCount: 6845
 ---
 
 # Google ADK: Building Production Agents from First Principles
@@ -15,7 +15,9 @@ The first agent I deployed in anger was a hundred and twelve lines of Python wra
 
 The team's first instinct was to add scaffolding. A class for the loop. A module for tool registration. A small abstraction over session state. Three weeks in, we had a half-decent internal framework. Six weeks in, it was clear we had reinvented, badly, what every serious agent team in 2025 was already starting to converge on: a separation of concerns between the agent's *logic*, the *tools* it called, the *session* that held its conversation state, the *runner* that dispatched events between them, and the *memory* that persisted across sessions. By the time we had a fourth concern bolted on (callbacks for guardrails), the right move was obvious. We threw it out and adopted the Agent Development Kit.
 
-This post is the longest single resource I could write on ADK as it stands in mid-2027. It is heavy on code that runs. It is light on marketing. It works through every core abstraction with a small example, then ties everything together in an end-to-end multi-agent system you could lift into a real project. The closing tenth of the post compares ADK honestly with the rest of the field, but the point of the post is depth on ADK, not breadth on agent frameworks.
+This post is the longest single resource I could write on ADK. It is written against the 2.x line, which replaced the 1.x execution model with a graph engine and is the version you should be starting new work on. It is heavy on code that runs. It is light on marketing. It works through every core abstraction with a small example, then ties everything together in an end-to-end multi-agent system you could lift into a real project. The closing tenth of the post compares ADK honestly with the rest of the field, but the point of the post is depth on ADK, not breadth on agent frameworks.
+
+Two companion posts carry the load this one deliberately does not. [Graph workflows](https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration) is the deep treatment of the 2.x orchestration engine: routes, joins, retries, checkpoints, human-in-the-loop. [Migrating ADK 1.x to 2.x](https://juanlara18.github.io/portfolio/#/blog/migrating-adk-1x-to-2x) is the upgrade path, breaking change by breaking change. Read this one for the whole surface; read those two when you need the depth.
 
 The audience I have in mind is the engineer who has built one or two agents the script-with-a-loop way, has been bitten in production, and is now picking a framework with their eyes open.
 
@@ -23,17 +25,21 @@ The audience I have in mind is the engineer who has built one or two agents the 
 
 ## What ADK Actually Is
 
-ADK is Google's open-source toolkit for building, evaluating, and deploying agents. It started as a Python library, was released open-source in 2025, and now has first-party Java, Go, and TypeScript ports as well. It is the same framework Google uses internally to ship the agents inside Agent Engine, the Gemini Enterprise Agent Platform, and a fair chunk of Workspace's agentic features. That last point matters: this is not a sample SDK. The same code path that compiles your agent runs the agents Google bills you for.
+ADK is Google's open-source toolkit for building, evaluating, and deploying agents. It started as a Python library, was released open-source in 2025, and now has first-party ports in Go, Java, TypeScript, and Kotlin alongside it. It is the same framework Google uses internally to ship the agents inside the Gemini Enterprise Agent Platform and a fair chunk of Workspace's agentic features. That last point matters: this is not a sample SDK. The same code path that compiles your agent runs the agents Google bills you for.
 
 The mental model has four pillars. Once you can name them and you understand how they wire together, the rest of the documentation reads as elaboration.
 
-The first pillar is the **Agent**. An agent is the unit of decision-making. ADK has three flavors. `LlmAgent` (also exported as `Agent`) is the default: an LLM-driven agent that decides at runtime which tools to call, which sub-agents to delegate to, and what to say. `WorkflowAgent` is a deterministic counterpart, with three subclasses: `SequentialAgent` runs its children in order, `ParallelAgent` runs them concurrently, and `LoopAgent` re-runs its children until a condition is met. Then there is the escape hatch: `BaseAgent`, which you subclass when you want fully custom orchestration logic.
+The first pillar is the **Agent**. An agent is the unit of decision-making. ADK has three flavors. `LlmAgent` (also exported as `Agent`) is the default: an LLM-driven agent that decides at runtime which tools to call, which sub-agents to delegate to, and what to say. The prebuilt workflow agents are its deterministic counterpart: `SequentialAgent` runs its children in order, `ParallelAgent` runs them concurrently, and `LoopAgent` re-runs its children until a condition is met. Then there is the escape hatch: `BaseAgent`, which you subclass when you want fully custom logic.
 
 The second pillar is the **Tool**. A tool is anything an agent can call to take an action or fetch information. ADK supports several tool types: ordinary Python functions become *function tools* automatically; OpenAPI specs become full toolsets; managed Google Cloud services (BigQuery, Spanner, Pub/Sub, Vertex AI Search) ship as first-party tools; remote MCP servers plug in as `MCPToolset`s; and any agent can be passed as a tool to another agent.
 
 The third pillar is the **Session**, with a closely related concept of **State**. A session is one conversation. State is the structured memory of that conversation. Sessions are persisted by a `SessionService`. ADK ships `InMemorySessionService` for development, `DatabaseSessionService` for self-hosted persistence (any SQLAlchemy URL), and `VertexAiSessionService` for managed cloud-side persistence. Long-term, cross-session knowledge lives in **Memory**, served by a `MemoryService` (`InMemoryMemoryService` for dev, `VertexAiMemoryBankService` for production). State is short-term and turn-scoped; memory is long-term and search-backed.
 
 The fourth pillar is the **Runner**. The runner is the engine that ties everything else together. You hand it an agent, a session service, and optionally a memory service. It exposes an `async` API that takes user input and yields a stream of `Event` objects. Every model output, every tool call, every tool response, every state mutation, every error is an event. Logging, observability, evaluation, and deployment all attach to the event stream rather than to the agent itself.
+
+Those four pillars survived ADK 2.0, but something changed underneath all of them, and it is the single most important fact about the current release line. In 1.x, an agent was a standalone executor: the framework called it, it ran, it yielded events. In 2.x, `BaseAgent` subclasses a new `BaseNode`, and the runtime is a graph engine rather than a hierarchical executor. Agents, tools, and plain Python functions are all *nodes*. Nodes compose into a `Workflow`, which is itself an agent and can therefore be nested inside another workflow or handed to the runner like any other agent. The `Event` schema grew two fields to carry this — `node_info`, identifying which node emitted the event, and `output`, the typed value the node produced — which is also why a custom `SessionService` written against 1.x with rigid columns will reject 2.x events until you widen the schema. If you are carrying a 1.x codebase forward, the [migration post](https://juanlara18.github.io/portfolio/#/blog/migrating-adk-1x-to-2x) walks the breaking changes properly; the short version is that overriding `_run_async_impl()` no longer drives execution, and broad `except Exception:` blocks inside tools now silently disable the framework's retry and human-in-the-loop machinery.
+
+Both lines are maintained. As of this writing `google-adk` is at 2.6.3 on a roughly bi-weekly cadence, and 1.x is still receiving releases in the 1.38 range for teams that have not migrated. Pin with the compatible-release operator (`pip install "google-adk~=1.0"`) if you need to stay on 1.x deliberately rather than by accident.
 
 ```mermaid
 flowchart LR
@@ -77,6 +83,18 @@ my_agent/
   agent.py           # defines root_agent
   .env               # GOOGLE_API_KEY or VERTEX project
 ```
+
+There is a second authoring path worth knowing about before you write any Python at all. **Agent Config** lets you declare an agent in YAML — conventionally `root_agent.yaml` — and run it through the same `adk` CLI with no boilerplate whatsoever.
+
+```yaml
+# root_agent.yaml
+name: assistant_agent
+model: gemini-flash-latest
+description: A helper agent that can answer users' questions.
+instruction: You are an agent to help answer users' various questions.
+```
+
+`adk run`, `adk web`, and `adk api_server` all accept a config-defined agent. The schema covers the fields you would expect — `name`, `model`, `description`, `instruction`, `tools`, `sub_agents`, `agent_class` — and `sub_agents` can point at other config files, so a whole hierarchy can live in YAML. Tools and anything else that needs real logic still require code. In practice I use Agent Config for two things: getting a prompt-only agent in front of a stakeholder in ten minutes, and letting non-engineers on the team edit instructions without touching a repository they are afraid of. Everything below is the code-first path.
 
 The simplest agent that does anything interesting is one with a single function tool.
 
@@ -240,7 +258,7 @@ def transfer_funds(
 
     Use this only when the user has explicitly confirmed both account
     numbers and the amount. Amounts are in cents to avoid floating
-    point error. Returns a transaction id on success.
+    point error.
 
     Args:
         from_account: Source account number, format AAA-NNNNNN.
@@ -249,8 +267,7 @@ def transfer_funds(
         currency: ISO currency code. Defaults to USD.
 
     Returns:
-        On success, a dict with status="ok" and transaction_id.
-        On failure, status="error" and a human-readable error_message.
+        status="ok" and transaction_id, or status="error" and error_message.
     """
     if amount_cents <= 0:
         return {"status": "error", "error_message": "Amount must be positive."}
@@ -295,20 +312,17 @@ The Model Context Protocol has become the lingua franca for cross-vendor tool se
 ```python
 from google.adk.tools.mcp_tool import MCPToolset, StdioServerParameters
 
-# Stdio-launched local MCP server
+# Stdio-launched local MCP server. Remote servers use SseServerParameters
+# with a url instead of a command and args.
 fs_tools = MCPToolset(
     connection_params=StdioServerParameters(
         command="npx",
         args=["-y", "@modelcontextprotocol/server-filesystem", "/tmp/agent_workspace"],
     )
 )
-
-# HTTP/SSE-mounted remote MCP server
-from google.adk.tools.mcp_tool import SseServerParameters
-search_tools = MCPToolset(
-    connection_params=SseServerParameters(url="https://search.internal/mcp"),
-)
 ```
+
+Beyond MCP there is a curated integrations catalog: first-party connectors for GitHub, GitLab, Atlassian, Linear, MongoDB, Pinecone, Qdrant, Redis, and Chroma, plus a set of observability platforms wired to ADK's OpenTelemetry output. Check the catalog before writing a wrapper.
 
 ### Agent-as-tool
 
@@ -329,26 +343,73 @@ parent = LlmAgent(
 
 The difference between `sub_agents=[...]` and `tools=[AgentTool(agent=...)]` is subtle but important. With `sub_agents`, the parent transfers control: the child takes over the conversation, may run multiple turns, and may hand control back. With `AgentTool`, the parent stays in control and gets a single response back, the way it would from any function. Use `sub_agents` for true delegation; use `AgentTool` for a structured sub-task whose output you want to compose with other tool results.
 
+### Skills
+
+The newest addition to the tool surface is not really a tool. A **Skill** is a self-contained folder of instructions, resources, and scripts that teaches an agent how to do a particular kind of task, built on the open [Agent Skill specification](https://agentskills.io/specification) rather than on anything Google-specific. The reason it exists is context economics. A long instruction that covers nine procedures pays for all nine on every single turn. A skill pays only for what it needs, in three tiers.
+
+**L1** is metadata: the YAML frontmatter of a required `SKILL.md`, carrying a kebab-case `name` and a `description`. That is all the agent sees during discovery, so the description is the entire basis on which the skill gets selected. **L2** is the body of `SKILL.md` — the actual step-by-step instructions, loaded only once the agent decides to use the skill. **L3** is everything else, loaded on demand: `references/` for longer Markdown, `assets/` for templates and schemas, `scripts/` for executables the runtime can run.
+
+```
+skills/
+  weather_skill/
+    SKILL.md          # required: frontmatter plus instructions
+    references/       # extended markdown, loaded on demand
+    assets/           # templates, schemas, examples
+    scripts/          # executable helpers
+```
+
+Only `SKILL.md` is mandatory. You load a skill from disk and expose it through a `SkillToolset`, which sits in `tools=[...]` like anything else.
+
+```python
+import pathlib
+
+from google.adk import Agent
+from google.adk.skills import load_skill_from_dir
+from google.adk.tools import skill_toolset
+
+weather_skill = load_skill_from_dir(
+    pathlib.Path(__file__).parent / "skills" / "weather_skill"
+)
+
+my_skill_toolset = skill_toolset.SkillToolset(
+    skills=[weather_skill],
+    additional_tools=[get_weather_tool],
+)
+
+root_agent = Agent(
+    model="gemini-flash-latest",
+    name="skill_user_agent",
+    description="An agent that can use specialized skills.",
+    instruction="You are a helpful assistant that can leverage skills to perform tasks.",
+    tools=[my_skill_toolset],
+)
+```
+
+The feature is still marked experimental, so treat the API as movable. The *pattern* is not experimental at all, and it is the one I would bet on: procedural knowledge belongs in version-controlled files that a human can review in a pull request, not in a five-thousand-token system prompt that nobody wants to touch. Skills are also the unit the platform's skill registry governs, which means a well-written skill is reusable across teams rather than copy-pasted into the next agent's instruction block.
+
 ---
 
 ## Orchestration Patterns
 
-Most non-trivial agents are not single agents. They are small teams. ADK gives you two orthogonal axes for composing them: how decisions are made (LLM-driven or deterministic) and how control flows between them (delegation or workflow).
+Most non-trivial agents are not single agents. They are small teams. ADK now offers *three* complementary ways to compose them, and picking the wrong one is the most common structural mistake I see.
+
+**Prebuilt workflow agents** — `SequentialAgent`, `ParallelAgent`, `LoopAgent` — are the higher-level building blocks for common shapes. **Graph workflows** are a declarative graph of nodes and edges with explicit routing, for deterministic processes whose branching you want to see on a page. **Dynamic workflows** are programmatic orchestration in ordinary Python, for control flow too iterative or recursive to draw as a static graph. All three sit alongside plain LLM delegation, where the model itself decides who handles the turn.
 
 ```mermaid
 flowchart TB
     Start[Need a multi-step process]
-    Start --> Q1{Are the steps fixed and ordered?}
-    Q1 -- Yes --> Q2{Independent or sequential?}
+    Start --> Q1{Is the control flow known ahead of time?}
     Q1 -- No, the LLM decides --> LlmDeleg[LlmAgent with sub_agents or AgentTool]
-    Q2 -- Independent --> Par[ParallelAgent]
-    Q2 -- Sequential --> Seq[SequentialAgent]
-    Q2 -- Repeat until done --> Loop[LoopAgent]
-    LlmDeleg --> Hybrid[Hybrid: deterministic shells around LLM nodes]
-    Par --> Hybrid
-    Seq --> Hybrid
-    Loop --> Hybrid
+    Q1 -- Yes, and it is a common shape --> Pre[Prebuilt Sequential, Parallel or Loop agent]
+    Q1 -- Yes, with explicit branching --> Graph[Graph Workflow with routes]
+    Q1 -- Yes, but loops and recursion --> Dyn[Dynamic workflow with node decorators]
+    Pre --> Hybrid[Hybrid: deterministic shells around LLM nodes]
+    Graph --> Hybrid
+    Dyn --> Hybrid
+    LlmDeleg --> Hybrid
 ```
+
+### Prebuilt workflow agents
 
 `SequentialAgent` runs its children in order. Each child writes into the shared session state via an `output_key`, and the next child can read that key in its instructions. This is the right shape for pipelines like "extract entities, then enrich, then summarize."
 
@@ -394,6 +455,26 @@ pipeline = SequentialAgent(
 
 `LlmAgent` with `sub_agents` is the dynamic counterpart. The parent's prompt declares the sub-agents and their roles; at runtime the LLM decides whether to handle the turn itself or transfer control. The right pattern is almost always *deterministic shells around LLM nodes*. Use workflow agents to encode the steps you know are fixed. Use LLM delegation only inside the steps that genuinely need judgment.
 
+### Execution modes and the Task API
+
+There is one more axis that took me an embarrassingly long time to notice, because it is invisible in the topology diagram and decisive in production: *how much of a sub-agent's conversation comes back to its parent.*
+
+In the naive arrangement, a coordinator delegates, the sub-agent runs, and everything the sub-agent said and every raw tool payload it received lands in the coordinator's context window. Delegate three times and the coordinator is reasoning over a transcript mostly composed of other agents' scratch work. Quality degrades in a way that looks like the model getting dumber and is actually the context getting dirtier — the failure Google's own writing on the 2.0 design calls *execution derailment*.
+
+ADK 2.0 addresses this by giving an LLM agent an explicit **execution mode**, and the three modes trade user interactivity against context isolation:
+
+| Mode | User interaction | Return behavior | Parallelizable |
+|---|---|---|---|
+| Chat | Available at any point; the agent can pause and surface a question | Stays in conversation | No |
+| Task | Available for clarifications only | Returns to the parent automatically on completion | No |
+| SingleTurn | None; runs fully autonomously | Returns immediately with a controlled output | Yes, alongside other single-turn agents |
+
+The practical rule: a coordinator that talks to a human should be in chat mode, and the specialists it delegates to should almost always not be. Task mode is for a specialist that may need to ask one clarifying question before it can finish. SingleTurn is for the fan-out case — you want ten classifications in parallel and you want exactly ten answers back, not ten transcripts.
+
+Sitting on top of the modes is the **Task API**, which is the structured form of agent-to-agent delegation: multi-turn task delegation, single-turn calls with controlled output, mixed patterns where a coordinator uses both, human-in-the-loop interruption, and — the part that ties this section to the last one — task agents usable directly as nodes inside a graph workflow. That last property is what makes the composition styles genuinely composable rather than three parallel universes: a graph can contain an agent, and that agent can be delegated to under a mode that keeps its mess out of the graph's state.
+
+I am deliberately describing the modes rather than showing the enum, because the exact constant names have moved between 2.x releases and I would rather you read them off the version you have installed than trust a snippet here. The [companion post on graph workflows](https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration) works through the wiring with code.
+
 ---
 
 ## State, Sessions, and Memory
@@ -434,6 +515,14 @@ runner = Runner(
 The same `root_agent` runs against `InMemorySessionService` on a laptop and `VertexAiSessionService` in production. Nothing about the agent's code changes; only the runner's wiring does. This is the substantive payoff of the four-pillar separation.
 
 A common trap. The `state` dict is *not* a free-form scratchpad. Anything you write there becomes part of every subsequent prompt the LLM sees, in some form, because state is part of session context. Bloated state leaks into the context window and degrades reasoning. The discipline is to write to state only what the next turn or the next sub-agent will read, and to push everything else either into memory or into a side store the tool layer reads on demand.
+
+That discipline handles the state you control. It does not handle the session that simply gets long — a support conversation that runs for two hundred turns will overflow a context window no matter how tidy your state dict is. ADK now ships two managed answers to that, and they solve genuinely different problems that are easy to conflate because both have "context" in the name.
+
+**Context compression** is the length answer. As a session grows, older turns are condensed so the conversation keeps fitting in the window without you hand-rolling a summarization step and hoping you did not throw away the one detail that mattered. It is the framework taking over a job that every team I have watched build an agent eventually writes badly by hand.
+
+**Model context caching** is the cost answer. Agent prompts are dominated by a stable prefix — the system instruction, the tool declarations, the persona, often a retrieved document set — and a small volatile suffix. Without caching you pay full input price for that prefix on every single turn. Caching lets the provider hold the prefix and charge you a fraction for the repeat. For a long-running agent with a large tool surface, this is not a rounding error; it is frequently the difference between a viable unit cost and an unviable one, and it is the first thing I check when someone tells me their agent is too expensive.
+
+Neither replaces the other, and neither excuses a bloated state dict. Compression buys you conversation length, caching buys you margin, and discipline buys you reasoning quality. The [continuity engineering post](https://juanlara18.github.io/portfolio/#/blog/enterprise-agent-memory-continuity-adk-geap) goes considerably deeper on where each one belongs in a multi-user system.
 
 ---
 
@@ -821,13 +910,25 @@ The framework ships several scorers, and the right combination depends on what y
 
 The right discipline is layered. Use trajectory matching as the cheap, fast gate that catches structural regressions. Use rubric or LLM-judge scoring as the slower, expensive gate that catches quality regressions. Run both in CI on every change. Run a stratified sample on every model upgrade.
 
+Everything above shares one weakness, and it is the weakness that eventually breaks every hand-built agent eval suite I have seen: an evalset is a *script*, and real users do not read your script. You write a case where the user asks for their savings rate in one clean sentence. The actual user asks something vague, gets a clarifying question, answers it badly, changes their mind halfway, and then asks the real question. Your suite passes and your agent is bad.
+
+ADK's eval surface has grown two simulation capabilities that attack exactly this, and they are the part of the framework I would most encourage you to actually use, because they are the least obvious and the highest leverage.
+
+**User simulation** replaces the scripted conversation with a model playing the user, given a persona and a goal. Instead of asserting against a fixed transcript, you assert that the agent got the simulated user to their goal, and you can run the same goal a hundred times through a hundred slightly different users. This is how you find the clarifying question your agent never asks, and the loop it falls into when the user is unhelpful.
+
+**Environment simulation** does the same thing on the other side of the tool boundary. Rather than letting eval hit real systems — slow, non-deterministic, and occasionally destructive — you simulate the world the tools act on. The payoff is that failure paths become *testable*: what does the agent do when the quotes API returns a 500, when a record is stale, when a write silently no-ops? Those are the branches with no coverage in almost every agent I have reviewed, because reproducing them against a real backend is too annoying to bother with.
+
+Around both sit **custom metrics**, for when none of the built-in scorers measures the thing your business actually cares about, and **optimization**, which closes the loop from measurement back to improvement by tuning prompts against your eval set rather than against your intuition. That last one deserves a caution: optimizing prompts against an eval set is gradient descent on a proxy, and if your eval set is narrow you will get an agent that is excellent at your eval set. Grow the set first, optimize second.
+
 ---
 
 ## Deployment
 
-Three deployment targets share the same agent code: Vertex AI Agent Engine, Cloud Run, and GKE. The choice is mostly about how much of the runtime you want to own.
+Three deployment targets share the same agent code: Agent Runtime, Cloud Run, and GKE. The choice is mostly about how much of the runtime you want to own.
 
-**Agent Engine** is the managed runtime. You hand it your agent and it gives you a URL. It packages your code, provisions session and memory services, exposes the agent over A2A and HTTPS, integrates with Cloud Logging and Cloud Trace, and scales horizontally. You pay per request and per memory-store usage. It is the right default for any agent that does not have unusual infra requirements.
+**Agent Runtime** is the managed runtime — the service that used to be called Vertex AI Agent Engine, renamed when Google folded the developer platform into the Gemini Enterprise Agent Platform. Expect to meet both names for a while: the CLI subcommand below is still `agent_engine`, and the constructor arguments still say `agent_engine_id`. There is one product.
+
+You hand it your agent and it gives you a URL. It packages your code, provisions session and memory services, exposes the agent over A2A and HTTPS, integrates with Cloud Logging and Cloud Trace, and scales horizontally. You pay per request and per memory-store usage. It is the right default for any agent that does not have unusual infra requirements. Three of its properties matter more than the marketing suggests: it now supports long-running operations up to seven days, cold starts are sub-second, and you can deploy your own container — which quietly removes the main reason teams used to skip it for Cloud Run.
 
 ```bash
 adk deploy agent_engine \
@@ -871,7 +972,9 @@ gcloud run deploy finance-assistant \
 
 **GKE** is the right target when you have hard requirements that the managed surfaces cannot meet: GPU-attached self-hosted models, strict network egress controls, or co-location with another stateful service. The agent code does not change. You build the same container and apply a Deployment.
 
-Observability is uniform across all three. ADK emits OpenTelemetry traces by default; the Agent Engine wires them straight into Cloud Trace, and Cloud Run/GKE deployments need only the standard OTel exporter. Every event becomes a span. The same evalset that drives CI can be replayed against the production trace store to detect regressions in flight.
+Observability is uniform across all three. ADK emits OpenTelemetry traces by default; Agent Runtime wires them straight into Cloud Trace, and Cloud Run/GKE deployments need only the standard OTel exporter. Every event becomes a span. The same evalset that drives CI can be replayed against the production trace store to detect regressions in flight.
+
+One thing worth knowing even if you never touch it: alongside code-first ADK, the platform ships **Agent Studio**, a low-code visual builder over the same runtime. I am not going to pretend I build agents that way. But the two are not competing products, and the political reality of a large organization is that some agents will be built by people who do not write Python. Knowing that the visual builder deploys onto the runtime your code-first agents already run on — same identity model, same observability, same governance — is the difference between one platform and two shadow platforms.
 
 The A2A endpoint is the other thing worth turning on. With `--a2a` (or `expose_a2a=True` in code), the deployed agent advertises an Agent Card at a well-known path and accepts A2A requests from other agents. This is the substrate for multi-agent systems that span team boundaries: each team's agent is independently versioned, deployed, and discoverable; coordination happens at the protocol layer rather than inside one team's Python.
 
@@ -879,21 +982,22 @@ The A2A endpoint is the other thing worth turning on. With `--a2a` (or `expose_a
 
 ## The Wider Field
 
-ADK is not the only serious agent framework. The honest read on the rest of the landscape, in mid-2027:
+ADK is not the only serious agent framework. The honest read on the rest of the landscape, as of ADK 2.6:
 
-| Framework | Author | Style | Runtime story | Strength | Weakness |
-|---|---|---|---|---|---|
-| ADK | Google | Code-first SDK with workflow agents | Vertex AI Agent Engine, Cloud Run, GKE | Tightest integration with GCP, eval and deploy in one CLI | Most polished on Gemini, less natural with non-Google models |
-| Strands Agents | AWS | Code-first Python SDK | Bedrock AgentCore, Lambda, ECS | Model-agnostic, good Bedrock integration | Younger ecosystem |
-| Bedrock AgentCore | AWS | Managed runtime, framework-neutral | Serverless on AWS | Strong runtime primitives, durable execution | Tooling story still maturing |
-| Azure AI Foundry Agent Service | Microsoft | Managed agent service | Azure-native | Tight Microsoft Graph and Copilot integration | Less open outside Azure |
-| LangGraph | LangChain | Graph-as-code orchestration library | DIY or LangSmith | Most flexible orchestration model, mature ecosystem | Heaviest abstraction, many footguns |
-| CrewAI | Independent | Role-and-process abstraction | DIY | Fast to prototype team-of-agents patterns | Less control over the agent loop |
-| Microsoft Agent Framework | Microsoft | Successor to Semantic Kernel | Azure-friendly | Good .NET story, decent Python | Overlapping APIs during the transition |
+| Framework | Author | Style | Where determinism lives | Runtime story |
+|---|---|---|---|---|
+| ADK | Google | Code-first SDK plus a graph workflow runtime | A graph inside the SDK | Agent Runtime, Cloud Run, GKE |
+| LangGraph | LangChain | Graph-as-code orchestration library | A graph you compile, plus a durable checkpointer | LangGraph Platform, LangServe, or DIY |
+| Strands Agents | AWS | Model-first Python SDK | Multi-agent patterns: agent-as-tool, swarm, graph, workflow | Bedrock AgentCore, Lambda, ECS |
+| Bedrock AgentCore | AWS | Managed runtime, deliberately framework-neutral | Outside the SDK entirely, in the runtime | Serverless on AWS, runs any framework and any model |
+| Claude Agent SDK | Anthropic | Harness with subagents, hooks, and Skills | The harness and context engineering, no graph | Managed Agents, or self-hosted |
+| OpenAI Agents SDK | OpenAI | Minimal abstractions plus a visual canvas | Agent Builder, plus external durable execution | AgentKit, or Temporal for durability |
+| Azure AI Foundry Agent Service | Microsoft | Managed agent service | Managed service semantics | Azure-native |
+| CrewAI | Independent | Role-and-process abstraction | The process abstraction | DIY |
 
 ```mermaid
 quadrantChart
-    title Agent frameworks, mid 2027
+    title Agent frameworks by lock-in and batteries included
     x-axis "Lower vendor lock-in" --> "Higher vendor lock-in"
     y-axis "Less batteries included" --> "More batteries included"
     quadrant-1 "Managed and integrated"
@@ -906,12 +1010,17 @@ quadrantChart
     Foundry: [0.85, 0.75]
     LangGraph: [0.25, 0.78]
     CrewAI: [0.2, 0.55]
-    MS Agent FW: [0.7, 0.6]
+    Claude Agent SDK: [0.55, 0.62]
+    OpenAI Agents SDK: [0.5, 0.42]
 ```
 
-Two paragraphs of analysis. The cluster of managed-cloud frameworks (ADK, AgentCore, Foundry) all converge on the same architecture: a code-first SDK plus a managed runtime plus a deploy CLI plus an eval harness plus a memory primitive. They differ mostly in which cloud's identity, billing, and observability stack they assume. If your shop has already standardized on one cloud, the right choice is almost always that cloud's framework. ADK is the strongest of the three if you are on GCP because it ships with the deepest Gemini integration, the smoothest A2A story, and the only first-party voice runtime. AgentCore is gaining ground fast on durable execution. Foundry is the only credible choice if your enterprise lives inside Microsoft Graph.
+The table has a column the earlier version of this post did not, and it is the one worth reading. Every serious vendor has now conceded the same point — that an LLM should not be the sole owner of control flow in a production system — and they disagree, sharply, about *where the determinism belongs*.
 
-The independent frameworks (LangGraph, CrewAI) are the right choice for a different problem: when you genuinely need to run across clouds, when you want to switch model vendors quarterly, or when the orchestration shape you need is unusual enough that a managed runtime would be in your way. LangGraph in particular has matured into something close to "the Python expression of Pregel for agents," and it remains the framework I reach for when the right design is a complicated graph rather than a clean hierarchy. The trade is real: you write more glue, you own more of the runtime, you pay your own observability bill. For most agent programs in 2027, the managed-framework path is the productive default and the independent-framework path is the considered escape hatch.
+Google put it in a graph **inside** the SDK. LangChain put it in a graph you compile, paired with a durable checkpointer that resumes exactly where a failure interrupted it. AWS did the opposite of Google and pushed it **out** of the SDK entirely: Strands stays deliberately model-first while AgentCore provides a framework-neutral managed runtime that will happily run LangGraph or ADK, with session isolation and a memory model that supports branching so several agents can keep isolated contexts over one shared memory resource. OpenAI put it in a visual canvas for authoring and versioning workflows, and outsourced hard durability to snapshot-and-rehydrate plus a Temporal integration. And Anthropic declined the graph altogether, betting on the harness instead: subagents with isolated context windows, deterministic lifecycle hooks, filesystem Skills, and a fan-out model where a lead agent dispatches many parallel subagents and a separate grader sends their work back for revision.
+
+That last position is the interesting dissent, and it is not obviously wrong. A graph is a commitment to knowing your control flow in advance. Anthropic's bet is that for genuinely open-ended work you do not know it, and that the leverage is in context isolation and evaluation rather than in topology. My own read is that both are right about different workloads: the graph wins where a process exists and compliance cares about it, the harness wins where the task is exploratory. If you are building an approval workflow, draw the graph. If you are building a research assistant, do not.
+
+The practical guidance is unchanged by any of this. If your shop has standardized on one cloud, that cloud's framework is almost always the right default — the identity, billing, and observability integration is worth more than any API elegance. ADK is the strongest of the managed options on GCP, with the deepest Gemini integration, native A2A, and a first-party voice runtime. Reach for the independent frameworks when you genuinely need to run across clouds, switch model vendors on a quarterly cadence, or build an orchestration shape a managed runtime would fight you on. A dedicated head-to-head comparison of all five is a post of its own, and I would rather write that than compress it into a table here.
 
 ---
 
@@ -930,7 +1039,7 @@ The independent frameworks (LangGraph, CrewAI) are the right choice for a differ
 **Online Resources:**
 - [Agent Development Kit documentation](https://google.github.io/adk-docs/) — Canonical docs, including the quickstart, agent types, tools, sessions, evaluation, and deployment guides.
 - [google/adk-python on GitHub](https://github.com/google/adk-python) — Source, release notes, and the sample agents directory worth reading top-to-bottom.
-- [Vertex AI Agent Engine documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview) — Managed runtime concepts, pricing, and the deployment surface for ADK.
+- [Gemini Enterprise Agent Platform documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/) — Managed runtime concepts, pricing, and the deployment surface for ADK. This is where the old Vertex AI agent docs now live; Agent Engine is called Agent Runtime here.
 - [Agent2Agent Protocol Specification](https://a2a-protocol.org/latest/specification/) — The normative definition of the A2A protocol, now stewarded by the Linux Foundation.
 - [Model Context Protocol specification](https://modelcontextprotocol.io/) — The other half of ADK's interop story; reading the MCP spec is the fastest way to understand what `MCPToolset` actually does.
 

@@ -100,3 +100,5 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `glovebox-containment-header.jpg` — Argonne National Laboratory Tribology Lab nitrogen glovebox, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Argonne%27s_Tribology_Lab_-_Nitrogen_Glovebox.jpg) (CC BY-SA 2.0)
 - `gatehouse-header.jpg` — Karthaus Torhaus, Dülmen, photo by Dietmar Rabich, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_Kirchspiel,_Karthaus,_Torhaus_--_2015_--_5363.jpg) (CC BY-SA 4.0)
 - `appian-way-header.jpg` — Via Appia Antica, Rome, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Appia_Antica_Road.jpg) (CC BY-SA)
+- `signal-lever-frame-header.jpg` — Mechanical interlocking lever frame, Oban signal tower, photo by SriMesh, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lever_frame_Oban_Tower_SRM.jpg) (CC BY-SA 3.0)
+- `cicada-molting-header.jpg` — Green grocer cicada molting, photo by Toby Hudson, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Green_grocer_cicada_molting.jpg) (CC BY-SA 3.0 AU)
