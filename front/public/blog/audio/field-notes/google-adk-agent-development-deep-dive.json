@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "671e50f37f4f63558bab0544c9337d3c52a392f114390bfdfa7d03163eac6460",
-  "sourceHash": "671e50f37f4f63558bab0544c9337d3c52a392f114390bfdfa7d03163eac6460",
-  "durationSec": 1443.48,
-  "byteSize": 8660880,
-  "narrationWordCount": 3891,
+  "hash": "7b53c7e72fa310a460428bc01d01aab0f480f55c64c223933d20813de7f76d7d",
+  "sourceHash": "7b53c7e72fa310a460428bc01d01aab0f480f55c64c223933d20813de7f76d7d",
+  "durationSec": 2451.456,
+  "byteSize": 14708736,
+  "narrationWordCount": 6142,
   "audioUrl": "/blog/audio/field-notes/google-adk-agent-development-deep-dive.mp3",
   "translationModel": ""
 }
