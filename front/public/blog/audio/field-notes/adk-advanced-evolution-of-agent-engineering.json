@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "hash": "0acec20e1009784124da94785419782a600d4ebda7e048b0c2c79fd5ecdc3287",
-  "sourceHash": "0acec20e1009784124da94785419782a600d4ebda7e048b0c2c79fd5ecdc3287",
-  "durationSec": 1770.0,
-  "byteSize": 10620000,
-  "narrationWordCount": 4845,
+  "hash": "1f2c1eebb6ac3ad14f73e4347c9e294b5aa1ae4eb5e029f84ebae6e73b70cde5",
+  "sourceHash": "1f2c1eebb6ac3ad14f73e4347c9e294b5aa1ae4eb5e029f84ebae6e73b70cde5",
+  "durationSec": 2897.28,
+  "byteSize": 17383680,
+  "narrationWordCount": 7010,
   "audioUrl": "/blog/audio/field-notes/adk-advanced-evolution-of-agent-engineering.mp3",
   "translationModel": ""
 }

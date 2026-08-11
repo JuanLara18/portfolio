@@ -4,21 +4,23 @@ date: "2027-12-09"
 slug: adk-advanced-evolution-of-agent-engineering
 category: "field-notes"
 headerImage: "/blog/headers/vintage-aircraft-header.jpg"
-readingTimeMinutes: 28
-estimatedWordCount: 7000
-excerpt: "The state of the art for building agents in 2026 is Google's ADK. But the fastest way to understand it deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed by ADK, including its limits."
-tags: ["Agents", "Agentic AI", "LLMs", "AI Engineering", "LangChain", "Multi-Agent", "Orchestration", "Agent Engineering", "Tool Use", "GCP", "LLM Frameworks"]
+readingTimeMinutes: 34
+estimatedWordCount: 8435
+excerpt: "The fastest way to understand Google's ADK deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, through the graph based Workflow Runtime that arrived in ADK 2.0, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed, including its limits."
+tags: ["Agents", "Agentic AI", "LLMs", "AI Engineering", "Google ADK", "LangChain", "Multi-Agent", "Orchestration", "Agent Engineering", "Tool Use", "GCP", "LLM Frameworks"]
 ---
 
 # ADK, Advanced: The Evolution of Agent Engineering
 
 Every framework is a fossil record. If you slice through ADK the way a geologist slices through rock, you find layers, and each layer is a problem that an earlier generation of agent builders hit hard enough to leave a mark. The `SessionService` interface is the scar tissue from the year we all pickled conversation history to disk. The `MemoryService` is the year we discovered that stuffing everything into the prompt does not scale. The `tool_trajectory_avg_score` is the year an agent we shipped produced the right answer through an insane and expensive path, and we had no way to even notice. Workflow agents are the year we admitted that not every decision should be made by a language model.
 
+And the newest layer, the one that arrived with ADK 2.0, is the year we stopped hedging on that admission. Workflow agents were a compromise: they let you wrap deterministic shells around a model that still owned the loop. The Workflow Runtime in 2.0 goes further and takes control flow away from the model entirely, replacing hierarchical agent execution with a graph. That layer is thin enough that most posts on ADK have not caught up to it, and it is the most interesting one in the whole core sample, because the entire industry deposited a version of it at the same moment.
+
 I have written a long, careful how-to on ADK before — the [four-pillar mental model, the runnable code for every abstraction, the end-to-end finance assistant](https://juanlara18.github.io/portfolio/#/blog/google-adk-agent-development-deep-dive). This post is deliberately not that. If you want to learn the API, read that one first; I will lean on it throughout and try not to repeat it. This post is for the engineer who already knows roughly what ADK does and wants to understand *why it is shaped the way it is* — which turns out to be the same thing as understanding the last six years of agent engineering.
 
-The thesis is simple. The current state of the art for building production agents is Google's Agent Development Kit. But ADK did not spring from nothing. It is the consolidation of a decade-compressed-into-six-years accumulation of hard-won intuitions, each of which solved a problem and created a new one. The most honest way to teach ADK deeply, and the only way to see its limits clearly, is to walk that history forward and watch each accumulated complexity get resolved, simplified, or quietly absorbed. By the end you will understand ADK better than a tutorial could teach you, and you will know exactly where it still leaks.
+The thesis is simple. Google's Agent Development Kit did not spring from nothing. It is the consolidation of a decade-compressed-into-six-years accumulation of hard-won intuitions, each of which solved a problem and created a new one. The most honest way to teach ADK deeply, and the only way to see its limits clearly, is to walk that history forward and watch each accumulated complexity get resolved, simplified, or quietly absorbed. By the end you will understand ADK better than a tutorial could teach you, and you will know exactly where it still leaks.
 
-A note on prerequisites. This is an advanced post. I assume you have built at least one agent, that you know what a tool call and a ReAct loop are, and that you have at least skimmed the companion pieces on [agent architectures](https://juanlara18.github.io/portfolio/#/blog/agent-architectures-productive-patterns), [production agent patterns](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns), and [LangGraph orchestration](https://juanlara18.github.io/portfolio/#/blog/langgraph-multi-agent-workflows). If those words are unfamiliar, start there. Here I move fast.
+A note on prerequisites and on version. This is an advanced post. I assume you have built at least one agent, that you know what a tool call and a ReAct loop are, and that you have at least skimmed the companion pieces on [agent architectures](https://juanlara18.github.io/portfolio/#/blog/agent-architectures-productive-patterns), [production agent patterns](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns), and [LangGraph orchestration](https://juanlara18.github.io/portfolio/#/blog/langgraph-multi-agent-workflows). Everything here is written against the 2.x line — `google-adk` 2.6.3 at the time I last checked signatures, on a roughly bi-weekly release cadence, with the 1.x branch still maintained in parallel at 1.38.0. Where 2.0 changed something that 1.x readers will recognize, I say so. Here I move fast.
 
 ---
 
@@ -36,6 +38,7 @@ timeline
     2023 to 2024 : Multi agent systems : Orchestration graphs and state machines : State and observability become first class
     2024 to 2025 : The production agent era : Sessions and tiered memory : Registries guardrails tracing eval and interop with MCP and A2A
     2025 to 2026 : ADK as the consolidation : A batteries included framework : Model and deployment aware runtime
+    2026 : The control flow reckoning : Graph workflows replace hierarchical execution : Deterministic routing with agents as nodes
 ```
 
 ### 2020 to 2021: the model as oracle
@@ -48,7 +51,7 @@ The defining pain of this era was *brittle parsing*. You would coax the model in
 
 Two ideas changed the shape of the field in 2022, and they are worth naming precisely because their authorship matters and the internet routinely garbles it. The first was *chain-of-thought prompting*, from Wei et al., which showed that simply prompting a model to produce intermediate reasoning steps before its final answer dramatically improved performance on arithmetic and commonsense tasks. The second, and the more consequential for agents, was *few-shot in-context exemplars* as a reliable steering mechanism.
 
-The intuition that crystallized here is the one every agent rests on: a language model is not just a text completer, it is a *reasoner you can interrogate step by step*. If you let it externalize its thinking, it makes better decisions. That sounds obvious in 2026. In 2022 it was a small revolution, because it meant the model could be trusted to decide *what to do next* and not merely *what to say*. The door to agency cracked open.
+The intuition that crystallized here is the one every agent rests on: a language model is not just a text completer, it is a *reasoner you can interrogate step by step*. If you let it externalize its thinking, it makes better decisions. That sounds obvious now. In 2022 it was a small revolution, because it meant the model could be trusted to decide *what to do next* and not merely *what to say*. The door to agency cracked open.
 
 ### 2022 to 2023: ReAct, the loop, and the abstraction explosion
 
@@ -84,9 +87,28 @@ The painful truth of 2025 was that assembling all of this yourself was a multi-m
 
 ### 2025 to 2026: ADK as consolidation
 
-That framework is ADK. Its pitch is not "a new way to call an LLM." Its pitch is "all the production scaffolding the field spent six years discovering, packaged so that the same agent code runs on your laptop and on a managed cloud runtime without modification." It is batteries-included, model-aware (deeply integrated with Gemini but not exclusively), and deployment-aware (it knows about Vertex AI Agent Engine, Cloud Run, and GKE). It is, in the most literal sense, the sediment of the timeline compressed into an API.
+That framework is ADK. Its pitch is not "a new way to call an LLM." Its pitch is "all the production scaffolding the field spent six years discovering, packaged so that the same agent code runs on your laptop and on a managed cloud runtime without modification." It is batteries-included, model-aware (deeply integrated with Gemini but not exclusively), and deployment-aware: `adk deploy` targets Agent Runtime, Cloud Run, and GKE. (Naming note, because it trips people up in search: the managed platform was rebranded to Gemini Enterprise Agent Platform, and what used to be called Agent Engine is now Agent Runtime. If you find an old tutorial using the previous name, it is describing the same service.) ADK 1.x is, in the most literal sense, the sediment of the timeline compressed into an API.
 
-Now let us go layer by layer and show the resolution.
+And then, less than a year later, the field found the next thing to be wrong about.
+
+### 2026: the control flow reckoning
+
+Go back to ReAct and look at what it actually proposed. Not merely that a model could choose a tool — it made the model *the interpreter of its own control flow*. Loop condition, branch selection, error handling, termination: all of it inside the token stream, decided anew each iteration, with no way to inspect the program because there was no program. For three years we treated that as the definition of an agent rather than one design choice among several, and spent those three years building scaffolding to contain the consequences — iteration caps, guardrail callbacks, trajectory eval, retry wrappers. Every one is a patch on the same root cause.
+
+Then the field concluded that the root cause *was* the design. Google's own argument for 2.0 is unusually blunt: autonomous agents get stuck in infinite loops, they bypass business logic by hallucinating around it, and they fail without raising a clean exception you can catch. Structurally, LLM-based orchestration is slower, more expensive, and higher-variance than the deterministic code it displaced — routing, scheduling, and error handling are things ordinary programs have been excellent at for fifty years. Handing them to a probabilistic decoder was never an upgrade; it was an expedient.
+
+So ADK 2.0 replaced the execution model. Not a new agent type bolted onto the hierarchy — the hierarchy itself. `BaseAgent` now subclasses a new `BaseNode`, and agents are evaluated as individual nodes inside a graph engine, the Workflow Runtime. Routing is data, not inference. The reported effect is roughly halved token consumption and a meaningful latency improvement, which is what you would expect once you stop paying a model to decide what an `if` statement could have decided.
+
+What makes this layer genuinely interesting is that it was not a Google idea. It was a *convergence*:
+
+- **LangChain** had been arguing the position since LangGraph 1.0 — combine hand-coded deterministic logic with LLM-driven decisions in one graph, then make the whole thing survive failure and resume where it left off. Nobody converged on the graph and then found LangGraph; everyone converged *on* LangGraph.
+- **AWS** attacked it from the runtime side. Strands Agents shipped as a deliberately model-first SDK with a small pattern vocabulary (agent-as-tool, swarm, graph, workflow), then Bedrock AgentCore went GA as something more radical: a framework-neutral managed runtime that will run any framework and any model, with hard session isolation and memory branching. The bet is that orchestration abstractions will keep churning, so the durable product is the substrate underneath.
+- **OpenAI** made the graph a *drawing*. AgentKit's Agent Builder is a visual canvas for composing and versioning multi-agent workflows, backed by durable execution through snapshotting and rehydration plus a first-party Temporal integration. When the lab whose position was "minimal abstractions, just a loop" ships a workflow canvas, the argument is over.
+- **Anthropic dissented.** The Claude Agent SDK never adopted a graph; it doubled down on the harness — subagents with isolated context windows, deterministic lifecycle hooks, folder-based Skills, then Dynamic Workflows, where a lead agent fans out tens to hundreds of parallel subagents in one session, with a separate grader sending them back to revise. The claim: if the model is good enough and the harness disciplined enough, you do not draw the graph, the model finds it.
+
+Convergence with one confident dissenter is a far more useful signal than consensus. Consensus tells you the field stopped thinking. This tells you the open question is not *whether* control flow should be structured but *who* structures it — the engineer at authoring time, or a capable enough model at run time. Google, LangChain, AWS, and OpenAI voted for the engineer. Anthropic is running the other experiment, and it is not obviously losing.
+
+Now let us go layer by layer, with this newest layer folded into each one.
 
 ---
 
@@ -107,113 +129,97 @@ Here is the map of the territory, then the deep dives.
 | 2024 to 2025 | Cross cutting concerns tangle the logic | Guardrails baked into prompts | Callbacks per component, plugins globally on the `Runner` |
 | 2024 to 2025 | No way to measure quality | Vibes-based prompt changes | Built-in evalsets, trajectory and response scoring |
 | 2024 to 2025 | Tool and agent interop is proprietary | Vendor lock per integration | First-party MCP and A2A support |
-| 2025 to 2026 | Deployment is a platform project | Months of infra work | `adk deploy` to Agent Engine, Cloud Run, or GKE |
+| 2025 to 2026 | Deployment is a platform project | Months of infra work | `adk deploy` to Agent Runtime, Cloud Run, or GKE |
+| 2026 | The model owns control flow | Infinite loops, hallucinated bypasses, cost variance | Graph `Workflow` routes deterministically, agents become nodes |
+| 2026 | Reusable agent behavior has no format | Copy-pasted prompt libraries | Skills for Agents, progressive disclosure from a `SKILL.md` |
 
 ### Resolving the orchestration versus reasoning tension: the agent taxonomy
 
-The single most important design decision in ADK is that it has *more than one kind of agent*, and the kinds correspond exactly to the 2024 realization that some control flow should be deterministic and some should be delegated to the model.
+This is the section that 2.0 rewrote, and the resolution arrived in two stages. The first was genuinely incomplete, and the incompleteness is instructive.
+
+**Stage one, the 1.x answer: more than one kind of agent.** ADK originally shipped *several* agent classes, corresponding to the 2024 realization that some control flow should be deterministic and some delegated. `LlmAgent` (also exported simply as `Agent`) is the descendant of the ReAct loop: it reasons, decides which tool to call, which sub-agent to hand to, and when it is done. The three *workflow agents* descend from the LangGraph-era insight. `SequentialAgent` runs its children in fixed order, passing data forward through shared state via `output_key`. `ParallelAgent` fans them out concurrently. `LoopAgent` repeats its children until one signals completion via the built-in `exit_loop` tool, bounded by `max_iterations` so the 2022-era unbounded loop simply cannot happen. The bounded refinement loop I described as a hand-rolled pattern in the [production patterns post](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns) became, in about six lines, a declarative `LoopAgent` wrapped in a `SequentialAgent`.
+
+But look at what stage one did *not* do. The choice between deterministic and delegated was made at the granularity of a whole agent, by picking a class. Inside an `LlmAgent` the model still owned everything — which tool, which sub-agent, when to stop. The deterministic shell was a fence around the nondeterminism, not a replacement for it, and anything genuinely branchy meant nesting workflow agents into awkward shapes or giving up and letting the model route.
+
+**Stage two, the 2.0 answer: everything is a node.** `BaseAgent` subclasses a new `BaseNode`, and that one change collapses the taxonomy. Agents are nodes. Tools are nodes. Plain Python functions are nodes. A graph `Workflow` wires them with an `edges` list, and the graph — not any model — decides what runs next. The unit of the deterministic-versus-delegated decision is no longer the agent; it is the individual node.
 
 ```mermaid
 classDiagram
+    BaseNode <|-- BaseAgent
+    BaseNode <|-- FunctionNode
     BaseAgent <|-- LlmAgent
     BaseAgent <|-- SequentialAgent
-    BaseAgent <|-- ParallelAgent
     BaseAgent <|-- LoopAgent
+    class BaseNode {
+        evaluated by the Workflow graph
+        +NodeConfig with RetryConfig and timeout
+        emits Event with output and route
+    }
+    class Workflow {
+        +name
+        +edges from START
+        deterministic routing
+    }
     class BaseAgent {
         +name
         +sub_agents
-        +run_async
     }
     class LlmAgent {
         +model
         +instruction
         +tools
-        +sub_agents
-        decides at runtime
+        decides within a node
     }
-    class SequentialAgent {
-        runs children in order
-        +output_key chaining
-    }
-    class ParallelAgent {
-        runs children concurrently
-        +isolated branches
-    }
-    class LoopAgent {
-        +max_iterations
-        repeats until escalate
+    class FunctionNode {
+        plain typed python
+        no inference at all
     }
 ```
 
-`LlmAgent` (also exported simply as `Agent`) is the descendant of the ReAct loop: it reasons, decides which tool to call, which sub-agent to hand to, and when it is done. It is where you want nondeterminism, because the task genuinely needs judgment.
-
-The three *workflow agents* are the descendants of the LangGraph-era insight. `SequentialAgent` runs its children in a fixed order, passing data forward through shared state via `output_key`. `ParallelAgent` fans them out concurrently. `LoopAgent` repeats its children until one of them signals completion. None of these consult an LLM to decide control flow; the flow is code, and therefore reliable.
-
-This taxonomy resolves the central tension of the field. For years we oscillated between "let the model orchestrate everything" (flexible, unreliable) and "hard-code the pipeline" (reliable, rigid). ADK's answer is that you do not choose globally — you choose per node. The productive pattern, and the one I reach for almost every time, is *deterministic shells around LLM nodes*: wrap the steps you know are fixed in a `SequentialAgent`, and only spend an `LlmAgent`'s nondeterminism inside the steps that need it.
-
-Here is a `SequentialAgent` whose stages chain through state, with a `LoopAgent` doing a refine-until-good critique cycle inside one of them:
+Routing is data. A router node returns an `Event` carrying a route label, and the edge that dispatches on it is a dict:
 
 ```python
-from google.adk.agents import LlmAgent, SequentialAgent, LoopAgent
-from google.adk.tools import exit_loop
+from google.adk import Agent, Event, Workflow
 
-# A drafting agent writes a summary into state under "draft".
-drafter = LlmAgent(
-    name="drafter",
-    model="gemini-2.5-flash",
-    instruction=(
-        "Write a one paragraph summary of the user's request. "
-        "Return only the paragraph."
-    ),
-    output_key="draft",
+process_message = Agent(
+    name="process_message",
+    model="gemini-flash-latest",
+    instruction="""Classify user message into either "BUG", "CUSTOMER_SUPPORT",
+      or "LOGISTICS".""",
+    output_schema=str,
 )
 
-# A critic reads state.draft and either approves (calling exit_loop)
-# or returns concrete revision notes for the next iteration.
-critic = LlmAgent(
-    name="critic",
-    model="gemini-2.5-flash",
-    instruction=(
-        "Review the draft in state under the key draft. "
-        "If it is clear, specific, and under 80 words, call the exit_loop "
-        "tool to stop. Otherwise return concrete revision notes."
-    ),
-    tools=[exit_loop],
-    output_key="critique",
-)
+def router(node_input: str):
+    # A plain function, not a model, performs the dispatch. The label set is
+    # closed and auditable; there is nothing for the model to hallucinate past.
+    return Event(route=[r.strip() for r in node_input.split(",")])
 
-# A reviser consumes the critique and rewrites the draft.
-reviser = LlmAgent(
-    name="reviser",
-    model="gemini-2.5-flash",
-    instruction=(
-        "Rewrite the draft in state.draft using the notes in state.critique. "
-        "Return only the revised paragraph."
-    ),
-    output_key="draft",
-)
+# Each handler is just a function node returning an Event; they could equally
+# be LlmAgents, tools, or nested Workflows. The graph does not care.
+def handle_bug():
+    return Event(message="Handling bug...")
 
-# Loop the critic and reviser until the critic escalates or we hit the cap.
-refine_loop = LoopAgent(
-    name="refine_loop",
-    sub_agents=[critic, reviser],
-    max_iterations=3,
-)
-
-# The whole pipeline: draft once, then refine in a bounded loop.
-pipeline = SequentialAgent(
-    name="summarize_pipeline",
-    sub_agents=[drafter, refine_loop],
+root_agent = Workflow(
+    name="routing_workflow",
+    edges=[
+        ("START", process_message, router),
+        (router, {"BUG": handle_bug, "CUSTOMER_SUPPORT": handle_support,
+                  "LOGISTICS": handle_logistics}),
+    ],
 )
 ```
 
-Notice what the framework gave you for free: a hard iteration cap (`max_iterations=3`), so the 2022-era unbounded loop simply cannot happen here; a clean way for a child to stop the loop (`exit_loop`, a built-in tool); and state-based handoff between stages with no glue code. The bounded refinement loop that I described as a hand-rolled pattern in the [production patterns post](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns) is now a declarative `LoopAgent`.
+`"START"` is a reserved virtual node. A tuple of nodes is a chain; a tuple ending in a dict is a conditional dispatch; two edges leaving `"START"` are a fan-out. Nodes pass typed values forward through `event.output`, and because only the declared output crosses the boundary, downstream nodes see the data they need rather than the entire accumulated transcript — the anti-context-bloat argument, enforced structurally instead of by discipline. `NodeConfig` carries `RetryConfig` and timeouts, so a flaky step retries without the model inventing its own recovery strategy. `RequestInput` pauses the graph for a human. For flows whose shape is unknown until run time, the `@node` decorator plus `ctx.run_node()` expresses the graph in ordinary Python control flow, with checkpointing that skips completed nodes on resume. And agents inside a graph declare an execution mode: `chat` for full user interaction, `task` for a subagent that may ask clarifying questions and then returns to its parent, `single_turn` for autonomous no-interaction work that parallelizes safely.
+
+I am deliberately not going deeper, because the graph runtime deserves its own post and has one: the [deterministic orchestration deep dive](https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration) covers fan-in joins, nested workflows, dynamic graphs, and the Task API for structured agent-to-agent delegation. What matters for the fossil record is the shape of the resolution. For years we oscillated between "let the model orchestrate everything" (flexible, unreliable) and "hard-code the pipeline" (reliable, rigid). The 1.x answer was that you choose per agent. The 2.0 answer is that you choose per node, and the default is code.
 
 ### Resolving the loop and visibility problem: the Runner and the event stream
 
 In the hand-rolled era, *you* wrote the `while` loop, and that loop was where every failure mode lived: the infinite retry, the lost budget, the silent wedging. ADK takes the loop away from you and gives it to the `Runner`. The runner invokes the agent, dispatches tool calls, persists events to the session, and yields a stream of typed `Event` objects — one per model output, tool call, tool response, and state mutation.
 
-The consequence is that visibility, the 2024-era requirement, is not something you add; it is the default substrate. Every arrow in the system is an event, and events are JSON-serializable. ADK emits OpenTelemetry traces out of the box, so the same event stream that drives the local `adk web` inspector also drives Cloud Trace in production. The undebuggable nondeterministic loop becomes a list of events you can replay and assert against. I covered the wiring of runner, session, and event iteration in the [companion how-to](https://juanlara18.github.io/portfolio/#/blog/google-adk-agent-development-deep-dive), so I will not repeat the code; the point here is *why* the runner sits at the center. It is the place the field's hardest operational lessons got absorbed.
+The consequence is that visibility, the 2024-era requirement, is not something you add; it is the default substrate. Every arrow in the system is an event, and events are JSON-serializable. ADK emits OpenTelemetry traces natively, so the same event stream that drives the local `adk web` inspector also drives Cloud Trace in production. The undebuggable nondeterministic loop becomes a list of events you can replay and assert against. I covered the wiring of runner, session, and event iteration in the [companion how-to](https://juanlara18.github.io/portfolio/#/blog/google-adk-agent-development-deep-dive), so I will not repeat the code; the point here is *why* the runner sits at the center. It is the place the field's hardest operational lessons got absorbed.
+
+The graph runtime strengthens this argument rather than replacing it. The event schema had to grow to describe the graph, so events now also carry `node_info` — which node produced this event — and `output`, the typed value handed to the successor. The Go SDK added `IsolationScope`, `Routes`, and `RequestedInput` alongside them. Read that list as a design statement: the routing decision, the node identity, the data handoff, and the human-input pause are all *in the stream*, not hidden inside a model's reasoning where a trace cannot reach. In 1.x you could see what the agent said and did; in 2.x you can see the path the program took and why. That is the difference between a log and an execution trace.
 
 ### Resolving bespoke tool integration: one interface, four authoring styles
 
@@ -256,7 +262,11 @@ For remote servers you swap in `SseConnectionParams` or `StreamableHTTPConnectio
 
 ### Resolving tangled cross-cutting concerns: callbacks and plugins
 
-Guardrails, logging, redaction, rate limits, content safety — the cross-cutting concerns that the 2024 production checklist demanded — used to get jammed into the agent's instructions or smeared across the loop. ADK gives them two clean homes. *Callbacks* attach to a single component (agent, model, or tool) with hooks before and after each, plus error hooks; the companion post shows a before-model guardrail and an after-tool redactor. *Plugins* are the newer, more powerful sibling: a `BasePlugin` is registered once on the `Runner` or `App` and its callbacks apply globally to every agent, tool, and model call. Plugins take precedence over component callbacks and, uniquely, expose `on_model_error` and `on_tool_error` hooks for global graceful recovery.
+Guardrails, logging, redaction, rate limits, content safety — the cross-cutting concerns that the 2024 production checklist demanded — used to get jammed into the agent's instructions or smeared across the loop. ADK gives them two clean homes. *Callbacks* attach to a single component (agent, model, or tool) with hooks before and after each, plus error hooks; the companion post shows a before-model guardrail and an after-tool redactor.
+
+The 2.0 additions are `BeforeAgentCallback` and `AfterAgentCallback`, and they exist for a specific reason. When `BaseAgent` became a node, the graph engine took over execution, which means custom `_run_async_impl()` overrides — the 1.x escape hatch for injecting logic into an agent's own execution — are now silently bypassed. The lifecycle hooks are the sanctioned replacement: instead of overriding *how* an agent runs, you hook the boundaries of *when* it runs. That is a strictly better contract, because a hook the engine invokes is one the engine can also trace and retry, whereas an override is an opaque hole punched through the runtime.
+
+*Plugins* are the more powerful sibling: a `BasePlugin` is registered once on the `Runner` or `App` and its callbacks apply globally to every agent, tool, and model call. Plugins take precedence over component callbacks and, uniquely, expose `on_model_error` and `on_tool_error` hooks for global graceful recovery.
 
 ADK even ships built-in plugins for the most common needs, including `ContextFilterPlugin` (trims old conversation turns to keep the context window manageable while preserving function call and response pairs) and `GlobalInstructionPlugin` (applies a consistent identity or safety preamble to every agent). The context-window-hygiene pattern that I described as a manual discipline in the production post — summarize and evict before the bill arrives — is now a plugin you register in one line.
 
@@ -282,7 +292,16 @@ async def test_summarize_pipeline():
     )
 ```
 
-The criteria live in a `test_config.json`. The two defaults are `tool_trajectory_avg_score` (exact match on the sequence of tool calls and arguments, defaulting to a strict 1.0) and `response_match_score` (ROUGE-1 word overlap against the reference, defaulting to a more forgiving 0.8). For open-ended answers where lexical overlap is meaningless, `final_response_match_v2` uses an LLM judge to score semantic equivalence. The discipline is layered, exactly as the field learned the hard way: trajectory matching as the cheap, fast gate that catches structural regressions in CI; LLM-judge scoring as the slower gate that catches quality regressions. The point worth dwelling on is that *agent* eval scores the trajectory, not just the output — because two agents can reach the same answer by paths that differ tenfold in cost, and the path is the thing you ship.
+The criteria live in a `test_config.json`. The two originals are `tool_trajectory_avg_score` (exact match on the sequence of tool calls and arguments, defaulting to a strict 1.0) and `response_match_score` (ROUGE-1 word overlap against the reference, defaulting to a more forgiving 0.8). For open-ended answers where lexical overlap is meaningless, `final_response_match_v2` uses an LLM judge to score semantic equivalence. The discipline is layered, exactly as the field learned the hard way: trajectory matching as the cheap, fast gate that catches structural regressions in CI; LLM-judge scoring as the slower gate that catches quality regressions. The point worth dwelling on is that *agent* eval scores the trajectory, not just the output — because two agents can reach the same answer by paths that differ tenfold in cost, and the path is the thing you ship.
+
+That was the whole surface once. It has since grown in a way that is a small case study in an argument extending itself under its own logic: start from "you cannot improve what you cannot measure" and every gap in your measurement becomes a to-do item.
+
+- **A richer criteria vocabulary.** Alongside the three above there are now rubric-based judges for response quality and tool-use quality, a `hallucinations_v1` groundedness check, a `safety_v1` harmlessness check, and multi-turn criteria that score task success, trajectory quality, and tool use across a whole conversation. Rubrics are also how you get a **custom metric**: write the criterion in prose, a judge applies it, and "did it stay in scope" becomes a number in CI.
+- **User simulation.** The obvious hole in an evalset of scripted turns is that real users go off script. So ADK generates the user side of a conversation with a model from a scenario description, then scores how the agent handled a dialogue nobody wrote in advance. There is even a criterion for grading the simulated user, because a bad simulator produces meaningless results.
+- **Environment simulation.** The second hole is that eval tools return canned values, so you never test what happens when a payment API rejects a card or a search comes back empty. Simulating the environment rather than mocking it turns failure handling from something you hope about into something you assert.
+- **Optimization.** The last step closes the loop instead of merely observing it. Once quality is a reproducible number, prompt improvement stops being a guessing game and becomes a search problem: the optimization tooling proposes and evaluates instruction variants against your own metrics. The original lesson was "measure instead of vibing." The extension is that a good enough metric lets you hand the vibing to the machine.
+
+Notice the direction of travel. Each of these turns something a human did by intuition — inventing adversarial users, imagining failure modes, rewording a prompt until it feels better — into an artifact that runs in CI. That is what a field looks like when it stops being a craft.
 
 ---
 
@@ -326,7 +345,7 @@ The subtle, powerful part is state *scoping by key prefix*. A bare key like `dra
 
 ### Short-term memory is, effectively, a Redis-style store
 
-Here is the part the user-facing docs underplay. `SessionService` is an *interface* (`BaseSessionService`), and the backend you choose determines the operational character of your short-term memory. ADK ships three first-party implementations: `InMemorySessionService` (a dict, dev only, lost on restart); `DatabaseSessionService` (any SQLAlchemy-compatible relational store — Postgres, MySQL, SQLite — with the caveat that it needs an async driver like `asyncpg` or `sqlite+aiosqlite`); and `VertexAiSessionService` (fully managed persistence through Vertex AI Agent Engine, the zero-ops production default on Google Cloud).
+Here is the part the user-facing docs underplay. `SessionService` is an *interface* (`BaseSessionService`), and the backend you choose determines the operational character of your short-term memory. ADK ships three first-party implementations: `InMemorySessionService` (a dict, dev only, lost on restart); `DatabaseSessionService` (any SQLAlchemy-compatible relational store — Postgres, MySQL, SQLite — with the caveat that it needs an async driver like `asyncpg` or `sqlite+aiosqlite`); and `VertexAiSessionService` (fully managed persistence through Agent Runtime, the zero-ops production default on Google Cloud — the class name still carries the old Vertex AI branding).
 
 But conceptually, session state is exactly the workload a Redis-style key-value store was built for: small, hot, per-conversation reads and writes on every single turn, with low latency as the dominant requirement. Because `SessionService` is a pluggable interface, you can back it with precisely that. The Redis team ships an official integration, `adk-redis`, whose `RedisWorkingMemorySessionService` implements `BaseSessionService` against a Redis Agent Memory Server, giving you persistent working memory with automatic summarization when the token budget is hit and horizontal scaling across stateless agent replicas. On Google Cloud the natural managed equivalent is Memorystore (managed Redis). The mental model is worth stating plainly: *short-term agent memory is a low-latency KV store keyed by session, and ADK lets you choose how fancy that store is* — a dict in dev, a relational table for self-managed durability, Agent Engine for managed simplicity, or Redis/Memorystore when you need Redis-grade latency and throughput under a stateless fleet.
 
@@ -430,26 +449,31 @@ Read it twice. The retrieval happens *before* the agent reasons (so memories are
 
 ## ADK vs LangChain and LangGraph
 
-The most common question I get is how ADK compares to the incumbent, LangChain and its orchestration library LangGraph. The honest answer is that they sit at different points on a philosophy axis, and the choice is about fit, not capability — the same conclusion the [framework comparison post](https://juanlara18.github.io/portfolio/#/blog/llamaindex-langchain-llm-frameworks) reaches for LlamaIndex versus LangChain.
+The most common question I get is how ADK compares to LangChain and its orchestration library LangGraph. I have to retire my own previous answer, which is a useful thing to watch happen.
 
-| Dimension | ADK | LangChain / LangGraph |
+The old framing — mine and everyone else's — was that LangGraph made the *graph* the explicit first-class artifact while ADK made the *agent* first-class and hid the graph inside the runner: pick LangGraph for branchy state machines, pick ADK for clean hierarchies of specialists. Fair read of 1.x, now simply wrong. The Workflow Runtime is a direct answer to LangGraph — the graph is explicit, edges are declared, routing is data, and the hierarchy is what got hidden. They converged on the same abstraction, so the interesting difference moved.
+
+It moved to *where the runtime lives*. Google fused the SDK and the managed runtime: `adk deploy` pushes to Agent Runtime, and the managed session and memory services implement the same interfaces your local code already used, so the seam between laptop and production is nearly invisible. LangChain deliberately kept them separable — LangGraph bills itself as a low-level orchestration framework and runtime, and hosting is your call: LangGraph Platform, LangServe, Temporal, or your own containers. One vendor sells you the coherence; the other sells you the seam, on purpose. That is a values disagreement, not a capability gap.
+
+| Dimension | ADK 2.x | LangChain / LangGraph 1.x |
 |---|---|---|
-| Origin and philosophy | Google, 2025, batteries-included production framework | LangChain since Oct 2022, composability-first; LangGraph 1.x adds graph orchestration |
-| Core abstraction | Small agent taxonomy: LlmAgent plus workflow agents | LangGraph: explicit cyclic StateGraph of nodes and edges |
-| Orchestration model | Code-first agents, deterministic shells around LLM nodes | Graph-first, you wire nodes and conditional edges by hand |
-| State and memory | Session, State, and tiered MemoryService in the box | TypedDict state with reducers, checkpointers you choose |
+| Origin and philosophy | Google, 2025, batteries-included production framework | LangChain since Oct 2022, composability-first low level orchestration |
+| Core abstraction | Graph Workflow of nodes; agents, tools, functions all subclass BaseNode | Explicit cyclic StateGraph of nodes and edges |
+| Orchestration model | Deterministic routing by default, model reasoning scoped inside a node | Deterministic and agentic steps mixed in one graph |
+| Durability | Node level checkpointing, resume skips completed nodes, RetryConfig | Durable execution, resumes exactly where it left off after a failure |
+| Human in the loop | RequestInput pauses the graph | Interrupts pause the branch that needs review |
+| State and memory | Session, State, tiered MemoryService in the box | Short term working memory plus long term memory, checkpointers you choose |
 | Tools | Function, OpenAPI, built-in, MCP, agent-as-tool, one interface | Rich tool ecosystem, MCP support, more assembly required |
-| Eval | First-party evalsets, trajectory and response scoring, CLI and pytest | LangSmith for tracing and eval, separate product |
-| Observability | OpenTelemetry by default, Cloud Trace integration | LangSmith tracing, OTel increasingly supported |
-| Interop | First-party A2A expose and consume, MCP client | MCP support, A2A via add-ons |
-| Deployment | adk deploy to Agent Engine, Cloud Run, GKE | Bring your own, or LangGraph Platform |
-| Cloud gravity | Strong pull toward Vertex and Gemini | Cloud and model agnostic by design |
-| Maturity | Younger, fast-moving API | Large, battle-tested, also fast-moving |
-| Best fit | GCP shops wanting the whole production checklist in one SDK | Cross-cloud, unusual graph topologies, model-vendor flexibility |
+| Eval | First-party evalsets, rubrics, user and environment simulation, optimization | LangSmith for tracing and eval, separate product |
+| Observability | Native OpenTelemetry, Cloud Trace integration, node_info in every event | LangSmith tracing, graph visualization, OTel increasingly supported |
+| Interop | Native A2A expose and consume, MCP client | MCP support, no native A2A |
+| Runtime boundary | SDK and managed runtime fused, Agent Runtime is the default target | SDK and runtime separable, LangGraph Platform or LangServe or DIY |
+| Cloud gravity | Strong pull toward Gemini Enterprise Agent Platform and Gemini | Cloud and model agnostic by design |
+| Best fit | Teams wanting the whole production checklist and the runtime in one SDK | Cross-cloud, model-vendor flexibility, owning your own hosting |
 
-The fair summary in two sentences: ADK is the framework you choose when you want the production checklist — sessions, memory, tools, guardrails, eval, tracing, deployment — to ship in the box and you are comfortable with a gentle but real pull toward Google Cloud and Gemini. LangGraph is the framework you choose when your orchestration is genuinely a complicated graph, when you must run across clouds or swap model vendors quarterly, or when you want maximum control of the runtime and are willing to assemble the operational pieces yourself.
+Two rows deserve more than a skim. Durability is where LangGraph still has the clearer story and the longer track record: resuming exactly where a failure left you, on a checkpointer you chose, is the feature they have sharpened longest, and the surrounding ecosystem reflects it. A2A is where ADK has something LangGraph does not — native support for exposing and consuming agents over the protocol, no add-on. If your architecture is a fleet of agents owned by different teams, that is not a small line item.
 
-There is also a philosophical difference worth naming. LangGraph makes the *graph* the explicit, first-class artifact: you see every node and edge, which is its great strength for audit-heavy, branchy workflows and its great cost in boilerplate. ADK makes the *agent* the first-class artifact and hides the graph inside the runner. For a clean hierarchy of specialists, ADK is less code and less ceremony. For a genuinely cyclic, conditional, human-in-the-loop state machine, LangGraph's explicitness is worth its weight. Neither is wrong; they optimize for different shapes of problem.
+The fair summary: ADK is what you choose when you want the graph *and* sessions, memory, tools, guardrails, eval, tracing, A2A, and a managed runtime to arrive together, accepting a real pull toward Google Cloud and Gemini. LangGraph is what you choose when you want the graph and nothing else bundled with it, because you intend to run across clouds, swap model vendors, or own the runtime yourself.
 
 ---
 
@@ -457,23 +481,29 @@ There is also a philosophical difference worth naming. LangGraph makes the *grap
 
 A post that only praised ADK would be marketing, not field notes. ADK is young, it has gravity, and there are places where another tool still wins. Here is the honest decision lens.
 
-**Google and Vertex gravity is real.** ADK runs against non-Google models and deploys to non-Google targets, but the path of least resistance — the deepest integration, the smoothest examples, the managed `VertexAiSessionService` and `VertexAiMemoryBankService` — all pull toward Gemini and Vertex AI Agent Engine. If your organization is committed to AWS or Azure, you will be fighting the current. On AWS, Strands Agents and Bedrock AgentCore are the natural fits; on Azure, the Microsoft Agent Framework. Choosing ADK is, partly, choosing a cloud.
+**Graph workflows do not cover everything yet.** New sediment is soft, and two documented incompatibilities matter. Graph workflows do not support live streaming, which rules out the bidirectional voice and speech-to-speech agents built on the Live API; the pattern the community settled on is to keep the graph for state transitions and run the voice layer event-driven around it. And some third-party integrations are not graph-compatible, so check yours first. A brand-new execution engine having a partially covered surface is normal. Discovering it after you have rewritten your orchestration is not.
 
-**It is young, and the API moves.** The session database schema changed in a recent minor version and required a migration. The MCP toolset class was renamed (`MCPToolset` to `McpToolset`) with the old name deprecated. These are healthy signs of an actively developed framework, but if you need a frozen, decade-stable API, ADK is not yet that. Pin your versions and read the release notes.
+**The 1.x to 2.0 migration has genuinely silent breaking changes**, and "silent" is the operative word. Custom `_run_async_impl()` overrides are ignored, not rejected. Direct appends to `context.session.events` break the graph engine's bookkeeping without complaining. Broad `except Exception` blocks now swallow framework failures and disable automatic retries, so your defensive error handling becomes the bug. The schema gained `node_info` and `output`, so custom session storage needs a migration; sessions written by 2.0 are readable by 1.28 and later, nothing older. In Go, import paths move to `/v2` and `session.NewEvent` gained a leading `context.Context`. None of these fail loudly, which is why I wrote the [migration walkthrough](https://juanlara18.github.io/portfolio/#/blog/migrating-adk-1x-to-2x) separately. Note also that 1.x is still maintained, so staying put is a legitimate choice rather than a deferred obligation.
 
-**Unusual orchestration topologies still favor LangGraph.** ADK's agent taxonomy is a clean abstraction for hierarchies and pipelines. When your real design is a dense, cyclic graph with many conditional edges, fine-grained interrupts, and time-travel debugging, you can express it in ADK — but you may be working against the grain, and LangGraph's explicit `StateGraph` will feel more natural.
+**Google gravity is real.** ADK runs non-Google models and deploys to non-Google targets, but the path of least resistance — the deepest integration, the smoothest examples, the managed `VertexAiSessionService` and `VertexAiMemoryBankService`, the fused Agent Runtime story — pulls toward Gemini and Google Cloud. If your organization is committed elsewhere you will be fighting the current. On AWS, Strands Agents plus Bedrock AgentCore are the natural fit, and AgentCore's framework-neutrality is a genuinely different bet: it will run ADK itself, which makes "use ADK, host on AWS" a real option. On Azure, the Microsoft Agent Framework. Choosing ADK is, partly, choosing a cloud.
 
-**Maximal control or minimal dependencies favor raw or PydanticAI.** If you want to understand and own every token of every prompt and every line of the loop, a thin provider SDK with your own bounded loop — the [minimal production-minded agent](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns) I sketched elsewhere — is still the most transparent option, and the best way to *learn*. If you want strong typing and Pydantic-native validation as the organizing principle with a lighter footprint than ADK, PydanticAI is a serious contender. Batteries-included is a feature until the batteries are in your way.
+**The API moves, on purpose.** The 2.x line ships roughly every two weeks. `MCPToolset` was renamed `McpToolset`, the session schema has changed more than once, and 2.0 replaced the execution model outright. Signs of an actively developed framework, not a broken one — but if you need a frozen, decade-stable API, this is not it. Pin your versions and actually read the release notes.
 
-**What to do about it.** The decision lens I use: if you are on GCP or model-agnostic-leaning-Gemini, want the full production checklist fast, and your orchestration is a hierarchy or pipeline — choose ADK, and lean into Agent Engine. If you are cross-cloud, vendor-flexible, or graph-heavy — choose LangGraph. If you are learning, prototyping, or need total control — start raw with a provider SDK and graduate to a framework only when the patterns hurt. And if ADK is *almost* right but one limitation bites, remember that its interfaces are pluggable: you can back the `SessionService` with Redis, point tools at non-Google MCP servers, and expose or consume other frameworks' agents over A2A. The lock-in is gravitational, not absolute. Wait for the young edges to mature where you can; route around them with the open interfaces where you cannot.
+**Maximal control or minimal dependencies favor raw or PydanticAI.** To own every token of every prompt and every line of the loop, a thin provider SDK with your own bounded loop — the [minimal production-minded agent](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns) I sketched elsewhere — is still the most transparent option and the best way to *learn*. For Pydantic-native validation as the organizing principle with a lighter footprint, PydanticAI is a serious contender. Batteries-included is a feature until the batteries are in your way.
+
+**And if you believe the dissenter, none of this applies.** Anthropic's bet is that graphs are scaffolding a capable enough model will not need, and that the durable investment is the harness. If that is right, today's graph runtimes will read like the output parsers of 2021 — enormous effort compensating for a model limitation the next model did not have. I do not think that is how it goes for regulated, auditable workloads, where inspectable routing is a requirement and not an optimization. But I have been wrong in exactly this direction before, and so has everyone who wrote a JSON-repair library.
+
+**What to do about it.** If you want the full production checklist and a managed runtime fast, and your control flow can be drawn — choose ADK 2.x and lean into the graph. If you are cross-cloud, vendor-flexible, or want to own your hosting — choose LangGraph. If you need live voice, check the graph limitation before anything else. If you are learning or need total control — start raw and graduate when the patterns hurt. And if ADK is *almost* right, its interfaces are pluggable: back the `SessionService` with Redis, point tools at non-Google MCP servers, expose or consume other frameworks' agents over A2A. The lock-in is gravitational, not absolute.
 
 ---
 
 ## Closing the Loop
 
-Walk back up the timeline one last time and the shape of ADK is no longer arbitrary. Brittle parsing became typed tools. Ad-hoc reasoning became the `LlmAgent`. The hand-rolled loop became the `Runner` and its event stream. The orchestration-versus-reasoning war became a peace treaty in the form of workflow agents around LLM agents. Bespoke integrations became one tool interface with MCP at the edge. The pickled list became Session, State, and a tiered MemoryService. Tangled guardrails became callbacks and plugins. Vibes became evalsets. Proprietary interop became A2A. And the multi-month platform project became `adk deploy`.
+Walk back up the timeline one last time and the shape of ADK is no longer arbitrary. Brittle parsing became typed tools. Ad-hoc reasoning became the `LlmAgent`. The hand-rolled loop became the `Runner` and its event stream. Bespoke integrations became one tool interface with MCP at the edge. The pickled list became Session, State, and a tiered MemoryService. Tangled guardrails became callbacks and plugins. Vibes became evalsets, and then rubrics, and then simulated users and automated prompt optimization. Proprietary interop became A2A. The multi-month platform project became `adk deploy`.
 
-ADK is not magic and it is not the end of history. It is the current consolidation — the moment the field's accumulated intuitions cooled into a framework. Understanding it through its history is the difference between using it and *understanding* it, and understanding it is what lets you see, clearly and without marketing, exactly where the next layer of sediment will need to form.
+And the orchestration-versus-reasoning war, which the 1.x workflow agents settled with an armistice, got settled properly in 2.0 by taking control flow off the model and giving it to a graph. That is the layer to sit with, because of all of them it is the one that reverses a founding assumption rather than merely cleaning one up. ReAct's premise was that the model should interpret its own program. Six years later, four of the five major vendors have concluded it should not, and the fifth is betting its whole architecture on the opposite.
+
+ADK is not magic and it is not the end of history — 2.0 is the proof, since 1.x looked like the end of history for about eleven months. It is the current consolidation, the moment the field's accumulated intuitions cooled into a framework, and the fact that the newest layer is soft is exactly what tells you it is still forming. Understanding it through its history is the difference between using it and *understanding* it, and understanding it is what lets you see, clearly and without marketing, exactly where the next layer of sediment will need to form.
 
 ---
 
@@ -490,10 +520,12 @@ ADK is not magic and it is not the end of history. It is the current consolidati
   - Multi-agent orchestration and A2A recapitulate decades-old messaging patterns. This is the unsung prior art for agent-to-agent interop.
 
 **Online Resources:**
-- [Agent Development Kit documentation](https://google.github.io/adk-docs/) — Canonical docs for agents, tools, sessions, memory, callbacks, plugins, evaluation, and deployment.
+- [Agent Development Kit documentation](https://adk.dev/) — Canonical docs for graphs, agents, tools, sessions, memory, callbacks, plugins, evaluation, and deployment.
+- [Why we built ADK 2.0](https://developers.googleblog.com/why-we-built-adk-20/) — Google's own argument for taking orchestration away from the model. Read it as a primary source on the 2026 reckoning.
+- [Graph-based agent workflows](https://adk.dev/graphs/) — The Workflow Runtime reference: edges, routing, node config, retries, HITL, and dynamic graphs, in both Python and Go.
 - [ADK Sessions and Memory guide](https://adk.dev/sessions/memory/) — The authoritative comparison of InMemory, Memory Bank, and RAG-backed memory services, and the short-term versus long-term split.
 - [adk-redis on GitHub](https://github.com/redis-developer/adk-redis) — The Redis-backed BaseSessionService and BaseMemoryService implementations; the clearest concrete example of treating short-term memory as a Redis-style store.
-- [Vertex AI Agent Engine documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview) — The managed runtime and deployment target, including managed session and Memory Bank services.
+- [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/) — Read alongside the ADK graph docs. Two teams solving the same problem with different opinions about where the runtime belongs is the best available tutorial on the tradeoff.
 - [Model Context Protocol specification](https://modelcontextprotocol.io/) and [Agent2Agent Protocol](https://a2a-protocol.org/) — The two interop standards ADK speaks natively.
 
 **Videos:**
@@ -512,7 +544,8 @@ ADK is not magic and it is not the end of history. It is the current consolidati
 
 **Questions to Explore:**
 - If short-term agent memory is a Redis-style KV store and long-term memory is a vector or LLM-extraction store, what is the right *third* tier, if any? Where does a knowledge graph of entities the agent has discovered belong, and which service interface should own it?
-- ADK's workflow agents make some control flow deterministic. Is there a principled way to decide, per node, whether a step should be an LlmAgent or a workflow agent, beyond intuition and incident reports?
+- ADK 2.0 makes the deterministic-versus-delegated choice per node. Is there a principled way to decide, for a given node, whether the decision belongs to a model or to code, beyond intuition and incident reports?
+- Four vendors moved control flow out of the model and one doubled down on the harness. What evidence, in eighteen months, would convince you the dissenter was right?
 - Memory Bank reconciles conflicting facts about a user with an LLM. What happens when that reconciliation is wrong, and what does an audit trail and a right-to-correction look like for LLM-distilled memories?
 - The framework consolidates six years of intuition. What is the accumulated complexity of 2026 that ADK does not yet resolve, and what would the next layer of sediment, the framework after ADK, have to absorb?
 - If you backed every agent's SessionService with Redis and exposed every agent over A2A, you would have a fleet of stateless agents over a shared low-latency store talking over a protocol. How is that different from a microservices architecture with probabilistic CPUs, and what does that comparison teach you about operating it?
