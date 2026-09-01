@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1788285984,
+  "generatedAt": 1788293633,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -671,11 +671,11 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "9028b87baaf2ef68a47bb5fa1a3297f250fa074ec90830da83e97d8a0a97d497",
-      "sourceHash": "3ab1a3a19ee228c24e7e98a11abf0602327ca172a9291488c25ba5a391e253e8",
-      "durationSec": 2306.952,
-      "byteSize": 13841712,
-      "narrationWordCount": 6482,
+      "hash": "6cf20198c42c1b135ea6b4f706bc79f96840210b55a4c73c819e86c6358a9e1e",
+      "sourceHash": "0d399c5be338cff6868f5fb992a8f514bef2096b02931238677a7a6741280299",
+      "durationSec": 2467.728,
+      "byteSize": 14806368,
+      "narrationWordCount": 6973,
       "audioUrl": "/blog/audio-es/field-notes/debugging-adk-agent-flows.mp3",
       "translationModel": "aya-expanse:8b"
     },

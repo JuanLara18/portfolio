@@ -28,14 +28,14 @@
       "audio": {
         "en": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/debugging-adk-agent-flows.mp3",
-          "durationSec": 2291.616,
-          "byteSize": 13749696,
+          "durationSec": 2454.216,
+          "byteSize": 14725296,
           "voice": "en-US-AndrewMultilingualNeural"
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/debugging-adk-agent-flows.mp3",
-          "durationSec": 2306.952,
-          "byteSize": 13841712,
+          "durationSec": 2467.728,
+          "byteSize": 14806368,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -6308,6 +6308,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-09-01T19:39:40.508Z",
+  "lastUpdated": "2026-09-01T20:14:13.065Z",
   "totalPosts": 166
 }
