@@ -6,7 +6,7 @@ tags: ["Google ADK", "Agents", "Agentic AI", "Agent Engineering", "Observability
 headerImage: "/blog/headers/schlieren-shockwave-header.jpg"
 readingTimeMinutes: 26
 slug: debugging-adk-agent-flows
-estimatedWordCount: 7779
+estimatedWordCount: 8153
 ---
 
 # Nothing Threw: Debugging Agent Flows in ADK 2.x
@@ -922,6 +922,21 @@ os.environ["OTEL_EXPORTER_OTLP_TRACES_ENDPOINT"] = "http://collector:4318/v1/tra
 os.environ["OTEL_SERVICE_NAME"] = "claims-assistant"
 maybe_set_otel_providers()
 ```
+
+### The managed surface: Google Cloud Agent Observability
+
+Listing Cloud Trace beside Jaeger and Tempo undersells what is available if you are already on Google Cloud. Agent Observability, part of Cloud Observability's Application Monitoring, is a purpose-built surface rather than a generic trace viewer, and its framing is worth quoting because it names the exact problem this post is about: agentic systems are non-deterministic and can drift, hallucinate, and regress silently.
+
+What it adds on top of raw spans is derivation. It analyzes traces to produce agent-shaped metrics rather than making you assemble them: model call counts, total token usage, error rates on AI resources, and end-to-end latency broken down by individual step. It correlates those with logs and with prompt and response data for quality assessment, and it renders an application overview that identifies which of your services are agentic components rather than ordinary workloads.
+
+Two properties matter for the debugging workflow in this post:
+
+- **The instrumentation is the same instrumentation.** It is built on the OpenTelemetry GenAI semantic conventions, which is exactly what ADK already emits. You are not adopting a second telemetry stack, and the span and metric names above are the ones it consumes.
+- **It is not limited to Agent Engine.** It also covers Gemini Enterprise Agent Platform, Agent Gateway, and Model Armor agents, so a fleet split across deployment targets still lands in one place.
+
+The practical read: keep the OTLP export configured as above, and treat Agent Observability as the default first stop on Google Cloud, with the generic backends as the answer for multi-cloud or an existing Datadog or Grafana investment. I have not found explicit per-agent enablement flags documented on the Cloud Observability page itself, which points to separate instrumentation guides instead, so budget an afternoon to wire it and verify what actually lands rather than assuming it is automatic.
+
+Worth knowing that the ecosystem is genuinely wide if you are not on Google Cloud. ADK documents seventeen observability integrations, including AgentOps, Arize AX, Datadog, Grafana Cloud, Langfuse, MLflow Tracing, Phoenix, and W&B Weave. Because they all consume OTel, the choice is reversible: the instrumentation work in this section is not vendor-specific, and switching backends is a change of exporter endpoint, not a rewrite.
 
 ### Naming is the whole feature
 
