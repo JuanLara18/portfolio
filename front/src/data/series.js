@@ -229,12 +229,14 @@ export const SERIES = [
     description:
       'The Agent Development Kit end to end, from the four-pillar mental model to the ' +
       'graph-based Workflow Runtime that landed in ADK 2.0: deterministic orchestration, ' +
-      'the breaking changes worth planning for, why the framework is shaped the way it is, ' +
+      'the breaking changes worth planning for, debugging the flow errors that never raise, ' +
+      'why the framework is shaped the way it is, ' +
       'and engineering durable memory on top of the Gemini Enterprise Agent Platform.',
     posts: [
       'google-adk-agent-development-deep-dive',
       'adk-graph-workflows-deterministic-orchestration',
       'migrating-adk-1x-to-2x',
+      'debugging-adk-agent-flows',
       'adk-advanced-evolution-of-agent-engineering',
       'enterprise-agent-memory-continuity-adk-geap',
     ],

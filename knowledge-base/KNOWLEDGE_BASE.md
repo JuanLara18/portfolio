@@ -168,6 +168,15 @@ The platform engineer's view rather than the agent builder's: operating the subs
 4. mcp-registry-gateway-tool-plane
 5. agent-golden-paths-multi-tenancy
 
+### Google ADK in Depth (six-part series)
+The Agent Development Kit end to end, from the mental model to the 2.x graph runtime, migration, debugging, and durable memory.
+1. google-adk-agent-development-deep-dive
+2. adk-graph-workflows-deterministic-orchestration
+3. migrating-adk-1x-to-2x
+4. debugging-adk-agent-flows
+5. adk-advanced-evolution-of-agent-engineering
+6. enterprise-agent-memory-continuity-adk-geap
+
 ### Senior Engineering Judgment in the AI Era (five-part series)
 What stays scarce when an AI can generate the code: infrastructure, data modeling, API contracts, distributed-systems theory, and product judgment.
 1. senior-infrastructure-distributed-systems-failure-networking
@@ -713,6 +722,13 @@ adk-advanced-evolution-of-agent-engineering:
   tech: [google-adk, langgraph, langchain, gemini, gemini-enterprise]
   depth: deep
 
+debugging-adk-agent-flows:
+  concepts: [flow errors versus code errors, silent failure, event stream as ground truth, response ownership, final response semantics, partial event accumulation, delegation that does not delegate, state delta auditing, observability plugin, trajectory evaluation, agent observability, OpenTelemetry GenAI conventions]
+  prereqs: [google-adk-agent-development-deep-dive, adk-graph-workflows-deterministic-orchestration, operating-agents-eval-observability-scale]
+  teaches: [tell a flow error apart from a code error before debugging, read a session event stream by hand, work out which agent owns the user facing turn, diagnose a sub-agent answer that never reached the user, audit state deltas and output_key no-ops, write a BasePlugin flow recorder, name spans so a production trace is readable, assert on the trajectory rather than the final string]
+  tech: [google-adk, gemini, opentelemetry, cloud-trace, gemini-enterprise]
+  depth: deep
+
 enterprise-agent-memory-continuity-adk-geap:
   concepts: [continuity engineering, memory taxonomy, ephemeral versus durable, facts versus procedures, memory scope, context compression, model context caching, memory drift, fleet level learning, multi-tenant memory isolation]
   prereqs: [google-adk-agent-development-deep-dive, agent-memory-and-retrieval-embeddings-to-rag, gemini-enterprise-knowledge-catalog-deep-dive]
@@ -729,7 +745,7 @@ Auto-generated index of every post by category, sorted most recent first. Use th
 
 ### field-notes (137 posts)
 
-- **`debugging-adk-agent-flows`** *(deep)* — Nothing Threw: Debugging Agent Flows in ADK 2.x. The hardest agent bugs raise nothing. The stack trace is empty, the run completed, the answer was fluent and wrong. Or the right answer was produced by a sub-agent and never reached the user at all. This is a field guide to debugging flow errors in ADK 2.x: what the framework hides by default, why the event stream is the only ground truth, who actually owns the user-facing turn, and the flow recorder plugin you should write once and never write again. Concepts: google adk, agents, agentic ai, agent engineering, observability, evaluation.
+- **`debugging-adk-agent-flows`** *(deep)* — Nothing Threw: Debugging Agent Flows in ADK 2.x. The hardest agent bugs raise nothing. The stack trace is empty, the run completed, the answer was fluent and wrong. Or the right answer was produced by a sub-agent and never reached the user at all. This is a field guide to debugging flow errors in ADK 2.x: what the framework hides by default, why the event stream is the only ground truth, who actually owns the user-facing turn, and the flow recorder plugin you should write once and never write again. Concepts: flow errors versus code errors, silent failure, event stream as ground truth, response ownership, final response semantics, partial event accumulation. Tech: google-adk, gemini, opentelemetry, cloud-trace, gemini-enterprise.
 - **`migrating-adk-1x-to-2x`** *(deep)* — Migrating from ADK 1.x to 2.0: The Breaking Changes That Actually Break You. ADK 2.0 replaced the execution model, not just the feature set. Three of its breaking changes do not raise an exception: your orchestration override gets bypassed, your event appends stop routing, and your exception handler eats the framework's retries. This is the migration guide, including the database work everyone underestimates and the honest case for staying on 1.x. Concepts: breaking changes, silent failure modes, bypassed orchestration override, event schema migration, session compatibility window, BaseNode hierarchy. Tech: google-adk, gemini, postgres, gemini-enterprise.
 - **`adk-graph-workflows-deterministic-orchestration`** *(deep)* — Graph Workflows in ADK 2.0: Putting Control Flow Back in Code. ADK 2.0 replaced the agent hierarchy with a graph. Agents, tools and plain functions are all nodes now, edges are written in Python rather than negotiated with a prompt, and every node can choose independently whether a model or a compiler decides what happens next. This is the deep dive on the Workflow runtime: routes, typed data flow, JoinNode fan-in, retries and timeouts, human-in-the-loop pauses, dynamic workflows with automatic checkpointing, and an honest look at where LangGraph still wins. Concepts: graph workflows, workflow runtime, START virtual node, conditional routing, typed node output, state boundaries. Tech: google-adk, gemini, langgraph, gemini-enterprise, opentelemetry.
 - **`agent-golden-paths-multi-tenancy`** *(deep)* — Golden Paths for Agents: Multi-Tenancy, Self-Service, and the Platform as Product. The four previous parts of this series described components: a control plane, a runtime, a sandbox, a tool plane. This one describes the discipline that turns components into a platform. Golden paths for agent teams, multi-tenancy that survives a shared vector store, policy as code instead of policy as wiki page, cost attribution that keeps the platform politically alive, and the honest organizational problem underneath all of it. Concepts: platform as product, golden paths, agents as non-human persona, multi-tenancy, tenant data isolation, cost attribution. Tech: kubernetes, opa, terraform, mcp.
