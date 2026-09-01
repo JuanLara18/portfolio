@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "f9880681ef10dd7b993fcc45cf5c718f95b41a48f7eaae3727545514bd4e3cdd",
+  "hash": "b3041dfe325006c84049852a22bc7ab15eeba6ecaf4a38490f0b04b261a25fb1",
   "sourceHash": "9eb29f82bad6a25a2a500c8c5b8a0a082acc03a5ba8f6ad7c878b78bfa958e9c",
-  "durationSec": 2583.36,
-  "byteSize": 15500160,
-  "narrationWordCount": 6979,
+  "durationSec": 2582.28,
+  "byteSize": 15493680,
+  "narrationWordCount": 6970,
   "audioUrl": "/blog/audio-es/field-notes/centrality-communities-in-practice.mp3",
   "translationModel": "aya-expanse:8b"
 }

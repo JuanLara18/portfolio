@@ -1,0 +1,13 @@
+{
+  "slug": "adk-graph-workflows-deterministic-orchestration",
+  "category": "field-notes",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "1126ed0b5aac1b577dd296c76f5a61b890baacf16ccfc4ca3f13c36ad25e18f0",
+  "sourceHash": "5ba1e7d7461fea059d065e8cfbc1740c11ebd7af2cd70e992eec6665c20ff2a3",
+  "durationSec": 2485.656,
+  "byteSize": 14913936,
+  "narrationWordCount": 6857,
+  "audioUrl": "/blog/audio-es/field-notes/adk-graph-workflows-deterministic-orchestration.mp3",
+  "translationModel": "aya-expanse:8b"
+}

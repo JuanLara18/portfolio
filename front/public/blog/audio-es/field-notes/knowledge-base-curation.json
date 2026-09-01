@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "56ded32e79ab8032ae46a6001875c823892e457493f34767b5ea05f998de7979",
+  "hash": "3080dd934ce65a249fe0bb0e4d86fa8a623ea75eedceea494f16316cbcfdf7c8",
   "sourceHash": "02ff7c365d33f155c6fa840fe86190ddf86d3ea57f6707c25161ca515175d5da",
   "durationSec": 1434.6,
   "byteSize": 8607600,
-  "narrationWordCount": 3618,
+  "narrationWordCount": 3587,
   "audioUrl": "/blog/audio-es/field-notes/knowledge-base-curation.mp3",
   "translationModel": "aya-expanse:8b"
 }

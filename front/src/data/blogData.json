@@ -31,6 +31,12 @@
           "durationSec": 1644.24,
           "byteSize": 9865440,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/migrating-adk-1x-to-2x.mp3",
+          "durationSec": 2074.296,
+          "byteSize": 12445776,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -64,6 +70,12 @@
           "durationSec": 2484.888,
           "byteSize": 14909328,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/adk-graph-workflows-deterministic-orchestration.mp3",
+          "durationSec": 2485.656,
+          "byteSize": 14913936,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -746,8 +758,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/enterprise-agent-memory-continuity-adk-geap.mp3",
-          "durationSec": 1953,
-          "byteSize": 11718000,
+          "durationSec": 2611.344,
+          "byteSize": 15668064,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -1861,8 +1873,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/adk-advanced-evolution-of-agent-engineering.mp3",
-          "durationSec": 1965.072,
-          "byteSize": 11790432,
+          "durationSec": 2853.336,
+          "byteSize": 17120016,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -2439,8 +2451,8 @@
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/google-adk-agent-development-deep-dive.mp3",
-          "durationSec": 1977.696,
-          "byteSize": 11866176,
+          "durationSec": 2423.4,
+          "byteSize": 14540400,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -6256,6 +6268,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-08-11T00:04:28.594Z",
+  "lastUpdated": "2026-08-11T02:50:05.057Z",
   "totalPosts": 165
 }

@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "cb11cb948ed8987a85fb28b64218733f11be2b91523a62a52f9c262c7534773d",
+  "hash": "eb1f77e9402f8b462130dbf1ee9237452091c2436c82a5e6e1f2dd732400546c",
   "sourceHash": "e3a463703a567c26cdf1fb57e5591eb998cf781caa86b935222a44f1fc85ef1e",
-  "durationSec": 2452.824,
-  "byteSize": 14716944,
-  "narrationWordCount": 6843,
+  "durationSec": 2450.16,
+  "byteSize": 14700960,
+  "narrationWordCount": 6833,
   "audioUrl": "/blog/audio-es/field-notes/agent-runtime-sessions-state-topology.mp3",
   "translationModel": "aya-expanse:8b"
 }

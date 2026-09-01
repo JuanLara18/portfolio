@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "6fbc8bd6774a297db6ba3af6a7c1397731fcd3524384e124cefe8ce04137096c",
+  "hash": "8336810bba286f2533c1e5c68894ea09d7e09d2fab19d57647abb8cb126287a0",
   "sourceHash": "3ba999b2eaafb574247b36cb288ac10d6082a7c03b0f5a54496a3c35c088f802",
-  "durationSec": 679.488,
-  "byteSize": 4076928,
-  "narrationWordCount": 1455,
+  "durationSec": 671.952,
+  "byteSize": 4031712,
+  "narrationWordCount": 1440,
   "audioUrl": "/blog/audio-es/field-notes/ml-metrics-evaluation-monitoring.mp3",
   "translationModel": "aya-expanse:8b"
 }

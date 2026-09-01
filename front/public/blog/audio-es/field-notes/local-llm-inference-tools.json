@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "17fa8eb3391c9b806dd57ec8468bfa5f83291354c03d4acb1d64a8578137b223",
+  "hash": "7d4b04ae037f6a1e2ea9ce88eeada211aa330cfb8b9dfa5f8b5a6198e8c3d570",
   "sourceHash": "f085eb0de06f98a7a7d2c004ae50d190c1bc04777ca7ec2ee5ce626253f708ac",
   "durationSec": 850.152,
   "byteSize": 5100912,
-  "narrationWordCount": 2176,
+  "narrationWordCount": 2167,
   "audioUrl": "/blog/audio-es/field-notes/local-llm-inference-tools.mp3",
   "translationModel": "aya-expanse:8b"
 }

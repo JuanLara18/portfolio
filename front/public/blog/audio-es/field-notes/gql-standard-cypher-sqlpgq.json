@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "de562e536a215b2303867724c9348404308e5540cf12dc0aaac864e191ce7538",
+  "hash": "d2758a5077c2a14b48e7c6202265d3ffeede128f00a024dbca7ebfd0c876bb63",
   "sourceHash": "88a2c41523d5c76b631d264922d42f64f2c88356f63d2e2471c663a5fc8621a8",
   "durationSec": 2216.736,
   "byteSize": 13300416,
-  "narrationWordCount": 5937,
+  "narrationWordCount": 5927,
   "audioUrl": "/blog/audio-es/field-notes/gql-standard-cypher-sqlpgq.mp3",
   "translationModel": "aya-expanse:8b"
 }
