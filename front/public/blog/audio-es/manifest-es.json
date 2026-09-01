@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1786416549,
+  "generatedAt": 1788285984,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -665,6 +665,19 @@
       "narrationWordCount": 2157,
       "audioUrl": "/blog/audio-es/field-notes/dbt-analytics-engineering.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "field-notes/debugging-adk-agent-flows": {
+      "slug": "debugging-adk-agent-flows",
+      "category": "field-notes",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "9028b87baaf2ef68a47bb5fa1a3297f250fa074ec90830da83e97d8a0a97d497",
+      "sourceHash": "3ab1a3a19ee228c24e7e98a11abf0602327ca172a9291488c25ba5a391e253e8",
+      "durationSec": 2306.952,
+      "byteSize": 13841712,
+      "narrationWordCount": 6482,
+      "audioUrl": "/blog/audio-es/field-notes/debugging-adk-agent-flows.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "field-notes/defining-the-knowledge-stack": {
       "slug": "defining-the-knowledge-stack",

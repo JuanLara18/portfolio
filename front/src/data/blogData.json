@@ -31,6 +31,12 @@
           "durationSec": 2291.616,
           "byteSize": 13749696,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/debugging-adk-agent-flows.mp3",
+          "durationSec": 2306.952,
+          "byteSize": 13841712,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -6302,6 +6308,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-09-01T17:47:23.441Z",
+  "lastUpdated": "2026-09-01T18:06:55.371Z",
   "totalPosts": 166
 }
