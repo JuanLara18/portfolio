@@ -102,3 +102,4 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `appian-way-header.jpg` — Via Appia Antica, Rome, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Appia_Antica_Road.jpg) (CC BY-SA)
 - `signal-lever-frame-header.jpg` — Mechanical interlocking lever frame, Oban signal tower, photo by SriMesh, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lever_frame_Oban_Tower_SRM.jpg) (CC BY-SA 3.0)
 - `cicada-molting-header.jpg` — Green grocer cicada molting, photo by Toby Hudson, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Green_grocer_cicada_molting.jpg) (CC BY-SA 3.0 AU)
+- `schlieren-shockwave-header.jpg` — Photo by NASA & US Air Force (J.T. Heineck / Ed Schairer / Maj. Jonathan Orso / Maj. Jeremy Vanderhal), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Shockwave_pattern_around_a_T-38C_observed_with_Background-Oriented_Schlieren_photography_(1).jpg) (Public domain)

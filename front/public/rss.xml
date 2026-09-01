@@ -9,8 +9,30 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Nov 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 16 Nov 2028 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Nothing Threw: Debugging Agent Flows in ADK 2.x</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows</guid>
+    <pubDate>Thu, 16 Nov 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The hardest agent bugs raise nothing. The stack trace is empty, the run completed, the answer was fluent and wrong. Or the right answer was produced by a sub-agent and never reached the user at all. This is a field guide to debugging flow errors in ADK 2.x: what the framework hides by default, why the event stream is the only ground truth, who actually owns the user-facing turn, and the flow recorder plugin you should write once and never write again.]]></description>
+    <category>field-notes</category>
+    <category>Google ADK</category>
+    <category>Agents</category>
+    <category>Agentic AI</category>
+    <category>Agent Engineering</category>
+    <category>Observability</category>
+    <category>Evaluation</category>
+    <category>Production ML</category>
+    <category>MLOps</category>
+    <category>Software Engineering</category>
+    <category>AI Engineering</category>
+    <category>GCP</category>
+    <category>Best Practices</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/debugging-adk-agent-flows.mp3" length="13749696" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Migrating from ADK 1.x to 2.0: The Breaking Changes That Actually Break You</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x</link>
