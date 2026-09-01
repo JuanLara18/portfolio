@@ -465,7 +465,7 @@ It moved to *where the runtime lives*. Google fused the SDK and the managed runt
 | State and memory | Session, State, tiered MemoryService in the box | Short term working memory plus long term memory, checkpointers you choose |
 | Tools | Function, OpenAPI, built-in, MCP, agent-as-tool, one interface | Rich tool ecosystem, MCP support, more assembly required |
 | Eval | First-party evalsets, rubrics, user and environment simulation, optimization | LangSmith for tracing and eval, separate product |
-| Observability | Native OpenTelemetry, Cloud Trace integration, node_info in every event | LangSmith tracing, graph visualization, OTel increasingly supported |
+| Observability | Native OpenTelemetry, Cloud Trace and the managed Agent Observability surface, node_info in every event | LangSmith tracing, graph visualization, OTel increasingly supported |
 | Interop | Native A2A expose and consume, MCP client | MCP support, no native A2A |
 | Runtime boundary | SDK and managed runtime fused, Agent Runtime is the default target | SDK and runtime separable, LangGraph Platform or LangServe or DIY |
 | Cloud gravity | Strong pull toward Gemini Enterprise Agent Platform and Gemini | Cloud and model agnostic by design |

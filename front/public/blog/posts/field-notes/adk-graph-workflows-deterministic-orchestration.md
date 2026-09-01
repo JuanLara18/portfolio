@@ -952,7 +952,7 @@ If you know LangGraph, most of this looked familiar, and it should: LangGraph go
 | HITL | `RequestInput` with `payload` and `response_schema`; `rerun_on_resume` controls replay | `interrupt()` and `Command(resume=...)` against a checkpointer |
 | Durability | Automatic per-node checkpointing in dynamic workflows | Checkpointer is explicit and pluggable, Postgres or SQLite or memory |
 | Deployment | Agent Runtime, Cloud Run, GKE, or self-host | LangGraph Platform, or self-hosted LangGraph Server |
-| Observability | Event stream, Cloud Trace | Event stream, LangSmith |
+| Observability | Event stream, Cloud Trace, Agent Observability | Event stream, LangSmith |
 
 The substantive difference is the data model, and it cuts both ways.
 
