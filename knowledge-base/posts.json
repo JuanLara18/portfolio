@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-09-01T18:06:56.572Z",
+  "generated_at": "2026-09-01T19:39:41.657Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -42,7 +42,7 @@
       "url": "https://juanlara18.github.io/portfolio/#/blog/debugging-adk-agent-flows",
       "source_path": "front/public/blog/posts/field-notes/debugging-adk-agent-flows.md",
       "reading_minutes": 26,
-      "word_count": 7779,
+      "word_count": 8153,
       "concepts": [
         "google adk",
         "agents",
