@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "345bb7b77404c958f67eb5e1e4161a18102e4d43f3b329395ee6c1609a613eba",
+  "hash": "af1114b32cb46c1f238dcc3e40d22e2056e145f9892e48d2667f4612dfea45ba",
   "sourceHash": "ba75dcd0eca1926e92bf37ca88c8ba6d93f4c15505d8749a261e0393acdaf4dd",
   "durationSec": 2461.488,
   "byteSize": 14768928,
-  "narrationWordCount": 6638,
+  "narrationWordCount": 6635,
   "audioUrl": "/blog/audio-es/field-notes/claude-certified-associate-exam-guide.mp3",
   "translationModel": "aya-expanse:8b"
 }

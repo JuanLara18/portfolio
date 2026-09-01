@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "a23eb4004d04a7de1393693a5cb8304db9287661c364f904ba943c9ec4606b83",
+  "hash": "f5a61a23ae36275548f06912f8da512c89e884a84cad3c76cc554dc2e466d20a",
   "sourceHash": "bfb713611e11e0b8e6e08b5af70f3ffaf184671bb99876d716173ce7b647ce3f",
   "durationSec": 2711.688,
   "byteSize": 16270128,
-  "narrationWordCount": 6474,
+  "narrationWordCount": 6438,
   "audioUrl": "/blog/audio-es/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.mp3",
   "translationModel": "aya-expanse:8b"
 }

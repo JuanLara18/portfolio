@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "bfb9d8310e3046d1548502d7d23a4ef0df9f5a768bc4a672b31853da00d6a3a5",
+  "hash": "2b638218d3cf2139f96c4a32c6e3dc5056d895d59edf747fd9b265329ee8e14f",
   "sourceHash": "c4aaf38cb88e3df12a60a2ba05fbf6d99e65f31d78ac491430ec68ae254b2159",
   "durationSec": 2102.712,
   "byteSize": 12616272,
-  "narrationWordCount": 5940,
+  "narrationWordCount": 5929,
   "audioUrl": "/blog/audio-es/field-notes/finops-llm-agents-token-economics.mp3",
   "translationModel": "aya-expanse:8b"
 }

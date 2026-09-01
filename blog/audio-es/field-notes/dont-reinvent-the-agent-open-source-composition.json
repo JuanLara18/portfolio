@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "091a036540367da2e887ff5a916764f29d9ee8d728acd67982321f60a7d67e1a",
+  "hash": "f5c2b7d1622571ef488db426660eed9c59475e2ed6550f08933b9eb5efe618cd",
   "sourceHash": "8e6a18b9f7e9cef9c508bfa71561596ad2449d89181a01752ffac3256bbe2daf",
   "durationSec": 1655.112,
   "byteSize": 9930672,
-  "narrationWordCount": 4246,
+  "narrationWordCount": 4236,
   "audioUrl": "/blog/audio-es/field-notes/dont-reinvent-the-agent-open-source-composition.mp3",
   "translationModel": "aya-expanse:8b"
 }

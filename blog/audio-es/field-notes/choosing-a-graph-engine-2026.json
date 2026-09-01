@@ -3,11 +3,11 @@
   "category": "field-notes",
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "hash": "8f897a9b6e53ace6bbf6387c29c4f4cd4f04a09d74a76be13e1fc613fe92ba5d",
+  "hash": "13e42c746d9b7f8e358d0962175b4da70973a917e05d94708da1eea5454ef376",
   "sourceHash": "532b64d7acc216a7034141e3966394a5e5b5bd4555a251de2be82dd4d659e7f5",
-  "durationSec": 2210.88,
-  "byteSize": 13265280,
-  "narrationWordCount": 6305,
+  "durationSec": 2209.968,
+  "byteSize": 13259808,
+  "narrationWordCount": 6303,
   "audioUrl": "/blog/audio-es/field-notes/choosing-a-graph-engine-2026.mp3",
   "translationModel": "aya-expanse:8b"
 }
