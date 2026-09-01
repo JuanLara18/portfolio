@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1788293633,
+  "generatedAt": 1788298034,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -983,11 +983,11 @@
       "category": "field-notes",
       "lang": "es",
       "voice": "es-CO-GonzaloNeural",
-      "hash": "6fb727278c1e13964fce27c368767702518913f342deeab42646c6c59424fade",
-      "sourceHash": "7b53c7e72fa310a460428bc01d01aab0f480f55c64c223933d20813de7f76d7d",
-      "durationSec": 2423.4,
-      "byteSize": 14540400,
-      "narrationWordCount": 6725,
+      "hash": "fa5dcf39822923f07295994d5aaa252539fbba5a3961bd2d5aa2350697fc3358",
+      "sourceHash": "2ec948e40fb3980fcb90a8c796ed9b4045d6c79eb57751530708251a99e90cb7",
+      "durationSec": 2440.56,
+      "byteSize": 14643360,
+      "narrationWordCount": 6809,
       "audioUrl": "/blog/audio-es/field-notes/google-adk-agent-development-deep-dive.mp3",
       "translationModel": "aya-expanse:8b"
     },

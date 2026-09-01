@@ -2485,14 +2485,14 @@
       "audio": {
         "en": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/field-notes/google-adk-agent-development-deep-dive.mp3",
-          "durationSec": 2451.456,
-          "byteSize": 14708736,
+          "durationSec": 2470.128,
+          "byteSize": 14820768,
           "voice": "en-US-AndrewMultilingualNeural"
         },
         "es": {
           "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/field-notes/google-adk-agent-development-deep-dive.mp3",
-          "durationSec": 2423.4,
-          "byteSize": 14540400,
+          "durationSec": 2440.56,
+          "byteSize": 14643360,
           "voice": "es-CO-GonzaloNeural"
         }
       }
@@ -6308,6 +6308,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-09-01T20:21:02.812Z",
+  "lastUpdated": "2026-09-01T21:27:45.084Z",
   "totalPosts": 166
 }
