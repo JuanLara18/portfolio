@@ -25,7 +25,7 @@ failing — local development without an R2 account still works end-to-end.
 Usage:
     python scripts/upload_audio.py              # upload both EN and ES
     python scripts/upload_audio.py --lang en    # single language
-    python scripts/upload_audio.py --dry-run    # list what would upload
+    python scripts/upload_audio.py --dry-run    # list what would upload (queries R2)
 """
 from __future__ import annotations
 
@@ -102,7 +102,12 @@ def upload_lang(
             print(f"  {lang}: 0 mp3 files")
         return 0, 0
 
-    client = None if dry_run else _make_client()
+    # A dry run still queries R2: without the remote ETag comparison below it
+    # cannot tell "would upload" from "already current", and would report every
+    # file as pending. Only put_object is suppressed. Falls back to listing
+    # everything when credentials are absent, and says so.
+    offline_preview = dry_run and not has_credentials()
+    client = None if offline_preview else _make_client()
     bucket = os.environ["R2_BUCKET"]
     uploaded = 0
     skipped = 0
@@ -125,7 +130,8 @@ def upload_lang(
                     raise
 
         if dry_run:
-            print(f"  WOULD UPLOAD {key} ({mp3.stat().st_size // 1024} KB)")
+            label = "UNVERIFIED" if offline_preview else "WOULD UPLOAD"
+            print(f"  {label} {key} ({mp3.stat().st_size // 1024} KB)")
             uploaded += 1
             continue
 
@@ -142,7 +148,13 @@ def upload_lang(
         uploaded += 1
 
     if verbose:
-        print(f"  {lang}: {uploaded} uploaded, {skipped} skipped (already current)")
+        if offline_preview:
+            print(
+                f"  {lang}: {uploaded} file(s) listed — R2 not queried "
+                "(no credentials), so this is NOT a pending-upload count"
+            )
+        else:
+            print(f"  {lang}: {uploaded} uploaded, {skipped} skipped (already current)")
     return uploaded, skipped
 
 
