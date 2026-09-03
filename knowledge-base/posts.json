@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-09-03T00:21:19.021Z",
+  "generated_at": "2026-09-03T01:14:26.517Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -69,7 +69,9 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "em-never-goes-down": {
@@ -121,7 +123,9 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "one-eigendecomposition-four-algorithms": {
@@ -171,7 +175,9 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "weak-learnability-equals-strong": {
@@ -221,7 +227,9 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "kernel-trick-representer-theorem": {
@@ -272,7 +280,9 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "penalizing-is-constraining": {
@@ -325,7 +335,9 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "no-free-lunch-theorem": {
@@ -372,7 +384,9 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "vc-dimension-sauer-shelah": {
@@ -421,7 +435,9 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "probably-approximately-correct": {
@@ -471,7 +487,9 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "markov-to-hoeffding-concentration-inequalities": {
@@ -522,7 +540,9 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "what-are-we-minimizing-erm-bias-variance": {
@@ -571,7 +591,9 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "loss-functions-are-probability-assumptions": {
@@ -621,7 +643,9 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en"
+      ],
       "augmented": true
     },
     "debugging-adk-agent-flows": {
