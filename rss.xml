@@ -9,8 +9,230 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Nov 2028 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 08 Feb 2029 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The Bellman Operator Is a Contraction</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction</guid>
+    <pubDate>Thu, 08 Feb 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Everyone who has written value iteration has watched it converge and taken it on faith. The guarantee is a theorem with a one-page proof, and it explains three things at once: why an optimal value function exists, why iteration finds it geometrically fast, and why the discount factor is a convergence rate rather than a statement about caring about the future. It also explains precisely why all of that dies the moment the table becomes a neural network.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Reinforcement Learning</category>
+    <category>Machine Learning</category>
+    <category>Algorithms</category>
+    <category>Optimization</category>
+    <category>Foundations of Mathematics</category>
+    <category>Research Papers</category>
+    <category>Deep Learning</category>
+    <category>Neural Network Theory</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>EM Never Goes Down: Jensen&apos;s Inequality as an Algorithm</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down</guid>
+    <pubDate>Thu, 01 Feb 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Expectation-Maximization looks like a heuristic: guess the hidden labels, refit, repeat. It is not. Every iteration provably cannot decrease the observed-data likelihood, and the whole proof is Jensen's inequality applied once. The same decomposition turns out to be the ELBO, which makes EM and variational inference one identity read two ways.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Statistics</category>
+    <category>Probability</category>
+    <category>Optimization</category>
+    <category>Algorithms</category>
+    <category>Research Papers</category>
+    <category>Best Practices</category>
+    <category>Data Science</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>One Eigendecomposition, Four Algorithms</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms</guid>
+    <pubDate>Thu, 25 Jan 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[PCA, latent semantic analysis, spectral clustering and kernel PCA are taught as four techniques in four chapters. They are one computation: the eigenvectors of a symmetric positive semidefinite matrix. Only the matrix changes. This post proves the theorems that make that computation optimal, in full, and then reads the four algorithms off them.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Machine Learning</category>
+    <category>Statistics</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Information Retrieval</category>
+    <category>Foundations of Mathematics</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Weak Learnability Equals Strong Learnability</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong</guid>
+    <pubDate>Thu, 18 Jan 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Kearns and Valiant asked whether a hypothesis barely better than a coin flip could be amplified to arbitrary accuracy. Schapire proved it could. This post derives AdaBoost as coordinate descent on the exponential loss, proves the training-error bound that makes the equivalence constructive, and then treats the anomaly that followed as the unresolved question it remains.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Statistics</category>
+    <category>Algorithms</category>
+    <category>Research Papers</category>
+    <category>Optimization</category>
+    <category>Evaluation</category>
+    <category>Probability</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Kernel Trick Is a Theorem, Not a Trick</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem</guid>
+    <pubDate>Thu, 11 Jan 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[An RBF kernel corresponds to an infinite-dimensional feature space, and people say this cheerfully without noticing that optimizing over an infinite-dimensional space should be impossible. It is not impossible, and the reason is a theorem from 1971 that almost nobody who trains an SVM has read.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Linear Algebra</category>
+    <category>Optimization</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Foundations of Mathematics</category>
+    <category>Statistics</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Penalizing Is Constraining: What Regularization Actually Does</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining</guid>
+    <pubDate>Thu, 04 Jan 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Everyone has seen the picture: elliptical error contours meeting a circle for ridge, a diamond for LASSO, and the diamond's corners explaining sparsity. That picture is about a constrained problem. What you actually minimize is a penalized one. This post proves they are the same problem, and then derives -- rather than asserts -- why L1 produces exact zeros and L2 never can.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Optimization</category>
+    <category>Statistics</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Foundations of Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Deep Learning</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>No Free Lunch: Every Model Is an Assumption You Already Made</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem</guid>
+    <pubDate>Thu, 28 Dec 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[The fundamental theorem of statistical learning says a class is learnable exactly when its VC dimension is finite. The obvious escape is to take a bigger class. A short theorem forbids it. This post proves that theorem, separates it from the two other results that share its name, and then reads the standard toolbox backwards to the assumption each method is quietly making.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Probability</category>
+    <category>Statistics</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Deep Learning</category>
+    <category>Best Practices</category>
+    <category>Optimization</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>When the Hypothesis Class Is Infinite: VC Dimension and the Sauer-Shelah Lemma</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah</guid>
+    <pubDate>Thu, 21 Dec 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[There are uncountably many linear classifiers in the plane, and the union bound over them proves nothing at all. Yet linear classifiers generalize. The resolution is that cardinality was never the right measure: what matters is how many distinct labelings a class can produce on a finite sample, and that count is either exponential forever or polynomial. There is nothing in between.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Probability</category>
+    <category>Statistics</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Foundations of Mathematics</category>
+    <category>Deep Learning</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Probably Approximately Correct: What It Means to Say a Machine Learned</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct</guid>
+    <pubDate>Thu, 14 Dec 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Before 1984 nobody could state, precisely enough to prove, what it means for an algorithm to have learned something. Valiant gave the definition, and both of its hedges turn out to be forced. This post proves three theorems inside that framework, starting with the cleanest nontrivial result in learning theory: how many examples it takes to learn a rectangle you cannot see.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Probability</category>
+    <category>Statistics</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Theory of Computation</category>
+    <category>Foundations of Mathematics</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>From Markov to Hoeffding: The Inequalities Every Generalization Bound Is Made Of</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities</guid>
+    <pubDate>Thu, 07 Dec 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[You report 94.2% accuracy on a held-out set. What is the honest error bar? Four theorems, each proved from the one before it, answer that question, and the answer is much wider than anyone puts in a paper. This is the toolbox every generalization bound in machine learning is secretly built from.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Probability</category>
+    <category>Statistics</category>
+    <category>Machine Learning</category>
+    <category>Research Papers</category>
+    <category>Evaluation</category>
+    <category>Algorithms</category>
+    <category>Foundations of Mathematics</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>What Are We Actually Minimizing? Empirical Risk, and the Two Decompositions Everyone Conflates</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance</guid>
+    <pubDate>Thu, 30 Nov 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[You minimize training error. You care about test error. Nothing in that sentence connects the two. This post proves the two theorems that name what sits in the gap -- the approximation/estimation split, which works for any loss, and the bias-variance split, which does not -- and then insists that they are not the same decomposition.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Statistics</category>
+    <category>Probability</category>
+    <category>Research Papers</category>
+    <category>Evaluation</category>
+    <category>Optimization</category>
+    <category>Algorithms</category>
+    <category>Neural Network Theory</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Loss Function Is a Probability Assumption</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions</guid>
+    <pubDate>Thu, 23 Nov 2028 00:00:00 GMT</pubDate>
+    <description><![CDATA[Almost nobody is told that MSE and cross-entropy are derived rather than chosen. They fall out of one theorem: the loss you minimize is the negative log-density of the noise you assumed, up to a positive affine transformation. Change the assumption and you get a different loss -- Laplace gives absolute error, Poisson gives deviance, Student-t gives a redescending robust loss, and Huber's loss is the exact maximum-likelihood loss for the least favorable distribution near a Gaussian.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Statistics</category>
+    <category>Probability</category>
+    <category>Research Papers</category>
+    <category>Optimization</category>
+    <category>Evaluation</category>
+    <category>Neural Network Theory</category>
+    <category>Algorithms</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Nothing Threw: Debugging Agent Flows in ADK 2.x</title>
     <link>https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows</link>
