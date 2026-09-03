@@ -1,0 +1,13 @@
+{
+  "slug": "probably-approximately-correct",
+  "category": "research",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "0d64a7148c26d03ec40f3e8abe4d5fd64945a025940936787ff88a966c377e2e",
+  "sourceHash": "0d64a7148c26d03ec40f3e8abe4d5fd64945a025940936787ff88a966c377e2e",
+  "durationSec": 1544.064,
+  "byteSize": 9264384,
+  "narrationWordCount": 3825,
+  "audioUrl": "/blog/audio/research/probably-approximately-correct.mp3",
+  "translationModel": ""
+}
