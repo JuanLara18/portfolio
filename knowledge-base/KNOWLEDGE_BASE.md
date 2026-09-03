@@ -735,6 +735,79 @@ enterprise-agent-memory-continuity-adk-geap:
   teaches: [classify agent memory along durability and content axes, decide what to remember at which scope, keep one user memory from poisoning another, engineer durable procedures as well as durable facts, compare managed memory primitives across ADK LangGraph AgentCore and the Anthropic and OpenAI SDKs]
   tech: [google-adk, gemini-enterprise, bigquery, vertex-agent-engine, bedrock-agentcore, langgraph, anthropic-sdk]
   depth: deep
+bellman-operator-is-a-contraction:
+  concepts: [Bellman optimality operator, contraction mapping, Banach fixed point theorem, sup norm, value iteration, geometric convergence, discount factor as a convergence rate, policy iteration, temporal difference learning, deadly triad, projected Bellman operator]
+  prereqs: [reinforcement-learning-first-principles, markov-to-hoeffding-concentration-inequalities]
+  teaches: [proving the Bellman operator is a gamma contraction, proving Banach's fixed point theorem, deriving the geometric error bound for value iteration, reading the discount factor as an iteration count, explaining why function approximation destroys the convergence guarantee]
+  tech: [numpy]
+  depth: deep
+em-never-goes-down:
+  concepts: [expectation maximization, Jensen's inequality, evidence lower bound, KL divergence, monotonicity of EM, latent variable models, Gaussian mixture models, responsibilities, local optima, variational inference]
+  prereqs: [loss-functions-are-probability-assumptions, one-eigendecomposition-four-algorithms]
+  teaches: [proving Jensen's inequality, deriving the ELBO plus KL identity, proving EM never decreases the likelihood, stating what the monotonicity theorem does not give you, connecting EM to variational inference]
+  tech: [numpy, scipy]
+  depth: deep
+kernel-trick-representer-theorem:
+  concepts: [positive definite kernels, Gram matrix, reproducing kernel Hilbert space, reproducing property, Moore-Aronszajn theorem, representer theorem, kernel trick, support vectors, soft margin, Cauchy-Schwarz for kernels]
+  prereqs: [penalizing-is-constraining, vc-dimension-sauer-shelah]
+  teaches: [checking whether a function is a valid kernel, constructing an RKHS from a kernel, proving the representer theorem by orthogonal decomposition, explaining why an infinite dimensional feature space is computable, reading the three types of support vector off the KKT conditions]
+  tech: [numpy, scipy]
+  depth: deep
+loss-functions-are-probability-assumptions:
+  concepts: [maximum likelihood estimation, negative log likelihood, noise models, squared error, absolute error, cross entropy, Huber loss, least favourable distribution, generalized linear models, canonical link, influence function, proper scoring rules]
+  prereqs: []
+  teaches: [deriving a loss function from an assumed noise distribution, reading a loss backwards to the assumption it encodes, explaining why MAE is robust and MSE is not, recognising the shared gradient shape of canonical link models]
+  tech: [numpy, scipy]
+  depth: deep
+markov-to-hoeffding-concentration-inequalities:
+  concepts: [Markov inequality, Chebyshev inequality, Chernoff method, moment generating function, Hoeffding lemma, Hoeffding inequality, sub-Gaussian, concentration of measure, test set confidence interval, union bound, McDiarmid inequality]
+  prereqs: [what-are-we-minimizing-erm-bias-variance]
+  teaches: [proving Markov and deriving Chebyshev from it, applying the Chernoff exponential tilting method, proving Hoeffding's lemma, computing an honest confidence interval for a test set error rate, explaining why precision costs quadratically and confidence only logarithmically]
+  tech: [numpy, scipy]
+  depth: deep
+no-free-lunch-theorem:
+  concepts: [no free lunch theorem, inductive bias, off training set error, uniform prior over targets, PAC learnability, hypothesis class restriction, model selection as assumption selection, manifold hypothesis]
+  prereqs: [vc-dimension-sauer-shelah]
+  teaches: [proving the no free lunch theorem for supervised learning, distinguishing the three theorems that share the name, naming the inductive bias of a given method, correcting the common misreadings]
+  tech: [numpy]
+  depth: deep
+one-eigendecomposition-four-algorithms:
+  concepts: [spectral theorem, Courant-Fischer, singular value decomposition, Eckart-Young-Mirsky theorem, principal component analysis, kernel PCA, spectral clustering, graph Laplacian, latent semantic analysis, low rank approximation]
+  prereqs: [markov-to-hoeffding-concentration-inequalities]
+  teaches: [proving the spectral theorem's key facts, deriving PCA from the variational characterization, proving Eckart-Young in the Frobenius norm, recognising four algorithms as one eigendecomposition, proving the graph Laplacian quadratic form identity]
+  tech: [numpy, scipy]
+  depth: deep
+penalizing-is-constraining:
+  concepts: [regularization, KKT conditions, convex optimization, ridge regression, lasso, soft thresholding, subgradient, shrinkage, sparsity, quadratic form, condition number]
+  prereqs: [no-free-lunch-theorem, what-are-we-minimizing-erm-bias-variance]
+  teaches: [proving that a penalty and a hard constraint define the same problem, stating and applying the KKT conditions, deriving the soft threshold formula, explaining why L1 gives exact zeros and L2 never does, naming the assumption each penalty encodes]
+  tech: [numpy, scipy]
+  depth: deep
+probably-approximately-correct:
+  concepts: [PAC learning, sample complexity, realizable case, agnostic case, uniform convergence, union bound, axis aligned rectangles, Occam's razor, description length, efficient PAC learnability, 3-term DNF]
+  prereqs: [markov-to-hoeffding-concentration-inequalities]
+  teaches: [stating PAC learnability formally, proving the axis aligned rectangle sample bound, deriving the finite hypothesis class bound, proving the agnostic uniform convergence bound, separating sample complexity from computational complexity]
+  tech: [numpy]
+  depth: deep
+vc-dimension-sauer-shelah:
+  concepts: [VC dimension, shattering, growth function, Sauer-Shelah lemma, symmetrization, ghost sample, VC generalization bound, fundamental theorem of statistical learning, Radon's theorem, Rademacher complexity]
+  prereqs: [probably-approximately-correct]
+  teaches: [computing the VC dimension of a hypothesis class in both directions, proving the Sauer-Shelah lemma by induction, explaining the polynomial versus exponential growth dichotomy, stating the fundamental theorem of statistical learning, explaining why VC bounds are vacuous for deep networks]
+  tech: [numpy]
+  depth: deep
+weak-learnability-equals-strong:
+  concepts: [weak learnability, strong learnability, boosting, AdaBoost, exponential loss, coordinate descent, margin theory, training error bound, label noise, gradient boosting]
+  prereqs: [probably-approximately-correct, penalizing-is-constraining]
+  teaches: [deriving AdaBoost as coordinate descent on the exponential loss, deriving the alpha update, proving the exponential training error bound, explaining why test error falls after training error reaches zero, naming the three real limits of boosting]
+  tech: [numpy]
+  depth: deep
+what-are-we-minimizing-erm-bias-variance:
+  concepts: [empirical risk minimization, true risk, approximation error, estimation error, optimization error, bias variance decomposition, Bayes error, noise floor, model complexity, double descent]
+  prereqs: [loss-functions-are-probability-assumptions]
+  teaches: [distinguishing the approximation estimation split from the bias variance decomposition, proving the bias variance decomposition for squared loss, explaining why there is no clean 0-1 loss analogue, identifying which lever moves which error term]
+  tech: [numpy]
+  depth: deep
+
 ```
 
 <!-- AUTO-CATALOG:START - regenerated by build-knowledge-base.js, do not edit by hand -->
@@ -883,8 +956,20 @@ Auto-generated index of every post by category, sorted most recent first. Use th
 - **`python-beyond-the-basics`** *(deep)* — Python Beyond the Basics: The Language Behind the Language. Everyone writes Python. Few truly understand it. This is a deep dive into the mechanisms that separate elegant, maintainable code from the sprawling chaos that haunts production systems—from the data model to metaclasses, from decorators to the GIL. Concepts: python, software engineering, best practices, design patterns, developer tools, testing.
 - **`structuring-ml-projects`** *(deep)* — Structuring Machine Learning Projects: From Chaos to Production-Ready. Most ML projects die in the chaos of unversioned notebooks and dependency hell. This is the definitive guide to structuring projects that scale—from folder architecture to Git workflows, from Poetry mastery to the bridge between experimentation and production. Concepts: mlops, python, software engineering, git, best practices, production ml.
 
-### research (13 posts)
+### research (25 posts)
 
+- **`bellman-operator-is-a-contraction`** *(deep)* — The Bellman Operator Is a Contraction. Everyone who has written value iteration has watched it converge and taken it on faith. The guarantee is a theorem with a one-page proof, and it explains three things at once: why an optimal value function exists, why iteration finds it geometrically fast, and why the discount factor is a convergence rate rather than a statement about caring about the future. It also explains precisely why all of that dies the moment the table becomes a neural network. Concepts: Bellman optimality operator, contraction mapping, Banach fixed point theorem, sup norm, value iteration, geometric convergence. Tech: numpy.
+- **`em-never-goes-down`** *(deep)* — EM Never Goes Down: Jensen's Inequality as an Algorithm. Expectation-Maximization looks like a heuristic: guess the hidden labels, refit, repeat. It is not. Every iteration provably cannot decrease the observed-data likelihood, and the whole proof is Jensen's inequality applied once. The same decomposition turns out to be the ELBO, which makes EM and variational inference one identity read two ways. Concepts: expectation maximization, Jensen's inequality, evidence lower bound, KL divergence, monotonicity of EM, latent variable models. Tech: numpy, scipy.
+- **`one-eigendecomposition-four-algorithms`** *(deep)* — One Eigendecomposition, Four Algorithms. PCA, latent semantic analysis, spectral clustering and kernel PCA are taught as four techniques in four chapters. They are one computation: the eigenvectors of a symmetric positive semidefinite matrix. Only the matrix changes. This post proves the theorems that make that computation optimal, in full, and then reads the four algorithms off them. Concepts: spectral theorem, Courant-Fischer, singular value decomposition, Eckart-Young-Mirsky theorem, principal component analysis, kernel PCA. Tech: numpy, scipy.
+- **`weak-learnability-equals-strong`** *(deep)* — Weak Learnability Equals Strong Learnability. Kearns and Valiant asked whether a hypothesis barely better than a coin flip could be amplified to arbitrary accuracy. Schapire proved it could. This post derives AdaBoost as coordinate descent on the exponential loss, proves the training-error bound that makes the equivalence constructive, and then treats the anomaly that followed as the unresolved question it remains. Concepts: weak learnability, strong learnability, boosting, AdaBoost, exponential loss, coordinate descent. Tech: numpy.
+- **`kernel-trick-representer-theorem`** *(deep)* — The Kernel Trick Is a Theorem, Not a Trick. An RBF kernel corresponds to an infinite-dimensional feature space, and people say this cheerfully without noticing that optimizing over an infinite-dimensional space should be impossible. It is not impossible, and the reason is a theorem from 1971 that almost nobody who trains an SVM has read. Concepts: positive definite kernels, Gram matrix, reproducing kernel Hilbert space, reproducing property, Moore-Aronszajn theorem, representer theorem. Tech: numpy, scipy.
+- **`penalizing-is-constraining`** *(deep)* — Penalizing Is Constraining: What Regularization Actually Does. Everyone has seen the picture: elliptical error contours meeting a circle for ridge, a diamond for LASSO, and the diamond's corners explaining sparsity. That picture is about a constrained problem. What you actually minimize is a penalized one. This post proves they are the same problem, and then derives -- rather than asserts -- why L1 produces exact zeros and L2 never can. Concepts: regularization, KKT conditions, convex optimization, ridge regression, lasso, soft thresholding. Tech: numpy, scipy.
+- **`no-free-lunch-theorem`** *(deep)* — No Free Lunch: Every Model Is an Assumption You Already Made. The fundamental theorem of statistical learning says a class is learnable exactly when its VC dimension is finite. The obvious escape is to take a bigger class. A short theorem forbids it. This post proves that theorem, separates it from the two other results that share its name, and then reads the standard toolbox backwards to the assumption each method is quietly making. Concepts: no free lunch theorem, inductive bias, off training set error, uniform prior over targets, PAC learnability, hypothesis class restriction. Tech: numpy.
+- **`vc-dimension-sauer-shelah`** *(deep)* — When the Hypothesis Class Is Infinite: VC Dimension and the Sauer-Shelah Lemma. There are uncountably many linear classifiers in the plane, and the union bound over them proves nothing at all. Yet linear classifiers generalize. The resolution is that cardinality was never the right measure: what matters is how many distinct labelings a class can produce on a finite sample, and that count is either exponential forever or polynomial. There is nothing in between. Concepts: VC dimension, shattering, growth function, Sauer-Shelah lemma, symmetrization, ghost sample. Tech: numpy.
+- **`probably-approximately-correct`** *(deep)* — Probably Approximately Correct: What It Means to Say a Machine Learned. Before 1984 nobody could state, precisely enough to prove, what it means for an algorithm to have learned something. Valiant gave the definition, and both of its hedges turn out to be forced. This post proves three theorems inside that framework, starting with the cleanest nontrivial result in learning theory: how many examples it takes to learn a rectangle you cannot see. Concepts: PAC learning, sample complexity, realizable case, agnostic case, uniform convergence, union bound. Tech: numpy.
+- **`markov-to-hoeffding-concentration-inequalities`** *(deep)* — From Markov to Hoeffding: The Inequalities Every Generalization Bound Is Made Of. You report 94.2% accuracy on a held-out set. What is the honest error bar? Four theorems, each proved from the one before it, answer that question, and the answer is much wider than anyone puts in a paper. This is the toolbox every generalization bound in machine learning is secretly built from. Concepts: Markov inequality, Chebyshev inequality, Chernoff method, moment generating function, Hoeffding lemma, Hoeffding inequality. Tech: numpy, scipy.
+- **`what-are-we-minimizing-erm-bias-variance`** *(deep)* — What Are We Actually Minimizing? Empirical Risk, and the Two Decompositions Everyone Conflates. You minimize training error. You care about test error. Nothing in that sentence connects the two. This post proves the two theorems that name what sits in the gap -- the approximation/estimation split, which works for any loss, and the bias-variance split, which does not -- and then insists that they are not the same decomposition. Concepts: empirical risk minimization, true risk, approximation error, estimation error, optimization error, bias variance decomposition. Tech: numpy.
+- **`loss-functions-are-probability-assumptions`** *(deep)* — The Loss Function Is a Probability Assumption. Almost nobody is told that MSE and cross-entropy are derived rather than chosen. They fall out of one theorem: the loss you minimize is the negative log-density of the noise you assumed, up to a positive affine transformation. Change the assumption and you get a different loss -- Laplace gives absolute error, Poisson gives deviance, Student-t gives a redescending robust loss, and Huber's loss is the exact maximum-likelihood loss for the least favorable distribution near a Gaussian. Concepts: maximum likelihood estimation, negative log likelihood, noise models, squared error, absolute error, cross entropy. Tech: numpy, scipy.
 - **`magnifica-humanitas-ai-encyclical-analysis`** *(deep)* — Magnifica Humanitas: Reading the Pope's AI Encyclical as an Engineer. Pope Leo XIV's first encyclical is a 42,300-word argument about artificial intelligence, signed on the 135th anniversary of Rerum Novarum — the document that defined the Church's response to the industrial revolution. Most engineers will never read it. This post does: chapter by chapter, quote by quote, mapping its claims about non-neutrality, cognitive disarmament, and concentration of power onto the design decisions ML practitioners make every day. Concepts: ai governance, ai safety, responsible ai, llms, agents, agentic ai.
 - **`ontology-grounded-rag-chunks-in-nodes`** *(deep)* — Ontology-Grounded RAG: Why Chunks-in-Nodes Matter More Than the Ontology Itself. A 2025 paper quietly demolishes the assumption that ontology source is what matters for graph-based RAG. The real lever is whether your nodes carry text chunks — and if they don't, structure alone underperforms naive vector RAG by 40 points. Concepts: rag, knowledge graphs, ontologies, vector databases, information retrieval, llms.
 - **`emotion-concepts-in-llms`** *(deep)* — When Models Feel: Inside Anthropic's Paper on Emotion Concepts in LLMs. Anthropic's interpretability team found 171 emotion-like representations inside Claude Sonnet 4.5, proved they causally shape behavior, and showed how a vector called desperate can turn an otherwise aligned model into one that blackmails and cheats. Here's what the paper actually says and why it matters. Concepts: interpretability, alignment, anthropic, mechanistic interpretability, llms, ai safety.

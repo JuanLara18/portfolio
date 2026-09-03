@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-09-01T20:41:51.555Z",
+  "generated_at": "2026-09-03T00:21:19.021Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,18 +8,622 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 166,
-    "augmented_posts": 66,
+    "total_posts": 178,
+    "augmented_posts": 78,
     "by_category": {
+      "research": 25,
       "field-notes": 137,
-      "research": 13,
       "curiosities": 16
     },
-    "concepts_indexed": 624,
-    "tech_indexed": 86,
-    "prereq_edges": 131
+    "concepts_indexed": 747,
+    "tech_indexed": 88,
+    "prereq_edges": 147
   },
   "posts": {
+    "bellman-operator-is-a-contraction": {
+      "title": "The Bellman Operator Is a Contraction",
+      "date": "2029-02-08",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Reinforcement Learning",
+        "Machine Learning",
+        "Algorithms",
+        "Optimization",
+        "Foundations of Mathematics",
+        "Research Papers",
+        "Deep Learning",
+        "Neural Network Theory"
+      ],
+      "excerpt": "Everyone who has written value iteration has watched it converge and taken it on faith. The guarantee is a theorem with a one-page proof, and it explains three things at once: why an optimal value function exists, why iteration finds it geometrically fast, and why the discount factor is a convergence rate rather than a statement about caring about the future. It also explains precisely why all of that dies the moment the table becomes a neural network.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/bellman-operator-is-a-contraction",
+      "source_path": "front/public/blog/posts/research/bellman-operator-is-a-contraction.md",
+      "reading_minutes": 27,
+      "word_count": 4683,
+      "concepts": [
+        "Bellman optimality operator",
+        "contraction mapping",
+        "Banach fixed point theorem",
+        "sup norm",
+        "value iteration",
+        "geometric convergence",
+        "discount factor as a convergence rate",
+        "policy iteration",
+        "temporal difference learning",
+        "deadly triad",
+        "projected Bellman operator"
+      ],
+      "prereqs": [
+        "reinforcement-learning-first-principles",
+        "markov-to-hoeffding-concentration-inequalities"
+      ],
+      "teaches": [
+        "proving the Bellman operator is a gamma contraction",
+        "proving Banach's fixed point theorem",
+        "deriving the geometric error bound for value iteration",
+        "reading the discount factor as an iteration count",
+        "explaining why function approximation destroys the convergence guarantee"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "em-never-goes-down": {
+      "title": "EM Never Goes Down: Jensen's Inequality as an Algorithm",
+      "date": "2029-02-01",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Statistics",
+        "Probability",
+        "Optimization",
+        "Algorithms",
+        "Research Papers",
+        "Best Practices",
+        "Data Science"
+      ],
+      "excerpt": "Expectation-Maximization looks like a heuristic: guess the hidden labels, refit, repeat. It is not. Every iteration provably cannot decrease the observed-data likelihood, and the whole proof is Jensen's inequality applied once. The same decomposition turns out to be the ELBO, which makes EM and variational inference one identity read two ways.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/em-never-goes-down",
+      "source_path": "front/public/blog/posts/research/em-never-goes-down.md",
+      "reading_minutes": 24,
+      "word_count": 4109,
+      "concepts": [
+        "expectation maximization",
+        "Jensen's inequality",
+        "evidence lower bound",
+        "KL divergence",
+        "monotonicity of EM",
+        "latent variable models",
+        "Gaussian mixture models",
+        "responsibilities",
+        "local optima",
+        "variational inference"
+      ],
+      "prereqs": [
+        "loss-functions-are-probability-assumptions",
+        "one-eigendecomposition-four-algorithms"
+      ],
+      "teaches": [
+        "proving Jensen's inequality",
+        "deriving the ELBO plus KL identity",
+        "proving EM never decreases the likelihood",
+        "stating what the monotonicity theorem does not give you",
+        "connecting EM to variational inference"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "one-eigendecomposition-four-algorithms": {
+      "title": "One Eigendecomposition, Four Algorithms",
+      "date": "2029-01-25",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Linear Algebra",
+        "Machine Learning",
+        "Statistics",
+        "Research Papers",
+        "Algorithms",
+        "Information Retrieval",
+        "Foundations of Mathematics"
+      ],
+      "excerpt": "PCA, latent semantic analysis, spectral clustering and kernel PCA are taught as four techniques in four chapters. They are one computation: the eigenvectors of a symmetric positive semidefinite matrix. Only the matrix changes. This post proves the theorems that make that computation optimal, in full, and then reads the four algorithms off them.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/one-eigendecomposition-four-algorithms",
+      "source_path": "front/public/blog/posts/research/one-eigendecomposition-four-algorithms.md",
+      "reading_minutes": 27,
+      "word_count": 4640,
+      "concepts": [
+        "spectral theorem",
+        "Courant-Fischer",
+        "singular value decomposition",
+        "Eckart-Young-Mirsky theorem",
+        "principal component analysis",
+        "kernel PCA",
+        "spectral clustering",
+        "graph Laplacian",
+        "latent semantic analysis",
+        "low rank approximation"
+      ],
+      "prereqs": [
+        "markov-to-hoeffding-concentration-inequalities"
+      ],
+      "teaches": [
+        "proving the spectral theorem's key facts",
+        "deriving PCA from the variational characterization",
+        "proving Eckart-Young in the Frobenius norm",
+        "recognising four algorithms as one eigendecomposition",
+        "proving the graph Laplacian quadratic form identity"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "weak-learnability-equals-strong": {
+      "title": "Weak Learnability Equals Strong Learnability",
+      "date": "2029-01-18",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Statistics",
+        "Algorithms",
+        "Research Papers",
+        "Optimization",
+        "Evaluation",
+        "Probability"
+      ],
+      "excerpt": "Kearns and Valiant asked whether a hypothesis barely better than a coin flip could be amplified to arbitrary accuracy. Schapire proved it could. This post derives AdaBoost as coordinate descent on the exponential loss, proves the training-error bound that makes the equivalence constructive, and then treats the anomaly that followed as the unresolved question it remains.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/weak-learnability-equals-strong",
+      "source_path": "front/public/blog/posts/research/weak-learnability-equals-strong.md",
+      "reading_minutes": 28,
+      "word_count": 4754,
+      "concepts": [
+        "weak learnability",
+        "strong learnability",
+        "boosting",
+        "AdaBoost",
+        "exponential loss",
+        "coordinate descent",
+        "margin theory",
+        "training error bound",
+        "label noise",
+        "gradient boosting"
+      ],
+      "prereqs": [
+        "probably-approximately-correct",
+        "penalizing-is-constraining"
+      ],
+      "teaches": [
+        "deriving AdaBoost as coordinate descent on the exponential loss",
+        "deriving the alpha update",
+        "proving the exponential training error bound",
+        "explaining why test error falls after training error reaches zero",
+        "naming the three real limits of boosting"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "kernel-trick-representer-theorem": {
+      "title": "The Kernel Trick Is a Theorem, Not a Trick",
+      "date": "2029-01-11",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Linear Algebra",
+        "Optimization",
+        "Research Papers",
+        "Algorithms",
+        "Foundations of Mathematics",
+        "Statistics"
+      ],
+      "excerpt": "An RBF kernel corresponds to an infinite-dimensional feature space, and people say this cheerfully without noticing that optimizing over an infinite-dimensional space should be impossible. It is not impossible, and the reason is a theorem from 1971 that almost nobody who trains an SVM has read.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/kernel-trick-representer-theorem",
+      "source_path": "front/public/blog/posts/research/kernel-trick-representer-theorem.md",
+      "reading_minutes": 30,
+      "word_count": 5274,
+      "concepts": [
+        "positive definite kernels",
+        "Gram matrix",
+        "reproducing kernel Hilbert space",
+        "reproducing property",
+        "Moore-Aronszajn theorem",
+        "representer theorem",
+        "kernel trick",
+        "support vectors",
+        "soft margin",
+        "Cauchy-Schwarz for kernels"
+      ],
+      "prereqs": [
+        "penalizing-is-constraining",
+        "vc-dimension-sauer-shelah"
+      ],
+      "teaches": [
+        "checking whether a function is a valid kernel",
+        "constructing an RKHS from a kernel",
+        "proving the representer theorem by orthogonal decomposition",
+        "explaining why an infinite dimensional feature space is computable",
+        "reading the three types of support vector off the KKT conditions"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "penalizing-is-constraining": {
+      "title": "Penalizing Is Constraining: What Regularization Actually Does",
+      "date": "2029-01-04",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Optimization",
+        "Statistics",
+        "Research Papers",
+        "Algorithms",
+        "Foundations of Mathematics",
+        "Linear Algebra",
+        "Deep Learning"
+      ],
+      "excerpt": "Everyone has seen the picture: elliptical error contours meeting a circle for ridge, a diamond for LASSO, and the diamond's corners explaining sparsity. That picture is about a constrained problem. What you actually minimize is a penalized one. This post proves they are the same problem, and then derives -- rather than asserts -- why L1 produces exact zeros and L2 never can.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/penalizing-is-constraining",
+      "source_path": "front/public/blog/posts/research/penalizing-is-constraining.md",
+      "reading_minutes": 30,
+      "word_count": 5138,
+      "concepts": [
+        "regularization",
+        "KKT conditions",
+        "convex optimization",
+        "ridge regression",
+        "lasso",
+        "soft thresholding",
+        "subgradient",
+        "shrinkage",
+        "sparsity",
+        "quadratic form",
+        "condition number"
+      ],
+      "prereqs": [
+        "no-free-lunch-theorem",
+        "what-are-we-minimizing-erm-bias-variance"
+      ],
+      "teaches": [
+        "proving that a penalty and a hard constraint define the same problem",
+        "stating and applying the KKT conditions",
+        "deriving the soft threshold formula",
+        "explaining why L1 gives exact zeros and L2 never does",
+        "naming the assumption each penalty encodes"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "no-free-lunch-theorem": {
+      "title": "No Free Lunch: Every Model Is an Assumption You Already Made",
+      "date": "2028-12-28",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Probability",
+        "Statistics",
+        "Research Papers",
+        "Algorithms",
+        "Deep Learning",
+        "Best Practices",
+        "Optimization"
+      ],
+      "excerpt": "The fundamental theorem of statistical learning says a class is learnable exactly when its VC dimension is finite. The obvious escape is to take a bigger class. A short theorem forbids it. This post proves that theorem, separates it from the two other results that share its name, and then reads the standard toolbox backwards to the assumption each method is quietly making.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/no-free-lunch-theorem",
+      "source_path": "front/public/blog/posts/research/no-free-lunch-theorem.md",
+      "reading_minutes": 28,
+      "word_count": 5101,
+      "concepts": [
+        "no free lunch theorem",
+        "inductive bias",
+        "off training set error",
+        "uniform prior over targets",
+        "PAC learnability",
+        "hypothesis class restriction",
+        "model selection as assumption selection",
+        "manifold hypothesis"
+      ],
+      "prereqs": [
+        "vc-dimension-sauer-shelah"
+      ],
+      "teaches": [
+        "proving the no free lunch theorem for supervised learning",
+        "distinguishing the three theorems that share the name",
+        "naming the inductive bias of a given method",
+        "correcting the common misreadings"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "vc-dimension-sauer-shelah": {
+      "title": "When the Hypothesis Class Is Infinite: VC Dimension and the Sauer-Shelah Lemma",
+      "date": "2028-12-21",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Probability",
+        "Statistics",
+        "Research Papers",
+        "Algorithms",
+        "Foundations of Mathematics",
+        "Deep Learning"
+      ],
+      "excerpt": "There are uncountably many linear classifiers in the plane, and the union bound over them proves nothing at all. Yet linear classifiers generalize. The resolution is that cardinality was never the right measure: what matters is how many distinct labelings a class can produce on a finite sample, and that count is either exponential forever or polynomial. There is nothing in between.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/vc-dimension-sauer-shelah",
+      "source_path": "front/public/blog/posts/research/vc-dimension-sauer-shelah.md",
+      "reading_minutes": 29,
+      "word_count": 5349,
+      "concepts": [
+        "VC dimension",
+        "shattering",
+        "growth function",
+        "Sauer-Shelah lemma",
+        "symmetrization",
+        "ghost sample",
+        "VC generalization bound",
+        "fundamental theorem of statistical learning",
+        "Radon's theorem",
+        "Rademacher complexity"
+      ],
+      "prereqs": [
+        "probably-approximately-correct"
+      ],
+      "teaches": [
+        "computing the VC dimension of a hypothesis class in both directions",
+        "proving the Sauer-Shelah lemma by induction",
+        "explaining the polynomial versus exponential growth dichotomy",
+        "stating the fundamental theorem of statistical learning",
+        "explaining why VC bounds are vacuous for deep networks"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "probably-approximately-correct": {
+      "title": "Probably Approximately Correct: What It Means to Say a Machine Learned",
+      "date": "2028-12-14",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Probability",
+        "Statistics",
+        "Research Papers",
+        "Algorithms",
+        "Theory of Computation",
+        "Foundations of Mathematics"
+      ],
+      "excerpt": "Before 1984 nobody could state, precisely enough to prove, what it means for an algorithm to have learned something. Valiant gave the definition, and both of its hedges turn out to be forced. This post proves three theorems inside that framework, starting with the cleanest nontrivial result in learning theory: how many examples it takes to learn a rectangle you cannot see.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/probably-approximately-correct",
+      "source_path": "front/public/blog/posts/research/probably-approximately-correct.md",
+      "reading_minutes": 29,
+      "word_count": 4966,
+      "concepts": [
+        "PAC learning",
+        "sample complexity",
+        "realizable case",
+        "agnostic case",
+        "uniform convergence",
+        "union bound",
+        "axis aligned rectangles",
+        "Occam's razor",
+        "description length",
+        "efficient PAC learnability",
+        "3-term DNF"
+      ],
+      "prereqs": [
+        "markov-to-hoeffding-concentration-inequalities"
+      ],
+      "teaches": [
+        "stating PAC learnability formally",
+        "proving the axis aligned rectangle sample bound",
+        "deriving the finite hypothesis class bound",
+        "proving the agnostic uniform convergence bound",
+        "separating sample complexity from computational complexity"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "markov-to-hoeffding-concentration-inequalities": {
+      "title": "From Markov to Hoeffding: The Inequalities Every Generalization Bound Is Made Of",
+      "date": "2028-12-07",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Probability",
+        "Statistics",
+        "Machine Learning",
+        "Research Papers",
+        "Evaluation",
+        "Algorithms",
+        "Foundations of Mathematics"
+      ],
+      "excerpt": "You report 94.2% accuracy on a held-out set. What is the honest error bar? Four theorems, each proved from the one before it, answer that question, and the answer is much wider than anyone puts in a paper. This is the toolbox every generalization bound in machine learning is secretly built from.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/markov-to-hoeffding-concentration-inequalities",
+      "source_path": "front/public/blog/posts/research/markov-to-hoeffding-concentration-inequalities.md",
+      "reading_minutes": 29,
+      "word_count": 5314,
+      "concepts": [
+        "Markov inequality",
+        "Chebyshev inequality",
+        "Chernoff method",
+        "moment generating function",
+        "Hoeffding lemma",
+        "Hoeffding inequality",
+        "sub-Gaussian",
+        "concentration of measure",
+        "test set confidence interval",
+        "union bound",
+        "McDiarmid inequality"
+      ],
+      "prereqs": [
+        "what-are-we-minimizing-erm-bias-variance"
+      ],
+      "teaches": [
+        "proving Markov and deriving Chebyshev from it",
+        "applying the Chernoff exponential tilting method",
+        "proving Hoeffding's lemma",
+        "computing an honest confidence interval for a test set error rate",
+        "explaining why precision costs quadratically and confidence only logarithmically"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "what-are-we-minimizing-erm-bias-variance": {
+      "title": "What Are We Actually Minimizing? Empirical Risk, and the Two Decompositions Everyone Conflates",
+      "date": "2028-11-30",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Statistics",
+        "Probability",
+        "Research Papers",
+        "Evaluation",
+        "Optimization",
+        "Algorithms",
+        "Neural Network Theory"
+      ],
+      "excerpt": "You minimize training error. You care about test error. Nothing in that sentence connects the two. This post proves the two theorems that name what sits in the gap -- the approximation/estimation split, which works for any loss, and the bias-variance split, which does not -- and then insists that they are not the same decomposition.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/what-are-we-minimizing-erm-bias-variance",
+      "source_path": "front/public/blog/posts/research/what-are-we-minimizing-erm-bias-variance.md",
+      "reading_minutes": 29,
+      "word_count": 5218,
+      "concepts": [
+        "empirical risk minimization",
+        "true risk",
+        "approximation error",
+        "estimation error",
+        "optimization error",
+        "bias variance decomposition",
+        "Bayes error",
+        "noise floor",
+        "model complexity",
+        "double descent"
+      ],
+      "prereqs": [
+        "loss-functions-are-probability-assumptions"
+      ],
+      "teaches": [
+        "distinguishing the approximation estimation split from the bias variance decomposition",
+        "proving the bias variance decomposition for squared loss",
+        "explaining why there is no clean 0-1 loss analogue",
+        "identifying which lever moves which error term"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "loss-functions-are-probability-assumptions": {
+      "title": "The Loss Function Is a Probability Assumption",
+      "date": "2028-11-23",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Statistics",
+        "Probability",
+        "Research Papers",
+        "Optimization",
+        "Evaluation",
+        "Neural Network Theory",
+        "Algorithms"
+      ],
+      "excerpt": "Almost nobody is told that MSE and cross-entropy are derived rather than chosen. They fall out of one theorem: the loss you minimize is the negative log-density of the noise you assumed, up to a positive affine transformation. Change the assumption and you get a different loss -- Laplace gives absolute error, Poisson gives deviance, Student-t gives a redescending robust loss, and Huber's loss is the exact maximum-likelihood loss for the least favorable distribution near a Gaussian.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/loss-functions-are-probability-assumptions",
+      "source_path": "front/public/blog/posts/research/loss-functions-are-probability-assumptions.md",
+      "reading_minutes": 29,
+      "word_count": 5385,
+      "concepts": [
+        "maximum likelihood estimation",
+        "negative log likelihood",
+        "noise models",
+        "squared error",
+        "absolute error",
+        "cross entropy",
+        "Huber loss",
+        "least favourable distribution",
+        "generalized linear models",
+        "canonical link",
+        "influence function",
+        "proper scoring rules"
+      ],
+      "prereqs": [],
+      "teaches": [
+        "deriving a loss function from an assumed noise distribution",
+        "reading a loss backwards to the assumption it encodes",
+        "explaining why MAE is robust and MSE is not",
+        "recognising the shared gradient shape of canonical link models"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
     "debugging-adk-agent-flows": {
       "title": "Nothing Threw: Debugging Agent Flows in ADK 2.x",
       "date": "2028-11-16",
@@ -7698,6 +8302,748 @@
     }
   },
   "concept_index": {
+    "bellman optimality operator": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "contraction mapping": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "banach fixed point theorem": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "sup norm": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "value iteration": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "geometric convergence": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "discount factor as a convergence rate": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "policy iteration": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "temporal difference learning": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "deadly triad": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "projected bellman operator": [
+      {
+        "slug": "bellman-operator-is-a-contraction",
+        "depth": "deep"
+      }
+    ],
+    "expectation maximization": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "jensen's inequality": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "evidence lower bound": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "kl divergence": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "monotonicity of em": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "latent variable models": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "gaussian mixture models": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "responsibilities": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "local optima": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "variational inference": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      }
+    ],
+    "spectral theorem": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "courant-fischer": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "singular value decomposition": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "eckart-young-mirsky theorem": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "principal component analysis": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "kernel pca": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "spectral clustering": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "graph laplacian": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "latent semantic analysis": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "low rank approximation": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      }
+    ],
+    "weak learnability": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "strong learnability": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "boosting": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "adaboost": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "exponential loss": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "coordinate descent": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "margin theory": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "training error bound": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "label noise": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "gradient boosting": [
+      {
+        "slug": "weak-learnability-equals-strong",
+        "depth": "deep"
+      }
+    ],
+    "positive definite kernels": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "gram matrix": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "reproducing kernel hilbert space": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "reproducing property": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "moore-aronszajn theorem": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "representer theorem": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "kernel trick": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "support vectors": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "soft margin": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "cauchy-schwarz for kernels": [
+      {
+        "slug": "kernel-trick-representer-theorem",
+        "depth": "deep"
+      }
+    ],
+    "regularization": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "kkt conditions": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "convex optimization": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "ridge regression": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "lasso": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "soft thresholding": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "subgradient": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "shrinkage": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "sparsity": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "quadratic form": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "condition number": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "no free lunch theorem": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "inductive bias": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "off training set error": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "uniform prior over targets": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "pac learnability": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "hypothesis class restriction": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "model selection as assumption selection": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "manifold hypothesis": [
+      {
+        "slug": "no-free-lunch-theorem",
+        "depth": "deep"
+      }
+    ],
+    "vc dimension": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "shattering": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "growth function": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "sauer-shelah lemma": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "symmetrization": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "ghost sample": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "vc generalization bound": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "fundamental theorem of statistical learning": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "radon's theorem": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "rademacher complexity": [
+      {
+        "slug": "vc-dimension-sauer-shelah",
+        "depth": "deep"
+      }
+    ],
+    "pac learning": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "sample complexity": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "realizable case": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "agnostic case": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "uniform convergence": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "union bound": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      },
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "axis aligned rectangles": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "occam's razor": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "description length": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "efficient pac learnability": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "3-term dnf": [
+      {
+        "slug": "probably-approximately-correct",
+        "depth": "deep"
+      }
+    ],
+    "markov inequality": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "chebyshev inequality": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "chernoff method": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "moment generating function": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "hoeffding lemma": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "hoeffding inequality": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "sub-gaussian": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "concentration of measure": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "test set confidence interval": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "mcdiarmid inequality": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      }
+    ],
+    "empirical risk minimization": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "true risk": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "approximation error": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "estimation error": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "optimization error": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "bias variance decomposition": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "bayes error": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "noise floor": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "model complexity": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "double descent": [
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "maximum likelihood estimation": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "negative log likelihood": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "noise models": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "squared error": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "absolute error": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "cross entropy": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "huber loss": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "least favourable distribution": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "generalized linear models": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "canonical link": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "influence function": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
+    "proper scoring rules": [
+      {
+        "slug": "loss-functions-are-probability-assumptions",
+        "depth": "deep"
+      }
+    ],
     "flow errors versus code errors": [
       {
         "slug": "debugging-adk-agent-flows",
@@ -14664,6 +16010,28 @@
     ]
   },
   "tech_index": {
+    "numpy": [
+      "bellman-operator-is-a-contraction",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "scipy": [
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "one-eigendecomposition-four-algorithms",
+      "penalizing-is-constraining"
+    ],
     "google-adk": [
       "adk-advanced-evolution-of-agent-engineering",
       "adk-graph-workflows-deterministic-orchestration",
@@ -15030,6 +16398,448 @@
     ]
   },
   "tag_index": {
+    "Statistical Learning Theory": [
+      "bellman-operator-is-a-contraction",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Mathematics": [
+      "100-posts-knowledge-graph-retrospective",
+      "algebraic-number-theory-when-factorization-breaks",
+      "bellman-operator-is-a-contraction",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "collatz-conjecture",
+      "em-never-goes-down",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-theory-mathematics-of-connections",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "pagerank-eigenvectors",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "ramanujan-constant-almost-integer",
+      "regex-engines-finite-automata",
+      "reinforcement-learning-first-principles",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "scaling-laws-neural-language-models",
+      "shannon-number-chess-game-tree",
+      "sum-of-naturals-minus-one-twelfth",
+      "tetris-np-complete",
+      "the-manifold-hypothesis",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Reinforcement Learning": [
+      "bellman-operator-is-a-contraction",
+      "hermes-self-improving-agent-persistent-memory",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rlhf-dpo-alignment"
+    ],
+    "Machine Learning": [
+      "bellman-operator-is-a-contraction",
+      "cloud-ml-infrastructure",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "elevenlabs-voice-ai-engineering",
+      "em-never-goes-down",
+      "experiment-tracking-mlops",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "graph-neural-networks-learning-structured-data",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "ml-libraries-under-the-hood",
+      "ml-metrics-evaluation-monitoring",
+      "no-free-lunch-theorem",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "one-eigendecomposition-four-algorithms",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "pytorch-tensorflow-deep-learning-frameworks",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rlhf-dpo-alignment",
+      "vc-dimension-sauer-shelah",
+      "vertex-ai-gcp-ml-platform-cli",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance",
+      "working-with-ml-models"
+    ],
+    "Algorithms": [
+      "100-posts-knowledge-graph-retrospective",
+      "algebraic-number-theory-when-factorization-breaks",
+      "attention-is-all-you-need",
+      "bellman-operator-is-a-contraction",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "collatz-conjecture",
+      "content-addressable-hash-as-engineering-tool",
+      "em-never-goes-down",
+      "fermat-n4-infinite-descent",
+      "files-under-the-hood",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "graph-neural-networks-learning-structured-data",
+      "graph-theory-mathematics-of-connections",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "mamba-selective-state-spaces",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "no-free-lunch-theorem",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "organizational-network-analysis-company-graph",
+      "pagerank-eigenvectors",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "querying-code-graphs-blast-radius-localization",
+      "ramanujan-constant-almost-integer",
+      "regex-engines-finite-automata",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete",
+      "the-manifold-hypothesis",
+      "vc-dimension-sauer-shelah",
+      "vector-databases-indexes-to-vertex-search",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Optimization": [
+      "bellman-operator-is-a-contraction",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "ml-cert-review-part-1-foundations",
+      "no-free-lunch-theorem",
+      "penalizing-is-constraining",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Foundations of Mathematics": [
+      "algebraic-number-theory-when-factorization-breaks",
+      "bellman-operator-is-a-contraction",
+      "fermat-n4-infinite-descent",
+      "godels-incompleteness-theorems",
+      "graph-theory-mathematics-of-connections",
+      "kernel-trick-representer-theorem",
+      "markov-to-hoeffding-concentration-inequalities",
+      "one-eigendecomposition-four-algorithms",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "ramanujan-constant-almost-integer",
+      "regex-engines-finite-automata",
+      "sum-of-naturals-minus-one-twelfth",
+      "vc-dimension-sauer-shelah"
+    ],
+    "Research Papers": [
+      "attention-is-all-you-need",
+      "bellman-operator-is-a-contraction",
+      "bert-pre-training-bidirectional-transformers",
+      "em-never-goes-down",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "kernel-trick-representer-theorem",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "loss-functions-are-probability-assumptions",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "mamba-selective-state-spaces",
+      "markov-to-hoeffding-concentration-inequalities",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "rag-retrieval-augmented-generation",
+      "rl-algorithm-taxonomy-tour",
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Deep Learning": [
+      "attention-is-all-you-need",
+      "bellman-operator-is-a-contraction",
+      "bert-pre-training-bidirectional-transformers",
+      "computational-resources-ml",
+      "document-processing-ocr-layout",
+      "elevenlabs-voice-ai-engineering",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "experiment-tracking-mlops",
+      "fine-tuning-embeddings",
+      "fine-tuning-gemma4-lora-qlora",
+      "fourier-transform",
+      "graph-neural-networks-learning-structured-data",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "mamba-selective-state-spaces",
+      "microgpt-reading-karpathy",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "ml-libraries-under-the-hood",
+      "ml-metrics-evaluation-monitoring",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "no-free-lunch-theorem",
+      "penalizing-is-constraining",
+      "pytorch-tensorflow-deep-learning-frameworks",
+      "rag-retrieval-augmented-generation",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rlhf-dpo-alignment",
+      "scaling-laws-neural-language-models",
+      "sum-of-naturals-minus-one-twelfth",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis",
+      "vc-dimension-sauer-shelah",
+      "vertex-ai-gcp-ml-platform-cli",
+      "working-with-ml-models"
+    ],
+    "Neural Network Theory": [
+      "attention-is-all-you-need",
+      "bellman-operator-is-a-contraction",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "fourier-transform",
+      "graph-neural-networks-learning-structured-data",
+      "loss-functions-are-probability-assumptions",
+      "mamba-selective-state-spaces",
+      "microgpt-reading-karpathy",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "reinforcement-learning-first-principles",
+      "rl-algorithm-taxonomy-tour",
+      "scaling-laws-neural-language-models",
+      "sum-of-naturals-minus-one-twelfth",
+      "the-manifold-hypothesis",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Statistics": [
+      "100-posts-knowledge-graph-retrospective",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "organizational-network-analysis-company-graph",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Probability": [
+      "benfords-law",
+      "em-never-goes-down",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "network-science-communities-centrality",
+      "no-free-lunch-theorem",
+      "pagerank-eigenvectors",
+      "probably-approximately-correct",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Best Practices": [
+      "100-posts-knowledge-graph-retrospective",
+      "adk-graph-workflows-deterministic-orchestration",
+      "agent-architecture-and-orchestration",
+      "agent-architectures-productive-patterns",
+      "agent-authentication-oauth-mcp-identity",
+      "agent-engineering-disciplines",
+      "agent-golden-paths-multi-tenancy",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "agent-platform-control-plane-data-plane",
+      "agent-runtime-sessions-state-topology",
+      "application-data-flow-replicas-backups",
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
+      "claude-certified-architect-professional-exam-guide",
+      "claude-certified-associate-exam-guide",
+      "claude-certified-developer-exam-guide",
+      "dama-dmbok-data-governance",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "debugging-adk-agent-flows",
+      "dev-environments-for-ai-teams",
+      "dont-reinvent-the-agent-open-source-composition",
+      "em-never-goes-down",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-agents-governance-security-business",
+      "enterprise-ai-platform-selection",
+      "experiment-tracking-mlops",
+      "finops-llm-agents-token-economics",
+      "foundations-of-agentic-ai-llms-to-agents",
+      "gemini-knowledge-catalog-workshop",
+      "git-and-github-complete-guide",
+      "google-cloud-certifications-2026-roadmap",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "knowledge-as-a-product",
+      "knowledge-catalog-vs-ontologies",
+      "lookml-semantic-layer-data-modeling",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "mcp-registry-gateway-tool-plane",
+      "migrating-adk-1x-to-2x",
+      "ml-cert-review-part-1-foundations",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "ml-metrics-evaluation-monitoring",
+      "modular-ontologies-core-domains-pattern",
+      "no-free-lunch-theorem",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "operating-agents-eval-observability-scale",
+      "organizational-network-analysis-company-graph",
+      "python-beyond-the-basics",
+      "querying-code-graphs-blast-radius-localization",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "sandboxing-agents-microvm-gvisor",
+      "senior-api-design-contracts-versioning-dx",
+      "senior-data-modeling-query-patterns-database-design",
+      "senior-distributed-theory-cap-pacelc-tradeoffs",
+      "senior-infrastructure-distributed-systems-failure-networking",
+      "senior-product-engineering-scale-prioritization-architecture",
+      "software-engineering-classics",
+      "stack-recommendations-after-100-posts",
+      "structuring-ml-projects",
+      "terraform-infrastructure-as-code"
+    ],
+    "Data Science": [
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "em-never-goes-down",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "network-science-communities-centrality",
+      "organizational-network-analysis-company-graph"
+    ],
+    "Linear Algebra": [
+      "algebraic-number-theory-when-factorization-breaks",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
+      "kernel-trick-representer-theorem",
+      "ml-cert-review-part-1-foundations",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "one-eigendecomposition-four-algorithms",
+      "pagerank-eigenvectors",
+      "penalizing-is-constraining",
+      "the-manifold-hypothesis"
+    ],
+    "Information Retrieval": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "comparing-knowledge-bases-semantic-overlap",
+      "defining-the-knowledge-stack",
+      "document-processing-ocr-layout",
+      "embeddings-geometry-of-meaning",
+      "fine-tuning-embeddings",
+      "gemini-knowledge-catalog-workshop",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "knowledge-graphs-practice",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "pagerank-eigenvectors",
+      "query-routing-agent-decisions",
+      "querying-code-graphs-blast-radius-localization",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks"
+    ],
+    "Evaluation": [
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "ai-poc-enterprise-evaluation",
+      "claude-certified-architect-professional-exam-guide",
+      "claude-certified-associate-exam-guide",
+      "claude-certified-developer-exam-guide",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "debugging-adk-agent-flows",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-ai-platform-selection",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "ml-metrics-evaluation-monitoring",
+      "mteb-embedding-benchmarks",
+      "operating-agents-eval-observability-scale",
+      "query-routing-agent-decisions",
+      "ragas-evaluating-rag",
+      "rlhf-dpo-alignment",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql",
+      "vector-db-benchmarks",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Theory of Computation": [
+      "probably-approximately-correct",
+      "regex-engines-finite-automata"
+    ],
     "Google ADK": [
       "adk-advanced-evolution-of-agent-engineering",
       "adk-graph-workflows-deterministic-orchestration",
@@ -15168,31 +16978,6 @@
       "operating-agents-eval-observability-scale",
       "production-llm-agents-patterns",
       "senior-infrastructure-distributed-systems-failure-networking"
-    ],
-    "Evaluation": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "ai-poc-enterprise-evaluation",
-      "claude-certified-architect-professional-exam-guide",
-      "claude-certified-associate-exam-guide",
-      "claude-certified-developer-exam-guide",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "debugging-adk-agent-flows",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-ai-platform-selection",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "ml-cert-review-part-1-foundations",
-      "ml-metrics-evaluation-monitoring",
-      "mteb-embedding-benchmarks",
-      "operating-agents-eval-observability-scale",
-      "query-routing-agent-decisions",
-      "ragas-evaluating-rag",
-      "rlhf-dpo-alignment",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql",
-      "vector-db-benchmarks"
     ],
     "Production ML": [
       "adk-graph-workflows-deterministic-orchestration",
@@ -15413,75 +17198,6 @@
       "terraform-infrastructure-as-code",
       "vector-databases-indexes-to-vertex-search",
       "vertex-ai-gcp-ml-platform-cli"
-    ],
-    "Best Practices": [
-      "100-posts-knowledge-graph-retrospective",
-      "adk-graph-workflows-deterministic-orchestration",
-      "agent-architecture-and-orchestration",
-      "agent-architectures-productive-patterns",
-      "agent-authentication-oauth-mcp-identity",
-      "agent-engineering-disciplines",
-      "agent-golden-paths-multi-tenancy",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-guardrails-field-guide",
-      "agent-harness-build-fork-adopt-yc-qm",
-      "agent-integration-protocols-mcp-and-a2a",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "agent-platform-control-plane-data-plane",
-      "agent-runtime-sessions-state-topology",
-      "application-data-flow-replicas-backups",
-      "centrality-communities-in-practice",
-      "choosing-a-graph-engine-2026",
-      "claude-certified-architect-professional-exam-guide",
-      "claude-certified-associate-exam-guide",
-      "claude-certified-developer-exam-guide",
-      "dama-dmbok-data-governance",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "debugging-adk-agent-flows",
-      "dev-environments-for-ai-teams",
-      "dont-reinvent-the-agent-open-source-composition",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-agents-governance-security-business",
-      "enterprise-ai-platform-selection",
-      "experiment-tracking-mlops",
-      "finops-llm-agents-token-economics",
-      "foundations-of-agentic-ai-llms-to-agents",
-      "gemini-knowledge-catalog-workshop",
-      "git-and-github-complete-guide",
-      "google-cloud-certifications-2026-roadmap",
-      "gql-standard-cypher-sqlpgq",
-      "graph-analytics-gds-execution-model",
-      "graph-engine-internals-index-free-adjacency",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "knowledge-as-a-product",
-      "knowledge-catalog-vs-ontologies",
-      "lookml-semantic-layer-data-modeling",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "mcp-registry-gateway-tool-plane",
-      "migrating-adk-1x-to-2x",
-      "ml-cert-review-part-1-foundations",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "ml-metrics-evaluation-monitoring",
-      "modular-ontologies-core-domains-pattern",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "operating-agents-eval-observability-scale",
-      "organizational-network-analysis-company-graph",
-      "python-beyond-the-basics",
-      "querying-code-graphs-blast-radius-localization",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "sandboxing-agents-microvm-gvisor",
-      "senior-api-design-contracts-versioning-dx",
-      "senior-data-modeling-query-patterns-database-design",
-      "senior-distributed-theory-cap-pacelc-tradeoffs",
-      "senior-infrastructure-distributed-systems-failure-networking",
-      "senior-product-engineering-scale-prioritization-architecture",
-      "software-engineering-classics",
-      "stack-recommendations-after-100-posts",
-      "structuring-ml-projects",
-      "terraform-infrastructure-as-code"
     ],
     "Deployment": [
       "docker-for-ml-engineers",
@@ -15773,71 +17489,6 @@
       "node-embeddings-fastrp-node2vec-graphsage",
       "spanner-graph-for-knowledge-and-agents"
     ],
-    "Machine Learning": [
-      "cloud-ml-infrastructure",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "elevenlabs-voice-ai-engineering",
-      "experiment-tracking-mlops",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "graph-neural-networks-learning-structured-data",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "ml-cert-review-part-1-foundations",
-      "ml-libraries-under-the-hood",
-      "ml-metrics-evaluation-monitoring",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "pytorch-tensorflow-deep-learning-frameworks",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rlhf-dpo-alignment",
-      "vertex-ai-gcp-ml-platform-cli",
-      "working-with-ml-models"
-    ],
-    "Algorithms": [
-      "100-posts-knowledge-graph-retrospective",
-      "algebraic-number-theory-when-factorization-breaks",
-      "attention-is-all-you-need",
-      "benfords-law",
-      "centrality-communities-in-practice",
-      "collatz-conjecture",
-      "content-addressable-hash-as-engineering-tool",
-      "fermat-n4-infinite-descent",
-      "files-under-the-hood",
-      "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-analytics-gds-execution-model",
-      "graph-engine-internals-index-free-adjacency",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "graph-neural-networks-learning-structured-data",
-      "graph-theory-mathematics-of-connections",
-      "mamba-selective-state-spaces",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "organizational-network-analysis-company-graph",
-      "pagerank-eigenvectors",
-      "querying-code-graphs-blast-radius-localization",
-      "ramanujan-constant-almost-integer",
-      "regex-engines-finite-automata",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete",
-      "the-manifold-hypothesis",
-      "vector-databases-indexes-to-vertex-search"
-    ],
-    "Data Science": [
-      "benfords-law",
-      "centrality-communities-in-practice",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "network-science-communities-centrality",
-      "organizational-network-analysis-company-graph"
-    ],
     "Graph Theory": [
       "100-posts-knowledge-graph-retrospective",
       "centrality-communities-in-practice",
@@ -15850,14 +17501,6 @@
       "organizational-network-analysis-company-graph",
       "pagerank-eigenvectors",
       "querying-code-graphs-blast-radius-localization"
-    ],
-    "Statistics": [
-      "100-posts-knowledge-graph-retrospective",
-      "benfords-law",
-      "centrality-communities-in-practice",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "organizational-network-analysis-company-graph"
     ],
     "Enterprise Data": [
       "dama-dmbok-data-governance",
@@ -15910,41 +17553,6 @@
       "graph-neural-networks-learning-structured-data",
       "multimodal-embeddings-metric-problem",
       "node-embeddings-fastrp-node2vec-graphsage",
-      "the-manifold-hypothesis"
-    ],
-    "Linear Algebra": [
-      "algebraic-number-theory-when-factorization-breaks",
-      "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
-      "fourier-transform",
-      "ml-cert-review-part-1-foundations",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "pagerank-eigenvectors",
-      "the-manifold-hypothesis"
-    ],
-    "Mathematics": [
-      "100-posts-knowledge-graph-retrospective",
-      "algebraic-number-theory-when-factorization-breaks",
-      "benfords-law",
-      "centrality-communities-in-practice",
-      "collatz-conjecture",
-      "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
-      "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-theory-mathematics-of-connections",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "pagerank-eigenvectors",
-      "ramanujan-constant-almost-integer",
-      "regex-engines-finite-automata",
-      "reinforcement-learning-first-principles",
-      "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
-      "scaling-laws-neural-language-models",
-      "shannon-number-chess-game-tree",
-      "sum-of-naturals-minus-one-twelfth",
-      "tetris-np-complete",
       "the-manifold-hypothesis"
     ],
     "Data Engineering": [
@@ -16197,14 +17805,6 @@
       "t5-text-to-text-transfer-transformer",
       "working-with-ml-models"
     ],
-    "Reinforcement Learning": [
-      "hermes-self-improving-agent-persistent-memory",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rlhf-dpo-alignment"
-    ],
     "Tool Use": [
       "adk-advanced-evolution-of-agent-engineering",
       "claude-certified-developer-exam-guide",
@@ -16231,22 +17831,6 @@
     "Responsible AI": [
       "enterprise-agents-governance-security-business",
       "magnifica-humanitas-ai-encyclical-analysis"
-    ],
-    "Research Papers": [
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "mamba-selective-state-spaces",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "rag-retrieval-augmented-generation",
-      "rl-algorithm-taxonomy-tour",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis"
     ],
     "Cost Optimization": [
       "finops-llm-agents-token-economics",
@@ -16329,30 +17913,6 @@
       "dataiku-enterprise-data-ai-ecosystem",
       "enterprise-ai-platform-selection",
       "knowledge-as-a-product"
-    ],
-    "Information Retrieval": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "comparing-knowledge-bases-semantic-overlap",
-      "defining-the-knowledge-stack",
-      "document-processing-ocr-layout",
-      "embeddings-geometry-of-meaning",
-      "fine-tuning-embeddings",
-      "gemini-knowledge-catalog-workshop",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "knowledge-graphs-practice",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "pagerank-eigenvectors",
-      "query-routing-agent-decisions",
-      "querying-code-graphs-blast-radius-localization",
-      "rag-building-production-systems",
-      "rag-retrieval-augmented-generation",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks"
     ],
     "PageRank": [
       "querying-code-graphs-blast-radius-localization"
@@ -16581,19 +18141,7 @@
       "godels-incompleteness-theorems",
       "regex-engines-finite-automata"
     ],
-    "Foundations of Mathematics": [
-      "algebraic-number-theory-when-factorization-breaks",
-      "fermat-n4-infinite-descent",
-      "godels-incompleteness-theorems",
-      "graph-theory-mathematics-of-connections",
-      "ramanujan-constant-almost-integer",
-      "regex-engines-finite-automata",
-      "sum-of-naturals-minus-one-twelfth"
-    ],
     "Regular Expressions": [
-      "regex-engines-finite-automata"
-    ],
-    "Theory of Computation": [
       "regex-engines-finite-automata"
     ],
     "Data Mesh": [
@@ -16614,65 +18162,6 @@
       "git-and-github-complete-guide",
       "kubernetes-minimum-subset-ml",
       "terraform-infrastructure-as-code"
-    ],
-    "Deep Learning": [
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "computational-resources-ml",
-      "document-processing-ocr-layout",
-      "elevenlabs-voice-ai-engineering",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "experiment-tracking-mlops",
-      "fine-tuning-embeddings",
-      "fine-tuning-gemma4-lora-qlora",
-      "fourier-transform",
-      "graph-neural-networks-learning-structured-data",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "mamba-selective-state-spaces",
-      "microgpt-reading-karpathy",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "ml-libraries-under-the-hood",
-      "ml-metrics-evaluation-monitoring",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "pytorch-tensorflow-deep-learning-frameworks",
-      "rag-retrieval-augmented-generation",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rlhf-dpo-alignment",
-      "scaling-laws-neural-language-models",
-      "sum-of-naturals-minus-one-twelfth",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis",
-      "vertex-ai-gcp-ml-platform-cli",
-      "working-with-ml-models"
-    ],
-    "Neural Network Theory": [
-      "attention-is-all-you-need",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "fourier-transform",
-      "graph-neural-networks-learning-structured-data",
-      "mamba-selective-state-spaces",
-      "microgpt-reading-karpathy",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "reinforcement-learning-first-principles",
-      "rl-algorithm-taxonomy-tour",
-      "scaling-laws-neural-language-models",
-      "sum-of-naturals-minus-one-twelfth",
-      "the-manifold-hypothesis"
-    ],
-    "Optimization": [
-      "ml-cert-review-part-1-foundations",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete"
     ],
     "PyTorch": [
       "computational-resources-ml",
@@ -16776,11 +18265,6 @@
     "Business Intelligence": [
       "lookml-semantic-layer-data-modeling",
       "mcp-server-nl-to-powerbi-dashboard"
-    ],
-    "Probability": [
-      "benfords-law",
-      "network-science-communities-centrality",
-      "pagerank-eigenvectors"
     ],
     "Topology": [
       "algebraic-number-theory-when-factorization-breaks",
@@ -17209,6 +18693,33 @@
     ]
   },
   "category_index": {
+    "research": [
+      "attention-is-all-you-need",
+      "bellman-operator-is-a-contraction",
+      "bert-pre-training-bidirectional-transformers",
+      "em-never-goes-down",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "kernel-trick-representer-theorem",
+      "llm-as-a-judge",
+      "loss-functions-are-probability-assumptions",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "mamba-selective-state-spaces",
+      "markov-to-hoeffding-concentration-inequalities",
+      "microgpt-reading-karpathy",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "rag-retrieval-augmented-generation",
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
     "field-notes": [
       "adk-advanced-evolution-of-agent-engineering",
       "adk-graph-workflows-deterministic-orchestration",
@@ -17347,21 +18858,6 @@
       "vector-db-benchmarks",
       "vertex-ai-gcp-ml-platform-cli",
       "working-with-ml-models"
-    ],
-    "research": [
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "llm-as-a-judge",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "mamba-selective-state-spaces",
-      "microgpt-reading-karpathy",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "rag-retrieval-augmented-generation",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis"
     ],
     "curiosities": [
       "100-posts-knowledge-graph-retrospective",
@@ -17693,6 +19189,26 @@
         "to": "operating-agents-eval-observability-scale"
       },
       {
+        "from": "loss-functions-are-probability-assumptions",
+        "to": "em-never-goes-down"
+      },
+      {
+        "from": "loss-functions-are-probability-assumptions",
+        "to": "what-are-we-minimizing-erm-bias-variance"
+      },
+      {
+        "from": "markov-to-hoeffding-concentration-inequalities",
+        "to": "bellman-operator-is-a-contraction"
+      },
+      {
+        "from": "markov-to-hoeffding-concentration-inequalities",
+        "to": "one-eigendecomposition-four-algorithms"
+      },
+      {
+        "from": "markov-to-hoeffding-concentration-inequalities",
+        "to": "probably-approximately-correct"
+      },
+      {
         "from": "mcp-production-enterprise",
         "to": "agent-integration-protocols-mcp-and-a2a"
       },
@@ -17773,8 +19289,16 @@
         "to": "organizational-network-analysis-company-graph"
       },
       {
+        "from": "no-free-lunch-theorem",
+        "to": "penalizing-is-constraining"
+      },
+      {
         "from": "node-embeddings-fastrp-node2vec-graphsage",
         "to": "graph-fraud-detection-rings-synthetic-identity"
+      },
+      {
+        "from": "one-eigendecomposition-four-algorithms",
+        "to": "em-never-goes-down"
       },
       {
         "from": "ontologies-building-knowledge-bases",
@@ -17811,6 +19335,22 @@
       {
         "from": "pagerank-eigenvectors",
         "to": "querying-code-graphs-blast-radius-localization"
+      },
+      {
+        "from": "penalizing-is-constraining",
+        "to": "kernel-trick-representer-theorem"
+      },
+      {
+        "from": "penalizing-is-constraining",
+        "to": "weak-learnability-equals-strong"
+      },
+      {
+        "from": "probably-approximately-correct",
+        "to": "vc-dimension-sauer-shelah"
+      },
+      {
+        "from": "probably-approximately-correct",
+        "to": "weak-learnability-equals-strong"
       },
       {
         "from": "production-graph-stack-agents-mcp-ontologies",
@@ -17873,6 +19413,10 @@
         "to": "operating-agents-eval-observability-scale"
       },
       {
+        "from": "reinforcement-learning-first-principles",
+        "to": "bellman-operator-is-a-contraction"
+      },
+      {
         "from": "repo-to-graph-ast-vs-llm-extraction",
         "to": "querying-code-graphs-blast-radius-localization"
       },
@@ -17907,6 +19451,22 @@
       {
         "from": "tbox-abox-schema-facts-distinction",
         "to": "modular-ontologies-core-domains-pattern"
+      },
+      {
+        "from": "vc-dimension-sauer-shelah",
+        "to": "kernel-trick-representer-theorem"
+      },
+      {
+        "from": "vc-dimension-sauer-shelah",
+        "to": "no-free-lunch-theorem"
+      },
+      {
+        "from": "what-are-we-minimizing-erm-bias-variance",
+        "to": "markov-to-hoeffding-concentration-inequalities"
+      },
+      {
+        "from": "what-are-we-minimizing-erm-bias-variance",
+        "to": "penalizing-is-constraining"
       }
     ]
   }
