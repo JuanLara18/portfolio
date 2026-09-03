@@ -1,0 +1,13 @@
+{
+  "slug": "one-eigendecomposition-four-algorithms",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "dd0c6d4bc3c48a64311382014b6d4fafe4af48eeeaf6d87d740c5cf401dc6dcc",
+  "sourceHash": "27d05084cf8c728d12fe84c265123368584411e0ae737226bb5c308218e1d287",
+  "durationSec": 1221.672,
+  "byteSize": 7330032,
+  "narrationWordCount": 3295,
+  "audioUrl": "/blog/audio-es/research/one-eigendecomposition-four-algorithms.mp3",
+  "translationModel": "aya-expanse:8b"
+}

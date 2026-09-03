@@ -1,0 +1,13 @@
+{
+  "slug": "vc-dimension-sauer-shelah",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "d99698b520bfb0b86aeeee1319946b7cfe190f33f38eacec58712b535cf2fc57",
+  "sourceHash": "abe5ebb2d63683a6a3fe37afc62a6808a241da428bf13091a7797975e1dbe1e8",
+  "durationSec": 1630.632,
+  "byteSize": 9783792,
+  "narrationWordCount": 4412,
+  "audioUrl": "/blog/audio-es/research/vc-dimension-sauer-shelah.mp3",
+  "translationModel": "aya-expanse:8b"
+}

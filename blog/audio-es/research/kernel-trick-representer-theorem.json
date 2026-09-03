@@ -1,0 +1,13 @@
+{
+  "slug": "kernel-trick-representer-theorem",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "c661cd89a4850fa8009895aef258d573c6a598719ba4b18ad703603c98f93ae4",
+  "sourceHash": "658dce30b8dc3d5116e2d6fb7693a3be733b16b59d9d83ab72abdbb4df7f289f",
+  "durationSec": 1653.12,
+  "byteSize": 9918720,
+  "narrationWordCount": 4401,
+  "audioUrl": "/blog/audio-es/research/kernel-trick-representer-theorem.mp3",
+  "translationModel": "aya-expanse:8b"
+}
