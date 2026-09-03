@@ -1,0 +1,13 @@
+{
+  "slug": "loss-functions-are-probability-assumptions",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "425de60ec19b0abc637212d6bef83a815eb896da669263d20e997b2b52e2bef4",
+  "sourceHash": "557402960ff151142a6410827f732fa5ca790aa484e96533aa81d24b69709ce7",
+  "durationSec": 1509.456,
+  "byteSize": 9056736,
+  "narrationWordCount": 3940,
+  "audioUrl": "/blog/audio-es/research/loss-functions-are-probability-assumptions.mp3",
+  "translationModel": "aya-expanse:8b"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "em-never-goes-down",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "d2956814a8445440540b3ba00cb16f63e64640323e94b24cd8e7c228c9de85b7",
+  "sourceHash": "48c30289d939260c8879449dbc6a7d9e1fa5eecf3ada9e1132b36f9f6a76304e",
+  "durationSec": 1114.848,
+  "byteSize": 6689088,
+  "narrationWordCount": 2969,
+  "audioUrl": "/blog/audio-es/research/em-never-goes-down.mp3",
+  "translationModel": "aya-expanse:8b"
+}

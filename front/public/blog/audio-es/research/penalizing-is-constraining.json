@@ -1,0 +1,13 @@
+{
+  "slug": "penalizing-is-constraining",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "0b95bd8d16ef58add35fd62e3993c433cf71afe3eb4036793fefe674442b6da8",
+  "sourceHash": "b0957e3547e7f0e758f301f3fb3b50362d48178c89d2de8c42307c0da17f3495",
+  "durationSec": 1549.776,
+  "byteSize": 9298656,
+  "narrationWordCount": 4198,
+  "audioUrl": "/blog/audio-es/research/penalizing-is-constraining.mp3",
+  "translationModel": "aya-expanse:8b"
+}

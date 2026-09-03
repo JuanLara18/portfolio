@@ -1,0 +1,13 @@
+{
+  "slug": "markov-to-hoeffding-concentration-inequalities",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "ad2036e2c9921f1b311b08ef1772b2d51b50d4a7c5f7a7cad1536dc62369de74",
+  "sourceHash": "ed34d95cda0486b4548c46297515455d590bfe8e4db736ba9ae441eafc102ae0",
+  "durationSec": 1540.176,
+  "byteSize": 9241056,
+  "narrationWordCount": 4197,
+  "audioUrl": "/blog/audio-es/research/markov-to-hoeffding-concentration-inequalities.mp3",
+  "translationModel": "aya-expanse:8b"
+}

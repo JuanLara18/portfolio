@@ -1,0 +1,13 @@
+{
+  "slug": "weak-learnability-equals-strong",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "5e049164e045abfc143ea47c394ec19735f0633c4ce86eaaaa4cea54d1b20c10",
+  "sourceHash": "5736df8e45ce8c4112b41ab8c183f2111bc1dfa44f556364231a33fa013de2b4",
+  "durationSec": 1398.024,
+  "byteSize": 8388144,
+  "narrationWordCount": 3670,
+  "audioUrl": "/blog/audio-es/research/weak-learnability-equals-strong.mp3",
+  "translationModel": "aya-expanse:8b"
+}

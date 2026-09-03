@@ -1,0 +1,13 @@
+{
+  "slug": "what-are-we-minimizing-erm-bias-variance",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "732327ec4bd79c2efb33da5f5b446880e3751bcb672ae5c6fd17c4c99ef8bc1c",
+  "sourceHash": "06393583da8bf44ae1a474200a99a855f7a89ed6b2a359df9011f2fae71b9834",
+  "durationSec": 1546.56,
+  "byteSize": 9279360,
+  "narrationWordCount": 4302,
+  "audioUrl": "/blog/audio-es/research/what-are-we-minimizing-erm-bias-variance.mp3",
+  "translationModel": "aya-expanse:8b"
+}

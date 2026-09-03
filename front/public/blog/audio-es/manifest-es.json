@@ -1,7 +1,7 @@
 {
   "lang": "es",
   "voice": "es-CO-GonzaloNeural",
-  "generatedAt": 1788298034,
+  "generatedAt": 1788407124,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -2005,6 +2005,19 @@
       "audioUrl": "/blog/audio-es/research/attention-is-all-you-need.mp3",
       "translationModel": "gemma4:latest"
     },
+    "research/bellman-operator-is-a-contraction": {
+      "slug": "bellman-operator-is-a-contraction",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "8bafddd98660f035d2889e93219cb45a546f03d9e5e71d23ac336940334c77b9",
+      "sourceHash": "e7c570778c72033492a988fc6b7c8b3b24cad18b4597592d8130dee854c5af62",
+      "durationSec": 1357.512,
+      "byteSize": 8145072,
+      "narrationWordCount": 3725,
+      "audioUrl": "/blog/audio-es/research/bellman-operator-is-a-contraction.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "research/bert-pre-training-bidirectional-transformers": {
       "slug": "bert-pre-training-bidirectional-transformers",
       "category": "research",
@@ -2017,6 +2030,19 @@
       "narrationWordCount": 5176,
       "audioUrl": "/blog/audio-es/research/bert-pre-training-bidirectional-transformers.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "research/em-never-goes-down": {
+      "slug": "em-never-goes-down",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "d2956814a8445440540b3ba00cb16f63e64640323e94b24cd8e7c228c9de85b7",
+      "sourceHash": "48c30289d939260c8879449dbc6a7d9e1fa5eecf3ada9e1132b36f9f6a76304e",
+      "durationSec": 1114.848,
+      "byteSize": 6689088,
+      "narrationWordCount": 2969,
+      "audioUrl": "/blog/audio-es/research/em-never-goes-down.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "research/embeddings-geometry-of-meaning": {
       "slug": "embeddings-geometry-of-meaning",
@@ -2044,6 +2070,19 @@
       "audioUrl": "/blog/audio-es/research/emotion-concepts-in-llms.mp3",
       "translationModel": "gemma4:latest"
     },
+    "research/kernel-trick-representer-theorem": {
+      "slug": "kernel-trick-representer-theorem",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "c661cd89a4850fa8009895aef258d573c6a598719ba4b18ad703603c98f93ae4",
+      "sourceHash": "658dce30b8dc3d5116e2d6fb7693a3be733b16b59d9d83ab72abdbb4df7f289f",
+      "durationSec": 1653.12,
+      "byteSize": 9918720,
+      "narrationWordCount": 4401,
+      "audioUrl": "/blog/audio-es/research/kernel-trick-representer-theorem.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "research/llm-as-a-judge": {
       "slug": "llm-as-a-judge",
       "category": "research",
@@ -2056,6 +2095,19 @@
       "narrationWordCount": 3956,
       "audioUrl": "/blog/audio-es/research/llm-as-a-judge.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "research/loss-functions-are-probability-assumptions": {
+      "slug": "loss-functions-are-probability-assumptions",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "425de60ec19b0abc637212d6bef83a815eb896da669263d20e997b2b52e2bef4",
+      "sourceHash": "557402960ff151142a6410827f732fa5ca790aa484e96533aa81d24b69709ce7",
+      "durationSec": 1509.456,
+      "byteSize": 9056736,
+      "narrationWordCount": 3940,
+      "audioUrl": "/blog/audio-es/research/loss-functions-are-probability-assumptions.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "research/magnifica-humanitas-ai-encyclical-analysis": {
       "slug": "magnifica-humanitas-ai-encyclical-analysis",
@@ -2083,6 +2135,19 @@
       "audioUrl": "/blog/audio-es/research/mamba-selective-state-spaces.mp3",
       "translationModel": "gemma4:latest"
     },
+    "research/markov-to-hoeffding-concentration-inequalities": {
+      "slug": "markov-to-hoeffding-concentration-inequalities",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "ad2036e2c9921f1b311b08ef1772b2d51b50d4a7c5f7a7cad1536dc62369de74",
+      "sourceHash": "ed34d95cda0486b4548c46297515455d590bfe8e4db736ba9ae441eafc102ae0",
+      "durationSec": 1540.176,
+      "byteSize": 9241056,
+      "narrationWordCount": 4197,
+      "audioUrl": "/blog/audio-es/research/markov-to-hoeffding-concentration-inequalities.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "research/microgpt-reading-karpathy": {
       "slug": "microgpt-reading-karpathy",
       "category": "research",
@@ -2096,6 +2161,32 @@
       "audioUrl": "/blog/audio-es/research/microgpt-reading-karpathy.mp3",
       "translationModel": "gemma4:latest"
     },
+    "research/no-free-lunch-theorem": {
+      "slug": "no-free-lunch-theorem",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "f42819fe6cd0cb4665924182c38af45dde6ab9ccec34d797b37d264f88cf58a1",
+      "sourceHash": "47a178f3870e12cf5a9bf274973476ba027cc59b6ddd31f7288fbf1bd1457e86",
+      "durationSec": 1571.352,
+      "byteSize": 9428112,
+      "narrationWordCount": 4242,
+      "audioUrl": "/blog/audio-es/research/no-free-lunch-theorem.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "research/one-eigendecomposition-four-algorithms": {
+      "slug": "one-eigendecomposition-four-algorithms",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "dd0c6d4bc3c48a64311382014b6d4fafe4af48eeeaf6d87d740c5cf401dc6dcc",
+      "sourceHash": "27d05084cf8c728d12fe84c265123368584411e0ae737226bb5c308218e1d287",
+      "durationSec": 1221.672,
+      "byteSize": 7330032,
+      "narrationWordCount": 3295,
+      "audioUrl": "/blog/audio-es/research/one-eigendecomposition-four-algorithms.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
     "research/ontology-grounded-rag-chunks-in-nodes": {
       "slug": "ontology-grounded-rag-chunks-in-nodes",
       "category": "research",
@@ -2108,6 +2199,32 @@
       "narrationWordCount": 5861,
       "audioUrl": "/blog/audio-es/research/ontology-grounded-rag-chunks-in-nodes.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "research/penalizing-is-constraining": {
+      "slug": "penalizing-is-constraining",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "0b95bd8d16ef58add35fd62e3993c433cf71afe3eb4036793fefe674442b6da8",
+      "sourceHash": "b0957e3547e7f0e758f301f3fb3b50362d48178c89d2de8c42307c0da17f3495",
+      "durationSec": 1549.776,
+      "byteSize": 9298656,
+      "narrationWordCount": 4198,
+      "audioUrl": "/blog/audio-es/research/penalizing-is-constraining.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "research/probably-approximately-correct": {
+      "slug": "probably-approximately-correct",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "c889d5f01397fa266f19cce73df1435589b28a18026d8fb15ffcd874322a1cbc",
+      "sourceHash": "0d64a7148c26d03ec40f3e8abe4d5fd64945a025940936787ff88a966c377e2e",
+      "durationSec": 1484.184,
+      "byteSize": 8905104,
+      "narrationWordCount": 4121,
+      "audioUrl": "/blog/audio-es/research/probably-approximately-correct.mp3",
+      "translationModel": "aya-expanse:8b"
     },
     "research/rag-retrieval-augmented-generation": {
       "slug": "rag-retrieval-augmented-generation",
@@ -2160,6 +2277,45 @@
       "narrationWordCount": 3862,
       "audioUrl": "/blog/audio-es/research/the-manifold-hypothesis.mp3",
       "translationModel": "gemma4:latest"
+    },
+    "research/vc-dimension-sauer-shelah": {
+      "slug": "vc-dimension-sauer-shelah",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "d99698b520bfb0b86aeeee1319946b7cfe190f33f38eacec58712b535cf2fc57",
+      "sourceHash": "abe5ebb2d63683a6a3fe37afc62a6808a241da428bf13091a7797975e1dbe1e8",
+      "durationSec": 1630.632,
+      "byteSize": 9783792,
+      "narrationWordCount": 4412,
+      "audioUrl": "/blog/audio-es/research/vc-dimension-sauer-shelah.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "research/weak-learnability-equals-strong": {
+      "slug": "weak-learnability-equals-strong",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "5e049164e045abfc143ea47c394ec19735f0633c4ce86eaaaa4cea54d1b20c10",
+      "sourceHash": "5736df8e45ce8c4112b41ab8c183f2111bc1dfa44f556364231a33fa013de2b4",
+      "durationSec": 1398.024,
+      "byteSize": 8388144,
+      "narrationWordCount": 3670,
+      "audioUrl": "/blog/audio-es/research/weak-learnability-equals-strong.mp3",
+      "translationModel": "aya-expanse:8b"
+    },
+    "research/what-are-we-minimizing-erm-bias-variance": {
+      "slug": "what-are-we-minimizing-erm-bias-variance",
+      "category": "research",
+      "lang": "es",
+      "voice": "es-CO-GonzaloNeural",
+      "hash": "732327ec4bd79c2efb33da5f5b446880e3751bcb672ae5c6fd17c4c99ef8bc1c",
+      "sourceHash": "06393583da8bf44ae1a474200a99a855f7a89ed6b2a359df9011f2fae71b9834",
+      "durationSec": 1546.56,
+      "byteSize": 9279360,
+      "narrationWordCount": 4302,
+      "audioUrl": "/blog/audio-es/research/what-are-we-minimizing-erm-bias-variance.mp3",
+      "translationModel": "aya-expanse:8b"
     }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "slug": "bellman-operator-is-a-contraction",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "8bafddd98660f035d2889e93219cb45a546f03d9e5e71d23ac336940334c77b9",
+  "sourceHash": "e7c570778c72033492a988fc6b7c8b3b24cad18b4597592d8130dee854c5af62",
+  "durationSec": 1357.512,
+  "byteSize": 8145072,
+  "narrationWordCount": 3725,
+  "audioUrl": "/blog/audio-es/research/bellman-operator-is-a-contraction.mp3",
+  "translationModel": "aya-expanse:8b"
+}

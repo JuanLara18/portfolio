@@ -1,0 +1,13 @@
+{
+  "slug": "probably-approximately-correct",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "c889d5f01397fa266f19cce73df1435589b28a18026d8fb15ffcd874322a1cbc",
+  "sourceHash": "0d64a7148c26d03ec40f3e8abe4d5fd64945a025940936787ff88a966c377e2e",
+  "durationSec": 1484.184,
+  "byteSize": 8905104,
+  "narrationWordCount": 4121,
+  "audioUrl": "/blog/audio-es/research/probably-approximately-correct.mp3",
+  "translationModel": "aya-expanse:8b"
+}
