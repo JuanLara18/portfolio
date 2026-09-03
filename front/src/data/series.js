@@ -348,6 +348,31 @@ export const SERIES = [
 
   // ── Mathematical Curiosities ──────────────────────────────────────────
   {
+    id: 'why-learning-works',
+    title: 'Why Learning Works: The Theorems Behind Machine Learning',
+    description:
+      'The proofs under the practice, in order: where the loss function comes from, what ' +
+      'you are actually minimizing, the concentration inequalities every generalization ' +
+      'bound is built from, PAC learning and VC dimension, why no model escapes its own ' +
+      'assumptions, and the theorems behind regularization, kernels, boosting, spectral ' +
+      'methods, EM and the Bellman operator.',
+    posts: [
+      'loss-functions-are-probability-assumptions',
+      'what-are-we-minimizing-erm-bias-variance',
+      'markov-to-hoeffding-concentration-inequalities',
+      'probably-approximately-correct',
+      'vc-dimension-sauer-shelah',
+      'no-free-lunch-theorem',
+      'penalizing-is-constraining',
+      'kernel-trick-representer-theorem',
+      'weak-learnability-equals-strong',
+      'one-eigendecomposition-four-algorithms',
+      'em-never-goes-down',
+      'bellman-operator-is-a-contraction',
+    ],
+  },
+
+  {
     id: 'algebraic-number-theory',
     title: 'When Factorization Breaks: An Algebraic Number Theory Thread',
     description:
