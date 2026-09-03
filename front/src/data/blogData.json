@@ -29,6 +29,12 @@
           "durationSec": 1352.64,
           "byteSize": 8115840,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/bellman-operator-is-a-contraction.mp3",
+          "durationSec": 1357.512,
+          "byteSize": 8145072,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -61,6 +67,12 @@
           "durationSec": 1140.792,
           "byteSize": 6844752,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/em-never-goes-down.mp3",
+          "durationSec": 1114.848,
+          "byteSize": 6689088,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -92,6 +104,12 @@
           "durationSec": 1292.688,
           "byteSize": 7756128,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/one-eigendecomposition-four-algorithms.mp3",
+          "durationSec": 1221.672,
+          "byteSize": 7330032,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -123,6 +141,12 @@
           "durationSec": 1442.784,
           "byteSize": 8656704,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/weak-learnability-equals-strong.mp3",
+          "durationSec": 1398.024,
+          "byteSize": 8388144,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -154,6 +178,12 @@
           "durationSec": 1649.568,
           "byteSize": 9897408,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/kernel-trick-representer-theorem.mp3",
+          "durationSec": 1653.12,
+          "byteSize": 9918720,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -186,6 +216,12 @@
           "durationSec": 1548.624,
           "byteSize": 9291744,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/penalizing-is-constraining.mp3",
+          "durationSec": 1549.776,
+          "byteSize": 9298656,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -218,6 +254,12 @@
           "durationSec": 1620.744,
           "byteSize": 9724464,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/no-free-lunch-theorem.mp3",
+          "durationSec": 1571.352,
+          "byteSize": 9428112,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -249,6 +291,12 @@
           "durationSec": 1658.088,
           "byteSize": 9948528,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/vc-dimension-sauer-shelah.mp3",
+          "durationSec": 1630.632,
+          "byteSize": 9783792,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -280,6 +328,12 @@
           "durationSec": 1544.064,
           "byteSize": 9264384,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/probably-approximately-correct.mp3",
+          "durationSec": 1484.184,
+          "byteSize": 8905104,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -311,6 +365,12 @@
           "durationSec": 1559.76,
           "byteSize": 9358560,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/markov-to-hoeffding-concentration-inequalities.mp3",
+          "durationSec": 1540.176,
+          "byteSize": 9241056,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -343,6 +403,12 @@
           "durationSec": 1579.8,
           "byteSize": 9478800,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/what-are-we-minimizing-erm-bias-variance.mp3",
+          "durationSec": 1546.56,
+          "byteSize": 9279360,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -375,6 +441,12 @@
           "durationSec": 1579.032,
           "byteSize": 9474192,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/loss-functions-are-probability-assumptions.mp3",
+          "durationSec": 1509.456,
+          "byteSize": 9056736,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -6686,6 +6758,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-09-03T01:14:25.393Z",
+  "lastUpdated": "2026-09-03T03:48:20.924Z",
   "totalPosts": 178
 }
