@@ -177,6 +177,21 @@ The Agent Development Kit end to end, from the mental model to the 2.x graph run
 5. adk-advanced-evolution-of-agent-engineering
 6. enterprise-agent-memory-continuity-adk-geap
 
+### Why Learning Works (twelve-part series)
+The proofs under the practice. Where the loss function comes from, what you are actually minimizing, the concentration inequalities every generalization bound is built from, PAC learning and VC dimension, why no model escapes its own assumptions, and the theorems behind regularization, kernels, boosting, spectral methods, EM and the Bellman operator. Proof-heavy: theorems are stated formally and proved, or the gap is named.
+1. loss-functions-are-probability-assumptions
+2. what-are-we-minimizing-erm-bias-variance
+3. markov-to-hoeffding-concentration-inequalities
+4. probably-approximately-correct
+5. vc-dimension-sauer-shelah
+6. no-free-lunch-theorem
+7. penalizing-is-constraining
+8. kernel-trick-representer-theorem
+9. weak-learnability-equals-strong
+10. one-eigendecomposition-four-algorithms
+11. em-never-goes-down
+12. bellman-operator-is-a-contraction
+
 ### Senior Engineering Judgment in the AI Era (five-part series)
 What stays scarce when an AI can generate the code: infrastructure, data modeling, API contracts, distributed-systems theory, and product judgment.
 1. senior-infrastructure-distributed-systems-failure-networking
