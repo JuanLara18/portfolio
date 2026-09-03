@@ -1,0 +1,13 @@
+{
+  "slug": "em-never-goes-down",
+  "category": "research",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "48c30289d939260c8879449dbc6a7d9e1fa5eecf3ada9e1132b36f9f6a76304e",
+  "sourceHash": "48c30289d939260c8879449dbc6a7d9e1fa5eecf3ada9e1132b36f9f6a76304e",
+  "durationSec": 1140.792,
+  "byteSize": 6844752,
+  "narrationWordCount": 2762,
+  "audioUrl": "/blog/audio/research/em-never-goes-down.mp3",
+  "translationModel": ""
+}

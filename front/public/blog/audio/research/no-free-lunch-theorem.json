@@ -1,0 +1,13 @@
+{
+  "slug": "no-free-lunch-theorem",
+  "category": "research",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "47a178f3870e12cf5a9bf274973476ba027cc59b6ddd31f7288fbf1bd1457e86",
+  "sourceHash": "47a178f3870e12cf5a9bf274973476ba027cc59b6ddd31f7288fbf1bd1457e86",
+  "durationSec": 1620.744,
+  "byteSize": 9724464,
+  "narrationWordCount": 3896,
+  "audioUrl": "/blog/audio/research/no-free-lunch-theorem.mp3",
+  "translationModel": ""
+}
