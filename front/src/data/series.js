@@ -369,6 +369,9 @@ export const SERIES = [
       'one-eigendecomposition-four-algorithms',
       'em-never-goes-down',
       'bellman-operator-is-a-contraction',
+      'universal-approximation-and-what-it-does-not-give-you',
+      'backprop-is-reverse-mode-differentiation',
+      'double-descent',
     ],
   },
 
