@@ -116,3 +116,6 @@ Photographic headers used in blog posts. Sources credited below per license term
 - `quartz-crystal-header.jpg` — Synthetic quartz crystals, photo by Didier Descouens, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Quartz_synthese.jpg) (CC BY-SA 4.0)
 - `canal-staircase-lock-header.jpg` — Upper lock at Northgate Staircase Lock, Chester Canal, photo by Chris Allen, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Upper_lock_at_Northgate_Staircase_Lock_Chester_Canal_-_geograph.org.uk_-_2800887.jpg) (CC BY-SA 2.0)
 - `matryoshka-dolls-header.jpg` — Matryoshka dolls, photo by Lapot, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Matryoshka_from_Hungary.jpg) (CC0)
+- `piano-keyboard-header.jpg` — Jeppe Tuxen at the Oslo Jazz Festival, photo by Tore Saetre, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Jeppe_Tuxen_Oslo_Jazzfestival_2023_%28213309%29.jpg) (CC BY-SA 4.0)
+- `crane-gear-train-header.jpg` — Crane gear train, photo by Chris Allen, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Crane_Gear_Train_-_geograph.org.uk_-_3494264.jpg) (CC BY-SA 2.0)
+- `mountain-pass-road-header.jpg` — Pass Gschuett mountain road, photo by F. K. Mohr, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:957-Pass_Gsch%C3%BCtt.jpg) (CC BY-SA 3.0 DE)
