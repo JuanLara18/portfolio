@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1788397875,
+  "generatedAt": 1788536932,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -2005,6 +2005,19 @@
       "audioUrl": "/blog/audio/research/attention-is-all-you-need.mp3",
       "translationModel": ""
     },
+    "research/backprop-is-reverse-mode-differentiation": {
+      "slug": "backprop-is-reverse-mode-differentiation",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "aec48b71a054f732585502b424533a657fa2d0d6e2b71de9faa332122a31c379",
+      "sourceHash": "aec48b71a054f732585502b424533a657fa2d0d6e2b71de9faa332122a31c379",
+      "durationSec": 1443.144,
+      "byteSize": 8658864,
+      "narrationWordCount": 3617,
+      "audioUrl": "/blog/audio/research/backprop-is-reverse-mode-differentiation.mp3",
+      "translationModel": ""
+    },
     "research/bellman-operator-is-a-contraction": {
       "slug": "bellman-operator-is-a-contraction",
       "category": "research",
@@ -2029,6 +2042,19 @@
       "byteSize": 12481488,
       "narrationWordCount": 4473,
       "audioUrl": "/blog/audio/research/bert-pre-training-bidirectional-transformers.mp3",
+      "translationModel": ""
+    },
+    "research/double-descent": {
+      "slug": "double-descent",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "a381dfa4ef13c6c1ecf1628e02a05fa3be1d41f32439893bde8a17e32539daa3",
+      "sourceHash": "a381dfa4ef13c6c1ecf1628e02a05fa3be1d41f32439893bde8a17e32539daa3",
+      "durationSec": 1464.408,
+      "byteSize": 8786448,
+      "narrationWordCount": 3615,
+      "audioUrl": "/blog/audio/research/double-descent.mp3",
       "translationModel": ""
     },
     "research/em-never-goes-down": {
@@ -2276,6 +2302,19 @@
       "byteSize": 9373968,
       "narrationWordCount": 3417,
       "audioUrl": "/blog/audio/research/the-manifold-hypothesis.mp3",
+      "translationModel": ""
+    },
+    "research/universal-approximation-and-what-it-does-not-give-you": {
+      "slug": "universal-approximation-and-what-it-does-not-give-you",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "076d868d426783a12fe4085c836b7255cb265f4e8cfa3e2c06adac28bc665b85",
+      "sourceHash": "076d868d426783a12fe4085c836b7255cb265f4e8cfa3e2c06adac28bc665b85",
+      "durationSec": 1472.112,
+      "byteSize": 8832672,
+      "narrationWordCount": 3591,
+      "audioUrl": "/blog/audio/research/universal-approximation-and-what-it-does-not-give-you.mp3",
       "translationModel": ""
     },
     "research/vc-dimension-sauer-shelah": {
