@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-09-04T15:29:13.933Z",
+  "generated_at": "2026-09-04T16:47:05.269Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -68,7 +68,10 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": true
     },
     "backprop-is-reverse-mode-differentiation": {
@@ -120,7 +123,10 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": true
     },
     "universal-approximation-and-what-it-does-not-give-you": {
@@ -168,7 +174,10 @@
         "numpy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": true
     },
     "bellman-operator-is-a-contraction": {
