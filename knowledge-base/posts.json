@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-09-03T19:58:36.638Z",
+  "generated_at": "2026-09-04T15:29:13.933Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,18 +8,169 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 178,
-    "augmented_posts": 78,
+    "total_posts": 181,
+    "augmented_posts": 81,
     "by_category": {
-      "research": 25,
+      "research": 28,
       "field-notes": 137,
       "curiosities": 16
     },
-    "concepts_indexed": 747,
+    "concepts_indexed": 776,
     "tech_indexed": 88,
-    "prereq_edges": 147
+    "prereq_edges": 154
   },
   "posts": {
+    "double-descent": {
+      "title": "Double Descent: Where the Classical Theory Runs Out",
+      "date": "2029-03-01",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Deep Learning",
+        "Neural Network Theory",
+        "Statistics",
+        "Research Papers",
+        "Optimization",
+        "Evaluation",
+        "Algorithms"
+      ],
+      "excerpt": "Two theorems proved earlier in this series predict that a model with far more parameters than data cannot generalize. Those models are the state of the art. This post locates exactly which step of the reasoning fails, proves the implicit-bias result that replaces it, measures the double descent curve in numpy, and ends where the theory actually ends: on an open problem.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/double-descent",
+      "source_path": "front/public/blog/posts/research/double-descent.md",
+      "reading_minutes": 27,
+      "word_count": 4706,
+      "concepts": [
+        "double descent",
+        "interpolation threshold",
+        "benign overfitting",
+        "implicit regularization",
+        "minimum-norm interpolant",
+        "random labels",
+        "neural tangent kernel",
+        "norm-based bounds",
+        "margin bounds",
+        "vacuous bounds"
+      ],
+      "prereqs": [
+        "what-are-we-minimizing-erm-bias-variance",
+        "vc-dimension-sauer-shelah",
+        "penalizing-is-constraining"
+      ],
+      "teaches": [
+        "explaining why fitting random labels makes data-independent bounds vacuous",
+        "describing the double descent curve and locating the interpolation threshold",
+        "proving that gradient descent from zero finds the minimum-norm interpolant in the linear case",
+        "naming what replaces classical capacity bounds"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "backprop-is-reverse-mode-differentiation": {
+      "title": "Backprop Is Reverse-Mode Differentiation",
+      "date": "2029-02-22",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Deep Learning",
+        "Neural Network Theory",
+        "Algorithms",
+        "Optimization",
+        "Research Papers",
+        "Linear Algebra",
+        "Computational Complexity"
+      ],
+      "excerpt": "Backpropagation is not a neural-network trick. It is reverse-mode automatic differentiation on a computational graph, and the reason it is the only viable choice is a complexity theorem from 1983 that predates its fame in machine learning. This post derives the delta recursion from the chain rule, states the cheap gradient principle, and shows that weight initialization is a short variance calculation rather than folklore.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/backprop-is-reverse-mode-differentiation",
+      "source_path": "front/public/blog/posts/research/backprop-is-reverse-mode-differentiation.md",
+      "reading_minutes": 28,
+      "word_count": 4809,
+      "concepts": [
+        "backpropagation",
+        "reverse-mode automatic differentiation",
+        "computational graph",
+        "adjoint",
+        "chain rule",
+        "cheap gradient principle",
+        "Baur-Strassen",
+        "activation checkpointing",
+        "weight initialization",
+        "Xavier initialization",
+        "He initialization",
+        "condition number"
+      ],
+      "prereqs": [
+        "what-are-we-minimizing-erm-bias-variance",
+        "penalizing-is-constraining"
+      ],
+      "teaches": [
+        "deriving the delta recursion from the chain rule",
+        "explaining why reverse mode costs one sweep per output and forward mode one per input",
+        "stating the cheap gradient principle and its memory cost",
+        "deriving Xavier and He initialization from a variance recursion"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "universal-approximation-and-what-it-does-not-give-you": {
+      "title": "Universal Approximation, and What It Does Not Give You",
+      "date": "2029-02-15",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Machine Learning",
+        "Deep Learning",
+        "Neural Network Theory",
+        "Research Papers",
+        "Algorithms",
+        "Foundations of Mathematics",
+        "Optimization"
+      ],
+      "excerpt": "A neural network can approximate any continuous function. The sentence is true, it is beautiful, and it settles almost nothing. This post states the theorem in the form its authors proved it, gives the architecture of the argument honestly, and then spends most of its length on the four things it does not say: no width bound, no algorithm, no generalization, and no depth.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/universal-approximation-and-what-it-does-not-give-you",
+      "source_path": "front/public/blog/posts/research/universal-approximation-and-what-it-does-not-give-you.md",
+      "reading_minutes": 27,
+      "word_count": 4808,
+      "concepts": [
+        "universal approximation theorem",
+        "density in function space",
+        "discriminatory activation",
+        "Hahn-Banach",
+        "Riesz representation",
+        "Barron class",
+        "depth separation",
+        "expressivity versus learnability",
+        "nonconstructive proof"
+      ],
+      "prereqs": [
+        "vc-dimension-sauer-shelah",
+        "no-free-lunch-theorem"
+      ],
+      "teaches": [
+        "stating universal approximation precisely as a density result",
+        "reading what an existence proof does not provide",
+        "connecting expressivity to the VC bound",
+        "explaining depth separation theorems"
+      ],
+      "tech": [
+        "numpy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
     "bellman-operator-is-a-contraction": {
       "title": "The Bellman Operator Is a Contraction",
       "date": "2029-02-08",
@@ -8338,6 +8489,200 @@
     }
   },
   "concept_index": {
+    "double descent": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      },
+      {
+        "slug": "what-are-we-minimizing-erm-bias-variance",
+        "depth": "deep"
+      }
+    ],
+    "interpolation threshold": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "benign overfitting": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "implicit regularization": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "minimum-norm interpolant": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "random labels": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "neural tangent kernel": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "norm-based bounds": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "margin bounds": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "vacuous bounds": [
+      {
+        "slug": "double-descent",
+        "depth": "deep"
+      }
+    ],
+    "backpropagation": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "reverse-mode automatic differentiation": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "computational graph": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "adjoint": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "chain rule": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "cheap gradient principle": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "baur-strassen": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "activation checkpointing": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "weight initialization": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "xavier initialization": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "he initialization": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      }
+    ],
+    "condition number": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      },
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      }
+    ],
+    "universal approximation theorem": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "density in function space": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "discriminatory activation": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "hahn-banach": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "riesz representation": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "barron class": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "depth separation": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "expressivity versus learnability": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
+    "nonconstructive proof": [
+      {
+        "slug": "universal-approximation-and-what-it-does-not-give-you",
+        "depth": "deep"
+      }
+    ],
     "bellman optimality operator": [
       {
         "slug": "bellman-operator-is-a-contraction",
@@ -8704,12 +9049,6 @@
         "depth": "deep"
       }
     ],
-    "condition number": [
-      {
-        "slug": "penalizing-is-constraining",
-        "depth": "deep"
-      }
-    ],
     "no free lunch theorem": [
       {
         "slug": "no-free-lunch-theorem",
@@ -8997,12 +9336,6 @@
       }
     ],
     "model complexity": [
-      {
-        "slug": "what-are-we-minimizing-erm-bias-variance",
-        "depth": "deep"
-      }
-    ],
-    "double descent": [
       {
         "slug": "what-are-we-minimizing-erm-bias-variance",
         "depth": "deep"
@@ -16047,7 +16380,9 @@
   },
   "tech_index": {
     "numpy": [
+      "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
+      "double-descent",
       "em-never-goes-down",
       "kernel-trick-representer-theorem",
       "loss-functions-are-probability-assumptions",
@@ -16056,6 +16391,7 @@
       "one-eigendecomposition-four-algorithms",
       "penalizing-is-constraining",
       "probably-approximately-correct",
+      "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
@@ -16435,7 +16771,9 @@
   },
   "tag_index": {
     "Statistical Learning Theory": [
+      "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
+      "double-descent",
       "em-never-goes-down",
       "kernel-trick-representer-theorem",
       "loss-functions-are-probability-assumptions",
@@ -16444,6 +16782,7 @@
       "one-eigendecomposition-four-algorithms",
       "penalizing-is-constraining",
       "probably-approximately-correct",
+      "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
@@ -16451,10 +16790,12 @@
     "Mathematics": [
       "100-posts-knowledge-graph-retrospective",
       "algebraic-number-theory-when-factorization-breaks",
+      "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
       "benfords-law",
       "centrality-communities-in-practice",
       "collatz-conjecture",
+      "double-descent",
       "em-never-goes-down",
       "embeddings-geometry-of-meaning",
       "fermat-n4-infinite-descent",
@@ -16481,23 +16822,17 @@
       "sum-of-naturals-minus-one-twelfth",
       "tetris-np-complete",
       "the-manifold-hypothesis",
+      "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
     ],
-    "Reinforcement Learning": [
-      "bellman-operator-is-a-contraction",
-      "hermes-self-improving-agent-persistent-memory",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rlhf-dpo-alignment"
-    ],
     "Machine Learning": [
+      "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
       "cloud-ml-infrastructure",
       "dataiku-enterprise-data-ai-ecosystem",
+      "double-descent",
       "elevenlabs-voice-ai-engineering",
       "em-never-goes-down",
       "experiment-tracking-mlops",
@@ -16520,21 +16855,188 @@
       "reinforcement-learning-in-practice",
       "rl-algorithm-taxonomy-tour",
       "rlhf-dpo-alignment",
+      "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "vertex-ai-gcp-ml-platform-cli",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance",
       "working-with-ml-models"
     ],
+    "Deep Learning": [
+      "attention-is-all-you-need",
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "bert-pre-training-bidirectional-transformers",
+      "computational-resources-ml",
+      "document-processing-ocr-layout",
+      "double-descent",
+      "elevenlabs-voice-ai-engineering",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "experiment-tracking-mlops",
+      "fine-tuning-embeddings",
+      "fine-tuning-gemma4-lora-qlora",
+      "fourier-transform",
+      "graph-neural-networks-learning-structured-data",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "mamba-selective-state-spaces",
+      "microgpt-reading-karpathy",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "ml-libraries-under-the-hood",
+      "ml-metrics-evaluation-monitoring",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "no-free-lunch-theorem",
+      "penalizing-is-constraining",
+      "pytorch-tensorflow-deep-learning-frameworks",
+      "rag-retrieval-augmented-generation",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rlhf-dpo-alignment",
+      "scaling-laws-neural-language-models",
+      "sum-of-naturals-minus-one-twelfth",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "vc-dimension-sauer-shelah",
+      "vertex-ai-gcp-ml-platform-cli",
+      "working-with-ml-models"
+    ],
+    "Neural Network Theory": [
+      "attention-is-all-you-need",
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "double-descent",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "fourier-transform",
+      "graph-neural-networks-learning-structured-data",
+      "loss-functions-are-probability-assumptions",
+      "mamba-selective-state-spaces",
+      "microgpt-reading-karpathy",
+      "ml-cert-review-part-2-deep-learning-and-beyond",
+      "reinforcement-learning-first-principles",
+      "rl-algorithm-taxonomy-tour",
+      "scaling-laws-neural-language-models",
+      "sum-of-naturals-minus-one-twelfth",
+      "the-manifold-hypothesis",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Statistics": [
+      "100-posts-knowledge-graph-retrospective",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "double-descent",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "organizational-network-analysis-company-graph",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Research Papers": [
+      "attention-is-all-you-need",
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "bert-pre-training-bidirectional-transformers",
+      "double-descent",
+      "em-never-goes-down",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "kernel-trick-representer-theorem",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "loss-functions-are-probability-assumptions",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "mamba-selective-state-spaces",
+      "markov-to-hoeffding-concentration-inequalities",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "rag-retrieval-augmented-generation",
+      "rl-algorithm-taxonomy-tour",
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Optimization": [
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "double-descent",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "ml-cert-review-part-1-foundations",
+      "no-free-lunch-theorem",
+      "penalizing-is-constraining",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Evaluation": [
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "ai-poc-enterprise-evaluation",
+      "claude-certified-architect-professional-exam-guide",
+      "claude-certified-associate-exam-guide",
+      "claude-certified-developer-exam-guide",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "debugging-adk-agent-flows",
+      "double-descent",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-ai-platform-selection",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "ml-metrics-evaluation-monitoring",
+      "mteb-embedding-benchmarks",
+      "operating-agents-eval-observability-scale",
+      "query-routing-agent-decisions",
+      "ragas-evaluating-rag",
+      "rlhf-dpo-alignment",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql",
+      "vector-db-benchmarks",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
     "Algorithms": [
       "100-posts-knowledge-graph-retrospective",
       "algebraic-number-theory-when-factorization-breaks",
       "attention-is-all-you-need",
+      "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
       "benfords-law",
       "centrality-communities-in-practice",
       "collatz-conjecture",
       "content-addressable-hash-as-engineering-tool",
+      "double-descent",
       "em-never-goes-down",
       "fermat-n4-infinite-descent",
       "files-under-the-hood",
@@ -16570,27 +17072,31 @@
       "shannon-number-chess-game-tree",
       "tetris-np-complete",
       "the-manifold-hypothesis",
+      "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "vector-databases-indexes-to-vertex-search",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
     ],
-    "Optimization": [
-      "bellman-operator-is-a-contraction",
-      "em-never-goes-down",
+    "Linear Algebra": [
+      "algebraic-number-theory-when-factorization-breaks",
+      "backprop-is-reverse-mode-differentiation",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
       "kernel-trick-representer-theorem",
-      "loss-functions-are-probability-assumptions",
       "ml-cert-review-part-1-foundations",
-      "no-free-lunch-theorem",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "one-eigendecomposition-four-algorithms",
+      "pagerank-eigenvectors",
       "penalizing-is-constraining",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
+      "the-manifold-hypothesis"
+    ],
+    "Computational Complexity": [
+      "backprop-is-reverse-mode-differentiation",
+      "regex-engines-finite-automata",
       "shannon-number-chess-game-tree",
-      "tetris-np-complete",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
+      "tetris-np-complete"
     ],
     "Foundations of Mathematics": [
       "algebraic-number-theory-when-factorization-breaks",
@@ -16606,111 +17112,17 @@
       "ramanujan-constant-almost-integer",
       "regex-engines-finite-automata",
       "sum-of-naturals-minus-one-twelfth",
+      "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah"
     ],
-    "Research Papers": [
-      "attention-is-all-you-need",
+    "Reinforcement Learning": [
       "bellman-operator-is-a-contraction",
-      "bert-pre-training-bidirectional-transformers",
-      "em-never-goes-down",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "kernel-trick-representer-theorem",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "loss-functions-are-probability-assumptions",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "mamba-selective-state-spaces",
-      "markov-to-hoeffding-concentration-inequalities",
-      "no-free-lunch-theorem",
-      "one-eigendecomposition-four-algorithms",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "penalizing-is-constraining",
-      "probably-approximately-correct",
-      "rag-retrieval-augmented-generation",
-      "rl-algorithm-taxonomy-tour",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis",
-      "vc-dimension-sauer-shelah",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
-    ],
-    "Deep Learning": [
-      "attention-is-all-you-need",
-      "bellman-operator-is-a-contraction",
-      "bert-pre-training-bidirectional-transformers",
-      "computational-resources-ml",
-      "document-processing-ocr-layout",
-      "elevenlabs-voice-ai-engineering",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "experiment-tracking-mlops",
-      "fine-tuning-embeddings",
-      "fine-tuning-gemma4-lora-qlora",
-      "fourier-transform",
-      "graph-neural-networks-learning-structured-data",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "mamba-selective-state-spaces",
-      "microgpt-reading-karpathy",
+      "hermes-self-improving-agent-persistent-memory",
       "ml-cert-review-part-2-deep-learning-and-beyond",
-      "ml-libraries-under-the-hood",
-      "ml-metrics-evaluation-monitoring",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "no-free-lunch-theorem",
-      "penalizing-is-constraining",
-      "pytorch-tensorflow-deep-learning-frameworks",
-      "rag-retrieval-augmented-generation",
       "reinforcement-learning-first-principles",
       "reinforcement-learning-in-practice",
       "rl-algorithm-taxonomy-tour",
-      "rlhf-dpo-alignment",
-      "scaling-laws-neural-language-models",
-      "sum-of-naturals-minus-one-twelfth",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis",
-      "vc-dimension-sauer-shelah",
-      "vertex-ai-gcp-ml-platform-cli",
-      "working-with-ml-models"
-    ],
-    "Neural Network Theory": [
-      "attention-is-all-you-need",
-      "bellman-operator-is-a-contraction",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "fourier-transform",
-      "graph-neural-networks-learning-structured-data",
-      "loss-functions-are-probability-assumptions",
-      "mamba-selective-state-spaces",
-      "microgpt-reading-karpathy",
-      "ml-cert-review-part-2-deep-learning-and-beyond",
-      "reinforcement-learning-first-principles",
-      "rl-algorithm-taxonomy-tour",
-      "scaling-laws-neural-language-models",
-      "sum-of-naturals-minus-one-twelfth",
-      "the-manifold-hypothesis",
-      "what-are-we-minimizing-erm-bias-variance"
-    ],
-    "Statistics": [
-      "100-posts-knowledge-graph-retrospective",
-      "benfords-law",
-      "centrality-communities-in-practice",
-      "em-never-goes-down",
-      "kernel-trick-representer-theorem",
-      "loss-functions-are-probability-assumptions",
-      "markov-to-hoeffding-concentration-inequalities",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "no-free-lunch-theorem",
-      "one-eigendecomposition-four-algorithms",
-      "organizational-network-analysis-company-graph",
-      "penalizing-is-constraining",
-      "probably-approximately-correct",
-      "vc-dimension-sauer-shelah",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
+      "rlhf-dpo-alignment"
     ],
     "Probability": [
       "benfords-law",
@@ -16805,19 +17217,6 @@
       "network-science-communities-centrality",
       "organizational-network-analysis-company-graph"
     ],
-    "Linear Algebra": [
-      "algebraic-number-theory-when-factorization-breaks",
-      "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
-      "fourier-transform",
-      "kernel-trick-representer-theorem",
-      "ml-cert-review-part-1-foundations",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "one-eigendecomposition-four-algorithms",
-      "pagerank-eigenvectors",
-      "penalizing-is-constraining",
-      "the-manifold-hypothesis"
-    ],
     "Information Retrieval": [
       "100-posts-knowledge-graph-retrospective",
       "agent-graph-layer-why-grep-embeddings-fell-short",
@@ -16842,35 +17241,6 @@
       "repo-to-graph-ast-vs-llm-extraction",
       "vector-databases-indexes-to-vertex-search",
       "vector-db-benchmarks"
-    ],
-    "Evaluation": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "ai-poc-enterprise-evaluation",
-      "claude-certified-architect-professional-exam-guide",
-      "claude-certified-associate-exam-guide",
-      "claude-certified-developer-exam-guide",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "debugging-adk-agent-flows",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-ai-platform-selection",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "loss-functions-are-probability-assumptions",
-      "markov-to-hoeffding-concentration-inequalities",
-      "ml-cert-review-part-1-foundations",
-      "ml-metrics-evaluation-monitoring",
-      "mteb-embedding-benchmarks",
-      "operating-agents-eval-observability-scale",
-      "query-routing-agent-decisions",
-      "ragas-evaluating-rag",
-      "rlhf-dpo-alignment",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql",
-      "vector-db-benchmarks",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
     ],
     "Theory of Computation": [
       "probably-approximately-correct",
@@ -18164,11 +18534,6 @@
       "shannon-number-chess-game-tree",
       "tetris-np-complete"
     ],
-    "Computational Complexity": [
-      "regex-engines-finite-automata",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete"
-    ],
     "Formal Systems": [
       "godels-incompleteness-theorems",
       "regex-engines-finite-automata"
@@ -18731,8 +19096,10 @@
   "category_index": {
     "research": [
       "attention-is-all-you-need",
+      "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
       "bert-pre-training-bidirectional-transformers",
+      "double-descent",
       "em-never-goes-down",
       "embeddings-geometry-of-meaning",
       "emotion-concepts-in-llms",
@@ -18752,6 +19119,7 @@
       "scaling-laws-neural-language-models",
       "t5-text-to-text-transfer-transformer",
       "the-manifold-hypothesis",
+      "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
@@ -19329,6 +19697,10 @@
         "to": "penalizing-is-constraining"
       },
       {
+        "from": "no-free-lunch-theorem",
+        "to": "universal-approximation-and-what-it-does-not-give-you"
+      },
+      {
         "from": "node-embeddings-fastrp-node2vec-graphsage",
         "to": "graph-fraud-detection-rings-synthetic-identity"
       },
@@ -19371,6 +19743,14 @@
       {
         "from": "pagerank-eigenvectors",
         "to": "querying-code-graphs-blast-radius-localization"
+      },
+      {
+        "from": "penalizing-is-constraining",
+        "to": "backprop-is-reverse-mode-differentiation"
+      },
+      {
+        "from": "penalizing-is-constraining",
+        "to": "double-descent"
       },
       {
         "from": "penalizing-is-constraining",
@@ -19490,11 +19870,27 @@
       },
       {
         "from": "vc-dimension-sauer-shelah",
+        "to": "double-descent"
+      },
+      {
+        "from": "vc-dimension-sauer-shelah",
         "to": "kernel-trick-representer-theorem"
       },
       {
         "from": "vc-dimension-sauer-shelah",
         "to": "no-free-lunch-theorem"
+      },
+      {
+        "from": "vc-dimension-sauer-shelah",
+        "to": "universal-approximation-and-what-it-does-not-give-you"
+      },
+      {
+        "from": "what-are-we-minimizing-erm-bias-variance",
+        "to": "backprop-is-reverse-mode-differentiation"
+      },
+      {
+        "from": "what-are-we-minimizing-erm-bias-variance",
+        "to": "double-descent"
       },
       {
         "from": "what-are-we-minimizing-erm-bias-variance",

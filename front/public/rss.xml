@@ -9,8 +9,64 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Feb 2029 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Mar 2029 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Double Descent: Where the Classical Theory Runs Out</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/double-descent</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/double-descent</guid>
+    <pubDate>Thu, 01 Mar 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Two theorems proved earlier in this series predict that a model with far more parameters than data cannot generalize. Those models are the state of the art. This post locates exactly which step of the reasoning fails, proves the implicit-bias result that replaces it, measures the double descent curve in numpy, and ends where the theory actually ends: on an open problem.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Deep Learning</category>
+    <category>Neural Network Theory</category>
+    <category>Statistics</category>
+    <category>Research Papers</category>
+    <category>Optimization</category>
+    <category>Evaluation</category>
+    <category>Algorithms</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Backprop Is Reverse-Mode Differentiation</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation</guid>
+    <pubDate>Thu, 22 Feb 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Backpropagation is not a neural-network trick. It is reverse-mode automatic differentiation on a computational graph, and the reason it is the only viable choice is a complexity theorem from 1983 that predates its fame in machine learning. This post derives the delta recursion from the chain rule, states the cheap gradient principle, and shows that weight initialization is a short variance calculation rather than folklore.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Deep Learning</category>
+    <category>Neural Network Theory</category>
+    <category>Algorithms</category>
+    <category>Optimization</category>
+    <category>Research Papers</category>
+    <category>Linear Algebra</category>
+    <category>Computational Complexity</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>Universal Approximation, and What It Does Not Give You</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you</guid>
+    <pubDate>Thu, 15 Feb 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[A neural network can approximate any continuous function. The sentence is true, it is beautiful, and it settles almost nothing. This post states the theorem in the form its authors proved it, gives the architecture of the argument honestly, and then spends most of its length on the four things it does not say: no width bound, no algorithm, no generalization, and no depth.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Machine Learning</category>
+    <category>Deep Learning</category>
+    <category>Neural Network Theory</category>
+    <category>Research Papers</category>
+    <category>Algorithms</category>
+    <category>Foundations of Mathematics</category>
+    <category>Optimization</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>The Bellman Operator Is a Contraction</title>
     <link>https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction</link>
