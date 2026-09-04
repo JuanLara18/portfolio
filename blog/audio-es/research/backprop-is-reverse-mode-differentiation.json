@@ -1,0 +1,13 @@
+{
+  "slug": "backprop-is-reverse-mode-differentiation",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "780909ee9270aba260ccf6ab54c5ef0c074bf1281ee05fd0eb39b7c524033a20",
+  "sourceHash": "aec48b71a054f732585502b424533a657fa2d0d6e2b71de9faa332122a31c379",
+  "durationSec": 1387.584,
+  "byteSize": 8325504,
+  "narrationWordCount": 3963,
+  "audioUrl": "/blog/audio-es/research/backprop-is-reverse-mode-differentiation.mp3",
+  "translationModel": "aya-expanse:8b"
+}

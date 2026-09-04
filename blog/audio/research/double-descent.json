@@ -1,0 +1,13 @@
+{
+  "slug": "double-descent",
+  "category": "research",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "a381dfa4ef13c6c1ecf1628e02a05fa3be1d41f32439893bde8a17e32539daa3",
+  "sourceHash": "a381dfa4ef13c6c1ecf1628e02a05fa3be1d41f32439893bde8a17e32539daa3",
+  "durationSec": 1464.408,
+  "byteSize": 8786448,
+  "narrationWordCount": 3615,
+  "audioUrl": "/blog/audio/research/double-descent.mp3",
+  "translationModel": ""
+}

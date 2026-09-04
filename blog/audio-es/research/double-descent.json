@@ -1,0 +1,13 @@
+{
+  "slug": "double-descent",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "e18aa4604253df6ecf7ace678d3d1c08bf6414228f92ef5844050be5a858d273",
+  "sourceHash": "a381dfa4ef13c6c1ecf1628e02a05fa3be1d41f32439893bde8a17e32539daa3",
+  "durationSec": 1429.872,
+  "byteSize": 8579232,
+  "narrationWordCount": 3958,
+  "audioUrl": "/blog/audio-es/research/double-descent.mp3",
+  "translationModel": "aya-expanse:8b"
+}

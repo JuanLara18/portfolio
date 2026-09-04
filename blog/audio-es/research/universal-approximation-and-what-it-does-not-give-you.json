@@ -1,0 +1,13 @@
+{
+  "slug": "universal-approximation-and-what-it-does-not-give-you",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "b923c4359d864090ab1fc3fa497c2e7cf972136a8f763c9fd6ba5fd034e1e081",
+  "sourceHash": "076d868d426783a12fe4085c836b7255cb265f4e8cfa3e2c06adac28bc665b85",
+  "durationSec": 1391.208,
+  "byteSize": 8347248,
+  "narrationWordCount": 3798,
+  "audioUrl": "/blog/audio-es/research/universal-approximation-and-what-it-does-not-give-you.mp3",
+  "translationModel": "aya-expanse:8b"
+}
