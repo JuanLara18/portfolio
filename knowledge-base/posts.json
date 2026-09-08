@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-09-04T16:47:05.269Z",
+  "generated_at": "2026-09-08T20:35:06.662Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,18 +8,207 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 181,
-    "augmented_posts": 81,
+    "total_posts": 184,
+    "augmented_posts": 84,
     "by_category": {
-      "research": 28,
+      "research": 31,
       "field-notes": 137,
       "curiosities": 16
     },
-    "concepts_indexed": 776,
-    "tech_indexed": 88,
-    "prereq_edges": 154
+    "concepts_indexed": 823,
+    "tech_indexed": 89,
+    "prereq_edges": 158
   },
   "posts": {
+    "the-representation-has-a-shape": {
+      "title": "The Representation Has a Shape",
+      "date": "2029-03-22",
+      "category": "research",
+      "tags": [
+        "Embeddings",
+        "Representation Learning",
+        "Deep Learning",
+        "Mathematics",
+        "Linear Algebra",
+        "Geometry",
+        "Neural Network Theory",
+        "Mechanistic Interpretability",
+        "Information Retrieval",
+        "Vector Databases"
+      ],
+      "excerpt": "High-dimensional theory says two random vectors are almost surely nearly orthogonal. Embed a few thousand unrelated sentences with a real encoder and the mean pairwise cosine comes back large and positive. The gap between those two facts is a narrow cone, a packing bound, and a curvature nobody chose -- and every one of them is measurable.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/the-representation-has-a-shape",
+      "source_path": "front/public/blog/posts/research/the-representation-has-a-shape.md",
+      "reading_minutes": 32,
+      "word_count": 6702,
+      "concepts": [
+        "anisotropy",
+        "representation degeneration",
+        "narrow cone",
+        "cosine similarity",
+        "whitening",
+        "all-but-the-top",
+        "alignment and uniformity",
+        "contrastive learning",
+        "intrinsic dimension",
+        "effective rank",
+        "superposition",
+        "linear representation hypothesis",
+        "polysemanticity",
+        "sparse autoencoders",
+        "Johnson-Lindenstrauss lemma",
+        "hyperbolic embeddings",
+        "Poincare ball",
+        "volume growth",
+        "curvature of a space",
+        "orthogonal Procrustes",
+        "centered kernel alignment",
+        "platonic representation hypothesis"
+      ],
+      "prereqs": [
+        "the-distribution-has-a-shape",
+        "the-objective-has-a-shape",
+        "embeddings-geometry-of-meaning"
+      ],
+      "teaches": [
+        "measuring anisotropy in an embedding space and repairing it by whitening",
+        "reading a contrastive loss as a specification of geometry on the hypersphere",
+        "estimating intrinsic dimension and knowing when the estimate is biased",
+        "deriving the packing bound that makes superposition possible",
+        "explaining why a hierarchy cannot embed in Euclidean space without distortion",
+        "choosing the curvature of an embedding space to match the structure of the data",
+        "comparing two representation spaces with Procrustes and CKA"
+      ],
+      "tech": [
+        "numpy",
+        "scipy",
+        "scikit-learn"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "the-distribution-has-a-shape": {
+      "title": "The Distribution Has a Shape",
+      "date": "2029-03-15",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Probability",
+        "Statistics",
+        "Machine Learning",
+        "Information Theory",
+        "Linear Algebra",
+        "Embeddings",
+        "Algorithms",
+        "Foundations of Mathematics"
+      ],
+      "excerpt": "Expectation is a projection, covariance is a quadratic form, and information is curvature. Those are the same three geometric operations that read an objective function, applied instead to the data -- and once they land, most of statistics stops being a list of formulas and becomes one picture examined from three sides.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/the-distribution-has-a-shape",
+      "source_path": "front/public/blog/posts/research/the-distribution-has-a-shape.md",
+      "reading_minutes": 32,
+      "word_count": 7463,
+      "concepts": [
+        "conditional expectation",
+        "orthogonal projection",
+        "Hilbert space",
+        "covariance matrix",
+        "Mahalanobis distance",
+        "whitening",
+        "exponential family",
+        "sufficient statistics",
+        "maximum entropy",
+        "change of variables",
+        "Jacobian determinant",
+        "law of large numbers",
+        "central limit theorem",
+        "KL divergence",
+        "Fisher information",
+        "natural gradient",
+        "Cramer-Rao bound",
+        "maximum likelihood asymptotics",
+        "Bayes rule",
+        "concentration of measure",
+        "curse of dimensionality",
+        "Johnson-Lindenstrauss lemma"
+      ],
+      "prereqs": [
+        "the-objective-has-a-shape"
+      ],
+      "teaches": [
+        "proving the conditional mean is the L2 projection and recognising it as the normal equations",
+        "reading a covariance matrix as an ellipsoid and Mahalanobis distance as a change of metric",
+        "naming the constraint each exponential family maximises entropy under",
+        "deriving Fisher information as the Hessian of the KL divergence",
+        "explaining why a confidence interval width is a curvature measurement",
+        "predicting where nearest neighbour search degrades from the dimension alone"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
+    "the-objective-has-a-shape": {
+      "title": "The Objective Has a Shape",
+      "date": "2029-03-08",
+      "category": "research",
+      "tags": [
+        "Statistical Learning Theory",
+        "Mathematics",
+        "Linear Algebra",
+        "Optimization",
+        "Machine Learning",
+        "Neural Network Theory",
+        "Deep Learning",
+        "Algorithms",
+        "Foundations of Mathematics",
+        "Research Papers"
+      ],
+      "excerpt": "The same least-squares problem, with one column expressed in micrometres instead of metres, goes from converging in forty-four steps to not converging in forty thousand. Nothing statistical changed; the geometry did. Conditioning, curvature and duality are three numbers you can read off an objective before you run anything, and they explain most of what you experience as a model refusing to train.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/the-objective-has-a-shape",
+      "source_path": "front/public/blog/posts/research/the-objective-has-a-shape.md",
+      "reading_minutes": 31,
+      "word_count": 8225,
+      "concepts": [
+        "condition number",
+        "quadratic form",
+        "Hessian",
+        "curvature",
+        "saddle points",
+        "convex optimization",
+        "Lagrange duality",
+        "shadow price",
+        "KKT conditions",
+        "Fenchel conjugate",
+        "dual norm",
+        "orthogonal projection",
+        "singular value decomposition",
+        "effective rank",
+        "preconditioning",
+        "Danskin's theorem",
+        "sharp versus flat minima"
+      ],
+      "prereqs": [],
+      "teaches": [
+        "reading the condition number off a design matrix and predicting the iteration count",
+        "deriving the gradient descent contraction rate for a quadratic",
+        "classifying a critical point from the Hessian spectrum",
+        "recognising feature scaling and batch norm and ridge and Adam as one intervention on conditioning",
+        "interpreting a Lagrange multiplier as the sensitivity of the optimum to its constraint",
+        "diagnosing a training pathology from the geometry of the objective"
+      ],
+      "tech": [
+        "numpy",
+        "scipy"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
     "double-descent": {
       "title": "Double Descent: Where the Classical Theory Runs Out",
       "date": "2029-03-01",
@@ -8498,6 +8687,412 @@
     }
   },
   "concept_index": {
+    "anisotropy": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "representation degeneration": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "narrow cone": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "cosine similarity": [
+      {
+        "slug": "agent-memory-and-retrieval-embeddings-to-rag",
+        "depth": "deep"
+      },
+      {
+        "slug": "embeddings-geometry-of-meaning",
+        "depth": "working"
+      },
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "whitening": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "all-but-the-top": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "alignment and uniformity": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "contrastive learning": [
+      {
+        "slug": "fine-tuning-embeddings",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "intrinsic dimension": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "effective rank": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "superposition": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "linear representation hypothesis": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "polysemanticity": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "sparse autoencoders": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "johnson-lindenstrauss lemma": [
+      {
+        "slug": "node-embeddings-fastrp-node2vec-graphsage",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "hyperbolic embeddings": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "poincare ball": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "volume growth": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "curvature of a space": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "orthogonal procrustes": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "centered kernel alignment": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "platonic representation hypothesis": [
+      {
+        "slug": "the-representation-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "conditional expectation": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "orthogonal projection": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "hilbert space": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "covariance matrix": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "mahalanobis distance": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "exponential family": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "sufficient statistics": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "maximum entropy": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "change of variables": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "jacobian determinant": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "law of large numbers": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "central limit theorem": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "kl divergence": [
+      {
+        "slug": "em-never-goes-down",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "fisher information": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "natural gradient": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "cramer-rao bound": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "maximum likelihood asymptotics": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "bayes rule": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "concentration of measure": [
+      {
+        "slug": "markov-to-hoeffding-concentration-inequalities",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "curse of dimensionality": [
+      {
+        "slug": "the-distribution-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "condition number": [
+      {
+        "slug": "backprop-is-reverse-mode-differentiation",
+        "depth": "deep"
+      },
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "quadratic form": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "hessian": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "curvature": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "saddle points": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "convex optimization": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "lagrange duality": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "shadow price": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "kkt conditions": [
+      {
+        "slug": "penalizing-is-constraining",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "fenchel conjugate": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "dual norm": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "singular value decomposition": [
+      {
+        "slug": "one-eigendecomposition-four-algorithms",
+        "depth": "deep"
+      },
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "preconditioning": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "danskin's theorem": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
+    "sharp versus flat minima": [
+      {
+        "slug": "the-objective-has-a-shape",
+        "depth": "deep"
+      }
+    ],
     "double descent": [
       {
         "slug": "double-descent",
@@ -8625,16 +9220,6 @@
     "he initialization": [
       {
         "slug": "backprop-is-reverse-mode-differentiation",
-        "depth": "deep"
-      }
-    ],
-    "condition number": [
-      {
-        "slug": "backprop-is-reverse-mode-differentiation",
-        "depth": "deep"
-      },
-      {
-        "slug": "penalizing-is-constraining",
         "depth": "deep"
       }
     ],
@@ -8776,12 +9361,6 @@
         "depth": "deep"
       }
     ],
-    "kl divergence": [
-      {
-        "slug": "em-never-goes-down",
-        "depth": "deep"
-      }
-    ],
     "monotonicity of em": [
       {
         "slug": "em-never-goes-down",
@@ -8825,12 +9404,6 @@
       }
     ],
     "courant-fischer": [
-      {
-        "slug": "one-eigendecomposition-four-algorithms",
-        "depth": "deep"
-      }
-    ],
-    "singular value decomposition": [
       {
         "slug": "one-eigendecomposition-four-algorithms",
         "depth": "deep"
@@ -9004,18 +9577,6 @@
         "depth": "deep"
       }
     ],
-    "kkt conditions": [
-      {
-        "slug": "penalizing-is-constraining",
-        "depth": "deep"
-      }
-    ],
-    "convex optimization": [
-      {
-        "slug": "penalizing-is-constraining",
-        "depth": "deep"
-      }
-    ],
     "ridge regression": [
       {
         "slug": "penalizing-is-constraining",
@@ -9047,12 +9608,6 @@
       }
     ],
     "sparsity": [
-      {
-        "slug": "penalizing-is-constraining",
-        "depth": "deep"
-      }
-    ],
-    "quadratic form": [
       {
         "slug": "penalizing-is-constraining",
         "depth": "deep"
@@ -9273,12 +9828,6 @@
       }
     ],
     "sub-gaussian": [
-      {
-        "slug": "markov-to-hoeffding-concentration-inequalities",
-        "depth": "deep"
-      }
-    ],
-    "concentration of measure": [
       {
         "slug": "markov-to-hoeffding-concentration-inequalities",
         "depth": "deep"
@@ -9951,12 +10500,6 @@
       }
     ],
     "node embeddings": [
-      {
-        "slug": "node-embeddings-fastrp-node2vec-graphsage",
-        "depth": "deep"
-      }
-    ],
-    "johnson-lindenstrauss lemma": [
       {
         "slug": "node-embeddings-fastrp-node2vec-graphsage",
         "depth": "deep"
@@ -12790,16 +13333,6 @@
         "depth": "deep"
       }
     ],
-    "cosine similarity": [
-      {
-        "slug": "agent-memory-and-retrieval-embeddings-to-rag",
-        "depth": "deep"
-      },
-      {
-        "slug": "embeddings-geometry-of-meaning",
-        "depth": "working"
-      }
-    ],
     "knn": [
       {
         "slug": "agent-memory-and-retrieval-embeddings-to-rag",
@@ -15600,12 +16133,6 @@
         "depth": "deep"
       }
     ],
-    "contrastive learning": [
-      {
-        "slug": "fine-tuning-embeddings",
-        "depth": "deep"
-      }
-    ],
     "hugging face": [
       {
         "slug": "bert-pre-training-bidirectional-transformers",
@@ -16400,6 +16927,9 @@
       "one-eigendecomposition-four-algorithms",
       "penalizing-is-constraining",
       "probably-approximately-correct",
+      "the-distribution-has-a-shape",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape",
       "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "weak-learnability-equals-strong",
@@ -16411,7 +16941,13 @@
       "loss-functions-are-probability-assumptions",
       "markov-to-hoeffding-concentration-inequalities",
       "one-eigendecomposition-four-algorithms",
-      "penalizing-is-constraining"
+      "penalizing-is-constraining",
+      "the-distribution-has-a-shape",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape"
+    ],
+    "scikit-learn": [
+      "the-representation-has-a-shape"
     ],
     "google-adk": [
       "adk-advanced-evolution-of-agent-engineering",
@@ -16779,97 +17315,46 @@
     ]
   },
   "tag_index": {
-    "Statistical Learning Theory": [
-      "backprop-is-reverse-mode-differentiation",
-      "bellman-operator-is-a-contraction",
-      "double-descent",
-      "em-never-goes-down",
-      "kernel-trick-representer-theorem",
-      "loss-functions-are-probability-assumptions",
-      "markov-to-hoeffding-concentration-inequalities",
-      "no-free-lunch-theorem",
-      "one-eigendecomposition-four-algorithms",
-      "penalizing-is-constraining",
-      "probably-approximately-correct",
-      "universal-approximation-and-what-it-does-not-give-you",
-      "vc-dimension-sauer-shelah",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
-    ],
-    "Mathematics": [
-      "100-posts-knowledge-graph-retrospective",
-      "algebraic-number-theory-when-factorization-breaks",
-      "backprop-is-reverse-mode-differentiation",
-      "bellman-operator-is-a-contraction",
-      "benfords-law",
-      "centrality-communities-in-practice",
-      "collatz-conjecture",
-      "double-descent",
-      "em-never-goes-down",
+    "Embeddings": [
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "attention-is-all-you-need",
+      "bert-pre-training-bidirectional-transformers",
+      "comparing-knowledge-bases-semantic-overlap",
+      "defining-the-knowledge-stack",
+      "document-processing-ocr-layout",
       "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
+      "enterprise-knowledge-bases",
+      "fine-tuning-embeddings",
       "fourier-transform",
-      "godels-incompleteness-theorems",
-      "graph-theory-mathematics-of-connections",
-      "kernel-trick-representer-theorem",
-      "loss-functions-are-probability-assumptions",
-      "markov-to-hoeffding-concentration-inequalities",
-      "ml-cert-review-part-1-foundations",
-      "network-science-communities-centrality",
-      "no-free-lunch-theorem",
-      "one-eigendecomposition-four-algorithms",
-      "pagerank-eigenvectors",
-      "penalizing-is-constraining",
-      "probably-approximately-correct",
-      "ramanujan-constant-almost-integer",
-      "regex-engines-finite-automata",
-      "reinforcement-learning-first-principles",
-      "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
-      "scaling-laws-neural-language-models",
-      "shannon-number-chess-game-tree",
-      "sum-of-naturals-minus-one-twelfth",
-      "tetris-np-complete",
-      "the-manifold-hypothesis",
-      "universal-approximation-and-what-it-does-not-give-you",
-      "vc-dimension-sauer-shelah",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
-    ],
-    "Machine Learning": [
-      "backprop-is-reverse-mode-differentiation",
-      "bellman-operator-is-a-contraction",
-      "cloud-ml-infrastructure",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "double-descent",
-      "elevenlabs-voice-ai-engineering",
-      "em-never-goes-down",
-      "experiment-tracking-mlops",
-      "graph-fraud-detection-rings-synthetic-identity",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "graph-memory-temporal-agents-graphiti-cognee",
       "graph-neural-networks-learning-structured-data",
-      "kernel-trick-representer-theorem",
-      "loss-functions-are-probability-assumptions",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "markov-to-hoeffding-concentration-inequalities",
-      "ml-cert-review-part-1-foundations",
-      "ml-libraries-under-the-hood",
-      "ml-metrics-evaluation-monitoring",
-      "no-free-lunch-theorem",
+      "knowledge-base-curation",
+      "knowledge-graphs-practice",
+      "llamaindex-langchain-llm-frameworks",
+      "llm-caching-four-layers",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
       "node-embeddings-fastrp-node2vec-graphsage",
-      "one-eigendecomposition-four-algorithms",
-      "penalizing-is-constraining",
-      "probably-approximately-correct",
-      "pytorch-tensorflow-deep-learning-frameworks",
-      "reinforcement-learning-first-principles",
-      "reinforcement-learning-in-practice",
-      "rl-algorithm-taxonomy-tour",
-      "rlhf-dpo-alignment",
-      "universal-approximation-and-what-it-does-not-give-you",
-      "vc-dimension-sauer-shelah",
-      "vertex-ai-gcp-ml-platform-cli",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance",
-      "working-with-ml-models"
+      "query-routing-agent-decisions",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
+      "the-distribution-has-a-shape",
+      "the-manifold-hypothesis",
+      "the-representation-has-a-shape",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks"
+    ],
+    "Representation Learning": [
+      "attention-is-all-you-need",
+      "embeddings-geometry-of-meaning",
+      "fourier-transform",
+      "graph-neural-networks-learning-structured-data",
+      "multimodal-embeddings-metric-problem",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "the-manifold-hypothesis",
+      "the-representation-has-a-shape"
     ],
     "Deep Learning": [
       "attention-is-all-you-need",
@@ -16908,10 +17393,78 @@
       "sum-of-naturals-minus-one-twelfth",
       "t5-text-to-text-transfer-transformer",
       "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape",
       "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "vertex-ai-gcp-ml-platform-cli",
       "working-with-ml-models"
+    ],
+    "Mathematics": [
+      "100-posts-knowledge-graph-retrospective",
+      "algebraic-number-theory-when-factorization-breaks",
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "benfords-law",
+      "centrality-communities-in-practice",
+      "collatz-conjecture",
+      "double-descent",
+      "em-never-goes-down",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
+      "godels-incompleteness-theorems",
+      "graph-theory-mathematics-of-connections",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "network-science-communities-centrality",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "pagerank-eigenvectors",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "ramanujan-constant-almost-integer",
+      "regex-engines-finite-automata",
+      "reinforcement-learning-first-principles",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "scaling-laws-neural-language-models",
+      "shannon-number-chess-game-tree",
+      "sum-of-naturals-minus-one-twelfth",
+      "tetris-np-complete",
+      "the-distribution-has-a-shape",
+      "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Linear Algebra": [
+      "algebraic-number-theory-when-factorization-breaks",
+      "backprop-is-reverse-mode-differentiation",
+      "embeddings-geometry-of-meaning",
+      "fermat-n4-infinite-descent",
+      "fourier-transform",
+      "kernel-trick-representer-theorem",
+      "ml-cert-review-part-1-foundations",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "one-eigendecomposition-four-algorithms",
+      "pagerank-eigenvectors",
+      "penalizing-is-constraining",
+      "the-distribution-has-a-shape",
+      "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape"
+    ],
+    "Geometry": [
+      "algebraic-number-theory-when-factorization-breaks",
+      "fermat-n4-infinite-descent",
+      "the-manifold-hypothesis",
+      "the-representation-has-a-shape"
     ],
     "Neural Network Theory": [
       "attention-is-all-you-need",
@@ -16931,7 +17484,95 @@
       "scaling-laws-neural-language-models",
       "sum-of-naturals-minus-one-twelfth",
       "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape",
       "universal-approximation-and-what-it-does-not-give-you",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Mechanistic Interpretability": [
+      "emotion-concepts-in-llms",
+      "the-representation-has-a-shape"
+    ],
+    "Information Retrieval": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "comparing-knowledge-bases-semantic-overlap",
+      "defining-the-knowledge-stack",
+      "document-processing-ocr-layout",
+      "embeddings-geometry-of-meaning",
+      "fine-tuning-embeddings",
+      "gemini-knowledge-catalog-workshop",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "knowledge-graphs-practice",
+      "mteb-embedding-benchmarks",
+      "multimodal-embeddings-metric-problem",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "pagerank-eigenvectors",
+      "query-routing-agent-decisions",
+      "querying-code-graphs-blast-radius-localization",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "the-representation-has-a-shape",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks"
+    ],
+    "Vector Databases": [
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "ai-poc-enterprise-evaluation",
+      "comparing-knowledge-bases-semantic-overlap",
+      "defining-the-knowledge-stack",
+      "dont-reinvent-the-agent-open-source-composition",
+      "enterprise-knowledge-bases",
+      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "multimodal-embeddings-metric-problem",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "openclaw-anatomy-viral-agent-platform",
+      "production-graph-stack-agents-mcp-ontologies",
+      "query-routing-agent-decisions",
+      "rag-building-production-systems",
+      "rag-retrieval-augmented-generation",
+      "redis-for-ai-buy-vs-build-gcp",
+      "stack-recommendations-after-100-posts",
+      "the-representation-has-a-shape",
+      "vector-databases-indexes-to-vertex-search",
+      "vector-db-benchmarks"
+    ],
+    "Statistical Learning Theory": [
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "double-descent",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "the-distribution-has-a-shape",
+      "the-objective-has-a-shape",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Probability": [
+      "benfords-law",
+      "em-never-goes-down",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "network-science-communities-centrality",
+      "no-free-lunch-theorem",
+      "pagerank-eigenvectors",
+      "probably-approximately-correct",
+      "the-distribution-has-a-shape",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
     ],
     "Statistics": [
@@ -16950,90 +17591,50 @@
       "organizational-network-analysis-company-graph",
       "penalizing-is-constraining",
       "probably-approximately-correct",
+      "the-distribution-has-a-shape",
       "vc-dimension-sauer-shelah",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
     ],
-    "Research Papers": [
-      "attention-is-all-you-need",
+    "Machine Learning": [
       "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
-      "bert-pre-training-bidirectional-transformers",
+      "cloud-ml-infrastructure",
+      "dataiku-enterprise-data-ai-ecosystem",
       "double-descent",
+      "elevenlabs-voice-ai-engineering",
       "em-never-goes-down",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
+      "experiment-tracking-mlops",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "graph-neural-networks-learning-structured-data",
       "kernel-trick-representer-theorem",
-      "llm-as-a-judge",
-      "llm-benchmarks",
       "loss-functions-are-probability-assumptions",
       "magnifica-humanitas-ai-encyclical-analysis",
-      "mamba-selective-state-spaces",
       "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "ml-libraries-under-the-hood",
+      "ml-metrics-evaluation-monitoring",
       "no-free-lunch-theorem",
+      "node-embeddings-fastrp-node2vec-graphsage",
       "one-eigendecomposition-four-algorithms",
-      "ontology-grounded-rag-chunks-in-nodes",
       "penalizing-is-constraining",
       "probably-approximately-correct",
-      "rag-retrieval-augmented-generation",
-      "rl-algorithm-taxonomy-tour",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-manifold-hypothesis",
-      "universal-approximation-and-what-it-does-not-give-you",
-      "vc-dimension-sauer-shelah",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
-    ],
-    "Optimization": [
-      "backprop-is-reverse-mode-differentiation",
-      "bellman-operator-is-a-contraction",
-      "double-descent",
-      "em-never-goes-down",
-      "kernel-trick-representer-theorem",
-      "loss-functions-are-probability-assumptions",
-      "ml-cert-review-part-1-foundations",
-      "no-free-lunch-theorem",
-      "penalizing-is-constraining",
+      "pytorch-tensorflow-deep-learning-frameworks",
       "reinforcement-learning-first-principles",
       "reinforcement-learning-in-practice",
       "rl-algorithm-taxonomy-tour",
-      "rubiks-cube-group-theory",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete",
-      "universal-approximation-and-what-it-does-not-give-you",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
-    ],
-    "Evaluation": [
-      "agent-engineering-disciplines",
-      "agent-guardrails-field-guide",
-      "ai-poc-enterprise-evaluation",
-      "claude-certified-architect-professional-exam-guide",
-      "claude-certified-associate-exam-guide",
-      "claude-certified-developer-exam-guide",
-      "dataiku-enterprise-data-ai-ecosystem",
-      "debugging-adk-agent-flows",
-      "double-descent",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-ai-platform-selection",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "llm-as-a-judge",
-      "llm-benchmarks",
-      "loss-functions-are-probability-assumptions",
-      "markov-to-hoeffding-concentration-inequalities",
-      "ml-cert-review-part-1-foundations",
-      "ml-metrics-evaluation-monitoring",
-      "mteb-embedding-benchmarks",
-      "operating-agents-eval-observability-scale",
-      "query-routing-agent-decisions",
-      "ragas-evaluating-rag",
       "rlhf-dpo-alignment",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql",
-      "vector-db-benchmarks",
+      "the-distribution-has-a-shape",
+      "the-objective-has-a-shape",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "vc-dimension-sauer-shelah",
+      "vertex-ai-gcp-ml-platform-cli",
       "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
+      "what-are-we-minimizing-erm-bias-variance",
+      "working-with-ml-models"
+    ],
+    "Information Theory": [
+      "the-distribution-has-a-shape"
     ],
     "Algorithms": [
       "100-posts-knowledge-graph-retrospective",
@@ -17080,32 +17681,14 @@
       "rubiks-cube-group-theory",
       "shannon-number-chess-game-tree",
       "tetris-np-complete",
+      "the-distribution-has-a-shape",
       "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
       "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "vector-databases-indexes-to-vertex-search",
       "weak-learnability-equals-strong",
       "what-are-we-minimizing-erm-bias-variance"
-    ],
-    "Linear Algebra": [
-      "algebraic-number-theory-when-factorization-breaks",
-      "backprop-is-reverse-mode-differentiation",
-      "embeddings-geometry-of-meaning",
-      "fermat-n4-infinite-descent",
-      "fourier-transform",
-      "kernel-trick-representer-theorem",
-      "ml-cert-review-part-1-foundations",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "one-eigendecomposition-four-algorithms",
-      "pagerank-eigenvectors",
-      "penalizing-is-constraining",
-      "the-manifold-hypothesis"
-    ],
-    "Computational Complexity": [
-      "backprop-is-reverse-mode-differentiation",
-      "regex-engines-finite-automata",
-      "shannon-number-chess-game-tree",
-      "tetris-np-complete"
     ],
     "Foundations of Mathematics": [
       "algebraic-number-theory-when-factorization-breaks",
@@ -17121,8 +17704,99 @@
       "ramanujan-constant-almost-integer",
       "regex-engines-finite-automata",
       "sum-of-naturals-minus-one-twelfth",
+      "the-distribution-has-a-shape",
+      "the-objective-has-a-shape",
       "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah"
+    ],
+    "Optimization": [
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "double-descent",
+      "em-never-goes-down",
+      "kernel-trick-representer-theorem",
+      "loss-functions-are-probability-assumptions",
+      "ml-cert-review-part-1-foundations",
+      "no-free-lunch-theorem",
+      "penalizing-is-constraining",
+      "reinforcement-learning-first-principles",
+      "reinforcement-learning-in-practice",
+      "rl-algorithm-taxonomy-tour",
+      "rubiks-cube-group-theory",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete",
+      "the-objective-has-a-shape",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Research Papers": [
+      "attention-is-all-you-need",
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "bert-pre-training-bidirectional-transformers",
+      "double-descent",
+      "em-never-goes-down",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "kernel-trick-representer-theorem",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "loss-functions-are-probability-assumptions",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "mamba-selective-state-spaces",
+      "markov-to-hoeffding-concentration-inequalities",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "rag-retrieval-augmented-generation",
+      "rl-algorithm-taxonomy-tour",
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Evaluation": [
+      "agent-engineering-disciplines",
+      "agent-guardrails-field-guide",
+      "ai-poc-enterprise-evaluation",
+      "claude-certified-architect-professional-exam-guide",
+      "claude-certified-associate-exam-guide",
+      "claude-certified-developer-exam-guide",
+      "dataiku-enterprise-data-ai-ecosystem",
+      "debugging-adk-agent-flows",
+      "double-descent",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-ai-platform-selection",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "llm-as-a-judge",
+      "llm-benchmarks",
+      "loss-functions-are-probability-assumptions",
+      "markov-to-hoeffding-concentration-inequalities",
+      "ml-cert-review-part-1-foundations",
+      "ml-metrics-evaluation-monitoring",
+      "mteb-embedding-benchmarks",
+      "operating-agents-eval-observability-scale",
+      "query-routing-agent-decisions",
+      "ragas-evaluating-rag",
+      "rlhf-dpo-alignment",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql",
+      "vector-db-benchmarks",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
+    ],
+    "Computational Complexity": [
+      "backprop-is-reverse-mode-differentiation",
+      "regex-engines-finite-automata",
+      "shannon-number-chess-game-tree",
+      "tetris-np-complete"
     ],
     "Reinforcement Learning": [
       "bellman-operator-is-a-contraction",
@@ -17132,19 +17806,6 @@
       "reinforcement-learning-in-practice",
       "rl-algorithm-taxonomy-tour",
       "rlhf-dpo-alignment"
-    ],
-    "Probability": [
-      "benfords-law",
-      "em-never-goes-down",
-      "loss-functions-are-probability-assumptions",
-      "markov-to-hoeffding-concentration-inequalities",
-      "network-science-communities-centrality",
-      "no-free-lunch-theorem",
-      "pagerank-eigenvectors",
-      "probably-approximately-correct",
-      "vc-dimension-sauer-shelah",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
     ],
     "Best Practices": [
       "100-posts-knowledge-graph-retrospective",
@@ -17225,31 +17886,6 @@
       "graph-fraud-detection-rings-synthetic-identity",
       "network-science-communities-centrality",
       "organizational-network-analysis-company-graph"
-    ],
-    "Information Retrieval": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "comparing-knowledge-bases-semantic-overlap",
-      "defining-the-knowledge-stack",
-      "document-processing-ocr-layout",
-      "embeddings-geometry-of-meaning",
-      "fine-tuning-embeddings",
-      "gemini-knowledge-catalog-workshop",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "knowledge-graphs-practice",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "one-eigendecomposition-four-algorithms",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "pagerank-eigenvectors",
-      "query-routing-agent-decisions",
-      "querying-code-graphs-blast-radius-localization",
-      "rag-building-production-systems",
-      "rag-retrieval-augmented-generation",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks"
     ],
     "Theory of Computation": [
       "probably-approximately-correct",
@@ -17932,44 +18568,6 @@
       "knowledge-base-curation",
       "organizational-network-analysis-company-graph"
     ],
-    "Embeddings": [
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "attention-is-all-you-need",
-      "bert-pre-training-bidirectional-transformers",
-      "comparing-knowledge-bases-semantic-overlap",
-      "defining-the-knowledge-stack",
-      "document-processing-ocr-layout",
-      "embeddings-geometry-of-meaning",
-      "enterprise-knowledge-bases",
-      "fine-tuning-embeddings",
-      "fourier-transform",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "graph-neural-networks-learning-structured-data",
-      "knowledge-base-curation",
-      "knowledge-graphs-practice",
-      "llamaindex-langchain-llm-frameworks",
-      "llm-caching-four-layers",
-      "mteb-embedding-benchmarks",
-      "multimodal-embeddings-metric-problem",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "query-routing-agent-decisions",
-      "rag-building-production-systems",
-      "rag-retrieval-augmented-generation",
-      "the-manifold-hypothesis",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks"
-    ],
-    "Representation Learning": [
-      "attention-is-all-you-need",
-      "embeddings-geometry-of-meaning",
-      "fourier-transform",
-      "graph-neural-networks-learning-structured-data",
-      "multimodal-embeddings-metric-problem",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "the-manifold-hypothesis"
-    ],
     "Data Engineering": [
       "100-posts-knowledge-graph-retrospective",
       "ai-poc-enterprise-evaluation",
@@ -18041,28 +18639,6 @@
       "agent-harness-build-fork-adopt-yc-qm",
       "senior-product-engineering-scale-prioritization-architecture",
       "software-engineering-classics"
-    ],
-    "Vector Databases": [
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "ai-poc-enterprise-evaluation",
-      "comparing-knowledge-bases-semantic-overlap",
-      "defining-the-knowledge-stack",
-      "dont-reinvent-the-agent-open-source-composition",
-      "enterprise-knowledge-bases",
-      "gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "multimodal-embeddings-metric-problem",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "openclaw-anatomy-viral-agent-platform",
-      "production-graph-stack-agents-mcp-ontologies",
-      "query-routing-agent-decisions",
-      "rag-building-production-systems",
-      "rag-retrieval-augmented-generation",
-      "redis-for-ai-buy-vs-build-gcp",
-      "stack-recommendations-after-100-posts",
-      "vector-databases-indexes-to-vertex-search",
-      "vector-db-benchmarks"
     ],
     "GraphRAG": [
       "knowledge-graphs-practice",
@@ -18709,11 +19285,6 @@
       "fermat-n4-infinite-descent",
       "rubiks-cube-group-theory"
     ],
-    "Geometry": [
-      "algebraic-number-theory-when-factorization-breaks",
-      "fermat-n4-infinite-descent",
-      "the-manifold-hypothesis"
-    ],
     "Fraud Detection": [
       "benfords-law",
       "graph-neural-networks-learning-structured-data"
@@ -18801,9 +19372,6 @@
       "emotion-concepts-in-llms",
       "llm-as-a-judge",
       "rlhf-dpo-alignment"
-    ],
-    "Mechanistic Interpretability": [
-      "emotion-concepts-in-llms"
     ],
     "GPT": [
       "microgpt-reading-karpathy"
@@ -19127,7 +19695,10 @@
       "rag-retrieval-augmented-generation",
       "scaling-laws-neural-language-models",
       "t5-text-to-text-transfer-transformer",
+      "the-distribution-has-a-shape",
       "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape",
       "universal-approximation-and-what-it-does-not-give-you",
       "vc-dimension-sauer-shelah",
       "weak-learnability-equals-strong",
@@ -19416,6 +19987,10 @@
       {
         "from": "embeddings-geometry-of-meaning",
         "to": "rag-building-production-systems"
+      },
+      {
+        "from": "embeddings-geometry-of-meaning",
+        "to": "the-representation-has-a-shape"
       },
       {
         "from": "enterprise-agent-governance-lifecycle",
@@ -19876,6 +20451,18 @@
       {
         "from": "tbox-abox-schema-facts-distinction",
         "to": "modular-ontologies-core-domains-pattern"
+      },
+      {
+        "from": "the-distribution-has-a-shape",
+        "to": "the-representation-has-a-shape"
+      },
+      {
+        "from": "the-objective-has-a-shape",
+        "to": "the-distribution-has-a-shape"
+      },
+      {
+        "from": "the-objective-has-a-shape",
+        "to": "the-representation-has-a-shape"
       },
       {
         "from": "vc-dimension-sauer-shelah",

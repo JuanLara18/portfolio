@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "voice": "en-US-AndrewMultilingualNeural",
-  "generatedAt": 1788536932,
+  "generatedAt": 1788902120,
   "posts": {
     "curiosities/100-posts-knowledge-graph-retrospective": {
       "slug": "100-posts-knowledge-graph-retrospective",
@@ -2291,6 +2291,19 @@
       "audioUrl": "/blog/audio/research/t5-text-to-text-transfer-transformer.mp3",
       "translationModel": ""
     },
+    "research/the-distribution-has-a-shape": {
+      "slug": "the-distribution-has-a-shape",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "8ab3f64bc4baef452aef3fd3e2e7afcbc1a32674e10db77518c429784b2eabb0",
+      "sourceHash": "8ab3f64bc4baef452aef3fd3e2e7afcbc1a32674e10db77518c429784b2eabb0",
+      "durationSec": 1873.368,
+      "byteSize": 11240208,
+      "narrationWordCount": 4540,
+      "audioUrl": "/blog/audio/research/the-distribution-has-a-shape.mp3",
+      "translationModel": ""
+    },
     "research/the-manifold-hypothesis": {
       "slug": "the-manifold-hypothesis",
       "category": "research",
@@ -2302,6 +2315,32 @@
       "byteSize": 9373968,
       "narrationWordCount": 3417,
       "audioUrl": "/blog/audio/research/the-manifold-hypothesis.mp3",
+      "translationModel": ""
+    },
+    "research/the-objective-has-a-shape": {
+      "slug": "the-objective-has-a-shape",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "bd273cc8662ee8268e4c3435a0b6d4d14ea5868931fc3017449d3584fee80728",
+      "sourceHash": "bd273cc8662ee8268e4c3435a0b6d4d14ea5868931fc3017449d3584fee80728",
+      "durationSec": 1884.912,
+      "byteSize": 11309472,
+      "narrationWordCount": 4493,
+      "audioUrl": "/blog/audio/research/the-objective-has-a-shape.mp3",
+      "translationModel": ""
+    },
+    "research/the-representation-has-a-shape": {
+      "slug": "the-representation-has-a-shape",
+      "category": "research",
+      "lang": "en",
+      "voice": "en-US-AndrewMultilingualNeural",
+      "hash": "69be603b76078c0763231d675a832e9b4473a9398989d22f0090c9abddb220ab",
+      "sourceHash": "69be603b76078c0763231d675a832e9b4473a9398989d22f0090c9abddb220ab",
+      "durationSec": 1476.072,
+      "byteSize": 8856432,
+      "narrationWordCount": 3565,
+      "audioUrl": "/blog/audio/research/the-representation-has-a-shape.mp3",
       "translationModel": ""
     },
     "research/universal-approximation-and-what-it-does-not-give-you": {

@@ -376,6 +376,22 @@ export const SERIES = [
   },
 
   {
+    id: 'shape-of-a-problem',
+    title: 'The Shape of a Problem: Mathematical Intuition for Machine Learning',
+    description:
+      'The geometric intuition the theorems assume you already have. Three objects and one set ' +
+      'of operations: the objective you optimise, read through its conditioning, curvature and ' +
+      'dual; the distribution the data comes from, read through expectation, covariance and ' +
+      'information; and the representation the model builds in between, read through anisotropy, ' +
+      'packing and curvature. The prologue Why Learning Works never had.',
+    posts: [
+      'the-objective-has-a-shape',
+      'the-distribution-has-a-shape',
+      'the-representation-has-a-shape',
+    ],
+  },
+
+  {
     id: 'algebraic-number-theory',
     title: 'When Factorization Breaks: An Algebraic Number Theory Thread',
     description:

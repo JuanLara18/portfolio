@@ -177,6 +177,12 @@ The Agent Development Kit end to end, from the mental model to the 2.x graph run
 5. adk-advanced-evolution-of-agent-engineering
 6. enterprise-agent-memory-continuity-adk-geap
 
+### The Shape of a Problem (three-part series)
+The geometric intuition the theorems assume you already have, and the recommended prologue to *Why Learning Works*. Three objects, one set of operations — project, weigh with a quadratic form, read the curvature. Post one reads the objective: norms as preferences, least squares as projection, quadratic forms as ellipsoids, the condition number as the number that unifies numerical error and convergence rate and multicollinearity, the Hessian as curvature, and duality as a shadow price. Post two reads the data: expectation as an L2 projection, covariance as a quadratic form, Fisher information as the Hessian of the KL divergence, and the high-dimensional geometry that breaks nearest-neighbour intuition. Post three reads the learned representation: embedding anisotropy and the narrow cone, contrastive loss as a shape specification, intrinsic dimension, superposition as a packing bound, and hyperbolic space for hierarchies. Intuition-first: theorems are stated precisely and pointed at the posts that prove them.
+1. the-objective-has-a-shape
+2. the-distribution-has-a-shape
+3. the-representation-has-a-shape
+
 ### Why Learning Works (fifteen-part series)
 The proofs under the practice. Where the loss function comes from, what you are actually minimizing, the concentration inequalities every generalization bound is built from, PAC learning and VC dimension, why no model escapes its own assumptions, and the theorems behind regularization, kernels, boosting, spectral methods, EM and the Bellman operator. Proof-heavy: theorems are stated formally and proved, or the gap is named.
 1. loss-functions-are-probability-assumptions
@@ -847,6 +853,27 @@ universal-approximation-and-what-it-does-not-give-you:
   tech: [numpy]
   depth: deep
 
+the-objective-has-a-shape:
+  concepts: [condition number, quadratic form, Hessian, curvature, saddle points, convex optimization, Lagrange duality, shadow price, KKT conditions, Fenchel conjugate, dual norm, orthogonal projection, singular value decomposition, effective rank, preconditioning, Danskin's theorem, sharp versus flat minima]
+  prereqs: []
+  teaches: [reading the condition number off a design matrix and predicting the iteration count, deriving the gradient descent contraction rate for a quadratic, classifying a critical point from the Hessian spectrum, recognising feature scaling and batch norm and ridge and Adam as one intervention on conditioning, interpreting a Lagrange multiplier as the sensitivity of the optimum to its constraint, diagnosing a training pathology from the geometry of the objective]
+  tech: [numpy, scipy]
+  depth: deep
+
+the-distribution-has-a-shape:
+  concepts: [conditional expectation, orthogonal projection, Hilbert space, covariance matrix, Mahalanobis distance, whitening, exponential family, sufficient statistics, maximum entropy, change of variables, Jacobian determinant, law of large numbers, central limit theorem, KL divergence, Fisher information, natural gradient, Cramer-Rao bound, maximum likelihood asymptotics, Bayes rule, concentration of measure, curse of dimensionality, Johnson-Lindenstrauss lemma]
+  prereqs: [the-objective-has-a-shape]
+  teaches: [proving the conditional mean is the L2 projection and recognising it as the normal equations, reading a covariance matrix as an ellipsoid and Mahalanobis distance as a change of metric, naming the constraint each exponential family maximises entropy under, deriving Fisher information as the Hessian of the KL divergence, explaining why a confidence interval width is a curvature measurement, predicting where nearest neighbour search degrades from the dimension alone]
+  tech: [numpy, scipy]
+  depth: deep
+
+the-representation-has-a-shape:
+  concepts: [anisotropy, representation degeneration, narrow cone, cosine similarity, whitening, all-but-the-top, alignment and uniformity, contrastive learning, intrinsic dimension, effective rank, superposition, linear representation hypothesis, polysemanticity, sparse autoencoders, Johnson-Lindenstrauss lemma, hyperbolic embeddings, Poincare ball, volume growth, curvature of a space, orthogonal Procrustes, centered kernel alignment, platonic representation hypothesis]
+  prereqs: [the-distribution-has-a-shape, the-objective-has-a-shape, embeddings-geometry-of-meaning]
+  teaches: [measuring anisotropy in an embedding space and repairing it by whitening, reading a contrastive loss as a specification of geometry on the hypersphere, estimating intrinsic dimension and knowing when the estimate is biased, deriving the packing bound that makes superposition possible, explaining why a hierarchy cannot embed in Euclidean space without distortion, choosing the curvature of an embedding space to match the structure of the data, comparing two representation spaces with Procrustes and CKA]
+  tech: [numpy, scipy, scikit-learn]
+  depth: deep
+
 ```
 
 <!-- AUTO-CATALOG:START - regenerated by build-knowledge-base.js, do not edit by hand -->
@@ -995,8 +1022,11 @@ Auto-generated index of every post by category, sorted most recent first. Use th
 - **`python-beyond-the-basics`** *(deep)* — Python Beyond the Basics: The Language Behind the Language. Everyone writes Python. Few truly understand it. This is a deep dive into the mechanisms that separate elegant, maintainable code from the sprawling chaos that haunts production systems—from the data model to metaclasses, from decorators to the GIL. Concepts: python, software engineering, best practices, design patterns, developer tools, testing.
 - **`structuring-ml-projects`** *(deep)* — Structuring Machine Learning Projects: From Chaos to Production-Ready. Most ML projects die in the chaos of unversioned notebooks and dependency hell. This is the definitive guide to structuring projects that scale—from folder architecture to Git workflows, from Poetry mastery to the bridge between experimentation and production. Concepts: mlops, python, software engineering, git, best practices, production ml.
 
-### research (28 posts)
+### research (31 posts)
 
+- **`the-representation-has-a-shape`** *(deep)* — The Representation Has a Shape. High-dimensional theory says two random vectors are almost surely nearly orthogonal. Embed a few thousand unrelated sentences with a real encoder and the mean pairwise cosine comes back large and positive. The gap between those two facts is a narrow cone, a packing bound, and a curvature nobody chose -- and every one of them is measurable. Concepts: anisotropy, representation degeneration, narrow cone, cosine similarity, whitening, all-but-the-top. Tech: numpy, scipy, scikit-learn.
+- **`the-distribution-has-a-shape`** *(deep)* — The Distribution Has a Shape. Expectation is a projection, covariance is a quadratic form, and information is curvature. Those are the same three geometric operations that read an objective function, applied instead to the data -- and once they land, most of statistics stops being a list of formulas and becomes one picture examined from three sides. Concepts: conditional expectation, orthogonal projection, Hilbert space, covariance matrix, Mahalanobis distance, whitening. Tech: numpy, scipy.
+- **`the-objective-has-a-shape`** *(deep)* — The Objective Has a Shape. The same least-squares problem, with one column expressed in micrometres instead of metres, goes from converging in forty-four steps to not converging in forty thousand. Nothing statistical changed; the geometry did. Conditioning, curvature and duality are three numbers you can read off an objective before you run anything, and they explain most of what you experience as a model refusing to train. Concepts: condition number, quadratic form, Hessian, curvature, saddle points, convex optimization. Tech: numpy, scipy.
 - **`double-descent`** *(deep)* — Double Descent: Where the Classical Theory Runs Out. Two theorems proved earlier in this series predict that a model with far more parameters than data cannot generalize. Those models are the state of the art. This post locates exactly which step of the reasoning fails, proves the implicit-bias result that replaces it, measures the double descent curve in numpy, and ends where the theory actually ends: on an open problem. Concepts: double descent, interpolation threshold, benign overfitting, implicit regularization, minimum-norm interpolant, random labels. Tech: numpy.
 - **`backprop-is-reverse-mode-differentiation`** *(deep)* — Backprop Is Reverse-Mode Differentiation. Backpropagation is not a neural-network trick. It is reverse-mode automatic differentiation on a computational graph, and the reason it is the only viable choice is a complexity theorem from 1983 that predates its fame in machine learning. This post derives the delta recursion from the chain rule, states the cheap gradient principle, and shows that weight initialization is a short variance calculation rather than folklore. Concepts: backpropagation, reverse-mode automatic differentiation, computational graph, adjoint, chain rule, cheap gradient principle. Tech: numpy.
 - **`universal-approximation-and-what-it-does-not-give-you`** *(deep)* — Universal Approximation, and What It Does Not Give You. A neural network can approximate any continuous function. The sentence is true, it is beautiful, and it settles almost nothing. This post states the theorem in the form its authors proved it, gives the architecture of the argument honestly, and then spends most of its length on the four things it does not say: no width bound, no algorithm, no generalization, and no depth. Concepts: universal approximation theorem, density in function space, discriminatory activation, Hahn-Banach, Riesz representation, Barron class. Tech: numpy.
