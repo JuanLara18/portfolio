@@ -29,6 +29,12 @@
           "durationSec": 1476.072,
           "byteSize": 8856432,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/the-representation-has-a-shape.mp3",
+          "durationSec": 1424.856,
+          "byteSize": 8549136,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -61,6 +67,12 @@
           "durationSec": 1873.368,
           "byteSize": 11240208,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/the-distribution-has-a-shape.mp3",
+          "durationSec": 1836.384,
+          "byteSize": 11018304,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -93,6 +105,12 @@
           "durationSec": 1884.912,
           "byteSize": 11309472,
           "voice": "en-US-AndrewMultilingualNeural"
+        },
+        "es": {
+          "url": "https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es/research/the-objective-has-a-shape.mp3",
+          "durationSec": 1807.848,
+          "byteSize": 10847088,
+          "voice": "es-CO-GonzaloNeural"
         }
       }
     },
@@ -6967,6 +6985,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-09-08T21:16:03.107Z",
+  "lastUpdated": "2026-09-08T22:00:49.053Z",
   "totalPosts": 184
 }

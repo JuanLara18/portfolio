@@ -1,0 +1,13 @@
+{
+  "slug": "the-objective-has-a-shape",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "09e571a8afe681768e3e1ef3407a2811e3e8ce20f18f8c247381c1ba65b24f62",
+  "sourceHash": "bd273cc8662ee8268e4c3435a0b6d4d14ea5868931fc3017449d3584fee80728",
+  "durationSec": 1807.848,
+  "byteSize": 10847088,
+  "narrationWordCount": 4989,
+  "audioUrl": "/blog/audio-es/research/the-objective-has-a-shape.mp3",
+  "translationModel": "aya-expanse:8b"
+}

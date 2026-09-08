@@ -1,0 +1,13 @@
+{
+  "slug": "the-representation-has-a-shape",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "9a5dee982a565533f1a973cae07ff2842dd14e90a6322afc06e9364a0f2f1ead",
+  "sourceHash": "69be603b76078c0763231d675a832e9b4473a9398989d22f0090c9abddb220ab",
+  "durationSec": 1424.856,
+  "byteSize": 8549136,
+  "narrationWordCount": 3824,
+  "audioUrl": "/blog/audio-es/research/the-representation-has-a-shape.mp3",
+  "translationModel": "aya-expanse:8b"
+}
