@@ -98,11 +98,13 @@ What JL buys you is not the number. It is the *shape of the guarantee* — rando
 
 The lemma says such a map *exists*. The practical miracle is that you find it by sampling — a random matrix works with high probability, and does not even need Gaussian entries. Achlioptas showed that entries from $\{-1, 0, +1\}$ with probabilities $\{1/6, 2/3, 1/6\}$ satisfy the same guarantee: integer arithmetic, two thirds of the entries zero. Li, Hastie and Church pushed much further with *very sparse random projections*:
 
-$$R_{ij} = \begin{cases}
+$$
+R_{ij} = \begin{cases}
 +\sqrt{s} & \text{with probability } \dfrac{1}{2s} \\[6pt]
 0 & \text{with probability } 1 - \dfrac{1}{s} \\[6pt]
 -\sqrt{s} & \text{with probability } \dfrac{1}{2s}
-\end{cases}$$
+\end{cases}
+$$
 
 With $s = \sqrt{D}$ you get a $\sqrt{D}$-fold speedup over a dense Gaussian projection, because all but a $1/\sqrt{D}$ fraction of the matrix is zero and never touched. FastRP uses $s = \sqrt{m}$, with $m$ the edge count.
 
@@ -188,11 +190,13 @@ $$\pi_{vx} = \alpha_{pq}(t, x) \cdot w_{vx}$$
 
 where $w_{vx}$ is the edge weight and the search bias is
 
-$$\alpha_{pq}(t, x) = \begin{cases}
+$$
+\alpha_{pq}(t, x) = \begin{cases}
 \dfrac{1}{p} & \text{if } d_{tx} = 0 \\[6pt]
 1 & \text{if } d_{tx} = 1 \\[6pt]
 \dfrac{1}{q} & \text{if } d_{tx} = 2
-\end{cases}$$
+\end{cases}
+$$
 
 with $d_{tx}$ the shortest-path distance from the previous node $t$ to the candidate $x$. Having arrived at $v$ from $t$, only three cases are possible: $x = t$ (distance zero, backtracking), $x$ is also a neighbor of $t$ (distance one, moving sideways within a triangle), or $x$ is two hops from $t$ (moving outward).
 
