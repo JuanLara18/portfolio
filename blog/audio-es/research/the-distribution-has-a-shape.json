@@ -1,0 +1,13 @@
+{
+  "slug": "the-distribution-has-a-shape",
+  "category": "research",
+  "lang": "es",
+  "voice": "es-CO-GonzaloNeural",
+  "hash": "a072cc63bee393cf90a0afd11ccb2ced28b67bb594b3170f4cddc89ddab57d82",
+  "sourceHash": "8ab3f64bc4baef452aef3fd3e2e7afcbc1a32674e10db77518c429784b2eabb0",
+  "durationSec": 1836.384,
+  "byteSize": 11018304,
+  "narrationWordCount": 5050,
+  "audioUrl": "/blog/audio-es/research/the-distribution-has-a-shape.mp3",
+  "translationModel": "aya-expanse:8b"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "the-distribution-has-a-shape",
+  "category": "research",
+  "lang": "en",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "hash": "8ab3f64bc4baef452aef3fd3e2e7afcbc1a32674e10db77518c429784b2eabb0",
+  "sourceHash": "8ab3f64bc4baef452aef3fd3e2e7afcbc1a32674e10db77518c429784b2eabb0",
+  "durationSec": 1873.368,
+  "byteSize": 11240208,
+  "narrationWordCount": 4540,
+  "audioUrl": "/blog/audio/research/the-distribution-has-a-shape.mp3",
+  "translationModel": ""
+}

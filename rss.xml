@@ -9,8 +9,68 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Mar 2029 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 22 Mar 2029 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>The Representation Has a Shape</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape</guid>
+    <pubDate>Thu, 22 Mar 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[High-dimensional theory says two random vectors are almost surely nearly orthogonal. Embed a few thousand unrelated sentences with a real encoder and the mean pairwise cosine comes back large and positive. The gap between those two facts is a narrow cone, a packing bound, and a curvature nobody chose -- and every one of them is measurable.]]></description>
+    <category>research</category>
+    <category>Embeddings</category>
+    <category>Representation Learning</category>
+    <category>Deep Learning</category>
+    <category>Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Geometry</category>
+    <category>Neural Network Theory</category>
+    <category>Mechanistic Interpretability</category>
+    <category>Information Retrieval</category>
+    <category>Vector Databases</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/the-representation-has-a-shape.mp3" length="8856432" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Distribution Has a Shape</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape</guid>
+    <pubDate>Thu, 15 Mar 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Expectation is a projection, covariance is a quadratic form, and information is curvature. Those are the same three geometric operations that read an objective function, applied instead to the data -- and once they land, most of statistics stops being a list of formulas and becomes one picture examined from three sides.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Probability</category>
+    <category>Statistics</category>
+    <category>Machine Learning</category>
+    <category>Information Theory</category>
+    <category>Linear Algebra</category>
+    <category>Embeddings</category>
+    <category>Algorithms</category>
+    <category>Foundations of Mathematics</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/the-distribution-has-a-shape.mp3" length="11240208" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
+  <item>
+    <title>The Objective Has a Shape</title>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape</guid>
+    <pubDate>Thu, 08 Mar 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[The same least-squares problem, with one column expressed in micrometres instead of metres, goes from converging in forty-four steps to not converging in forty thousand. Nothing statistical changed; the geometry did. Conditioning, curvature and duality are three numbers you can read off an objective before you run anything, and they explain most of what you experience as a model refusing to train.]]></description>
+    <category>research</category>
+    <category>Statistical Learning Theory</category>
+    <category>Mathematics</category>
+    <category>Linear Algebra</category>
+    <category>Optimization</category>
+    <category>Machine Learning</category>
+    <category>Neural Network Theory</category>
+    <category>Deep Learning</category>
+    <category>Algorithms</category>
+    <category>Foundations of Mathematics</category>
+    <category>Research Papers</category>
+    <enclosure url="https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio/research/the-objective-has-a-shape.mp3" length="11309472" type="audio/mpeg" />
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>Double Descent: Where the Classical Theory Runs Out</title>
     <link>https://juanlara18.github.io/portfolio/blog/research/double-descent</link>
