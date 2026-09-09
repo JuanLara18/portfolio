@@ -40,6 +40,7 @@
     "web-vitals": "^2.x"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.17.0",
     "@tailwindcss/postcss": "^4.1.7",
     "autoprefixer": "^10.4.16",
     "gh-pages": "^6.3.0",
@@ -72,7 +73,9 @@
     "generate-pdf:sample": "node scripts/generate-blog-pdf.js --sample",
     "sync": "python scripts/sync.py",
     "sync:fast": "python scripts/sync.py --fast",
-    "sync:check": "python scripts/sync.py --check"
+    "sync:check": "python scripts/sync.py --check",
+    "pdf:series": "node scripts/pdf/build.js",
+    "pdf:series:list": "node scripts/pdf/build.js --list"
   },
   "browserslist": {
     "production": [

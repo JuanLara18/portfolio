@@ -46,3 +46,16 @@ To enrich a post's metadata (concepts, prereqs, teaches, tech, depth), edit the 
 ## Authoring posts
 
 Use the `new-blog-post` skill for the full workflow (frontmatter, header image, audio generation). The post becomes available to the knowledge base on the next build.
+
+## Print PDFs
+
+`front/scripts/pdf/` compiles one series — or any reading path — into a print-ready PDF via pandoc and XeLaTeX. The compilable set is parsed from the `## Reading Paths` section of `KNOWLEDGE_BASE.md`, so adding a series there is all that is needed to make it buildable.
+
+```bash
+npm run pdf:series:list                                   # what can be built
+npm run pdf:series -- the-shape-of-a-problem --layout=all # every page geometry
+```
+
+Read `front/scripts/pdf/README.md` before changing anything in there: the layout rules, the Mermaid sizing decisions, and the LaTeX pitfalls that are easy to reintroduce are written down. Requires pandoc, MiKTeX, and `@mermaid-js/mermaid-cli`.
+
+The older `npm run generate-pdf` still produces the single all-posts compilation on PDFKit. It is unrelated and much heavier.
