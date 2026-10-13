@@ -226,6 +226,17 @@ The four-part arc on Google's Knowledge Catalog vs ontologies, plus the hands-on
 7. defining-the-knowledge-stack
 8. comparing-knowledge-bases-semantic-overlap
 
+### Open semantics: from concept to contract
+The three layers of meaning, conceptual, logical, and delivery, read in one line. Start with the pillar post, which stands alone, then go deep on whichever layer you own.
+1. apache-ossie-open-semantic-stack
+2. ontologies-building-knowledge-bases
+3. tbox-abox-schema-facts-distinction
+4. ontology-production-pipeline-gcp
+5. dimensional-modeling-kimball
+6. lookml-semantic-layer-data-modeling
+7. knowledge-as-a-product
+8. knowledge-catalog-vs-ontologies
+
 ### Software-engineering foundations the blog assumes
 1. software-engineering-classics
 2. python-beyond-the-basics
@@ -290,6 +301,13 @@ Per-post enrichment that supplements frontmatter. Edit the YAML block below to a
 Add new entries as you publish or as you want to enrich an older post. The build script re-derives `concept_index`, `prereq_graph`, and `tech_index` from this block on every run.
 
 ```yaml
+apache-ossie-open-semantic-stack:
+  concepts: [Apache Ossie, Open Semantic Interchange, semantic model, semantic layer, ontology, entity type versus value type, verbalization, ontology mapping, conceptual versus logical versus physical, data contract, data product, ODCS, ODPS, open world versus closed world, fact-based modeling, semantics as code, multi-dialect expressions]
+  prereqs: []
+  teaches: [tell the conceptual and logical and delivery layers apart, write an Ossie semantic model and ontology and mapping, link a data contract to ontology concepts by IRI, validate semantic documents in CI, check cross-layer references, compile an ontology into agent context, decide which layer to adopt first]
+  tech: [apache-ossie, odcs, odps, dbt, bigquery, json-schema]
+  depth: deep
+
 agent-platform-control-plane-data-plane:
   concepts: [agent platform, control plane versus data plane, platform layers, non-human identity, Model Armor, defence in depth, OWASP agentic top 10]
   prereqs: [agent-architecture-and-orchestration, model-context-protocol, agent-guardrails-field-guide]
@@ -882,8 +900,9 @@ the-representation-has-a-shape:
 
 Auto-generated index of every post by category, sorted most recent first. Use this when you need a complete inventory of what the blog covers — for example, when loaded as Claude Project knowledge and you cannot query `posts.json`.
 
-### field-notes (137 posts)
+### field-notes (138 posts)
 
+- **`apache-ossie-open-semantic-stack`** *(deep)* — Apache Ossie: Ontologies, Semantic Models, and Data Contracts as One Open Stack. Every company defines 'customer' and 'revenue' five times, in five tools, in five formats. Apache Ossie, the former Open Semantic Interchange, is the first serious attempt to write those definitions once in an open format, from the business concept down to the SQL. This is the complete guide: the vocabulary, the theory behind it, the three layers, a banking example that validates against the real schemas, and an honest account of what the standard still leaves out. Concepts: Apache Ossie, Open Semantic Interchange, semantic model, semantic layer, ontology, entity type versus value type. Tech: apache-ossie, odcs, odps, dbt, bigquery, json-schema.
 - **`debugging-adk-agent-flows`** *(deep)* — Nothing Threw: Debugging Agent Flows in ADK 2.x. The hardest agent bugs raise nothing. The stack trace is empty, the run completed, the answer was fluent and wrong. Or the right answer was produced by a sub-agent and never reached the user at all. This is a field guide to debugging flow errors in ADK 2.x: what the framework hides by default, why the event stream is the only ground truth, who actually owns the user-facing turn, and the flow recorder plugin you should write once and never write again. Concepts: flow errors versus code errors, silent failure, event stream as ground truth, response ownership, final response semantics, partial event accumulation. Tech: google-adk, gemini, opentelemetry, cloud-trace, gemini-enterprise.
 - **`migrating-adk-1x-to-2x`** *(deep)* — Migrating from ADK 1.x to 2.0: The Breaking Changes That Actually Break You. ADK 2.0 replaced the execution model, not just the feature set. Three of its breaking changes do not raise an exception: your orchestration override gets bypassed, your event appends stop routing, and your exception handler eats the framework's retries. This is the migration guide, including the database work everyone underestimates and the honest case for staying on 1.x. Concepts: breaking changes, silent failure modes, bypassed orchestration override, event schema migration, session compatibility window, BaseNode hierarchy. Tech: google-adk, gemini, postgres, gemini-enterprise.
 - **`adk-graph-workflows-deterministic-orchestration`** *(deep)* — Graph Workflows in ADK 2.0: Putting Control Flow Back in Code. ADK 2.0 replaced the agent hierarchy with a graph. Agents, tools and plain functions are all nodes now, edges are written in Python rather than negotiated with a prompt, and every node can choose independently whether a model or a compiler decides what happens next. This is the deep dive on the Workflow runtime: routes, typed data flow, JoinNode fan-in, retries and timeouts, human-in-the-loop pauses, dynamic workflows with automatic checkpointing, and an honest look at where LangGraph still wins. Concepts: graph workflows, workflow runtime, START virtual node, conditional routing, typed node output, state boundaries. Tech: google-adk, gemini, langgraph, gemini-enterprise, opentelemetry.

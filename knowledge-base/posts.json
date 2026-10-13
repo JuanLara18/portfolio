@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-09-08T20:35:06.662Z",
+  "generated_at": "2026-10-13T03:27:34.133Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -8,18 +8,82 @@
     "defaults_when_not_augmented": "concepts = lowercased tags; prereqs = []; teaches = []; tech = []; depth = inferred from word_count (<1500 intro, <4000 working, else deep)."
   },
   "stats": {
-    "total_posts": 184,
-    "augmented_posts": 84,
+    "total_posts": 185,
+    "augmented_posts": 85,
     "by_category": {
+      "field-notes": 138,
       "research": 31,
-      "field-notes": 137,
       "curiosities": 16
     },
-    "concepts_indexed": 823,
-    "tech_indexed": 89,
+    "concepts_indexed": 838,
+    "tech_indexed": 94,
     "prereq_edges": 158
   },
   "posts": {
+    "apache-ossie-open-semantic-stack": {
+      "title": "Apache Ossie: Ontologies, Semantic Models, and Data Contracts as One Open Stack",
+      "date": "2029-03-29",
+      "category": "field-notes",
+      "tags": [
+        "Ontologies",
+        "Data Modeling",
+        "Data Architecture",
+        "Data Governance",
+        "Data Engineering",
+        "Metadata",
+        "Business Intelligence",
+        "Analytics Engineering",
+        "Data Mesh",
+        "Knowledge Graphs",
+        "Open Source",
+        "Agents"
+      ],
+      "excerpt": "Every company defines 'customer' and 'revenue' five times, in five tools, in five formats. Apache Ossie, the former Open Semantic Interchange, is the first serious attempt to write those definitions once in an open format, from the business concept down to the SQL. This is the complete guide: the vocabulary, the theory behind it, the three layers, a banking example that validates against the real schemas, and an honest account of what the standard still leaves out.",
+      "url": "https://juanlara18.github.io/portfolio/#/blog/apache-ossie-open-semantic-stack",
+      "source_path": "front/public/blog/posts/field-notes/apache-ossie-open-semantic-stack.md",
+      "reading_minutes": 53,
+      "word_count": 10400,
+      "concepts": [
+        "Apache Ossie",
+        "Open Semantic Interchange",
+        "semantic model",
+        "semantic layer",
+        "ontology",
+        "entity type versus value type",
+        "verbalization",
+        "ontology mapping",
+        "conceptual versus logical versus physical",
+        "data contract",
+        "data product",
+        "ODCS",
+        "ODPS",
+        "open world versus closed world",
+        "fact-based modeling",
+        "semantics as code",
+        "multi-dialect expressions"
+      ],
+      "prereqs": [],
+      "teaches": [
+        "tell the conceptual and logical and delivery layers apart",
+        "write an Ossie semantic model and ontology and mapping",
+        "link a data contract to ontology concepts by IRI",
+        "validate semantic documents in CI",
+        "check cross-layer references",
+        "compile an ontology into agent context",
+        "decide which layer to adopt first"
+      ],
+      "tech": [
+        "apache-ossie",
+        "odcs",
+        "odps",
+        "dbt",
+        "bigquery",
+        "json-schema"
+      ],
+      "depth": "deep",
+      "audio_available": [],
+      "augmented": true
+    },
     "the-representation-has-a-shape": {
       "title": "The Representation Has a Shape",
       "date": "2029-03-22",
@@ -85,7 +149,10 @@
         "scikit-learn"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": true
     },
     "the-distribution-has-a-shape": {
@@ -149,7 +216,10 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": true
     },
     "the-objective-has-a-shape": {
@@ -206,7 +276,10 @@
         "scipy"
       ],
       "depth": "deep",
-      "audio_available": [],
+      "audio_available": [
+        "en",
+        "es"
+      ],
       "augmented": true
     },
     "double-descent": {
@@ -8687,6 +8760,120 @@
     }
   },
   "concept_index": {
+    "apache ossie": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "open semantic interchange": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "semantic model": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "semantic layer": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "lookml-semantic-layer-data-modeling",
+        "depth": "working"
+      }
+    ],
+    "ontology": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      },
+      {
+        "slug": "ontologies-building-knowledge-bases",
+        "depth": "working"
+      },
+      {
+        "slug": "ontology-to-agent-toolbox",
+        "depth": "deep"
+      }
+    ],
+    "entity type versus value type": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "verbalization": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "ontology mapping": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "conceptual versus logical versus physical": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "data contract": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "data product": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "odcs": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "odps": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "open world versus closed world": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "fact-based modeling": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "semantics as code": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
+    "multi-dialect expressions": [
+      {
+        "slug": "apache-ossie-open-semantic-stack",
+        "depth": "deep"
+      }
+    ],
     "anisotropy": [
       {
         "slug": "the-representation-has-a-shape",
@@ -15379,16 +15566,6 @@
         "depth": "deep"
       }
     ],
-    "ontology": [
-      {
-        "slug": "ontologies-building-knowledge-bases",
-        "depth": "working"
-      },
-      {
-        "slug": "ontology-to-agent-toolbox",
-        "depth": "deep"
-      }
-    ],
     "tool granularity": [
       {
         "slug": "ontology-to-agent-toolbox",
@@ -15425,12 +15602,6 @@
       {
         "slug": "production-llm-agents-patterns",
         "depth": "deep"
-      }
-    ],
-    "semantic layer": [
-      {
-        "slug": "lookml-semantic-layer-data-modeling",
-        "depth": "working"
       }
     ],
     "lookml": [
@@ -16915,6 +17086,26 @@
     ]
   },
   "tech_index": {
+    "apache-ossie": [
+      "apache-ossie-open-semantic-stack"
+    ],
+    "odcs": [
+      "apache-ossie-open-semantic-stack"
+    ],
+    "odps": [
+      "apache-ossie-open-semantic-stack"
+    ],
+    "dbt": [
+      "apache-ossie-open-semantic-stack"
+    ],
+    "bigquery": [
+      "apache-ossie-open-semantic-stack",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "lookml-semantic-layer-data-modeling"
+    ],
+    "json-schema": [
+      "apache-ossie-open-semantic-stack"
+    ],
     "numpy": [
       "backprop-is-reverse-mode-differentiation",
       "bellman-operator-is-a-contraction",
@@ -17201,10 +17392,6 @@
     "qdrant": [
       "production-graph-stack-agents-mcp-ontologies"
     ],
-    "bigquery": [
-      "enterprise-agent-memory-continuity-adk-geap",
-      "lookml-semantic-layer-data-modeling"
-    ],
     "anthropic-sdk": [
       "agent-integration-protocols-mcp-and-a2a",
       "claude-code-complete-guide",
@@ -17315,6 +17502,236 @@
     ]
   },
   "tag_index": {
+    "Ontologies": [
+      "apache-ossie-open-semantic-stack",
+      "defining-the-knowledge-stack",
+      "knowledge-catalog-vs-ontologies",
+      "knowledge-graphs-practice",
+      "ontologies-building-knowledge-bases",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-to-agent-toolbox",
+      "populating-knowledge-graph-llms-banking",
+      "production-graph-stack-agents-mcp-ontologies",
+      "spanner-graph-for-knowledge-and-agents"
+    ],
+    "Data Modeling": [
+      "apache-ossie-open-semantic-stack",
+      "dama-dmbok-data-governance",
+      "dbt-analytics-engineering",
+      "dimensional-modeling-kimball",
+      "lakehouse-architecture",
+      "lookml-semantic-layer-data-modeling",
+      "ontologies-building-knowledge-bases",
+      "senior-data-modeling-query-patterns-database-design",
+      "spanner-graph-for-knowledge-and-agents"
+    ],
+    "Data Architecture": [
+      "agent-platform-control-plane-data-plane",
+      "apache-ossie-open-semantic-stack",
+      "application-data-flow-replicas-backups",
+      "choosing-a-graph-engine-2026",
+      "claude-certified-architect-professional-exam-guide",
+      "comparing-knowledge-bases-semantic-overlap",
+      "dama-dmbok-data-governance",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "defining-the-knowledge-stack",
+      "dimensional-modeling-kimball",
+      "enterprise-graph-mcp-architecture-gcp",
+      "enterprise-knowledge-bases",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "gemini-knowledge-catalog-workshop",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "knowledge-as-a-product",
+      "knowledge-catalog-vs-ontologies",
+      "knowledge-graphs-practice",
+      "lakehouse-architecture",
+      "lookml-semantic-layer-data-modeling",
+      "modular-ontologies-core-domains-pattern",
+      "ontologies-building-knowledge-bases",
+      "ontology-production-pipeline-gcp",
+      "organizational-network-analysis-company-graph",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "senior-data-modeling-query-patterns-database-design",
+      "spanner-graph-for-knowledge-and-agents",
+      "tbox-abox-schema-facts-distinction",
+      "vector-databases-indexes-to-vertex-search"
+    ],
+    "Data Governance": [
+      "agent-golden-paths-multi-tenancy",
+      "apache-ossie-open-semantic-stack",
+      "application-data-flow-replicas-backups",
+      "dama-dmbok-data-governance",
+      "data-silos-breaking-information-barriers",
+      "enterprise-graph-mcp-architecture-gcp",
+      "gemini-knowledge-catalog-workshop",
+      "knowledge-as-a-product",
+      "lookml-semantic-layer-data-modeling",
+      "mcp-registry-gateway-tool-plane",
+      "organizational-network-analysis-company-graph"
+    ],
+    "Data Engineering": [
+      "100-posts-knowledge-graph-retrospective",
+      "ai-poc-enterprise-evaluation",
+      "apache-airflow-orchestration",
+      "apache-ossie-open-semantic-stack",
+      "apache-spark-ecosystem-guide",
+      "application-data-flow-replicas-backups",
+      "choosing-a-graph-engine-2026",
+      "dama-dmbok-data-governance",
+      "data-engineering-fundamentals",
+      "data-silos-breaking-information-barriers",
+      "dbt-analytics-engineering",
+      "dimensional-modeling-kimball",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-graph-mcp-architecture-gcp",
+      "files-under-the-hood",
+      "google-cloud-certifications-2026-roadmap",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "lakehouse-architecture",
+      "lookml-semantic-layer-data-modeling",
+      "ml-libraries-under-the-hood",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-production-pipeline-gcp",
+      "populating-knowledge-graph-llms-banking",
+      "senior-data-modeling-query-patterns-database-design",
+      "sql-pandas-pyspark-duckdb",
+      "tbox-abox-schema-facts-distinction",
+      "text-to-sql"
+    ],
+    "Metadata": [
+      "apache-ossie-open-semantic-stack",
+      "dama-dmbok-data-governance",
+      "gemini-knowledge-catalog-workshop"
+    ],
+    "Business Intelligence": [
+      "apache-ossie-open-semantic-stack",
+      "lookml-semantic-layer-data-modeling",
+      "mcp-server-nl-to-powerbi-dashboard"
+    ],
+    "Analytics Engineering": [
+      "apache-ossie-open-semantic-stack",
+      "dbt-analytics-engineering",
+      "dimensional-modeling-kimball",
+      "lookml-semantic-layer-data-modeling",
+      "sql-pandas-pyspark-duckdb"
+    ],
+    "Data Mesh": [
+      "apache-ossie-open-semantic-stack",
+      "data-silos-breaking-information-barriers",
+      "knowledge-as-a-product"
+    ],
+    "Knowledge Graphs": [
+      "100-posts-knowledge-graph-retrospective",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "apache-ossie-open-semantic-stack",
+      "centrality-communities-in-practice",
+      "choosing-a-graph-engine-2026",
+      "defining-the-knowledge-stack",
+      "enterprise-graph-mcp-architecture-gcp",
+      "enterprise-knowledge-bases",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "gql-standard-cypher-sqlpgq",
+      "graph-analytics-gds-execution-model",
+      "graph-engine-internals-index-free-adjacency",
+      "graph-fraud-detection-rings-synthetic-identity",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "graph-neural-networks-learning-structured-data",
+      "knowledge-as-a-product",
+      "knowledge-catalog-vs-ontologies",
+      "knowledge-graphs-practice",
+      "modular-ontologies-core-domains-pattern",
+      "network-science-communities-centrality",
+      "node-embeddings-fastrp-node2vec-graphsage",
+      "ontologies-building-knowledge-bases",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "ontology-production-pipeline-gcp",
+      "ontology-to-agent-toolbox",
+      "organizational-network-analysis-company-graph",
+      "pagerank-eigenvectors",
+      "populating-knowledge-graph-llms-banking",
+      "production-graph-stack-agents-mcp-ontologies",
+      "query-routing-agent-decisions",
+      "querying-code-graphs-blast-radius-localization",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "spanner-graph-for-knowledge-and-agents",
+      "tbox-abox-schema-facts-distinction"
+    ],
+    "Open Source": [
+      "agent-harness-build-fork-adopt-yc-qm",
+      "apache-ossie-open-semantic-stack",
+      "dont-reinvent-the-agent-open-source-composition",
+      "hermes-self-improving-agent-persistent-memory",
+      "local-llm-inference-tools",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison"
+    ],
+    "Agents": [
+      "adk-advanced-evolution-of-agent-engineering",
+      "adk-graph-workflows-deterministic-orchestration",
+      "agent-architecture-and-orchestration",
+      "agent-architectures-productive-patterns",
+      "agent-authentication-oauth-mcp-identity",
+      "agent-engineering-disciplines",
+      "agent-golden-paths-multi-tenancy",
+      "agent-graph-layer-why-grep-embeddings-fell-short",
+      "agent-guardrails-field-guide",
+      "agent-harness-build-fork-adopt-yc-qm",
+      "agent-integration-protocols-mcp-and-a2a",
+      "agent-memory-and-retrieval-embeddings-to-rag",
+      "agent-platform-control-plane-data-plane",
+      "agent-runtime-sessions-state-topology",
+      "apache-ossie-open-semantic-stack",
+      "bank-grade-agent-security-iam-gateways",
+      "claude-certified-architect-professional-exam-guide",
+      "claude-certified-associate-exam-guide",
+      "claude-certified-developer-exam-guide",
+      "claude-code-complete-guide",
+      "debugging-adk-agent-flows",
+      "dont-reinvent-the-agent-open-source-composition",
+      "enterprise-agent-governance-lifecycle",
+      "enterprise-agent-memory-continuity-adk-geap",
+      "enterprise-agents-governance-security-business",
+      "enterprise-graph-mcp-architecture-gcp",
+      "enterprise-knowledge-bases",
+      "finops-llm-agents-token-economics",
+      "foundations-of-agentic-ai-llms-to-agents",
+      "gemini-enterprise-knowledge-catalog-deep-dive",
+      "google-adk-agent-development-deep-dive",
+      "google-cloud-next-2026-agent-native-stack",
+      "graph-layer-in-production-mcp-build-vs-buy",
+      "graph-memory-temporal-agents-graphiti-cognee",
+      "hermes-self-improving-agent-persistent-memory",
+      "knowledge-catalog-vs-ontologies",
+      "langgraph-multi-agent-workflows",
+      "llamaindex-langchain-llm-frameworks",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "mcp-production-enterprise",
+      "mcp-registry-gateway-tool-plane",
+      "mcp-server-nl-to-powerbi-dashboard",
+      "migrating-adk-1x-to-2x",
+      "model-context-protocol",
+      "ontology-to-agent-toolbox",
+      "openclaw-anatomy-viral-agent-platform",
+      "openclaw-vs-hermes-self-hosted-agent-comparison",
+      "operating-agents-eval-observability-scale",
+      "production-graph-stack-agents-mcp-ontologies",
+      "production-llm-agents-patterns",
+      "query-routing-agent-decisions",
+      "querying-code-graphs-blast-radius-localization",
+      "rag-advanced-patterns",
+      "redis-for-ai-buy-vs-build-gcp",
+      "repo-to-graph-ast-vs-llm-extraction",
+      "sandboxing-agents-microvm-gvisor",
+      "spanner-graph-for-knowledge-and-agents",
+      "stack-recommendations-after-100-posts",
+      "text-to-sql"
+    ],
     "Embeddings": [
       "agent-graph-layer-why-grep-embeddings-fell-short",
       "agent-memory-and-retrieval-embeddings-to-rag",
@@ -17901,66 +18318,6 @@
       "google-cloud-next-2026-agent-native-stack",
       "migrating-adk-1x-to-2x"
     ],
-    "Agents": [
-      "adk-advanced-evolution-of-agent-engineering",
-      "adk-graph-workflows-deterministic-orchestration",
-      "agent-architecture-and-orchestration",
-      "agent-architectures-productive-patterns",
-      "agent-authentication-oauth-mcp-identity",
-      "agent-engineering-disciplines",
-      "agent-golden-paths-multi-tenancy",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-guardrails-field-guide",
-      "agent-harness-build-fork-adopt-yc-qm",
-      "agent-integration-protocols-mcp-and-a2a",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "agent-platform-control-plane-data-plane",
-      "agent-runtime-sessions-state-topology",
-      "bank-grade-agent-security-iam-gateways",
-      "claude-certified-architect-professional-exam-guide",
-      "claude-certified-associate-exam-guide",
-      "claude-certified-developer-exam-guide",
-      "claude-code-complete-guide",
-      "debugging-adk-agent-flows",
-      "dont-reinvent-the-agent-open-source-composition",
-      "enterprise-agent-governance-lifecycle",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-agents-governance-security-business",
-      "enterprise-graph-mcp-architecture-gcp",
-      "enterprise-knowledge-bases",
-      "finops-llm-agents-token-economics",
-      "foundations-of-agentic-ai-llms-to-agents",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "google-adk-agent-development-deep-dive",
-      "google-cloud-next-2026-agent-native-stack",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "hermes-self-improving-agent-persistent-memory",
-      "knowledge-catalog-vs-ontologies",
-      "langgraph-multi-agent-workflows",
-      "llamaindex-langchain-llm-frameworks",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "mcp-production-enterprise",
-      "mcp-registry-gateway-tool-plane",
-      "mcp-server-nl-to-powerbi-dashboard",
-      "migrating-adk-1x-to-2x",
-      "model-context-protocol",
-      "ontology-to-agent-toolbox",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison",
-      "operating-agents-eval-observability-scale",
-      "production-graph-stack-agents-mcp-ontologies",
-      "production-llm-agents-patterns",
-      "query-routing-agent-decisions",
-      "querying-code-graphs-blast-radius-localization",
-      "rag-advanced-patterns",
-      "redis-for-ai-buy-vs-build-gcp",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "sandboxing-agents-microvm-gvisor",
-      "spanner-graph-for-knowledge-and-agents",
-      "stack-recommendations-after-100-posts",
-      "text-to-sql"
-    ],
     "Agentic AI": [
       "adk-advanced-evolution-of-agent-engineering",
       "adk-graph-workflows-deterministic-orchestration",
@@ -18319,18 +18676,6 @@
       "mcp-production-enterprise",
       "mcp-registry-gateway-tool-plane"
     ],
-    "Data Governance": [
-      "agent-golden-paths-multi-tenancy",
-      "application-data-flow-replicas-backups",
-      "dama-dmbok-data-governance",
-      "data-silos-breaking-information-barriers",
-      "enterprise-graph-mcp-architecture-gcp",
-      "gemini-knowledge-catalog-workshop",
-      "knowledge-as-a-product",
-      "lookml-semantic-layer-data-modeling",
-      "mcp-registry-gateway-tool-plane",
-      "organizational-network-analysis-company-graph"
-    ],
     "Infrastructure": [
       "agent-engineering-disciplines",
       "agent-golden-paths-multi-tenancy",
@@ -18444,76 +18789,6 @@
       "senior-infrastructure-distributed-systems-failure-networking",
       "spanner-graph-for-knowledge-and-agents"
     ],
-    "Data Architecture": [
-      "agent-platform-control-plane-data-plane",
-      "application-data-flow-replicas-backups",
-      "choosing-a-graph-engine-2026",
-      "claude-certified-architect-professional-exam-guide",
-      "comparing-knowledge-bases-semantic-overlap",
-      "dama-dmbok-data-governance",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "defining-the-knowledge-stack",
-      "dimensional-modeling-kimball",
-      "enterprise-graph-mcp-architecture-gcp",
-      "enterprise-knowledge-bases",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "gemini-knowledge-catalog-workshop",
-      "gql-standard-cypher-sqlpgq",
-      "graph-analytics-gds-execution-model",
-      "graph-engine-internals-index-free-adjacency",
-      "knowledge-as-a-product",
-      "knowledge-catalog-vs-ontologies",
-      "knowledge-graphs-practice",
-      "lakehouse-architecture",
-      "lookml-semantic-layer-data-modeling",
-      "modular-ontologies-core-domains-pattern",
-      "ontologies-building-knowledge-bases",
-      "ontology-production-pipeline-gcp",
-      "organizational-network-analysis-company-graph",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "senior-data-modeling-query-patterns-database-design",
-      "spanner-graph-for-knowledge-and-agents",
-      "tbox-abox-schema-facts-distinction",
-      "vector-databases-indexes-to-vertex-search"
-    ],
-    "Knowledge Graphs": [
-      "100-posts-knowledge-graph-retrospective",
-      "agent-graph-layer-why-grep-embeddings-fell-short",
-      "agent-memory-and-retrieval-embeddings-to-rag",
-      "centrality-communities-in-practice",
-      "choosing-a-graph-engine-2026",
-      "defining-the-knowledge-stack",
-      "enterprise-graph-mcp-architecture-gcp",
-      "enterprise-knowledge-bases",
-      "gemini-enterprise-knowledge-catalog-deep-dive",
-      "gql-standard-cypher-sqlpgq",
-      "graph-analytics-gds-execution-model",
-      "graph-engine-internals-index-free-adjacency",
-      "graph-fraud-detection-rings-synthetic-identity",
-      "graph-layer-in-production-mcp-build-vs-buy",
-      "graph-memory-temporal-agents-graphiti-cognee",
-      "graph-neural-networks-learning-structured-data",
-      "knowledge-as-a-product",
-      "knowledge-catalog-vs-ontologies",
-      "knowledge-graphs-practice",
-      "modular-ontologies-core-domains-pattern",
-      "network-science-communities-centrality",
-      "node-embeddings-fastrp-node2vec-graphsage",
-      "ontologies-building-knowledge-bases",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-production-pipeline-gcp",
-      "ontology-to-agent-toolbox",
-      "organizational-network-analysis-company-graph",
-      "pagerank-eigenvectors",
-      "populating-knowledge-graph-llms-banking",
-      "production-graph-stack-agents-mcp-ontologies",
-      "query-routing-agent-decisions",
-      "querying-code-graphs-blast-radius-localization",
-      "repo-to-graph-ast-vs-llm-extraction",
-      "spanner-graph-for-knowledge-and-agents",
-      "tbox-abox-schema-facts-distinction"
-    ],
     "Neo4j": [
       "centrality-communities-in-practice",
       "choosing-a-graph-engine-2026",
@@ -18568,35 +18843,6 @@
       "knowledge-base-curation",
       "organizational-network-analysis-company-graph"
     ],
-    "Data Engineering": [
-      "100-posts-knowledge-graph-retrospective",
-      "ai-poc-enterprise-evaluation",
-      "apache-airflow-orchestration",
-      "apache-spark-ecosystem-guide",
-      "application-data-flow-replicas-backups",
-      "choosing-a-graph-engine-2026",
-      "dama-dmbok-data-governance",
-      "data-engineering-fundamentals",
-      "data-silos-breaking-information-barriers",
-      "dbt-analytics-engineering",
-      "dimensional-modeling-kimball",
-      "enterprise-agent-memory-continuity-adk-geap",
-      "enterprise-graph-mcp-architecture-gcp",
-      "files-under-the-hood",
-      "google-cloud-certifications-2026-roadmap",
-      "gql-standard-cypher-sqlpgq",
-      "graph-analytics-gds-execution-model",
-      "lakehouse-architecture",
-      "lookml-semantic-layer-data-modeling",
-      "ml-libraries-under-the-hood",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-production-pipeline-gcp",
-      "populating-knowledge-graph-llms-banking",
-      "senior-data-modeling-query-patterns-database-design",
-      "sql-pandas-pyspark-duckdb",
-      "tbox-abox-schema-facts-distinction",
-      "text-to-sql"
-    ],
     "Benchmarks": [
       "ai-poc-enterprise-evaluation",
       "choosing-a-graph-engine-2026",
@@ -18626,14 +18872,6 @@
       "graph-theory-mathematics-of-connections",
       "pagerank-eigenvectors",
       "python-beyond-the-basics"
-    ],
-    "Open Source": [
-      "agent-harness-build-fork-adopt-yc-qm",
-      "dont-reinvent-the-agent-open-source-composition",
-      "hermes-self-improving-agent-persistent-memory",
-      "local-llm-inference-tools",
-      "openclaw-anatomy-viral-agent-platform",
-      "openclaw-vs-hermes-self-hosted-agent-comparison"
     ],
     "Software Architecture": [
       "agent-harness-build-fork-adopt-yc-qm",
@@ -18684,17 +18922,6 @@
       "stack-recommendations-after-100-posts",
       "vector-databases-indexes-to-vertex-search",
       "vector-db-benchmarks"
-    ],
-    "Ontologies": [
-      "defining-the-knowledge-stack",
-      "knowledge-catalog-vs-ontologies",
-      "knowledge-graphs-practice",
-      "ontologies-building-knowledge-bases",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "ontology-to-agent-toolbox",
-      "populating-knowledge-graph-llms-banking",
-      "production-graph-stack-agents-mcp-ontologies",
-      "spanner-graph-for-knowledge-and-agents"
     ],
     "LLMs": [
       "adk-advanced-evolution-of-agent-engineering",
@@ -18951,16 +19178,6 @@
     "Backend Engineering": [
       "senior-api-design-contracts-versioning-dx"
     ],
-    "Data Modeling": [
-      "dama-dmbok-data-governance",
-      "dbt-analytics-engineering",
-      "dimensional-modeling-kimball",
-      "lakehouse-architecture",
-      "lookml-semantic-layer-data-modeling",
-      "ontologies-building-knowledge-bases",
-      "senior-data-modeling-query-patterns-database-design",
-      "spanner-graph-for-knowledge-and-agents"
-    ],
     "Query Optimization": [
       "senior-data-modeling-query-patterns-database-design"
     ],
@@ -19091,10 +19308,6 @@
       "pytorch-tensorflow-deep-learning-frameworks",
       "spanner-graph-for-knowledge-and-agents"
     ],
-    "Metadata": [
-      "dama-dmbok-data-governance",
-      "gemini-knowledge-catalog-workshop"
-    ],
     "Search Algorithms": [
       "pagerank-eigenvectors",
       "regex-engines-finite-automata",
@@ -19129,10 +19342,6 @@
     ],
     "Regular Expressions": [
       "regex-engines-finite-automata"
-    ],
-    "Data Mesh": [
-      "data-silos-breaking-information-barriers",
-      "knowledge-as-a-product"
     ],
     "Developer Tools": [
       "bash-daily-driver-ml-engineer",
@@ -19241,16 +19450,6 @@
     ],
     "Description Logic": [
       "tbox-abox-schema-facts-distinction"
-    ],
-    "Analytics Engineering": [
-      "dbt-analytics-engineering",
-      "dimensional-modeling-kimball",
-      "lookml-semantic-layer-data-modeling",
-      "sql-pandas-pyspark-duckdb"
-    ],
-    "Business Intelligence": [
-      "lookml-semantic-layer-data-modeling",
-      "mcp-server-nl-to-powerbi-dashboard"
     ],
     "Topology": [
       "algebraic-number-theory-when-factorization-breaks",
@@ -19671,39 +19870,6 @@
     ]
   },
   "category_index": {
-    "research": [
-      "attention-is-all-you-need",
-      "backprop-is-reverse-mode-differentiation",
-      "bellman-operator-is-a-contraction",
-      "bert-pre-training-bidirectional-transformers",
-      "double-descent",
-      "em-never-goes-down",
-      "embeddings-geometry-of-meaning",
-      "emotion-concepts-in-llms",
-      "kernel-trick-representer-theorem",
-      "llm-as-a-judge",
-      "loss-functions-are-probability-assumptions",
-      "magnifica-humanitas-ai-encyclical-analysis",
-      "mamba-selective-state-spaces",
-      "markov-to-hoeffding-concentration-inequalities",
-      "microgpt-reading-karpathy",
-      "no-free-lunch-theorem",
-      "one-eigendecomposition-four-algorithms",
-      "ontology-grounded-rag-chunks-in-nodes",
-      "penalizing-is-constraining",
-      "probably-approximately-correct",
-      "rag-retrieval-augmented-generation",
-      "scaling-laws-neural-language-models",
-      "t5-text-to-text-transfer-transformer",
-      "the-distribution-has-a-shape",
-      "the-manifold-hypothesis",
-      "the-objective-has-a-shape",
-      "the-representation-has-a-shape",
-      "universal-approximation-and-what-it-does-not-give-you",
-      "vc-dimension-sauer-shelah",
-      "weak-learnability-equals-strong",
-      "what-are-we-minimizing-erm-bias-variance"
-    ],
     "field-notes": [
       "adk-advanced-evolution-of-agent-engineering",
       "adk-graph-workflows-deterministic-orchestration",
@@ -19721,6 +19887,7 @@
       "agent-runtime-sessions-state-topology",
       "ai-poc-enterprise-evaluation",
       "apache-airflow-orchestration",
+      "apache-ossie-open-semantic-stack",
       "apache-spark-ecosystem-guide",
       "application-data-flow-replicas-backups",
       "bank-grade-agent-security-iam-gateways",
@@ -19842,6 +20009,39 @@
       "vector-db-benchmarks",
       "vertex-ai-gcp-ml-platform-cli",
       "working-with-ml-models"
+    ],
+    "research": [
+      "attention-is-all-you-need",
+      "backprop-is-reverse-mode-differentiation",
+      "bellman-operator-is-a-contraction",
+      "bert-pre-training-bidirectional-transformers",
+      "double-descent",
+      "em-never-goes-down",
+      "embeddings-geometry-of-meaning",
+      "emotion-concepts-in-llms",
+      "kernel-trick-representer-theorem",
+      "llm-as-a-judge",
+      "loss-functions-are-probability-assumptions",
+      "magnifica-humanitas-ai-encyclical-analysis",
+      "mamba-selective-state-spaces",
+      "markov-to-hoeffding-concentration-inequalities",
+      "microgpt-reading-karpathy",
+      "no-free-lunch-theorem",
+      "one-eigendecomposition-four-algorithms",
+      "ontology-grounded-rag-chunks-in-nodes",
+      "penalizing-is-constraining",
+      "probably-approximately-correct",
+      "rag-retrieval-augmented-generation",
+      "scaling-laws-neural-language-models",
+      "t5-text-to-text-transfer-transformer",
+      "the-distribution-has-a-shape",
+      "the-manifold-hypothesis",
+      "the-objective-has-a-shape",
+      "the-representation-has-a-shape",
+      "universal-approximation-and-what-it-does-not-give-you",
+      "vc-dimension-sauer-shelah",
+      "weak-learnability-equals-strong",
+      "what-are-we-minimizing-erm-bias-variance"
     ],
     "curiosities": [
       "100-posts-knowledge-graph-retrospective",
