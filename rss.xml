@@ -9,8 +9,29 @@
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Mar 2029 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Mar 2029 00:00:00 GMT</lastBuildDate>
     <generator>build-rss.js</generator>
+  <item>
+    <title>Apache Ossie: Ontologies, Semantic Models, and Data Contracts as One Open Stack</title>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack</link>
+    <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack</guid>
+    <pubDate>Thu, 29 Mar 2029 00:00:00 GMT</pubDate>
+    <description><![CDATA[Every company defines 'customer' and 'revenue' five times, in five tools, in five formats. Apache Ossie, the former Open Semantic Interchange, is the first serious attempt to write those definitions once in an open format, from the business concept down to the SQL. This is the complete guide: the vocabulary, the theory behind it, the three layers, a banking example that validates against the real schemas, and an honest account of what the standard still leaves out.]]></description>
+    <category>field-notes</category>
+    <category>Ontologies</category>
+    <category>Data Modeling</category>
+    <category>Data Architecture</category>
+    <category>Data Governance</category>
+    <category>Data Engineering</category>
+    <category>Metadata</category>
+    <category>Business Intelligence</category>
+    <category>Analytics Engineering</category>
+    <category>Data Mesh</category>
+    <category>Knowledge Graphs</category>
+    <category>Open Source</category>
+    <category>Agents</category>
+    <dc:creator>Juan Lara</dc:creator>
+  </item>
   <item>
     <title>The Representation Has a Shape</title>
     <link>https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape</link>
