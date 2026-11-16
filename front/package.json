@@ -14,7 +14,7 @@
     "framer-motion": "^12.x",
     "katex": "^0.16.22",
     "lucide-react": "^0.x",
-    "mermaid": "^11.10.1",
+    "mermaid": "11.17.2",
     "react": "^18.x",
     "react-dom": "^18.x",
     "react-helmet-async": "^2.0.5",
