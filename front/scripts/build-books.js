@@ -4,12 +4,13 @@
 // all blog posts, dedupe them into canonical works, and count how many distinct
 // posts cite each. Emits src/data/booksData.json for the /blog/books page.
 //
-// Reads src/data/blogData.json (each post carries its full markdown `content`),
-// mirroring build-knowledge-base.js / build-sitemap.js / build-rss.js.
+// Reads the post list from src/data/blogData.json and each post's body from its
+// markdown file (blogData.json carries metadata only).
 
 const fs = require('fs');
 const path = require('path');
 
+const POSTS_DIR = path.join(__dirname, '..', 'public', 'blog', 'posts');
 const DATA_DIR = path.join(__dirname, '..', 'src', 'data');
 const BLOG_DATA = path.join(DATA_DIR, 'blogData.json');
 const ALIASES_FILE = path.join(DATA_DIR, 'book-aliases.json');
@@ -20,6 +21,16 @@ function loadJSON(file, fallback) {
     return JSON.parse(fs.readFileSync(file, 'utf8'));
   } catch (_) {
     return fallback;
+  }
+}
+
+// Markdown body of a post, frontmatter removed. '' if the file is missing.
+function readBody(post) {
+  try {
+    const raw = fs.readFileSync(path.join(POSTS_DIR, post.category, `${post.slug}.md`), 'utf8');
+    return raw.replace(/^﻿?---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+  } catch (_) {
+    return '';
   }
 }
 
@@ -198,7 +209,7 @@ function build() {
   const PAPERS_RE = /^\*\*(?:Academic Papers|Papers):\*\*$/i;
 
   for (const post of blog.posts || []) {
-    const gd = goingDeeperBlock(post.content || '');
+    const gd = goingDeeperBlock(readBody(post));
     if (!gd) continue;
     for (const raw of topLevelEntries(subsection(gd, BOOKS_RE))) {
       record('books', parseEntry(raw), post);

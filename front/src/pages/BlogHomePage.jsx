@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { loadAllPosts, getAllTags, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
 import { variants as motionVariants } from '../utils';
-import { PostCard } from '../components/features/blog';
+import { PostCard } from '../components/features/blog/PostCard';
 import { ViewToggle } from '../components/ui';
 
 // Animation variants

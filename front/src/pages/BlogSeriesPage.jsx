@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, BookOpen, Play, Pause, Download, Gauge, ChevronDown } from 'lucide-react';
-import { getSeriesWithPosts, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
+import { getSeriesWithPosts, loadPostContent, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
 import { buildZip } from '../utils/zip';
 import { variants as motionVariants } from '../utils';
 
@@ -341,11 +341,25 @@ export default function BlogSeriesPage() {
   // Accordion: which series is currently expanded (null = all collapsed).
   const [expandedId, setExpandedId] = useState(null);
 
-  const downloadSeries = (s) => {
-    const files = s.posts.map((p) => ({
-      name: `${String(p.part).padStart(2, '0')}-${p.slug}.md`,
-      text: postToMarkdown(p),
-    }));
+  // Series id currently being packed (bodies are fetched on demand).
+  const [downloadingId, setDownloadingId] = useState(null);
+
+  const downloadSeries = async (s) => {
+    if (downloadingId) return;
+    setDownloadingId(s.id);
+    let files;
+    try {
+      files = await Promise.all(s.posts.map(async (p) => ({
+        name: `${String(p.part).padStart(2, '0')}-${p.slug}.md`,
+        text: postToMarkdown({ ...p, content: await loadPostContent(p) }),
+      })));
+    } catch (err) {
+      console.error('Series download failed:', err);
+      window.alert('Could not download this series right now. Please try again.');
+      return;
+    } finally {
+      setDownloadingId(null);
+    }
     const blob = buildZip(files);
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -501,11 +515,12 @@ export default function BlogSeriesPage() {
                                 e.stopPropagation();
                                 downloadSeries(s);
                               }}
+                              disabled={downloadingId === s.id}
                               title="Download all posts in this series as markdown (.zip)"
                               className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
                             >
                               <Download size={13} />
-                              <span>Download .md</span>
+                              <span>{downloadingId === s.id ? 'Preparing…' : 'Download .md'}</span>
                             </button>
                           </div>
 

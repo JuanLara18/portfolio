@@ -106,9 +106,14 @@ function processMarkdownFile(filePath, category, filename) {
     const readingTime = calculateReadingTime(parsed.content);
     const excerpt = parsed.data.excerpt || generateExcerpt(parsed.content);
     
+    // The post body is deliberately NOT included. blogData.json is bundled into
+    // the app, so carrying every body made each page download the whole blog
+    // (~3 MB gzipped). The post page fetches its own markdown from
+    // public/blog/posts/<category>/<slug>.md, and build scripts that need the
+    // body read those files directly.
     return {
       ...parsed.data,
-      content: parsed.content,
+      estimatedWordCount: parsed.data.estimatedWordCount || parsed.content.trim().split(/\s+/).length,
       slug,
       category,
       readingTime,

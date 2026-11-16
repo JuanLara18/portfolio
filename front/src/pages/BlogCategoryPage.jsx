@@ -12,7 +12,7 @@ import {
   BLOG_CONFIG
 } from '../utils/blogUtils';
 import { variants as motionVariants } from '../utils';
-import { PostCard } from '../components/features/blog';
+import { PostCard } from '../components/features/blog/PostCard';
 
 // Animation variants
 const fadeInUp = motionVariants.fadeInUp();

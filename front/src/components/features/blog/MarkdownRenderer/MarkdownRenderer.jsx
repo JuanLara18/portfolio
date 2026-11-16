@@ -6,12 +6,55 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import rehypeKatex from 'rehype-katex';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import mermaid from 'mermaid';
+import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
+import sql from 'react-syntax-highlighter/dist/esm/languages/prism/sql';
+import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml';
+import json from 'react-syntax-highlighter/dist/esm/languages/prism/json';
+import hcl from 'react-syntax-highlighter/dist/esm/languages/prism/hcl';
+import cypher from 'react-syntax-highlighter/dist/esm/languages/prism/cypher';
+import docker from 'react-syntax-highlighter/dist/esm/languages/prism/docker';
+import go from 'react-syntax-highlighter/dist/esm/languages/prism/go';
+import toml from 'react-syntax-highlighter/dist/esm/languages/prism/toml';
+import scala from 'react-syntax-highlighter/dist/esm/languages/prism/scala';
+import sparql from 'react-syntax-highlighter/dist/esm/languages/prism/sparql';
+import rego from 'react-syntax-highlighter/dist/esm/languages/prism/rego';
+import powershell from 'react-syntax-highlighter/dist/esm/languages/prism/powershell';
+import makefile from 'react-syntax-highlighter/dist/esm/languages/prism/makefile';
+import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
+import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown';
+import turtle from 'react-syntax-highlighter/dist/esm/languages/prism/turtle';
+import graphql from 'react-syntax-highlighter/dist/esm/languages/prism/graphql';
+import ignore from 'react-syntax-highlighter/dist/esm/languages/prism/ignore';
 import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 import { resolveInternalHref } from '../../../../utils/postLinks';
+
+// Syntax highlighting: only the grammars the posts actually use (the full
+// Prism build carries ~280). Grammar aliases come along: bash covers sh/shell,
+// yaml covers yml, docker covers dockerfile, ignore covers gitignore.
+// A fence in an unregistered language renders as plain monospace text.
+// To add one: import it from react-syntax-highlighter/dist/esm/languages/prism.
+Object.entries({
+  python, bash, sql, yaml, json, hcl, cypher, docker, go, toml, scala, sparql,
+  rego, powershell, makefile, javascript, typescript, markdown, turtle, graphql,
+  ignore,
+}).forEach(([name, grammar]) => SyntaxHighlighter.registerLanguage(name, grammar));
+const LANGUAGE_ALIASES = { gql: 'graphql', terraform: 'hcl', py: 'python', js: 'javascript', ts: 'typescript' };
+
+// Mermaid is ~600 KB gzipped, so it is fetched the first time a diagram
+// scrolls into view instead of blocking the article text. One shared promise.
+let mermaidModule = null;
+const loadMermaid = () => {
+  if (!mermaidModule) {
+    mermaidModule = import('mermaid').then((m) => m.default);
+    mermaidModule.catch(() => { mermaidModule = null; }); // allow a retry
+  }
+  return mermaidModule;
+};
 
 // Global cache for rendered Mermaid SVGs (limited size to prevent memory leaks)
 const mermaidCache = new Map();
@@ -622,6 +665,8 @@ const MermaidDiagram = memo(({ chart }) => {
       setError(null);
       
       try {
+        const mermaid = await loadMermaid();
+        if (isCancelled) return;
         // Only re-initialize when the theme actually changes so concurrent
         // renders on the same page don't fight over global mermaid config.
         const newConfigKey = isDarkMode ? 'dark' : 'light';
@@ -797,7 +842,7 @@ const CodeBlock = ({ language, value, ...props }) => {
       </div>
       <SyntaxHighlighter
         style={codeTheme}
-        language={language || 'text'}
+        language={LANGUAGE_ALIASES[language] || language || 'text'}
         customStyle={{
           margin: 0,
           borderRadius: 0,

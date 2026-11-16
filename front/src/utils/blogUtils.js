@@ -1,7 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import blogData from '../data/blogData.json';
 import { SERIES } from '../data/series';
-import booksData from '../data/booksData.json';
 
 export const BLOG_CONFIG = {
   categories: {
@@ -41,15 +40,42 @@ export async function loadAllPosts() {
   }
 }
 
-export async function getPostBySlug(category, slug) {
-  try {
-    const allPosts = await loadAllPosts();
-    const post = allPosts.find(p => p.category === category && p.slug === slug);
-    return post || null;
-  } catch (error) {
-    console.error(`Error loading post ${category}/${slug}:`, error);
-    return null;
+// blogData.json carries metadata only; each body is fetched from its markdown
+// file the first time it is needed. Promises are cached so concurrent callers
+// share one request; a failed request is evicted so a retry can succeed.
+const contentCache = new Map();
+
+function stripFrontmatter(raw) {
+  return raw.replace(/^﻿?---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+}
+
+/** Markdown body of a post (frontmatter removed). Rejects on network failure. */
+export function loadPostContent(post) {
+  const key = `${post.category}/${post.slug}`;
+  if (!contentCache.has(key)) {
+    const request = fetch(`${process.env.PUBLIC_URL || ''}/blog/posts/${key}.md`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status} loading ${key}.md`);
+        return res.text();
+      })
+      .then(stripFrontmatter);
+    request.catch(() => contentCache.delete(key));
+    contentCache.set(key, request);
   }
+  return contentCache.get(key);
+}
+
+/**
+ * Post metadata plus its markdown `content`, or null if no post matches.
+ * Throws if the post exists but its body cannot be fetched, so the caller can
+ * tell "not found" apart from "failed to load".
+ */
+export async function getPostBySlug(category, slug) {
+  const allPosts = await loadAllPosts();
+  const post = allPosts.find(p => p.category === category && p.slug === slug);
+  if (!post) return null;
+  const content = await loadPostContent(post);
+  return { ...post, content };
 }
 
 export async function getPostsByCategory(category) {
@@ -144,6 +170,8 @@ export async function getSeriesWithPosts() {
  */
 export async function getBooksData() {
   try {
+    // Loaded on demand: only the Books page needs this ~450 KB index.
+    const { default: booksData } = await import('../data/booksData.json');
     const allPosts = await loadAllPosts();
     const known = new Set(allPosts.map((p) => p.slug));
     const resolve = (works = []) =>
