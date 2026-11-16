@@ -1,30 +1,27 @@
 import { format, parseISO } from 'date-fns';
 import blogData from '../data/blogData.json';
 import { SERIES } from '../data/series';
+import BRAND_TOKENS from '../data/brandTokens.json';
 
 export const BLOG_CONFIG = {
   categories: {
     curiosities: {
       name: 'Mathematical Curiosities',
       description: 'Explorations of games, puzzles, and mathematical phenomena',
-      // Colour role by positioning weight: Field Notes = primary, Research = harmonic,
-      // Curiosities = muted. See categoryToneClass(). `color` kept for back-compat.
+      // Colour role per category lives in brand/tokens.json (categories). See categoryToneClass().
       color: 'cyan',
-      tone: 'muted',
       icon: 'Brain'
     },
     research: {
       name: 'Research Notes',
       description: 'Academic papers, studies, and research insights',
       color: 'cyan',
-      tone: 'harmonic',
       icon: 'FileText'
     },
     'field-notes': {
       name: 'Field Notes',
       description: 'Practical guides and technical deep-dives from real-world ML/AI work',
       color: 'cyan',
-      tone: 'primary',
       icon: 'Code2'
     }
   },
@@ -42,7 +39,7 @@ const TONE_CLASSES = {
 
 /** Text colour class for a category label, by its brand colour role. */
 export function categoryToneClass(category) {
-  return TONE_CLASSES[BLOG_CONFIG.categories[category]?.tone] || TONE_CLASSES.primary;
+  return TONE_CLASSES[BRAND_TOKENS.categories[category]] || TONE_CLASSES.primary;
 }
 
 export async function loadAllPosts() {

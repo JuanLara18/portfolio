@@ -51,7 +51,7 @@ To enrich a post's metadata (concepts, prereqs, teaches, tech, depth), edit the 
 
 ## Visual identity
 
-The brand system is fixed: read `docs/brand.md` §10 before touching UI. IBM Plex only (`font-display`/`type-title` serif italic for titles, `type-section` for sections, `type-name` for the name, never italic). Colour roles: primary cyan (`text-cyan-700 dark:text-brand-accent`), harmonic cobalt (`brand-harmonic`), contrast amber (`brand-contrast`) only for the logo node and the period that closes a title. No per-company, per-pillar or decorative colours, and no hex values in components. Night is near-black `#05070A`, day is pure white. Logo files: `front/public/brand/`.
+The brand system is fixed: read `docs/brand.md` §10 before touching UI. IBM Plex only (`font-display`/`type-title` serif italic for titles, `type-section` for sections, `type-name` for the name, never italic). Colour roles: primary cyan (`text-cyan-700 dark:text-brand-accent`), harmonic cobalt (`brand-harmonic`), contrast amber (`brand-contrast`) only for the logo node and the period that closes a title. No per-company, per-pillar or decorative colours, and no hex values in components. Night is near-black `#05070A`, day is pure white. Every value comes from `brand/tokens.json`: change it there and run `npm run brand` (see `brand/README.md`); logos, icons, share cards, the LinkedIn banner and the brand book are generated from it.
 
 ## Authoring posts
 

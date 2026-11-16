@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- LinkedIn profile banner. 1584 x 396.
+     Safe zones: the profile photo covers the lower-left corner on desktop
+     (about x 0-560, y 200-396), and the mobile app crops roughly 200 px from
+     each side. All text sits inside x 600-1380; the left side only carries the
+     decorative graph, which may be covered. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Serif:ital,wght@1,600&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { width: 1584px; height: 396px; }
+  .graph { left: 300px; top: 46px; width: 304px; height: 304px; }
+  .block { position: absolute; right: 204px; top: 82px; text-align: right; display: grid; gap: 22px; justify-items: end; }
+  h1 { font-size: 64px; line-height: 1.06; }
+  h1 .l2 { font-size: 54px; }
+  .label { font-size: 17px; }
+  .url { font: 500 17px/1 var(--mono); letter-spacing: .04em; color: var(--primary); }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+<script src="_brand.js"></script>
+<script>
+  document.getElementById('card').innerHTML =
+    `<div class="graph">${brandGraph(1)}</div>`
+    + `<div class="block"><h1>${tagline()}</h1><div class="label">${esc(BRAND.verbal.strap)}</div><div class="url">${esc(BRAND.verbal.url)}</div></div>`;
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+role,night_hex,night_rgb,day_hex,day_rgb,use
+bg,#05070A,"5, 7, 10",#FFFFFF,"255, 255, 255","Page background."
+surface,#0C1017,"12, 16, 23",#F5F7FA,"245, 247, 250","Cards, code blocks, raised areas."
+border,#1A2130,"26, 33, 48",#E1E5EC,"225, 229, 236","Hairlines and dividers. Layers are separated by borders, not shadows."
+text,#E9E9E4,"233, 233, 228",#0B1120,"11, 17, 32","Body and headings. Night text is a dimmed white to avoid halation on black."
+muted,#9AA2B1,"154, 162, 177",#4B5568,"75, 85, 104","Secondary text, metadata, the Curiosities category."
+primary,#22D3EE,"34, 211, 238",#0E7490,"14, 116, 144","Links, active state, labels, the first line of the hero, Field Notes."
+harmonic,#7C9CFF,"124, 156, 255",#3557D0,"53, 87, 208","Graph edges, chips, Research Notes, names in code, duotone mid-tones."
+contrast,#F5B544,"245, 181, 68",#B45309,"180, 83, 9","The logo node and the period that closes a title. Nothing else."

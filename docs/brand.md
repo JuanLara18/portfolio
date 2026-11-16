@@ -301,7 +301,7 @@ The corresponding memory record is `project_brand_positioning.md` in the Claude 
 
 ## 10. Visual identity
 
-Approved 2026-11-15. This section is the visual counterpart of the verbal layer above. Colour roles live in `front/src/index.css` (mode-aware CSS variables) and `front/tailwind.config.js` (`brand.*`); the JS mirror is `BRAND_COLORS` in `front/src/data/brand.js`. Never hard-code a hex value in a component. Logo files for third parties are in `front/public/brand/`.
+Approved 2026-11-15. This section is the visual counterpart of the verbal layer above. Every value lives in `brand/tokens.json`, the single source. `npm run brand` (in `front/`) regenerates the logo masters, `front/src/styles/brand-tokens.css`, the React tokens, every export (icons, share cards, LinkedIn banner, GitHub preview) and the brand book (`brand/guidelines/brand-book.pdf`). How the system works: `brand/README.md`. Never hard-code a hex value in a component.
 
 ### 10.1. The signature
 
@@ -371,7 +371,7 @@ Every style the site renders is declared in `index.html` (browsers only download
 
 - **Post headers** keep their photos, rendered through the brand duotone (`.brand-duotone`): shadows to the night background, mid-tones to cobalt, highlights to light cyan. The source files are not modified.
 - **Share cards** are typographic: `og-default.png` for every page that is not a post. Per-post cards (category, title in serif italic with the amber period, lockup) are the next step; until then posts keep their header photo as share image.
-- **The graph motif** uses harmonic edges, primary nodes and exactly one contrast node.
+- **The motif** is a graph with a story, drawn and animated by `brand/motifs/motifs.mjs`. Active: **Hamilton's Icosian game**, a depth-first search for a Hamiltonian cycle on the dodecahedron (finding is a search, checking is one lap: P vs NP). The family also holds the Heawood graph, the Fano plane and the Paley graph of order 13; `motif.active` in `brand/tokens.json` switches between them everywhere. In every frame: harmonic edges, primary nodes, exactly one amber node. The story is told in the brand book only; on the site the motif is decorative (`aria-hidden`), pauses off screen, and shows its still frame (the solved tour) under reduced motion.
 
 ### 10.5. Icons and metadata
 

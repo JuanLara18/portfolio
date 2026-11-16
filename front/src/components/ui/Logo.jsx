@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
  * alone (variant "wordmark") it carries the amber one.
  *
  * Ink follows currentColor; the node uses the mode-aware contrast token.
- * Static SVG files for third parties live in public/brand/.
+ * Geometry mirrors brand/tokens.json (logo.regular / logo.small); static files come from brand/logo/.
  *
  * Variants: `full` (symbol + name, default), `mark` (symbol only), `wordmark` (name + period).
  * Sizes: sm, md (default), lg, xl.

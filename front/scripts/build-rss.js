@@ -24,8 +24,8 @@ try {
 
 const SITE_URL = (process.env.SITE_URL || 'https://juanlara18.github.io/portfolio').replace(/\/$/, '');
 const FEED_URL = `${SITE_URL}/rss.xml`;
-const SITE_NAME = 'Juan Lara — Writing';
-const SITE_DESC = 'Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.';
+const SITE_NAME = 'Juan Lara · Notes from production';
+const SITE_DESC = 'Engineering notes on RAG, agents, and knowledge systems. Research deep-dives. Mathematical curiosities.';
 
 function escapeXml(s) {
   return String(s)
@@ -106,6 +106,11 @@ function main() {
     <link>${SITE_URL}/blog/</link>
     <atom:link href="${FEED_URL}" rel="self" type="application/rss+xml" />
     <description>${escapeXml(SITE_DESC)}</description>
+    <image>
+      <url>${SITE_URL}/icon-512.png</url>
+      <title>${escapeXml(SITE_NAME)}</title>
+      <link>${SITE_URL}/blog/</link>
+    </image>
     <language>en-us</language>
     <lastBuildDate>${lastBuild}</lastBuildDate>
     <generator>build-rss.js</generator>

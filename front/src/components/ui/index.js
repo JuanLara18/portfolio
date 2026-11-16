@@ -1,6 +1,4 @@
-// Public UI primitives. The brand v2 surfaces use only what's exported here.
-// (Legacy components — TechIcon, Terminal, TypingTerminal, ParticleBackground,
-// CursorEffect — remain on disk but are no longer part of the live system.)
+// Public UI primitives. Visual rules: brand/README.md and docs/brand.md §10.
 export { default as ScrollIndicator } from './ScrollIndicator';
 export { OptimizedImage } from './OptimizedImage';
 export { default as Logo } from './Logo';
