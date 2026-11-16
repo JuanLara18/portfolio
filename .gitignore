@@ -110,3 +110,6 @@ pnpm-lock.yaml
 .serverless
 
 **/.claude/
+# Personal working notes, kept local
+Resultados.md
+BRAND_BACKLOG.md

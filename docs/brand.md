@@ -263,7 +263,7 @@ OK to use sparingly: `production-grade`, `enterprise-scale`, `frontier`. These e
 
 ## 8. Where this is applied
 
-Application checklist. Each item gets ticked in Epic 3 (`BRAND_BACKLOG.md`):
+Application checklist. Each item gets ticked in Epic 3 of the brand backlog (kept outside the repo):
 
 - [ ] `front/src/pages/LandingPage.jsx` — hero, chips, value card, three pillars
 - [ ] `front/src/pages/AboutPage.jsx` — strap-line, collapsed bio, expanded bio

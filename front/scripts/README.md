@@ -16,7 +16,11 @@ for troubleshooting or surgical edits.
 | Script | npm alias | Purpose |
 |---|---|---|
 | `sync.py` | `sync` / `sync:fast` / `sync:check` | **Main entry point.** Clean orphans → validate Mermaid → optimize images → generate EN+ES audio → upload to R2 → rebuild blog data + knowledge base |
-| `build-blog-data.js` | `build-blog-data` (auto via `prebuild`) | Scan `public/blog/posts/` and emit `src/data/blogData.json` |
+| `build-blog-data.js` | `build-blog-data` (auto via `prebuild`) | Scan `public/blog/posts/` and emit `src/data/blogData.json` (metadata only) |
+| `validate-links.js` | `validate-links` (auto via `prebuild`) | Fail the build on links between posts that are broken or not written `/blog/<slug>`. `--fix` rewrites them |
+| `build-books.js` | `build-books` (auto via `prebuild`) | Index every book and paper cited in *Going Deeper* sections into `src/data/booksData.json` |
+| `build-sitemap.js`, `build-rss.js` | auto via `prebuild` | `public/sitemap.xml` and `public/rss.xml` |
+| `inject-blog-meta.js` | auto via `postbuild` | One `index.html` per route with its own title, description, and Open Graph tags |
 | `build-knowledge-base.js` | `build-knowledge-base` (auto via `prebuild`) | Derive `knowledge-base/posts.json` (machine-queryable post index) and re-inject the auto-catalog into `knowledge-base/KNOWLEDGE_BASE.md`. Consumed by agents — see repo-root `CLAUDE.md` |
 | `optimize-images.js` | `optimize-images` | WebP + size-capped variants (idempotent) |
 | `validate-mermaid.js` | `validate-mermaid` | Lint Mermaid fences against the renderer's v11 normalization |
@@ -92,8 +96,26 @@ npm run sync -- --only <slug> --force
 `prebuild` hook), and is also step 8 of `sync`. It parses YAML front-matter from
 each `.md` under `public/blog/posts/<category>/`, merges in audio manifest data
 from `public/blog/audio/manifest.json` and `public/blog/audio-es/manifest-es.json`,
-and writes `src/data/blogData.json`. The React app reads only this JSON — it
-never touches raw markdown at runtime.
+and writes `src/data/blogData.json`. The file holds metadata only: post bodies
+stay in the `.md` files, which the post page fetches when it opens and which
+`build-books.js` reads directly. Keeping bodies out of the bundle is what keeps
+the home page around 180 KB of gzipped JavaScript.
+
+## Link validation
+
+`validate-links.js` runs in `prebuild`, right after `build-blog-data.js`, so
+every build and every deploy checks it. Links between posts must be written
+`/blog/<slug>`; the build fails on a slug that does not exist or on any other
+form (the absolute site URL, `#/blog/...`, `./slug`, `/blog/<category>/<slug>`).
+
+```bash
+npm run validate-links            # report, exit 1 on any problem
+npm run validate-links -- --fix   # rewrite every link whose target exists
+```
+
+Code blocks and inline code are ignored. The runtime counterpart is
+`src/utils/postLinks.js`, which resolves `/blog/<slug>` to the canonical
+`/blog/<category>/<slug>` when a post renders.
 
 ## Knowledge base generation
 

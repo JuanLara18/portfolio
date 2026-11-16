@@ -1,91 +1,113 @@
 <div align="center">
 
-# Juan Lara — Portfolio & Blog
+# Juan Lara
 
-**Senior AI Engineer · Production AI · Knowledge Systems**
+**AI Engineer.** Frontier AI. Engineered for production.
 
-State-of-the-art AI, engineered for production.
+[![Live site](https://img.shields.io/badge/site-juanlara18.github.io%2Fportfolio-0891b2?style=flat-square)](https://juanlara18.github.io/portfolio/)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/JuanLara18/portfolio/deploy.yml?style=flat-square&label=deploy)](https://github.com/JuanLara18/portfolio/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-64748b?style=flat-square)](LICENSE)
 
-[![Live Site](https://img.shields.io/badge/Live_Site-juanlara18.github.io%2Fportfolio-6d28d9?style=flat-square&logo=github-pages&logoColor=white)](https://juanlara18.github.io/portfolio)
-[![License](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](LICENSE)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/JuanLara18/portfolio/deploy.yml?style=flat-square&label=Deploy&logo=github-actions&logoColor=white)](https://github.com/JuanLara18/portfolio/actions)
-
-[larajuand@outlook.com](mailto:larajuand@outlook.com) · [LinkedIn](https://www.linkedin.com/in/julara/)
+[Website](https://juanlara18.github.io/portfolio/) · [Blog](https://juanlara18.github.io/portfolio/blog/) · [LinkedIn](https://www.linkedin.com/in/julara/) · [RSS](https://juanlara18.github.io/portfolio/rss.xml)
 
 <br/>
 
-<img src=".github/assets/preview.png" alt="Juan Lara Portfolio" width="100%" style="border-radius: 8px;" />
+<img src=".github/assets/preview.jpg" alt="Portfolio home page: Frontier AI. Engineered for production." width="100%" />
 
 </div>
 
----
+<br/>
 
-Personal site and engineering notebook for production AI. Field notes on RAG, agents, knowledge systems, and LLM ops — alongside research deep-dives and the occasional mathematical curiosity. Features a custom Markdown blog engine with full LaTeX rendering, Mermaid diagrams, optional narrated audio in English and Spanish, dark mode, and animated UI.
+The source of my personal site and technical blog. I build production AI at enterprise scale: retrieval platforms from RAG to GraphRAG, agentic architectures, and the knowledge systems that ground them. The blog is where I work through that engineering in public.
 
-## Stack
+## The blog
 
-| Layer | Tech |
+180+ long-form posts in three lanes, with narration in English and Spanish.
+
+| Lane | What it covers |
 |---|---|
-| Frontend | React 18, React Router 6 |
-| Styling | Tailwind CSS, Framer Motion |
-| Blog engine | react-markdown · remark-math · KaTeX · Mermaid |
-| Audio | edge-tts (EN/ES voices) · Ollama + gemma4 for ES translation |
-| Deploy | GitHub Actions → GitHub Pages |
+| **Field Notes** | Production AI in practice. RAG, agents, knowledge graphs, data platforms, MLOps on GCP. |
+| **Research Notes** | Close readings of the papers and theorems behind modern ML, each tied back to what it means for shipping. |
+| **Mathematical Curiosities** | Results that break intuition. Number theory, graph theory, complexity. |
 
-## Writing
+Posts are organized for reading, not just browsing.
 
-**Field Notes** — Production AI in practice
-`Production RAG` · `Agentic Architectures` · `Knowledge Systems` · `LLM Ops`
+- **Reading series.** 20+ curated arcs, such as *Machine Learning from First Principles* and *Why Learning Works*.
+- **Print editions.** Series and reading paths compile into print-ready PDFs in four page layouts.
+- **Topic graph.** An interactive map of every topic and the posts that connect them.
+- **Books and papers.** Every work cited across the blog, ranked by how many posts rely on it.
+- **Narration.** Listen to a post instead of reading it, in English or in Spanish.
 
-**Research** — Close reads of foundational ML papers
-`Attention Is All You Need` · `The Manifold Hypothesis` · `Embeddings: Geometry of Meaning`
+<table>
+  <tr>
+    <td width="33%"><img src=".github/assets/blog.jpg" alt="Blog index" /></td>
+    <td width="33%"><img src=".github/assets/post.jpg" alt="A post with narration and table of contents" /></td>
+    <td width="33%"><img src=".github/assets/graph.jpg" alt="Interactive topic graph" /></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Blog index</sub></td>
+    <td align="center"><sub>Post with narration</sub></td>
+    <td align="center"><sub>Topic graph</sub></td>
+  </tr>
+</table>
 
-**Curiosities** — Mathematical results that break intuition
-`Collatz Conjecture` · `Gödel's Incompleteness` · `Tetris is NP-Complete` · `1+2+3+... = -1/12`
+## How it is built
 
-## Run locally
+A static React app on GitHub Pages, fed by a content pipeline that turns Markdown into everything else.
+
+```mermaid
+flowchart LR
+    MD["Markdown posts"] --> PRE["prebuild: metadata index, link check, books index, knowledge base, sitemap, RSS"]
+    PRE --> APP["React app build"]
+    APP --> SHARDS["Per-route HTML with Open Graph tags"]
+    SHARDS --> GH["GitHub Pages"]
+    MD --> SYNC["sync: narration EN and ES"]
+    SYNC --> R2["Cloudflare R2"]
+    MD --> PDF["pandoc and XeLaTeX: series PDFs"]
+```
+
+A few decisions worth reading the code for:
+
+- **Real URLs on a static host.** Every route ships its own HTML file, so crawlers get a 200 and each post gets its own social preview. Deep links survive GitHub Pages through a `404.html` round trip.
+- **Small bundles.** The app carries post metadata only. A post's body is fetched as Markdown when it opens, and Mermaid loads when the first diagram scrolls into view. The home page ships about 180 KB of gzipped JavaScript.
+- **Links that cannot rot.** Posts link to each other by slug. The build fails on a link to a post that does not exist, so broken references never deploy.
+- **Narration cached by content.** Audio regenerates only when a post's prose changes. Edits to code, diagrams, or math keep the existing audio.
+- **Readable by agents.** [`knowledge-base/`](knowledge-base/) indexes every post by concept, prerequisite, and technology, so an AI assistant can answer questions about the blog without reading 180 posts.
+
+| Layer | Tools |
+|---|---|
+| App | React 18, React Router 6, Tailwind CSS, Framer Motion |
+| Rendering | react-markdown, KaTeX, Mermaid, Prism |
+| Content pipeline | Node.js build scripts, Python orchestrator |
+| Narration | edge-tts, Ollama for Spanish translation, Cloudflare R2 |
+| Print | pandoc, XeLaTeX |
+| Delivery | GitHub Actions, GitHub Pages |
+
+## Run it locally
 
 ```bash
 git clone https://github.com/JuanLara18/portfolio.git
 cd portfolio/front
 npm install
-npm start
+npm start        # http://localhost:3000
+npm run build    # full content pipeline plus production build
 ```
 
-The blog manifest (`blogData.json`) is generated automatically before each build via `prebuild`.
+Requires Node.js 18 or later. The audio pipeline additionally needs Python 3.10+.
 
-## Adding or updating a post
+## Documentation
 
-1. Create or edit `front/public/blog/posts/<category>/<slug>.md` with YAML frontmatter.
-2. Run the content pipeline — one command handles orphan cleanup, Mermaid validation, image optimization, EN+ES audio generation, and blog data rebuild:
-   ```bash
-   cd front
-   npm run sync              # full pipeline
-   npm run sync:fast         # skip Spanish audio (quick text iteration)
-   ```
-3. Commit everything and push. GitHub Actions runs `sync:check` before each deploy to catch inconsistencies early.
-
-Requires Python 3.10+ for the audio pipeline. Ollama is optional — if not installed, Spanish audio is skipped with a warning.
-
-## Tooling
-
-All build-time scripts — content orchestrator (`sync.py`), blog data generation,
-knowledge-base generation, image optimization, Mermaid validation, PDF export,
-audio narration pipeline — are documented in [`front/scripts/README.md`](front/scripts/README.md).
-For a dev-oriented walkthrough of the React app, see [`front/README.md`](front/README.md).
-
-## Agent-facing knowledge base
-
-The `knowledge-base/` folder at the repo root is the blog's index for AI
-agents. [`KNOWLEDGE_BASE.md`](knowledge-base/KNOWLEDGE_BASE.md) is the
-human-curated map (reading paths, cross-cutting views, full post catalog)
-and is self-sufficient when the repo is loaded as knowledge in a Claude
-Project. [`posts.json`](knowledge-base/posts.json) is a derived,
-machine-queryable index (concept index, prereq graph, tech index) meant for
-`jq`-style lookups inside Claude Code. Both are regenerated on every
-`npm run sync` and `npm run build` — see [`CLAUDE.md`](CLAUDE.md) for how
-agents consume them.
+| Guide | For |
+|---|---|
+| [Architecture](docs/architecture.md) | How the app, routing, rendering, and SEO fit together |
+| [Authoring](docs/authoring.md) | Writing a post: frontmatter, links, math, diagrams, series |
+| [Operations](docs/operations.md) | Commands, CI/CD, audio hosting, troubleshooting |
+| [Knowledge base](docs/knowledge-base.md) | The agent-facing index of the blog |
+| [Build scripts](front/scripts/README.md) | Reference for every script in the content pipeline |
+| [Print PDFs](front/scripts/pdf/README.md) | Layout rules for the series PDF builder |
 
 ## License
 
-MIT — see [LICENSE](LICENSE)
+[MIT](LICENSE). Header photographs are third-party works, credited in [`ATTRIBUTIONS.md`](front/public/blog/headers/ATTRIBUTIONS.md).
+
+Contact: [larajuand@outlook.com](mailto:larajuand@outlook.com) or [LinkedIn](https://www.linkedin.com/in/julara/).

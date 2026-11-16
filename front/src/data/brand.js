@@ -1,5 +1,5 @@
 // Canonical brand constants for the verbal layer of the personal brand.
-// Mirror of BRAND.md (repo root). Update both in the same commit.
+// Mirror of docs/brand.md. Update both in the same commit.
 //
 // Locked: 2026-05-01. Hierarchy: Engineering 70% / Applied Research 25% / Foundations 5%.
 // Voice: formal B2B, deeply technical, Apple-style cadence — sentences as headlines,
