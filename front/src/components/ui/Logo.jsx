@@ -1,68 +1,64 @@
 import { Link } from 'react-router-dom';
 
 /**
- * Brand mark — Variant 04 (sigil + wordmark).
+ * Brand signature, identity v1 (approved 2026-11-15). Spec: docs/brand.md › Visual identity.
  *
- * The sigil is two horizontal stacked bars: top shorter and offset right,
- * bottom longer. Reads as "knowledge stack / data layers / production
- * platform on top of foundations". Custom-drawn, ownable.
+ * Symbol: a J drawn as a graph. One edge, two ink nodes at its ends, and the
+ * amber node where the full stop would be. The full stop is the brand device:
+ * it also closes the tagline and every page and post title.
  *
- * The wordmark "Juan Lara" is set in Inter 600. The mark uses currentColor
- * so it adapts to the surrounding text color (light on dark, dark on light).
+ * Name: IBM Plex Serif Medium, upright, never italic.
+ * Rule: one period per signature. Next to the symbol the name has no period;
+ * alone (variant "wordmark") it carries the amber one.
  *
- * Variants:
- *   - `full` (default): sigil + wordmark inline. Use in nav, footer, mobile.
- *   - `mark`: sigil only. Use in compact contexts.
- *   - `wordmark`: text only. Rare, falls back when SVG can't render.
+ * Ink follows currentColor; the node uses the mode-aware contrast token.
+ * Static SVG files for third parties live in public/brand/.
  *
- * Sizes: `sm` (16px mark, 14px text), `md` (22px / 18px, default),
- *        `lg` (32px / 22px), `xl` (48px / 32px).
+ * Variants: `full` (symbol + name, default), `mark` (symbol only), `wordmark` (name + period).
+ * Sizes: sm, md (default), lg, xl.
  */
-const Logo = ({
-  variant = 'full',
-  size = 'md',
-  to = '/',
-  className = '',
-  accent = false,
-  onClick,
-}) => {
-  const sizeMap = {
-    sm: { mark: 16, text: 'text-sm' },
-    md: { mark: 22, text: 'text-lg' },
-    lg: { mark: 32, text: 'text-xl' },
-    xl: { mark: 48, text: 'text-3xl' },
-  };
-  const s = sizeMap[size] ?? sizeMap.md;
+const SIZES = {
+  sm: { mark: 17, text: 'text-[15px]' },
+  md: { mark: 23, text: 'text-[20px]' },
+  lg: { mark: 30, text: 'text-[26px]' },
+  xl: { mark: 44, text: 'text-[38px]' },
+};
 
-  const accentClass = accent ? 'text-brand-accent' : '';
-
-  const Mark = () => (
+export const BrandMark = ({ size = 23, small = false, className = '' }) => {
+  // `small` = optical cut for 16–32 px: heavier stroke, larger nodes.
+  const g = small
+    ? { d: 'M26 9.5V27C26 34 21.5 38 14 38', w: 6, top: [26, 9.5], end: [12.5, 38], node: [38.5, 37.5], r: 6, rn: 6 }
+    : { d: 'M25 9V28C25 34.6 20.5 38 15 38', w: 4.2, top: [25, 9], end: [14, 38], node: [35.2, 37], r: 4.6, rn: 5.4 };
+  return (
     <svg
-      width={s.mark}
-      height={s.mark}
-      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="square"
-      className={`flex-shrink-0 ${accentClass}`}
+      className={`flex-shrink-0 ${className}`}
       aria-hidden="true"
+      focusable="false"
     >
-      <path d="M9 8h12" />
-      <path d="M3 14h18" />
+      <path d={g.d} stroke="currentColor" strokeWidth={g.w} />
+      <circle cx={g.top[0]} cy={g.top[1]} r={g.r} fill="currentColor" />
+      <circle cx={g.end[0]} cy={g.end[1]} r={g.r} fill="currentColor" />
+      <circle cx={g.node[0]} cy={g.node[1]} r={g.rn} className="fill-brand-contrast" />
     </svg>
   );
+};
 
-  const Wordmark = () => (
-    <span className={`font-sans font-semibold tracking-tight ${s.text}`}>
-      Juan Lara
-    </span>
-  );
+const Logo = ({ variant = 'full', size = 'md', to = '/', className = '', onClick }) => {
+  const s = SIZES[size] ?? SIZES.md;
 
   const content = (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      {(variant === 'full' || variant === 'mark') && <Mark />}
-      {(variant === 'full' || variant === 'wordmark') && <Wordmark />}
+    <span className={`inline-flex items-center gap-[0.42em] ${s.text} ${className}`}>
+      {variant !== 'wordmark' && <BrandMark size={s.mark} small={s.mark < 20} />}
+      {variant !== 'mark' && (
+        <span className="type-name leading-none whitespace-nowrap">
+          Juan Lara
+          {variant === 'wordmark' && <span className="text-brand-contrast">.</span>}
+        </span>
+      )}
     </span>
   );
 
@@ -71,7 +67,7 @@ const Logo = ({
       <Link
         to={to}
         onClick={onClick}
-        aria-label="Juan Lara · AI Engineer"
+        aria-label="Juan Lara · AI Engineer, home"
         className="inline-flex items-center hover:opacity-80 transition-opacity"
       >
         {content}

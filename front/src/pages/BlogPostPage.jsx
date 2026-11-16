@@ -15,7 +15,7 @@ import {
   Maximize2,
   ArrowDownUp
 } from 'lucide-react';
-import { getPostBySlug, BLOG_CONFIG, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
+import { getPostBySlug, BLOG_CONFIG, scrollToElementCentered, getWebPPath, categoryToneClass } from '../utils/blogUtils';
 import { postPath } from '../utils/postLinks';
 import { MarkdownRenderer, AudioPlayer } from '../components/features/blog';
 import { HoverMotion } from '../components/layout';
@@ -356,9 +356,9 @@ const RM_WIDTHS = { narrow: '58ch', normal: '70ch', wide: '90ch' };
 
 // Reading mode font families. Cycles via toggle button.
 const RM_FONTS = {
-  sans:  { label: 'Sans',  stack: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',           sample: 'Aa' },
-  serif: { label: 'Serif', stack: 'Newsreader, Georgia, "Palatino Linotype", Palatino, serif',                              sample: 'Aa' },
-  mono:  { label: 'Mono',  stack: '"JetBrains Mono", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace',    sample: 'Aa' },
+  sans:  { label: 'Sans',  stack: '"IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',           sample: 'Aa' },
+  serif: { label: 'Serif', stack: '"IBM Plex Serif", Georgia, "Palatino Linotype", Palatino, serif',                              sample: 'Aa' },
+  mono:  { label: 'Mono',  stack: '"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace',    sample: 'Aa' },
 };
 const RM_FONT_KEYS = Object.keys(RM_FONTS);
 
@@ -797,7 +797,7 @@ export default function BlogPostPage() {
       <div className="min-h-screen bg-white dark:bg-brand-bg flex items-center justify-center">
         <div className="text-center max-w-md px-6">
           <BookOpen className="mx-auto h-12 w-12 text-gray-400 dark:text-brand-fg-muted mb-4" />
-          <h1 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg mb-2">
+          <h1 className="type-section text-2xl text-gray-900 dark:text-brand-fg mb-2">
             {error || 'Post not found.'}
           </h1>
           <p className="text-gray-600 dark:text-brand-fg-muted mb-6">
@@ -881,7 +881,7 @@ export default function BlogPostPage() {
             <img 
               src={headerImage}
               alt={post.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover brand-duotone"
               onError={(e) => {
                 const fallbackByCat = withPublicUrl(`/blog/headers/default-${post.category}.jpg`);
                 const fallback = withPublicUrl('/blog/headers/default.jpg');
@@ -894,7 +894,7 @@ export default function BlogPostPage() {
             />
           </picture>
           {/* Theme-aware overlay. Light mode = black gradient (max text contrast).
-              Dark mode = navy gradient that blends seamlessly into the page bg below. */}
+              Dark mode = night gradient that blends seamlessly into the page bg below. */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/45 dark:from-brand-bg dark:via-brand-bg/85 dark:to-brand-bg/55"></div>
         </div>
         
@@ -929,9 +929,10 @@ export default function BlogPostPage() {
                 </Link>
               </div>
 
-              {/* Title — Newsreader italic */}
-              <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 sm:mb-5 leading-[1.05] tracking-tight">
+              {/* Title — serif italic, closed by the amber period (night value: the hero is always dark) */}
+              <h1 className="type-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 sm:mb-5 leading-[1.08]">
                 {post.title}
+                {!/[.!?]$/.test(post.title) && <span className="text-brand-contrast-night">.</span>}
               </h1>
 
               {/* Meta Information */}
@@ -976,7 +977,7 @@ export default function BlogPostPage() {
               <div className="font-mono text-[10px] tracking-[0.12em] uppercase">
                 <Link
                   to={`/blog/category/${post.category}`}
-                  className="text-cyan-700 dark:text-brand-accent hover:underline underline-offset-4 transition-colors"
+                  className={`${categoryToneClass(post.category)} hover:underline underline-offset-4 transition-colors`}
                 >
                   {categoryConfig?.name || post.category}
                 </Link>

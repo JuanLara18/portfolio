@@ -51,7 +51,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         className="fixed w-full z-50 transition-all duration-500"
         style={{
           backgroundColor: darkMode
-            ? useTransform(backgroundOpacity, (value) => `rgba(11, 17, 32, ${value})`)
+            ? useTransform(backgroundOpacity, (value) => `rgba(5, 7, 10, ${value})`)
             : useTransform(backgroundOpacity, (value) => `rgba(255, 255, 255, ${value})`),
           backdropFilter: useTransform(backdropBlur, (value) => `blur(${value}px)`),
           WebkitBackdropFilter: useTransform(backdropBlur, (value) => `blur(${value}px)`),
@@ -95,7 +95,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               <button 
                 onClick={toggleDarkMode}
                 aria-label="Toggle dark mode"
-                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="p-2 rounded-full bg-gray-100 dark:bg-brand-bg-soft hover:bg-gray-200 dark:hover:bg-brand-border transition-colors"
               >
                 {darkMode ? <Sun size={18} /> : <Moon size={18} />}
               </button>
@@ -105,7 +105,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               <button 
                 onClick={toggleDarkMode}
                 aria-label="Toggle dark mode"
-                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="p-2 rounded-full bg-gray-100 dark:bg-brand-bg-soft hover:bg-gray-200 dark:hover:bg-brand-border transition-colors"
               >
                 {darkMode ? <Sun size={18} /> : <Moon size={18} />}
               </button>

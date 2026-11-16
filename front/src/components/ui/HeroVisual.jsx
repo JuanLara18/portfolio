@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
  * Hero side decoration. A subtle constellation of nodes connected by hairlines.
  * Evokes "knowledge graph / agent network" — on-brand for Production AI.
  *
+ * Brand roles: edges in the harmonic colour, nodes in the primary, and exactly one
+ * node (the central one, "production") in the contrast colour.
+ *
  * Design choices:
  *   - Nodes pulse on different cycles (3-7s each) so the field feels alive
  *     without being distracting.
@@ -49,7 +52,7 @@ export default function HeroVisual() {
     >
       <svg viewBox="0 0 400 400" className="w-full h-full" fill="none">
         {/* Edges — sit behind nodes, very low opacity */}
-        <g className="text-cyan-700/20 dark:text-brand-accent/20">
+        <g className="text-brand-harmonic/40">
           {EDGES.map(([from, to], i) => {
             const a = nodeMap[from];
             const b = nodeMap[to];
@@ -77,7 +80,7 @@ export default function HeroVisual() {
 
         {/* Nodes — staggered pulse so the constellation breathes */}
         <g className="text-cyan-700/70 dark:text-brand-accent/80">
-          {NODES.map((n, i) => (
+          {NODES.filter((n) => n.id !== 'e').map((n, i) => (
             <motion.circle
               key={n.id}
               cx={n.cx}
@@ -107,10 +110,13 @@ export default function HeroVisual() {
           fill="none"
           stroke="currentColor"
           strokeWidth="1"
-          className="text-cyan-700/30 dark:text-brand-accent/30"
+          className="text-brand-contrast/40"
           animate={{ r: [14, 22, 14], opacity: [0.5, 0.1, 0.5] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         />
+
+        {/* The one contrast node: production */}
+        <circle cx={nodeMap.e.cx} cy={nodeMap.e.cy} r={nodeMap.e.r} fill="currentColor" className="text-brand-contrast" />
 
         {/* Traveling data pulse — small bright dot tracing a path */}
         <motion.circle

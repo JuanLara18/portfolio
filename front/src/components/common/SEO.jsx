@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet-async';
 // `homepage`, and scripts/build-sitemap.js so crawlers see one consistent URL.
 const SITE_URL = 'https://juanlara18.github.io/portfolio';
 const SITE_NAME = 'Juan Lara';
-const DEFAULT_IMAGE = `${SITE_URL}/portfolio.png`;
-const LOGO_URL = `${SITE_URL}/portfolio.png`;
+const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`;
+const LOGO_URL = `${SITE_URL}/icon-512.png`;
 
 // sameAs links feed Google's Knowledge Graph. Add ORCID/Scholar/X here when
 // those profiles exist.

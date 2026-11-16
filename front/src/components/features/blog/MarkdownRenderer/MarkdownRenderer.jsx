@@ -882,7 +882,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h1: ({ children, ...props }) => (
 			<h1 
 		id={slugify(extractText(children))}
-				className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 mt-8 sm:mt-12 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-4 leading-tight tracking-tight"
+				className="type-section text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 mt-8 sm:mt-12 text-gray-900 dark:text-brand-fg border-b border-gray-200 dark:border-brand-border pb-4 leading-tight"
 				{...props}
 			>
 				{children}
@@ -891,7 +891,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 	h2: ({ children, ...props }) => (
 			<h2 
 		id={slugify(extractText(children))}
-				className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 mt-10 sm:mt-14 text-gray-900 dark:text-gray-100 leading-snug tracking-tight"
+				className="type-section text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-6 mt-10 sm:mt-14 text-gray-900 dark:text-brand-fg leading-snug"
 				{...props}
 			>
 				{children}
@@ -987,7 +987,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
     
 		// Enhanced links with external link detection
 		a: ({ href, children, ...props }) => {
-			const linkClass = "text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline decoration-2 underline-offset-2 transition-colors";
+			const linkClass = "text-cyan-700 dark:text-brand-accent hover:text-cyan-800 dark:hover:text-brand-accent-soft underline decoration-1 underline-offset-2 transition-colors";
 
 			// Links into this site (posts, blog pages) go through React Router so
 			// the GitHub Pages basename "/portfolio" is preserved and they open in
@@ -1116,7 +1116,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
     
 		// Horizontal rule
 		hr: ({ ...props }) => (
-			<hr className="my-8 border-gray-300 dark:border-gray-600" {...props} />
+			<hr className="my-8 border-gray-300 dark:border-brand-border" {...props} />
 		),
 	};
 

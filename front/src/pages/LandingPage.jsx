@@ -6,7 +6,7 @@ import { ArrowUpRight, Server, Cpu, BrainCircuit, ArrowRight, Download } from 'l
 import { Link } from 'react-router-dom';
 import { ScrollIndicator, HeroVisual } from '../components/ui';
 import { HERO_BODY, HERO_CHIPS, PILLARS, ROLE } from '../data/brand';
-import { loadAllPosts, BLOG_CONFIG } from '../utils/blogUtils';
+import { loadAllPosts, BLOG_CONFIG, categoryToneClass } from '../utils/blogUtils';
 
 // Animation variants
 const fadeInUp = motionVariants.fadeInUp();
@@ -87,11 +87,11 @@ export default function LandingPage() {
               </p>
             </motion.div>
 
-            {/* Hero tagline. Newsreader italic ONLY here — short text, brand moment. */}
+            {/* Hero tagline: the brand voice. Serif italic, each sentence closed by the amber period. */}
             <motion.h1
               ref={titleRef}
               variants={fadeInUp}
-              className="font-display italic font-semibold text-[2.6rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-6 sm:mb-8 leading-[0.98] tracking-[-0.025em] max-w-5xl mx-auto lg:mx-0"
+              className="font-display italic font-semibold text-[2.6rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-6 sm:mb-8 leading-[1.02] tracking-[-0.02em] max-w-5xl mx-auto lg:mx-0"
             >
               <motion.span
                 className="text-cyan-700 dark:text-brand-accent inline-block"
@@ -99,7 +99,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Frontier AI.
+                Frontier AI<span className="text-brand-contrast">.</span>
               </motion.span>
               <motion.span
                 className="block text-gray-900 dark:text-brand-fg"
@@ -107,7 +107,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Engineered for production.
+                Engineered for production<span className="text-brand-contrast">.</span>
               </motion.span>
             </motion.h1>
 
@@ -126,7 +126,7 @@ export default function LandingPage() {
               {HERO_CHIPS.map((tag, i) => (
                 <span
                   key={i}
-                  className="font-mono text-[11px] tracking-[0.08em] uppercase px-3 py-2 border border-gray-300 dark:border-cyan-400/25 text-gray-700 dark:text-brand-fg/80 hover:border-cyan-700 dark:hover:border-brand-accent hover:text-cyan-700 dark:hover:text-brand-accent transition-colors duration-200 cursor-default"
+                  className="font-mono text-[11px] tracking-[0.08em] uppercase px-3 py-2 border border-brand-harmonic/40 text-gray-700 dark:text-brand-fg/80 hover:border-cyan-700 dark:hover:border-brand-accent hover:text-cyan-700 dark:hover:text-brand-accent transition-colors duration-200 cursor-default"
                 >
                   {tag}
                 </span>
@@ -183,8 +183,8 @@ export default function LandingPage() {
             <motion.p variants={fadeInUp} className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
               Why Work With Me
             </motion.p>
-            <motion.h2 variants={fadeInUp} className="font-bold text-3xl sm:text-4xl md:text-5xl text-gray-900 dark:text-brand-fg tracking-tight leading-tight">
-              Three pillars. <span className="text-cyan-700 dark:text-brand-accent">One discipline.</span>
+            <motion.h2 variants={fadeInUp} className="type-section text-3xl sm:text-4xl md:text-5xl text-gray-900 dark:text-brand-fg leading-tight">
+              Three pillars<span className="text-brand-contrast">.</span> <span className="text-cyan-700 dark:text-brand-accent">One discipline</span><span className="text-brand-contrast">.</span>
             </motion.h2>
           </motion.div>
           
@@ -200,8 +200,8 @@ export default function LandingPage() {
               <div className="flex items-start gap-5 sm:gap-6">
                 <Server strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-cyan-700 dark:text-brand-accent flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-lg sm:text-2xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.15] mb-2 sm:mb-3">
-                    {PILLARS[0].name}.
+                  <h3 className="type-section text-lg sm:text-2xl text-gray-900 dark:text-brand-fg leading-[1.15] mb-2 sm:mb-3">
+                    {PILLARS[0].name}<span className="text-brand-contrast">.</span>
                   </h3>
                   <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm sm:text-[15px]">
                     {PILLARS[0].homeCopy}
@@ -213,10 +213,10 @@ export default function LandingPage() {
             {/* Pillar 2 — Engineering Practice */}
             <motion.div variants={motionVariants.scrollReveal.up()} className="group">
               <div className="flex items-start gap-5 sm:gap-6">
-                <Cpu strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
+                <Cpu strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-cyan-700 dark:text-brand-accent flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-lg sm:text-2xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.15] mb-2 sm:mb-3">
-                    {PILLARS[1].name}.
+                  <h3 className="type-section text-lg sm:text-2xl text-gray-900 dark:text-brand-fg leading-[1.15] mb-2 sm:mb-3">
+                    {PILLARS[1].name}<span className="text-brand-contrast">.</span>
                   </h3>
                   <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm sm:text-[15px]">
                     {PILLARS[1].homeCopy}
@@ -228,10 +228,10 @@ export default function LandingPage() {
             {/* Pillar 3 — Applied Research */}
             <motion.div variants={motionVariants.scrollReveal.up()} className="group">
               <div className="flex items-start gap-5 sm:gap-6">
-                <BrainCircuit strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
+                <BrainCircuit strokeWidth={1.3} className="w-7 h-7 sm:w-11 sm:h-11 text-cyan-700 dark:text-brand-accent flex-shrink-0 mt-1 transition-transform duration-300 group-hover:scale-105" />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-lg sm:text-2xl text-gray-900 dark:text-brand-fg tracking-tight leading-[1.15] mb-2 sm:mb-3">
-                    {PILLARS[2].name}.
+                  <h3 className="type-section text-lg sm:text-2xl text-gray-900 dark:text-brand-fg leading-[1.15] mb-2 sm:mb-3">
+                    {PILLARS[2].name}<span className="text-brand-contrast">.</span>
                   </h3>
                   <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed text-sm sm:text-[15px]">
                     {PILLARS[2].homeCopy}
@@ -251,8 +251,8 @@ export default function LandingPage() {
               <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-1">
                 From the blog
               </p>
-              <h2 className="font-bold text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg tracking-tight leading-tight">
-                Latest writing<span className="text-cyan-700 dark:text-brand-accent">.</span>
+              <h2 className="type-section text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg leading-tight">
+                Latest writing<span className="text-brand-contrast">.</span>
               </h2>
             </motion.div>
             <motion.div variants={fadeInUp}>
@@ -281,14 +281,14 @@ export default function LandingPage() {
                     <Link to={`/blog/${post.category}/${post.slug}`} className="block py-5 sm:py-6">
                       <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
                         <div className="md:w-36 flex-shrink-0">
-                          <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-cyan-700 dark:text-brand-accent">
+                          <p className={`font-mono text-[10px] tracking-[0.18em] uppercase ${i === 0 ? 'text-cyan-700 dark:text-brand-accent' : categoryToneClass(post.category)}`}>
                             {kicker}
                           </p>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-bold text-lg sm:text-2xl tracking-tight leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-1">
+                          <h4 className="type-section text-lg sm:text-2xl leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-1">
                             {post.title}
-                            {!/[.!?]$/.test(post.title) && '.'}
+                            {!/[.!?]$/.test(post.title) && <span className="text-brand-contrast">.</span>}
                           </h4>
                           {post.excerpt && (
                             <p className="text-sm text-gray-600 dark:text-brand-fg-muted leading-relaxed line-clamp-2">

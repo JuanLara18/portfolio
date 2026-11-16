@@ -21,7 +21,7 @@ export default function NotFoundPage() {
           <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">
             404
           </p>
-          <h1 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg mb-2">
+          <h1 className="type-section text-2xl text-gray-900 dark:text-brand-fg mb-2">
             Page not found.
           </h1>
           <p className="text-gray-600 dark:text-brand-fg-muted mb-6 break-words">

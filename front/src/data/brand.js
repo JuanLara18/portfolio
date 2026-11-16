@@ -57,7 +57,7 @@ export const HERO_BODY =
   "Built for regulated industries. Currently at Davivienda.";
 
 // Three content pillars. Order enforces the 70/25/5 hierarchy.
-// `color` is a Tailwind palette key consumed by existing components.
+// `color` is the brand colour role. All pillars share the primary (cyan): one accent, no per-pillar colours.
 // `icon` is the Lucide icon component name (consumer imports it from lucide-react).
 export const PILLARS = [
   {
@@ -66,7 +66,7 @@ export const PILLARS = [
     oneLiner:
       "The systems themselves: RAG and GraphRAG platforms, agentic architectures, knowledge applications, LLM ops at scale.",
     homeCopy: "Production AI, shipped. Retrieval, agents, and knowledge applications in users' hands.",
-    color: "blue",
+    color: "primary",
     icon: "Server",
   },
   {
@@ -75,7 +75,7 @@ export const PILLARS = [
     oneLiner:
       "How they ship: architecture decisions, MLOps, evaluation, governance, the engineering moves between prototype and production.",
     homeCopy: "From notebook to running system. Architecture, evaluation, and ops at scale.",
-    color: "indigo",
+    color: "primary",
     icon: "Cpu",
   },
   {
@@ -84,7 +84,7 @@ export const PILLARS = [
     oneLiner:
       "Reading the research: paper-to-product translation, what survives contact with production.",
     homeCopy: "Research, translated. From paper to running system.",
-    color: "emerald",
+    color: "primary",
     icon: "BrainCircuit",
   },
 ];
@@ -194,3 +194,16 @@ export const SEO_DEFAULT_DESCRIPTION =
 // Default SEO title. Single separator (middle dot). Tab-truncation safe.
 // Stays readable when truncated to "Juan Lara · AI Engineer".
 export const SEO_DEFAULT_TITLE = "Juan Lara · AI Engineer";
+
+// Visual identity v1 (approved 2026-11-15). Mirror of docs/brand.md › 10. Visual identity.
+// CSS and Tailwind read the same values from src/index.css and tailwind.config.js.
+export const BRAND_COLORS = {
+  night: { bg: "#05070A", surface: "#0C1017", border: "#1A2130", text: "#E9E9E4", muted: "#9AA2B1", primary: "#22D3EE", harmonic: "#7C9CFF", contrast: "#F5B544" },
+  day: { bg: "#FFFFFF", surface: "#F5F7FA", border: "#E1E5EC", text: "#0B1120", muted: "#4B5568", primary: "#0E7490", harmonic: "#3557D0", contrast: "#B45309" },
+};
+
+export const BRAND_FONTS = {
+  serif: "IBM Plex Serif",
+  sans: "IBM Plex Sans",
+  mono: "IBM Plex Mono",
+};

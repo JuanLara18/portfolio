@@ -12,21 +12,30 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
+      // Brand identity v1 (approved 2026-11-15). Spec: docs/brand.md › Visual identity.
+      // IBM Plex superfamily: Serif = voice and name, Sans = reading and UI, Mono = code and labels.
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Newsreader', 'Inter', 'serif'],
-        mono: ['"JetBrains Mono"', '"Source Code Pro"', 'monospace'],
+        sans: ['"IBM Plex Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
+        display: ['"IBM Plex Serif"', 'Georgia', '"Times New Roman"', 'serif'],
+        serif: ['"IBM Plex Serif"', 'Georgia', '"Times New Roman"', 'serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', '"Cascadia Code"', 'Consolas', 'monospace'],
       },
       colors: {
-        // Brand v2 — Variant 04 (Logo B sigil + Cyan accent)
-        // Locked 2026-05-01. Mirror in CSS where Tailwind isn't available.
+        // Palette "Instrumento": cyan (primary) + cobalt (harmonic) + amber (contrast).
+        // Static keys hold NIGHT values and are used behind `dark:`; day mode uses cyan-700 for primary.
+        // primary/harmonic/contrast follow the active mode through CSS variables (src/index.css).
         brand: {
-          bg: '#0B1120',          // Deep navy, replaces gray-900 as dark canvas (slightly warmer than pure #0A0F1E)
-          'bg-soft': '#101a2e',   // Slightly lifted surface (cards, sections)
-          fg: '#F5F5F0',          // Warm white, replaces slate-100 as primary text
-          'fg-muted': '#A1A9BB',  // Muted gray, for kickers and meta — brighter for dark-mode legibility
-          accent: '#22D3EE',      // Cyan-400 exact, the only accent color
-          'accent-soft': '#67E8F9', // Cyan-300 for hover/secondary
+          bg: '#05070A',          // Night canvas, near-black for low-light reading
+          'bg-soft': '#0C1017',   // Night surface (cards, code blocks)
+          border: '#1A2130',      // Night hairline
+          fg: '#E9E9E4',          // Night text, dimmed white to avoid halation on black
+          'fg-muted': '#9AA2B1',  // Night secondary text
+          accent: '#22D3EE',      // Primary (cyan), night value
+          'contrast-night': '#F5B544', // Amber on always-dark surfaces (post hero)
+          'accent-soft': '#67E8F9', // Primary hover, night
+          primary: 'rgb(var(--brand-primary) / <alpha-value>)',
+          harmonic: 'rgb(var(--brand-harmonic) / <alpha-value>)',
+          contrast: 'rgb(var(--brand-contrast) / <alpha-value>)',
         },
   // Added custom color palette
         slate: {

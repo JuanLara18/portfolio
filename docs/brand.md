@@ -118,11 +118,11 @@ engagements, and collaborations on production AI systems.
 
 Three pillars. The ordering enforces the 70/25/5 hierarchy: two engineering-flavored pillars first, research third.
 
-| # | Pillar | One-line description | Color (Tailwind) | Lucide icon |
+| # | Pillar | One-line description | Color | Lucide icon |
 |---|---|---|---|---|
-| 1 | **Production AI Systems** | The systems themselves: RAG and GraphRAG platforms, agentic architectures, knowledge applications, LLM ops at scale. | `blue-600` | `Server` |
-| 2 | **Engineering Practice** | How they ship: architecture decisions, MLOps, evaluation, governance, the engineering moves between prototype and production. | `indigo-600` | `Cpu` |
-| 3 | **Applied Research** | Reading the research: paper-to-product translation, what survives contact with production. | `emerald-600` | `BrainCircuit` |
+| 1 | **Production AI Systems** | The systems themselves: RAG and GraphRAG platforms, agentic architectures, knowledge applications, LLM ops at scale. | primary (cyan) | `Server` |
+| 2 | **Engineering Practice** | How they ship: architecture decisions, MLOps, evaluation, governance, the engineering moves between prototype and production. | primary (cyan) | `Cpu` |
+| 3 | **Applied Research** | Reading the research: paper-to-product translation, what survives contact with production. | primary (cyan) | `BrainCircuit` |
 
 Replaces the previous home pillars `Applied Research / Scalable Engineering / Business Impact`.
 
@@ -296,3 +296,83 @@ This file is not free to drift. Update it only on the following triggers:
 The corresponding programmatic source is `front/src/data/brand.js`. Keep them in sync. If a constant changes here, change it there in the same commit.
 
 The corresponding memory record is `project_brand_positioning.md` in the Claude memory store. Future sessions read it to bootstrap. Update it on the same triggers as this file.
+
+---
+
+## 10. Visual identity
+
+Approved 2026-11-15. This section is the visual counterpart of the verbal layer above. Colour roles live in `front/src/index.css` (mode-aware CSS variables) and `front/tailwind.config.js` (`brand.*`); the JS mirror is `BRAND_COLORS` in `front/src/data/brand.js`. Never hard-code a hex value in a component. Logo files for third parties are in `front/public/brand/`.
+
+### 10.1. The signature
+
+The symbol is a **J drawn as a graph**: one edge, two ink nodes at its ends, and an amber node where the full stop would be. The full stop is the brand's recurring device. It closes the tagline, closes every page and post title, and is the single amber node in the hero graph.
+
+| Asset | Use |
+|---|---|
+| `lockup-night.svg`, `lockup-day.svg` | Symbol + name. Navigation, footer, share cards, slides. |
+| `wordmark-night.svg`, `wordmark-day.svg` | Name alone, with the amber period. CV header, email signature. |
+| `symbol-night.svg`, `symbol-day.svg` | Symbol alone, 48 px and up. |
+| `favicon.svg` | Small cut of the symbol (heavier stroke, larger nodes) on the night tile. 16 to 32 px. |
+| `symbol-mono-black.svg`, `symbol-mono-white.svg` | One-ink printing, embossing, single-colour contexts. |
+
+Rules:
+
+- **One period per signature.** Next to the symbol, the name carries no period. Alone, it carries the amber one.
+- **The name is never italic.** IBM Plex Serif Medium, upright, tracking −1.2%. Italic belongs to the tagline and titles.
+- **Minimum size.** Lockup from 18 px tall. Below that, use the small cut of the symbol alone.
+- **Clear space.** At least the diameter of the amber node on every side.
+- **The node is always the contrast colour** (`#F5B544` at night, `#B45309` by day). Never recolour it to match a background.
+- Do not stretch, rotate, outline, add shadows, place the symbol on a photo without the night tile, or re-typeset the name in another face.
+
+### 10.2. Colour
+
+Three hues with fixed jobs, plus neutrals. Cyan and cobalt are neighbours on the colour wheel (188° and 225°); amber sits opposite (38°). That spread is what keeps the palette from reading flat.
+
+| Role | Share | Where |
+|---|---|---|
+| Base (`bg`, `surface`, `border`, `text`, `muted`) | 60% | Everything else. |
+| Primary, cyan | 25% | Links, active state, labels, the first line of the hero, Field Notes. |
+| Harmonic, cobalt | 10% | Graph edges, chips, Research Notes, names in code, duotone mid-tones. |
+| Contrast, amber | ≤ 5% | The logo node and the period that closes a title. Nothing else. |
+
+Night mode is near-black so long reads stay comfortable in low light. Text is a dimmed white rather than pure white to avoid halation on black (still 16.6:1). Day mode is pure white. Layers are separated by small lightness steps and hairline borders, not shadows. Semantic colours (error, warning, success) exist only for states and never decorate. No per-company, per-pillar or per-stack colours.
+
+Blog categories map to roles: Field Notes → primary, Research Notes → harmonic, Curiosities → muted.
+
+| Token | Role | Night | Ratio | Day | Ratio |
+|---|---|---|---|---|---|
+| `bg` | Page background (60%). | `#05070A` | — | `#FFFFFF` | — |
+| `surface` | Cards, code blocks, raised areas. | `#0C1017` | — | `#F5F7FA` | — |
+| `border` | Hairlines and dividers. | `#1A2130` | — | `#E1E5EC` | — |
+| `text` | Body and headings. | `#E9E9E4` | 16.6:1 | `#0B1120` | 18.8:1 |
+| `muted` | Secondary text, metadata, Curiosities category. | `#9AA2B1` | 7.9:1 | `#4B5568` | 7.5:1 |
+| `primary` | Links, active state, labels, first line of the hero, Field Notes (25%). | `#22D3EE` | 11.2:1 | `#0E7490` | 5.4:1 |
+| `harmonic` | Graph edges, chips, Research Notes, names in code, duotone mid-tone (10%). | `#7C9CFF` | 7.7:1 | `#3557D0` | 6.1:1 |
+| `contrast` | Logo node and the period that closes a headline. Nothing else (5% max). | `#F5B544` | 11.1:1 | `#B45309` | 5.0:1 |
+
+### 10.3. Typography: IBM Plex
+
+One superfamily in three roles. Serif, Sans and Mono share the same skeleton and x-height (measured 0.520 / 0.520 / 0.515 of the em), so they sit together on one line without adjustments. Plex has no optical-size axis; large titles are tuned with weight and negative tracking instead.
+
+| Role | Face | Size / leading | Tracking |
+|---|---|---|---|
+| Display (hero tagline) | Serif italic 600 | 56 / 1.05 | −2% |
+| Page and post title | Serif italic 600 | 40 / 1.1 | −1.5% |
+| Section heading | Serif 600 | 28 / 1.2 | −1% |
+| Name | Serif 500 | — | −1.2% |
+| Reading | Sans 400 | 18 / 1.7, 60–72 characters per line | 0 |
+| Interface | Sans 500 | 14 / 1.4 | 0 |
+| Label | Mono 500, uppercase | 12 / 1.4 | +12% |
+| Code | Mono 400 | 14 / 1.6 | 0 |
+
+Every style the site renders is declared in `index.html` (browsers only download what a page uses), so the browser never synthesizes bold or italic. Headings use the classes `type-title` (serif italic), `type-section` (serif upright) and `type-name` (the name). Use tabular figures in tables, metrics and reading times. Mono never sets paragraphs.
+
+### 10.4. Imagery
+
+- **Post headers** keep their photos, rendered through the brand duotone (`.brand-duotone`): shadows to the night background, mid-tones to cobalt, highlights to light cyan. The source files are not modified.
+- **Share cards** are typographic: `og-default.png` for every page that is not a post. Per-post cards (category, title in serif italic with the amber period, lockup) are the next step; until then posts keep their header photo as share image.
+- **The graph motif** uses harmonic edges, primary nodes and exactly one contrast node.
+
+### 10.5. Icons and metadata
+
+`favicon.svg` (modern browsers), `favicon.ico` with real 16/32/48 bitmaps, `apple-touch-icon.png` 180 px opaque, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (artwork inside the 80% safe zone). `theme-color` is declared per colour scheme; the manifest uses the night background.

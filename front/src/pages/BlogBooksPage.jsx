@@ -121,7 +121,7 @@ function Section({ id, icon: Icon, label, works }) {
     >
       <motion.div variants={fadeInUp} className="flex items-center gap-2 mb-6">
         <Icon size={18} className="text-cyan-700 dark:text-brand-accent" />
-        <h2 className="font-bold text-2xl md:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">
+        <h2 className="type-section text-2xl md:text-3xl text-gray-900 dark:text-brand-fg">
           {label}
         </h2>
         <span className="font-mono text-xs text-gray-400 dark:text-brand-fg-muted ml-1">
@@ -237,9 +237,9 @@ export default function BlogBooksPage() {
           </motion.div>
           <motion.h1
             variants={fadeInUp}
-            className="font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] text-gray-900 dark:text-brand-fg mb-5"
+            className="type-title text-3xl sm:text-4xl md:text-5xl leading-[1.08] text-gray-900 dark:text-brand-fg mb-5"
           >
-            The books and papers behind the blog<span className="text-cyan-700 dark:text-brand-accent">.</span>
+            The books and papers behind the blog<span className="text-brand-contrast">.</span>
           </motion.h1>
           <motion.p
             variants={fadeInUp}

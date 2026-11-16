@@ -25,8 +25,8 @@ const Footer = () => {
           >
             {/* Left: title + contact lines */}
             <div>
-              <h2 className="font-bold text-xl sm:text-2xl text-gray-900 dark:text-brand-fg tracking-tight mb-5">
-                Let's connect<span className="text-cyan-700 dark:text-brand-accent">.</span>
+              <h2 className="type-section text-xl sm:text-2xl text-gray-900 dark:text-brand-fg mb-5">
+                Let's connect<span className="text-brand-contrast">.</span>
               </h2>
               <div className="space-y-2.5">
                 <a
