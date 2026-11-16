@@ -45,6 +45,10 @@ Blog content flows through `npm run prebuild` (in `front/`):
 
 To enrich a post's metadata (concepts, prereqs, teaches, tech, depth), edit the YAML block under `## Augmentation` in `KNOWLEDGE_BASE.md` and re-run `npm run build-knowledge-base`. Posts without an augmentation entry get sensible defaults (concepts ← tags, depth ← word count).
 
+## Git workflow
+
+`main` only accepts pull requests (squash merge, CI must pass); every merge deploys. Work on a branch named by change type (`post/`, `feat/`, `fix/`, `perf/`, `docs/`, `ci/`, `chore/`), use a Conventional Commit as the PR title, and never push to `main` directly. Versions are annotated `vX.Y.Z` tags with a GitHub Release; new posts alone do not need one. Details: `docs/workflow.md`.
+
 ## Authoring posts
 
 Use the `new-blog-post` skill for the full workflow (frontmatter, header image, audio generation). The post becomes available to the knowledge base on the next build.
