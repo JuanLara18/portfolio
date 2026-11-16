@@ -14,7 +14,7 @@
     "framer-motion": "^12.x",
     "katex": "^0.16.22",
     "lucide-react": "^0.x",
-    "mermaid": "^11.10.1",
+    "mermaid": "11.17.2",
     "react": "^18.x",
     "react-dom": "^18.x",
     "react-helmet-async": "^2.0.5",
@@ -37,6 +37,7 @@
     "highlight.js": "^11.12.0",
     "html-entities": "^2.6.0",
     "mathjax-full": "^3.2.1",
+    "patch-package": "^8.0.0",
     "pdfkit": "^0.18.0",
     "postcss": "^8.4.31",
     "sharp": "^0.34.5",
@@ -44,6 +45,7 @@
     "tailwindcss": "^3.4.19"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "postbuild": "node scripts/inject-blog-meta.js && node scripts/prune-build.js",

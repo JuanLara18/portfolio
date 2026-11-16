@@ -32,6 +32,8 @@ import ignore from 'react-syntax-highlighter/dist/esm/languages/prism/ignore';
 import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 import { resolveInternalHref } from '../../../../utils/postLinks';
+import { getMermaidConfig, diagramType } from './mermaidTheme';
+import { BRAND_COLORS } from '../../../../data/brand';
 
 // Syntax highlighting: only the grammars the posts actually use (the full
 // Prism build carries ~280). Grammar aliases come along: bash covers sh/shell,
@@ -92,7 +94,7 @@ const normalizeMermaidChart = (chart) => {
     .replace(/\\n/g, '<br/>'); // literal backslash-n in labels → HTML line break
 };
 
-const MERMAID_RENDER_VERSION = 'label-bounds-v1';
+const MERMAID_RENDER_VERSION = 'brand-theme-v2';
 const MERMAID_LABEL_VERTICAL_PADDING = 8;
 
 const appendInlineStyle = (element, styleText) => {
@@ -147,59 +149,26 @@ const expandMermaidLabelBounds = (svg) => {
   }
 };
 
-// Track the last theme key to avoid calling mermaid.initialize more than once
-// per theme change, even when many diagrams render simultaneously.
+// mermaid.initialize is global, and the config depends on the theme and the
+// diagram type. Renders are chained so each one initializes and renders
+// without another diagram swapping the config in between.
 let mermaidConfigKey = null;
-
-// Mermaid configuration helper — Brand v2 palette.
-//   Accent: cyan-700 (#0E7490) light / cyan-400 (#22D3EE) dark
-//   Dark canvas: brand-bg (#0B1120)
-//   Light canvas: white
-// Mermaid stays monochrome-ish (neutral nodes, cyan accents for arrows + emphasis).
-const getMermaidConfig = (isDark) => ({
-  startOnLoad: false,
-  theme: isDark ? 'dark' : 'default',
-  securityLevel: 'loose',
-  fontFamily: 'Inter, system-ui, sans-serif',
-  flowchart: {
-    htmlLabels: true,
-    curve: 'basis',
-    padding: 15,
-  },
-  themeVariables: isDark ? {
-    // ── Dark mode: brand navy + cyan accents ──
-    background:            '#0B1120', // brand-bg
-    mainBkg:               '#101a2e', // node fill — brand-bg-soft, slightly lifted from page
-    nodeBorder:            '#3a4660', // node border — neutral, not screaming
-    primaryColor:          '#0e2a3a', // primary-class nodes — dark cyan-tinted
-    primaryBorderColor:    '#22D3EE', // primary node border — brand-accent
-    primaryTextColor:      '#F5F5F0', // text on primary nodes — warm white
-    secondaryColor:        '#0c1422', // secondary — darker than nodes for hierarchy
-    tertiaryColor:         '#13203a', // tertiary — mid step
-    lineColor:             '#22D3EE', // arrows — brand-accent (cyan-400)
-    clusterBkg:            '#0a1020', // subgraph fill — almost page bg
-    clusterBorder:         '#2a3550', // subgraph border — subtle neutral
-    titleColor:            '#67E8F9', // titles — cyan-300, brighter accent
-    edgeLabelBackground:   '#101a2e', // edge labels match node bg
-    nodeTextColor:         '#E5E7F0', // node text — slightly cool light
-  } : {
-    // ── Light mode: white canvas + cyan-700 accents ──
-    background:            '#ffffff',
-    mainBkg:               '#fafafa', // node fill — barely-off-white, neutral
-    nodeBorder:            '#d4d4d8', // node border — gray-300, soft
-    primaryColor:          '#ECFEFF', // primary-class nodes — cyan-50, hint of accent
-    primaryBorderColor:    '#0E7490', // primary node border — cyan-700
-    primaryTextColor:      '#0E7490', // text on primary nodes — cyan-700
-    secondaryColor:        '#f4f4f5', // secondary — slightly deeper neutral
-    tertiaryColor:         '#fafafa', // tertiary — back to nearly white
-    lineColor:             '#0E7490', // arrows — cyan-700 (brand light accent)
-    clusterBkg:            '#fafafa', // subgraph fill — very light neutral
-    clusterBorder:         '#e5e7eb', // subgraph border — gray-200
-    titleColor:            '#0E7490', // titles — cyan-700
-    edgeLabelBackground:   '#ffffff', // edge labels white
-    nodeTextColor:         '#111827', // node text — gray-900 (max contrast)
-  }
-});
+let mermaidQueue = Promise.resolve();
+const renderMermaid = (renderId, chart, isDark) => {
+  const run = async () => {
+    const mermaid = await loadMermaid();
+    const type = diagramType(chart);
+    const key = `${isDark ? 'dark' : 'light'}:${type}`;
+    if (mermaidConfigKey !== key) {
+      mermaid.initialize(getMermaidConfig(isDark, type));
+      mermaidConfigKey = key;
+    }
+    return mermaid.render(renderId, chart);
+  };
+  const result = mermaidQueue.then(run, run);
+  mermaidQueue = result.catch(() => {});
+  return result;
+};
 
 // Toggle Section — editorial: border-top/bottom hairlines, no fill, cyan chevron.
 const ToggleSection = ({ title, children, defaultOpen = false }) => {
@@ -500,15 +469,17 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
   }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   // Theming helpers
-  const bg = isDarkMode ? '#0f172a' : '#f1f5f9';
-  const dotColor = isDarkMode ? '#1e293b' : '#cbd5e1';
+  // Same canvas as the diagram itself, so edge-label backgrounds disappear into it.
+  const brand = BRAND_COLORS[isDarkMode ? 'night' : 'day'];
+  const bg = brand.bg;
+  const dotColor = brand.border;
   const toolbarCls = isDarkMode
-    ? 'bg-gray-900 border-gray-700/80 text-gray-100'
+    ? 'bg-brand-bg-soft border-brand-border text-brand-fg'
     : 'bg-white border-gray-200 text-gray-900';
   const btnCls = isDarkMode
     ? 'text-gray-300 hover:bg-white/10 hover:text-white min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0'
     : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0';
-  const dividerCls = isDarkMode ? 'bg-gray-700' : 'bg-gray-200';
+  const dividerCls = isDarkMode ? 'bg-brand-border' : 'bg-gray-200';
   const zoomCls = isDarkMode ? 'text-gray-400' : 'text-gray-500';
   const hintCls = isDarkMode ? 'text-gray-600' : 'text-gray-400';
 
@@ -665,19 +636,9 @@ const MermaidDiagram = memo(({ chart }) => {
       setError(null);
       
       try {
-        const mermaid = await loadMermaid();
-        if (isCancelled) return;
-        // Only re-initialize when the theme actually changes so concurrent
-        // renders on the same page don't fight over global mermaid config.
-        const newConfigKey = isDarkMode ? 'dark' : 'light';
-        if (mermaidConfigKey !== newConfigKey) {
-          mermaid.initialize(getMermaidConfig(isDarkMode));
-          mermaidConfigKey = newConfigKey;
-        }
-        
         // Use unique ID for each render attempt
         const renderId = `${idRef.current}-${currentRenderCount}`;
-        const { svg: renderedSvg } = await mermaid.render(renderId, normalizedChart);
+        const { svg: renderedSvg } = await renderMermaid(renderId, normalizedChart, isDarkMode);
         const adjustedSvg = expandMermaidLabelBounds(renderedSvg);
         
         if (isCancelled) return;
@@ -708,7 +669,7 @@ const MermaidDiagram = memo(({ chart }) => {
     return (
       <div 
         ref={containerRef}
-        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 min-h-[200px]"
+        className="my-10 p-6 rounded-xl border border-gray-200 dark:border-brand-border min-h-[200px]"
       >
         <div className="flex items-center justify-center h-full text-gray-400 dark:text-gray-500">
           <span className="text-sm">Diagram</span>
@@ -722,7 +683,7 @@ const MermaidDiagram = memo(({ chart }) => {
     return (
       <div 
         ref={containerRef}
-        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700"
+        className="my-10 p-6 rounded-xl border border-gray-200 dark:border-brand-border"
       >
         <div className="flex items-center justify-center gap-3 text-gray-500 dark:text-gray-400">
           <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -770,12 +731,12 @@ const MermaidDiagram = memo(({ chart }) => {
       )}
       <div
         ref={containerRef}
-        className="my-8 group relative bg-gradient-to-br from-blue-50/40 to-slate-50 dark:from-slate-800/60 dark:to-slate-900/80 rounded-xl border border-blue-100 dark:border-slate-700/80 overflow-hidden"
+        className="my-10 group relative rounded-xl border border-gray-200 dark:border-brand-border bg-white dark:bg-brand-bg overflow-hidden"
       >
         {/* Fullscreen button — always visible on touch, hover-reveal on desktop */}
         <button
           onClick={() => setIsFullscreen(true)}
-          className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 z-10"
+          className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-brand-bg-soft/90 hover:bg-white dark:hover:bg-brand-border rounded-lg shadow-sm border border-gray-200 dark:border-brand-border text-gray-600 dark:text-brand-fg-muted opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 z-10"
           aria-label="View fullscreen"
           title="View fullscreen"
         >
@@ -783,7 +744,7 @@ const MermaidDiagram = memo(({ chart }) => {
         </button>
 
         {/* Inline diagram */}
-        <div className="p-4 sm:p-6 overflow-x-auto">
+        <div className="px-3 py-5 sm:px-8 sm:py-8 overflow-x-auto">
           <div
             className="mermaid-diagram flex justify-center min-w-fit [&_svg]:max-w-full [&_svg]:h-auto"
             dangerouslySetInnerHTML={{ __html: svg }}
