@@ -65,11 +65,12 @@
     "sync": "python scripts/sync.py",
     "sync:fast": "python scripts/sync.py --fast",
     "sync:check": "python scripts/sync.py --check",
-    "brand": "npm run brand:logo && npm run brand:tokens && npm run brand:render && npm run brand:book",
+    "brand": "npm run brand:logo && npm run brand:tokens && npm run brand:render && npm run brand:book && npm run brand:kit",
     "brand:logo": "python ../brand/scripts/build_logo.py",
     "brand:tokens": "node ../brand/scripts/build_tokens.mjs",
     "brand:render": "node ../brand/scripts/render.mjs",
     "brand:book": "node ../brand/scripts/build_book.mjs",
+    "brand:kit": "node ../brand/scripts/build_kit.mjs",
     "pdf:series": "node scripts/pdf/build.js",
     "pdf:series:list": "node scripts/pdf/build.js --list",
     "validate-links": "node scripts/validate-links.js"

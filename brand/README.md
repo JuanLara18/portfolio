@@ -29,6 +29,7 @@ Run from `front/`:
 | `npm run brand:tokens` | `tokens.json` → `front/src/styles/brand-tokens.css`, `front/src/data/brandTokens.json`, `exports/tokens/`; copies `motifs/motifs.mjs` to `front/src/brand/motifs.js` |
 | `npm run brand:render` | `logo/` + `templates/` → `exports/` (Puppeteer), then copies site icons, `og-default.png` and logo SVGs into `front/public/` |
 | `npm run brand:book` | Builds `guidelines/brand-book.html` and `.pdf` from tokens, masters and exports |
+| `npm run brand:kit` | Writes `exports/motif/` and `exports/tokens/palette.csv`, then packs the designer hand-off into `dist/juan-lara-brand-kit-v<version>.zip` (git-ignored) |
 
 Generated files are committed, so the site build and CI never run these. Run `npm run brand` after any change to `tokens.json`, a template or a script, and commit the results together.
 
@@ -56,6 +57,8 @@ Generated files are committed, so the site build and CI never run these. Run `np
 | `logo/*.png` | Documents, slides and tools that do not accept SVG |
 | `tokens/brand.css` | Plain hex variables for slides, documents and anything outside the site |
 | `tokens/contrast.md` | WCAG contrast of every text role in both modes |
+| `tokens/palette.csv` | Every colour role with HEX and RGB for both modes, for Figma, Adobe and slides |
+| `motif/*.svg` | Still frames of every motif in the family, night and day |
 
 ## The motif
 
@@ -64,6 +67,10 @@ Generated files are committed, so the site build and CI never run these. Run `np
 - Switch the motif: set `motif.active` in `tokens.json` to any id in `motif.family`, run `npm run brand`, commit.
 - Use another member in one place: templates accept `?motif=<id>`; React takes `<HeroVisual motif="heawood" />`.
 - Add a member: write a builder in `motifs.mjs` returning `{ nodes, edges, frame, still, period }`, add its story to `MOTIF_STORIES`, its id to `motif.family`. Keep the rules: harmonic edges, primary nodes, one amber node per frame.
+
+## Handing the brand to a designer
+
+Send the `juan-lara-brand-kit-v<version>.zip` attached to the latest GitHub Release (or run `npm run brand:kit`). It holds the brand book PDF, logos (SVG and PNG), icons, social images, palette (CSV, CSS, JSON), type and licence, the motifs and the template sources, with a bilingual README. Everything in it is generated, so a designer's changes come back as changes to `tokens.json` or a template here.
 
 ## Adding a piece
 
