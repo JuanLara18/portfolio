@@ -102,6 +102,7 @@ Requires Node.js 18 or later. The audio pipeline additionally needs Python 3.10+
 | [Architecture](docs/architecture.md) | How the app, routing, rendering, and SEO fit together |
 | [Authoring](docs/authoring.md) | Writing a post: frontmatter, links, math, diagrams, series |
 | [Operations](docs/operations.md) | Commands, CI/CD, audio hosting, troubleshooting |
+| [Workflow](docs/workflow.md) | Branches, pull requests, versions and releases |
 | [Knowledge base](docs/knowledge-base.md) | The agent-facing index of the blog |
 | [Build scripts](front/scripts/README.md) | Reference for every script in the content pipeline |
 | [Print PDFs](front/scripts/pdf/README.md) | Layout rules for the series PDF builder |

@@ -24,7 +24,7 @@ flowchart TD
         CRA["react-scripts build"]
         INJ["inject-blog-meta: one index.html per route"]
     end
-    MD --> BD --> VL --> BB --> KB --> SM --> CRA --> INJ --> PAGES["gh-pages branch"]
+    MD --> BD --> VL --> BB --> KB --> SM --> CRA --> INJ --> PAGES["GitHub Pages artifact"]
     KBMD --> KB
     SER --> CRA
 ```
@@ -131,6 +131,6 @@ What keeps it there:
 | Check | Where it runs | Fails on |
 |---|---|---|
 | `validate-links` | `prebuild`, so every build and every deploy | unknown slugs, non-canonical links between posts |
-| `sync:check` | CI, before the build | orphaned audio, Mermaid syntax errors |
-| Unit tests (`npm test`) | CI | link resolution regressions |
+| `sync:check` | every pull request and deploy, before the build | orphaned audio, Mermaid syntax errors |
+| Unit tests (`npm test`) | every pull request and deploy | link resolution regressions |
 | `validate-mermaid` | `sync`, `sync:check` | diagrams the renderer cannot parse |
