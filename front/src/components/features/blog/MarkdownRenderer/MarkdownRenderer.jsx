@@ -7,7 +7,6 @@ import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import rehypeKatex from 'rehype-katex';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark, oneLight } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import sql from 'react-syntax-highlighter/dist/esm/languages/prism/sql';
@@ -29,11 +28,12 @@ import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown
 import turtle from 'react-syntax-highlighter/dist/esm/languages/prism/turtle';
 import graphql from 'react-syntax-highlighter/dist/esm/languages/prism/graphql';
 import ignore from 'react-syntax-highlighter/dist/esm/languages/prism/ignore';
-import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, AlertCircle, Maximize2, X } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 import { resolveInternalHref } from '../../../../utils/postLinks';
 import { withChunkRetry, isChunkLoadError, reloadForNewBuild } from '../../../../utils/chunkRetry';
 import { getMermaidConfig, diagramType } from './mermaidTheme';
+import { CodeBlock as CodeSurface, MarkdownTable } from './ReadingSurfaces';
 import { BRAND_COLORS } from '../../../../data/brand';
 
 // Syntax highlighting: only the grammars the posts actually use (the full
@@ -763,23 +763,12 @@ const MermaidDiagram = memo(({ chart }) => {
   );
 }, (prevProps, nextProps) => prevProps.chart === nextProps.chart);
 
-// Enhanced Code Block with Copy Button
-const CodeBlock = ({ language, value, ...props }) => {
-  const [copied, setCopied] = useState(false);
-  const isDarkMode = useDarkMode();
-  
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(value);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-  
-  // Check if it's a Mermaid diagram
+// Fenced blocks: Mermaid diagrams, toggle sections, and code.
+const CodeBlock = ({ language, value }) => {
   if (language === 'mermaid') {
     return <MermaidDiagram chart={value} />;
   }
-  
-  // Check if it's a toggle section
+
   if (language === 'toggle') {
     const lines = value.split('\n');
     const title = lines[0] || 'Toggle Section';
@@ -790,41 +779,13 @@ const CodeBlock = ({ language, value, ...props }) => {
       </ToggleSection>
     );
   }
-  
-  // Editorial code block — hairline header (mono uppercase language label),
-  // no rounded chrome, no header bg fill. Syntax highlighting theme keeps
-  // its own colors (those are designed for code readability, not brand).
-  const codeTheme = isDarkMode ? oneDark : oneLight;
 
   return (
-    <div className="relative my-[1.5em] group">
-      <div className="flex items-center justify-between px-[0.6em] py-[0.4em] border-b border-current/15 font-mono text-[0.7em] tracking-[0.12em] uppercase">
-        <span className="opacity-60">{language || 'code'}</span>
-        <button
-          onClick={copyToClipboard}
-          className="flex items-center gap-1 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
-          aria-label={copied ? 'Copied' : 'Copy code'}
-        >
-          {copied ? <Check size={11} /> : <Copy size={11} />}
-          <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy'}</span>
-        </button>
-      </div>
-      <SyntaxHighlighter
-        style={codeTheme}
-        language={LANGUAGE_ALIASES[language] || language || 'text'}
-        customStyle={{
-          margin: 0,
-          borderRadius: 0,
-          fontSize: '0.85em',
-          lineHeight: '1.55',
-          padding: '1em',
-          overflowX: 'auto',
-        }}
-        {...props}
-      >
-        {value}
-      </SyntaxHighlighter>
-    </div>
+    <CodeSurface
+      language={language}
+      value={value}
+      highlightLanguage={LANGUAGE_ALIASES[language] || language || 'text'}
+    />
   );
 };
 
@@ -998,7 +959,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		// Detect if it's a code block or inline code
 		// In react-markdown v8+, the 'inline' prop is no longer passed
 		// Code blocks have a className with language-* or contain newlines
-		const hasLanguageClass = /language-(\w+)/.exec(className || '');
+		const hasLanguageClass = /language-([\w-]+)/.exec(className || '');
 		const content = String(children);
 		const hasNewlines = content.includes('\n');
 		
@@ -1022,7 +983,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		const value = content.replace(/\n$/, '');
 		
 		// Use CodeBlock component for syntax highlighting
-		return <CodeBlock language={language} value={value} {...props} />;
+		return <CodeBlock language={language} value={value} />;
 	},
     
 	// Enhanced pre blocks - just pass through children without extra styling
@@ -1058,31 +1019,10 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 			</blockquote>
 		),
     
-		// Editorial tables — em-based padding so they scale with font-size,
-		// hairline borders only (no boxy chrome), color inherits from parent (RM theme aware).
-		table: ({ children, ...props }) => (
-			<div className="my-[1.5em] -mx-4 sm:mx-0 overflow-x-auto [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:bg-current/20">
-				<table className="w-full border-collapse text-[0.92em] mx-4 sm:mx-0" style={{ minWidth: 'max-content' }} {...props}>
-					{children}
-				</table>
-			</div>
-		),
-		thead: ({ children, ...props }) => (
-			<thead {...props}>
-				{children}
-			</thead>
-		),
-		th: ({ children, ...props }) => (
-			<th className="px-[0.9em] py-[0.55em] text-left font-semibold whitespace-nowrap border-b-2 border-current/30" {...props}>
-				{children}
-			</th>
-		),
-		td: ({ children, ...props }) => (
-			<td className="px-[0.9em] py-[0.5em] align-top border-b border-current/10" {...props}>
-				{children}
-			</td>
-		),
-    
+		// Tables wrap their text and scroll sideways when the columns cannot fit;
+		// see ReadingSurfaces.jsx and "Reading surfaces" in index.css.
+		table: MarkdownTable,
+
 		// Horizontal rule
 		hr: ({ ...props }) => (
 			<hr className="my-8 border-gray-300 dark:border-brand-border" {...props} />
