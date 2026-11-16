@@ -454,26 +454,14 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   line-height: 1.5 !important;
 }
 
-/* Scale Mermaid diagrams proportionally in reading mode */
-.reading-mode-active .mermaid-diagram .node text,
-.reading-mode-active .mermaid-diagram .edgeLabel,
-.reading-mode-active .mermaid-diagram .messageText,
-.reading-mode-active .mermaid-diagram .mermaid-gantt-title {
-  font-size: calc(var(--rm-font-size, 16px) * 0.75) !important;
-}
-
-/* Content helpers */
-.mobile-content-wide{max-width:100%!important;padding-left:.5rem!important;padding-right:.5rem!important}
-.mobile-hero-optimized{padding-left:.75rem!important;padding-right:.75rem!important}
-
 /* --------------------------------------------------------------------------
-   Mermaid Diagram Styles
-   Blue-slate identity: nodes use the site's blue palette, not flat grays.
-   Contrast comes from color hierarchy, not heavy borders or shadows.
+   Mermaid diagrams
+   Colours, strokes and label sizes live in the Mermaid theme
+   (MarkdownRenderer/mermaidTheme.js), because Mermaid measures labels when it
+   lays out the diagram. CSS that changes text size or line height afterwards
+   makes labels overflow their boxes, so nothing here touches label text.
    ----------------------------------------------------------------------- */
 
-/* Base diagram container — min-width lets the inner SVG expand naturally
-   while the overflow-x-auto ancestor handles scrolling for wide diagrams. */
 .mermaid-diagram {
   min-width: fit-content;
 }
@@ -481,78 +469,17 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 .mermaid-diagram svg {
   max-width: 100%;
   height: auto;
-  font-family: 'Inter', system-ui, sans-serif !important;
   display: block;
 }
 
-/* Node borders: 1.5px gives definition without feeling heavy */
-.mermaid-diagram .node rect,
-.mermaid-diagram .node circle,
-.mermaid-diagram .node ellipse,
-.mermaid-diagram .node polygon,
-.mermaid-diagram .node path {
-  stroke-width: 1.5px;
-  transition: filter 0.15s ease;
-}
-
-/* Subtle hover brightening so nodes feel interactive */
-.mermaid-diagram .node:hover rect,
-.mermaid-diagram .node:hover circle,
-.mermaid-diagram .node:hover ellipse,
-.mermaid-diagram .node:hover polygon,
-.mermaid-diagram .node:hover path {
-  filter: brightness(1.08);
-}
-
-/* Cluster/subgraph: rounded corners + slightly thicker stroke = clear grouping */
-.mermaid-diagram .cluster rect {
-  stroke-width: 1.5px;
-  rx: 10px;
-  ry: 10px;
-}
-
-/* Arrows/edges: match the blue lineColor set in themeVariables */
-.mermaid-diagram .edgePath path,
-.mermaid-diagram .flowchart-link {
-  stroke-width: 1.5px;
-}
-
-/* Arrowhead markers inherit edge color automatically */
-.mermaid-diagram marker path {
-  stroke-width: 1px;
-}
-
-/* Edge labels: slightly bolder text for legibility */
-.mermaid-diagram .edgeLabel {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-/* Edge label rectangles: rounded, matching themeVariables edgeLabelBackground */
-.mermaid-diagram .edgeLabel rect {
-  rx: 4px;
-  ry: 4px;
-}
-
-/* HTML labels (used for <br/> line breaks) */
-.mermaid-diagram .label {
-  line-height: 1.4;
-  text-align: center;
-}
-
-/* Sequence diagram: actors and messages share the blue identity */
-.mermaid-diagram .actor {
-  stroke-width: 1.5px;
-}
-
-.mermaid-diagram .messageText {
-  font-size: 13px;
-}
-
-/* Gantt chart */
-.mermaid-diagram .mermaid-gantt-title {
-  font-size: 14px;
-  font-weight: 600;
+/* Page-wide paragraph rules (reading mode, mobile) must not reach the <p>
+   inside Mermaid labels. */
+.reading-mode-active .mermaid-diagram p,
+article .mermaid-diagram p,
+.mermaid-diagram p {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  margin: 0 !important;
 }
 
 /* Fullscreen diagram — no width constraint, sharp vector rendering at any scale */
@@ -566,28 +493,11 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   will-change: auto;
 }
 
-/* Mobile optimizations for diagrams.
-   We intentionally do NOT set a min-width on the SVG here — forcing a minimum
-   width caused simple diagrams to scroll unnecessarily. Wide diagrams already
-   scroll via the overflow-x-auto wrapper. Font sizes are reduced slightly on
-   small screens to keep complex diagrams legible. */
 @media (max-width: 768px) {
   .mermaid-diagram {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-  }
-
-  .mermaid-diagram .node text,
-  .mermaid-diagram .edgeLabel {
-    font-size: 11px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .mermaid-diagram .node text,
-  .mermaid-diagram .edgeLabel {
-    font-size: 10px !important;
   }
 }
 

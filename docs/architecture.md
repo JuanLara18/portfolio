@@ -99,7 +99,7 @@ Posts link to each other as `/blog/<slug>`. Three pieces keep those links correc
 `MarkdownRenderer.jsx` wraps `react-markdown` with:
 
 - GitHub-flavored Markdown, frontmatter stripping, and math through `remark-math` and `rehype-katex`.
-- **Mermaid**, imported dynamically the first time a diagram enters the viewport. Rendered SVGs are cached by content and theme.
+- **Mermaid**, imported dynamically the first time a diagram enters the viewport. Rendered SVGs are cached by content and theme. `mermaidTheme.js` holds the brand theme: Mermaid's `base` theme with a value for every diagram type, chosen per type at render time, so renders are chained to keep one diagram's config from leaking into another. Label sizes live in that theme, not in CSS, because Mermaid measures labels during layout. `patches/mermaid+*.patch` (applied by `patch-package` on install) fixes Mermaid's label-wrap check, which compares two widths for exact equality and fails at browser zoom levels such as 90 %, leaving text outside its box.
 - **Prism** through `PrismLight`, with only the grammars the posts use registered. Unregistered languages render as plain monospace.
 - Heading IDs derived from the heading text, which also drive the table of contents.
 - Relative image paths resolved against `public/blog/figures/<category>/`, with a fallback image if one fails to load.

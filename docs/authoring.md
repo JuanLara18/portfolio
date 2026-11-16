@@ -77,6 +77,34 @@ Inside a blockquote, keep `> ` on every line, including both `$$` lines.
 
 Mermaid blocks always open with ` ```mermaid `, never with the diagram type (` ```flowchart ` renders as a code block). Use two to four diagrams per post, of at least two different kinds. `npm run validate-mermaid` rejects anything Mermaid 11 cannot parse. Avoid `<`, `>`, and unbalanced quotes in labels, and parentheses or colons in `quadrantChart` items.
 
+Every diagram type is styled by the site's theme (`mermaidTheme.js`), in light and dark. Work with it:
+
+- **No colours in posts.** Do not write `style X fill:#…` or `classDef` colours. Mark a node with `:::accent` for what the paragraph is about, or `:::muted` for context; everything else stays neutral.
+- **Short title, detail in small.** Up to four words of title, then the detail: `P["Data contract<br/><small>schema, quality, SLA</small>"]`.
+- **Nine nodes at most.** More than that is two diagrams or a `subgraph`.
+- **Vertical by default.** The reading column is about 680 px wide. Use `LR` only for four nodes or fewer in a row.
+- **Math is LaTeX.** Write `$$…$$` inside the label, never `theta_t`: `E["<b>E step</b><br/>$$q \leftarrow p(z \mid x, \theta_t)$$"]`. The title and the formula stack on two lines. Write `\lt` and `\gt`, not `<` and `>`.
+- **Production systems get an `architecture-beta` diagram.** Any post about a deployed system shows its shape: services, data stores, and the boundaries between them.
+
+Pick the type by the question the diagram answers:
+
+| The diagram shows | Type |
+|---|---|
+| How the pieces of a system connect | `architecture-beta` |
+| How a budget splits (tokens, latency, rows) | `sankey-beta` |
+| Stacked layers where position matters | `block-beta` |
+| The bits of a number format or protocol | `packet-beta` |
+| A few options compared on several axes | `radar-beta` |
+| Parts of a whole, with hierarchy | `treemap-beta` |
+| The map of a series | `mindmap` |
+| Versions, branches, lineage | `gitGraph` |
+| Why something failed | `ishikawa-beta` |
+| Who talks to whom, in order | `sequenceDiagram` |
+| States and transitions | `stateDiagram-v2` |
+| A process with decisions | `flowchart` |
+
+A `quadrantChart` needs real positions. If the coordinates are not measured, use a table or a list.
+
 ### Code
 
 Fence every block with its language. These are highlighted: `python`, `bash`, `sql`, `yaml`, `json`, `hcl`, `cypher`, `dockerfile`, `go`, `toml`, `scala`, `sparql`, `rego`, `powershell`, `makefile`, `javascript`, `typescript`, `markdown`, `turtle`, `graphql`, `gitignore`. Anything else renders as plain monospace. To add a language, register its grammar at the top of `MarkdownRenderer.jsx`.
