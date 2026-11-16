@@ -6,6 +6,7 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import rehypeKatex from 'rehype-katex';
+import rehypeMathScroll from './rehypeMathScroll';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
@@ -33,7 +34,7 @@ import 'katex/dist/katex.min.css';
 import { resolveInternalHref } from '../../../../utils/postLinks';
 import { withChunkRetry, isChunkLoadError, reloadForNewBuild } from '../../../../utils/chunkRetry';
 import { getMermaidConfig, diagramType } from './mermaidTheme';
-import { CodeBlock as CodeSurface, MarkdownTable } from './ReadingSurfaces';
+import { CodeBlock as CodeSurface, MarkdownTable, ScrollFade } from './ReadingSurfaces';
 import { BRAND_COLORS } from '../../../../data/brand';
 
 // Syntax highlighting: only the grammars the posts actually use (the full
@@ -1024,6 +1025,13 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 		table: MarkdownTable,
 
 		// Horizontal rule
+		// Display equations scroll sideways inside their own box (rehypeMathScroll).
+		div: ({ node, className, children, ...props }) => (
+			className === 'math-display-scroll'
+				? <ScrollFade className="md-math-scroll" label="Equation, scrolls sideways">{children}</ScrollFade>
+				: <div className={className} {...props}>{children}</div>
+		),
+
 		hr: ({ ...props }) => (
 			<hr className="my-8 border-gray-300 dark:border-brand-border" {...props} />
 		),
@@ -1034,7 +1042,7 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 			<ReactMarkdown
 				components={components}
 				remarkPlugins={[remarkMath, remarkGfm, remarkFrontmatter]}
-				rehypePlugins={[rehypeKatex]}
+				rehypePlugins={[rehypeKatex, rehypeMathScroll]}
 			>
 				{content}
 			</ReactMarkdown>

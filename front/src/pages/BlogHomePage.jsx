@@ -14,6 +14,7 @@ import { loadAllPosts, getAllTags, BLOG_CONFIG, getWebPPath, categoryToneClass }
 import { variants as motionVariants } from '../utils';
 import { PostCard } from '../components/features/blog/PostCard';
 import { ViewToggle } from '../components/ui';
+import { ScrollFade } from '../components/features/blog/MarkdownRenderer/ReadingSurfaces';
 
 // Animation variants
 const fadeInUp = motionVariants.fadeInUp();
@@ -227,8 +228,6 @@ export default function BlogHomePage() {
               >
                 <Network size={14} />
                 <span>Explore knowledge graph</span>
-                <span className="opacity-50">·</span>
-                <span>{posts.length} posts</span>
               </Link>
               <Link
                 to="/blog/series"
@@ -297,10 +296,10 @@ export default function BlogHomePage() {
             variants={staggerContainer}
           >
             {/* Category filter row — inline mono uppercase, underline-active */}
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-wrap gap-x-6 gap-y-2 mb-8"
-            >
+            {/* One row; on a phone it scrolls sideways instead of wrapping. */}
+            <motion.div variants={fadeInUp} className="mb-8">
+            <ScrollFade className="-mx-4 sm:mx-0" label="Categories">
+            <div className="flex gap-x-6 w-max px-4 sm:px-0">
               <button
                 key="all"
                 onClick={() => setSelectedCategory('all')}
@@ -332,6 +331,8 @@ export default function BlogHomePage() {
                   </button>
                 );
               })}
+            </div>
+            </ScrollFade>
             </motion.div>
 
             {/* Section header — kicker + view toggle + post count */}

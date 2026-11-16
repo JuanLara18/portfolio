@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
@@ -12,12 +12,13 @@ import {
   List,
   X,
   Check,
-  Maximize2,
-  ArrowDownUp
+  Maximize2
 } from 'lucide-react';
 import { getPostBySlug, BLOG_CONFIG, scrollToElementCentered, getWebPPath, categoryToneClass } from '../utils/blogUtils';
 import { postPath } from '../utils/postLinks';
 import { MarkdownRenderer, AudioPlayer } from '../components/features/blog';
+import ReadingMode from '../components/features/blog/ReadingMode';
+import { ScrollFade } from '../components/features/blog/MarkdownRenderer/ReadingSurfaces';
 import { HoverMotion } from '../components/layout';
 
 // Animation variants
@@ -346,321 +347,6 @@ const ScrollProgress = () => {
   );
 };
 
-// Reading mode theme presets
-const RM_THEMES = {
-  light: { bg: '#ffffff', text: '#111827', subtleBg: '#f9fafb', border: '#e5e7eb', dark: false },
-  sepia: { bg: '#f4ecd8', text: '#3b2c1a', subtleBg: '#ede3c8', border: '#d4b896', dark: false },
-  dark:  { bg: '#000000', text: '#f5f5f0', subtleBg: '#0c0c0c', border: '#222222', dark: true  },
-};
-const RM_WIDTHS = { narrow: '58ch', normal: '70ch', wide: '90ch' };
-
-// Reading mode font families. Cycles via toggle button.
-const RM_FONTS = {
-  sans:  { label: 'Sans',  stack: '"IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',           sample: 'Aa' },
-  serif: { label: 'Serif', stack: '"IBM Plex Serif", Georgia, "Palatino Linotype", Palatino, serif',                              sample: 'Aa' },
-  mono:  { label: 'Mono',  stack: '"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace',    sample: 'Aa' },
-};
-const RM_FONT_KEYS = Object.keys(RM_FONTS);
-
-// Reading mode overlay component
-const ReadingMode = ({ post, onClose, baseImagePath }) => {
-  const [fontSize, setFontSize] = useState(
-    () => parseInt(localStorage.getItem('rm.fontSize') || '18')
-  );
-  const [lineHeight, setLineHeight] = useState(
-    () => parseFloat(localStorage.getItem('rm.lineHeight') || '1.8')
-  );
-  const [fontFamily, setFontFamily] = useState(
-    () => localStorage.getItem('rm.fontFamily') || 'sans'
-  );
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('rm.theme');
-    if (saved && RM_THEMES[saved]) return saved;
-    return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-  });
-  const [width, setWidth] = useState(
-    () => localStorage.getItem('rm.width') || 'normal'
-  );
-  const [readProgress, setReadProgress] = useState(0);
-  const [isDiagramFullscreen, setIsDiagramFullscreen] = useState(false);
-  const [isControlsVisible, setIsControlsVisible] = useState(true);
-  const contentRef = useRef(null);
-  const lastScrollY = useRef(0);
-  // Snapshot the site's dark-mode state at the moment reading mode opens.
-  // We restore this on exit so the main page is never affected.
-  const originalDark = useRef(document.documentElement.classList.contains('dark'));
-
-  // Persist reading-mode-only settings (rm.* keys, never touches 'theme')
-  useEffect(() => { localStorage.setItem('rm.fontSize', String(fontSize)); }, [fontSize]);
-  useEffect(() => { localStorage.setItem('rm.lineHeight', String(lineHeight)); }, [lineHeight]);
-  useEffect(() => { localStorage.setItem('rm.fontFamily', fontFamily); }, [fontFamily]);
-  useEffect(() => { localStorage.setItem('rm.theme', theme); }, [theme]);
-  useEffect(() => { localStorage.setItem('rm.width', width); }, [width]);
-
-  // While reading mode is open, nudge the dark-mode class so code blocks
-  // and Mermaid diagrams render in the right palette. On unmount, always
-  // restore the original state so the main page is unaffected.
-  useEffect(() => {
-    const isDark = RM_THEMES[theme]?.dark ?? false;
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
-
-  useEffect(() => {
-    return () => {
-      // Restore original site dark mode — never leave the main page out of sync
-      if (originalDark.current) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    };
-  }, []);
-
-  // Listen for diagram fullscreen toggle to hide reading mode chrome
-  useEffect(() => {
-    const handleToggle = (e) => setIsDiagramFullscreen(e.detail);
-    window.addEventListener('mermaid-fullscreen-toggle', handleToggle);
-    return () => window.removeEventListener('mermaid-fullscreen-toggle', handleToggle);
-  }, []);
-
-  // Lock body scroll; ESC only fires when no higher-z dialog is open (e.g. diagram viewer)
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    window.dispatchEvent(new CustomEvent('reading-mode-toggle', { detail: true }));
-    const handleKey = (e) => {
-      if (e.key === 'Escape' && !document.querySelector('[aria-modal="true"]')) onClose();
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => {
-      document.body.style.overflow = '';
-      window.dispatchEvent(new CustomEvent('reading-mode-toggle', { detail: false }));
-      window.removeEventListener('keydown', handleKey);
-    };
-  }, [onClose]);
-
-  const handleScroll = (e) => {
-    const el = e.currentTarget;
-    const max = el.scrollHeight - el.clientHeight;
-    setReadProgress(max > 0 ? el.scrollTop / max : 0);
-
-    const currentScrollY = el.scrollTop;
-    if (currentScrollY > lastScrollY.current + 20 && currentScrollY > 50) {
-      setIsControlsVisible(false);
-      lastScrollY.current = currentScrollY;
-    } else if (currentScrollY < lastScrollY.current - 20 || currentScrollY < 50) {
-      setIsControlsVisible(true);
-      lastScrollY.current = currentScrollY;
-    }
-  };
-
-  const fontSizeMin = 13, fontSizeMax = 32;
-  const lineHeightMin = 1.3, lineHeightMax = 2.6;
-  const tc = RM_THEMES[theme] || RM_THEMES.light;
-
-  const sep = (
-    <div className="w-px h-5 flex-shrink-0 mx-0.5" style={{ backgroundColor: tc.border }} />
-  );
-
-  const mkBtn = (onClick, disabled, title, children) => (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      title={title}
-      style={{ color: tc.text }}
-      className="w-8 h-8 flex items-center justify-center rounded-lg transition-colors disabled:opacity-25 text-xs font-medium select-none hover:bg-black/[0.06]"
-    >
-      {children}
-    </button>
-  );
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.18 }}
-      style={{
-        backgroundColor: tc.bg,
-        color: tc.text,
-        '--rm-font-size': `${fontSize}px`,
-        '--rm-line-height': String(lineHeight),
-        // Opaque background for pinned table columns (sepia included).
-        '--read-bg': tc.bg,
-      }}
-      className="fixed inset-0 z-[400] flex flex-col reading-mode-active"
-    >
-      {/* ── Controls bar ── */}
-      {!isDiagramFullscreen && (
-        <div
-          className="flex-shrink-0 flex items-center gap-0.5 px-3 sm:px-4 py-2 border-b"
-          style={{ backgroundColor: tc.subtleBg, borderColor: tc.border }}
-        >
-          {/* Close */}
-        <button
-          onClick={onClose}
-          title="Exit (Esc)"
-          aria-label="Exit reading mode"
-          style={{ color: tc.text }}
-          className="p-1.5 rounded-lg transition-colors hover:bg-black/[0.06] flex-shrink-0"
-        >
-          <X size={18} />
-        </button>
-
-        {/* Title — desktop only */}
-        <span className="flex-1 text-sm truncate px-2 min-w-0 hidden md:block" style={{ color: tc.text, opacity: 0.5 }}>
-          {post.title}
-        </span>
-        <span className="flex-1 md:hidden" />
-
-        {/* Font size */}
-        <div className="flex items-center flex-shrink-0">
-          {mkBtn(() => setFontSize(s => Math.max(fontSizeMin, s - 1)), fontSize <= fontSizeMin, 'Smaller text', 'A−')}
-          <span className="text-xs w-9 text-center tabular-nums hidden sm:block" style={{ color: tc.text, opacity: 0.45 }}>{fontSize}px</span>
-          {mkBtn(() => setFontSize(s => Math.min(fontSizeMax, s + 1)), fontSize >= fontSizeMax, 'Larger text', 'A+')}
-        </div>
-
-        {sep}
-
-        {/* Line height */}
-        <div className="flex items-center flex-shrink-0">
-          {mkBtn(
-            () => setLineHeight(h => Math.max(lineHeightMin, parseFloat((h - 0.1).toFixed(1)))), 
-            lineHeight <= lineHeightMin, 
-            'Tighter spacing', 
-            <div className="flex items-center"><ArrowDownUp size={12} className="mr-0.5" />−</div>
-          )}
-          <span className="text-xs w-9 text-center tabular-nums hidden sm:block" style={{ color: tc.text, opacity: 0.45 }}>{lineHeight}</span>
-          {mkBtn(
-            () => setLineHeight(h => Math.min(lineHeightMax, parseFloat((h + 0.1).toFixed(1)))), 
-            lineHeight >= lineHeightMax, 
-            'Looser spacing', 
-            <div className="flex items-center"><ArrowDownUp size={12} className="mr-0.5" />+</div>
-          )}
-        </div>
-
-        {sep}
-
-        {/* Font family — cycles through Sans / Serif / Mono */}
-        <button
-          onClick={() => {
-            const idx = RM_FONT_KEYS.indexOf(fontFamily);
-            setFontFamily(RM_FONT_KEYS[(idx + 1) % RM_FONT_KEYS.length]);
-          }}
-          title={`Font: ${RM_FONTS[fontFamily]?.label || 'Sans'} (click to cycle)`}
-          aria-label={`Current font ${RM_FONTS[fontFamily]?.label}, click to cycle`}
-          style={{ color: tc.text }}
-          className="px-2.5 h-8 rounded-lg hover:bg-black/[0.06] text-xs transition-colors flex-shrink-0 select-none flex items-center gap-1.5"
-        >
-          <span style={{ fontFamily: RM_FONTS[fontFamily]?.stack || 'inherit' }}>
-            {RM_FONTS[fontFamily]?.sample || 'Aa'}
-          </span>
-          <span className="hidden sm:inline opacity-70">{RM_FONTS[fontFamily]?.label || 'Sans'}</span>
-        </button>
-
-        {sep}
-
-        {/* Column width — desktop only */}
-        <div className="hidden sm:flex items-center gap-0.5 flex-shrink-0">
-          {['narrow', 'normal', 'wide'].map(w => (
-            <button
-              key={w}
-              onClick={() => setWidth(w)}
-              title={`${w.charAt(0).toUpperCase() + w.slice(1)} column`}
-              style={{ color: tc.text }}
-              className={`h-7 px-1.5 rounded-md text-xs transition-colors select-none ${
-                width === w ? 'font-semibold bg-black/10' : 'hover:bg-black/[0.06]'
-              }`}
-            >
-              {w === 'narrow' ? 'Nar' : w === 'normal' ? 'Std' : 'Wide'}
-            </button>
-          ))}
-        </div>
-
-        {sep}
-
-        {/* Theme: Light / Sepia / Dark */}
-        <div className="flex items-center gap-1 flex-shrink-0 px-1">
-          {[
-            { key: 'light', bg: '#ffffff', border: '#d1d5db', label: 'Light' },
-            { key: 'sepia', bg: '#f4ecd8', border: '#c4a87a', label: 'Sepia' },
-            { key: 'dark',  bg: '#000000', border: '#444444', label: 'Dark'  },
-          ].map(t => (
-            <button
-              key={t.key}
-              onClick={() => setTheme(t.key)}
-              title={t.label}
-              aria-label={`${t.label} theme`}
-              className="w-5 h-5 rounded-full transition-all flex-shrink-0"
-              style={{
-                backgroundColor: t.bg,
-                border: theme === t.key ? '2px solid #22D3EE' : `1.5px solid ${t.border}`,
-                transform: theme === t.key ? 'scale(1.2)' : 'scale(1)',
-              }}
-            />
-          ))}
-        </div>
-      </div>
-      )}
-
-      {/* Progress bar */}
-      {!isDiagramFullscreen && (
-      <div className="h-0.5 flex-shrink-0" style={{ backgroundColor: tc.border }}>
-        <div
-          className="h-full bg-cyan-700 dark:bg-brand-accent transition-[width] duration-75"
-          style={{ width: `${readProgress * 100}%` }}
-        />
-      </div>
-      )}
-
-      {/* ── Scrollable content ── */}
-      <div ref={contentRef} className="flex-1 overflow-y-auto" onScroll={handleScroll}>
-        <div
-          className="mx-auto px-5 sm:px-8 py-10 sm:py-14"
-          style={{
-            maxWidth: RM_WIDTHS[width] || RM_WIDTHS.normal,
-            fontSize: `${fontSize}px`,
-            lineHeight: lineHeight,
-            fontFamily: RM_FONTS[fontFamily]?.stack || 'inherit',
-          }}
-        >
-          <h1
-            className="font-bold mb-6"
-            style={{ fontSize: `${Math.round(fontSize * 1.6)}px`, lineHeight: 1.2, color: tc.text }}
-          >
-            {post.title}
-          </h1>
-
-          {post.excerpt && (
-            <div className="mb-8 border-l border-cyan-700/40 dark:border-brand-accent/40 pl-4">
-              <p className="italic leading-relaxed" style={{ color: tc.text, opacity: 0.85 }}>
-                {post.excerpt}
-              </p>
-            </div>
-          )}
-
-          <MarkdownRenderer content={stripLeadingH1(post.content)} baseImagePath={baseImagePath} />
-          <div className="h-16" />
-        </div>
-      </div>
-
-      {/* ── Bottom status bar ── */}
-      {!isDiagramFullscreen && (
-      <div
-        className="flex-shrink-0 flex items-center justify-between px-5 py-1.5 text-xs select-none gap-2"
-        style={{ borderTop: `1px solid ${tc.border}`, color: tc.text, opacity: 0.4, backgroundColor: tc.subtleBg }}
-      >
-        <span className="truncate min-w-0 flex-1 pr-2" title={post.title}>{post.title}</span>
-        <span className="flex-shrink-0 whitespace-nowrap">{Math.round(readProgress * 100)}% · {post.readingTime} min read</span>
-      </div>
-      )}
-    </motion.div>
-  );
-};
-
 export default function BlogPostPage() {
   const { category, slug } = useParams();
   const navigate = useNavigate();
@@ -939,15 +625,10 @@ export default function BlogPostPage() {
 
               {/* Meta Information */}
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] tracking-[0.08em] uppercase text-white/95">
-                <div className="flex items-center">
+                <div className="flex items-center whitespace-nowrap">
                   <Clock size={12} className="mr-1.5" />
                   <span>{post.readingTime} min read</span>
                 </div>
-                {post.readingTime >= 15 && (
-                  <span className="inline-flex items-center text-white/95">
-                    · Long read
-                  </span>
-                )}
                 <button
                   onClick={sharePost}
                   className="flex items-center hover:text-brand-accent transition-colors"
@@ -961,7 +642,7 @@ export default function BlogPostPage() {
                   title="Reading mode"
                 >
                   <Maximize2 size={12} className="mr-1.5" />
-                  <span className="hidden xs:inline">Read</span>
+                  <span className="whitespace-nowrap">Reader</span>
                 </button>
               </div>
             </motion.div>
@@ -974,28 +655,33 @@ export default function BlogPostPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mobile-card-container">
           <div>
             
-            {/* Mobile post meta — inline mono, dot-separated, no boxes */}
-            <div className="lg:hidden mb-6 px-2 sm:px-0">
-              <div className="font-mono text-[10px] tracking-[0.12em] uppercase">
-                <Link
-                  to={`/blog/category/${post.category}`}
-                  className={`${categoryToneClass(post.category)} hover:underline underline-offset-4 transition-colors`}
-                >
-                  {categoryConfig?.name || post.category}
-                </Link>
-                {post.tags && post.tags.map((tag, index) => (
-                  <span key={index}>
-                    <span className="mx-1.5 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>
-                    <Link
-                      to={`/blog/tag/${encodeURIComponent(tag)}`}
-                      className="text-gray-600 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
-                    >
-                      {tag}
-                    </Link>
-                  </span>
-                ))}
-              </div>
-            </div>
+            {/* Mobile post meta: category and tags in two rows that scroll
+                sideways, so a long tag list does not fill the screen. */}
+            {(() => {
+              const items = [
+                { key: 'category', to: `/blog/category/${post.category}`, label: categoryConfig?.name || post.category, cls: categoryToneClass(post.category) },
+                ...(post.tags || []).map((tag) => ({ key: tag, to: `/blog/tag/${encodeURIComponent(tag)}`, label: tag, cls: 'text-gray-600 dark:text-brand-fg-muted' })),
+              ];
+              const total = items.reduce((n, i) => n + i.label.length, 0);
+              let acc = 0;
+              const rows = [[], []];
+              items.forEach((i) => { rows[acc < total / 2 || rows[0].length === 0 ? 0 : 1].push(i); acc += i.label.length; });
+              return (
+                <ScrollFade className="lg:hidden mb-6 -mx-4 post-meta-scroll" label="Category and tags">
+                  <div className="post-meta-rows font-mono text-[10px] tracking-[0.12em] uppercase">
+                    {rows.filter((r) => r.length).map((row, r) => (
+                      <div key={r} className="post-meta-row">
+                        {row.map((i) => (
+                          <Link key={i.key} to={i.to} className={`${i.cls} hover:text-cyan-700 dark:hover:text-brand-accent transition-colors`}>
+                            {i.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </ScrollFade>
+              );
+            })()}
 
             <div className="flex flex-col lg:flex-row gap-12">
               {/* Main Content */}
@@ -1016,7 +702,7 @@ export default function BlogPostPage() {
                     </div>
                   )}
 
-                  <div>
+                  <div className="post-body">
                     <MarkdownRenderer
                       content={stripLeadingH1(post.content)}
                       baseImagePath={baseImagePath}
@@ -1112,6 +798,7 @@ export default function BlogPostPage() {
       {isReadingMode && (
         <ReadingMode
           post={post}
+          content={stripLeadingH1(post.content)}
           onClose={() => setIsReadingMode(false)}
           baseImagePath={baseImagePath}
         />
