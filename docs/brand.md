@@ -373,6 +373,10 @@ Every style the site renders is declared in `index.html` (browsers only download
 - **Share cards** are typographic: `og-default.png` for every page that is not a post. Per-post cards (category, title in serif italic with the amber period, lockup) are the next step; until then posts keep their header photo as share image.
 - **The motif** is a graph with a story, drawn and animated by `brand/motifs/motifs.mjs`. Active: **Hamilton's Icosian game**, a depth-first search for a Hamiltonian cycle on the dodecahedron (finding is a search, checking is one lap: P vs NP). The family also holds the Heawood graph, the Fano plane and the Paley graph of order 13; `motif.active` in `brand/tokens.json` switches between them everywhere. In every frame: harmonic edges, primary nodes, exactly one amber node. The story is told in the brand book only; on the site the motif is decorative (`aria-hidden`), pauses off screen, and shows its still frame (the solved tour) under reduced motion.
 
+### 10.5. Icons and metadata
+
+`favicon.svg` (modern browsers), `favicon.ico` with real 16/32/48 bitmaps, `apple-touch-icon.png` 180 px opaque, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (artwork inside the 80% safe zone). `theme-color` is declared per colour scheme; the manifest uses the night background.
+
 ### 10.6. Diagrams and charts
 
 Blog diagrams are graphs, so they follow the graph motif without its contrast node. The theme lives in `MarkdownRenderer/mermaidTheme.js` and reads `BRAND_COLORS` and `BRAND_FONTS`; authoring rules are in `docs/authoring.md`.
@@ -388,7 +392,3 @@ Blog diagrams are graphs, so they follow the graph motif without its contrast no
 | 2 | `#E11D48` | `#E8506A` |
 | 3 | `#3557D0` | `#5B7CF0` |
 | 4 | `#0E9A6E` | `#16A37A` |
-
-### 10.5. Icons and metadata
-
-`favicon.svg` (modern browsers), `favicon.ico` with real 16/32/48 bitmaps, `apple-touch-icon.png` 180 px opaque, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (artwork inside the 80% safe zone). `theme-color` is declared per colour scheme; the manifest uses the night background.

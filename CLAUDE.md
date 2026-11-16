@@ -57,6 +57,8 @@ The brand system is fixed: read `docs/brand.md` §10 before touching UI. IBM Ple
 
 Use the `new-blog-post` skill for the full workflow (frontmatter, header image, audio generation). The post becomes available to the knowledge base on the next build.
 
+Diagrams go through the `blog-diagrams` skill (`.claude/skills/blog-diagrams/`): plan the visual moments, pick the most specific Mermaid type, then `npm run diagrams:lint -- <slug>` and `npm run diagrams:render -- <slug>`, and look at the PNGs before finishing. Every post about a production system has an `architecture-beta` diagram. CI applies the diagram grammar strictly to posts a PR changes.
+
 ## Print PDFs
 
 `front/scripts/pdf/` compiles one series — or any reading path — into a print-ready PDF via pandoc and XeLaTeX. The compilable set is parsed from the `## Reading Paths` section of `KNOWLEDGE_BASE.md`, so adding a series there is all that is needed to make it buildable.

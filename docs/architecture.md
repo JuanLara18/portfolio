@@ -134,3 +134,4 @@ What keeps it there:
 | `sync:check` | every pull request and deploy, before the build | orphaned audio, Mermaid syntax errors |
 | Unit tests (`npm test`) | every pull request and deploy | link resolution regressions |
 | `validate-mermaid` | `sync`, `sync:check` | diagrams the renderer cannot parse |
+| `diagrams:lint --strict` | CI, on the posts a pull request changes | diagrams that break the grammar in `authoring.md` (colours, chart series, `<` in math) |
