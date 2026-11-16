@@ -175,7 +175,7 @@ export default function AudioPlayer({ audio }) {
     <div ref={containerRef} className="mb-8 sm:mb-10 pb-6 border-b border-gray-200/60 dark:border-white/[0.08]">
       <audio ref={audioRef} src={publicUrl(current.url)} preload="none" />
 
-      {/* Desktop: single row. Mobile: stacked rows. */}
+      {/* One row on every screen: play, then label, time and controls above the bar. */}
       <div className="flex items-center gap-3 sm:gap-4">
         <button
           type="button"
@@ -187,15 +187,55 @@ export default function AudioPlayer({ audio }) {
         </button>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between mb-2 gap-2">
-            <div className="flex items-center gap-1.5 font-mono text-[11px] tracking-[0.08em] uppercase text-gray-700 dark:text-brand-fg/80 min-w-0">
+          <div className="flex items-center justify-between mb-2 gap-3">
+            <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.08em] uppercase text-gray-700 dark:text-brand-fg/80 min-w-0">
               <Headphones size={12} className="flex-shrink-0" />
               <span className="truncate">
-                {lang === 'es' ? 'Escucha este post' : 'Listen to this post'}
+                <span className="sm:hidden">{lang === 'es' ? 'Escuchar' : 'Listen'}</span>
+                <span className="hidden sm:inline">{lang === 'es' ? 'Escucha este post' : 'Listen to this post'}</span>
+              </span>
+              <span className="text-gray-500 dark:text-brand-fg-muted tabular-nums tracking-normal whitespace-nowrap">
+                {formatTime(currentTime)} / {formatTime(duration)}
               </span>
             </div>
-            <div className="font-mono text-[11px] text-gray-500 dark:text-brand-fg-muted tabular-nums flex-shrink-0">
-              {formatTime(currentTime)} / {formatTime(duration)}
+            <div className="flex items-center gap-3 flex-shrink-0">
+            {showLangToggle && (
+              <div
+                role="group"
+                aria-label="Audio language"
+                className="inline-flex items-center gap-1.5"
+                title="Switch audio language"
+              >
+                <Languages size={12} className="text-cyan-700 dark:text-brand-accent" />
+                {available.map((l, idx) => (
+                  <span key={l} className="inline-flex items-center">
+                    {idx > 0 && <span className="mx-1 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>}
+                    <button
+                      type="button"
+                      onClick={() => switchLang(l)}
+                      aria-pressed={l === lang}
+                      className={`font-mono text-[10px] tracking-[0.12em] uppercase transition-colors focus:outline-none ${
+                        l === lang
+                          ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-4 decoration-1'
+                          : 'text-gray-500 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
+                      }`}
+                    >
+                      {l.toUpperCase()}
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+              <button
+                type="button"
+                onClick={cycleSpeed}
+                aria-label={`Playback speed: ${currentSpeed}x`}
+                className="inline-flex items-center gap-1 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors focus:outline-none"
+                title="Change playback speed"
+              >
+                <Gauge size={12} />
+                <span className="tabular-nums">{currentSpeed}x</span>
+              </button>
             </div>
           </div>
 
@@ -211,88 +251,6 @@ export default function AudioPlayer({ audio }) {
             />
           </button>
         </div>
-
-        {/* Secondary controls — hidden on mobile, shown inline on sm+ */}
-        <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
-          {showLangToggle && (
-            <div
-              role="group"
-              aria-label="Audio language"
-              className="inline-flex items-center gap-1.5"
-              title="Switch audio language"
-            >
-              <Languages size={12} className="text-cyan-700 dark:text-brand-accent" />
-              {available.map((l, idx) => (
-                <span key={l} className="inline-flex items-center">
-                  {idx > 0 && <span className="mx-1 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>}
-                  <button
-                    type="button"
-                    onClick={() => switchLang(l)}
-                    aria-pressed={l === lang}
-                    className={`font-mono text-[10px] tracking-[0.12em] uppercase transition-colors focus:outline-none ${
-                      l === lang
-                        ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-4 decoration-1'
-                        : 'text-gray-500 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
-                    }`}
-                  >
-                    {l.toUpperCase()}
-                  </button>
-                </span>
-              ))}
-            </div>
-          )}
-
-          <button
-            type="button"
-            onClick={cycleSpeed}
-            aria-label={`Playback speed: ${currentSpeed}x`}
-            className="inline-flex items-center gap-1 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors focus:outline-none"
-            title="Change playback speed"
-          >
-            <Gauge size={12} />
-            <span className="tabular-nums">{currentSpeed}x</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile-only secondary controls row */}
-      <div className="mt-3 flex items-center justify-end gap-3 sm:hidden">
-        {showLangToggle && (
-          <div
-            role="group"
-            aria-label="Audio language"
-            className="inline-flex items-center gap-1.5"
-          >
-            <Languages size={12} className="text-cyan-700 dark:text-brand-accent" />
-            {available.map((l, idx) => (
-              <span key={l} className="inline-flex items-center">
-                {idx > 0 && <span className="mx-1 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>}
-                <button
-                  type="button"
-                  onClick={() => switchLang(l)}
-                  aria-pressed={l === lang}
-                  className={`font-mono text-[10px] tracking-[0.12em] uppercase transition-colors focus:outline-none ${
-                    l === lang
-                      ? 'text-cyan-700 dark:text-brand-accent underline underline-offset-4 decoration-1'
-                      : 'text-gray-500 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent'
-                  }`}
-                >
-                  {l.toUpperCase()}
-                </button>
-              </span>
-            ))}
-          </div>
-        )}
-
-        <button
-          type="button"
-          onClick={cycleSpeed}
-          aria-label={`Playback speed: ${currentSpeed}x`}
-          className="inline-flex items-center gap-1 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors focus:outline-none"
-        >
-          <Gauge size={12} />
-          <span className="tabular-nums">{currentSpeed}x</span>
-        </button>
       </div>
 
       {!isReady && (

@@ -396,8 +396,10 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   overflow-x: auto;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  /* No scrollbar: the fade already says there is more to the side. */
+  scrollbar-width: none;
 }
+.scroll-fade::-webkit-scrollbar { display: none; }
 .scroll-fade:focus-visible { outline: 2px solid rgb(var(--brand-primary)); outline-offset: 2px; }
 .scroll-fade[data-fade-right] {
   -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
@@ -856,6 +858,178 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   font-weight: 600; color: rgb(var(--brand-primary));
 }
 .rm-resume > button:not(.rm-icon):hover { background: rgb(var(--rm-fg) / 0.07); }
+
+/* --------------------------------------------------------------------------
+   Reading companion: the post sidebar on wide screens
+   (components/features/blog/ReadingCompanion.jsx). It never grows taller than
+   the window; the contents list scrolls inside it.
+   ----------------------------------------------------------------------- */
+.companion {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 7.5rem);
+}
+.companion-contents { display: flex; flex-direction: column; min-height: 0; flex: 0 1 auto; }
+.companion-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--brand-muted));
+}
+.companion-meta { letter-spacing: 0.06em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.companion-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 0.75rem, #000 calc(100% - 1.25rem), transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 0.75rem, #000 calc(100% - 1.25rem), transparent);
+}
+.companion-list::-webkit-scrollbar { display: none; }
+
+/* Each section: a rail on the left. Read sections keep a faint primary rail,
+   the current one fills as the reader moves through it, the rest stay grey. */
+.companion-list > li {
+  position: relative;
+  padding: 0.3rem 0 0.3rem 0.95rem;
+  border-left: 2px solid rgb(var(--brand-border));
+}
+.companion-list > li::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: rgb(var(--brand-primary));
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+.companion-list > li[data-status="done"]::before { transform: scaleY(1); opacity: 0.45; }
+.companion-list > li[data-status="current"]::before { transform: scaleY(var(--fill, 0)); }
+.companion-list a {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgb(var(--brand-muted));
+  transition: color 0.15s;
+}
+.companion-list a:hover { color: rgb(var(--brand-text)); }
+.companion-list > li[data-status="done"] > a { color: rgb(var(--brand-muted) / 0.75); }
+.companion-list > li[data-status="current"] > a { color: rgb(var(--brand-primary)); font-weight: 600; }
+.companion-sub { list-style: none; margin: 0.35rem 0 0.15rem; padding: 0; }
+.companion-sub li { padding: 0.15rem 0 0.15rem 0.75rem; }
+.companion-sub a { font-size: 0.8125rem; }
+.companion-sub li[data-active] a { color: rgb(var(--brand-text)); }
+
+.companion-foot {
+  flex: none;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(var(--brand-border));
+}
+.companion-label {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--brand-muted));
+}
+.companion-category { display: inline-block; margin-bottom: 1.1rem; font-size: 0.9375rem; font-weight: 600; }
+.companion-category:hover { text-decoration: underline; text-underline-offset: 4px; }
+.companion-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+.companion-tags a { color: rgb(var(--brand-text) / 0.8); }
+.companion-tags a:hover { color: rgb(var(--brand-primary)); }
+
+/* --------------------------------------------------------------------------
+   Keep reading: the box at the end of a post (RelatedPosts.jsx).
+   ----------------------------------------------------------------------- */
+.related {
+  margin: 3.5rem 0 1rem;
+  padding: 1.5rem 1.25rem 0.5rem;
+  background: rgb(var(--brand-surface));
+  border: 1px solid rgb(var(--brand-border));
+  border-radius: 0.375rem;
+}
+@media (min-width: 640px) { .related { padding: 1.75rem 1.75rem 0.75rem; } }
+.related-heading {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--brand-muted));
+}
+.related-series { margin-bottom: 0.5rem; }
+.related-series-name {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: rgb(var(--brand-text));
+}
+.related-series-name:hover { color: rgb(var(--brand-primary)); }
+.related-grid { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .related-grid { grid-template-columns: repeat(3, 1fr); gap: 0 1.5rem; }
+  .related-grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+.related-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 0 1.1rem;
+  border-top: 1px solid rgb(var(--brand-border));
+}
+.related-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--brand-muted));
+}
+.related-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: rgb(var(--brand-text));
+  transition: color 0.15s;
+}
+.related-item:hover .related-title { color: rgb(var(--brand-primary)); }
+.related-meta { font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(var(--brand-muted)); }
+
+/* Native scrollbars and form controls follow the theme. */
+.dark { color-scheme: dark; }
+
+/* Reading mode: its scrollbar follows the reading theme (day, sepia, night). */
+.rm[data-theme="night"] { color-scheme: dark; }
+.rm[data-theme="day"], .rm[data-theme="sepia"] { color-scheme: light; }
+.rm-scroll { scrollbar-width: thin; scrollbar-color: rgb(var(--rm-fg) / 0.28) rgb(var(--rm-bg)); }
+.rm-scroll::-webkit-scrollbar { width: 10px; background: rgb(var(--rm-bg)); }
+.rm-scroll::-webkit-scrollbar-thumb { background: rgb(var(--rm-fg) / 0.25); border-radius: 9999px; border: 3px solid rgb(var(--rm-bg)); }
+.rm-scroll::-webkit-scrollbar-track { background: rgb(var(--rm-bg)); }
 
 /* --------------------------------------------------------------------------
    Mermaid diagrams
