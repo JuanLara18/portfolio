@@ -17,6 +17,12 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
+    // `.container` steps its max-width at each screen. Without this it would
+    // also step at xs (320px) and hold every phone between 320 and 639px to a
+    // 320px column.
+    container: {
+      screens: { sm: '640px', md: '768px', lg: '1024px', xl: '1280px', '2xl': '1536px' },
+    },
     extend: {
       // IBM Plex superfamily: Serif = voice and name, Sans = reading and UI, Mono = code and labels.
       fontFamily: {

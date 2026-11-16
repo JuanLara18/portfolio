@@ -47,6 +47,51 @@ const SkillItem = ({ name, icon: Icon }) => {
   );
 };
 
+// Logos come in very different shapes, from a 12:1 wordmark to a 2:1 crest.
+// Sizing them by area instead of by box gives them the same visual weight:
+// each gets about `area` px² of ink, capped by the tile.
+const LogoMark = ({ src, alt, area = 3400, maxW = 140, maxH = 50, column = 'sm:w-44' }) => {
+  const imgRef = useRef(null);
+  const [size, setSize] = useState(null);
+  const fit = (img) => {
+    const w = img.naturalWidth;
+    const h = img.naturalHeight;
+    if (!w || !h) return;
+    const aspect = w / h;
+    let height = Math.sqrt(area / aspect);
+    let width = height * aspect;
+    if (width > maxW) { width = maxW; height = width / aspect; }
+    if (height > maxH) { height = maxH; width = height * aspect; }
+    setSize({ width: Math.round(width), height: Math.round(height) });
+  };
+  useEffect(() => {
+    // A cached image may finish loading before onLoad is attached.
+    if (imgRef.current && imgRef.current.complete) fit(imgRef.current);
+  }, []);
+  const base = process.env.PUBLIC_URL || '';
+  const webp = src.replace(/\.(png|jpe?g)$/i, '.webp');
+  return (
+    // By day the logo sits flush with the text; at night it needs a white
+    // ground, which hugs the logo instead of filling a fixed box.
+    <div className={`${column} flex-shrink-0 flex items-center min-h-[3rem]`}>
+      <div className="inline-flex bg-white dark:bg-white/95 dark:p-2.5 rounded-sm">
+      <picture>
+        {webp !== src && <source srcSet={`${base}${webp}`} type="image/webp" />}
+        <img
+          ref={imgRef}
+          src={`${base}${src}`}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onLoad={(e) => fit(e.currentTarget)}
+          style={size || { maxWidth: maxW, maxHeight: maxH }}
+        />
+      </picture>
+      </div>
+    </div>
+  );
+};
+
 // Experience card component
 const ExperienceCard = ({ 
   role, 
@@ -78,14 +123,9 @@ const ExperienceCard = ({
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="py-10 border-b border-gray-200/60 dark:border-white/[0.08] last:border-b-0"
     >
-      <div className="flex items-start gap-5 mb-4">
-        <div className="w-24 h-16 sm:w-28 sm:h-20 md:w-32 md:h-20 overflow-hidden flex-shrink-0 flex items-center justify-center bg-white dark:bg-white/95 p-2 sm:p-3 rounded-sm">
-          <OptimizedImage
-            src={`/images/company-logos/${logo}`}
-            alt={`${company} company logo`}
-            objectFit="contain"
-          />
-        </div>
+      {/* Phones: logo above, so the role gets the full width. */}
+      <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 mb-4">
+        <LogoMark src={`/images/company-logos/${logo}`} alt={`${company} logo`} />
 
         <div className="min-w-0 flex-1">
           <h3 className="type-section text-2xl text-gray-900 dark:text-brand-fg leading-tight mb-1">{role}</h3>
@@ -158,17 +198,12 @@ const EducationCard = ({
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="py-8 border-b border-gray-200/60 dark:border-white/[0.08] last:border-b-0"
     >
-      <div className="flex items-start gap-4 mb-3">
-        <div className="w-16 h-12 sm:w-20 sm:h-14 overflow-hidden flex-shrink-0 flex items-center justify-center bg-white dark:bg-white/95 p-1.5 sm:p-2 rounded-sm">
-          <OptimizedImage
-            src={`/images/institutions/${logo}`}
-            alt={`${institution} institutional logo`}
-            objectFit="contain"
-          />
-        </div>
+      {/* Stacked on phones and in the narrow desktop column, side by side between. */}
+      <div className="flex flex-col sm:flex-row lg:flex-col sm:items-start gap-4 mb-3">
+        <LogoMark src={`/images/institutions/${logo}`} alt={`${institution} logo`} />
 
         <div className="min-w-0 flex-1">
-          <h3 className="font-bold text-lg tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-0.5">{degree}</h3>
+          <h3 className="type-section text-xl text-gray-900 dark:text-brand-fg leading-tight mb-1">{degree}</h3>
           <div className="font-mono text-sm tracking-wide text-cyan-700 dark:text-brand-accent leading-tight">{institution}</div>
           <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-500 dark:text-brand-fg-muted mt-1">
             {period} <span className="mx-1 opacity-60">·</span> {location}
@@ -223,13 +258,14 @@ const CourseCard = ({
       className="py-6 h-full flex flex-col"
     >
       <div className="flex items-start gap-4 mb-3">
-        <div className="w-20 h-14 overflow-hidden flex-shrink-0 flex items-center justify-center bg-white dark:bg-white/95 p-2 rounded-sm">
-          <OptimizedImage
-            src={`/images/institutions/${logo}`}
-            alt={`${provider} training provider logo`}
-            objectFit="contain"
-          />
-        </div>
+        <LogoMark
+          src={`/images/institutions/${logo}`}
+          alt={`${provider} logo`}
+          area={2000}
+          maxW={92}
+          maxH={40}
+          column="w-28"
+        />
 
         <div className="min-w-0 flex-1">
           <h3 className="font-bold text-base tracking-tight text-gray-900 dark:text-brand-fg leading-snug">{title}</h3>
@@ -275,7 +311,7 @@ const experiences = [
     role: "Knowledge Data Engineer | AI First",
     company: "Davivienda",
     period: "April 2026 - Present",
-    location: "Bogotá D.C., Colombia",
+    location: "Bogotá, Colombia",
     description:
       "Leading the knowledge-base cell of Davivienda's AI-First strategy: the semantic layer that grounds the bank's AI agents in verifiable, traceable, and governed business context.",
     responsibilities: [
@@ -290,7 +326,7 @@ const experiences = [
     role: "AI Engineer",
     company: "Falabella",
     period: "November 2025 - March 2026",
-    location: "Bogotá D.C., Colombia (Hybrid)",
+    location: "Bogotá, Colombia (Hybrid)",
     description:
       "Designed and deployed end-to-end ML solutions for logistics optimization at a large-scale distribution center (~4.6M SKUs), improving on-time delivery, order lead time, and throughput.",
     responsibilities: [
@@ -336,7 +372,7 @@ const experiences = [
     role: "Data Scientist",
     company: "Ipsos",
     period: "Feb 2024 - Jan 2025",
-    location: "Bogotá D.C., Colombia (Hybrid)",
+    location: "Bogotá, Colombia (Hybrid)",
     description:
       "Engineered production-ready applications for geospatial analysis and segmentation using ML models and robust data-processing pipelines on Google Cloud Platform, enhancing operational efficiency across multiple data sources.",
     responsibilities: [
@@ -356,7 +392,7 @@ const experiences = [
       degree: "M.S. in Artificial Intelligence (In Progress)",
       institution: "Universidad de los Andes",
       period: "Jan 2026 - Nov 2027",
-      location: "Bogotá D.C.",
+      location: "Bogotá",
       focus: "Reinforcement Learning",
       logo: "uniandes-logo.png"
     },
@@ -364,7 +400,7 @@ const experiences = [
       degree: "B.S. in Computer Science",
       institution: "Universidad Nacional de Colombia",
       period: "Feb 2019 - Nov 2023",
-      location: "Bogotá D.C.",
+      location: "Bogotá",
       focus: "Machine Learning",
       gpa: "4.7/5.0",
       certificateLink: "https://drive.google.com/file/d/1bp6QKeEqpOeCBIBKsst0IwQpr48nmjoi/view?usp=sharing",
@@ -374,7 +410,7 @@ const experiences = [
       degree: "B.S. in Mathematics",
       institution: "Universidad Nacional de Colombia",
       period: "Feb 2018 - Jun 2022",
-      location: "Bogotá D.C.",
+      location: "Bogotá",
       focus: "Applied Mathematics",
       gpa: "4.7/5.0",
       certificateLink: "https://drive.google.com/file/d/1RW4Q3Kca8rfMUJpejdwlmtTTiA5YgYwU/view?usp=sharing",

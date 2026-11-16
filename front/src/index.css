@@ -383,36 +383,6 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 /* Small-screen typography helpers */
 @media (max-width:640px){.text-responsive{font-size:clamp(.875rem,4vw,1.125rem);line-height:1.5}.heading-responsive{font-size:clamp(1.5rem,8vw,2.5rem);line-height:1.2}}
 
-/* Reading mode — CSS custom properties propagate down the whole tree, bypassing the
-   cascade fight between explicit Tailwind classes (text-base, leading-7, sm:text-lg, etc.)
-   and inherited values. var() with !important beats every non-!important Tailwind rule. */
-.reading-mode-active p,
-.reading-mode-active li,
-.reading-mode-active article p,
-.reading-mode-active article li {
-  font-size: var(--rm-font-size, 1rem) !important;
-  line-height: var(--rm-line-height, 1.75) !important;
-}
-.reading-mode-active h1,
-.reading-mode-active h2,
-.reading-mode-active h3,
-.reading-mode-active h4,
-.reading-mode-active article h1,
-.reading-mode-active article h2,
-.reading-mode-active article h3,
-.reading-mode-active article h4 {
-  font-family: inherit !important;
-}
-/* Keep code blocks at a sensible relative size regardless of reading font-size */
-.reading-mode-active pre,
-.reading-mode-active code[class*="language-"],
-.reading-mode-active article pre,
-.reading-mode-active article code[class*="language-"],
-.reading-mode-active code:not([class*="language-"]) {
-  font-size: calc(var(--rm-font-size, 16px) * 0.85) !important;
-  line-height: 1.5 !important;
-}
-
 /* --------------------------------------------------------------------------
    Reading surfaces: tables and code blocks inside a post
    (MarkdownRenderer/ReadingSurfaces.jsx). Lines and tints are mixed from
@@ -623,8 +593,260 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
    past the column (break-word keeps it from crushing table columns). */
 .prose :not(pre) > code { overflow-wrap: break-word; }
 
-/* Reading mode scales tables with the chosen text size. */
-.reading-mode-active .md-table-frame { font-size: calc(var(--rm-font-size, 16px) * 0.88); }
+/* Display equations. On phones they run edge to edge and scroll sideways
+   when wider than the screen. An equation number (	ag) gets its own room at
+   the right instead of sitting on top of the formula. */
+.md-math-scroll { margin: 1.25em -1rem; overflow-y: hidden; }
+.md-math-scroll .katex-display {
+  margin: 0;
+  padding: 0.35em 1rem;
+  width: max-content;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+.md-math-scroll .katex-display > .katex > .katex-html:has(> .tag) { padding-right: 2.75em; }
+@media (min-width: 640px) {
+  .md-math-scroll { margin: 1.5em 0; }
+  .md-math-scroll .katex-display { padding-inline: 0; }
+  .md-math-scroll .katex-display > .katex > .katex-html:has(> .tag) { padding-left: 2.75em; }
+}
+
+
+/* --------------------------------------------------------------------------
+   Post body line length. On wide screens the text keeps a reading measure of
+   about 70 characters; tables, code, diagrams and equations may use the full
+   column.
+   ----------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .post-body .prose > :is(p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote) { max-width: 34em; }
+}
+
+/* Mobile category and tags: two rows that scroll sideways together. */
+.post-meta-scroll { --fade: 2rem; }
+.post-meta-rows { display: grid; gap: 0.55rem; width: max-content; padding: 0.25rem 1rem; }
+.post-meta-row { display: flex; gap: 1.1rem; white-space: nowrap; }
+
+/* --------------------------------------------------------------------------
+   Reading mode (components/features/blog/ReadingMode.jsx)
+   One base size (--rm-font-size) drives every size in the text, so headings,
+   tables and code keep their proportion at any setting. Day and night use
+   the brand roles; sepia is the one reading-only palette.
+   ----------------------------------------------------------------------- */
+.rm {
+  --rm-bg: var(--brand-bg);
+  --rm-fg: var(--brand-text);
+  --rm-muted: var(--brand-muted);
+  --rm-surface: var(--brand-surface);
+  --rm-border: var(--brand-border);
+  --read-bg: rgb(var(--rm-bg));
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgb(var(--rm-bg));
+  color: rgb(var(--rm-fg));
+}
+.rm[data-theme="sepia"] {
+  --rm-bg: 244 236 216;
+  --rm-fg: 59 44 26;
+  --rm-muted: 112 90 64;
+  --rm-surface: 236 226 199;
+  --rm-border: 214 196 160;
+}
+
+.rm-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 3.25rem;
+  padding: 0 0.5rem;
+  background: rgb(var(--rm-bg) / 0.94);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+          backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid rgb(var(--rm-border));
+  transition: transform 0.25s ease;
+}
+.rm-bar[data-hidden] { transform: translateY(-100%); }
+.rm-bar-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  color: rgb(var(--rm-muted));
+  padding: 0 0.25rem;
+}
+.rm-icon {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  color: inherit;
+}
+.rm-icon:hover, .rm-icon[aria-expanded="true"] { background: rgb(var(--rm-fg) / 0.07); }
+.rm-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; }
+.rm-progress span {
+  display: block; height: 100%;
+  background: rgb(var(--brand-primary));
+  transform-origin: left;
+}
+
+.rm-panel {
+  position: absolute;
+  top: 3.5rem;
+  right: 0.5rem;
+  z-index: 4;
+  width: min(22rem, calc(100% - 1rem));
+  max-height: calc(100% - 5rem);
+  overflow-y: auto;
+  padding: 0.5rem 1rem;
+  background: rgb(var(--rm-surface));
+  border: 1px solid rgb(var(--rm-border));
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.35);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+}
+.rm-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.25rem; }
+.rm-row + .rm-row { border-top: 1px solid rgb(var(--rm-border)); }
+.rm-row-label { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(var(--rm-muted)); }
+.rm-row-wide { display: none; }
+@media (min-width: 768px) { .rm-row-wide { display: flex; } }
+.rm-stepper { display: flex; align-items: center; gap: 0.25rem; }
+.rm-stepper button, .rm-segment button {
+  min-width: 2.75rem; height: 2.75rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 0.5rem; color: inherit;
+}
+.rm-stepper button:hover:not(:disabled), .rm-segment button:hover { background: rgb(var(--rm-fg) / 0.07); }
+.rm-stepper button:disabled { opacity: 0.3; }
+.rm-value { min-width: 2.25rem; text-align: center; font-variant-numeric: tabular-nums; color: rgb(var(--rm-muted)); }
+.rm-a-small { font-size: 0.8125rem; font-weight: 500; }
+.rm-a-large { font-size: 1.25rem; font-weight: 500; }
+.rm-segment { display: flex; gap: 0.25rem; }
+.rm-segment button { padding: 0 0.75rem; }
+.rm-segment button[aria-pressed="true"] { background: rgb(var(--rm-fg) / 0.1); font-weight: 600; }
+.rm-swatches { display: flex; gap: 0.5rem; }
+.rm-swatch {
+  position: relative;
+  width: 2.75rem; height: 2.75rem; border-radius: 9999px;
+  border: 1px solid rgb(var(--rm-border));
+}
+.rm-swatch span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+/* Swatches show the theme they switch to, so they use those themes' values. */
+.rm-swatch-day { background: rgb(255 255 255); }
+.rm-swatch-sepia { background: rgb(244 236 216); }
+.rm-swatch-night { background: rgb(5 7 10); }
+.rm-swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px rgb(var(--rm-surface)), 0 0 0 4px rgb(var(--brand-primary)); }
+
+.rm-contents ol { list-style: none; margin: 0; padding: 0.25rem 0; }
+.rm-contents button {
+  display: block; width: 100%; text-align: left;
+  padding: 0.7rem 0.5rem;
+  line-height: 1.35; color: inherit;
+}
+.rm-contents li + li button { border-top: 1px solid rgb(var(--rm-border) / 0.6); }
+.rm-contents button:hover { background: rgb(var(--rm-fg) / 0.06); }
+.rm-contents button[aria-current="true"] { color: rgb(var(--brand-primary)); font-weight: 600; }
+
+.rm-scroll {
+  position: absolute; inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  outline: none;
+}
+.rm-content {
+  margin: 0 auto;
+  padding: 5rem 1.25rem 6rem;
+  box-sizing: content-box;
+}
+@media (min-width: 640px) { .rm-content { padding: 6rem 2rem 8rem; } }
+
+.rm-title { font-size: 2em; line-height: 1.15; margin: 0 0 0.6em; color: rgb(var(--rm-fg)); }
+.rm-excerpt {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05em;
+  line-height: 1.55;
+  color: rgb(var(--rm-muted));
+  margin: 0 0 2.25em;
+  padding-left: 1em;
+  border-left: 2px solid rgb(var(--brand-primary) / 0.4);
+}
+.rm-end {
+  margin-top: 4em; text-align: center;
+  font-family: var(--font-mono); font-size: 0.6875rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: rgb(var(--rm-muted));
+}
+
+/* The type scale. Everything is in em of the base size. */
+.rm-content .prose {
+  font-size: 1em;
+  max-width: none;
+  color: rgb(var(--rm-fg));
+  --tw-prose-body: rgb(var(--rm-fg));
+  --tw-prose-headings: rgb(var(--rm-fg));
+  --tw-prose-bold: rgb(var(--rm-fg));
+  --tw-prose-quotes: rgb(var(--rm-fg));
+  --tw-prose-counters: rgb(var(--rm-muted));
+  --tw-prose-bullets: rgb(var(--rm-muted));
+}
+.rm-content .prose :is(p, li):not(.mermaid-diagram *) {
+  font-size: 1em !important;
+  line-height: var(--rm-line-height) !important;
+  color: inherit !important;
+}
+.rm-content .prose > :is(h1, h2, h3, h4, h5, h6) { color: inherit !important; }
+.rm-content .prose > h1 { font-size: 1.6em !important; line-height: 1.2 !important; margin: 2em 0 0.6em !important; }
+.rm-content .prose > h2 { font-size: 1.45em !important; line-height: 1.25 !important; margin: 2.1em 0 0.65em !important; padding: 0 !important; border: 0 !important; }
+.rm-content .prose > h3 { font-size: 1.2em !important; line-height: 1.3 !important; margin: 1.8em 0 0.5em !important; }
+.rm-content .prose > :is(h4, h5, h6) { font-size: 1.05em !important; line-height: 1.35 !important; margin: 1.5em 0 0.4em !important; }
+.rm-content .prose > p { margin: 0 0 1em !important; }
+.rm-content .md-table-frame { font-size: 0.875em; }
+.rm-content .md-code { font-size: 0.8em; }
+.rm-content .md-code-head { font-size: 0.6875rem; }
+.rm-content .md-table-scroll, .rm-content .md-code, .rm-content .md-math-scroll { margin-left: -1.25rem; margin-right: -1.25rem; }
+@media (min-width: 640px) {
+  .rm-content .md-table-scroll, .rm-content .md-code, .rm-content .md-math-scroll { margin-left: 0; margin-right: 0; }
+}
+
+.rm-status {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  display: flex; justify-content: space-between;
+  padding: 0.45rem 1.25rem;
+  font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgb(var(--rm-muted));
+  background: rgb(var(--rm-bg) / 0.94);
+  border-top: 1px solid rgb(var(--rm-border));
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.25s ease;
+}
+.rm-status[data-hidden] { transform: translateY(100%); }
+
+.rm-resume {
+  position: absolute; left: 50%; bottom: 3rem; z-index: 4;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: 0.25rem;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  width: max-content; max-width: calc(100% - 2rem);
+  background: rgb(var(--rm-surface));
+  border: 1px solid rgb(var(--rm-border));
+  border-radius: 9999px;
+  box-shadow: 0 10px 28px -12px rgb(0 0 0 / 0.4);
+  font-size: 0.875rem;
+}
+.rm-resume > button:not(.rm-icon) {
+  height: 2.5rem; padding: 0 0.9rem; border-radius: 9999px;
+  font-weight: 600; color: rgb(var(--brand-primary));
+}
+.rm-resume > button:not(.rm-icon):hover { background: rgb(var(--rm-fg) / 0.07); }
 
 /* --------------------------------------------------------------------------
    Mermaid diagrams

@@ -402,3 +402,11 @@ Both live in `MarkdownRenderer/ReadingSurfaces.jsx`, with styles under "Reading 
 - **Code is IBM Plex Mono on a faint tint**, not a dark slab. The syntax theme (`codeTheme.js`) is restrained: comments muted and italic, strings primary, numbers and constants harmonic, keywords by weight, punctuation muted, never amber.
 - **Long code opens compact.** Blocks over 30 lines that contain functions or classes open as an outline: function bodies fold, with a control in the gutter and a "⋯ N lines" marker, as in an editor. Blocks that are still long after that show a preview and "Show all N lines". Fold rules are in `codeFolding.js`; copy always copies the whole block.
 - **Long lines are the reader's choice.** "Wrap" appears when lines overflow; wrapped lines keep a hanging indent, and the choice is remembered for later blocks.
+- **Display equations scroll like tables.** A wide equation scrolls sideways with the same edge fade; an equation number keeps its own room at the right instead of covering the formula (`rehypeMathScroll.js`).
+
+### 10.8. Reading
+
+- **Line length.** About 70 characters per line: on wide screens post text stops at 34em while tables, code, diagrams and equations use the full column; reading mode sets its column in em of the text size, so the measure holds at any size.
+- **Reading mode** (`components/features/blog/ReadingMode.jsx`) uses the brand: day and night are the site's palette, sepia is the one reading-only palette, the title is `type-title` with the amber period. One base size drives every size inside, so headings (1.45em), tables (0.875em) and code (0.8em) keep their proportion. Its bar slides away while reading and returns on scroll up or a tap on the text; text settings live in one "Aa" panel; it lists the sections, remembers the place per post and shows the time left. Every control is at least 44px.
+- **Phones.** `.container` has no 320px step (see `tailwind.config.js`), so phone pages use the full width minus a 16px gutter.
+- **Logos** (About) are sized by area, not by box, so a 12:1 wordmark and a 2:1 crest carry the same weight. Logo files carry no transparent margin. By day a logo sits flush with the text; at night it gets a white ground that hugs it.
