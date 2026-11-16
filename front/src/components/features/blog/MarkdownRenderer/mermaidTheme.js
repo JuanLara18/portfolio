@@ -11,7 +11,7 @@
 // Mermaid's `base` theme is the only one that honours every variable, and
 // every diagram type gets a value so none falls back to Mermaid's pastels.
 
-import { BRAND_COLORS, BRAND_FONTS } from '../../../../data/brand';
+import { BRAND_COLORS, BRAND_FONTS } from '../../../../data/brand.js';
 
 export const FONT_FAMILY = `"${BRAND_FONTS.sans}", system-ui, sans-serif`;
 const MONO_FAMILY = `"${BRAND_FONTS.mono}", ui-monospace, monospace`;

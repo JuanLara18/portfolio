@@ -77,12 +77,19 @@ Inside a blockquote, keep `> ` on every line, including both `$$` lines.
 
 Mermaid blocks always open with ` ```mermaid `, never with the diagram type (` ```flowchart ` renders as a code block). Use two to four diagrams per post, of at least two different kinds. `npm run validate-mermaid` rejects anything Mermaid 11 cannot parse. Avoid `<`, `>`, and unbalanced quotes in labels, and parentheses or colons in `quadrantChart` items.
 
-Every diagram type is styled by the site's theme (`mermaidTheme.js`), in light and dark. Work with it:
+Every diagram type is styled by the site's theme (`mermaidTheme.js`), in light and dark. The `blog-diagrams` skill (`.claude/skills/blog-diagrams/`) has the full workflow and verified syntax for every type. Two commands check a post:
+
+```bash
+npm run diagrams:lint -- <slug>     # the rules below; CI runs it with --strict on posts a PR changes
+npm run diagrams:render -- <slug>   # PNGs in front/.diagram-preview/, with size on desktop and phone
+```
+
+Work with the theme:
 
 - **No colours in posts.** Do not write `style X fill:#…` or `classDef` colours. Mark a node with `:::accent` for what the paragraph is about, or `:::muted` for context; everything else stays neutral.
 - **Short title, detail in small.** Up to four words of title, then the detail: `P["Data contract<br/><small>schema, quality, SLA</small>"]`.
 - **Nine nodes at most.** More than that is two diagrams or a `subgraph`.
-- **Vertical by default.** The reading column is about 680 px wide. Use `LR` only for four nodes or fewer in a row.
+- **Vertical by default.** The diagram frame is about 850 px wide on desktop and 330 px on a phone. Use `LR` only for four nodes or fewer in a row, and always `timeline TD`.
 - **Math is LaTeX.** Write `$$…$$` inside the label, never `theta_t`: `E["<b>E step</b><br/>$$q \leftarrow p(z \mid x, \theta_t)$$"]`. The title and the formula stack on two lines. Write `\lt` and `\gt`, not `<` and `>`.
 - **Production systems get an `architecture-beta` diagram.** Any post about a deployed system shows its shape: services, data stores, and the boundaries between them.
 

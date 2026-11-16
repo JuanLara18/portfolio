@@ -109,7 +109,13 @@ pnpm-lock.yaml
 .vercel
 .serverless
 
-**/.claude/
+# Claude Code: local state stays out; project skills and commands are versioned.
+**/.claude/*
+!/.claude/skills/
+!/.claude/commands/
+
+# Diagram previews from `npm run diagrams:render`
+front/.diagram-preview/
 # Personal working notes, kept local
 Resultados.md
 BRAND_BACKLOG.md

@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read   # list the posts a PR changes
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -44,6 +45,19 @@ jobs:
         run: npm test -- --watchAll=false
         env:
           CI: true
+
+      # The diagram grammar (docs/authoring.md#diagrams-enforced) is strict for
+      # posts this PR adds or edits. Older posts are cleaned up separately.
+      - name: Diagram grammar on changed posts
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          slugs=$(gh pr diff ${{ github.event.number }} --repo ${{ github.repository }} --name-only \
+            | grep -E '^front/public/blog/posts/.+\.md$' \
+            | while read -r f; do [ -f "../$f" ] && basename "$f" .md; done || true)
+          if [ -z "$slugs" ]; then echo "No posts changed."; exit 0; fi
+          npm run diagrams:lint -- --strict $slugs
 
       # prebuild runs validate-links, so a broken link between posts fails here.
       - name: Build

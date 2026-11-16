@@ -69,7 +69,9 @@
     "sync:check": "python scripts/sync.py --check",
     "pdf:series": "node scripts/pdf/build.js",
     "pdf:series:list": "node scripts/pdf/build.js --list",
-    "validate-links": "node scripts/validate-links.js"
+    "validate-links": "node scripts/validate-links.js",
+    "diagrams:render": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/render-diagrams.mjs",
+    "diagrams:lint": "node scripts/lint-diagrams.mjs"
   },
   "browserslist": {
     "production": [
