@@ -143,7 +143,9 @@ function heawood() {
   function frame(t) {
     const k = Math.floor(t / CYCLE), u = t - k * CYCLE;
     const rotate = (k + ease((u - 5.4) / 2.2)) * (360 / 7);
-    const v = (k * 5 + 3) % 14, nb = neighbours(v), ph = clamp01((u - 1.2) / 3.2), err = u > 1.2 && u < 4.4;
+    // The failing node walks 5 steps per cycle and skips node 0, the amber one,
+    // so every cycle shows a visible failure.
+    const w = (k * 5 + 3) % 14, v = w === 0 ? 7 : w, nb = neighbours(v), ph = clamp01((u - 1.2) / 3.2), err = u > 1.2 && u < 4.4;
     const N = nodes.map((_, i) => {
       if (i === 0) return { c: 'contrast', r: 5, o: 1 };
       if (i === v && err && ph < 0.45) return { c: 'muted', r: 3, o: 0.35 };
@@ -152,7 +154,8 @@ function heawood() {
     const E = edges.map(([a, b]) => { const on = err && ph > 0.3 && ph < 0.85 && (a === v || b === v); return { c: 'harmonic', o: on ? 0.95 : 0.55, w: on ? 1.4 : 0.9 }; });
     return { rotate, edges: E, nodes: N, dots: [] };
   }
-  return { nodes, edges, frame, still: 0.5, period: CYCLE * 7 };
+  // The turn repeats every 7 cycles, the failing node every 14: the frame repeats every 14.
+  return { nodes, edges, frame, still: 0.5, period: CYCLE * 14 };
 }
 
 // ---------------------------------------------------------------------------

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- GitHub profile README banner, text layer. 830 x 230 at 2x, ?mode=night|day.
+     Rendered with a transparent background: scripts/render.mjs wraps it in an SVG
+     with the tile and the live motif, so the motif can animate on GitHub. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Serif:ital,wght@1,600&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+  html, body, .card { background: transparent; }
+  .card { width: 830px; height: 230px; }
+  .lock { left: 44px; top: 30px; height: 28px; }
+  h1 { position: absolute; left: 42px; top: 76px; font-size: 44px; line-height: 1.08; }
+  h1 .l2 { font-size: 37px; }
+  .label { position: absolute; left: 45px; bottom: 30px; font-size: 11.5px; letter-spacing: .14em; }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+<script src="_brand.js"></script>
+<script>
+  // Day mode swaps the colour variables and the lockup; night is the _brand.js default.
+  if (Q.get('mode') === 'day') {
+    const root = document.documentElement.style;
+    Object.entries(BRAND.color.day).forEach(([k, v]) => root.setProperty('--' + k, v));
+    window.LOCKUP = window.LOCKUP_DAY;
+  }
+  document.getElementById('card').innerHTML =
+    `${lockupImg('lock')}<h1>${tagline()}</h1><div class="label">${esc(BRAND.verbal.strap)}</div>`;
+</script>
+</body>
+</html>

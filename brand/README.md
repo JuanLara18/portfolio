@@ -54,6 +54,7 @@ Generated files are committed, so the site build and CI never run these. Run `np
 | `social/og-post-example.png` | Reference for the per-post share card (template `og-post.html`) |
 | `social/linkedin-banner.png` | LinkedIn → profile → edit intro → background photo. Text stays inside the safe zone; the lower-left corner is covered by the profile photo |
 | `social/github-social.png` | GitHub → repository → Settings → General → Social preview |
+| `social/github-readme-{night,day}.svg` | GitHub profile README banner (repo `JuanLara18/JuanLara18`, copied to `assets/brand/banner-{night,day}.svg`, switched with `<picture>` by colour scheme). SVG so the active motif stays vector and animated; the typography is embedded from `templates/github-readme.html` |
 | `logo/*.png` | Documents, slides and tools that do not accept SVG |
 | `tokens/brand.css` | Plain hex variables for slides, documents and anything outside the site |
 | `tokens/contrast.md` | WCAG contrast of every text role in both modes |
