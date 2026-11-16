@@ -18,6 +18,8 @@ import { getPostBySlug, BLOG_CONFIG, scrollToElementCentered, getWebPPath, categ
 import { postPath } from '../utils/postLinks';
 import { MarkdownRenderer, AudioPlayer } from '../components/features/blog';
 import ReadingMode from '../components/features/blog/ReadingMode';
+import ReadingCompanion from '../components/features/blog/ReadingCompanion';
+import RelatedPosts from '../components/features/blog/RelatedPosts';
 import { ScrollFade } from '../components/features/blog/MarkdownRenderer/ReadingSurfaces';
 import { HoverMotion } from '../components/layout';
 
@@ -52,91 +54,6 @@ function stripLeadingH1(markdown) {
   if (!markdown) return markdown;
   return markdown.replace(/^\s*#\s+[^\n]+\n+/, '');
 }
-
-// Table of Contents component
-const TableOfContents = ({ content }) => {
-  const [headings, setHeadings] = useState([]);
-  const [activeId, setActiveId] = useState('');
-  
-  useEffect(() => {
-    // Extract headings from markdown content (excluding code blocks)
-    const cleanContent = stripCodeBlocks(content);
-    const headingRegex = /^(#{1,6})\s+(.+)$/gm;
-    const matches = [];
-    let match;
-    
-    while ((match = headingRegex.exec(cleanContent)) !== null) {
-      const level = match[1].length;
-      const text = match[2].trim();
-      const id = slugify(text);
-      matches.push({ level, text, id });
-    }
-    
-    setHeadings(matches);
-  }, [content]);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-20% 0% -35% 0%' }
-    );
-    
-    headings.forEach(({ id }) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-    
-    return () => observer.disconnect();
-  }, [headings]);
-  
-  if (headings.length === 0) return null;
-
-  // Function to smoothly scroll to element and center it
-  const scrollToElement = (e, id) => {
-    e.preventDefault();
-    
-    // Adjust navbar height based on screen size
-    const navbarHeight = window.innerWidth < 768 ? 70 : 80;
-    
-    scrollToElementCentered(id, {
-      navbarHeight,
-      updateURL: true,
-      highlightElement: true
-    });
-  };
-  
-  return (
-    <nav>
-      <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-4">
-        Contents
-      </h3>
-      <ul className="space-y-1 border-l border-gray-200/60 dark:border-white/[0.08]">
-        {headings.map(({ level, text, id }) => (
-          <li key={id}>
-            <a
-              href={`#${id}`}
-              onClick={(e) => scrollToElement(e, id)}
-              className={`block py-1 text-sm transition-colors duration-200 cursor-pointer leading-snug -ml-px border-l ${
-                activeId === id
-                  ? 'text-cyan-700 dark:text-brand-accent font-medium border-cyan-700 dark:border-brand-accent'
-                  : 'text-gray-600 dark:text-brand-fg-muted hover:text-gray-900 dark:hover:text-brand-fg border-transparent'
-              }`}
-              style={{ paddingLeft: `${(level - 1) * 12 + 12}px` }}
-            >
-              {text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
 
 // Helper function for creating URL-friendly slugs
 function slugify(text) {
@@ -357,44 +274,7 @@ export default function BlogPostPage() {
   const [isReadingMode, setIsReadingMode] = useState(false);
   const { scrollY } = useScroll();
   const heroRef = useRef(null);
-  const sidebarRef = useRef(null);
-
-  // Bidirectional sticky sidebar: adjusts `top` based on scroll direction so the
-  // whole sidebar travels with the page without needing its own scrollbar.
-  useEffect(() => {
-    const el = sidebarRef.current;
-    if (!el) return;
-
-    const TOP_OFFSET = 96;   // 6rem – gap below navbar
-    const BOTTOM_GAP = 24;   // breathing room at the bottom
-    let lastY = window.scrollY;
-    let curTop = TOP_OFFSET;
-    el.style.top = `${curTop}px`;
-
-    const recalc = () => {
-      const sidebarH = el.offsetHeight;
-      const vpH = window.innerHeight;
-      const sy = window.scrollY;
-      const delta = sy - lastY;
-
-      if (sidebarH <= vpH - TOP_OFFSET - BOTTOM_GAP) {
-        curTop = TOP_OFFSET;
-      } else {
-        const minTop = vpH - sidebarH - BOTTOM_GAP;
-        curTop = Math.min(TOP_OFFSET, Math.max(minTop, curTop - delta));
-      }
-
-      el.style.top = `${curTop}px`;
-      lastY = sy;
-    };
-
-    window.addEventListener('scroll', recalc, { passive: true });
-    window.addEventListener('resize', recalc, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', recalc);
-      window.removeEventListener('resize', recalc);
-    };
-  }, [post]);
+  const articleBodyRef = useRef(null);
 
   // Transform values for smoother header parallax
   const headerY = useTransform(scrollY, [0, 400], [0, -60]);
@@ -702,81 +582,27 @@ export default function BlogPostPage() {
                     </div>
                   )}
 
-                  <div className="post-body">
+                  <div className="post-body" ref={articleBodyRef}>
                     <MarkdownRenderer
                       content={stripLeadingH1(post.content)}
                       baseImagePath={baseImagePath}
                       className=""
                     />
                   </div>
+
+                  <div className="post-body">
+                    <RelatedPosts post={post} />
+                  </div>
                 </div>
               </motion.article>
               
-              {/* Sidebar — hidden on mobile, visible on desktop */}
-              <aside
-                ref={sidebarRef}
-                className="hidden lg:flex lg:flex-col lg:w-64 xl:w-72 lg:flex-shrink-0 lg:gap-10 sticky self-start"
-              >
-                {/* Table of Contents */}
-                <TableOfContents content={post.content} />
-
-                {/* Post Stats */}
-                <div>
-                  <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
-                    Post info
-                  </h3>
-                  <div className="text-sm text-gray-700 dark:text-brand-fg/80 divide-y divide-gray-200/60 dark:divide-white/[0.08]">
-                    <div className="flex items-center justify-between py-2">
-                      <span className="flex items-center text-gray-500 dark:text-brand-fg-muted">
-                        <Clock size={14} className="mr-2" />
-                        Reading time
-                      </span>
-                      <span className="font-mono text-xs tabular-nums">{post.readingTime} min</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Category Info */}
-                <div>
-                  <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
-                    Category
-                  </h3>
-                  <Link
-                    to={`/blog/category/${post.category}`}
-                    className="block group"
-                  >
-                    <div className="font-bold text-base text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
-                      {categoryConfig?.name || post.category}
-                    </div>
-                    {categoryConfig?.description && (
-                      <div className="text-xs text-gray-600 dark:text-brand-fg-muted mt-2 leading-relaxed">
-                        {categoryConfig?.description}
-                      </div>
-                    )}
-                  </Link>
-                </div>
-
-                {/* Tags — inline mono uppercase, dot-separated */}
-                {post.tags && post.tags.length > 0 && (
-                  <div>
-                    <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-3">
-                      Tags
-                    </h3>
-                    <div className="font-mono text-[11px] tracking-[0.12em] uppercase leading-[1.9]">
-                      {post.tags.map((tag, index) => (
-                        <span key={index}>
-                          {index > 0 && <span className="mx-1.5 text-gray-400 dark:text-brand-fg-muted opacity-60">·</span>}
-                          <Link
-                            to={`/blog/tag/${encodeURIComponent(tag)}`}
-                            className="text-gray-700 dark:text-brand-fg/80 hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
-                          >
-                            {tag}
-                          </Link>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+              {/* Sidebar on wide screens: travels with the reader (ReadingCompanion). */}
+              <aside className="hidden lg:block lg:w-64 xl:w-72 lg:flex-shrink-0 sticky top-24 self-start">
+                <ReadingCompanion
+                  post={post}
+                  categoryName={categoryConfig?.name || post.category}
+                  articleRef={articleBodyRef}
+                />
               </aside>
             </div>
           </div>

@@ -89,7 +89,7 @@ function App() {
       >
         <ScrollToTop />
         <TransitionProvider>
-        <div className="App min-h-screen bg-white dark:bg-brand-bg text-gray-900 dark:text-brand-fg relative overflow-x-hidden">
+        <div className="App min-h-screen bg-white dark:bg-brand-bg text-gray-900 dark:text-brand-fg relative overflow-x-clip">
           {/* Brand duotone for blog photos (class .brand-duotone): shadows -> night bg,
               mid-tones -> cobalt, highlights -> light cyan. Source images stay untouched. */}
           <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true" focusable="false">
