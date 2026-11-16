@@ -1,114 +1,97 @@
-name: Deploy React Portfolio
+name: Deploy
+
+# Builds the site and publishes it with GitHub Pages' native Actions
+# deployment. No deploy branch: the build is uploaded as an artifact and
+# served directly, so nothing accumulates in the repository.
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
       - 'front/**'
-  
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer push waits instead of cancelling a deploy
+# that is already publishing.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
+    name: Build site
     runs-on: ubuntu-latest
-    environment: github-pages
     defaults:
       run:
         working-directory: ./front
-    
     steps:
-      - name: Checkout Repository 🛎️
-        uses: actions/checkout@v6
-      
-      - name: Setup Node.js Environment ⚙️
-        uses: actions/setup-node@v6
-        with:
-          node-version: 18
-          cache: 'npm'
-          cache-dependency-path: 'front/package-lock.json'
+      - uses: actions/checkout@v6
 
-      - name: Setup Python 🐍
-        uses: actions/setup-python@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: front/package-lock.json
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies 📦
+      - name: Install dependencies
         run: npm ci
 
-      - name: Validate Content Consistency ✅
+      - name: Validate content
         run: npm run sync:check
 
-      - name: Run Unit Tests 🧪
+      - name: Unit tests
         run: npm test -- --watchAll=false
         env:
           CI: true
 
-      - name: Optimize Images 🖼️
+      - name: Optimize new images
         run: |
-          echo "=== Checking for unoptimized images ==="
-          # Only optimize if there are new images (no .webp versions)
-          NEW_IMAGES=$(find public/images -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) ! -name "*-original.*" ! -name "*-optimized.*" | wc -l)
-          echo "Found $NEW_IMAGES images to potentially optimize"
-          
-          if [ $NEW_IMAGES -gt 0 ]; then
-            # Check if webp versions already exist
-            WEBP_COUNT=$(find public/images -type f -name "*.webp" | wc -l)
-            echo "Existing WebP images: $WEBP_COUNT"
-            
-            if [ $WEBP_COUNT -lt $NEW_IMAGES ]; then
-              echo "🔄 Optimizing images..."
-              npm run optimize-images || echo "⚠️ Optimization completed with warnings"
-              echo "✅ Image optimization complete"
-            else
-              echo "✅ Images already optimized, skipping"
-            fi
-          else
-            echo "✅ No new images to optimize"
-          fi
-      
-      - name: Verify Blog Source Files 🔍
-        run: |
-          echo "=== Blog Source Directory Structure ==="
-          ls -la public/blog/ || echo "Blog directory not found"
-          echo "=== Available Markdown Posts ==="
-          find public/blog/posts -name "*.md" 2>/dev/null | wc -l | xargs echo "Found markdown files:"
-          find public/blog/posts -name "*.md" 2>/dev/null || echo "No markdown files found"
-      
-      - name: Build Application 🔧
+          # Only images without a WebP twin; already-optimized files are skipped.
+          missing=0
+          while IFS= read -r img; do
+            [ -f "${img%.*}.webp" ] || missing=$((missing + 1))
+          done < <(find public/images public/blog/headers -type f \( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' \) ! -name '*-original.*' ! -name '*-optimized.*')
+          echo "Images without a WebP twin: $missing"
+          if [ "$missing" -gt 0 ]; then npm run optimize-images; fi
+
+      - name: Build
         run: npm run build
         env:
           CI: false
           AUDIO_BASE_URL_EN: https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio
           AUDIO_BASE_URL_ES: https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es
-      
-      - name: Verify Blog Data Generation 📊
+
+      - name: Summarize build
         run: |
-          echo "=== Generated Blog Data ==="
-          if [ -f "src/data/blogData.json" ]; then
-            echo "✅ blogData.json generated successfully"
-            echo "Posts count: $(cat src/data/blogData.json | grep -o '"slug"' | wc -l)"
-            echo "Categories: $(cat src/data/blogData.json | grep -o '"category":"[^"]*"' | sort -u)"
-          else
-            echo "❌ blogData.json not found"
-            exit 1
-          fi
-      
-      - name: Verify Build Output 🔍
-        run: |
-          echo "=== Build Directory Structure ==="
-          ls -la build/
-          echo "=== Build Assets ==="
-          echo "JS files: $(find build/static/js -name "*.js" | wc -l)"
-          echo "CSS files: $(find build/static/css -name "*.css" | wc -l)"
-          echo "Total build size: $(du -sh build/ | cut -f1)"
-      
-      - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+          {
+            echo "### Build"
+            echo "- Posts: $(node -p "require('./src/data/blogData.json').posts.length")"
+            echo "- Site size: $(du -sh build | cut -f1)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
         with:
-          folder: front/build
-          branch: gh-pages
-          clean: true
-          commit-message: 'Deploy portfolio with blog data 🚀'
+          path: front/build
+
+  deploy:
+    name: Publish to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

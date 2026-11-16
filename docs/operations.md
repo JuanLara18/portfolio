@@ -31,18 +31,27 @@ All commands run from `front/`.
 | `npm run pdf:series:list` | Series and reading paths that can be compiled to PDF |
 | `npm run pdf:series -- <id> --layout=all` | Compile one of them in every page layout |
 
-## Continuous delivery
+## Continuous integration and delivery
 
-`.github/workflows/deploy.yml` runs on every push to `main` that touches `front/`, and on demand.
+Two workflows in `.github/workflows/`:
 
-1. Install with `npm ci` on Node 18 and Python 3.11.
+| Workflow | Runs on | Does |
+|---|---|---|
+| `CI` (`ci.yml`) | every pull request | content check, unit tests, production build. Required to merge into `main`. |
+| `Deploy` (`deploy.yml`) | push to `main` touching `front/`, or on demand | the same checks, then publishes the build with GitHub Pages' Actions deployment |
+
+The deploy job, step by step:
+
+1. Install with `npm ci` on Node 22 and Python 3.11.
 2. `npm run sync:check`: fails on orphaned audio or broken diagrams before the expensive steps.
 3. `npm test`.
-4. Optimize any images that lack a WebP twin.
-5. `npm run build`: `prebuild` regenerates every index and fails on a broken link between posts.
-6. Publish `front/build` to the `gh-pages` branch, which GitHub Pages serves.
+4. Optimize any image that lacks a WebP twin.
+5. `npm run build`: `prebuild` regenerates every index and fails on a broken link between posts; `postbuild` writes the per-route HTML and drops the narration MP3s, which are served from R2.
+6. Upload `front/build` as a Pages artifact and publish it. There is no deploy branch.
 
-Narration is never generated in CI. `npm run sync` produces it locally and uploads it to R2. The build only needs the public base URLs, which the workflow sets.
+Narration is never generated in CI. `npm run sync` produces it locally and uploads it to R2. The build only needs the public base URLs, which the workflows set.
+
+Branching, pull requests, and releases are described in [workflow.md](workflow.md).
 
 ## Narration and audio hosting
 

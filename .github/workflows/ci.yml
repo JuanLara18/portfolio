@@ -1,0 +1,54 @@
+name: CI
+
+# Runs on every pull request: the same checks as a deploy, without
+# publishing. `main` requires this job to pass before a PR can merge.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Build and test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./front
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: front/package-lock.json
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate content
+        run: npm run sync:check
+
+      - name: Unit tests
+        run: npm test -- --watchAll=false
+        env:
+          CI: true
+
+      # prebuild runs validate-links, so a broken link between posts fails here.
+      - name: Build
+        run: npm run build
+        env:
+          CI: false
+          AUDIO_BASE_URL_EN: https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio
+          AUDIO_BASE_URL_ES: https://pub-00d57ee081654fe389ef2660b8f38f69.r2.dev/audio-es

@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # Keep workflow actions current. npm dependencies are not auto-bumped here:
+  # Create React App pins much of the toolchain, so upgrades are done by hand
+  # (see docs/operations.md). Security alerts still cover npm.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ['*']
+    commit-message:
+      prefix: ci
