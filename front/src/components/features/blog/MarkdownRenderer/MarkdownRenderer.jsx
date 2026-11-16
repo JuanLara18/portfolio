@@ -32,6 +32,7 @@ import ignore from 'react-syntax-highlighter/dist/esm/languages/prism/ignore';
 import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 import { resolveInternalHref } from '../../../../utils/postLinks';
+import { withChunkRetry, isChunkLoadError, reloadForNewBuild } from '../../../../utils/chunkRetry';
 import { getMermaidConfig, diagramType } from './mermaidTheme';
 import { BRAND_COLORS } from '../../../../data/brand';
 
@@ -638,7 +639,8 @@ const MermaidDiagram = memo(({ chart }) => {
       try {
         // Use unique ID for each render attempt
         const renderId = `${idRef.current}-${currentRenderCount}`;
-        const { svg: renderedSvg } = await renderMermaid(renderId, normalizedChart, isDarkMode);
+        // Mermaid and each diagram type load on demand; retry if the network drops a chunk.
+        const { svg: renderedSvg } = await withChunkRetry(() => renderMermaid(renderId, normalizedChart, isDarkMode));
         const adjustedSvg = expandMermaidLabelBounds(renderedSvg);
         
         if (isCancelled) return;
@@ -649,7 +651,13 @@ const MermaidDiagram = memo(({ chart }) => {
       } catch (err) {
         if (isCancelled) return;
         console.error('Mermaid rendering error:', err);
-        setError(err.message || 'Failed to render diagram');
+        if (isChunkLoadError(err)) {
+          // The code for this diagram is gone: a new version was deployed. Reload once to get it.
+          if (reloadForNewBuild()) return;
+          setError('The diagram could not load. Refresh the page to try again.');
+        } else {
+          setError(err.message || 'Failed to render diagram');
+        }
       } finally {
         if (!isCancelled) {
           setIsLoading(false);

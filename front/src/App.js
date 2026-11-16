@@ -1,22 +1,23 @@
-import { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, useLayoutEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { TransitionProvider, Navigation as Navbar, Footer } from './components/layout';
 import useNavbarHeight from './hooks/useNavbarHeight';
 import BRAND_TOKENS from './data/brandTokens.json';
+import { lazyWithRetry } from './utils/chunkRetry';
 
 // Lazy-loaded pages: each page bundle is only downloaded when the user navigates to it
-const LandingPage = lazy(() => import('./pages/LandingPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
-const BlogHomePage = lazy(() => import('./pages/BlogHomePage'));
-const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
-const BlogCategoryPage = lazy(() => import('./pages/BlogCategoryPage'));
-const BlogGraphPage = lazy(() => import('./pages/BlogGraphPage'));
-const BlogSeriesPage = lazy(() => import('./pages/BlogSeriesPage'));
-const BlogBooksPage = lazy(() => import('./pages/BlogBooksPage'));
-const PostRedirectPage = lazy(() => import('./pages/PostRedirectPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const LandingPage = lazyWithRetry(() => import('./pages/LandingPage'));
+const AboutPage = lazyWithRetry(() => import('./pages/AboutPage'));
+const ProjectsPage = lazyWithRetry(() => import('./pages/ProjectsPage'));
+const BlogHomePage = lazyWithRetry(() => import('./pages/BlogHomePage'));
+const BlogPostPage = lazyWithRetry(() => import('./pages/BlogPostPage'));
+const BlogCategoryPage = lazyWithRetry(() => import('./pages/BlogCategoryPage'));
+const BlogGraphPage = lazyWithRetry(() => import('./pages/BlogGraphPage'));
+const BlogSeriesPage = lazyWithRetry(() => import('./pages/BlogSeriesPage'));
+const BlogBooksPage = lazyWithRetry(() => import('./pages/BlogBooksPage'));
+const PostRedirectPage = lazyWithRetry(() => import('./pages/PostRedirectPage'));
+const NotFoundPage = lazyWithRetry(() => import('./pages/NotFoundPage'));
 
 // Minimal loading fallback (matches the app background to avoid flash)
 const PageLoader = () => (
