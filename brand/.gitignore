@@ -1,0 +1,4 @@
+# Review previews from build_book.mjs --plates
+guidelines/plates/
+# Designer hand-off package from build_kit.mjs (attached to GitHub Releases)
+dist/

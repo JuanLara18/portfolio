@@ -1,3 +1,9 @@
+// Brand values come from brand/tokens.json (the single source). Run `npm run brand` after editing it.
+const BRAND = require('../brand/tokens.json');
+const { night } = BRAND.color;
+const stack = (f) => [`"${BRAND.font[f].family}"`, ...BRAND.font[f].fallback.split(',').map((s) => s.trim())];
+const role = (k) => `rgb(var(--brand-${k}) / <alpha-value>)`;
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -12,30 +18,30 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
-      // Brand identity v1 (approved 2026-11-15). Spec: docs/brand.md › Visual identity.
       // IBM Plex superfamily: Serif = voice and name, Sans = reading and UI, Mono = code and labels.
       fontFamily: {
-        sans: ['"IBM Plex Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
-        display: ['"IBM Plex Serif"', 'Georgia', '"Times New Roman"', 'serif'],
-        serif: ['"IBM Plex Serif"', 'Georgia', '"Times New Roman"', 'serif'],
-        mono: ['"IBM Plex Mono"', 'ui-monospace', '"Cascadia Code"', 'Consolas', 'monospace'],
+        sans: stack('sans'),
+        display: stack('serif'),
+        serif: stack('serif'),
+        mono: stack('mono'),
       },
       colors: {
-        // Palette "Instrumento": cyan (primary) + cobalt (harmonic) + amber (contrast).
         // Static keys hold NIGHT values and are used behind `dark:`; day mode uses cyan-700 for primary.
         // primary/harmonic/contrast follow the active mode through CSS variables (src/index.css).
+        // Static keys = night values, used behind `dark:` (day primary is cyan-700 in markup).
+        // primary / harmonic / contrast follow the active mode through CSS variables.
         brand: {
-          bg: '#05070A',          // Night canvas, near-black for low-light reading
-          'bg-soft': '#0C1017',   // Night surface (cards, code blocks)
-          border: '#1A2130',      // Night hairline
-          fg: '#E9E9E4',          // Night text, dimmed white to avoid halation on black
-          'fg-muted': '#9AA2B1',  // Night secondary text
-          accent: '#22D3EE',      // Primary (cyan), night value
-          'contrast-night': '#F5B544', // Amber on always-dark surfaces (post hero)
-          'accent-soft': '#67E8F9', // Primary hover, night
-          primary: 'rgb(var(--brand-primary) / <alpha-value>)',
-          harmonic: 'rgb(var(--brand-harmonic) / <alpha-value>)',
-          contrast: 'rgb(var(--brand-contrast) / <alpha-value>)',
+          bg: night.bg,
+          'bg-soft': night.surface,
+          border: night.border,
+          fg: night.text,
+          'fg-muted': night.muted,
+          accent: night.primary,
+          'accent-soft': night.primaryHover,
+          'contrast-night': night.contrast,
+          primary: role('primary'),
+          harmonic: role('harmonic'),
+          contrast: role('contrast'),
         },
   // Added custom color palette
         slate: {

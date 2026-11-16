@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Share card for every page that is not a post. 1200 x 630. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Serif:ital,wght@1,600&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { width: 1200px; height: 630px; }
+  .graph { right: 72px; top: 64px; width: 256px; height: 256px; }
+  .lock { left: 80px; top: 66px; height: 58px; }
+  h1 { position: absolute; left: 76px; top: 232px; font-size: 82px; line-height: 1.08; }
+  h1 .l2 { font-size: 70px; }
+  .label { position: absolute; left: 80px; bottom: 66px; }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+<script src="_brand.js"></script>
+<script>
+  document.getElementById('card').innerHTML =
+    `<div class="graph">${brandGraph(1)}</div>${lockupImg('lock')}<h1>${tagline()}</h1>`
+    + `<div class="label">${esc(BRAND.verbal.strap)}</div>`;
+</script>
+</body>
+</html>
