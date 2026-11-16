@@ -24,6 +24,7 @@ yarn-error.log*
 
 /src/data/*
 !/src/data/brand.js
+!/src/data/brandTokens.json
 !/src/data/series.js
 !/src/data/blogData.json
 !/src/data/book-aliases.json

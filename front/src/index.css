@@ -20,27 +20,8 @@
   }
 }
 
-/* Brand roles that follow the active mode (Tailwind: brand-primary / brand-harmonic / brand-contrast).
-   Channel triplets so opacity modifiers work. Day on :root, night on .dark. */
-:root{
-  --brand-primary:14 116 144;   /* #0E7490 cyan 700 */
-  --brand-harmonic:53 87 208;   /* #3557D0 cobalt */
-  --brand-contrast:180 83 9;    /* #B45309 amber, day */
-}
-.dark{
-  --brand-primary:34 211 238;   /* #22D3EE cyan */
-  --brand-harmonic:124 156 255; /* #7C9CFF cobalt */
-  --brand-contrast:245 181 68;  /* #F5B544 amber, night */
-}
-
-/* Type roles. Titles carry the voice (serif italic); sections are upright. */
-@layer components{
-  .type-title{font-family:"IBM Plex Serif",Georgia,serif;font-style:italic;font-weight:600;letter-spacing:-0.015em}
-  .type-section{font-family:"IBM Plex Serif",Georgia,serif;font-style:normal;font-weight:600;letter-spacing:-0.01em}
-  .type-name{font-family:"IBM Plex Serif",Georgia,serif;font-style:normal;font-weight:500;letter-spacing:-0.012em}
-  .brand-duotone{filter:url(#brand-duotone)}
-}
-
+/* Brand colour roles, fonts and type classes come from src/styles/brand-tokens.css,
+   generated from brand/tokens.json (imported in index.js before this file). */
 :root{
   --primary:#0E7490;--primary-dark:#155E75;--primary-light:#22D3EE;--primary-shadow:rgba(14,116,144,.25);
   --secondary:#4338ca;--secondary-dark:#3730a3;--secondary-light:#818cf8;--secondary-shadow:rgba(67,56,202,.2);

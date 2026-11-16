@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { HelmetProvider } from 'react-helmet-async';
 import { TransitionProvider, Navigation as Navbar, Footer } from './components/layout';
 import useNavbarHeight from './hooks/useNavbarHeight';
+import BRAND_TOKENS from './data/brandTokens.json';
 
 // Lazy-loaded pages: each page bundle is only downloaded when the user navigates to it
 const LandingPage = lazy(() => import('./pages/LandingPage'));
@@ -94,9 +95,9 @@ function App() {
             <filter id="brand-duotone" colorInterpolationFilters="sRGB">
               <feColorMatrix type="matrix" values=".3 .59 .11 0 0  .3 .59 .11 0 0  .3 .59 .11 0 0  0 0 0 1 0" />
               <feComponentTransfer>
-                <feFuncR type="table" tableValues="0.02 0.216 0.671" />
-                <feFuncG type="table" tableValues="0.027 0.273 0.934" />
-                <feFuncB type="table" tableValues="0.039 0.443 0.975" />
+                <feFuncR type="table" tableValues={BRAND_TOKENS.duotone.r} />
+                <feFuncG type="table" tableValues={BRAND_TOKENS.duotone.g} />
+                <feFuncB type="table" tableValues={BRAND_TOKENS.duotone.b} />
               </feComponentTransfer>
             </filter>
           </svg>

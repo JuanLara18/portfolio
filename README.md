@@ -1,6 +1,9 @@
 <div align="center">
 
-# Juan Lara
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="brand/logo/lockup-night.svg">
+  <img alt="Juan Lara" src="brand/logo/lockup-day.svg" width="340">
+</picture>
 
 **AI Engineer.** Frontier AI. Engineered for production.
 
@@ -104,6 +107,8 @@ Requires Node.js 18 or later. The audio pipeline additionally needs Python 3.10+
 | [Operations](docs/operations.md) | Commands, CI/CD, audio hosting, troubleshooting |
 | [Workflow](docs/workflow.md) | Branches, pull requests, versions and releases |
 | [Knowledge base](docs/knowledge-base.md) | The agent-facing index of the blog |
+| [Brand and voice](docs/brand.md) | Positioning, voice, and the visual identity spec |
+| [Brand system](brand/README.md) | Tokens, logo, templates and exports: the source of every brand asset |
 | [Build scripts](front/scripts/README.md) | Reference for every script in the content pipeline |
 | [Print PDFs](front/scripts/pdf/README.md) | Layout rules for the series PDF builder |
 

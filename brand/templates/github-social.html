@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- GitHub repository social preview. 1280 x 640 (GitHub keeps a 40 px safe margin). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Serif:ital,wght@1,600&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { width: 1280px; height: 640px; }
+  .graph { right: -40px; top: 150px; width: 360px; height: 410px; }
+  .lock { left: 96px; top: 84px; height: 60px; }
+  h1 { position: absolute; left: 92px; top: 236px; font-size: 80px; line-height: 1.08; }
+  h1 .l2 { font-size: 68px; }
+  .label { position: absolute; left: 96px; bottom: 92px; }
+  .repo { position: absolute; left: 96px; bottom: 56px; font: 500 18px/1 var(--mono); color: var(--primary); letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+<script src="_brand.js"></script>
+<script>
+  document.getElementById('card').innerHTML =
+    `<div class="graph">${brandGraph(0.8)}</div>${lockupImg('lock')}<h1>${tagline()}</h1>`
+    + `<div class="label">Portfolio · Technical blog · Knowledge base</div><div class="repo">github.com/JuanLara18/portfolio</div>`;
+</script>
+</body>
+</html>

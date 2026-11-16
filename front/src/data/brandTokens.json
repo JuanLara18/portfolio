@@ -1,0 +1,43 @@
+{
+  "generatedFrom": "brand/tokens.json",
+  "version": "1.0.0",
+  "color": {
+    "night": {
+      "bg": "#05070A",
+      "surface": "#0C1017",
+      "border": "#1A2130",
+      "text": "#E9E9E4",
+      "muted": "#9AA2B1",
+      "primary": "#22D3EE",
+      "primaryHover": "#67E8F9",
+      "harmonic": "#7C9CFF",
+      "contrast": "#F5B544"
+    },
+    "day": {
+      "bg": "#FFFFFF",
+      "surface": "#F5F7FA",
+      "border": "#E1E5EC",
+      "text": "#0B1120",
+      "muted": "#4B5568",
+      "primary": "#0E7490",
+      "primaryHover": "#155E75",
+      "harmonic": "#3557D0",
+      "contrast": "#B45309"
+    }
+  },
+  "font": {
+    "serif": "IBM Plex Serif",
+    "sans": "IBM Plex Sans",
+    "mono": "IBM Plex Mono"
+  },
+  "categories": {
+    "field-notes": "primary",
+    "research": "harmonic",
+    "curiosities": "muted"
+  },
+  "duotone": {
+    "r": "0.02 0.216 0.671",
+    "g": "0.027 0.273 0.934",
+    "b": "0.039 0.443 0.975"
+  }
+}

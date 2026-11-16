@@ -1,0 +1,27 @@
+/* Generated from brand/tokens.json by brand/scripts/build_tokens.mjs. Do not edit by hand. */
+/* Plain hex variables for slides, documents and any surface outside the site. */
+:root{
+  --brand-bg: #FFFFFF;
+  --brand-surface: #F5F7FA;
+  --brand-border: #E1E5EC;
+  --brand-text: #0B1120;
+  --brand-muted: #4B5568;
+  --brand-primary: #0E7490;
+  --brand-primary-hover: #155E75;
+  --brand-harmonic: #3557D0;
+  --brand-contrast: #B45309;
+  --font-serif: "IBM Plex Serif", Georgia, 'Times New Roman', serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, 'Cascadia Code', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --brand-bg: #05070A;
+  --brand-surface: #0C1017;
+  --brand-border: #1A2130;
+  --brand-text: #E9E9E4;
+  --brand-muted: #9AA2B1;
+  --brand-primary: #22D3EE;
+  --brand-primary-hover: #67E8F9;
+  --brand-harmonic: #7C9CFF;
+  --brand-contrast: #F5B544;
+}}

@@ -1,0 +1,40 @@
+/* Generated from brand/tokens.json by brand/scripts/build_tokens.mjs. Do not edit by hand. */
+/* Colour roles as RGB channels so Tailwind opacity modifiers work: rgb(var(--brand-primary) / .4).
+   Day on :root, night on .dark (Tailwind darkMode: 'class'). */
+:root{
+  --brand-bg: 255 255 255; /* #FFFFFF */
+  --brand-surface: 245 247 250; /* #F5F7FA */
+  --brand-border: 225 229 236; /* #E1E5EC */
+  --brand-text: 11 17 32; /* #0B1120 */
+  --brand-muted: 75 85 104; /* #4B5568 */
+  --brand-primary: 14 116 144; /* #0E7490 */
+  --brand-primary-hover: 21 94 117; /* #155E75 */
+  --brand-harmonic: 53 87 208; /* #3557D0 */
+  --brand-contrast: 180 83 9; /* #B45309 */
+  --font-serif: "IBM Plex Serif", Georgia, 'Times New Roman', serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, 'Cascadia Code', Consolas, monospace;
+}
+.dark{
+  --brand-bg: 5 7 10; /* #05070A */
+  --brand-surface: 12 16 23; /* #0C1017 */
+  --brand-border: 26 33 48; /* #1A2130 */
+  --brand-text: 233 233 228; /* #E9E9E4 */
+  --brand-muted: 154 162 177; /* #9AA2B1 */
+  --brand-primary: 34 211 238; /* #22D3EE */
+  --brand-primary-hover: 103 232 249; /* #67E8F9 */
+  --brand-harmonic: 124 156 255; /* #7C9CFF */
+  --brand-contrast: 245 181 68; /* #F5B544 */
+}
+
+/* Type roles. Size and leading stay with the layout; these fix family, style, weight and tracking.
+   Loaded before Tailwind's utilities, so a utility on the same element wins. */
+.type-display{font-family:var(--font-serif);font-style:italic;font-weight:600;letter-spacing:-0.02em;}
+.type-title{font-family:var(--font-serif);font-style:italic;font-weight:600;letter-spacing:-0.015em;}
+.type-section{font-family:var(--font-serif);font-style:normal;font-weight:600;letter-spacing:-0.01em;}
+.type-name{font-family:var(--font-serif);font-style:normal;font-weight:500;letter-spacing:-0.012em;}
+.type-body{font-family:var(--font-sans);font-style:normal;font-weight:400;letter-spacing:0;}
+.type-ui{font-family:var(--font-sans);font-style:normal;font-weight:500;letter-spacing:0;}
+.type-label{font-family:var(--font-mono);font-style:normal;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;}
+.type-code{font-family:var(--font-mono);font-style:normal;font-weight:400;letter-spacing:0;}
+.brand-duotone{filter:url(#brand-duotone)}

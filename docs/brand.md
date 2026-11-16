@@ -301,7 +301,7 @@ The corresponding memory record is `project_brand_positioning.md` in the Claude 
 
 ## 10. Visual identity
 
-Approved 2026-11-15. This section is the visual counterpart of the verbal layer above. Colour roles live in `front/src/index.css` (mode-aware CSS variables) and `front/tailwind.config.js` (`brand.*`); the JS mirror is `BRAND_COLORS` in `front/src/data/brand.js`. Never hard-code a hex value in a component. Logo files for third parties are in `front/public/brand/`.
+Approved 2026-11-15. This section is the visual counterpart of the verbal layer above. Every value lives in `brand/tokens.json`, the single source. `npm run brand` (in `front/`) regenerates the logo masters, `front/src/styles/brand-tokens.css`, the React tokens, every export (icons, share cards, LinkedIn banner, GitHub preview) and the brand book (`brand/guidelines/brand-book.pdf`). How the system works: `brand/README.md`. Never hard-code a hex value in a component.
 
 ### 10.1. The signature
 

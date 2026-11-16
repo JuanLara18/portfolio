@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Share card for one post. 1200 x 630. Query: ?cat=Field%20notes&min=53&title=... -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Serif:ital,wght@1,600&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { width: 1200px; height: 630px; }
+  .graph { right: -70px; top: 170px; width: 340px; height: 390px; }
+  .label { position: absolute; left: 80px; top: 96px; font-size: 22px; }
+  .label .k { color: var(--tone, var(--primary)); }
+  h1 { position: absolute; left: 76px; top: 150px; width: 790px; font-size: 62px; line-height: 1.12; }
+  h1.long { font-size: 52px; }
+  .lock { left: 80px; bottom: 62px; height: 58px; }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+<script src="_brand.js"></script>
+<script>
+  const title = Q.get('title') || '';
+  const tone = { primary: BRAND.color.night.primary, harmonic: BRAND.color.night.harmonic, muted: BRAND.color.night.muted }[Q.get('tone') || 'primary'];
+  document.documentElement.style.setProperty('--tone', tone);
+  const end = /[.!?]$/.test(title) ? '' : '<span class="dot">.</span>';
+  document.getElementById('card').innerHTML =
+    `<div class="graph">${brandGraph(0.45)}</div>`
+    + `<div class="label"><span class="k">${esc(Q.get('cat'))}</span> · ${esc(Q.get('min'))} min read</div>`
+    + `<h1 class="${title.length > 72 ? 'long' : ''}">${esc(title)}${end}</h1>`
+    + lockupImg('lock');
+</script>
+</body>
+</html>
