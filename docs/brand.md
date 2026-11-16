@@ -371,7 +371,7 @@ Every style the site renders is declared in `index.html` (browsers only download
 
 - **Post headers** keep their photos, rendered through the brand duotone (`.brand-duotone`): shadows to the night background, mid-tones to cobalt, highlights to light cyan. The source files are not modified.
 - **Share cards** are typographic: `og-default.png` for every page that is not a post. Per-post cards (category, title in serif italic with the amber period, lockup) are the next step; until then posts keep their header photo as share image.
-- **The graph motif** uses harmonic edges, primary nodes and exactly one contrast node.
+- **The motif** is a graph with a story, drawn and animated by `brand/motifs/motifs.mjs`. Active: **Hamilton's Icosian game**, a depth-first search for a Hamiltonian cycle on the dodecahedron (finding is a search, checking is one lap: P vs NP). The family also holds the Heawood graph, the Fano plane and the Paley graph of order 13; `motif.active` in `brand/tokens.json` switches between them everywhere. In every frame: harmonic edges, primary nodes, exactly one amber node. The story is told in the brand book only; on the site the motif is decorative (`aria-hidden`), pauses off screen, and shows its still frame (the solved tour) under reduced motion.
 
 ### 10.5. Icons and metadata
 

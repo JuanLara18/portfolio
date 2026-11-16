@@ -35,6 +35,16 @@
     "research": "harmonic",
     "curiosities": "muted"
   },
+  "motif": {
+    "active": "icosian",
+    "family": [
+      "icosian",
+      "heawood",
+      "fano",
+      "paley"
+    ],
+    "note": "The graph motif, defined in brand/motifs/motifs.mjs. Change `active` to any id in `family` and run `npm run brand`: hero, share cards, banners and the brand book follow."
+  },
   "duotone": {
     "r": "0.02 0.216 0.671",
     "g": "0.027 0.273 0.934",

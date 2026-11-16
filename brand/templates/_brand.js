@@ -16,14 +16,12 @@
   window.Q = new URLSearchParams(location.search);
   window.esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  // The graph motif: harmonic edges, primary nodes, exactly one contrast node.
-  const N = [[18, 30], [92, 14], [140, 52], [36, 92], [104, 98], [146, 140], [24, 150], [92, 168]];
-  const E = [[0, 1], [1, 2], [0, 3], [1, 4], [2, 4], [3, 4], [4, 5], [3, 6], [6, 7], [4, 7], [5, 7]];
-  window.brandGraph = function (opacity = 0.8) {
-    return '<svg viewBox="0 0 170 190" xmlns="http://www.w3.org/2000/svg">'
-      + E.map(([a, b]) => `<line x1="${N[a][0]}" y1="${N[a][1]}" x2="${N[b][0]}" y2="${N[b][1]}" stroke="${n.harmonic}" stroke-width="1" opacity="${opacity * 0.6}"/>`).join('')
-      + N.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${i === 4 ? 5.4 : 3.2}" fill="${i === 4 ? n.contrast : n.primary}" opacity="${i === 4 ? 1 : opacity}"/>`).join('')
-      + '</svg>';
+  // The graph motif: the active one in tokens.json (motif.active), or ?motif=<id>
+  // for any member of the family. Drawn by the shared library at its still frame.
+  window.brandGraph = function (opacity = 1) {
+    const id = Q.get('motif') || T.motif.active;
+    const pal = { primary: n.primary, harmonic: n.harmonic, contrast: n.contrast, muted: n.muted };
+    return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="overflow:visible"><g opacity="${opacity}">${BrandMotifs.motifSVG(id, pal)}</g></svg>`;
   };
   window.lockupImg = (cls) => `<img class="${cls}" src="${window.LOCKUP}" alt="Juan Lara">`;
   window.tagline = () => `<span class="p">${esc(T.verbal.tagline[0])}</span><span class="dot">.</span><br><span class="l2">${esc(T.verbal.tagline[1])}<span class="dot">.</span></span>`;

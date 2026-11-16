@@ -9,6 +9,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { motifSVG, getMotif, MOTIF_STORIES } from '../motifs/motifs.mjs';
+import { motifBrowserScript } from './motif-browser.mjs';
 
 const BRAND = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ROOT = path.resolve(BRAND, '..');
@@ -19,6 +21,8 @@ const svg = (f) => read(BRAND, 'logo', f).toString().replace(/<title>.*?<\/title
 const img = (p, type = 'image/png') => `data:${type};base64,${read(p).toString('base64')}`;
 const exp = (...p) => img(path.join(BRAND, 'exports', ...p));
 const photo = img(path.join(ROOT, 'front/public/blog/headers/wallaby-joey-pouch-header.webp'), 'image/webp');
+const ACTIVE = T.motif.active;
+const PAL = { primary: N.primary, harmonic: N.harmonic, contrast: N.contrast, muted: N.muted };
 const portrait = img(path.join(ROOT, 'front/public/images/Profile.webp'), 'image/webp');
 
 const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
@@ -104,20 +108,24 @@ const plates = [
   // 11 type scale
   plate(11, 'Type scale', 'Eight roles, no others', `<div class="scale">${T.type.map(typeRow).join('')}</div>`),
   // 12 imagery
-  plate(12, 'Imagery', 'Photos join the palette; the graph is the motif', `<div class="img2"><figure><img src="${photo}" alt=""><figcaption>Source photo</figcaption></figure><figure><img src="${photo}" alt="" style="filter:url(#duo)"><figcaption>Brand duotone: shadows to night, mid-tones to cobalt, highlights to light cyan</figcaption></figure>
-    <figure class="gm"><svg viewBox="0 0 170 190">${[[0, 1], [1, 2], [0, 3], [1, 4], [2, 4], [3, 4], [4, 5], [3, 6], [6, 7], [4, 7], [5, 7]].map(([a, b]) => { const P = [[18, 30], [92, 14], [140, 52], [36, 92], [104, 98], [146, 140], [24, 150], [92, 168]]; return `<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="${N.harmonic}" stroke-width="1" opacity=".55"/>`; }).join('')}${[[18, 30], [92, 14], [140, 52], [36, 92], [104, 98], [146, 140], [24, 150], [92, 168]].map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${i === 4 ? 5.4 : 3.2}" fill="${i === 4 ? N.contrast : N.primary}"/>`).join('')}</svg><figcaption>Graph motif: harmonic edges, primary nodes, exactly one amber node</figcaption></figure></div>
+  plate(12, 'Imagery', 'Photos join the palette', `<div class="img2"><figure><img src="${photo}" alt=""><figcaption>Source photo</figcaption></figure><figure><img src="${photo}" alt="" style="filter:url(#duo)"><figcaption>Brand duotone: shadows to night, mid-tones to cobalt, highlights to light cyan</figcaption></figure></div>
     <p class="note">The filter is applied in code to every blog photo; source files are never modified. Share cards are typographic, never a photo.</p>`),
-  // 13 web
-  plate(13, 'Applications · web', 'Tab, home screen, app', `<div class="web"><div class="tabs"><div class="tabbar lt"><div class="tab"><img src="${exp('icons', 'favicon-16.png')}" width="16" height="16" alt=""><span>Juan Lara · AI Engineer</span><span class="x">×</span></div></div><div class="tabbar dk"><div class="tab"><img src="${exp('icons', 'favicon-16.png')}" width="16" height="16" alt=""><span>Juan Lara · AI Engineer</span><span class="x">×</span></div></div><p class="cap">favicon.svg + favicon.ico (16, 32, 48)</p></div>
+  // 13 motif
+  plate(13, 'The motif', `${MOTIF_STORIES[ACTIVE].name}<span class="dot">.</span>`, `<div class="motif"><div class="mstage"><svg viewBox="0 0 200 200" class="live" data-motif="${ACTIVE}">${motifSVG(ACTIVE, PAL)}</svg></div>
+    <div class="mstory"><span class="mfield">${MOTIF_STORIES[ACTIVE].field}</span><p>${MOTIF_STORIES[ACTIVE].story}</p><p class="msays">${MOTIF_STORIES[ACTIVE].says}</p><p><b>Motion.</b> ${MOTIF_STORIES[ACTIVE].motion}</p>
+    <div class="family">${T.motif.family.map((id) => `<figure class="${id === ACTIVE ? 'on' : ''}"><svg viewBox="0 0 200 200">${motifSVG(id, PAL)}</svg><figcaption>${MOTIF_STORIES[id].name}${id === ACTIVE ? ' · active' : ''}</figcaption></figure>`).join('')}</div>
+    <p class="note">Rules: harmonic edges, primary nodes, exactly one amber node in every frame. The family lives in <code>brand/motifs/motifs.mjs</code>; switch with <code>motif.active</code> in <code>tokens.json</code>. Its story is told here and nowhere on the site.</p></div></div>`),
+  // 14 web
+  plate(14, 'Applications · web', 'Tab, home screen, app', `<div class="web"><div class="tabs"><div class="tabbar lt"><div class="tab"><img src="${exp('icons', 'favicon-16.png')}" width="16" height="16" alt=""><span>Juan Lara · AI Engineer</span><span class="x">×</span></div></div><div class="tabbar dk"><div class="tab"><img src="${exp('icons', 'favicon-16.png')}" width="16" height="16" alt=""><span>Juan Lara · AI Engineer</span><span class="x">×</span></div></div><p class="cap">favicon.svg + favicon.ico (16, 32, 48)</p></div>
     <div class="apps"><figure><img src="${exp('icons', 'apple-touch-icon.png')}" style="border-radius:22%" width="120" alt=""><figcaption>apple-touch-icon 180, opaque</figcaption></figure><figure><img src="${exp('icons', 'icon-512.png')}" style="border-radius:22%" width="120" alt=""><figcaption>icon-192 / icon-512</figcaption></figure><figure><img src="${exp('icons', 'icon-maskable-512.png')}" style="border-radius:50%" width="120" alt=""><figcaption>maskable 512, 80 % safe zone</figcaption></figure></div></div>
     <p class="note">The icon always sits on its night tile, so it reads the same in light and dark browsers. <code>theme-color</code> is declared per colour scheme.</p>`),
-  // 14 share cards
-  plate(14, 'Applications · sharing', 'What people see when a link is shared', `<div class="og2"><figure><img src="${exp('social', 'og-default.png')}" alt=""><figcaption>og-default · every page that is not a post</figcaption></figure><figure><img src="${exp('social', 'og-post-example.png')}" alt=""><figcaption>og-post · one per post: category, title, signature</figcaption></figure></div>`),
-  // 15 linkedin + github
-  plate(15, 'Applications · profiles', 'LinkedIn and GitHub', `<div class="li"><div class="liframe"><img src="${exp('social', 'linkedin-banner.png')}" alt=""><span class="liphoto" style="background-image:url(${portrait})"></span><span class="safe"></span></div></div>
+  // 15 share cards
+  plate(15, 'Applications · sharing', 'What people see when a link is shared', `<div class="og2"><figure><img src="${exp('social', 'og-default.png')}" alt=""><figcaption>og-default · every page that is not a post</figcaption></figure><figure><img src="${exp('social', 'og-post-example.png')}" alt=""><figcaption>og-post · one per post: category, title, signature</figcaption></figure></div>`),
+  // 16 linkedin + github
+  plate(16, 'Applications · profiles', 'LinkedIn and GitHub', `<div class="li"><div class="liframe"><img src="${exp('social', 'linkedin-banner.png')}" alt=""><span class="liphoto" style="background-image:url(${portrait})"></span><span class="safe"></span></div></div>
     <div class="gh"><div class="cap">linkedin-banner 1584 × 396, shown with a simulated profile photo. The dashed area is the text safe zone: the photo covers the lower left on desktop and the mobile app crops the sides.<br><br>github-social 1280 × 640 → repository Settings → Social preview.</div><img src="${exp('social', 'github-social.png')}" alt=""></div>`),
-  // 16 files
-  plate(16, 'The system', 'Where everything lives', `<div class="tree"><pre>brand/
+  // 17 files
+  plate(17, 'The system', 'Where everything lives', `<div class="tree"><pre>brand/
   tokens.json      single source: colour, type, logo geometry, formats
   fonts/           IBM Plex Serif Medium (OFL)
   logo/            SVG masters
@@ -157,12 +165,13 @@ p{margin:0;color:var(--muted);font-size:15px}code{font:400 .88em var(--mono);col
 .roles{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 40px}.role{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}.role i{width:40px;height:40px;border-radius:50%}.role b{font:600 16px var(--serif)}.hue{font:400 12px var(--mono);color:var(--muted)}
 .fams{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}.fams .big{display:block;font-size:110px;line-height:1;margin-bottom:12px;color:var(--text)}.fams b{display:block;font:600 17px var(--sans);margin-bottom:6px}
 .scale{display:grid;gap:0;border-top:1px solid var(--border)}.tr{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--border)}.tm{display:grid;gap:1px;font:400 11px/1.3 var(--mono);color:var(--muted)}.tm b{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--primary)}.ts{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.img2{display:grid;grid-template-columns:1fr 1fr 280px;gap:22px}.img2 figure{margin:0;display:grid;gap:8px}.img2 img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.img2 figcaption{font:400 12px/1.4 var(--mono);color:var(--muted)}.gm svg{width:100%;aspect-ratio:16/10;background:var(--bg);border:1px solid var(--border)}
+.img2{display:grid;grid-template-columns:1fr 1fr;gap:28px}.img2 figure{margin:0;display:grid;gap:8px}.img2 img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.img2 figcaption{font:400 12px/1.4 var(--mono);color:var(--muted)}.gm svg{width:100%;aspect-ratio:16/10;background:var(--bg);border:1px solid var(--border)}
 .web{display:grid;grid-template-columns:420px 1fr;gap:56px;align-items:center}.tabs{display:grid;gap:10px}.tabbar{padding:8px 8px 0}.tabbar.lt{background:#DFE1E5}.tabbar.dk{background:#202124}.tab{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:8px 8px 0 0;font:400 13px var(--sans)}.tabbar.lt .tab{background:#fff;color:#1F2937}.tabbar.dk .tab{background:#35363A;color:#E8EAED}.tab .x{margin-left:auto;opacity:.5}
 .apps{display:flex;gap:36px;flex-wrap:wrap}.apps figure{margin:0;display:grid;gap:10px;justify-items:center}.apps img{box-shadow:0 0 0 1px var(--border)}.apps figcaption{font:400 12px var(--mono);color:var(--muted);text-align:center;max-width:150px}
 .og2{display:grid;grid-template-columns:1fr 1fr;gap:28px}.og2 figure{margin:0;display:grid;gap:10px}.og2 img{width:100%;display:block;border:1px solid var(--border)}.og2 figcaption{font:400 12px var(--mono);color:var(--muted)}
 .li{display:grid;gap:8px}.liframe{position:relative;border:1px solid var(--border)}.liframe img{width:100%;display:block}.liphoto{position:absolute;left:3%;bottom:-24%;width:17%;aspect-ratio:1;border-radius:50%;background-size:cover;background-position:center;border:4px solid #1B1F23}.safe{position:absolute;left:37.9%;right:12.9%;top:10%;bottom:10%;border:1px dashed var(--harmonic)}
 .gh{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start;margin-top:44px}.gh img{width:100%;border:1px solid var(--border)}
+.motif{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:start}.mstage{width:420px;height:420px;border:1px solid var(--border);display:grid;place-items:center}.mstage svg{width:360px;height:360px;overflow:visible}.mstory{display:grid;gap:12px;align-content:start}.mfield{font:500 12px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--primary)}.msays{border-left:2px solid var(--contrast);padding-left:12px;color:var(--text);font:italic 500 16px/1.45 var(--serif)}.mstory b{color:var(--text)}.family{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}.family figure{margin:0;display:grid;gap:6px}.family svg{width:100%;aspect-ratio:1;border:1px solid var(--border);padding:8px;overflow:visible}.family .on svg{border-color:var(--contrast)}.family figcaption{font:400 11px/1.3 var(--mono);color:var(--muted)}
 .tree{display:grid;grid-template-columns:1fr 1fr;gap:48px}.tree pre{margin:0;font:400 14px/1.75 var(--mono);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:22px}
 @media print{html,body{background:var(--bg)}.deck{display:block;padding:0}.frame{width:1280px!important;height:720px!important;break-after:page}.plate{transform:none}}
 @page{size:1280px 720px;margin:0}
@@ -176,6 +185,11 @@ const html = `<!doctype html>
 <style>${css}</style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="duo" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"/><feComponentTransfer><feFuncR type="table" tableValues="${duo.map((s) => s[0]).join(' ')}"/><feFuncG type="table" tableValues="${duo.map((s) => s[1]).join(' ')}"/><feFuncB type="table" tableValues="${duo.map((s) => s[2]).join(' ')}"/></feComponentTransfer></filter></svg>
 <main class="deck">${plates.map((p) => `<div class="frame">${p}</div>`).join('\n')}</main>
+<script>${motifBrowserScript()}</script>
+<script>
+  // The active motif is alive in the HTML book; the PDF keeps its still frame.
+  if (!navigator.webdriver && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('svg.live').forEach((svg) => { const pal = 0; svg.innerHTML = ''; const m = BrandMotifs.mountMotif(svg, svg.dataset.motif, ${JSON.stringify(PAL)}); let t0 = performance.now(); (function f(now){ m.update((now - t0) / 1000); requestAnimationFrame(f); })(t0); });
+</script>
 <script>
   // Scale each 1280x720 plate to the viewport width; print and PDF use native size.
   function fit(){const w=Math.min(1280,document.documentElement.clientWidth-32);const k=w/1280;document.documentElement.style.setProperty('--k',k);document.documentElement.style.setProperty('--fw',w+'px');document.documentElement.style.setProperty('--fh',(720*k)+'px');}

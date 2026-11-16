@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { motifBrowserScript } from './motif-browser.mjs';
 
 const BRAND = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ROOT = path.resolve(BRAND, '..');
@@ -45,6 +46,7 @@ export async function openRenderer() {
   const page = await browser.newPage();
   const lockup = svgUri('lockup-night.svg');
   await page.evaluateOnNewDocument((tokens, lock) => { window.BRAND = tokens; window.LOCKUP = lock; }, T, lockup);
+  await page.evaluateOnNewDocument(motifBrowserScript());
   return {
     browser,
     /** Render one template (brand/templates/<name>.html) to a PNG at its native size. */

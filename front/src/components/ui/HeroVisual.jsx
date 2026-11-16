@@ -1,141 +1,74 @@
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { mountMotif } from '../../brand/motifs';
+import BRAND_TOKENS from '../../data/brandTokens.json';
 
 /**
- * Hero side decoration. A subtle constellation of nodes connected by hairlines.
- * Evokes "knowledge graph / agent network" — on-brand for Production AI.
+ * Hero motif. Renders the active brand motif (brand/tokens.json → motif.active,
+ * Hamilton's Icosian game by default) from the shared motif library, alive.
  *
- * Brand roles: edges in the harmonic colour, nodes in the primary, and exactly one
- * node (the central one, "production") in the contrast colour.
- *
- * Design choices:
- *   - Nodes pulse on different cycles (3-7s each) so the field feels alive
- *     without being distracting.
- *   - Edges sit at very low opacity so the type stays the hero.
- *   - One small "data pulse" travels a path through the graph on a long
- *     8-second loop, hinting at flow without demanding attention.
- *   - Hidden below lg breakpoint — on mobile the hero is centered text only.
- *   - aria-hidden because it carries no information.
+ * - Colours are CSS variables, so the graph follows day and night mode.
+ * - Time accumulates only while it runs: it pauses off screen, in a hidden tab
+ *   and below the lg breakpoint (where the element is not displayed), and
+ *   resumes without a jump.
+ * - With prefers-reduced-motion it shows the motif's still frame.
+ * - Decorative: aria-hidden. Its story lives in the brand book.
  */
+const PALETTE = {
+  primary: 'rgb(var(--brand-primary))',
+  harmonic: 'rgb(var(--brand-harmonic))',
+  contrast: 'rgb(var(--brand-contrast))',
+  muted: 'rgb(var(--brand-muted))',
+};
 
-// Asymmetric, organic layout. NOT a regular grid.
-const NODES = [
-  { id: 'a', cx:  60, cy:  60, r: 4 },
-  { id: 'b', cx: 200, cy:  40, r: 6 },
-  { id: 'c', cx: 330, cy:  90, r: 4 },
-  { id: 'd', cx:  90, cy: 180, r: 5 },
-  { id: 'e', cx: 220, cy: 190, r: 7 }, // central, biggest
-  { id: 'f', cx: 350, cy: 200, r: 4 },
-  { id: 'g', cx:  60, cy: 310, r: 4 },
-  { id: 'h', cx: 200, cy: 340, r: 5 },
-  { id: 'i', cx: 330, cy: 310, r: 4 },
-];
+export default function HeroVisual({ motif = BRAND_TOKENS.motif.active }) {
+  const ref = useRef(null);
 
-const EDGES = [
-  ['a','b'], ['b','c'], ['a','d'], ['b','d'], ['b','e'],
-  ['c','e'], ['c','f'], ['d','e'], ['e','f'], ['d','g'],
-  ['e','h'], ['f','i'], ['g','h'], ['h','i'],
-];
+  useEffect(() => {
+    const svg = ref.current;
+    if (!svg) return undefined;
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    // Finer than the 200-unit default: at hero size the type must stay the hero.
+    const live = mountMotif(svg, motif, PALETTE, { stroke: 0.62, node: 0.72, opacity: 0.82 });
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-const nodeMap = Object.fromEntries(NODES.map(n => [n.id, n]));
+    let raf = 0;
+    let elapsed = 0;
+    let last = null;
+    let onScreen = true;
 
-// Path the traveling pulse follows: a → b → e → h → i → f → c → b (loop)
-const PULSE_PATH = ['a', 'b', 'e', 'h', 'i', 'f', 'c', 'b'];
+    const loop = (now) => {
+      if (last !== null) elapsed += Math.min(0.1, (now - last) / 1000);
+      last = now;
+      live.update(elapsed);
+      raf = requestAnimationFrame(loop);
+    };
+    const sync = () => {
+      cancelAnimationFrame(raf);
+      last = null;
+      if (reduce.matches) { live.update(live.still); return; }
+      if (onScreen && !document.hidden) raf = requestAnimationFrame(loop);
+    };
 
-export default function HeroVisual() {
-  const pulseCx = PULSE_PATH.map(id => nodeMap[id].cx);
-  const pulseCy = PULSE_PATH.map(id => nodeMap[id].cy);
+    const io = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; sync(); });
+    io.observe(svg);
+    document.addEventListener('visibilitychange', sync);
+    reduce.addEventListener?.('change', sync);
+    sync();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+      document.removeEventListener('visibilitychange', sync);
+      reduce.removeEventListener?.('change', sync);
+    };
+  }, [motif]);
 
   return (
     <div
-      className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[420px] xl:w-[480px] aspect-square pointer-events-none"
+      className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[340px] xl:w-[440px] aspect-square pointer-events-none"
       aria-hidden="true"
     >
-      <svg viewBox="0 0 400 400" className="w-full h-full" fill="none">
-        {/* Edges — sit behind nodes, very low opacity */}
-        <g className="text-brand-harmonic/40">
-          {EDGES.map(([from, to], i) => {
-            const a = nodeMap[from];
-            const b = nodeMap[to];
-            return (
-              <motion.line
-                key={i}
-                x1={a.cx}
-                y1={a.cy}
-                x2={b.cx}
-                y2={b.cy}
-                stroke="currentColor"
-                strokeWidth="0.8"
-                strokeLinecap="round"
-                animate={{ opacity: [0.4, 0.7, 0.4] }}
-                transition={{
-                  duration: 5 + (i % 3),
-                  repeat: Infinity,
-                  delay: (i * 0.4) % 4,
-                  ease: 'easeInOut',
-                }}
-              />
-            );
-          })}
-        </g>
-
-        {/* Nodes — staggered pulse so the constellation breathes */}
-        <g className="text-cyan-700/70 dark:text-brand-accent/80">
-          {NODES.filter((n) => n.id !== 'e').map((n, i) => (
-            <motion.circle
-              key={n.id}
-              cx={n.cx}
-              cy={n.cy}
-              r={n.r}
-              fill="currentColor"
-              animate={{
-                opacity: [0.45, 0.95, 0.45],
-                scale: [1, 1.08, 1],
-              }}
-              style={{ transformOrigin: `${n.cx}px ${n.cy}px` }}
-              transition={{
-                duration: 3 + (i % 4),
-                repeat: Infinity,
-                delay: (i * 0.35) % 3,
-                ease: 'easeInOut',
-              }}
-            />
-          ))}
-        </g>
-
-        {/* Halo around the central node — extra visual weight */}
-        <motion.circle
-          cx={nodeMap.e.cx}
-          cy={nodeMap.e.cy}
-          r={14}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1"
-          className="text-brand-contrast/40"
-          animate={{ r: [14, 22, 14], opacity: [0.5, 0.1, 0.5] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        />
-
-        {/* The one contrast node: production */}
-        <circle cx={nodeMap.e.cx} cy={nodeMap.e.cy} r={nodeMap.e.r} fill="currentColor" className="text-brand-contrast" />
-
-        {/* Traveling data pulse — small bright dot tracing a path */}
-        <motion.circle
-          r={3}
-          fill="currentColor"
-          className="text-cyan-700 dark:text-brand-accent"
-          animate={{
-            cx: pulseCx,
-            cy: pulseCy,
-            opacity: [0, 1, 1, 1, 1, 1, 1, 0],
-          }}
-          transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            times: [0, 0.05, 0.2, 0.4, 0.55, 0.7, 0.85, 1],
-          }}
-        />
-      </svg>
+      <svg ref={ref} viewBox="0 0 200 200" className="w-full h-full overflow-visible" fill="none" />
     </div>
   );
 }

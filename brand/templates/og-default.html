@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="_base.css">
 <style>
   .card { width: 1200px; height: 630px; }
-  .graph { right: -70px; top: 170px; width: 340px; height: 390px; }
+  .graph { right: 72px; top: 64px; width: 256px; height: 256px; }
   .lock { left: 80px; top: 66px; height: 58px; }
   h1 { position: absolute; left: 76px; top: 232px; font-size: 82px; line-height: 1.08; }
   h1 .l2 { font-size: 70px; }
@@ -19,7 +19,7 @@
 <script src="_brand.js"></script>
 <script>
   document.getElementById('card').innerHTML =
-    `<div class="graph">${brandGraph(0.8)}</div>${lockupImg('lock')}<h1>${tagline()}</h1>`
+    `<div class="graph">${brandGraph(1)}</div>${lockupImg('lock')}<h1>${tagline()}</h1>`
     + `<div class="label">${esc(BRAND.verbal.strap)}</div>`;
 </script>
 </body>

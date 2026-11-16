@@ -7,6 +7,7 @@
 //   front/src/data/brandTokens.json     colours, duotone and category roles for React code
 //   brand/exports/tokens/brand.css      the same variables as plain hex, for anything outside the site
 //   brand/exports/tokens/contrast.md    WCAG contrast of every text role in both modes
+//   front/src/brand/motifs.js           copy of brand/motifs/motifs.mjs (CRA cannot import outside src/)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -72,6 +73,7 @@ write('front/src/data/brandTokens.json', JSON.stringify({
   color: T.color,
   font: Object.fromEntries(Object.entries(T.font).filter(([k]) => k !== 'googleFontsQuery').map(([k, v]) => [k, v.family])),
   categories: T.categories,
+  motif: T.motif,
   duotone: { r: duotoneTables[0], g: duotoneTables[1], b: duotoneTables[2] },
 }, null, 2) + '\n');
 
@@ -95,3 +97,9 @@ for (const k of Object.keys(T.roles)) {
   rows.push(`| \`${k}\` | ${T.roles[k].use} | \`${night[k]}\` | ${r(night)} | \`${day[k]}\` | ${r(day)} |`);
 }
 write('brand/exports/tokens/contrast.md', `<!-- Generated from brand/tokens.json. WCAG contrast against the page background of each mode. -->\n${rows.join('\n')}\n`);
+
+const motifSrc = fs.readFileSync(path.join(BRAND, 'motifs', 'motifs.mjs'), 'utf8');
+if (!T.motif.family.includes(T.motif.active)) throw new Error(`motif.active "${T.motif.active}" is not in motif.family`);
+write('front/src/brand/motifs.js', `/* Copied from brand/motifs/motifs.mjs by brand/scripts/build_tokens.mjs. Edit the original. */
+/* eslint-disable */
+${motifSrc}`);
