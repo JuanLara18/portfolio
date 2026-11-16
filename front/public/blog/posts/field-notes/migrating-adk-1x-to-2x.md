@@ -31,9 +31,9 @@ None of this is a reason to panic, and — importantly — none of it is a reaso
 
 ## Prerequisites
 
-This post assumes you have shipped at least one ADK agent and understand sessions, events, tools, and the runner. If any of that is fuzzy, read [Google ADK: Building Production Agents from First Principles](https://juanlara18.github.io/portfolio/#/blog/google-adk-agent-development-deep-dive) first — it covers the 1.x mental model that this post is about dismantling.
+This post assumes you have shipped at least one ADK agent and understand sessions, events, tools, and the runner. If any of that is fuzzy, read [Google ADK: Building Production Agents from First Principles](/blog/google-adk-agent-development-deep-dive) first — it covers the 1.x mental model that this post is about dismantling.
 
-If you want to understand what the 2.0 graph runtime *is* rather than what it breaks, read the companion piece, [ADK Graph Workflows: Deterministic Orchestration for Agents](https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration). This post deliberately does not re-explain workflows; it explains the transition.
+If you want to understand what the 2.0 graph runtime *is* rather than what it breaks, read the companion piece, [ADK Graph Workflows: Deterministic Orchestration for Agents](/blog/adk-graph-workflows-deterministic-orchestration). This post deliberately does not re-explain workflows; it explains the transition.
 
 You will also want: a checkout of your agent code you can grep, read access to whatever database backs your sessions, and the ability to stand up a second deployment of your service. That last one is not optional if you are running anything customer-facing.
 
@@ -785,7 +785,7 @@ Briefly, because the companion post covers this properly.
 
 You get routing decided by code instead of by inference, which removes both a latency hop and a source of variance from every branch in your agent. You get retry, timeout, and backoff as declarative node configuration rather than as `try`/`except` scaffolding you maintain. You get durable human-in-the-loop pausing, with handoff and re-entry as distinct, supported resumption semantics — which for anything with an approval step is the difference between a real workflow and a demo. You get state isolation, so a verbose sub-agent's execution history does not silently consume a downstream agent's context window. And you get the graph itself as an artifact: something you can render, review, and reason about, rather than orchestration logic distributed across a dozen `_run_async_impl` methods.
 
-For how to actually build with all of that, see [ADK Graph Workflows: Deterministic Orchestration for Agents](https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration).
+For how to actually build with all of that, see [ADK Graph Workflows: Deterministic Orchestration for Agents](/blog/adk-graph-workflows-deterministic-orchestration).
 
 The one-line version of everything above: **the code changes are a week and the schema changes are a quarter, and the failures that will hurt you are the three that do not raise.** Pin your version, migrate your session storage first, upgrade your readers before your writers, and do not leave your codebase in the soft-shell state any longer than you have to.
 

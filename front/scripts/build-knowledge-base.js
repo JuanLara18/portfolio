@@ -52,7 +52,7 @@ function buildPostEntry(post, augment) {
     category: post.category,
     tags: post.tags || [],
     excerpt: post.excerpt,
-    url: `${SITE_BASE}/#/blog/${post.slug}`,
+    url: `${SITE_BASE}/blog/${post.category}/${post.slug}/`,
     source_path: `front/public/blog/posts/${post.category}/${post.slug}.md`,
     reading_minutes: post.readingTimeMinutes || post.readingTime || null,
     word_count: post.estimatedWordCount || null,

@@ -19,7 +19,7 @@ There is a specific kind of object that everyone owns and almost nobody uses to 
 
 If you are starting from nothing, that pitch is compelling. But you are not starting from nothing. You already run everything on GCP. You have Memorystore one API call away, Vertex AI Vector Search and Vertex AI Feature Store sitting in the same console, BigQuery as your analytical spine, and AlloyDB with pgvector if you want vectors next to relational data. The real question is not "is Redis good?" It obviously is. The question is the procurement question: **what do I actually gain by adding Redis to a stack that already has a Google-managed answer for most of what Redis sells, and is that gain worth the cost, the second vendor, and the lock-in?**
 
-This post treats that as a decision you have to defend to a budget owner, not a technology you want to play with. It maps each Redis-for-AI capability to its nearest GCP-native equivalent, untangles the genuinely confusing distinction between Memorystore and Redis Cloud, and proposes three concrete proofs of concept with success metrics that would settle the argument with data instead of vibes. If you want the caching mechanics in depth, I wrote a companion piece on [the four cache layers that move the needle in LLM systems](https://juanlara18.github.io/portfolio/#/blog/llm-caching-four-layers); and if you want the broader GCP AI stack with its warts, see [the GCP AI stack field notes](https://juanlara18.github.io/portfolio/#/blog/gcp-ai-stack-vertex-alloydb-knowledge-pipeline). This post is the buy-vs-build layer on top of both.
+This post treats that as a decision you have to defend to a budget owner, not a technology you want to play with. It maps each Redis-for-AI capability to its nearest GCP-native equivalent, untangles the genuinely confusing distinction between Memorystore and Redis Cloud, and proposes three concrete proofs of concept with success metrics that would settle the argument with data instead of vibes. If you want the caching mechanics in depth, I wrote a companion piece on [the four cache layers that move the needle in LLM systems](/blog/llm-caching-four-layers); and if you want the broader GCP AI stack with its warts, see [the GCP AI stack field notes](/blog/gcp-ai-stack-vertex-alloydb-knowledge-pipeline). This post is the buy-vs-build layer on top of both.
 
 ## What Redis Actually Offers for AI
 
@@ -35,7 +35,7 @@ RedisVL adds conversational abstractions on top -- message history with optional
 
 Redis is a vector database. The Redis Query Engine (the indexing-and-search subsystem, historically surfaced as RediSearch) supports `FLAT` exact search, `HNSW` approximate search, and a newer `SVS-VAMANA` index, with cosine, inner-product, and L2 distance, plus hybrid queries that combine vector similarity with tag, numeric, geo, and full-text filters. HNSW exposes the usual knobs: `M` (graph connectivity, default 16), `EF_CONSTRUCTION` (build-time candidate set, default 200), and `EF_RUNTIME` (query-time candidate set, default 10), the last of which RedisVL lets you tune per query without rebuilding the index. As of recent releases it also does BM25 full-text and a `HybridQuery` that fuses semantic and keyword signals.
 
-The honest framing: Redis is a very fast in-memory vector index, which means its strength is low-latency, high-QPS search over datasets that fit in RAM. It is not a disk-backed billion-vector warehouse, and it is not trying to be a dedicated vector DB with exotic quantization and compaction tooling the way Milvus or a purpose-built system is. For a comparison of dedicated vector DBs on their own terms, see [the vector DB benchmarks post](https://juanlara18.github.io/portfolio/#/blog/vector-db-benchmarks).
+The honest framing: Redis is a very fast in-memory vector index, which means its strength is low-latency, high-QPS search over datasets that fit in RAM. It is not a disk-backed billion-vector warehouse, and it is not trying to be a dedicated vector DB with exotic quantization and compaction tooling the way Milvus or a purpose-built system is. For a comparison of dedicated vector DBs on their own terms, see [the vector DB benchmarks post](/blog/vector-db-benchmarks).
 
 ### Semantic Caching: RedisVL SemanticCache and LangCache
 
@@ -329,7 +329,7 @@ Do not benchmark anything until you can answer these. A POC without them produce
 - **A corpus size and growth curve.** RAM-resident vector search has a hard ceiling. Know whether you are at 100K, 10M, or 1B vectors next year.
 - **Compliance constraints.** Can prompts leave your VPC to a managed cache? If not, LangCache (buy) is off the table and the question collapses to Memorystore (build).
 
-These mirror the discipline in [the enterprise PoC framework post](https://juanlara18.github.io/portfolio/#/blog/ai-poc-enterprise-evaluation): define success before you start, or you will rationalize whatever the demo showed.
+These mirror the discipline in [the enterprise PoC framework post](/blog/ai-poc-enterprise-evaluation): define success before you start, or you will rationalize whatever the demo showed.
 
 ## Three POCs That Would Prove the Value
 

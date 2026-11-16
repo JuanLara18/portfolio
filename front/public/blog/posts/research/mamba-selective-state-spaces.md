@@ -17,7 +17,7 @@ Most of us, reading it for the first time, were skeptical in the polite way you'
 
 This post is a careful walkthrough of the paper. Not a summary — a walkthrough. My goal is that by the end, you understand *why* each equation in the paper looks the way it does, *what* problem each design choice solves, and *where* the intellectual lineage comes from. We'll cover continuous state space models from control theory, the discretization trick that turns them into neural network layers, HiPPO and why it was the right initialization, S4 and its convolutional view, the single observation that broke the convolutional view and required a new algorithm, Mamba's selection mechanism, and the hardware-aware parallel scan that made the whole thing practical on GPUs.
 
-This is a [research post](/blog/research) in our usual sense — more math, less code, written for readers who want to be able to read the paper and internalize it. If you've read the [*Attention is All You Need* deep-dive](/blog/research/attention-is-all-you-need) on this blog, consider this the counter-essay: the architecture that asked whether attention was really all you needed, and what you'd build if the answer was no.
+This is a [research post](/blog/category/research) in our usual sense — more math, less code, written for readers who want to be able to read the paper and internalize it. If you've read the [*Attention is All You Need* deep-dive](/blog/attention-is-all-you-need) on this blog, consider this the counter-essay: the architecture that asked whether attention was really all you needed, and what you'd build if the answer was no.
 
 ## The Problem Attention Has With Long Sequences
 

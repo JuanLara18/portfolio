@@ -23,7 +23,7 @@ The situation gets worse at scale. Two data scientists sharing one GPU server ca
 
 The problem is that Kubernetes was designed by infrastructure engineers for infrastructure engineers. The official documentation assumes you care about control planes, etcd consensus, and the inner workings of the kubelet. You do not. You care about three things: training models on GPUs without waiting in line, serving predictions without managing servers, and running pipelines that do not break at 2 AM.
 
-This post covers the subset of Kubernetes that addresses those three concerns. Nothing more. If you have read the companion post on [Docker for ML engineers](/blog/field-notes/docker-for-ml-engineers), you already have the foundation -- containers, images, registries. Kubernetes is what happens when you need to run those containers at scale, on shared infrastructure, with GPUs.
+This post covers the subset of Kubernetes that addresses those three concerns. Nothing more. If you have read the companion post on [Docker for ML engineers](/blog/docker-for-ml-engineers), you already have the foundation -- containers, images, registries. Kubernetes is what happens when you need to run those containers at scale, on shared infrastructure, with GPUs.
 
 ## Prerequisites: Where to Practice
 

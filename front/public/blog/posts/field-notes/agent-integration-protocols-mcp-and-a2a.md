@@ -125,9 +125,9 @@ flowchart LR
 
 That is as deep as I will go on architecture, because the mechanics — the JSON-RPC wire format, the five primitives (tools, resources, prompts, roots, sampling), the local versus remote transports, the OAuth flows — are covered thoroughly in two companion posts. If you want to *build* one of these servers, go there:
 
-- The conceptual and hands-on introduction to MCP, including the five primitives and a complete FastMCP server, is in [The Model Context Protocol: How AI Learned to Use Tools](https://juanlara18.github.io/portfolio/#/blog/model-context-protocol).
-- The production concerns — OAuth 2.1, per-tool scopes, audit logging, multi-tenant isolation, gateways — are in [Building Enterprise MCP Servers: From Prototype to Production](https://juanlara18.github.io/portfolio/#/blog/mcp-production-enterprise).
-- A concrete end-to-end build, turning natural language into Power BI dashboards through an MCP server, is in [Building an MCP Server: Natural Language to Power BI Dashboards](https://juanlara18.github.io/portfolio/#/blog/mcp-server-nl-to-powerbi-dashboard).
+- The conceptual and hands-on introduction to MCP, including the five primitives and a complete FastMCP server, is in [The Model Context Protocol: How AI Learned to Use Tools](/blog/model-context-protocol).
+- The production concerns — OAuth 2.1, per-tool scopes, audit logging, multi-tenant isolation, gateways — are in [Building Enterprise MCP Servers: From Prototype to Production](/blog/mcp-production-enterprise).
+- A concrete end-to-end build, turning natural language into Power BI dashboards through an MCP server, is in [Building an MCP Server: Natural Language to Power BI Dashboards](/blog/mcp-server-nl-to-powerbi-dashboard).
 
 For this post, the architecture is just enough scaffolding to answer the real question: why a protocol, and not one of the things people reach for instead.
 

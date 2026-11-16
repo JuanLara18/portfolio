@@ -21,7 +21,7 @@ This post covers the full arc: how contrastive image-text training works and why
 
 ## Prerequisites
 
-You should be comfortable with embeddings, cosine similarity, and basic PyTorch. If you have read [MTEB: Choosing the Right Embedding Model](/blog/field-notes/mteb-embedding-benchmarks) and [Fine-Tuning Embeddings](/blog/field-notes/fine-tuning-embeddings), you have all the background you need.
+You should be comfortable with embeddings, cosine similarity, and basic PyTorch. If you have read [MTEB: Choosing the Right Embedding Model](/blog/mteb-embedding-benchmarks) and [Fine-Tuning Embeddings](/blog/fine-tuning-embeddings), you have all the background you need.
 
 **To run the code examples**, you will need a GPU runtime. Free options:
 

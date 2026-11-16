@@ -19,7 +19,7 @@ The answer is not what I expected. I thought I had been writing about LLMs and o
 
 Some of these are confirmations. Some are corrections. The corrections are why this post exists, and they are why the next 100 posts will be measurably different.
 
-A note before we start. The piece you are reading is the curiosities-category companion to a stack-recommendations piece I have lined up for post #101. The retrospective belongs in *curiosities* because it is mostly an exercise in applied network science: the analytical method I have already used in [graph-theory-mathematics-of-connections](https://juanlara18.github.io/portfolio/#/blog/graph-theory-mathematics-of-connections), [network-science-communities-centrality](https://juanlara18.github.io/portfolio/#/blog/network-science-communities-centrality), and [pagerank-eigenvectors](https://juanlara18.github.io/portfolio/#/blog/pagerank-eigenvectors), now turned inward on the corpus that produced those posts in the first place. The blog applied to itself. I will keep the math honest and the verdicts unsentimental.
+A note before we start. The piece you are reading is the curiosities-category companion to a stack-recommendations piece I have lined up for post #101. The retrospective belongs in *curiosities* because it is mostly an exercise in applied network science: the analytical method I have already used in [graph-theory-mathematics-of-connections](/blog/graph-theory-mathematics-of-connections), [network-science-communities-centrality](/blog/network-science-communities-centrality), and [pagerank-eigenvectors](/blog/pagerank-eigenvectors), now turned inward on the corpus that produced those posts in the first place. The blog applied to itself. I will keep the math honest and the verdicts unsentimental.
 
 ---
 
@@ -69,7 +69,7 @@ A few observations from the numbers alone, before we touch the graph.
 
 First, the corpus is dominated by field-notes. Roughly seventy-three of every hundred posts are practical writeups; only fourteen are curiosities and twelve are research deep-dives. This is the first signal that the blog is less of a balanced trio and more of a single applied-engineering torso with two small intellectual wings. It is also, in retrospect, a faithful reflection of how the writing has evolved: most of the posts are practical writeups from data and ML work, with curiosities and research relegated to evenings.
 
-Second, the median post is 6,500 words. The mean is also high: 685,421 over 99 is roughly 6,923. This is not a list-blog. It is closer to a textbook with chapters that happen to be marketed as posts. The single longest piece, [reinforcement-learning-first-principles](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-first-principles), is 18,000 words, which is a small book.
+Second, the median post is 6,500 words. The mean is also high: 685,421 over 99 is roughly 6,923. This is not a list-blog. It is closer to a textbook with chapters that happen to be marketed as posts. The single longest piece, [reinforcement-learning-first-principles](/blog/reinforcement-learning-first-principles), is 18,000 words, which is a small book.
 
 ---
 
@@ -236,11 +236,11 @@ Hubs tell you where the gravity is. Edges tell you which pairs of ideas travel t
 
 Each edge is a posting habit. I want to read three of them honestly.
 
-**LLMs ↔ Production ML (17).** This is the fattest edge in the blog, tied with LLMs ↔ RAG. It is also the edge I am least proud of. Many of these posts genuinely belong on the edge: [llm-caching-four-layers](https://juanlara18.github.io/portfolio/#/blog/llm-caching-four-layers), [production-llm-agents-patterns](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns), [llamaindex-langchain-llm-frameworks](https://juanlara18.github.io/portfolio/#/blog/llamaindex-langchain-llm-frameworks). But the edge is also inflated by my having tagged "LLMs" on posts where the LLM is incidental. A post about a knowledge catalog or a Vertex AI feature gets "LLMs" because LLMs are involved somewhere in the user story, which is true but not particularly informative. This edge is, in part, the consequence of an over-eager tagging habit I will discuss in the singletons section.
+**LLMs ↔ Production ML (17).** This is the fattest edge in the blog, tied with LLMs ↔ RAG. It is also the edge I am least proud of. Many of these posts genuinely belong on the edge: [llm-caching-four-layers](/blog/llm-caching-four-layers), [production-llm-agents-patterns](/blog/production-llm-agents-patterns), [llamaindex-langchain-llm-frameworks](/blog/llamaindex-langchain-llm-frameworks). But the edge is also inflated by my having tagged "LLMs" on posts where the LLM is incidental. A post about a knowledge catalog or a Vertex AI feature gets "LLMs" because LLMs are involved somewhere in the user story, which is true but not particularly informative. This edge is, in part, the consequence of an over-eager tagging habit I will discuss in the singletons section.
 
-**Algorithms ↔ Mathematics (15).** This is the curiosities spine. The 14 curiosities posts almost all carry both tags, and so do several research and field-notes pieces that lean into derivations. This edge is the part of the blog I am most willing to defend on intellectual grounds: every post on it earned the tags. [pagerank-eigenvectors](https://juanlara18.github.io/portfolio/#/blog/pagerank-eigenvectors), [graph-theory-mathematics-of-connections](https://juanlara18.github.io/portfolio/#/blog/graph-theory-mathematics-of-connections), [algebraic-number-theory-when-factorization-breaks](https://juanlara18.github.io/portfolio/#/blog/algebraic-number-theory-when-factorization-breaks), [fermat-n4-infinite-descent](https://juanlara18.github.io/portfolio/#/blog/fermat-n4-infinite-descent), [collatz-conjecture](https://juanlara18.github.io/portfolio/#/blog/collatz-conjecture). The edge is honest. It is also the smallest of the heavy-weight edges, which is a separate problem.
+**Algorithms ↔ Mathematics (15).** This is the curiosities spine. The 14 curiosities posts almost all carry both tags, and so do several research and field-notes pieces that lean into derivations. This edge is the part of the blog I am most willing to defend on intellectual grounds: every post on it earned the tags. [pagerank-eigenvectors](/blog/pagerank-eigenvectors), [graph-theory-mathematics-of-connections](/blog/graph-theory-mathematics-of-connections), [algebraic-number-theory-when-factorization-breaks](/blog/algebraic-number-theory-when-factorization-breaks), [fermat-n4-infinite-descent](/blog/fermat-n4-infinite-descent), [collatz-conjecture](/blog/collatz-conjecture). The edge is honest. It is also the smallest of the heavy-weight edges, which is a separate problem.
 
-**Deep Learning ↔ NLP (15).** This is the transformers-and-embeddings arc. Posts here tend to be the research category: [attention-is-all-you-need](https://juanlara18.github.io/portfolio/#/blog/attention-is-all-you-need), [bert-pre-training-bidirectional-transformers](https://juanlara18.github.io/portfolio/#/blog/bert-pre-training-bidirectional-transformers), [t5-text-to-text-transfer-transformer](https://juanlara18.github.io/portfolio/#/blog/t5-text-to-text-transfer-transformer), [scaling-laws-neural-language-models](https://juanlara18.github.io/portfolio/#/blog/scaling-laws-neural-language-models), [embeddings-geometry-of-meaning](https://juanlara18.github.io/portfolio/#/blog/embeddings-geometry-of-meaning), [the-manifold-hypothesis](https://juanlara18.github.io/portfolio/#/blog/the-manifold-hypothesis). This edge is also honest: every paper-reading post that touches modern NLP earned both tags.
+**Deep Learning ↔ NLP (15).** This is the transformers-and-embeddings arc. Posts here tend to be the research category: [attention-is-all-you-need](/blog/attention-is-all-you-need), [bert-pre-training-bidirectional-transformers](/blog/bert-pre-training-bidirectional-transformers), [t5-text-to-text-transfer-transformer](/blog/t5-text-to-text-transfer-transformer), [scaling-laws-neural-language-models](/blog/scaling-laws-neural-language-models), [embeddings-geometry-of-meaning](/blog/embeddings-geometry-of-meaning), [the-manifold-hypothesis](/blog/the-manifold-hypothesis). This edge is also honest: every paper-reading post that touches modern NLP earned both tags.
 
 The pattern across the top 10 edges: about half are real intellectual co-occurrences (the math edges, the model edges, the retrieval edges), and about half are inflated by the gravitational pull of the LLM topic. Not a fad, exactly — LLMs are genuinely central — but a tagging drift. The action item is in the closing section.
 
@@ -316,11 +316,11 @@ A few honest observations.
 
 **The Math/Curiosities community is the smallest of the five but has the highest concept density per post.** A typical curiosities post has 8–10 tags, of which 5–6 are within the cluster. The cluster is small because there are only 14 curiosities posts and they all live in the same neighborhood. It has high quality per node and low coverage. This is the community I am most under-investing in.
 
-**The Knowledge Graphs / Ontology community is the youngest.** Most of its posts are recent. It is also the cluster with the strongest internal coherence: the ontology arc was deliberately written as a sequence ([ontologies-building-knowledge-bases](https://juanlara18.github.io/portfolio/#/blog/ontologies-building-knowledge-bases), [knowledge-graphs-practice](https://juanlara18.github.io/portfolio/#/blog/knowledge-graphs-practice), [tbox-abox-schema-facts-distinction](https://juanlara18.github.io/portfolio/#/blog/tbox-abox-schema-facts-distinction), [modular-ontologies-core-domains-pattern](https://juanlara18.github.io/portfolio/#/blog/modular-ontologies-core-domains-pattern), [ontology-production-pipeline-gcp](https://juanlara18.github.io/portfolio/#/blog/ontology-production-pipeline-gcp), [ontology-to-agent-toolbox](https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox)), and the sequencing shows up as tight modularity in the Louvain partition.
+**The Knowledge Graphs / Ontology community is the youngest.** Most of its posts are recent. It is also the cluster with the strongest internal coherence: the ontology arc was deliberately written as a sequence ([ontologies-building-knowledge-bases](/blog/ontologies-building-knowledge-bases), [knowledge-graphs-practice](/blog/knowledge-graphs-practice), [tbox-abox-schema-facts-distinction](/blog/tbox-abox-schema-facts-distinction), [modular-ontologies-core-domains-pattern](/blog/modular-ontologies-core-domains-pattern), [ontology-production-pipeline-gcp](/blog/ontology-production-pipeline-gcp), [ontology-to-agent-toolbox](/blog/ontology-to-agent-toolbox)), and the sequencing shows up as tight modularity in the Louvain partition.
 
 **The Foundations / ML internals / SE community is the most heterogeneous.** It mixes posts on Python, on bash, on Docker, on git, on Kubernetes, on file formats, on hashing, on software-engineering classics, with a few ML-internals posts. The community holds together because all of these posts share the "engineering hygiene" angle, not because they share a topic.
 
-The half-cluster I gestured at in the opening is the **Reinforcement Learning + Fine-Tuning + Alignment** pocket that Louvain sometimes folds into the LLM cluster and sometimes splits out. With four to five posts ([reinforcement-learning-first-principles](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-first-principles), [reinforcement-learning-in-practice](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-in-practice), [fine-tuning-gemma4-lora-qlora](https://juanlara18.github.io/portfolio/#/blog/fine-tuning-gemma4-lora-qlora), [rlhf-dpo-alignment](https://juanlara18.github.io/portfolio/#/blog/rlhf-dpo-alignment)), it is right at the boundary of being its own cluster. With two more posts on RL or alignment it would crystallize.
+The half-cluster I gestured at in the opening is the **Reinforcement Learning + Fine-Tuning + Alignment** pocket that Louvain sometimes folds into the LLM cluster and sometimes splits out. With four to five posts ([reinforcement-learning-first-principles](/blog/reinforcement-learning-first-principles), [reinforcement-learning-in-practice](/blog/reinforcement-learning-in-practice), [fine-tuning-gemma4-lora-qlora](/blog/fine-tuning-gemma4-lora-qlora), [rlhf-dpo-alignment](/blog/rlhf-dpo-alignment)), it is right at the boundary of being its own cluster. With two more posts on RL or alignment it would crystallize.
 
 ---
 
@@ -339,13 +339,13 @@ for slug, score in top:
 
 Three posts surface as the most consequential bridges in this corpus.
 
-**[knowledge-catalog-vs-ontologies](https://juanlara18.github.io/portfolio/#/blog/knowledge-catalog-vs-ontologies).** This piece bridges the *Data Engineering / Cloud* community (it is fundamentally a GCP / Knowledge Catalog discussion) with the *Knowledge Graphs / Ontology* community (its analytical content is about ontology-grounded retrieval). Without this post, the GCP cluster and the ontology cluster touch each other only through a few weaker links. This was an unintentional bridge — I wrote the post because two threads I had been tracking separately collided in a single client conversation — but the graph rewards it as a structural keystone.
+**[knowledge-catalog-vs-ontologies](/blog/knowledge-catalog-vs-ontologies).** This piece bridges the *Data Engineering / Cloud* community (it is fundamentally a GCP / Knowledge Catalog discussion) with the *Knowledge Graphs / Ontology* community (its analytical content is about ontology-grounded retrieval). Without this post, the GCP cluster and the ontology cluster touch each other only through a few weaker links. This was an unintentional bridge — I wrote the post because two threads I had been tracking separately collided in a single client conversation — but the graph rewards it as a structural keystone.
 
-**[pagerank-eigenvectors](https://juanlara18.github.io/portfolio/#/blog/pagerank-eigenvectors).** This curiosities post bridges the *Math / Curiosities* community with the *Foundations / ML internals* community via Linear Algebra and Algorithms. Almost every other curiosities post is a self-contained essay; PageRank is one of the few that pulls toward the production side. Removing it would weaken the Math cluster's connection to everything else by a measurable amount.
+**[pagerank-eigenvectors](/blog/pagerank-eigenvectors).** This curiosities post bridges the *Math / Curiosities* community with the *Foundations / ML internals* community via Linear Algebra and Algorithms. Almost every other curiosities post is a self-contained essay; PageRank is one of the few that pulls toward the production side. Removing it would weaken the Math cluster's connection to everything else by a measurable amount.
 
-**[graph-neural-networks-learning-structured-data](https://juanlara18.github.io/portfolio/#/blog/graph-neural-networks-learning-structured-data).** This field-notes post bridges the *Math / Curiosities* community (it inherits Graph Theory from the curiosities arc) with the *LLM / RAG / Agents* community (it is also tagged Deep Learning, NLP, and Embeddings). It is the only post in the corpus that meaningfully connects the graph-theory cluster to the deep-learning cluster.
+**[graph-neural-networks-learning-structured-data](/blog/graph-neural-networks-learning-structured-data).** This field-notes post bridges the *Math / Curiosities* community (it inherits Graph Theory from the curiosities arc) with the *LLM / RAG / Agents* community (it is also tagged Deep Learning, NLP, and Embeddings). It is the only post in the corpus that meaningfully connects the graph-theory cluster to the deep-learning cluster.
 
-A fourth, weaker bridge: **[ontology-to-agent-toolbox](https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox)**, which spans the *Knowledge Graphs / Ontology* and *LLM / RAG / Agents* communities. This one is more of a structural confluence than a bridge proper, because the ontology cluster and the agents cluster already share several edges; but it is the single thickest connection between the two.
+A fourth, weaker bridge: **[ontology-to-agent-toolbox](/blog/ontology-to-agent-toolbox)**, which spans the *Knowledge Graphs / Ontology* and *LLM / RAG / Agents* communities. This one is more of a structural confluence than a bridge proper, because the ontology cluster and the agents cluster already share several edges; but it is the single thickest connection between the two.
 
 ```mermaid
 flowchart TB
@@ -458,11 +458,11 @@ Singleton *tags* are a graph-quality issue. Singleton-ish *posts* — posts with
 
 The posts with the lowest weighted degree in the post-post graph are predictable:
 
-- [tetris-np-complete](https://juanlara18.github.io/portfolio/#/blog/tetris-np-complete) — a curiosity about NP-completeness in puzzle games. Touches Algorithms, Computer Science, and Computability. The Computability tag is a singleton, which already isolates the post; the rest of the curiosities cluster mostly does not overlap with NP-completeness.
-- [ramanujan-constant-almost-integer](https://juanlara18.github.io/portfolio/#/blog/ramanujan-constant-almost-integer) — number theory and modular forms. Connects to Algebraic Number Theory, which itself is barely-connected.
-- [shannon-number-chess-game-tree](https://juanlara18.github.io/portfolio/#/blog/shannon-number-chess-game-tree) — combinatorics of chess game trees. Lonely on the tag-tag graph.
-- [godels-incompleteness-theorems](https://juanlara18.github.io/portfolio/#/blog/godels-incompleteness-theorems) — logic and metamathematics. Has a couple of bridges to Mathematics but otherwise an outpost.
-- [collatz-conjecture](https://juanlara18.github.io/portfolio/#/blog/collatz-conjecture) — same.
+- [tetris-np-complete](/blog/tetris-np-complete) — a curiosity about NP-completeness in puzzle games. Touches Algorithms, Computer Science, and Computability. The Computability tag is a singleton, which already isolates the post; the rest of the curiosities cluster mostly does not overlap with NP-completeness.
+- [ramanujan-constant-almost-integer](/blog/ramanujan-constant-almost-integer) — number theory and modular forms. Connects to Algebraic Number Theory, which itself is barely-connected.
+- [shannon-number-chess-game-tree](/blog/shannon-number-chess-game-tree) — combinatorics of chess game trees. Lonely on the tag-tag graph.
+- [godels-incompleteness-theorems](/blog/godels-incompleteness-theorems) — logic and metamathematics. Has a couple of bridges to Mathematics but otherwise an outpost.
+- [collatz-conjecture](/blog/collatz-conjecture) — same.
 
 These are some of my favorite pieces. They are the part of the blog that most resembles "the curiosities I wanted to write all along." A graph-centric reading undervalues them, because the graph rewards co-occurrence, not depth, originality, or aesthetic merit. The lesson is not "stop writing outposts." The lesson is that *outposts are valuable specifically because they sit outside the gravity of the LLM cluster*. They give the corpus a higher dimensional surface than a pure LLM-engineering blog would have. They are also what keeps me writing.
 
@@ -476,29 +476,29 @@ The graph is also a navigation device. Three reading paths, each derived from de
 
 **Path A: Foundations to Production.** The classic ML-engineer arc, starting from algorithms and ending in deployment. Each step is connected to the next by a thick co-occurrence edge.
 
-1. [graph-theory-mathematics-of-connections](https://juanlara18.github.io/portfolio/#/blog/graph-theory-mathematics-of-connections)
-2. [ml-libraries-under-the-hood](https://juanlara18.github.io/portfolio/#/blog/ml-libraries-under-the-hood)
-3. [structuring-ml-projects](https://juanlara18.github.io/portfolio/#/blog/structuring-ml-projects)
-4. [experiment-tracking-mlops](https://juanlara18.github.io/portfolio/#/blog/experiment-tracking-mlops)
-5. [cloud-ml-infrastructure](https://juanlara18.github.io/portfolio/#/blog/cloud-ml-infrastructure)
+1. [graph-theory-mathematics-of-connections](/blog/graph-theory-mathematics-of-connections)
+2. [ml-libraries-under-the-hood](/blog/ml-libraries-under-the-hood)
+3. [structuring-ml-projects](/blog/structuring-ml-projects)
+4. [experiment-tracking-mlops](/blog/experiment-tracking-mlops)
+5. [cloud-ml-infrastructure](/blog/cloud-ml-infrastructure)
 
 **Path B: RAG to Agents.** The most-trafficked path in the corpus, traversing the LLM gravity well.
 
-1. [rag-retrieval-augmented-generation](https://juanlara18.github.io/portfolio/#/blog/rag-retrieval-augmented-generation)
-2. [rag-building-production-systems](https://juanlara18.github.io/portfolio/#/blog/rag-building-production-systems)
-3. [rag-advanced-patterns](https://juanlara18.github.io/portfolio/#/blog/rag-advanced-patterns)
-4. [query-routing-agent-decisions](https://juanlara18.github.io/portfolio/#/blog/query-routing-agent-decisions)
-5. [agent-engineering-disciplines](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines)
+1. [rag-retrieval-augmented-generation](/blog/rag-retrieval-augmented-generation)
+2. [rag-building-production-systems](/blog/rag-building-production-systems)
+3. [rag-advanced-patterns](/blog/rag-advanced-patterns)
+4. [query-routing-agent-decisions](/blog/query-routing-agent-decisions)
+5. [agent-engineering-disciplines](/blog/agent-engineering-disciplines)
 
-This is the five-post agent arc the corpus has been pointing at for several months. The arc ended at post #99, [agent-engineering-disciplines](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines), and the natural continuation is in the upcoming stack-recommendations post #101.
+This is the five-post agent arc the corpus has been pointing at for several months. The arc ended at post #99, [agent-engineering-disciplines](/blog/agent-engineering-disciplines), and the natural continuation is in the upcoming stack-recommendations post #101.
 
 **Path C: Ontologies to Action.** The ontology arc, designed as a sequence.
 
-1. [ontologies-building-knowledge-bases](https://juanlara18.github.io/portfolio/#/blog/ontologies-building-knowledge-bases)
-2. [tbox-abox-schema-facts-distinction](https://juanlara18.github.io/portfolio/#/blog/tbox-abox-schema-facts-distinction)
-3. [modular-ontologies-core-domains-pattern](https://juanlara18.github.io/portfolio/#/blog/modular-ontologies-core-domains-pattern)
-4. [ontology-production-pipeline-gcp](https://juanlara18.github.io/portfolio/#/blog/ontology-production-pipeline-gcp)
-5. [ontology-to-agent-toolbox](https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox)
+1. [ontologies-building-knowledge-bases](/blog/ontologies-building-knowledge-bases)
+2. [tbox-abox-schema-facts-distinction](/blog/tbox-abox-schema-facts-distinction)
+3. [modular-ontologies-core-domains-pattern](/blog/modular-ontologies-core-domains-pattern)
+4. [ontology-production-pipeline-gcp](/blog/ontology-production-pipeline-gcp)
+5. [ontology-to-agent-toolbox](/blog/ontology-to-agent-toolbox)
 
 These three paths cover roughly half the corpus by tag overlap. The other half is reachable from any of them within two hops. Two hops is short, which is the kind of property that makes a graph feel small.
 
@@ -599,7 +599,7 @@ That is the whole promotion path. From drafted Markdown to a node in a graph in 
 
 I usually end posts with a Going Deeper section: books, papers, videos, questions to think about. This one does not get that. There is no canon to point you to here. The corpus *is* the canon I am pointing at, and the only honest follow-up is the next post.
 
-Post #101, [stack-recommendations-after-100-posts](https://juanlara18.github.io/portfolio/#/blog/stack-recommendations-after-100-posts), is the practical companion to this one. Two halves of the same retrospective: this one is the shape of what I wrote; the next is what I would actually use today, knowing what I know after writing about hundreds of options.
+Post #101, [stack-recommendations-after-100-posts](/blog/stack-recommendations-after-100-posts), is the practical companion to this one. Two halves of the same retrospective: this one is the shape of what I wrote; the next is what I would actually use today, knowing what I know after writing about hundreds of options.
 
 If you want to run this analysis on your own corpus, the snippets above are enough. The numbers in this post came from `front/src/data/blogData.json` plus about a hundred lines of networkx; you can verify any claim by re-running the same code. That auditability turned out to be the thing I was after when I started writing — not posts you have to trust, but posts you can argue with.
 

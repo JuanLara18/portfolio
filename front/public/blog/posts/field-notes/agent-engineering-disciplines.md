@@ -15,7 +15,7 @@ The room was full of senior engineers, and someone was trying to put a name on t
 
 What the team was learning, painfully, is what most senior agent practitioners learned across 2025 and 2026: the surface area between a foundation model and a production agent is not one job. It is at least six. The pieces that go wrong are shaped differently, evolve on different timelines, fail under different load, and reward different specializations. A team that staffs only "AI engineers" without distinguishing the work loses the same fights I just described, in roughly that order, every time.
 
-This post is the tour I wish I had on day one of staffing an agent program in 2026. We have covered, over the last several posts in this arc, what to put around an agent: the [field guide to guardrails](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide), the [Cloud Next 2026 agent-native stack](https://juanlara18.github.io/portfolio/#/blog/google-cloud-next-2026-agent-native-stack), the [Knowledge Catalog deep dive](https://juanlara18.github.io/portfolio/#/blog/gemini-enterprise-knowledge-catalog-deep-dive), and the [Catalog versus ontologies confluence](https://juanlara18.github.io/portfolio/#/blog/knowledge-catalog-vs-ontologies). Now the question turns inward: who actually does this work, and what does the work look like when you draw a job description around it?
+This post is the tour I wish I had on day one of staffing an agent program in 2026. We have covered, over the last several posts in this arc, what to put around an agent: the [field guide to guardrails](/blog/agent-guardrails-field-guide), the [Cloud Next 2026 agent-native stack](/blog/google-cloud-next-2026-agent-native-stack), the [Knowledge Catalog deep dive](/blog/gemini-enterprise-knowledge-catalog-deep-dive), and the [Catalog versus ontologies confluence](/blog/knowledge-catalog-vs-ontologies). Now the question turns inward: who actually does this work, and what does the work look like when you draw a job description around it?
 
 I will be opinionated. Some of these roles are real and load-bearing. Some are LinkedIn rebrands of work that already had a name. Some are still half-formed and will, within eighteen months, either consolidate or vanish. The honest projection at the end of this post tries to draw those lines.
 
@@ -102,7 +102,7 @@ A short tour of each, before we go deep on the three the brief asked us to spend
 
 **Eval Engineer.** Owns the test harness for the whole system: golden sets, regression guards, online evals, drift monitors. Deliverables: an offline test suite that runs on every change, an online eval pipeline that scores live traffic, a labeled regression set per failure mode, a refusal-rate dashboard. Closest to traditional MLOps; in many orgs the same person wears both hats.
 
-**Identity and Policy Engineer.** Owns the question of who the agent is, who it acts for, and what it can touch. Deliverables: agent identity issuance, scoped tokens, blast-radius budgets, audit-log shape, the policy engine that gates irreversible actions. Cross-references the [guardrails field guide](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide) directly; this is the role that owns layer 5 of that post's stack.
+**Identity and Policy Engineer.** Owns the question of who the agent is, who it acts for, and what it can touch. Deliverables: agent identity issuance, scoped tokens, blast-radius budgets, audit-log shape, the policy engine that gates irreversible actions. Cross-references the [guardrails field guide](/blog/agent-guardrails-field-guide) directly; this is the role that owns layer 5 of that post's stack.
 
 A small comparison table for orientation. Read the columns first; the rows will land afterward.
 
@@ -479,7 +479,7 @@ The anti-patterns:
 - **Free-form "let the agent figure it out"**: the loop has no schema, no parser, no budget, no kill switch. Survives demos. Dies in production.
 - **Ad hoc string parsing**: the model's output is parsed by regex or string-match; tiny prompt changes break the harness.
 - **No per-step timeouts**: a slow tool call hangs the loop indefinitely; the budget check is at the top of the loop and never fires.
-- **No kill-switch path**: the only way to stop a misbehaving agent is to redeploy the service. Layer 5 of the [guardrails post](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide) covers what to do instead.
+- **No kill-switch path**: the only way to stop a misbehaving agent is to redeploy the service. Layer 5 of the [guardrails post](/blog/agent-guardrails-field-guide) covers what to do instead.
 - **Trusting `"I'm done"`**: completion is detected by parsing the agent's claim of completion rather than by inspecting the audit log of side effects. Silent-failure breeding ground.
 - **The harness as a prompt**: the controller's logic lives entirely inside the system prompt. The model is asked to police itself. It will not.
 
@@ -582,7 +582,7 @@ The eval flywheel — incidents become tests, tests catch regressions, regressio
 
 The identity and policy engineer's job is to answer two questions on every action: *who* is taking this action, and *what blast radius is acceptable for the answer to that question*. The first is plumbing: agent identity, scoped tokens, audit trail. The second is judgement: an irreversible action against a high-value resource gets a different gate than a read against a public corpus.
 
-This is the role that lives at the boundary between agent engineering and security engineering, and the [guardrails field guide](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide) is the long version of the playbook. The minimum-viable artifact is a policy gate that runs before any tool dispatch:
+This is the role that lives at the boundary between agent engineering and security engineering, and the [guardrails field guide](/blog/agent-guardrails-field-guide) is the long version of the playbook. The minimum-viable artifact is a policy gate that runs before any tool dispatch:
 
 ```python
 # Identity-and-policy gate. Runs between the harness and the dispatcher.

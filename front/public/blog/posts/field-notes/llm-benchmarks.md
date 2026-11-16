@@ -15,7 +15,7 @@ The announcement lands on a Tuesday morning. A new model has topped the leaderbo
 
 Everyone is technically correct. No one is giving you the full measurement story.
 
-This is the second post in the Benchmarks series. Where the [first post](./vector-db-benchmarks) focused on vector databases—systems with cleaner interfaces and clearer algorithmic tradeoffs—this post deals with a messier problem: how to measure systems that generate open-ended language, use tools, browse the web, write patches, and increasingly act as agents rather than autocomplete engines.
+This is the second post in the Benchmarks series. Where the [first post](/blog/vector-db-benchmarks) focused on vector databases—systems with cleaner interfaces and clearer algorithmic tradeoffs—this post deals with a messier problem: how to measure systems that generate open-ended language, use tools, browse the web, write patches, and increasingly act as agents rather than autocomplete engines.
 
 That last clause is the key update for 2026. If you still think "LLM benchmark" mainly means MMLU, GSM8K, and HumanEval, you are reading the map from two model generations ago. Those benchmarks still matter historically. Some still matter diagnostically. But the frontier has moved. The modern evaluation picture includes contamination-resistant suites, factuality benchmarks, agentic tool-use tests, web-environment tasks, computer-use benchmarks, and reasoning tests like `ARC-AGI-2` that are trying to probe something much less like "knows facts" and much more like "can adapt to something genuinely new."
 

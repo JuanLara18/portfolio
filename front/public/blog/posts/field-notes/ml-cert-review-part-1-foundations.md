@@ -11,7 +11,7 @@ estimatedWordCount: 7300
 
 # ML Cert Review, Part I: How Models Learn and How We Measure Them
 
-A week ago I [walked through the Google Cloud cert ladder](https://juanlara18.github.io/portfolio/#/blog/google-cloud-certifications-2026-roadmap) and the analogous shape on AWS and Azure. The conclusion of that post was, more or less: *pick the one that maps to the role you actually do, then put six weekends on the calendar*. This post is for the morning of weekend one.
+A week ago I [walked through the Google Cloud cert ladder](/blog/google-cloud-certifications-2026-roadmap) and the analogous shape on AWS and Azure. The conclusion of that post was, more or less: *pick the one that maps to the role you actually do, then put six weekends on the calendar*. This post is for the morning of weekend one.
 
 Because here is the uncomfortable thing about every modern ML certification, whether it is the Google Professional ML Engineer, the AWS ML Specialty, or the Azure AI Engineer Associate. They will all happily test you on Vertex AI Agent Builder, on SageMaker Pipelines, on prompt flow in Azure AI Foundry, on RAG patterns and evaluation harnesses. But the bar to clear before you get to any of that is roughly the same bar that the 2016 versions of these exams asked for: confusion matrices, cross-entropy, ReLU, k-fold, gradient boosting, PCA. The classical-ML floor has not moved. The exams have piled new content on top of it. They have not removed the floor.
 

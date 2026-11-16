@@ -23,7 +23,7 @@ That is the **execution model**, and it is the actual subject of graph analytics
 
 This post is Part 1 of a series on graph analytics in production, and it deliberately spends almost no time on individual algorithms — Part 2 covers centrality and community detection in practice, Part 3 covers node embeddings. Here we build the foundation: how Neo4j's Graph Data Science library represents, projects, computes over, and persists graph results, and how that model is now being unbundled from the database entirely.
 
-For the mathematical intuition behind the measures, the companion post on [network science, communities, and centrality](https://juanlara18.github.io/portfolio/#/blog/network-science-communities-centrality) covers what they *mean*; for how the graph gets built in the first place, [knowledge graphs in practice](https://juanlara18.github.io/portfolio/#/blog/knowledge-graphs-practice) walks the construction pipeline. This post is what happens between those two.
+For the mathematical intuition behind the measures, the companion post on [network science, communities, and centrality](/blog/network-science-communities-centrality) covers what they *mean*; for how the graph gets built in the first place, [knowledge graphs in practice](/blog/knowledge-graphs-practice) walks the construction pipeline. This post is what happens between those two.
 
 ## Why Your Database Is the Wrong Shape for This
 

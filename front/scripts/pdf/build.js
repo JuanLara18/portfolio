@@ -440,6 +440,15 @@ function buildOne(manifest, posts, layoutName, markdown, figuresDir) {
   const partmap = {};
   posts.forEach((p, i) => { partmap[p.slug] = i + 1; });
 
+  // Category of every post the body links to as /blog/<slug>, so a reference
+  // to a post outside this volume prints its full canonical URL. Limited to
+  // the slugs actually cited to keep the pandoc command line short.
+  const catmap = {};
+  for (const [, slug] of markdown.matchAll(/\]\(\/blog\/([a-z0-9-]+)[)#]/g)) {
+    const entry = postIndex().get(slug);
+    if (entry) catmap[slug] = path.basename(path.dirname(entry.file));
+  }
+
   const g = layout.geometry;
   const geometryOpts = [
     layout.paper,
@@ -480,6 +489,7 @@ function buildOne(manifest, posts, layoutName, markdown, figuresDir) {
     '-M', `textheight=${textHeight(layout)}`,
     '-M', `totalparts=${posts.length}`,
     '-M', `partmap=${JSON.stringify(partmap)}`,
+    '-M', `catmap=${JSON.stringify(catmap)}`,
     '-o', 'series.tex',
   ], work, 'pandoc');
 

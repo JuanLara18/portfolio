@@ -11,7 +11,7 @@ estimatedWordCount: 7600
 
 # The Stack I Would Adopt After 100 Posts: An Opinionated Manifesto
 
-The hundredth post in this archive was the [structural retrospective](https://juanlara18.github.io/portfolio/#/blog/100-posts-knowledge-graph-retrospective) — what was written, in what order, with what tag co-occurrence, and what shape the corpus took as a graph. This post is the other half of the same coin. If post one hundred was the map of *what was written*, post one hundred and one is the map of *what to use*.
+The hundredth post in this archive was the [structural retrospective](/blog/100-posts-knowledge-graph-retrospective) — what was written, in what order, with what tag co-occurrence, and what shape the corpus took as a graph. This post is the other half of the same coin. If post one hundred was the map of *what was written*, post one hundred and one is the map of *what to use*.
 
 After a hundred posts of writing "it depends" — about embedding models, vector stores, frameworks, evaluation harnesses, observability tools, memory schemes, identity layers, retrieval strategies, and deployment patterns — I have earned the right, for one post, to stop hedging. This is the stack I would adopt today, end to end, if I were starting a new corporate knowledge base on GCP tomorrow morning. It is the stack I would recommend to past-me. It is opinionated, concrete, and unsurprising in places where unsurprising is the right answer. It is also, in a few places, deliberately contrarian.
 
@@ -93,7 +93,7 @@ The fallback model matters more than people expect. Most agent steps are small �
 
 **Spreading across five providers without a router.** Every additional provider triples your governance surface area. New DPAs, new key rotation, new prompt-injection threat models, new outage stories. If you genuinely need provider redundancy — and most organizations do not — put a routing layer in front of it and treat the providers as interchangeable backends. Do not let the prompt engineer pick a provider per use case. That way lies a vendor matrix that nobody can audit.
 
-**Local LLM tooling as a primary serving path.** I have written before about [local LLM inference tools](https://juanlara18.github.io/portfolio/#/blog/local-llm-inference-tools), and Ollama and vLLM are wonderful for development and for evaluation harnesses. They are not a serving path for a regulated knowledge base. The operational delta between "I run vLLM on a single GPU at my desk" and "I run vLLM in production with proper observability, rate limiting, and key rotation" is enormous, and most teams underestimate it by a factor of ten.
+**Local LLM tooling as a primary serving path.** I have written before about [local LLM inference tools](/blog/local-llm-inference-tools), and Ollama and vLLM are wonderful for development and for evaluation harnesses. They are not a serving path for a regulated knowledge base. The operational delta between "I run vLLM on a single GPU at my desk" and "I run vLLM in production with proper observability, rate limiting, and key rotation" is enormous, and most teams underestimate it by a factor of ten.
 
 ---
 
@@ -101,7 +101,7 @@ The fallback model matters more than people expect. Most agent steps are small �
 
 ### Adopt
 
-**A thin SDK or your own harness, plus Pydantic v2 for structured outputs, plus the provider's native SDK.** This is the message of [Agent Engineering as a Discipline](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines): the harness is one of the six core disciplines, and outsourcing it to a framework you do not own is one of the surest ways to lose control of your agent's failure modes.
+**A thin SDK or your own harness, plus Pydantic v2 for structured outputs, plus the provider's native SDK.** This is the message of [Agent Engineering as a Discipline](/blog/agent-engineering-disciplines): the harness is one of the six core disciplines, and outsourcing it to a framework you do not own is one of the surest ways to lose control of your agent's failure modes.
 
 I write my own harnesses now. They are small. The skeleton fits in a few hundred lines. They expose three things to the rest of the system: a `run(plan)` entrypoint, a structured trace emitter, and a kill switch. Everything else — retries, timeouts, planner, tool dispatch — is composed from a small library of primitives that I read top-to-bottom every six months and prune.
 
@@ -144,7 +144,7 @@ The pattern is small and unglamorous. It also catches more bugs than any single 
 
 **Heavy framework lock-in early.** The ratio of framework code to your code, in your first six months, should be far below one. If at month three you have ten thousand lines of framework configuration and a thousand lines of your own logic, you have built a system you do not own. Frameworks are seductive because they make week one fast. They make week sixty miserable.
 
-**Reactive-imperative chains that hide the prompt.** If the prompt that goes to the model is constructed by five layers of decorators and abstract factories and template inheritance, you have lost the most important debugging primitive in the entire system, which is "print the prompt." [Agent Engineering as a Discipline](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines) goes deep on why context engineering deserves its own role; the corollary at the orchestration layer is that the prompt must be visible, version-controlled, and diffable.
+**Reactive-imperative chains that hide the prompt.** If the prompt that goes to the model is constructed by five layers of decorators and abstract factories and template inheritance, you have lost the most important debugging primitive in the entire system, which is "print the prompt." [Agent Engineering as a Discipline](/blog/agent-engineering-disciplines) goes deep on why context engineering deserves its own role; the corollary at the orchestration layer is that the prompt must be visible, version-controlled, and diffable.
 
 | Framework | Adopt for | Avoid for |
 | --- | --- | --- |
@@ -160,7 +160,7 @@ The pattern is small and unglamorous. It also catches more bugs than any single 
 
 ### Adopt
 
-**Hybrid search, with rerankers, with an evaluation harness from day one.** This is the central message of the [RAG production systems guide](https://juanlara18.github.io/portfolio/#/blog/rag-building-production-systems), and it has not changed since I wrote it. The progression from pure dense vector search to hybrid (dense plus BM25) to hybrid-with-rerank is the single highest-leverage upgrade you can make to a retrieval system, and it is fully a 2024-vintage technique. If you are not running it in 2027 you are leaving recall on the floor.
+**Hybrid search, with rerankers, with an evaluation harness from day one.** This is the central message of the [RAG production systems guide](/blog/rag-building-production-systems), and it has not changed since I wrote it. The progression from pure dense vector search to hybrid (dense plus BM25) to hybrid-with-rerank is the single highest-leverage upgrade you can make to a retrieval system, and it is fully a 2024-vintage technique. If you are not running it in 2027 you are leaving recall on the floor.
 
 Embedding stability matters more than embedding quality past a baseline. If your embedding model changes, every chunk in your index is now technically inconsistent with every new query. Re-embedding a 100-million-chunk corpus is not free. Pick a model with a stable enough provider story that you are not re-embedding twice a year, and stop chasing the embedding-of-the-month.
 
@@ -213,7 +213,7 @@ The eval harness from day one is the bit most teams skip and most teams regret s
 
 **ColBERT-style late interaction for very high-recall retrieval.** Late-interaction models score query-token vectors against document-token vectors directly, which buys you better recall on hard queries at the cost of more storage and more compute. The 2026-era ColBERT variants are now operationally tractable; I would experiment with them when bi-encoder recall is hitting a ceiling on a specific high-value query distribution.
 
-**Query routing for diverse corpora.** When you have multiple corpora that look very different — a regulatory-document corpus, a product-docs corpus, a customer-support-transcript corpus — a small router that decides which retrievers to fan out to, and how to weight the fused results, often beats a single one-size-fits-all retrieval pipeline. I wrote about this pattern in [query routing as agent decisions](https://juanlara18.github.io/portfolio/#/blog/query-routing-agent-decisions).
+**Query routing for diverse corpora.** When you have multiple corpora that look very different — a regulatory-document corpus, a product-docs corpus, a customer-support-transcript corpus — a small router that decides which retrievers to fan out to, and how to weight the fused results, often beats a single one-size-fits-all retrieval pipeline. I wrote about this pattern in [query routing as agent decisions](/blog/query-routing-agent-decisions).
 
 ### Avoid
 
@@ -229,7 +229,7 @@ The eval harness from day one is the bit most teams skip and most teams regret s
 
 ### Adopt
 
-**Explicit memory tiers — working, session, long-term — with a write policy and an eviction policy from day one.** Memory is the discipline most teams treat as an afterthought and the one that produces the most expensive failures (cross-tenant leakage, hallucinated user history, unbounded growth). The [Agent Engineering as a Discipline](https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines) post calls memory engineering "the least formalized of the six disciplines," and that has not changed.
+**Explicit memory tiers — working, session, long-term — with a write policy and an eviction policy from day one.** Memory is the discipline most teams treat as an afterthought and the one that produces the most expensive failures (cross-tenant leakage, hallucinated user history, unbounded growth). The [Agent Engineering as a Discipline](/blog/agent-engineering-disciplines) post calls memory engineering "the least formalized of the six disciplines," and that has not changed.
 
 The minimum viable memory architecture has three tiers:
 
@@ -282,7 +282,7 @@ The skeleton is small. The point is that you own it: the eviction policy is a re
 
 **Storing raw transcripts as the memory primitive.** Transcripts are not memory; they are evidence. Memory is the *distilled* facts, decisions, and preferences that a future turn needs to retrieve. Conflating the two means you carry the entire history into every prompt and pay for it linearly forever.
 
-**Conflating cache with memory.** This is the failure mode I covered in [LLM caching: four layers](https://juanlara18.github.io/portfolio/#/blog/llm-caching-four-layers). A cache speeds up identical work; memory remembers the user. They share none of the same invalidation, scoping, or governance properties. Building one and calling it the other is a bug factory.
+**Conflating cache with memory.** This is the failure mode I covered in [LLM caching: four layers](/blog/llm-caching-four-layers). A cache speeds up identical work; memory remembers the user. They share none of the same invalidation, scoping, or governance properties. Building one and calling it the other is a bug factory.
 
 ---
 
@@ -316,7 +316,7 @@ The skeleton is small. The point is that you own it: the eviction policy is a re
 
 ### Adopt
 
-**A small, strict ontology for the regulated domain plus the Knowledge Catalog for operational metadata.** The [Knowledge Catalog versus Ontologies](https://juanlara18.github.io/portfolio/#/blog/knowledge-catalog-vs-ontologies) post drew this line carefully and the line has not moved: the catalog owns the operational seam (where data is, who owns it, what its lineage is, what its sensitivity classification is); the ontology owns the meaning seam (what these concepts mean, how they relate, what constraints hold). They serve different consumers. Both are necessary.
+**A small, strict ontology for the regulated domain plus the Knowledge Catalog for operational metadata.** The [Knowledge Catalog versus Ontologies](/blog/knowledge-catalog-vs-ontologies) post drew this line carefully and the line has not moved: the catalog owns the operational seam (where data is, who owns it, what its lineage is, what its sensitivity classification is); the ontology owns the meaning seam (what these concepts mean, how they relate, what constraints hold). They serve different consumers. Both are necessary.
 
 The "small and strict" part matters more than the ontology evangelists usually say. A fifty-class domain ontology, written by two domain experts and an engineer over six weeks, with SHACL constraints, is a load-bearing artifact. A ten-thousand-class enterprise ontology, written by a committee over two years, is a museum exhibit. The smaller artifact actually constrains the agent's behavior at runtime; the larger one constrains nothing because nobody reads it.
 
@@ -324,7 +324,7 @@ The "small and strict" part matters more than the ontology evangelists usually s
 
 **SHACL constraints on the ontology side.** SHACL gives you machine-checkable constraints on the shape of data with respect to the ontology. When the agent emits a graph fragment, you can validate it against the SHACL shapes before persisting. This is the same pattern as Pydantic at the orchestration layer, applied one layer up.
 
-**Dataplex and Knowledge Catalog lineage hooks.** [Gemini Enterprise's Knowledge Catalog](https://juanlara18.github.io/portfolio/#/blog/gemini-enterprise-knowledge-catalog-deep-dive) deep dive went into this in detail. The catalog's lineage and sensitivity tags are accessible programmatically. Wiring an agent's tool calls to consult the catalog for sensitivity before retrieving a document is an experiment most teams have not yet run, and the early signal from the ones that have is positive.
+**Dataplex and Knowledge Catalog lineage hooks.** [Gemini Enterprise's Knowledge Catalog](/blog/gemini-enterprise-knowledge-catalog-deep-dive) deep dive went into this in detail. The catalog's lineage and sensitivity tags are accessible programmatically. Wiring an agent's tool calls to consult the catalog for sensitivity before retrieving a document is an experiment most teams have not yet run, and the early signal from the ones that have is positive.
 
 ### Avoid
 
@@ -338,7 +338,7 @@ The "small and strict" part matters more than the ontology evangelists usually s
 
 ### Adopt
 
-**Golden sets in version control, online evaluation that fires on every deploy, capability evaluations separated from safety evaluations.** The [agent guardrails field guide](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide) made the case that capability evaluation and safety evaluation are two different jobs run by two different people on two different cadences, and conflating them in a single dashboard means you will never notice when one regresses while the other improves.
+**Golden sets in version control, online evaluation that fires on every deploy, capability evaluations separated from safety evaluations.** The [agent guardrails field guide](/blog/agent-guardrails-field-guide) made the case that capability evaluation and safety evaluation are two different jobs run by two different people on two different cadences, and conflating them in a single dashboard means you will never notice when one regresses while the other improves.
 
 The minimum viable eval setup:
 
@@ -347,7 +347,7 @@ The minimum viable eval setup:
 3. **Online eval on every deploy.** A separate service that samples production traffic and scores it against an LLM-as-judge or a rule-based grader. Alerts on drift.
 4. **Safety evals run separately.** Different graders, different on-call rotation, different threshold. Safety regressions are not capability regressions and the same dashboard cannot show both.
 
-The [LLM-as-a-judge](https://juanlara18.github.io/portfolio/#/blog/llm-as-a-judge) post covered the pitfalls of LLM-as-judge at length: position bias, length bias, self-enhancement bias, the inevitable model-pair you forgot to test. Use it for subjective tasks where rule-based scoring is not feasible. Calibrate it against human ratings on a held-out sample. Re-calibrate every quarter.
+The [LLM-as-a-judge](/blog/llm-as-a-judge) post covered the pitfalls of LLM-as-judge at length: position bias, length bias, self-enhancement bias, the inevitable model-pair you forgot to test. Use it for subjective tasks where rule-based scoring is not feasible. Calibrate it against human ratings on a held-out sample. Re-calibrate every quarter.
 
 ### Try
 
@@ -451,7 +451,7 @@ The state diagram above is the one I draw for new joiners on day one. Every tran
 
 ### Adopt
 
-**Scoped service identities per agent, scoped tokens for tools, allowlist tools by function not by URL, full audit trails.** This is the field guide from [agent guardrails](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide), and it is non-negotiable in regulated work.
+**Scoped service identities per agent, scoped tokens for tools, allowlist tools by function not by URL, full audit trails.** This is the field guide from [agent guardrails](/blog/agent-guardrails-field-guide), and it is non-negotiable in regulated work.
 
 The agent and the user must not share an identity. Ever. The agent acts on the user's behalf with a *delegated, scoped, time-limited* token; the agent itself has a service identity that is distinct from the user's identity and that scopes what the agent can do *at all*, separate from what the agent can do *for this user*. The intersection of those two scopes is what the agent is allowed to do for this user right now. The audit log captures both.
 
@@ -492,7 +492,7 @@ The capability token pattern says: every tool the agent calls is gated by a toke
 
 ### Try
 
-**Per-agent IAM in Gemini Enterprise.** The [Gemini Enterprise Knowledge Catalog deep dive](https://juanlara18.github.io/portfolio/#/blog/gemini-enterprise-knowledge-catalog-deep-dive) covers this. The agent-as-IAM-principal model lets you put the same access controls on an agent that you put on a service account, and it integrates with the catalog's sensitivity tags. This is still settling, but the direction is right.
+**Per-agent IAM in Gemini Enterprise.** The [Gemini Enterprise Knowledge Catalog deep dive](/blog/gemini-enterprise-knowledge-catalog-deep-dive) covers this. The agent-as-IAM-principal model lets you put the same access controls on an agent that you put on a service account, and it integrates with the catalog's sensitivity tags. This is still settling, but the direction is right.
 
 ### Avoid
 
@@ -506,7 +506,7 @@ The capability token pattern says: every tool the agent calls is gated by a toke
 
 ### Adopt
 
-**Python 3.12 or newer, Pydantic v2, ruff for linting and formatting, pytest, type-checking with pyright, uv or pip-tools for dependency management, Docker for everything that runs in production.** The [structuring ML projects](https://juanlara18.github.io/portfolio/#/blog/structuring-ml-projects) post is the long-form treatment. Two updates since I wrote it: ruff has eaten black entirely (don't run both), and uv has eaten poetry for most new projects (poetry still wins for libraries with complex extras).
+**Python 3.12 or newer, Pydantic v2, ruff for linting and formatting, pytest, type-checking with pyright, uv or pip-tools for dependency management, Docker for everything that runs in production.** The [structuring ML projects](/blog/structuring-ml-projects) post is the long-form treatment. Two updates since I wrote it: ruff has eaten black entirely (don't run both), and uv has eaten poetry for most new projects (poetry still wins for libraries with complex extras).
 
 Pyright over mypy is a personal pick that I will not retreat from. Pyright is faster, has better inference, and ships in the editor by default. mypy's config story is, charitably, an artifact.
 
@@ -691,7 +691,7 @@ Seven bullets, no preamble.
 
 ## Pointer to #100
 
-The [hundredth post](https://juanlara18.github.io/portfolio/#/blog/100-posts-knowledge-graph-retrospective) is the *structural* retrospective: what was written, in what order, with what tag co-occurrence, and what shape the corpus took as a graph. It is the inward-facing post.
+The [hundredth post](/blog/100-posts-knowledge-graph-retrospective) is the *structural* retrospective: what was written, in what order, with what tag co-occurrence, and what shape the corpus took as a graph. It is the inward-facing post.
 
 This one, the hundred-and-first, is the *practical* retrospective: what to use, what to avoid, what to read, and what to refuse to deploy a second time. It is the outward-facing post.
 

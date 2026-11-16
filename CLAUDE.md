@@ -1,6 +1,6 @@
 # Portfolio Repository
 
-Personal portfolio + technical blog (~90 posts on RAG, agents, knowledge graphs, data engineering, ML internals, math curiosities). React app under `front/`, blog content under `front/public/blog/posts/`.
+Personal portfolio + technical blog (185+ posts on RAG, agents, knowledge graphs, data engineering, ML internals, math curiosities). React app under `front/`, blog content under `front/public/blog/posts/`.
 
 ## Knowledge base for blog content
 
@@ -31,13 +31,15 @@ jq '.posts["ontology-to-agent-toolbox"].prereqs' knowledge-base/posts.json
 
 **To read the full text of a post**, open the file at `front/public/blog/posts/<category>/<slug>.md`. Slugs are stable canonical IDs.
 
-When citing a post to the user, link as `https://juanlara18.github.io/portfolio/#/blog/<slug>`.
+When citing a post to the user, link as `https://juanlara18.github.io/portfolio/blog/<category>/<slug>/` (the `url` field in `posts.json`).
+
+**Links between posts** are written `[text](/blog/<slug>)` — slug only, site-relative. The app resolves the category at render time; `/blog/<slug>` is also a real route that redirects. Never use the absolute URL, the old `#/blog/...` form, or `./<slug>`. `npm run validate-links` runs in `prebuild` and fails the build on any other form or an unknown slug.
 
 ## Build pipeline
 
 Blog content flows through `npm run prebuild` (in `front/`):
 
-1. `build-blog-data` — scans `posts/*.md`, parses frontmatter, writes `front/src/data/blogData.json`.
+1. `build-blog-data` — scans `posts/*.md`, parses frontmatter, writes `front/src/data/blogData.json` (metadata only — post bodies are not in it; the app fetches each `.md` when a post opens, and scripts that need bodies read the files). Then `validate-links` checks every link between posts.
 2. `build-knowledge-base` — reads `blogData.json` + the YAML augmentation block in `KNOWLEDGE_BASE.md`, regenerates `knowledge-base/posts.json` and re-injects the auto-catalog into `KNOWLEDGE_BASE.md` (between `<!-- AUTO-CATALOG:* -->` markers).
 3. `build-sitemap`, `build-rss` — site metadata.
 

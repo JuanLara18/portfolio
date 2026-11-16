@@ -19,13 +19,13 @@ This is the finale, and it is deliberately the least romantic post in the series
 
 Let me recap the arc quickly, because the finale only makes sense against it.
 
-In [part one](https://juanlara18.github.io/portfolio/#/blog/agent-graph-layer-why-grep-embeddings-fell-short) I argued that the two dominant ways agents find code — lexical search and vector similarity — both fail at the thing that matters most, which is *structure*. Grep finds strings; it does not know that `charge()` calls `authorize()` which reads `PaymentConfig`. Embeddings find things that sound similar; they do not know what actually depends on what. The proposal was a third primitive: a graph of the codebase, queried by relationship rather than by keyword or by cosine distance.
+In [part one](/blog/agent-graph-layer-why-grep-embeddings-fell-short) I argued that the two dominant ways agents find code — lexical search and vector similarity — both fail at the thing that matters most, which is *structure*. Grep finds strings; it does not know that `charge()` calls `authorize()` which reads `PaymentConfig`. Embeddings find things that sound similar; they do not know what actually depends on what. The proposal was a third primitive: a graph of the codebase, queried by relationship rather than by keyword or by cosine distance.
 
-[Part two](https://juanlara18.github.io/portfolio/#/blog/repo-to-graph-ast-vs-llm-extraction) was about building that graph, and specifically the tension between two extraction strategies: parse the code with a compiler-grade AST and get precise, cheap, deterministic edges, or ask an LLM to read the code and infer richer semantic relationships at higher cost and lower determinism. The conclusion was a layered one — AST for the skeleton, LLM for the connective tissue you cannot parse.
+[Part two](/blog/repo-to-graph-ast-vs-llm-extraction) was about building that graph, and specifically the tension between two extraction strategies: parse the code with a compiler-grade AST and get precise, cheap, deterministic edges, or ask an LLM to read the code and infer richer semantic relationships at higher cost and lower determinism. The conclusion was a layered one — AST for the skeleton, LLM for the connective tissue you cannot parse.
 
-[Part three](https://juanlara18.github.io/portfolio/#/blog/querying-code-graphs-blast-radius-localization) turned the graph into answers: blast-radius queries ("if I change this function, what breaks"), fault localization, neighborhood retrieval that hands the agent exactly the symbols it needs and nothing more. This is where the graph earns its keep, because a good neighborhood query replaces a dozen exploratory file reads with one call.
+[Part three](/blog/querying-code-graphs-blast-radius-localization) turned the graph into answers: blast-radius queries ("if I change this function, what breaks"), fault localization, neighborhood retrieval that hands the agent exactly the symbols it needs and nothing more. This is where the graph earns its keep, because a good neighborhood query replaces a dozen exploratory file reads with one call.
 
-[Part four](https://juanlara18.github.io/portfolio/#/blog/graph-memory-temporal-agents-graphiti-cognee) extended the idea from static structure to *memory* — temporal graphs that let an agent remember what it learned about your system across sessions, using the same graph substrate that tools like Graphiti and Cognee are built on.
+[Part four](/blog/graph-memory-temporal-agents-graphiti-cognee) extended the idea from static structure to *memory* — temporal graphs that let an agent remember what it learned about your system across sessions, using the same graph substrate that tools like Graphiti and Cognee are built on.
 
 Four posts, one claim: agents need a graph layer. Now we ship it.
 
@@ -37,7 +37,7 @@ You have a graph. It lives in some store — an embedded graph database, a SQLit
 
 For a brief period the answer was "nothing coherent." Every code-intelligence tool shipped its own plugin for every editor. If you wanted graph context in Cursor you installed the Cursor extension; if you wanted it in a different agent you were out of luck or writing glue. This is the classic N-times-M integration problem: N tools, M agents, and someone maintaining N times M connectors that all rot at different rates. It is the same problem that USB solved for peripherals and that language servers solved for editor tooling. The pattern always resolves the same way — you invent a *protocol*, and then tools and clients only have to speak the protocol.
 
-For agent context, that protocol is the [Model Context Protocol](https://juanlara18.github.io/portfolio/#/blog/model-context-protocol). I have written about [MCP as a concept](https://juanlara18.github.io/portfolio/#/blog/model-context-protocol) and about [building enterprise MCP servers](https://juanlara18.github.io/portfolio/#/blog/mcp-production-enterprise), so I will not re-explain the whole thing. What matters here is why it became the natural home for graph context specifically.
+For agent context, that protocol is the [Model Context Protocol](/blog/model-context-protocol). I have written about [MCP as a concept](/blog/model-context-protocol) and about [building enterprise MCP servers](/blog/mcp-production-enterprise), so I will not re-explain the whole thing. What matters here is why it became the natural home for graph context specifically.
 
 MCP is, at its core, a small JSON-RPC protocol with three primitives — **tools** (actions the agent can call), **resources** (read-only data the agent can pull), and **prompts** (reusable templates) — and two standard transports: **stdio** for local processes and **Streamable HTTP** for remote ones. That is nearly the entire surface area. The genius is in the smallness. A code-graph server does not need to know whether it is talking to Claude Code or Cursor or a custom agent; it exposes a `blast_radius` tool and a `neighborhood` tool, describes them with JSON schemas, and any MCP-speaking client can call them. The N-times-M problem collapses to N-plus-M: each tool speaks MCP once, each client speaks MCP once.
 
@@ -447,7 +447,7 @@ To wire it into Claude Code, the configuration is exactly the shape you would ex
 }
 ```
 
-That is it. The agent now has `blast_radius` and `neighborhood` as tools it can call, backed by a graph that never leaves the laptop. Everything else in this post — the packing layer, the incremental watcher, the semantic edges — is elaboration on this skeleton. If you want the full picture of how Claude Code discovers and uses tools like these, the [complete guide](https://juanlara18.github.io/portfolio/#/blog/claude-code-complete-guide) walks through the client side.
+That is it. The agent now has `blast_radius` and `neighborhood` as tools it can call, backed by a graph that never leaves the laptop. Everything else in this post — the packing layer, the incremental watcher, the semantic edges — is elaboration on this skeleton. If you want the full picture of how Claude Code discovers and uses tools like these, the [complete guide](/blog/claude-code-complete-guide) walks through the client side.
 
 ---
 

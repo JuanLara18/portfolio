@@ -28,7 +28,7 @@ Start with the input. An LLM never sees characters or words. It sees tokens: int
 
 Tokens flow into the model as a single ordered sequence. Everything is in that sequence: the system prompt, the user message, retrieved documents, prior assistant turns, tool outputs. All of it. The model concatenates these into one long ribbon of token IDs and processes the whole ribbon at once. This is the first idea most people get wrong, so it is worth stating plainly: there is no native hierarchy between a system token and a user token and a retrieved-document token. They differ only in their content and their position, not in some structural priority the architecture enforces.
 
-How does the model relate these tokens to one another? Through self-attention, the mechanism introduced in the 2017 paper *Attention Is All You Need*. I wrote a full deep-dive on it at [https://juanlara18.github.io/portfolio/#/blog/attention-is-all-you-need](https://juanlara18.github.io/portfolio/#/blog/attention-is-all-you-need), so here I will keep it to what an agent engineer needs. For every token, the model computes three vectors: a query, a key, and a value. To decide how much one token should pay attention to another, it takes the dot product of the first token's query with the second's key, scales it, and runs the whole row through a softmax so the weights sum to one. Those weights then mix the value vectors into a new representation for that token.
+How does the model relate these tokens to one another? Through self-attention, the mechanism introduced in the 2017 paper *Attention Is All You Need*. I wrote a full deep-dive on it at [https://juanlara18.github.io/portfolio/#/blog/attention-is-all-you-need](/blog/attention-is-all-you-need), so here I will keep it to what an agent engineer needs. For every token, the model computes three vectors: a query, a key, and a value. To decide how much one token should pay attention to another, it takes the dot product of the first token's query with the second's key, scales it, and runs the whole row through a softmax so the weights sum to one. Those weights then mix the value vectors into a new representation for that token.
 
 $$
 \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{Q K^{\top}}{\sqrt{d_k}}\right) V
@@ -57,7 +57,7 @@ There is also a hard wall called the context window: the maximum number of token
 
 Here is what "thinking" actually is. After attention has mixed the context, the model produces, for the very next position, a vector of scores called logits, one per token in the vocabulary. A softmax turns those logits into a probability distribution. "Thinking" is this: a probability distribution over what token comes next, given everything so far. That is the entire act. The model then picks one token from that distribution, appends it to the sequence, and runs the whole thing again for the next token. Autoregression, one token at a time, all the way down.
 
-If you want to watch this happen at the level of matrices and gradients, my walkthrough of building a tiny GPT from scratch is at [https://juanlara18.github.io/portfolio/#/blog/microgpt-reading-karpathy](https://juanlara18.github.io/portfolio/#/blog/microgpt-reading-karpathy). For now, the consequence is what counts: the model's output is a sample from a distribution, and how you sample is a decision you control.
+If you want to watch this happen at the level of matrices and gradients, my walkthrough of building a tiny GPT from scratch is at [https://juanlara18.github.io/portfolio/#/blog/microgpt-reading-karpathy](/blog/microgpt-reading-karpathy). For now, the consequence is what counts: the model's output is a sample from a distribution, and how you sample is a decision you control.
 
 ### The Sampling Knobs
 
@@ -267,7 +267,7 @@ def run_tool_loop(user_question: str, max_steps: int = 5) -> str:
     return "Stopped: hit the maximum number of tool steps."
 ```
 
-The bounded `max_steps` is not optional decoration. Because the model controls whether to call another tool, a confused model can loop indefinitely, and without a hard ceiling you are one bad prompt away from an unbounded inference bill. I tell the full horror story of an agent that did exactly this, and the production patterns that prevent it, in [https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns).
+The bounded `max_steps` is not optional decoration. Because the model controls whether to call another tool, a confused model can loop indefinitely, and without a hard ceiling you are one bad prompt away from an unbounded inference bill. I tell the full horror story of an agent that did exactly this, and the production patterns that prevent it, in [https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns](/blog/production-llm-agents-patterns).
 
 ### A Tiny ReAct Loop, Spelled Out
 

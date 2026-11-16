@@ -573,7 +573,7 @@ The top-right quadrant is where emergencies live. `SanctionsMatch` in the exampl
 
 ## Tying This to Agent Tooling
 
-The payoff for doing Core + Domains right shows up when the ontology starts driving agent tooling. A previous post on this blog, [From Ontology to Agent Toolbox](https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox), walked through how every class and relation in an ontology becomes a typed tool for an LLM agent. Core + Domains makes that mapping substantially cleaner:
+The payoff for doing Core + Domains right shows up when the ontology starts driving agent tooling. A previous post on this blog, [From Ontology to Agent Toolbox](/blog/ontology-to-agent-toolbox), walked through how every class and relation in an ontology becomes a typed tool for an LLM agent. Core + Domains makes that mapping substantially cleaner:
 
 - **The core ontology's concept names become stable tool IDs.** `search_client`, `get_account`, `lookup_product` are tools that span every agent in the organisation, because `Client`, `Account`, and `Product` are in the core and never change their IRIs. Tools built on core concepts have long lives.
 - **Domain modules map to specialist agent toolboxes.** A cards-specialist agent loads the core tools plus the cards-module tools (`list_card_perks`, `get_credit_limit`). A loans-specialist agent loads the core tools plus the loans-module tools. The agent registry becomes a module-aware composition rather than a monolithic tool list.

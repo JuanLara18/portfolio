@@ -159,7 +159,7 @@ Three odd-degree vertices. No Eulerian path. Euler was right.
 
 A **Hamiltonian path** visits every *vertex* exactly once. A **Hamiltonian cycle** does so and returns to the start. Unlike Eulerian paths, there is no simple degree-based criterion for Hamiltonicity. Determining whether a graph has a Hamiltonian path is NP-complete.
 
-This is a striking contrast. Two questions that sound similar -- "visit every edge once" versus "visit every vertex once" -- sit on opposite sides of one of the deepest divides in computational complexity. The first is solvable in linear time. The second is in the same complexity class as the Traveling Salesman Problem, Boolean satisfiability, and [offline Tetris](/blog/tetris-is-np-complete-hard-math-in-a-classic-game). If you could solve one of them efficiently, you could solve all of them, and you would have proved P = NP.
+This is a striking contrast. Two questions that sound similar -- "visit every edge once" versus "visit every vertex once" -- sit on opposite sides of one of the deepest divides in computational complexity. The first is solvable in linear time. The second is in the same complexity class as the Traveling Salesman Problem, Boolean satisfiability, and [offline Tetris](/blog/tetris-np-complete). If you could solve one of them efficiently, you could solve all of them, and you would have proved P = NP.
 
 ---
 

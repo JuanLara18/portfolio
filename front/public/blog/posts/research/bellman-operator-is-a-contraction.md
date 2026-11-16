@@ -17,7 +17,7 @@ estimatedWordCount: 4683
 
 ## A Guarantee Nobody Proves
 
-An earlier post here, [Reinforcement Learning: From First Principles to Open Frontiers](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-first-principles), says of the tabular case that "this is exact, convergence is guaranteed, and debugging is straightforward." That sentence is true and it is unsupported, and it is unsupported in exactly the way that almost every treatment of dynamic programming is unsupported. You initialise a table of zeros, sweep the Bellman update across it until the numbers stop moving, and read off a policy. It works. Nobody says why.
+An earlier post here, [Reinforcement Learning: From First Principles to Open Frontiers](/blog/reinforcement-learning-first-principles), says of the tabular case that "this is exact, convergence is guaranteed, and debugging is straightforward." That sentence is true and it is unsupported, and it is unsupported in exactly the way that almost every treatment of dynamic programming is unsupported. You initialise a table of zeros, sweep the Bellman update across it until the numbers stop moving, and read off a policy. It works. Nobody says why.
 
 The why has a name, it takes about a page, and it is worth the page because it pays for three separate things at once that are usually smuggled in as assumptions. It establishes that an optimal value function **exists** — nothing prior to this guarantees that the Bellman equations have a solution at all. It establishes that the solution is **unique**, so the fixed point your loop lands on is not one of several. And it establishes that iteration reaches it from **any** starting table, at a rate you can compute in advance and check at runtime.
 

@@ -11,6 +11,7 @@ import { oneDark, oneLight } from 'react-syntax-highlighter/dist/cjs/styles/pris
 import mermaid from 'mermaid';
 import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } from 'lucide-react';
 import 'katex/dist/katex.min.css';
+import { resolveInternalHref } from '../../../../utils/postLinks';
 
 // Global cache for rendered Mermaid SVGs (limited size to prevent memory leaks)
 const mermaidCache = new Map();
@@ -941,14 +942,18 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
     
 		// Enhanced links with external link detection
 		a: ({ href, children, ...props }) => {
-			const isExternal = href && (href.startsWith('http') || href.startsWith('mailto:'));
-			const isHash = href && href.startsWith('#');
-			// Internal app route (e.g. "/blog/research/foo"). These must go through
-			// React Router so the GitHub Pages basename "/portfolio" is preserved;
-			// a plain <a href="/blog/..."> navigates outside the subpath and 404s.
-			const isInternalRoute = href && href.startsWith('/') && !href.startsWith('//');
 			const linkClass = "text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline decoration-2 underline-offset-2 transition-colors";
 
+			// Links into this site (posts, blog pages) go through React Router so
+			// the GitHub Pages basename "/portfolio" is preserved and they open in
+			// the same tab. `/blog/<slug>` resolves to the canonical
+			// `/blog/<category>/<slug>`; see utils/postLinks.js.
+			const internalRoute = resolveInternalHref(href);
+			if (internalRoute) {
+				return <RouterLink to={internalRoute} className={linkClass} {...props}>{children}</RouterLink>;
+			}
+
+			const isExternal = href && (href.startsWith('http') || href.startsWith('mailto:'));
 			if (isExternal) {
 				return (
 					<a
@@ -969,10 +974,6 @@ const BlogMarkdownRenderer = memo(({ content, className = "", baseImagePath = ""
 						</svg>
 					</a>
 				);
-			}
-
-			if (isInternalRoute && !isHash) {
-				return <RouterLink to={href} className={linkClass} {...props}>{children}</RouterLink>;
 			}
 
 			return <a href={href} className={linkClass} {...props}>{children}</a>;

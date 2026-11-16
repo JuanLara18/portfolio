@@ -1,6 +1,6 @@
 {
   "$schema_version": "1.0",
-  "generated_at": "2026-10-13T03:27:34.133Z",
+  "generated_at": "2026-11-16T00:09:10.361Z",
   "manifest": {
     "purpose": "Machine-readable index of the blog. Pair with knowledge-base/KNOWLEDGE_BASE.md for narrative context, reading paths, and cross-cutting views.",
     "authoring_flow": "Edit knowledge-base/KNOWLEDGE_BASE.md (the curated source). Run `npm run build-knowledge-base` (or any `npm run build`) to regenerate this file.",
@@ -39,7 +39,7 @@
         "Agents"
       ],
       "excerpt": "Every company defines 'customer' and 'revenue' five times, in five tools, in five formats. Apache Ossie, the former Open Semantic Interchange, is the first serious attempt to write those definitions once in an open format, from the business concept down to the SQL. This is the complete guide: the vocabulary, the theory behind it, the three layers, a banking example that validates against the real schemas, and an honest account of what the standard still leaves out.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/apache-ossie-open-semantic-stack",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack/",
       "source_path": "front/public/blog/posts/field-notes/apache-ossie-open-semantic-stack.md",
       "reading_minutes": 53,
       "word_count": 10400,
@@ -101,7 +101,7 @@
         "Vector Databases"
       ],
       "excerpt": "High-dimensional theory says two random vectors are almost surely nearly orthogonal. Embed a few thousand unrelated sentences with a real encoder and the mean pairwise cosine comes back large and positive. The gap between those two facts is a narrow cone, a packing bound, and a curvature nobody chose -- and every one of them is measurable.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/the-representation-has-a-shape",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape/",
       "source_path": "front/public/blog/posts/research/the-representation-has-a-shape.md",
       "reading_minutes": 32,
       "word_count": 6702,
@@ -172,7 +172,7 @@
         "Foundations of Mathematics"
       ],
       "excerpt": "Expectation is a projection, covariance is a quadratic form, and information is curvature. Those are the same three geometric operations that read an objective function, applied instead to the data -- and once they land, most of statistics stops being a list of formulas and becomes one picture examined from three sides.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/the-distribution-has-a-shape",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape/",
       "source_path": "front/public/blog/posts/research/the-distribution-has-a-shape.md",
       "reading_minutes": 32,
       "word_count": 7463,
@@ -239,7 +239,7 @@
         "Research Papers"
       ],
       "excerpt": "The same least-squares problem, with one column expressed in micrometres instead of metres, goes from converging in forty-four steps to not converging in forty thousand. Nothing statistical changed; the geometry did. Conditioning, curvature and duality are three numbers you can read off an objective before you run anything, and they explain most of what you experience as a model refusing to train.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/the-objective-has-a-shape",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape/",
       "source_path": "front/public/blog/posts/research/the-objective-has-a-shape.md",
       "reading_minutes": 31,
       "word_count": 8225,
@@ -299,7 +299,7 @@
         "Algorithms"
       ],
       "excerpt": "Two theorems proved earlier in this series predict that a model with far more parameters than data cannot generalize. Those models are the state of the art. This post locates exactly which step of the reasoning fails, proves the implicit-bias result that replaces it, measures the double descent curve in numpy, and ends where the theory actually ends: on an open problem.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/double-descent",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/double-descent/",
       "source_path": "front/public/blog/posts/research/double-descent.md",
       "reading_minutes": 27,
       "word_count": 4706,
@@ -353,7 +353,7 @@
         "Computational Complexity"
       ],
       "excerpt": "Backpropagation is not a neural-network trick. It is reverse-mode automatic differentiation on a computational graph, and the reason it is the only viable choice is a complexity theorem from 1983 that predates its fame in machine learning. This post derives the delta recursion from the chain rule, states the cheap gradient principle, and shows that weight initialization is a short variance calculation rather than folklore.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/backprop-is-reverse-mode-differentiation",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation/",
       "source_path": "front/public/blog/posts/research/backprop-is-reverse-mode-differentiation.md",
       "reading_minutes": 28,
       "word_count": 4809,
@@ -407,7 +407,7 @@
         "Optimization"
       ],
       "excerpt": "A neural network can approximate any continuous function. The sentence is true, it is beautiful, and it settles almost nothing. This post states the theorem in the form its authors proved it, gives the architecture of the argument honestly, and then spends most of its length on the four things it does not say: no width bound, no algorithm, no generalization, and no depth.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/universal-approximation-and-what-it-does-not-give-you",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you/",
       "source_path": "front/public/blog/posts/research/universal-approximation-and-what-it-does-not-give-you.md",
       "reading_minutes": 27,
       "word_count": 4808,
@@ -459,7 +459,7 @@
         "Neural Network Theory"
       ],
       "excerpt": "Everyone who has written value iteration has watched it converge and taken it on faith. The guarantee is a theorem with a one-page proof, and it explains three things at once: why an optimal value function exists, why iteration finds it geometrically fast, and why the discount factor is a convergence rate rather than a statement about caring about the future. It also explains precisely why all of that dies the moment the table becomes a neural network.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/bellman-operator-is-a-contraction",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction/",
       "source_path": "front/public/blog/posts/research/bellman-operator-is-a-contraction.md",
       "reading_minutes": 27,
       "word_count": 4683,
@@ -514,7 +514,7 @@
         "Data Science"
       ],
       "excerpt": "Expectation-Maximization looks like a heuristic: guess the hidden labels, refit, repeat. It is not. Every iteration provably cannot decrease the observed-data likelihood, and the whole proof is Jensen's inequality applied once. The same decomposition turns out to be the ELBO, which makes EM and variational inference one identity read two ways.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/em-never-goes-down",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down/",
       "source_path": "front/public/blog/posts/research/em-never-goes-down.md",
       "reading_minutes": 24,
       "word_count": 4109,
@@ -568,7 +568,7 @@
         "Foundations of Mathematics"
       ],
       "excerpt": "PCA, latent semantic analysis, spectral clustering and kernel PCA are taught as four techniques in four chapters. They are one computation: the eigenvectors of a symmetric positive semidefinite matrix. Only the matrix changes. This post proves the theorems that make that computation optimal, in full, and then reads the four algorithms off them.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/one-eigendecomposition-four-algorithms",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms/",
       "source_path": "front/public/blog/posts/research/one-eigendecomposition-four-algorithms.md",
       "reading_minutes": 27,
       "word_count": 4640,
@@ -621,7 +621,7 @@
         "Probability"
       ],
       "excerpt": "Kearns and Valiant asked whether a hypothesis barely better than a coin flip could be amplified to arbitrary accuracy. Schapire proved it could. This post derives AdaBoost as coordinate descent on the exponential loss, proves the training-error bound that makes the equivalence constructive, and then treats the anomaly that followed as the unresolved question it remains.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/weak-learnability-equals-strong",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong/",
       "source_path": "front/public/blog/posts/research/weak-learnability-equals-strong.md",
       "reading_minutes": 28,
       "word_count": 4754,
@@ -674,7 +674,7 @@
         "Statistics"
       ],
       "excerpt": "An RBF kernel corresponds to an infinite-dimensional feature space, and people say this cheerfully without noticing that optimizing over an infinite-dimensional space should be impossible. It is not impossible, and the reason is a theorem from 1971 that almost nobody who trains an SVM has read.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/kernel-trick-representer-theorem",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem/",
       "source_path": "front/public/blog/posts/research/kernel-trick-representer-theorem.md",
       "reading_minutes": 30,
       "word_count": 5274,
@@ -729,7 +729,7 @@
         "Deep Learning"
       ],
       "excerpt": "Everyone has seen the picture: elliptical error contours meeting a circle for ridge, a diamond for LASSO, and the diamond's corners explaining sparsity. That picture is about a constrained problem. What you actually minimize is a penalized one. This post proves they are the same problem, and then derives -- rather than asserts -- why L1 produces exact zeros and L2 never can.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/penalizing-is-constraining",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining/",
       "source_path": "front/public/blog/posts/research/penalizing-is-constraining.md",
       "reading_minutes": 30,
       "word_count": 5138,
@@ -785,7 +785,7 @@
         "Optimization"
       ],
       "excerpt": "The fundamental theorem of statistical learning says a class is learnable exactly when its VC dimension is finite. The obvious escape is to take a bigger class. A short theorem forbids it. This post proves that theorem, separates it from the two other results that share its name, and then reads the standard toolbox backwards to the assumption each method is quietly making.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/no-free-lunch-theorem",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem/",
       "source_path": "front/public/blog/posts/research/no-free-lunch-theorem.md",
       "reading_minutes": 28,
       "word_count": 5101,
@@ -834,7 +834,7 @@
         "Deep Learning"
       ],
       "excerpt": "There are uncountably many linear classifiers in the plane, and the union bound over them proves nothing at all. Yet linear classifiers generalize. The resolution is that cardinality was never the right measure: what matters is how many distinct labelings a class can produce on a finite sample, and that count is either exponential forever or polynomial. There is nothing in between.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/vc-dimension-sauer-shelah",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah/",
       "source_path": "front/public/blog/posts/research/vc-dimension-sauer-shelah.md",
       "reading_minutes": 29,
       "word_count": 5349,
@@ -886,7 +886,7 @@
         "Foundations of Mathematics"
       ],
       "excerpt": "Before 1984 nobody could state, precisely enough to prove, what it means for an algorithm to have learned something. Valiant gave the definition, and both of its hedges turn out to be forced. This post proves three theorems inside that framework, starting with the cleanest nontrivial result in learning theory: how many examples it takes to learn a rectangle you cannot see.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/probably-approximately-correct",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct/",
       "source_path": "front/public/blog/posts/research/probably-approximately-correct.md",
       "reading_minutes": 29,
       "word_count": 4966,
@@ -939,7 +939,7 @@
         "Foundations of Mathematics"
       ],
       "excerpt": "You report 94.2% accuracy on a held-out set. What is the honest error bar? Four theorems, each proved from the one before it, answer that question, and the answer is much wider than anyone puts in a paper. This is the toolbox every generalization bound in machine learning is secretly built from.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/markov-to-hoeffding-concentration-inequalities",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities/",
       "source_path": "front/public/blog/posts/research/markov-to-hoeffding-concentration-inequalities.md",
       "reading_minutes": 29,
       "word_count": 5314,
@@ -994,7 +994,7 @@
         "Neural Network Theory"
       ],
       "excerpt": "You minimize training error. You care about test error. Nothing in that sentence connects the two. This post proves the two theorems that name what sits in the gap -- the approximation/estimation split, which works for any loss, and the bias-variance split, which does not -- and then insists that they are not the same decomposition.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/what-are-we-minimizing-erm-bias-variance",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance/",
       "source_path": "front/public/blog/posts/research/what-are-we-minimizing-erm-bias-variance.md",
       "reading_minutes": 29,
       "word_count": 5218,
@@ -1046,7 +1046,7 @@
         "Algorithms"
       ],
       "excerpt": "Almost nobody is told that MSE and cross-entropy are derived rather than chosen. They fall out of one theorem: the loss you minimize is the negative log-density of the noise you assumed, up to a positive affine transformation. Change the assumption and you get a different loss -- Laplace gives absolute error, Poisson gives deviance, Student-t gives a redescending robust loss, and Huber's loss is the exact maximum-likelihood loss for the least favorable distribution near a Gaussian.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/loss-functions-are-probability-assumptions",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions/",
       "source_path": "front/public/blog/posts/research/loss-functions-are-probability-assumptions.md",
       "reading_minutes": 29,
       "word_count": 5385,
@@ -1101,7 +1101,7 @@
         "Best Practices"
       ],
       "excerpt": "The hardest agent bugs raise nothing. The stack trace is empty, the run completed, the answer was fluent and wrong. Or the right answer was produced by a sub-agent and never reached the user at all. This is a field guide to debugging flow errors in ADK 2.x: what the framework hides by default, why the event stream is the only ground truth, who actually owns the user-facing turn, and the flow recorder plugin you should write once and never write again.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/debugging-adk-agent-flows",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows/",
       "source_path": "front/public/blog/posts/field-notes/debugging-adk-agent-flows.md",
       "reading_minutes": 26,
       "word_count": 8153,
@@ -1167,7 +1167,7 @@
         "Databases"
       ],
       "excerpt": "ADK 2.0 replaced the execution model, not just the feature set. Three of its breaking changes do not raise an exception: your orchestration override gets bypassed, your event appends stop routing, and your exception handler eats the framework's retries. This is the migration guide, including the database work everyone underestimates and the honest case for staying on 1.x.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/migrating-adk-1x-to-2x",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x/",
       "source_path": "front/public/blog/posts/field-notes/migrating-adk-1x-to-2x.md",
       "reading_minutes": 25,
       "word_count": 6224,
@@ -1224,7 +1224,7 @@
         "GCP"
       ],
       "excerpt": "ADK 2.0 replaced the agent hierarchy with a graph. Agents, tools and plain functions are all nodes now, edges are written in Python rather than negotiated with a prompt, and every node can choose independently whether a model or a compiler decides what happens next. This is the deep dive on the Workflow runtime: routes, typed data flow, JoinNode fan-in, retries and timeouts, human-in-the-loop pauses, dynamic workflows with automatic checkpointing, and an honest look at where LangGraph still wins.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration/",
       "source_path": "front/public/blog/posts/field-notes/adk-graph-workflows-deterministic-orchestration.md",
       "reading_minutes": 31,
       "word_count": 7714,
@@ -1288,7 +1288,7 @@
         "Cloud Computing"
       ],
       "excerpt": "The four previous parts of this series described components: a control plane, a runtime, a sandbox, a tool plane. This one describes the discipline that turns components into a platform. Golden paths for agent teams, multi-tenancy that survives a shared vector store, policy as code instead of policy as wiki page, cost attribution that keeps the platform politically alive, and the honest organizational problem underneath all of it.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-golden-paths-multi-tenancy",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy/",
       "source_path": "front/public/blog/posts/field-notes/agent-golden-paths-multi-tenancy.md",
       "reading_minutes": 37,
       "word_count": 7924,
@@ -1345,7 +1345,7 @@
         "Production ML"
       ],
       "excerpt": "Choosing MCP as your tool interface is the easy decision and the right one. It is also where the platform problems begin. Part 4 of The Agent Platform builds the tool plane: an internal registry that says what exists, a gateway that decides who may call it, credential brokering so agents never hold secrets, versioning that survives schema drift, and a curation discipline for a world with more than ten thousand public servers.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/mcp-registry-gateway-tool-plane",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane/",
       "source_path": "front/public/blog/posts/field-notes/mcp-registry-gateway-tool-plane.md",
       "reading_minutes": 39,
       "word_count": 8342,
@@ -1400,7 +1400,7 @@
         "Best Practices"
       ],
       "excerpt": "Part 3 of The Agent Platform. When an agent executes code, the container boundary is not enough — namespaces and cgroups were built for resource isolation, not security. This is the engineering guide to microVMs, gVisor, and hardened containers: the mechanism of each, the cold start versus isolation tradeoff, the egress control everyone forgets, and how to match isolation strength to what the agent is actually trusted with.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/sandboxing-agents-microvm-gvisor",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor/",
       "source_path": "front/public/blog/posts/field-notes/sandboxing-agents-microvm-gvisor.md",
       "reading_minutes": 34,
       "word_count": 7194,
@@ -1457,7 +1457,7 @@
         "Enterprise AI"
       ],
       "excerpt": "Everyone argues about frameworks. Almost nobody asks where the turn loop physically runs, what happens to a session between turns, or what breaks when a pod is rescheduled mid-conversation. Part two of The Agent Platform: the runtime is the least glamorous and most consequential choice you will make.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-runtime-sessions-state-topology",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology/",
       "source_path": "front/public/blog/posts/field-notes/agent-runtime-sessions-state-topology.md",
       "reading_minutes": 35,
       "word_count": 7442,
@@ -1514,7 +1514,7 @@
         "Best Practices"
       ],
       "excerpt": "Almost everything written about agents is written from the seat of the team building one. This series is written from the other seat: the platform engineer who has to host everyone else's. Part one maps the ten layers of an agent platform, separates control plane from data plane, and is honest about what an LLM firewall does not solve.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-platform-control-plane-data-plane",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane/",
       "source_path": "front/public/blog/posts/field-notes/agent-platform-control-plane-data-plane.md",
       "reading_minutes": 37,
       "word_count": 7834,
@@ -1569,7 +1569,7 @@
         "Graph Theory"
       ],
       "excerpt": "Part 5 of Graph Analytics in Production. Fraud is where graphs earn their keep, because the signal is structurally invisible to a row-wise model — a ring sits six hops deep and no amount of feature engineering on a flat table recovers it. This is the working guide: the four typologies and their graph signatures, which shared attributes should become edges and which are pure supernode poison, the community-plus-embeddings-plus-gradient-boosting pipeline that actually reaches production, why precision at the alert budget is the only metric your operation feels, and why the model decays faster here than anywhere else you have deployed.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-fraud-detection-rings-synthetic-identity",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity/",
       "source_path": "front/public/blog/posts/field-notes/graph-fraud-detection-rings-synthetic-identity.md",
       "reading_minutes": 36,
       "word_count": 7712,
@@ -1625,7 +1625,7 @@
         "Data Quality"
       ],
       "excerpt": "Every company has two structures: the org chart someone designed, and the collaboration network that actually emerged. Part 4 of Graph Analytics in Production applies centrality, community detection, and structural holes to the organization itself, and spends as much time on the ethics as on the algorithms, because this is the one graph where getting the governance wrong hurts people.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/organizational-network-analysis-company-graph",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph/",
       "source_path": "front/public/blog/posts/field-notes/organizational-network-analysis-company-graph.md",
       "reading_minutes": 33,
       "word_count": 7089,
@@ -1678,7 +1678,7 @@
         "Graph Theory"
       ],
       "excerpt": "Part 3 of Graph Analytics in Production. Centrality gives you one number per node; embeddings give you a hundred and twenty-eight. This post covers what those numbers actually preserve, why FastRP wins on cost through the Johnson-Lindenstrauss lemma, when Node2Vec's p and q knobs are worth their price, why GraphSAGE is the only inductive option, and the temporal leakage trap that makes offline metrics beautiful and production metrics honest.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/node-embeddings-fastrp-node2vec-graphsage",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage/",
       "source_path": "front/public/blog/posts/field-notes/node-embeddings-fastrp-node2vec-graphsage.md",
       "reading_minutes": 32,
       "word_count": 6927,
@@ -1731,7 +1731,7 @@
         "Best Practices"
       ],
       "excerpt": "The theory says betweenness finds brokers and modularity finds communities. Production says your top broker is the IT helpdesk service account and your communities change every time you rerun the job. This is the practitioner's guide to centrality and community detection on real graphs: which measure answers which question, why betweenness will not scale, what the PageRank knobs actually control, the resolution limit you cannot tune away, and why you must never ship a community ID as a stable key.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/centrality-communities-in-practice",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice/",
       "source_path": "front/public/blog/posts/field-notes/centrality-communities-in-practice.md",
       "reading_minutes": 36,
       "word_count": 7786,
@@ -1785,7 +1785,7 @@
         "Best Practices"
       ],
       "excerpt": "Most engineers meet graph algorithms as textbook pseudocode, then try to run one on a real graph and discover the algorithm was never the hard part. Part 1 of a series on graph analytics in production: why transactional storage is the wrong shape, what CSR actually is, how projections decide both your memory bill and your answer, the five execution modes, and the serverless shift that takes the graph database off the critical path.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-analytics-gds-execution-model",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model/",
       "source_path": "front/public/blog/posts/field-notes/graph-analytics-gds-execution-model.md",
       "reading_minutes": 30,
       "word_count": 6506,
@@ -1838,7 +1838,7 @@
         "Benchmarks"
       ],
       "excerpt": "Part 3 of Graph Engines Under the Hood. Not a feature matrix, but a decision framework: four questions about your workload that actually determine the answer, an honest survey of where every engine category sits in 2026, the cautionary tale of Kuzu's disappearance, and the uncomfortable case that you may not need a graph database at all.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/choosing-a-graph-engine-2026",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026/",
       "source_path": "front/public/blog/posts/field-notes/choosing-a-graph-engine-2026.md",
       "reading_minutes": 32,
       "word_count": 6774,
@@ -1892,7 +1892,7 @@
         "Software Engineering"
       ],
       "excerpt": "In April 2024, ISO published GQL as ISO/IEC 39075 — the first genuinely new database query language standard since SQL in 1987. Thirty-seven years. Part 2 of Graph Engines Under the Hood looks at what GQL actually standardizes, how it diverges from Cypher, why SQL/PGQ matters more than most teams realize, and how much of it is really implemented in 2026.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/gql-standard-cypher-sqlpgq",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq/",
       "source_path": "front/public/blog/posts/field-notes/gql-standard-cypher-sqlpgq.md",
       "reading_minutes": 30,
       "word_count": 6383,
@@ -1944,7 +1944,7 @@
         "Best Practices"
       ],
       "excerpt": "Everyone repeats that graph databases are faster for connected data, and almost nobody says why. This is the mechanical answer: fixed-size records, physical pointers, offset arithmetic, and the doubly-linked relationship chain that turns a hop into a dereference. Plus the honest accounting of what it costs, when a columnar relational engine still wins, and why traversal-as-matrix-multiply is a genuinely different machine.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-engine-internals-index-free-adjacency",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency/",
       "source_path": "front/public/blog/posts/field-notes/graph-engine-internals-index-free-adjacency.md",
       "reading_minutes": 31,
       "word_count": 6686,
@@ -1993,7 +1993,7 @@
         "Best Practices"
       ],
       "excerpt": "Y Combinator open-sourced the multi-agent harness that runs its own company. Reading the source settles an argument: the agent loop is the easy part, and the other forty-six directories are the reason you should not write one from scratch.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-harness-build-fork-adopt-yc-qm",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm/",
       "source_path": "front/public/blog/posts/field-notes/agent-harness-build-fork-adopt-yc-qm.md",
       "reading_minutes": 23,
       "word_count": 5600,
@@ -2057,7 +2057,7 @@
         "Best Practices"
       ],
       "excerpt": "Why senior AI architects stop building agent infrastructure from scratch, how to compose heavy-hitting open-source building blocks like superpowers, Mem0, Instructor, and turbovec, and critical trade-offs vs enterprise cloud platforms like GCP GEAP.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/dont-reinvent-the-agent-open-source-composition",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition/",
       "source_path": "front/public/blog/posts/field-notes/dont-reinvent-the-agent-open-source-composition.md",
       "reading_minutes": 25,
       "word_count": 6000,
@@ -2117,7 +2117,7 @@
         "Infrastructure"
       ],
       "excerpt": "A practical blueprint for building an enterprise-wide, transversal Graph Context Engine on Google Cloud Platform using Cloud Spanner Graph, Dataplex Knowledge Catalog, and serverless MCP endpoints on Cloud Run.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/enterprise-graph-mcp-architecture-gcp",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp/",
       "source_path": "front/public/blog/posts/field-notes/enterprise-graph-mcp-architecture-gcp.md",
       "reading_minutes": 28,
       "word_count": 6700,
@@ -2176,7 +2176,7 @@
         "Vector Databases"
       ],
       "excerpt": "Why pure vector embeddings fail at multi-hop reasoning in production, how Pragmatic Ontologies provide neurosymbolic grounding, and why modern agentic architectures choose MCP Tool Traversals over raw NL2Cypher.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/production-graph-stack-agents-mcp-ontologies",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies/",
       "source_path": "front/public/blog/posts/field-notes/production-graph-stack-agents-mcp-ontologies.md",
       "reading_minutes": 29,
       "word_count": 6900,
@@ -2234,7 +2234,7 @@
         "Best Practices"
       ],
       "excerpt": "Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph, the Anthropic and OpenAI SDKs, and Bedrock AgentCore.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/enterprise-agent-memory-continuity-adk-geap",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap/",
       "source_path": "front/public/blog/posts/field-notes/enterprise-agent-memory-continuity-adk-geap.md",
       "reading_minutes": 31,
       "word_count": 7705,
@@ -2296,7 +2296,7 @@
         "Security"
       ],
       "excerpt": "Two open-source agents exploded in 2026 with opposite instincts: OpenClaw wants to do everything on your machine right now, Hermes wants to remember and compound. This is the honest head-to-head, with a decision matrix you can actually use.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/openclaw-vs-hermes-self-hosted-agent-comparison",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison/",
       "source_path": "front/public/blog/posts/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison.md",
       "reading_minutes": 24,
       "word_count": 6000,
@@ -2341,7 +2341,7 @@
         "Open Source"
       ],
       "excerpt": "Nous Research built a model lab. Then they built an agent that gets more capable the longer it runs, writing its own skills from experience and storing them next to a memory of who you are. This is the anatomy of Hermes, what its self-improvement actually is, and where the marketing outruns the mechanism.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/hermes-self-improving-agent-persistent-memory",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/hermes-self-improving-agent-persistent-memory/",
       "source_path": "front/public/blog/posts/field-notes/hermes-self-improving-agent-persistent-memory.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -2385,7 +2385,7 @@
         "Software Engineering"
       ],
       "excerpt": "In five months an open-source personal agent went from a solo developer's side project to the sixth most-starred repository on GitHub. This is a deep technical anatomy of OpenClaw: the Gateway that runs the whole show, the skills plugin model, vector-DB memory, the genuinely surprising things people built with it, and the failure modes that turned it into a favorite case study for AI security researchers.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/openclaw-anatomy-viral-agent-platform",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-anatomy-viral-agent-platform/",
       "source_path": "front/public/blog/posts/field-notes/openclaw-anatomy-viral-agent-platform.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -2428,7 +2428,7 @@
         "Research Papers"
       ],
       "excerpt": "Pope Leo XIV's first encyclical is a 42,300-word argument about artificial intelligence, signed on the 135th anniversary of Rerum Novarum — the document that defined the Church's response to the industrial revolution. Most engineers will never read it. This post does: chapter by chapter, quote by quote, mapping its claims about non-neutrality, cognitive disarmament, and concentration of power onto the design decisions ML practitioners make every day.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/magnifica-humanitas-ai-encyclical-analysis",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis/",
       "source_path": "front/public/blog/posts/research/magnifica-humanitas-ai-encyclical-analysis.md",
       "reading_minutes": 28,
       "word_count": 7000,
@@ -2471,7 +2471,7 @@
         "Cost Optimization"
       ],
       "excerpt": "Token spend is the new cloud bill -- variable, usage-driven, and easy to ignore until it triples. This post applies the FinOps discipline to LLM and agent systems: the real cost equation of an agent task, unit economics that survive a CFO meeting, attribution and metering architecture, the optimization levers ranked by effort and impact, and a budget-aware agent loop in production-quality Python.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/finops-llm-agents-token-economics",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics/",
       "source_path": "front/public/blog/posts/field-notes/finops-llm-agents-token-economics.md",
       "reading_minutes": 25,
       "word_count": 6400,
@@ -2516,7 +2516,7 @@
         "AI Governance"
       ],
       "excerpt": "Part 2 of the agent security series moves from the startup to the bank: enterprise IAM for agents as first-class principals, agent identity on Google Cloud, the MCP gateway pattern that never lets a client touch a server directly, zero trust with SPIFFE-style workload identity, and the audit machinery regulators actually ask for.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/bank-grade-agent-security-iam-gateways",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways/",
       "source_path": "front/public/blog/posts/field-notes/bank-grade-agent-security-iam-gateways.md",
       "reading_minutes": 26,
       "word_count": 6900,
@@ -2563,7 +2563,7 @@
         "APIs"
       ],
       "excerpt": "AI agents are non-human identities that act with delegated human power, long after the login that granted it. This post — part 1 of a two-part series on agent security — rebuilds OAuth from the agent's point of view, walks through the MCP authorization spec requirement by requirement, and lays out a concrete identity architecture for a five-person startup shipping an agent that touches users' Gmail, Calendar, and CRM.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-authentication-oauth-mcp-identity",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity/",
       "source_path": "front/public/blog/posts/field-notes/agent-authentication-oauth-mcp-identity.md",
       "reading_minutes": 26,
       "word_count": 6600,
@@ -2610,7 +2610,7 @@
         "Data Architecture"
       ],
       "excerpt": "The Professional Architect certification is the hardest credential in Anthropic's track: seven domains, 63 scenario questions, and almost no code. This guide teaches the architecture reasoning, governance frameworks, and lifecycle discipline the exam actually tests, from someone who does this work in a regulated bank.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/claude-certified-architect-professional-exam-guide",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide/",
       "source_path": "front/public/blog/posts/field-notes/claude-certified-architect-professional-exam-guide.md",
       "reading_minutes": 28,
       "word_count": 7500,
@@ -2657,7 +2657,7 @@
         "Tool Use"
       ],
       "excerpt": "A domain-by-domain study guide for Anthropic's CCDV-F exam. Eight domains, real SDK code for every one of them, a worked mini-project, and a preparation plan built for working engineers.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/claude-certified-developer-exam-guide",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide/",
       "source_path": "front/public/blog/posts/field-notes/claude-certified-developer-exam-guide.md",
       "reading_minutes": 28,
       "word_count": 7200,
@@ -2702,7 +2702,7 @@
         "Agents"
       ],
       "excerpt": "Anthropic's entry-level certification tests whether you can evaluate Claude's outputs, design workflows around it, and use it responsibly. This is the full study guide: every domain in blueprint order, the actual material behind each one, and how to walk into the exam ready to pass.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/claude-certified-associate-exam-guide",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide/",
       "source_path": "front/public/blog/posts/field-notes/claude-certified-associate-exam-guide.md",
       "reading_minutes": 27,
       "word_count": 7300,
@@ -2745,7 +2745,7 @@
         "RAG"
       ],
       "excerpt": "The finale of the graph-layer series. Four posts argued that agents need a graph of your code. This one is about shipping it: why MCP became the universal transport, why the winning pattern is pre-computed and local-first with no code egress, how to keep the graph fresh, when it pays for itself, and the honest senior take on when not to graphify at all.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-layer-in-production-mcp-build-vs-buy",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy/",
       "source_path": "front/public/blog/posts/field-notes/graph-layer-in-production-mcp-build-vs-buy.md",
       "reading_minutes": 29,
       "word_count": 6800,
@@ -2792,7 +2792,7 @@
         "Model Context Protocol"
       ],
       "excerpt": "Vector memory retrieves text that looks like the past. It cannot tell you that the past changed. This is the fourth post in The Graph Layer for Agents: how to give an agent a memory that models evolving, contradicting facts over time as a bi-temporal knowledge graph, why fact invalidation beats deletion, what Graphiti and Cognee actually do, and the senior judgment of when none of this is worth the cost.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-memory-temporal-agents-graphiti-cognee",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee/",
       "source_path": "front/public/blog/posts/field-notes/graph-memory-temporal-agents-graphiti-cognee.md",
       "reading_minutes": 28,
       "word_count": 6400,
@@ -2843,7 +2843,7 @@
         "Graph Theory"
       ],
       "excerpt": "Part 3 of The Graph Layer for Agents. You have a code graph. Now what queries actually make an agent smarter? Localization, blast radius, PageRank-ranked context, and multi-hop retrieval, with real networkx over a call graph. The point is fewer tokens, fewer tool calls, better grounding.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/querying-code-graphs-blast-radius-localization",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization/",
       "source_path": "front/public/blog/posts/field-notes/querying-code-graphs-blast-radius-localization.md",
       "reading_minutes": 29,
       "word_count": 6800,
@@ -2892,7 +2892,7 @@
         "Agentic AI"
       ],
       "excerpt": "Part 2 of The Graph Layer for Agents. Two indexers point at the same Java repo. One finishes in eight seconds and answers every architecture question correctly. The other takes forty minutes, silently drops 377 files, and still gets some answers wrong. This is the story of how a repository actually becomes a graph, and why the boring deterministic path wins.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/repo-to-graph-ast-vs-llm-extraction",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction/",
       "source_path": "front/public/blog/posts/field-notes/repo-to-graph-ast-vs-llm-extraction.md",
       "reading_minutes": 29,
       "word_count": 6600,
@@ -2936,7 +2936,7 @@
         "Information Retrieval"
       ],
       "excerpt": "Coding agents hit a hard ceiling with grep and vector embeddings, because neither can answer the questions that matter, what breaks if I touch this, who calls this, where does this decision actually live. The answer emerging across the industry in 2025 and 2026 is the context engine, a pre-analyzed queryable graph of your codebase served to the agent over MCP. This is part one of a five-part series, the map before the deep dives.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-graph-layer-why-grep-embeddings-fell-short",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short/",
       "source_path": "front/public/blog/posts/field-notes/agent-graph-layer-why-grep-embeddings-fell-short.md",
       "reading_minutes": 28,
       "word_count": 6500,
@@ -2983,7 +2983,7 @@
         "Agentic AI"
       ],
       "excerpt": "The capstone of the senior-in-the-age-of-AI series. Implementation is cheap now, so the scarce skill moves up the stack: deciding what to build, how much to scale, which trade-off to take, and when generated code is subtly wrong. A field guide to engineering judgment as a product discipline, told through the lens of city planning.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/senior-product-engineering-scale-prioritization-architecture",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture/",
       "source_path": "front/public/blog/posts/field-notes/senior-product-engineering-scale-prioritization-architecture.md",
       "reading_minutes": 26,
       "word_count": 6600,
@@ -3024,7 +3024,7 @@
         "Agentic AI"
       ],
       "excerpt": "Frameworks churn. The theorems that bound what a distributed system can do are permanent, and an AI coding tool will confidently generate a system that quietly violates the consistency model you actually needed. This is the theory with the longest shelf life, framed as a brass balance scale where every guarantee you add to one pan is paid for in another.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/senior-distributed-theory-cap-pacelc-tradeoffs",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs/",
       "source_path": "front/public/blog/posts/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs.md",
       "reading_minutes": 27,
       "word_count": 6600,
@@ -3065,7 +3065,7 @@
         "Agentic AI"
       ],
       "excerpt": "An AI can generate endpoint handlers and an OpenAPI spec in seconds. But an API is a promise to other humans and systems, and promises are expensive to break. This is the third field note in a series on what stays scarce when the implementation becomes free: the contract, not the code, is the hard part.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/senior-api-design-contracts-versioning-dx",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx/",
       "source_path": "front/public/blog/posts/field-notes/senior-api-design-contracts-versioning-dx.md",
       "reading_minutes": 26,
       "word_count": 6700,
@@ -3108,7 +3108,7 @@
         "Agentic AI"
       ],
       "excerpt": "An AI will generate a CREATE TABLE statement in two seconds. It cannot tell you whether that table is the right shape for the queries you will run for the next ten years. The data model is the one decision that outlives every rewrite and is the most expensive to get wrong. This is the second post in a series on the judgment that stays scarce when machines write the code.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/senior-data-modeling-query-patterns-database-design",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design/",
       "source_path": "front/public/blog/posts/field-notes/senior-data-modeling-query-patterns-database-design.md",
       "reading_minutes": 27,
       "word_count": 6700,
@@ -3150,7 +3150,7 @@
         "Agentic AI"
       ],
       "excerpt": "An AI can scaffold a Kubernetes manifest or a retry loop in seconds. It cannot decide your failure domains, your blast radius, or whether your retry will trigger a thundering herd at 3am. This is the first post in a series on the senior judgment that survives the code generator, starting with the hardest place to be wrong: infrastructure.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/senior-infrastructure-distributed-systems-failure-networking",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking/",
       "source_path": "front/public/blog/posts/field-notes/senior-infrastructure-distributed-systems-failure-networking.md",
       "reading_minutes": 27,
       "word_count": 6600,
@@ -3193,7 +3193,7 @@
         "RAG"
       ],
       "excerpt": "The strategic close to the agentic engineering arc. An agent that is fluent and clever but insecure, unaccountable, or untethered to a business metric should not ship. This is the shield a regulated bank wraps around a production agent: prompt-injection defense in depth, retrieval ACLs, PII masking, an incident protocol for a jailbreak in the wild, responsible-AI controls for proxy bias, system cards and red teaming to satisfy a security review, and the FinOps and ROI arguments that prove the thing earns its keep.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/enterprise-agents-governance-security-business",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business/",
       "source_path": "front/public/blog/posts/field-notes/enterprise-agents-governance-security-business.md",
       "reading_minutes": 30,
       "word_count": 7000,
@@ -3264,7 +3264,7 @@
         "RAG"
       ],
       "excerpt": "An agent that demos beautifully is not a production service. This is the operations layer of agentic engineering: how to measure quality with RAGAS-style metrics, build regression gates that block bad deploys, make stochastic bugs reproducible, trace every decision for audit, and scale the whole thing without setting your token budget on fire.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/operating-agents-eval-observability-scale",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale/",
       "source_path": "front/public/blog/posts/field-notes/operating-agents-eval-observability-scale.md",
       "reading_minutes": 29,
       "word_count": 6900,
@@ -3335,7 +3335,7 @@
         "Protocols"
       ],
       "excerpt": "Every agent you build has to reach data it does not own and cooperate with agents it did not write. Do that with bespoke connectors and the cost explodes as M times N. This is the protocol layer of agentic engineering: MCP for tools and context, A2A for agent-to-agent collaboration, and why a standard beats a super-agent, a single model, or a shared vector database every time.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-integration-protocols-mcp-and-a2a",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a/",
       "source_path": "front/public/blog/posts/field-notes/agent-integration-protocols-mcp-and-a2a.md",
       "reading_minutes": 24,
       "word_count": 5600,
@@ -3390,7 +3390,7 @@
         "Best Practices"
       ],
       "excerpt": "An agent's intelligence is mostly its context system: what it can remember across turns and what it can pull in from the outside. Memory and retrieval are one design surface. This is the engineering of that surface, from the geometry of embeddings to the production failures that decide whether your agent answers from today's policy or last year's deleted record.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-memory-and-retrieval-embeddings-to-rag",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag/",
       "source_path": "front/public/blog/posts/field-notes/agent-memory-and-retrieval-embeddings-to-rag.md",
       "reading_minutes": 29,
       "word_count": 6900,
@@ -3458,7 +3458,7 @@
         "Production ML"
       ],
       "excerpt": "Control flow is the part of agent engineering nobody puts in the demo and everybody fights with in production. This is a working tour of the topologies that matter, routers, hierarchical supervisors, consensus layers, and the cyclic graphs underneath them, plus the LangGraph, CrewAI, LangChain, and LlamaIndex machinery that makes them durable instead of brittle.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-architecture-and-orchestration",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration/",
       "source_path": "front/public/blog/posts/field-notes/agent-architecture-and-orchestration.md",
       "reading_minutes": 28,
       "word_count": 6600,
@@ -3520,7 +3520,7 @@
         "Best Practices"
       ],
       "excerpt": "Part one of a six-part series on agentic AI engineering. We demystify what an LLM actually does when it thinks, why it can never be certain, and where the bright line falls between a hardcoded chain and a program that controls its own flow.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/foundations-of-agentic-ai-llms-to-agents",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents/",
       "source_path": "front/public/blog/posts/field-notes/foundations-of-agentic-ai-llms-to-agents.md",
       "reading_minutes": 27,
       "word_count": 6400,
@@ -3577,7 +3577,7 @@
         "Knowledge Representation"
       ],
       "excerpt": "You cannot structure what you cannot define. Before an enterprise argues about which knowledge base to build, it needs crisp words for the strata involved: assets, products, tools, pipelines, and the discipline that binds them. This is the definitional companion to the knowledge-as-a-product argument, a layered vocabulary you can lift straight into your own org docs.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/defining-the-knowledge-stack",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack/",
       "source_path": "front/public/blog/posts/field-notes/defining-the-knowledge-stack.md",
       "reading_minutes": 25,
       "word_count": 6300,
@@ -3621,7 +3621,7 @@
         "MCP"
       ],
       "excerpt": "A large organization rarely has one knowledge base. It has two FAQ spreadsheets that nobody realized were eighty percent the same, plus a vectorized KB and a structured one that may or may not be talking about the same things. This is the rigorous version of the question every governance review eventually asks, do these two knowledge bases overlap, and what should we do about it, worked from exact-duplicate hashing through MinHash, embeddings, optimal transport, and the contradiction case that usually matters most.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/comparing-knowledge-bases-semantic-overlap",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap/",
       "source_path": "front/public/blog/posts/field-notes/comparing-knowledge-bases-semantic-overlap.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -3669,7 +3669,7 @@
         "LLM Frameworks"
       ],
       "excerpt": "The fastest way to understand Google's ADK deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, through the graph based Workflow Runtime that arrived in ADK 2.0, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed, including its limits.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/adk-advanced-evolution-of-agent-engineering",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering/",
       "source_path": "front/public/blog/posts/field-notes/adk-advanced-evolution-of-agent-engineering.md",
       "reading_minutes": 34,
       "word_count": 8435,
@@ -3728,7 +3728,7 @@
         "Cost Optimization"
       ],
       "excerpt": "You already run everything on Google Cloud. Redis is selling an AI bundle -- agent memory, vector search, semantic caching, feature serving -- and it is one click away on the Marketplace. This is a skeptical procurement analysis of what you actually gain by adding it, where Memorystore and Vertex already cover you, and three POCs that would prove or disprove the value before you sign anything.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/redis-for-ai-buy-vs-build-gcp",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp/",
       "source_path": "front/public/blog/posts/field-notes/redis-for-ai-buy-vs-build-gcp.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -3773,7 +3773,7 @@
         "Data Modeling"
       ],
       "excerpt": "Spanner was built to solve a problem most databases declare impossible: global scale, horizontal sharding, and external consistency at the same time. This is a field-notes tour of why it exists, how Spanner Graph layers a property graph on relational tables, and the honest answer to the question I keep getting asked: should your ontology and knowledge graph live in Spanner?",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/spanner-graph-for-knowledge-and-agents",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents/",
       "source_path": "front/public/blog/posts/field-notes/spanner-graph-for-knowledge-and-agents.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -3818,7 +3818,7 @@
         "Vertex AI"
       ],
       "excerpt": "A hands-on, lab-style walkthrough of Google's Knowledge Catalog, the Dataplex-lineage cataloging and AI-grounding layer. We work the three core moves end to end, catalog then enrich then search, explain how each works under the hood, and close with the hard usability questions: catalog everything or be selective, one catalog or many, and what the service genuinely does not solve.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/gemini-knowledge-catalog-workshop",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop/",
       "source_path": "front/public/blog/posts/field-notes/gemini-knowledge-catalog-workshop.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -3868,7 +3868,7 @@
         "Search Algorithms"
       ],
       "excerpt": "You have embeddings. Now you need to find the nearest ones among billions, in milliseconds, without melting your budget. This is the full story of how vector indexes emerge from that one constraint, how the major index families actually work, and how to run a production vector database on Google Cloud with Vertex AI Vector Search.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/vector-databases-indexes-to-vertex-search",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search/",
       "source_path": "front/public/blog/posts/field-notes/vector-databases-indexes-to-vertex-search.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -3912,7 +3912,7 @@
         "Theory of Computation"
       ],
       "excerpt": "A regular expression looks like line noise but it is secretly a tiny, beautiful machine. The same pattern can be matched in guaranteed linear time, yet the regex engine shipped with Python, Perl, and JavaScript can grind to a halt for minutes on a 30-character string. This is the story of Thompson's construction, finite automata, and why the most popular regex engines on earth chose the one algorithm that can blow up exponentially.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/regex-engines-finite-automata",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata/",
       "source_path": "front/public/blog/posts/curiosities/regex-engines-finite-automata.md",
       "reading_minutes": 20,
       "word_count": 5000,
@@ -3957,7 +3957,7 @@
         "Evaluation"
       ],
       "excerpt": "Most teams treat an agent like a product launch: build it, ship it, move on. A production agent is more like a warship. It gets designed, sea-trialed, and certified, and then it returns to the dry dock again and again for inspection and refit across its whole service life. This is the end-to-end operating model for curating and governing an enterprise agent, phase by phase, with owners, gates, artifacts, and the GCP services that help at each step.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/enterprise-agent-governance-lifecycle",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle/",
       "source_path": "front/public/blog/posts/field-notes/enterprise-agent-governance-lifecycle.md",
       "reading_minutes": 34,
       "word_count": 7150,
@@ -4004,7 +4004,7 @@
         "AI Strategy"
       ],
       "excerpt": "Most enterprises treat their knowledge base as a pile of documents bolted onto a vector store, then wonder why nobody trusts it. The fix is older than RAG and borrowed from data mesh: treat knowledge as a product, with an owner, a contract, an SLA, and a shelf you can actually find it on. This is the long version of that argument, applied to a large regulated bank.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/knowledge-as-a-product",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product/",
       "source_path": "front/public/blog/posts/field-notes/knowledge-as-a-product.md",
       "reading_minutes": 36,
       "word_count": 7950,
@@ -4046,7 +4046,7 @@
         "Software Engineering"
       ],
       "excerpt": "The blog has eighty-something posts on what to build and almost nothing on where to build it. This is the missing one. For an AI engineering team in a regulated enterprise, the dev environment is not a personal preference, it is part of the architecture, and choosing it badly costs you GPUs, data residency, and your audit trail.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/dev-environments-for-ai-teams",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams/",
       "source_path": "front/public/blog/posts/field-notes/dev-environments-for-ai-teams.md",
       "reading_minutes": 28,
       "word_count": 6300,
@@ -4088,7 +4088,7 @@
         "Cloud Computing"
       ],
       "excerpt": "We put LLMs in a loop, gave them tools, and called them agents. But putting an engine in a chassis doesn't make a car. This is the engineering behind agent architectures—from single routers to multi-agent supervisors—and the enterprise tools and cloud services that turn brittle demos into productive enterprise systems.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-architectures-productive-patterns",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-architectures-productive-patterns/",
       "source_path": "front/public/blog/posts/field-notes/agent-architectures-productive-patterns.md",
       "reading_minutes": 30,
       "word_count": 5200,
@@ -4130,7 +4130,7 @@
         "Research Papers"
       ],
       "excerpt": "The cert review showed you the silhouette of reinforcement learning. The tree the field actually uses has four branches, fifteen named algorithms, and a clean logic for which one to reach for. This is the tour through it, with the equation, the contribution, and the minimal skeleton for each.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/rl-algorithm-taxonomy-tour",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour/",
       "source_path": "front/public/blog/posts/field-notes/rl-algorithm-taxonomy-tour.md",
       "reading_minutes": 28,
       "word_count": 6900,
@@ -4174,7 +4174,7 @@
         "AI Engineering"
       ],
       "excerpt": "Part II of the cert review picks up where the classical foundations end. This is the modern stack: deep learning core, regularization, optimizers, distributed training, the NLP and RL fast tours, explainability, and the tooling map. Crisp coverage at cert speed.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ml-cert-review-part-2-deep-learning-and-beyond",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond/",
       "source_path": "front/public/blog/posts/field-notes/ml-cert-review-part-2-deep-learning-and-beyond.md",
       "reading_minutes": 30,
       "word_count": 7300,
@@ -4218,7 +4218,7 @@
         "MLOps"
       ],
       "excerpt": "You've picked your cert. Now here is the ground you actually need to be solid on. A dense, opinionated refresher on the classical ML half of any modern ML certification: metrics, losses, activations, the bias-variance trade-off, feature engineering, evaluation, ensembles, and the algorithm zoo.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ml-cert-review-part-1-foundations",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations/",
       "source_path": "front/public/blog/posts/field-notes/ml-cert-review-part-1-foundations.md",
       "reading_minutes": 30,
       "word_count": 7300,
@@ -4259,7 +4259,7 @@
         "Best Practices"
       ],
       "excerpt": "What the cert ladder actually looks like in 2026, what's been added in the agent era, what each exam is honestly like, and how a working engineer should pick one. The post I wish had existed when I started planning.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/google-cloud-certifications-2026-roadmap",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap/",
       "source_path": "front/public/blog/posts/field-notes/google-cloud-certifications-2026-roadmap.md",
       "reading_minutes": 20,
       "word_count": 5100,
@@ -4300,7 +4300,7 @@
         "Infrastructure"
       ],
       "excerpt": "Most engineers can draw a frontend, a backend, and a database. Then the interviewer asks about backups, replicas, dev refresh, point in time recovery, and the analytics warehouse, and the room goes quiet. The second half of the data plane is where production maturity lives. This post is the honest map: vocabulary, trade offs, and a default architecture you can copy.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/application-data-flow-replicas-backups",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups/",
       "source_path": "front/public/blog/posts/field-notes/application-data-flow-replicas-backups.md",
       "reading_minutes": 26,
       "word_count": 6700,
@@ -4345,7 +4345,7 @@
         "MLOps"
       ],
       "excerpt": "The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the pillar mental model as it stands after ADK 2.0, runnable code for every core abstraction, graph workflows, skills, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Runtime, and an honest comparison with the rest of the field.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/google-adk-agent-development-deep-dive",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive/",
       "source_path": "front/public/blog/posts/field-notes/google-adk-agent-development-deep-dive.md",
       "reading_minutes": 27,
       "word_count": 6845,
@@ -4413,7 +4413,7 @@
         "Vector Databases"
       ],
       "excerpt": "The hundredth post was the structural retrospective. This is the practical one. After a hundred posts of saying it depends, here is the stack I would actually pick today, the books and papers that earned their place on my shelf, the patterns that proved their weight, and the ones I would refuse to deploy a second time.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/stack-recommendations-after-100-posts",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts/",
       "source_path": "front/public/blog/posts/field-notes/stack-recommendations-after-100-posts.md",
       "reading_minutes": 30,
       "word_count": 7600,
@@ -4458,7 +4458,7 @@
         "Computer Science"
       ],
       "excerpt": "When you write 99 posts and then plot the result as a graph, the picture is not what you thought you were drawing. This is post number 100, and instead of a victory lap I ran the corpus through networkx: 99 nodes, 685k words, 223 tags, 2,408 tag-tag edges. What the structure reveals is more interesting than the chronology. There is a spine, four-and-a-half communities, a long tail of singleton tags that I tagged once and forgot, a handful of bridge posts holding the graph together, and a measurable bias toward production over theory. This is the blog reading itself, with real numbers, real cluster names, and the uncomfortable parts left in.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/100-posts-knowledge-graph-retrospective",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective/",
       "source_path": "front/public/blog/posts/curiosities/100-posts-knowledge-graph-retrospective.md",
       "reading_minutes": 28,
       "word_count": 7100,
@@ -4503,7 +4503,7 @@
         "AI Engineering"
       ],
       "excerpt": "By 2026 the people who keep production agents alive had stopped calling themselves AI engineers and started using more specific titles. Context Engineer. Memory Engineer. Harness Engineer. Tool Engineer. Eval Engineer. Identity and Policy Engineer. This post is a tour of those six disciplines: what each one owns, the artifacts they produce, the named effects they fight, the anti-patterns that keep biting, and an honest projection of which roles will consolidate, which will be absorbed by vendors, and which are LinkedIn theater.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-engineering-disciplines",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines/",
       "source_path": "front/public/blog/posts/field-notes/agent-engineering-disciplines.md",
       "reading_minutes": 32,
       "word_count": 7900,
@@ -4550,7 +4550,7 @@
         "Semantic Web"
       ],
       "excerpt": "Google's Knowledge Catalog and a domain ontology look like they answer the same question. They do not. One is an asset registry with governance and lineage; the other is a formal model of meaning with inferential reasoning. A mature knowledge layer almost always needs both, with a clear arrow of dependency between them. This post is the four-part arc's closing piece, naming the substitutions, the anti-patterns, and the honest hybrid architecture.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/knowledge-catalog-vs-ontologies",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies/",
       "source_path": "front/public/blog/posts/field-notes/knowledge-catalog-vs-ontologies.md",
       "reading_minutes": 28,
       "word_count": 7300,
@@ -4597,7 +4597,7 @@
         "Knowledge Engineering"
       ],
       "excerpt": "The Cloud Next 26 overview gave you the map. This post zooms in on the two pieces that will reshape a Knowledge Data Engineer's day-to-day in the next twelve months: the Gemini Enterprise Agent Platform as a control plane, and the Knowledge Catalog as the semantic spine that grounds every agent answer in audited enterprise truth.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/gemini-enterprise-knowledge-catalog-deep-dive",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive/",
       "source_path": "front/public/blog/posts/field-notes/gemini-enterprise-knowledge-catalog-deep-dive.md",
       "reading_minutes": 28,
       "word_count": 7300,
@@ -4643,7 +4643,7 @@
         "Production ML"
       ],
       "excerpt": "On April 22, 2026, Sundar Pichai walked onstage at Mandalay Bay and quietly renamed Vertex AI. The new label, Gemini Enterprise Agent Platform, sounds like marketing. It is not. It is the most aggressive cloud reorganization since the original Compute Engine launch. This is the practitioner's deep dive into every announcement that matters, what it replaces, and what to actually adopt.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/google-cloud-next-2026-agent-native-stack",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack/",
       "source_path": "front/public/blog/posts/field-notes/google-cloud-next-2026-agent-native-stack.md",
       "reading_minutes": 30,
       "word_count": 7700,
@@ -4688,7 +4688,7 @@
         "Security"
       ],
       "excerpt": "What goes wrong when an agent gets loose in production, and the layered defenses that actually keep it from doing damage. A practitioner's mental model: threat taxonomy, five guardrail layers with code, blast radius reasoning, the tooling landscape, evaluation, and the anti-patterns that defeat the whole effort.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide/",
       "source_path": "front/public/blog/posts/field-notes/agent-guardrails-field-guide.md",
       "reading_minutes": 26,
       "word_count": 6600,
@@ -4730,7 +4730,7 @@
         "Data Engineering"
       ],
       "excerpt": "There is an abyss between the GraphRAG paper and a pipeline that runs reliably in production. This post crosses that gap with a worked banking case — ingesting mortgage-loan documents into Neo4j with a schema-embedded extraction prompt, Pydantic repair, pySHACL validation, entity resolution, and idempotent MERGE Cypher.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/populating-knowledge-graph-llms-banking",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking/",
       "source_path": "front/public/blog/posts/field-notes/populating-knowledge-graph-llms-banking.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -4781,7 +4781,7 @@
         "Data Architecture"
       ],
       "excerpt": "An ontology that lives on one engineer's laptop is not an ontology, it is a document. Putting one into production has its own architectural shape: Git as source of truth, YAML authored and compiled into OWL, SHACL, and JSON-Schema, CI that runs competency questions as tests, and GCP plumbing that treats the schema as code, not data.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ontology-production-pipeline-gcp",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp/",
       "source_path": "front/public/blog/posts/field-notes/ontology-production-pipeline-gcp.md",
       "reading_minutes": 23,
       "word_count": 6000,
@@ -4828,7 +4828,7 @@
         "Software Engineering"
       ],
       "excerpt": "An enterprise ontology is neither a single monolithic file nor a loose federation of domain silos. Real projects converge to Core + Domains: a small, stable core of cross-cutting concepts and orbiting modules per business line. This post derives the operational rule that governs that split, using banking as the grounded example.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/modular-ontologies-core-domains-pattern",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern/",
       "source_path": "front/public/blog/posts/field-notes/modular-ontologies-core-domains-pattern.md",
       "reading_minutes": 23,
       "word_count": 6100,
@@ -4873,7 +4873,7 @@
         "Banking"
       ],
       "excerpt": "Most enterprise knowledge-graph projects fail at the same join: the place where the schema of the world meets the facts about the world. The Description-Logic distinction between TBox, ABox, and RBox is not academic pedantry. It is the operating model that tells you how to lay out files, who owns what, how often each piece changes, which tools to use, and where SHACL sits in the pipeline. This post grounds the theory in a banking knowledge graph and shows the concrete failure modes when teams collapse the distinction.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/tbox-abox-schema-facts-distinction",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction/",
       "source_path": "front/public/blog/posts/field-notes/tbox-abox-schema-facts-distinction.md",
       "reading_minutes": 22,
       "word_count": 6000,
@@ -4921,7 +4921,7 @@
         "Data Engineering"
       ],
       "excerpt": "A 2025 paper quietly demolishes the assumption that ontology source is what matters for graph-based RAG. The real lever is whether your nodes carry text chunks — and if they don't, structure alone underperforms naive vector RAG by 40 points.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ontology-grounded-rag-chunks-in-nodes",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes/",
       "source_path": "front/public/blog/posts/research/ontology-grounded-rag-chunks-in-nodes.md",
       "reading_minutes": 30,
       "word_count": 7285,
@@ -4964,7 +4964,7 @@
         "Embeddings"
       ],
       "excerpt": "In a hybrid retrieval system with vector stores, graphs, SQL and APIs, the quality of each source matters less than the decision of which one to consult. This post walks through three routing strategies — LLM-only, explicit classifier, cascading fallback — and shows how to evaluate the router as a first-class component.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/query-routing-agent-decisions",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions/",
       "source_path": "front/public/blog/posts/field-notes/query-routing-agent-decisions.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -5014,7 +5014,7 @@
         "Software Engineering"
       ],
       "excerpt": "An ontology is not just a schema — it is the blueprint that tells you which tools to give your agent. This post walks through three levels of tool granularity, from a monolithic Cypher endpoint to domain-scoped tools derived class-by-class from an OWL ontology, with production-quality Python, guardrails, and role-based access.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ontology-to-agent-toolbox",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox/",
       "source_path": "front/public/blog/posts/field-notes/ontology-to-agent-toolbox.md",
       "reading_minutes": 26,
       "word_count": 6500,
@@ -5066,7 +5066,7 @@
         "GCP"
       ],
       "excerpt": "Raw SQL tables are not data products. Between the warehouse and the business sits a translation layer that defines what metrics mean, how tables relate, and who can see what. LookML is one answer to that problem -- a code-based semantic modeling language that version-controls your analytics and opens the door to agentic, programmatic BI.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/lookml-semantic-layer-data-modeling",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling/",
       "source_path": "front/public/blog/posts/field-notes/lookml-semantic-layer-data-modeling.md",
       "reading_minutes": 24,
       "word_count": 6500,
@@ -5112,7 +5112,7 @@
         "Knowledge Graphs"
       ],
       "excerpt": "Graph theory gives you the language. Network science asks: what does a graph's structure tell you about the system it represents? From Granovetter's weak ties to Barabasi's scale-free hubs, this is the science of extracting meaning from connections -- who matters most, who belongs together, and why real networks look nothing like random ones.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/network-science-communities-centrality",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality/",
       "source_path": "front/public/blog/posts/curiosities/network-science-communities-centrality.md",
       "reading_minutes": 20,
       "word_count": 4800,
@@ -5151,7 +5151,7 @@
         "Foundations of Mathematics"
       ],
       "excerpt": "From Euler's walk across seven bridges in 1736 to the mathematics that powers social networks, recommendation systems, and neural networks -- graph theory is the language of connections. This is the foundation that every algorithm on networks assumes you already know.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-theory-mathematics-of-connections",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections/",
       "source_path": "front/public/blog/posts/curiosities/graph-theory-mathematics-of-connections.md",
       "reading_minutes": 22,
       "word_count": 5300,
@@ -5190,7 +5190,7 @@
         "Computer Science"
       ],
       "excerpt": "The number e^(pi*sqrt(163)) misses being an integer by about 7.5 x 10^-13. This is not a coincidence -- it is a consequence of 163 being a Heegner number, where the j-invariant, complex multiplication, and the class number one problem converge into one of the most beautiful near-misses in all of mathematics.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ramanujan-constant-almost-integer",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer/",
       "source_path": "front/public/blog/posts/curiosities/ramanujan-constant-almost-integer.md",
       "reading_minutes": 20,
       "word_count": 4800,
@@ -5229,7 +5229,7 @@
         "Geometry"
       ],
       "excerpt": "Fermat proved exactly one case of his famous Last Theorem: the case n=4, using a technique he invented called infinite descent. We walk through his classical proof step by step, then re-prove it using Gaussian integers to reveal why algebraic number theory makes everything cleaner. Two proofs, one theorem, and the birth of a proof technique that changed mathematics.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/fermat-n4-infinite-descent",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent/",
       "source_path": "front/public/blog/posts/curiosities/fermat-n4-infinite-descent.md",
       "reading_minutes": 20,
       "word_count": 5300,
@@ -5270,7 +5270,7 @@
         "Geometry"
       ],
       "excerpt": "You learned that every integer factors uniquely into primes. It feels like a law of nature. But extend to larger number rings and it shatters -- spectacularly. In the ring of integers of certain number fields, the number 6 has two genuinely different prime factorizations. Algebraic number theory was born from fixing this.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/algebraic-number-theory-when-factorization-breaks",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks/",
       "source_path": "front/public/blog/posts/curiosities/algebraic-number-theory-when-factorization-breaks.md",
       "reading_minutes": 22,
       "word_count": 5300,
@@ -5313,7 +5313,7 @@
         "Data Structures"
       ],
       "excerpt": "An algorithm most engineers have heard of but few understand mathematically. Starting from the original problem of ranking web pages without reading them, we build the random surfer model, derive PageRank as the dominant eigenvector of a stochastic transition matrix, and trace how one linear algebra insight became worth hundreds of billions of dollars.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/pagerank-eigenvectors",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors/",
       "source_path": "front/public/blog/posts/curiosities/pagerank-eigenvectors.md",
       "reading_minutes": 20,
       "word_count": 4700,
@@ -5357,7 +5357,7 @@
         "Attention"
       ],
       "excerpt": "Your data has structure that tabular models ignore. Graph Neural Networks learn directly from nodes, edges, and neighborhoods — turning social networks into recommendations, molecules into property predictions, and transaction graphs into fraud detectors. This post covers message passing, GCN, GAT, GraphSAGE, and production deployment with PyTorch Geometric.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/graph-neural-networks-learning-structured-data",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data/",
       "source_path": "front/public/blog/posts/field-notes/graph-neural-networks-learning-structured-data.md",
       "reading_minutes": 25,
       "word_count": 6500,
@@ -5404,7 +5404,7 @@
         "Deployment"
       ],
       "excerpt": "Google Cloud's ML platform is massive — notebooks, custom training, AutoML, model registry, endpoints, pipelines, feature store, vector search, generative AI, monitoring, and more. This is the map: every service explained with its CLI commands, Python SDK equivalents, pricing model, and the trade-offs you need to know before committing budget.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/vertex-ai-gcp-ml-platform-cli",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli/",
       "source_path": "front/public/blog/posts/field-notes/vertex-ai-gcp-ml-platform-cli.md",
       "reading_minutes": 28,
       "word_count": 7000,
@@ -5446,7 +5446,7 @@
         "Software Engineering"
       ],
       "excerpt": "Every application you build runs on a network. This is the definitive guide to the concepts that make it work: the OSI model layer by layer, TCP/IP internals, IP addressing and subnetting, DNS resolution, HTTP and TLS, routing, NAT, DHCP, VPNs, network security, and the troubleshooting toolkit every engineer should master.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/network-fundamentals-every-concept",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept/",
       "source_path": "front/public/blog/posts/field-notes/network-fundamentals-every-concept.md",
       "reading_minutes": 28,
       "word_count": 7000,
@@ -5488,7 +5488,7 @@
         "Best Practices"
       ],
       "excerpt": "Clicking through a cloud console works until it doesn't. Terraform lets you describe your entire infrastructure in code — versioned, reviewable, reproducible. This is the complete guide: HCL syntax, providers, state management, modules, production workflows, and the hard-won patterns that keep teams from breaking things at 2 AM.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/terraform-infrastructure-as-code",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code/",
       "source_path": "front/public/blog/posts/field-notes/terraform-infrastructure-as-code.md",
       "reading_minutes": 25,
       "word_count": 6500,
@@ -5529,7 +5529,7 @@
         "Optimization"
       ],
       "excerpt": "Claude Shannon estimated 10^120 possible chess games in 1950 — a number so large it dwarfs the atoms in the observable universe. The game tree is formally EXPTIME-complete. And yet a laptop running Stockfish will crush every grandmaster alive. The reconciliation is one of the most elegant ideas in computer science: you don't need to search the whole tree.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/shannon-number-chess-game-tree",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree/",
       "source_path": "front/public/blog/posts/curiosities/shannon-number-chess-game-tree.md",
       "reading_minutes": 22,
       "word_count": 5400,
@@ -5570,7 +5570,7 @@
         "Tool Use"
       ],
       "excerpt": "The request 'show me churn by region last quarter' is actually three hard problems: understanding what churn means in your organization, generating correct SQL over your semantic layer, and choosing the right visualization. This post designs an MCP server that solves all three, grounding every step against a curated semantic layer so the LLM never hallucinates a metric or invents a column.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/mcp-server-nl-to-powerbi-dashboard",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard/",
       "source_path": "front/public/blog/posts/field-notes/mcp-server-nl-to-powerbi-dashboard.md",
       "reading_minutes": 28,
       "word_count": 7200,
@@ -5613,7 +5613,7 @@
         "Docker"
       ],
       "excerpt": "Most Kubernetes guides are written for platform engineers. This one is not. If you already know Docker and just want to train models, serve predictions, and stop asking DevOps for favors, here is the 20% of Kubernetes that delivers 80% of the value -- the objects, commands, and YAML patterns an ML engineer actually touches.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/kubernetes-minimum-subset-ml",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml/",
       "source_path": "front/public/blog/posts/field-notes/kubernetes-minimum-subset-ml.md",
       "reading_minutes": 28,
       "word_count": 6800,
@@ -5656,7 +5656,7 @@
         "LLMs"
       ],
       "excerpt": "The promise of multimodal embeddings is seductive: encode text, images, audio, and video into a single vector space and let cosine similarity do the rest. The reality is messier. Cross-modal retrieval breaks in subtle ways because different modalities occupy different submanifolds, and naive top-k returns nonsense. This is the full story — from CLIP to SigLIP to ImageBind, the modality gap that haunts production systems, and the retrieval patterns that actually work.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/multimodal-embeddings-metric-problem",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem/",
       "source_path": "front/public/blog/posts/field-notes/multimodal-embeddings-metric-problem.md",
       "reading_minutes": 28,
       "word_count": 7000,
@@ -5697,7 +5697,7 @@
         "Software Engineering"
       ],
       "excerpt": "Bash is half duct tape, half landmine. This is the narrow slice of shell that ML and data engineers actually leverage every day -- pipe composition, safe scripting, parallelism, modern replacements, JSON wrangling -- and the honest decision point for switching to Python.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/bash-daily-driver-ml-engineer",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer/",
       "source_path": "front/public/blog/posts/field-notes/bash-daily-driver-ml-engineer.md",
       "reading_minutes": 22,
       "word_count": 5850,
@@ -5738,7 +5738,7 @@
         "Systems Design"
       ],
       "excerpt": "Generic caching advice does not transfer cleanly to LLM applications. This post maps the four concrete cache layers in a production LLM system -- prompt prefix, embedding, retrieval, and response -- explains how they interact, and provides a decision framework for when to deploy each one.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/llm-caching-four-layers",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers/",
       "source_path": "front/public/blog/posts/field-notes/llm-caching-four-layers.md",
       "reading_minutes": 25,
       "word_count": 6500,
@@ -5781,7 +5781,7 @@
         "Deployment"
       ],
       "excerpt": "Real production patterns for LLM agents in 2026: the ReAct loop, planner/executor splits, tool-use protocols, memory architectures, reflection, multi-agent coordination, failure modes that actually break you, and observability that earns its keep.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns/",
       "source_path": "front/public/blog/posts/field-notes/production-llm-agents-patterns.md",
       "reading_minutes": 28,
       "word_count": 6800,
@@ -5829,7 +5829,7 @@
         "Version Control"
       ],
       "excerpt": "Hashes are not just a crypto topic. They are the quiet primitive behind Git, Docker, Bazel, IPFS, rsync, Bitcoin, CDNs, backup systems, and half the distributed systems you interact with every day. This is a tour of the hash as an everyday engineering tool — content-addressable storage, build caches, chunk deduplication, Merkle trees, consistent hashing, bloom filters, and the fingerprinting tricks that make modern infrastructure feel like magic.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/content-addressable-hash-as-engineering-tool",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool/",
       "source_path": "front/public/blog/posts/field-notes/content-addressable-hash-as-engineering-tool.md",
       "reading_minutes": 27,
       "word_count": 6400,
@@ -5872,7 +5872,7 @@
         "NLP"
       ],
       "excerpt": "Anthropic's interpretability team found 171 emotion-like representations inside Claude Sonnet 4.5, proved they causally shape behavior, and showed how a vector called desperate can turn an otherwise aligned model into one that blackmails and cheats. Here's what the paper actually says and why it matters.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/emotion-concepts-in-llms",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms/",
       "source_path": "front/public/blog/posts/research/emotion-concepts-in-llms.md",
       "reading_minutes": 26,
       "word_count": 5800,
@@ -5914,7 +5914,7 @@
         "Neural Network Theory"
       ],
       "excerpt": "In February 2026, Andrej Karpathy published a 199-line Python file that trains and runs a GPT end-to-end. No PyTorch, no NumPy, no dependencies — just a Value class, a transformer, Adam, and a loop. This is the culmination of a decade of simplification work, and reading it line by line is the best introduction to what LLMs actually are. Here's the full tour.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/microgpt-reading-karpathy",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy/",
       "source_path": "front/public/blog/posts/research/microgpt-reading-karpathy.md",
       "reading_minutes": 32,
       "word_count": 7200,
@@ -5956,7 +5956,7 @@
         "Agents"
       ],
       "excerpt": "Most developers use Claude Code like a smarter autocomplete. A small minority treat it as what it actually is — a programmable agent that reads files, runs commands, spawns helpers, and iterates until your task is done. This is the complete mental model, every subsystem that matters, and how to actually become an expert.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/claude-code-complete-guide",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide/",
       "source_path": "front/public/blog/posts/field-notes/claude-code-complete-guide.md",
       "reading_minutes": 49,
       "word_count": 8700,
@@ -6001,7 +6001,7 @@
         "Automation"
       ],
       "excerpt": "Git is the single most-used piece of software in the entire profession, and most engineers use maybe 15% of it from muscle memory. This is the full guide — how Git actually stores your code, every command that matters and what it really does, how to recover from the disasters, branching strategies, GitHub's model on top of Git, Actions, organizations, and the gotchas you will hit. Long because it has to be.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/git-and-github-complete-guide",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide/",
       "source_path": "front/public/blog/posts/field-notes/git-and-github-complete-guide.md",
       "reading_minutes": 42,
       "word_count": 9200,
@@ -6044,7 +6044,7 @@
         "Automation"
       ],
       "excerpt": "A working engineer's guide to Airflow in the 3.x era — what it actually is, how the scheduler and executors fit together, when to use TaskFlow vs classic operators, why Assets and DAG versioning changed the mental model, and the honest tradeoffs against Prefect and Dagster. Written for people who need to ship pipelines, not slide-deck architects.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/apache-airflow-orchestration",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration/",
       "source_path": "front/public/blog/posts/field-notes/apache-airflow-orchestration.md",
       "reading_minutes": 25,
       "word_count": 5700,
@@ -6087,7 +6087,7 @@
         "LLMs"
       ],
       "excerpt": "Off-the-shelf embeddings are the default, but in specialized domains they leave 5-15 points of retrieval quality on the table. This is the full playbook for when to fine-tune, what training data looks like, which loss function to pick, how hard negative mining changes everything, and how to ship the result without breaking your vector index.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/fine-tuning-embeddings",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings/",
       "source_path": "front/public/blog/posts/field-notes/fine-tuning-embeddings.md",
       "reading_minutes": 26,
       "word_count": 6000,
@@ -6130,7 +6130,7 @@
         "Performance"
       ],
       "excerpt": "A line-by-line walkthrough of Gu and Dao's 2023 Mamba paper: what state space models are, where they came from, why S4 nearly worked, the single insight that made them competitive with Transformers, and the hardware-aware trick that made them fast. Written to be understood, not just cited.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/mamba-selective-state-spaces",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces/",
       "source_path": "front/public/blog/posts/research/mamba-selective-state-spaces.md",
       "reading_minutes": 29,
       "word_count": 6100,
@@ -6173,7 +6173,7 @@
         "Machine Learning"
       ],
       "excerpt": "A technical walkthrough of ElevenLabs — how the models are built, how to wire them into a real application with streaming and WebSockets, and the ethical, operational, and cost considerations you need to think about before shipping a voice feature.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/elevenlabs-voice-ai-engineering",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering/",
       "source_path": "front/public/blog/posts/field-notes/elevenlabs-voice-ai-engineering.md",
       "reading_minutes": 24,
       "word_count": 5800,
@@ -6216,7 +6216,7 @@
         "Data Pipelines"
       ],
       "excerpt": "Everyone talks about chunking strategies and embedding models. Nobody talks about what happens before — the document triage, token budget math, metadata enrichment, deduplication, and freshness policies that determine whether your knowledge base is an asset or a liability. This post covers the full curation lifecycle.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/knowledge-base-curation",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation/",
       "source_path": "front/public/blog/posts/field-notes/knowledge-base-curation.md",
       "reading_minutes": 26,
       "word_count": 5545,
@@ -6259,7 +6259,7 @@
         "Information Retrieval"
       ],
       "excerpt": "Ontologies give you the blueprint. Knowledge graphs give you the building. This post walks through the full construction pipeline — extracting entities with LLMs, building graphs in Neo4j, querying with Cypher, and wiring it all into GraphRAG — with working Python code at every step.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/knowledge-graphs-practice",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice/",
       "source_path": "front/public/blog/posts/field-notes/knowledge-graphs-practice.md",
       "reading_minutes": 27,
       "word_count": 4802,
@@ -6307,7 +6307,7 @@
         "Best Practices"
       ],
       "excerpt": "Choosing between No-Code, Low-Code, and custom AI platforms shouldn't require a PhD in vendor marketing. This framework breaks the decision into six durable axes — scope, gateway, guardrails, observability, contingency, and interface — so your team picks the right stack for each use case, not just the loudest one.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/enterprise-ai-platform-selection",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection/",
       "source_path": "front/public/blog/posts/field-notes/enterprise-ai-platform-selection.md",
       "reading_minutes": 28,
       "word_count": 4982,
@@ -6349,7 +6349,7 @@
         "Enterprise Data"
       ],
       "excerpt": "Ontologies turn chaotic data into structured knowledge. Learn how to design, build, and deploy ontology-driven knowledge bases — from RDF triples to production-ready systems that power RAG, search, and enterprise AI.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ontologies-building-knowledge-bases",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases/",
       "source_path": "front/public/blog/posts/field-notes/ontologies-building-knowledge-bases.md",
       "reading_minutes": 25,
       "word_count": 5153,
@@ -6397,7 +6397,7 @@
         "Enterprise AI"
       ],
       "excerpt": "Data silos are more than a technical inconvenience — they're a structural tax on every decision your organization makes. This post unpacks why silos form, why naïve centralization fails, and how to build a federation strategy that actually works, with cloud-native patterns on AWS and GCP.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/data-silos-breaking-information-barriers",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers/",
       "source_path": "front/public/blog/posts/field-notes/data-silos-breaking-information-barriers.md",
       "reading_minutes": 22,
       "word_count": 5800,
@@ -6440,7 +6440,7 @@
         "Enterprise AI"
       ],
       "excerpt": "DAMA DMBOK is the industry standard framework for data governance, but most engineers encounter it as a wall of jargon. This guide breaks down all 11 knowledge areas with clear definitions, real narrative, and applies them to a bank building an AI-powered knowledge base from scratch.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/dama-dmbok-data-governance",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance/",
       "source_path": "front/public/blog/posts/field-notes/dama-dmbok-data-governance.md",
       "reading_minutes": 26,
       "word_count": 6800,
@@ -6483,7 +6483,7 @@
         "Data Transformation"
       ],
       "excerpt": "Apache Spark started as a 2010 Berkeley paper asking a deceptively simple question: what if we didn't have to write to disk between every computation step? Fifteen years later, it powers data pipelines across most of the Fortune 500. Here's the full story — the engine, the language, the ecosystem, and the honest trade-offs.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/apache-spark-ecosystem-guide",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide/",
       "source_path": "front/public/blog/posts/field-notes/apache-spark-ecosystem-guide.md",
       "reading_minutes": 23,
       "word_count": 4961,
@@ -6526,7 +6526,7 @@
         "Best Practices"
       ],
       "excerpt": "A practical look at Dataiku DSS in the context of the broader enterprise data + AI landscape: the real problems it solves, where it falls short, the honest trade-offs against alternatives, and frameworks for deciding if it's the right tool for your team.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/dataiku-enterprise-data-ai-ecosystem",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem/",
       "source_path": "front/public/blog/posts/field-notes/dataiku-enterprise-data-ai-ecosystem.md",
       "reading_minutes": 24,
       "word_count": 5443,
@@ -6569,7 +6569,7 @@
         "Information Retrieval"
       ],
       "excerpt": "Before you can retrieve from a document, you have to read it. That sounds trivial until you face a rotated scan, a two-column PDF, a table that spans pages, or a PPTX with embedded charts. This is the complete guide to document processing: image preprocessing, OCR engines, layout detection, full-pipeline parsers, table extraction, cloud APIs, vision LLMs, and benchmarks — with a routing pattern you can deploy today.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/document-processing-ocr-layout",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout/",
       "source_path": "front/public/blog/posts/field-notes/document-processing-ocr-layout.md",
       "reading_minutes": 26,
       "word_count": 6800,
@@ -6612,7 +6612,7 @@
         "Production ML"
       ],
       "excerpt": "Evaluating open-ended AI output at scale is one of the hardest unsolved problems in the field. Human evaluation is the gold standard but doesn't scale. Classical metrics like BLEU and ROUGE miss what matters. LLM-as-a-Judge — using a stronger model to evaluate another — achieves over 80% agreement with human raters and is reshaping how the field measures quality, trains reward models, and builds evaluation pipelines.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/llm-as-a-judge",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge/",
       "source_path": "front/public/blog/posts/research/llm-as-a-judge.md",
       "reading_minutes": 28,
       "word_count": 6200,
@@ -6655,7 +6655,7 @@
         "Cloud Computing"
       ],
       "excerpt": "Most AI proofs of concept are designed to impress, not to inform. They test vendor demos against ideal data, measure metrics that don't match business objectives, and end with a slide deck that recommends the option the team already preferred. Here's a rigorous framework for running PoCs that produce defensible, production-aligned decisions — covering vector database evaluation, RAG quality measurement, text-to-SQL agents, and what changes when you're working in a regulated environment.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ai-poc-enterprise-evaluation",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation/",
       "source_path": "front/public/blog/posts/field-notes/ai-poc-enterprise-evaluation.md",
       "reading_minutes": 27,
       "word_count": 6500,
@@ -6698,7 +6698,7 @@
         "Protocols"
       ],
       "excerpt": "The existing MCP post explains the concept. This one is about building servers that survive contact with a real company: authentication with OAuth 2.1, per-tool authorization scopes, audit logging, middleware, multi-tenant isolation, gateway patterns, and deployment strategies that don't require every developer to run their own Python process.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/mcp-production-enterprise",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise/",
       "source_path": "front/public/blog/posts/field-notes/mcp-production-enterprise.md",
       "reading_minutes": 26,
       "word_count": 6200,
@@ -6743,7 +6743,7 @@
         "Embeddings"
       ],
       "excerpt": "An idea Lagrange called 'impossible' in 1807 now underlies JPEG compression, MRI machines, audio equalizers, and diffusion models. Here's where the Fourier transform comes from, why the formula looks the way it does, and why this 200-year-old insight keeps showing up at the center of modern machine learning.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/fourier-transform",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform/",
       "source_path": "front/public/blog/posts/curiosities/fourier-transform.md",
       "reading_minutes": 22,
       "word_count": 5200,
@@ -6784,7 +6784,7 @@
         "Hugging Face"
       ],
       "excerpt": "PyTorch dominates research, TensorFlow still rules mobile and edge deployment, and JAX is quietly rewriting the rules for large-scale training. A complete guide to all three — their architecture, strengths, production patterns, and when to choose each.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/pytorch-tensorflow-deep-learning-frameworks",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks/",
       "source_path": "front/public/blog/posts/field-notes/pytorch-tensorflow-deep-learning-frameworks.md",
       "reading_minutes": 27,
       "word_count": 6500,
@@ -6823,7 +6823,7 @@
         "Testing"
       ],
       "excerpt": "Clean Code, the Gang of Four, Hexagonal Architecture — these books sit on every senior engineer's shelf. But reading them uncritically in 2026 is almost as dangerous as not reading them at all. Here's what they got right, where they lead you astray, and how the ideas evolved into the architecture patterns we actually use.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/software-engineering-classics",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics/",
       "source_path": "front/public/blog/posts/field-notes/software-engineering-classics.md",
       "reading_minutes": 24,
       "word_count": 5800,
@@ -6863,7 +6863,7 @@
         "LLMs"
       ],
       "excerpt": "Both LlamaIndex and LangChain can build a RAG pipeline. Both can run agents. Both have grown toward each other's territory. The question is no longer 'which can do it' but 'which mental model fits your problem.' This is the honest comparison — what each framework is actually designed for, where each excels without fighting the defaults, and how the broader ecosystem of DSPy, Haystack, CrewAI, and Pydantic AI each answer a different question.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/llamaindex-langchain-llm-frameworks",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks/",
       "source_path": "front/public/blog/posts/field-notes/llamaindex-langchain-llm-frameworks.md",
       "reading_minutes": 26,
       "word_count": 6200,
@@ -6906,7 +6906,7 @@
         "Deployment"
       ],
       "excerpt": "Every AI engineer eventually needs to run models locally — for privacy, cost control, latency, or just to avoid depending on an API that might break at 2am. This is the practical guide to the three tools that matter: LM Studio for exploration, Ollama for development, and vLLM for production. With complete Docker Compose setups and proof-of-concept patterns.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/local-llm-inference-tools",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools/",
       "source_path": "front/public/blog/posts/field-notes/local-llm-inference-tools.md",
       "reading_minutes": 22,
       "word_count": 5300,
@@ -6949,7 +6949,7 @@
         "Evaluation"
       ],
       "excerpt": "Pre-training produces a model that's brilliant at predicting text. Alignment turns it into a model that's actually useful — and safe. This is the deep guide to RLHF, DPO, and their 2025-2026 successors: how the reward model works, why PPO is unstable, how DPO eliminates the need for it, what SimPO, KTO, ORPO, and GRPO each solve, and what all of this means when you're building on top of aligned models.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/rlhf-dpo-alignment",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment/",
       "source_path": "front/public/blog/posts/field-notes/rlhf-dpo-alignment.md",
       "reading_minutes": 28,
       "word_count": 7000,
@@ -6992,7 +6992,7 @@
         "Production ML"
       ],
       "excerpt": "Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the deep guide — understanding the family, choosing the right variant for your hardware, why full fine-tuning is economically indefensible, how LoRA and QLoRA make adaptation practical on consumer GPUs, and a complete working recipe with Gemma 4 E4B from dataset to deployed adapter.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/fine-tuning-gemma4-lora-qlora",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora/",
       "source_path": "front/public/blog/posts/field-notes/fine-tuning-gemma4-lora-qlora.md",
       "reading_minutes": 35,
       "word_count": 9000,
@@ -7035,7 +7035,7 @@
         "Data Modeling"
       ],
       "excerpt": "Data lakes promised cheap, flexible analytics — and delivered corrupt reads, GDPR nightmares, and query engines flying blind. The lakehouse pattern fixes this by layering ACID transactions, schema enforcement, and row-level operations directly onto object storage. This is the story of how Apache Iceberg, Delta Lake, and Apache Hudi changed what's possible — and when to use each.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/lakehouse-architecture",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture/",
       "source_path": "front/public/blog/posts/field-notes/lakehouse-architecture.md",
       "reading_minutes": 25,
       "word_count": 6100,
@@ -7078,7 +7078,7 @@
         "Testing"
       ],
       "excerpt": "Every data team reaches the same crisis point: SQL transformations scattered across notebooks, dashboards, and ad-hoc scripts, with no one sure which version is correct. dbt solves this by bringing software engineering practices — version control, testing, documentation, modularity — to the SQL layer. This is a complete guide to building reliable analytical pipelines with dbt.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/dbt-analytics-engineering",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering/",
       "source_path": "front/public/blog/posts/field-notes/dbt-analytics-engineering.md",
       "reading_minutes": 26,
       "word_count": 6800,
@@ -7121,7 +7121,7 @@
         "Data Transformation"
       ],
       "excerpt": "Your pipeline is clean, your data is accurate, and your BI dashboard still takes 45 seconds to load. The problem is rarely the data — it's the model. This is a complete guide to Kimball's dimensional modeling: star schemas, grain declaration, SCD types, the bus matrix, and how to implement all of it in dbt.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/dimensional-modeling-kimball",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball/",
       "source_path": "front/public/blog/posts/field-notes/dimensional-modeling-kimball.md",
       "reading_minutes": 28,
       "word_count": 7200,
@@ -7164,7 +7164,7 @@
         "Performance"
       ],
       "excerpt": "Four tools, one mental model. SQL for declarative in-database logic. Pandas for in-memory exploration. PySpark for distributed scale. DuckDB for the vast middle ground that doesn't need a cluster. Every pattern you need, side by side, with clear rules for when to reach for each.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/sql-pandas-pyspark-duckdb",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb/",
       "source_path": "front/public/blog/posts/field-notes/sql-pandas-pyspark-duckdb.md",
       "reading_minutes": 42,
       "word_count": 9500,
@@ -7207,7 +7207,7 @@
         "Batch Processing"
       ],
       "excerpt": "Data engineering is not about moving files from A to B. It's about building reliable, scalable, observable systems that make data trustworthy — for analysts, ML models, and increasingly, AI agents. This post dismantles the buzzwords and builds the mental model from first principles.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/data-engineering-fundamentals",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals/",
       "source_path": "front/public/blog/posts/field-notes/data-engineering-fundamentals.md",
       "reading_minutes": 38,
       "word_count": 9200,
@@ -7252,7 +7252,7 @@
         "LLMs"
       ],
       "excerpt": "Google Cloud's AI infrastructure has matured rapidly: the Vertex AI RAG Engine is GA, AlloyDB now ships a custom ScaNN vector index, and a full cloud-native knowledge pipeline is within reach from CLI alone. But the real costs, regional constraints, and architectural trade-offs are rarely discussed honestly. This post covers what the stack actually looks like in 2025-2026, where it delivers, and where it quietly disappoints.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/gcp-ai-stack-vertex-alloydb-knowledge-pipeline",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline/",
       "source_path": "front/public/blog/posts/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline.md",
       "reading_minutes": 55,
       "word_count": 13500,
@@ -7298,7 +7298,7 @@
         "LLMs"
       ],
       "excerpt": "Building knowledge bases that serve both humans and AI agents requires more than chunking and vector search. This guide covers the complete architecture — from knowledge engineering and domain ontologies through chunking hierarchies and permission-aware retrieval to the unified context engines and MCP-based tool interfaces that make enterprise knowledge agent-ready.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/enterprise-knowledge-bases",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases/",
       "source_path": "front/public/blog/posts/field-notes/enterprise-knowledge-bases.md",
       "reading_minutes": 50,
       "word_count": 8800,
@@ -7342,7 +7342,7 @@
         "Testing"
       ],
       "excerpt": "Building a RAG system is only half the problem. The other half — knowing whether it actually works, understanding exactly where it fails, and having a reliable signal to improve it — is arguably harder. RAGAS offers a framework for decomposing RAG quality into measurable, interpretable dimensions. This is how it works, why it matters, and what it still can't tell you.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ragas-evaluating-rag",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag/",
       "source_path": "front/public/blog/posts/field-notes/ragas-evaluating-rag.md",
       "reading_minutes": 32,
       "word_count": 8000,
@@ -7390,7 +7390,7 @@
         "Agentic AI"
       ],
       "excerpt": "A practical guide to LangGraph 1.x: how StateGraph works, when to use agents vs. chains, the patterns that actually work in production (Supervisor, Subgraph, HITL, Map-Reduce), and an honest comparison with alternatives.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/langgraph-multi-agent-workflows",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows/",
       "source_path": "front/public/blog/posts/field-notes/langgraph-multi-agent-workflows.md",
       "reading_minutes": 22,
       "word_count": 5200,
@@ -7433,7 +7433,7 @@
         "Data Pipelines"
       ],
       "excerpt": "A practical deep-dive into the current state of NL→SQL systems: benchmarks, architectures, production pitfalls, and what actually works in 2026 for querying enterprise data warehouses with natural language.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/text-to-sql",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql/",
       "source_path": "front/public/blog/posts/field-notes/text-to-sql.md",
       "reading_minutes": 20,
       "word_count": 4800,
@@ -7476,7 +7476,7 @@
         "Deep Learning"
       ],
       "excerpt": "The top model on the MTEB leaderboard is not automatically the right model for your RAG system. MTEB covers eight distinct task types, and a model that dominates retrieval may be mediocre at clustering or reranking. This is a complete guide to what MTEB measures, how to read it critically, and how to match an embedding model to the actual work it needs to do.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/mteb-embedding-benchmarks",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks/",
       "source_path": "front/public/blog/posts/field-notes/mteb-embedding-benchmarks.md",
       "reading_minutes": 32,
       "word_count": 7800,
@@ -7518,7 +7518,7 @@
         "Research Papers"
       ],
       "excerpt": "Leaderboards still matter in 2026, but not in the way benchmark charts want you to believe. This field guide explains which LLM benchmarks are now historical, which still matter at the frontier, what agentic and tool-use benchmarks changed, and how to read every score critically.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/llm-benchmarks",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks/",
       "source_path": "front/public/blog/posts/field-notes/llm-benchmarks.md",
       "reading_minutes": 45,
       "word_count": 11000,
@@ -7561,7 +7561,7 @@
         "Knowledge Engineering"
       ],
       "excerpt": "Naive RAG — chunk documents, embed them, retrieve the top-k, stuff into the prompt — works in demos. In production, it fails in predictable, fixable ways. This post covers the patterns that separate brittle prototypes from reliable systems: query transformation, advanced retrieval strategies, re-ranking, agentic RAG, GraphRAG, and how to decide when RAG is the wrong answer entirely.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/rag-advanced-patterns",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns/",
       "source_path": "front/public/blog/posts/field-notes/rag-advanced-patterns.md",
       "reading_minutes": 30,
       "word_count": 7500,
@@ -7611,7 +7611,7 @@
         "Data Pipelines"
       ],
       "excerpt": "A language model that can look things up is more useful than one that can't. But building a RAG system that actually works in production requires understanding dozens of decisions that the research paper glossed over: how to split documents, which embeddings to use, which vector database to run, how to retrieve well. This is the complete practical guide to the first half of the RAG stack.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/rag-building-production-systems",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems/",
       "source_path": "front/public/blog/posts/field-notes/rag-building-production-systems.md",
       "reading_minutes": 28,
       "word_count": 7000,
@@ -7659,7 +7659,7 @@
         "Vector Databases"
       ],
       "excerpt": "Language models are powerful but trapped. They know only what they saw during training—a snapshot of the world that freezes the moment training ends. RAG broke this constraint. By combining a neural retriever with a neural generator, it gave language models the ability to consult external knowledge at inference time. This is the story of the original paper, the idea it introduced, and why it changed how we think about what language models can be.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/rag-retrieval-augmented-generation",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation/",
       "source_path": "front/public/blog/posts/research/rag-retrieval-augmented-generation.md",
       "reading_minutes": 30,
       "word_count": 7500,
@@ -7702,7 +7702,7 @@
         "Information Retrieval"
       ],
       "excerpt": "A chart says Qdrant handles 10,000 queries per second. Another says Pinecone wins at recall. Both are correct. Neither tells you what you actually need to know. This is how to read vector database benchmarks critically, what the numbers hide, and how to make decisions that hold up in production.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/vector-db-benchmarks",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks/",
       "source_path": "front/public/blog/posts/field-notes/vector-db-benchmarks.md",
       "reading_minutes": 35,
       "word_count": 8500,
@@ -7745,7 +7745,7 @@
         "Mathematics"
       ],
       "excerpt": "In early 2020, a team at OpenAI published a set of equations that described how language model performance grows with compute, data, and parameters. They weren't speculating. They had measured it. The curves fit. And the implications were so consequential that much of the subsequent history of AI can be read as their logical extension.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/scaling-laws-neural-language-models",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models/",
       "source_path": "front/public/blog/posts/research/scaling-laws-neural-language-models.md",
       "reading_minutes": 30,
       "word_count": 7500,
@@ -7788,7 +7788,7 @@
         "Fine-Tuning"
       ],
       "excerpt": "In 2019, a Google team asked a deceptively simple question: what if every NLP task were just a text prediction problem? The answer — T5 — didn't just win benchmarks. It proposed a new way of thinking about what language models are for, and planted the seed of the instruction-following revolution that followed.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/t5-text-to-text-transfer-transformer",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer/",
       "source_path": "front/public/blog/posts/research/t5-text-to-text-transfer-transformer.md",
       "reading_minutes": 32,
       "word_count": 7800,
@@ -7830,7 +7830,7 @@
         "Deep Learning"
       ],
       "excerpt": "Every ML engineer has had the same nightmare: a model that performed brilliantly last week, and no record of how to reproduce it. Experiment tracking is the discipline that makes that nightmare impossible. This is the complete guide—from what needs to be tracked and why, to deep dives into MLflow, Weights & Biases, Trackio, Neptune, and DVC, with production-grade patterns for teams that need to move fast without losing their work.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/experiment-tracking-mlops",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops/",
       "source_path": "front/public/blog/posts/field-notes/experiment-tracking-mlops.md",
       "reading_minutes": 28,
       "word_count": 7000,
@@ -7872,7 +7872,7 @@
         "Embeddings"
       ],
       "excerpt": "In October 2018, a Google research team released a model that simultaneously broke eleven NLP benchmarks—some by enormous margins. BERT didn't just improve the state of the art; it redefined what 'understanding language' could mean for a machine. This is the complete story: the problem it solved, the elegant training objectives that made it possible, what it actually learned, and why it changed everything that came after.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/bert-pre-training-bidirectional-transformers",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers/",
       "source_path": "front/public/blog/posts/research/bert-pre-training-bidirectional-transformers.md",
       "reading_minutes": 35,
       "word_count": 8500,
@@ -7913,7 +7913,7 @@
         "Simulation"
       ],
       "excerpt": "Take any positive integer. If it is even, divide by two. If it is odd, multiply by three and add one. Repeat. No matter what number you start with, you always seem to reach 1. This has been verified for numbers up to 2^68, tested by the brightest minds in mathematics for nearly a century, and yet no one can prove it. This is the Collatz Conjecture—a problem so simple a child can understand it, and so deep it may be beyond contemporary mathematics.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/collatz-conjecture",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture/",
       "source_path": "front/public/blog/posts/curiosities/collatz-conjecture.md",
       "reading_minutes": 22,
       "word_count": 6000,
@@ -7952,7 +7952,7 @@
         "Algorithms"
       ],
       "excerpt": "In 1931, a 25-year-old Austrian logician proved that mathematics cannot fully know itself. Kurt Gödel showed that any consistent formal system powerful enough to express arithmetic contains true statements that it can never prove. This is the story of that proof, the machinery behind it, and why its consequences still reverberate through mathematics, computer science, and philosophy.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/godels-incompleteness-theorems",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems/",
       "source_path": "front/public/blog/posts/curiosities/godels-incompleteness-theorems.md",
       "reading_minutes": 35,
       "word_count": 9500,
@@ -7991,7 +7991,7 @@
         "Performance"
       ],
       "excerpt": "We use files every day, but rarely stop to think about what they actually are. From the OS abstraction of a file to columnar storage like Parquet, all the way to modern AI tensor formats like Safetensors and GGUF, this is a deep dive into the evolution of how we persist memory to disk.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/files-under-the-hood",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood/",
       "source_path": "front/public/blog/posts/field-notes/files-under-the-hood.md",
       "reading_minutes": 35,
       "word_count": 8500,
@@ -8031,7 +8031,7 @@
         "Algorithms"
       ],
       "excerpt": "If you pick a random number from any real-world dataset—populations, stock prices, river lengths, tax returns—the first digit is far more likely to be a 1 than a 9. This is not a coincidence. It is a deep mathematical truth about how quantities grow, and it has become one of the most powerful forensic tools in the fight against fraud.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/benfords-law",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law/",
       "source_path": "front/public/blog/posts/curiosities/benfords-law.md",
       "reading_minutes": 22,
       "word_count": 5500,
@@ -8073,7 +8073,7 @@
         "CI/CD"
       ],
       "excerpt": "Every ML engineer has shipped a model that worked perfectly—until it ran on someone else's machine. Docker eliminates that failure mode entirely. This is the complete guide to containerization for ML: what Docker is, why it exists, how to write production-grade Dockerfiles, and how to go from a trained model to a portable, reproducible, deployable artifact.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/docker-for-ml-engineers",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers/",
       "source_path": "front/public/blog/posts/field-notes/docker-for-ml-engineers.md",
       "reading_minutes": 20,
       "word_count": 5000,
@@ -8114,7 +8114,7 @@
         "APIs"
       ],
       "excerpt": "AI models are powerful, but they are blind. They cannot read your files, query your database, or call your APIs—unless someone builds the bridge. The Model Context Protocol is that bridge: an open standard that gives AI a universal way to interact with the world. This is the story of MCP, how it works, and why it matters.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/model-context-protocol",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol/",
       "source_path": "front/public/blog/posts/field-notes/model-context-protocol.md",
       "reading_minutes": 20,
       "word_count": 4800,
@@ -8157,7 +8157,7 @@
         "Optimization"
       ],
       "excerpt": "Theory is necessary but not sufficient. This is the engineering companion to RL—the implementation details that papers omit, the GPU patterns that supervised learning never taught you, the tricks that separate converging agents from wasted compute, and the deployment patterns that survive contact with reality.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-in-practice",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice/",
       "source_path": "front/public/blog/posts/field-notes/reinforcement-learning-in-practice.md",
       "reading_minutes": 65,
       "word_count": 17000,
@@ -8199,7 +8199,7 @@
         "Neural Network Theory"
       ],
       "excerpt": "Most ML engineers have never truly entered the world of reinforcement learning. This is the definitive guide—from Markov Decision Processes and value functions to reward hacking, sim-to-real transfer, multi-agent chaos, and the brutal gap between papers and production systems that actually work.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-first-principles",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles/",
       "source_path": "front/public/blog/posts/field-notes/reinforcement-learning-first-principles.md",
       "reading_minutes": 70,
       "word_count": 18000,
@@ -8242,7 +8242,7 @@
         "Software Engineering"
       ],
       "excerpt": "Abstractions are convenient until they break. This is an exhaustive journey through the silicon and software of the ML stack—from NumPy's memory layout and SIMD vectorization to the zero-copy revolution of Apache Arrow, the modern dominance of Polars, and the JIT compilers that turn Python into machine code.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ml-libraries-under-the-hood",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood/",
       "source_path": "front/public/blog/posts/field-notes/ml-libraries-under-the-hood.md",
       "reading_minutes": 55,
       "word_count": 14000,
@@ -8285,7 +8285,7 @@
         "Machine Learning"
       ],
       "excerpt": "The cloud is not just bigger computers—it is an entirely different way of building ML systems. This guide covers when to move to cloud, which services to use, how to avoid cost disasters, and the architectural patterns that separate successful cloud ML projects from expensive failures.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/cloud-ml-infrastructure",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure/",
       "source_path": "front/public/blog/posts/field-notes/cloud-ml-infrastructure.md",
       "reading_minutes": 50,
       "word_count": 12000,
@@ -8328,7 +8328,7 @@
         "Deployment"
       ],
       "excerpt": "A model that works in a notebook is not a model that works. This guide covers the complete lifecycle of model evaluation—from choosing the right metrics to detecting drift in production, from offline evaluation to real-time monitoring systems that catch failures before users do.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/ml-metrics-evaluation-monitoring",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring/",
       "source_path": "front/public/blog/posts/field-notes/ml-metrics-evaluation-monitoring.md",
       "reading_minutes": 45,
       "word_count": 10500,
@@ -8370,7 +8370,7 @@
         "LLMs"
       ],
       "excerpt": "The art of machine learning is knowing when to use what already exists and when to build your own. This guide covers the complete spectrum—from selecting pre-trained models and understanding licenses to fine-tuning strategies and the decision to train from scratch.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/working-with-ml-models",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models/",
       "source_path": "front/public/blog/posts/field-notes/working-with-ml-models.md",
       "reading_minutes": 42,
       "word_count": 9500,
@@ -8412,7 +8412,7 @@
         "PyTorch"
       ],
       "excerpt": "Before you train a single model, you need to understand what is actually running your code. This is the definitive guide to computational resources in ML—GPUs, CUDA, memory hierarchies, data types, and the art of knowing when your hardware is the bottleneck.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/computational-resources-ml",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml/",
       "source_path": "front/public/blog/posts/field-notes/computational-resources-ml.md",
       "reading_minutes": 40,
       "word_count": 9000,
@@ -8455,7 +8455,7 @@
         "Linear Algebra"
       ],
       "excerpt": "We train models on high-dimensional chaos, yet they learn. Why? The answer lies in geometry: the world is a crumpled sheet of paper, and intelligence is the act of smoothing it out.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/the-manifold-hypothesis",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis/",
       "source_path": "front/public/blog/posts/research/the-manifold-hypothesis.md",
       "reading_minutes": 22,
       "word_count": 4500,
@@ -8496,7 +8496,7 @@
         "Data Structures"
       ],
       "excerpt": "Everyone writes Python. Few truly understand it. This is a deep dive into the mechanisms that separate elegant, maintainable code from the sprawling chaos that haunts production systems—from the data model to metaclasses, from decorators to the GIL.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/python-beyond-the-basics",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics/",
       "source_path": "front/public/blog/posts/field-notes/python-beyond-the-basics.md",
       "reading_minutes": 45,
       "word_count": 10000,
@@ -8537,7 +8537,7 @@
         "CI/CD"
       ],
       "excerpt": "Most ML projects die in the chaos of unversioned notebooks and dependency hell. This is the definitive guide to structuring projects that scale—from folder architecture to Git workflows, from Poetry mastery to the bridge between experimentation and production.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/structuring-ml-projects",
+      "url": "https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects/",
       "source_path": "front/public/blog/posts/field-notes/structuring-ml-projects.md",
       "reading_minutes": 35,
       "word_count": 7500,
@@ -8577,10 +8577,10 @@
         "Neural Network Theory"
       ],
       "excerpt": "A viral equation that seems impossible. Then the revelation: it's a glimpse into how mathematics transcends intuition. The journey from viral paradox to zeta function truth.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/sum-of-naturals-minus-one-twelfth",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth/",
       "source_path": "front/public/blog/posts/curiosities/sum-of-naturals-minus-one-twelfth.md",
       "reading_minutes": 15,
-      "word_count": null,
+      "word_count": 2924,
       "concepts": [
         "mathematics",
         "number theory",
@@ -8593,7 +8593,7 @@
       "prereqs": [],
       "teaches": [],
       "tech": [],
-      "depth": "intro",
+      "depth": "working",
       "audio_available": [
         "en",
         "es"
@@ -8617,7 +8617,7 @@
         "Neural Network Theory"
       ],
       "excerpt": "How do you teach a computer what 'king' means? You don't explain—you show it where 'king' lives in a space where meaning has coordinates. A deep dive into embeddings, from Word2Vec to modern sentence transformers, and why representing concepts as vectors changed everything.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/embeddings-geometry-of-meaning",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning/",
       "source_path": "front/public/blog/posts/research/embeddings-geometry-of-meaning.md",
       "reading_minutes": 28,
       "word_count": 4800,
@@ -8655,7 +8655,7 @@
         "Game Theory"
       ],
       "excerpt": "That seemingly simple game on your phone? It harbors one of computer science's most notorious complexity classes. Discover how Tetris became a lens for understanding computational hardness—and why some problems resist even our most powerful computers.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/tetris-np-complete",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete/",
       "source_path": "front/public/blog/posts/curiosities/tetris-np-complete.md",
       "reading_minutes": 24,
       "word_count": 4800,
@@ -8695,10 +8695,10 @@
         "Algorithms"
       ],
       "excerpt": "How a single elegant idea—pure attention—toppled decades of sequential thinking and sparked the AI revolution. A deep dive into the architecture that changed everything.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/attention-is-all-you-need",
+      "url": "https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need/",
       "source_path": "front/public/blog/posts/research/attention-is-all-you-need.md",
       "reading_minutes": 25,
-      "word_count": null,
+      "word_count": 4932,
       "concepts": [
         "transformers",
         "deep learning",
@@ -8714,7 +8714,7 @@
       "prereqs": [],
       "teaches": [],
       "tech": [],
-      "depth": "intro",
+      "depth": "deep",
       "audio_available": [
         "en",
         "es"
@@ -8735,10 +8735,10 @@
         "Optimization"
       ],
       "excerpt": "What if I told you that every time you twist a Rubik's cube, you're exploring one of mathematics' most elegant structures? Discover how group theory transforms a childhood puzzle into a profound mathematical journey.",
-      "url": "https://juanlara18.github.io/portfolio/#/blog/rubiks-cube-group-theory",
+      "url": "https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory/",
       "source_path": "front/public/blog/posts/curiosities/rubiks-cube-group-theory.md",
       "reading_minutes": 20,
-      "word_count": null,
+      "word_count": 3859,
       "concepts": [
         "mathematics",
         "group theory",
@@ -8751,7 +8751,7 @@
       "prereqs": [],
       "teaches": [],
       "tech": [],
-      "depth": "intro",
+      "depth": "working",
       "audio_available": [
         "en",
         "es"
@@ -12243,7 +12243,7 @@
     "research papers": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "bert-pre-training-bidirectional-transformers",
@@ -13453,7 +13453,7 @@
       },
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "bert-pre-training-bidirectional-transformers",
@@ -14237,7 +14237,7 @@
       },
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "benfords-law",
@@ -14309,7 +14309,7 @@
       },
       {
         "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "shannon-number-chess-game-tree",
@@ -14475,7 +14475,7 @@
       },
       {
         "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "scaling-laws-neural-language-models",
@@ -14487,7 +14487,7 @@
       },
       {
         "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "tetris-np-complete",
@@ -14549,7 +14549,7 @@
       },
       {
         "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "shannon-number-chess-game-tree",
@@ -14621,7 +14621,7 @@
       },
       {
         "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
+        "depth": "working"
       }
     ],
     "regular expressions": [
@@ -14743,7 +14743,7 @@
     "deep learning": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "bert-pre-training-bidirectional-transformers",
@@ -14847,7 +14847,7 @@
       },
       {
         "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "t5-text-to-text-transfer-transformer",
@@ -14869,7 +14869,7 @@
     "neural network theory": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "emotion-concepts-in-llms",
@@ -14905,7 +14905,7 @@
       },
       {
         "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "the-manifold-hypothesis",
@@ -14931,7 +14931,7 @@
       },
       {
         "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "shannon-number-chess-game-tree",
@@ -14999,7 +14999,7 @@
     "nlp": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "bert-pre-training-bidirectional-transformers",
@@ -15665,7 +15665,7 @@
       },
       {
         "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
+        "depth": "working"
       },
       {
         "slug": "shannon-number-chess-game-tree",
@@ -15713,7 +15713,7 @@
       },
       {
         "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
+        "depth": "working"
       }
     ],
     "complex analysis": [
@@ -15727,7 +15727,7 @@
       },
       {
         "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
+        "depth": "working"
       }
     ],
     "series": [
@@ -15737,7 +15737,7 @@
       },
       {
         "slug": "sum-of-naturals-minus-one-twelfth",
-        "depth": "intro"
+        "depth": "working"
       }
     ],
     "group theory": [
@@ -15751,7 +15751,7 @@
       },
       {
         "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
+        "depth": "working"
       }
     ],
     "geometry": [
@@ -16007,7 +16007,7 @@
     "representation learning": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "fourier-transform",
@@ -16141,7 +16141,7 @@
     "transformers": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "bert-pre-training-bidirectional-transformers",
@@ -16175,7 +16175,7 @@
     "language models": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "bert-pre-training-bidirectional-transformers",
@@ -16205,7 +16205,7 @@
     "attention": [
       {
         "slug": "attention-is-all-you-need",
-        "depth": "intro"
+        "depth": "deep"
       },
       {
         "slug": "microgpt-reading-karpathy",
@@ -16581,7 +16581,7 @@
       },
       {
         "slug": "rubiks-cube-group-theory",
-        "depth": "intro"
+        "depth": "working"
       }
     ],
     "tensorflow": [

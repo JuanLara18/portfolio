@@ -43,7 +43,7 @@ GNNs solve all three: they operate locally (no full adjacency matrix needed), th
 
 ### The representation learning angle
 
-If you have read the [embeddings post](/blog/embeddings-representation-learning) on this blog, you know that representation learning is about finding vector spaces where similar things are close together. Word2Vec does this for words. Autoencoders do it for images. GNNs do it for nodes in graphs.
+If you have read the [embeddings post](/blog/embeddings-geometry-of-meaning) on this blog, you know that representation learning is about finding vector spaces where similar things are close together. Word2Vec does this for words. Autoencoders do it for images. GNNs do it for nodes in graphs.
 
 Early graph embedding methods — DeepWalk (2014), Node2Vec (2016) — learned node embeddings by running random walks and treating the walk sequences like sentences in Word2Vec. This worked surprisingly well but had a fatal limitation: the embeddings were transductive. Train on graph $G$, and you get embeddings for the nodes in $G$. Add a new node? You need to retrain. Change the graph? Retrain. This is fine for static graphs but useless for Pinterest, where new pins are uploaded every second.
 
@@ -201,7 +201,7 @@ The isotropic nature is both GCN's strength (simplicity, efficiency) and its wea
 
 ## GAT: Attention on Graphs
 
-If you have read the [attention mechanism post](/blog/attention-mechanism-neural-networks) on this blog, the idea behind Graph Attention Networks will feel familiar. The core insight of GAT, introduced by Velickovic et al. in 2018, is simple: **not all neighbors are equally important, so let the network learn how much to attend to each one**.
+If you have read the [attention mechanism post](/blog/attention-is-all-you-need) on this blog, the idea behind Graph Attention Networks will feel familiar. The core insight of GAT, introduced by Velickovic et al. in 2018, is simple: **not all neighbors are equally important, so let the network learn how much to attend to each one**.
 
 Instead of using fixed normalization weights (like GCN's degree-based weighting), GAT computes a *learned attention coefficient* for every edge:
 
@@ -715,4 +715,4 @@ Before building a GNN, ask:
 - Graph transformers replace local message passing with global attention. Does this make them "not really GNNs," and does the distinction matter if they work better?
 - As knowledge graphs grow to billions of triples (see the [knowledge graphs in practice post](/blog/knowledge-graphs-practice)), can GNNs learn to reason over them the way symbolic systems do — or are neural and symbolic approaches permanently complementary?
 - Most GNN benchmarks use static, homogeneous graphs. Real-world graphs are dynamic, heterogeneous, and noisy. How much of the benchmark-to-production gap is a data problem versus a model problem?
-- The node embedding space learned by a GNN encodes structural similarity. How does this relate to the embedding spaces from language models (see the [embeddings post](/blog/embeddings-representation-learning)) — and can we meaningfully compose them?
+- The node embedding space learned by a GNN encodes structural similarity. How does this relate to the embedding spaces from language models (see the [embeddings post](/blog/embeddings-geometry-of-meaning)) — and can we meaningfully compose them?

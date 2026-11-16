@@ -16,6 +16,7 @@ import {
   ArrowDownUp
 } from 'lucide-react';
 import { getPostBySlug, BLOG_CONFIG, scrollToElementCentered, getWebPPath } from '../utils/blogUtils';
+import { postPath } from '../utils/postLinks';
 import { MarkdownRenderer, AudioPlayer } from '../components/features/blog';
 import { HoverMotion } from '../components/layout';
 
@@ -724,9 +725,17 @@ export default function BlogPostPage() {
     async function loadPost() {
       try {
         setLoading(true);
+        setError(null);
         const postData = await getPostBySlug(category, slug);
 
         if (!postData) {
+          // The slug exists under another category (the post was moved):
+          // send the reader to its current address instead of a dead end.
+          const moved = postPath(slug);
+          if (moved) {
+            navigate(moved + window.location.hash, { replace: true });
+            return;
+          }
           setError('Post not found');
           return;
         }
@@ -747,7 +756,7 @@ export default function BlogPostPage() {
     }
 
     loadPost();
-  }, [category, slug]);
+  }, [category, slug, navigate]);
   
   // Share functionality
   const sharePost = async () => {

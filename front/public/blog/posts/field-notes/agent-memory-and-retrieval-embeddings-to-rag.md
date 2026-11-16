@@ -19,7 +19,7 @@ A week later a different ghost appeared. A user invoked their right to deletion 
 
 Both incidents are the same lesson wearing different clothes. **An agent's apparent intelligence is, to a first approximation, the quality of its context system** — what it can remember from earlier in a conversation, and what it can pull in from the world outside its weights. The reasoning model on top is interchangeable and improving monthly. The memory-and-retrieval layer underneath is where your engineering actually lives, and where it actually fails.
 
-This is the third post in the *Agentic AI Engineering, end to end* series, and it is deliberately about that layer. It treats memory and retrieval as **one design surface** rather than two unrelated features. Embeddings and vector search are the substrate. Chunking, advanced retrieval, time-awareness, and conversation memory are how you make that substrate behave in production. The earlier RAG posts in the catalog cover the full pipeline mechanics — [Building RAG Systems](https://juanlara18.github.io/portfolio/#/blog/rag-building-production-systems), [Advanced RAG Patterns](https://juanlara18.github.io/portfolio/#/blog/rag-advanced-patterns), and [Vector Databases Demystified](https://juanlara18.github.io/portfolio/#/blog/vector-databases-indexes-to-vertex-search). I will lean on them hard and point you there for depth rather than re-deriving. What this post adds is the framing the agent imposes: the context system as the agent's working memory plus its library card, and the specific things that break when an agent — not a one-shot Q&A endpoint — is the consumer.
+This is the third post in the *Agentic AI Engineering, end to end* series, and it is deliberately about that layer. It treats memory and retrieval as **one design surface** rather than two unrelated features. Embeddings and vector search are the substrate. Chunking, advanced retrieval, time-awareness, and conversation memory are how you make that substrate behave in production. The earlier RAG posts in the catalog cover the full pipeline mechanics — [Building RAG Systems](/blog/rag-building-production-systems), [Advanced RAG Patterns](/blog/rag-advanced-patterns), and [Vector Databases Demystified](/blog/vector-databases-indexes-to-vertex-search). I will lean on them hard and point you there for depth rather than re-deriving. What this post adds is the framing the agent imposes: the context system as the agent's working memory plus its library card, and the specific things that break when an agent — not a one-shot Q&A endpoint — is the consumer.
 
 ## Embeddings: Coordinates of Meaning
 
@@ -33,7 +33,7 @@ This is the single property that makes the entire enterprise work, so it is wort
 - It is **not a hash**. A hash is designed so that similar inputs produce *wildly different* outputs — that is the whole point of a hash. An embedding is the exact opposite: similar inputs produce *nearby* outputs. Hashing destroys the structure embeddings are built to preserve.
 - It is **not a summary**. A summary is human-readable text. An embedding is a point in geometric space, meaningful only relative to other points. You cannot read it; you can only measure distances from it.
 
-If the geometry of all this feels hand-wavy, [Embeddings: The Geometry of Meaning](https://juanlara18.github.io/portfolio/#/blog/embeddings-geometry-of-meaning) builds the intuition from first principles, and I will assume that level of comfort from here on. The one thing to internalize: embeddings convert the slippery question "are these two pieces of text about the same thing?" into the crisp, computable question "are these two vectors close?"
+If the geometry of all this feels hand-wavy, [Embeddings: The Geometry of Meaning](/blog/embeddings-geometry-of-meaning) builds the intuition from first principles, and I will assume that level of comfort from here on. The one thing to internalize: embeddings convert the slippery question "are these two pieces of text about the same thing?" into the crisp, computable question "are these two vectors close?"
 
 ### How "Close" Gets Measured
 
@@ -99,7 +99,7 @@ The query shares not a single content word with the top result. Cosine over embe
 
 ## Finding Neighbors When There Are Millions
 
-That `@` is a brute-force scan. It computes the query's distance to *every* stored vector. With four documents it is instant. With ten million 1536-dimensional vectors it is roughly fifteen billion multiply-adds per query — on the order of seconds on a CPU core, before you account for a single concurrent user. That is the **kNN wall**, and it is the constraint from which the entire vector-index field emerges. (The [Vector Databases](https://juanlara18.github.io/portfolio/#/blog/vector-databases-indexes-to-vertex-search) post derives this in full; here I just need the shape of it.)
+That `@` is a brute-force scan. It computes the query's distance to *every* stored vector. With four documents it is instant. With ten million 1536-dimensional vectors it is roughly fifteen billion multiply-adds per query — on the order of seconds on a CPU core, before you account for a single concurrent user. That is the **kNN wall**, and it is the constraint from which the entire vector-index field emerges. (The [Vector Databases](/blog/vector-databases-indexes-to-vertex-search) post derives this in full; here I just need the shape of it.)
 
 A reflex worth killing early: this is not a storage problem, so storage tricks do not fix it. Putting the vectors on a faster SSD does not help — the bottleneck is CPU arithmetic and RAM bandwidth, not disk reads. Gzipping the vectors does not help — you have to decompress them to do math, and the math is the cost. The problem is *computational*, and the only real fix is to **stop comparing against most of the data**.
 
@@ -149,7 +149,7 @@ def chunk_with_overlap(tokens: list[int], size: int = 512, overlap: int = 64):
     return [tokens[i : i + size] for i in range(0, len(tokens), step)]
 ```
 
-Overlap is not free — it inflates your index and can surface near-duplicate chunks for the same query — but a small overlap buys cheap insurance against boundary mutilation. The opposite mistake is just as real: chunks that are *too small* fragment a single idea into pieces that each look semantically thin, so none of them scores well enough to be retrieved. There is no universal size; it is a property of your documents, and you tune it against a labeled query set. The [Building RAG Systems](https://juanlara18.github.io/portfolio/#/blog/rag-building-production-systems) post goes deep on chunking strategies per document type.
+Overlap is not free — it inflates your index and can surface near-duplicate chunks for the same query — but a small overlap buys cheap insurance against boundary mutilation. The opposite mistake is just as real: chunks that are *too small* fragment a single idea into pieces that each look semantically thin, so none of them scores well enough to be retrieved. There is no universal size; it is a property of your documents, and you tune it against a labeled query set. The [Building RAG Systems](/blog/rag-building-production-systems) post goes deep on chunking strategies per document type.
 
 ### Structured Documents: The Table Massacre
 
@@ -224,7 +224,7 @@ flowchart LR
     Q2["Plain vector search"] --> X["Two docs, no shared terms,\nfar apart in embedding space, never co-retrieved"]
 ```
 
-GraphRAG is expensive to build — an LLM call per chunk during ingestion — so it earns its keep on stable corpora with genuine relational structure, not as a default. The [Advanced RAG Patterns](https://juanlara18.github.io/portfolio/#/blog/rag-advanced-patterns) post covers the local-vs-global query modes and the cost structure in detail.
+GraphRAG is expensive to build — an LLM call per chunk during ingestion — so it earns its keep on stable corpora with genuine relational structure, not as a default. The [Advanced RAG Patterns](/blog/rag-advanced-patterns) post covers the local-vs-global query modes and the cost structure in detail.
 
 ### Reranking and the Lost-in-the-Middle Effect
 
@@ -289,7 +289,7 @@ And the seductive third option — skip retrieval, paste the entire manual into 
 | Provenance / citations | Native | None | Possible but lost-in-middle |
 | Updating knowledge | Re-ingest, minutes | Re-train, hours to days | Re-paste every call |
 
-The honest summary: **RAG for knowledge, fine-tuning for behavior, and the giant context window almost never as a substitute for either.** The [RAG vs fine-tuning section of the Advanced Patterns post](https://juanlara18.github.io/portfolio/#/blog/rag-advanced-patterns) develops the decision matrix further, including the "do both" case.
+The honest summary: **RAG for knowledge, fine-tuning for behavior, and the giant context window almost never as a substitute for either.** The [RAG vs fine-tuning section of the Advanced Patterns post](/blog/rag-advanced-patterns) develops the decision matrix further, including the "do both" case.
 
 ## Memory: How an Agent Remembers a Conversation
 
@@ -383,7 +383,7 @@ The design lesson is to plan for deletion at ingestion: **no vector should ever 
 
 ## Prerequisites and Known Gotchas
 
-**Prerequisites.** You should be comfortable with what an embedding is and why cosine captures semantic relatedness ([Embeddings: The Geometry of Meaning](https://juanlara18.github.io/portfolio/#/blog/embeddings-geometry-of-meaning)), the shape of a basic RAG pipeline ([RAG: Retrieval-Augmented Generation](https://juanlara18.github.io/portfolio/#/blog/rag-retrieval-augmented-generation)), and ideally the vector-index trade-offs ([Vector Databases Demystified](https://juanlara18.github.io/portfolio/#/blog/vector-databases-indexes-to-vertex-search)). This post assumes those and focuses on the agent's context system on top.
+**Prerequisites.** You should be comfortable with what an embedding is and why cosine captures semantic relatedness ([Embeddings: The Geometry of Meaning](/blog/embeddings-geometry-of-meaning)), the shape of a basic RAG pipeline ([RAG: Retrieval-Augmented Generation](/blog/rag-retrieval-augmented-generation)), and ideally the vector-index trade-offs ([Vector Databases Demystified](/blog/vector-databases-indexes-to-vertex-search)). This post assumes those and focuses on the agent's context system on top.
 
 **Gotchas that will bite you:**
 

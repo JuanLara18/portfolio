@@ -23,7 +23,7 @@ Somebody had written `sessions: dict[str, list[Message]] = {}` and shipped it, a
 
 That is the subject of this post. Not the framework. Not the prompt. The **runtime** — the thing that executes the turn loop, holds the session between turns, and decides what survives when the machine underneath it goes away.
 
-This is part two of *The Agent Platform*. [Part one](https://juanlara18.github.io/portfolio/#/blog/agent-platform-control-plane-data-plane) drew the line between the control plane, which decides what an agent is allowed to be, and the data plane, which executes it. The runtime is the load-bearing beam of that data plane, and it is the component teams spend the least time choosing and the most time regretting.
+This is part two of *The Agent Platform*. [Part one](/blog/agent-platform-control-plane-data-plane) drew the line between the control plane, which decides what an agent is allowed to be, and the data plane, which executes it. The runtime is the load-bearing beam of that data plane, and it is the component teams spend the least time choosing and the most time regretting.
 
 ---
 
@@ -31,7 +31,7 @@ This is part two of *The Agent Platform*. [Part one](https://juanlara18.github.i
 
 Let's be precise, because "runtime" gets used to mean everything from a Docker image to a cloud product SKU.
 
-A **framework** gives you abstractions for composing agent behavior: nodes, edges, typed state, handoffs. LangGraph and the Agent Development Kit are frameworks. A **harness** is a program that runs an agent for a user — Claude Code, Codex, an internal Slack bot. I spent a whole post on [when to build, fork, or adopt one](https://juanlara18.github.io/portfolio/#/blog/agent-harness-build-fork-adopt-yc-qm).
+A **framework** gives you abstractions for composing agent behavior: nodes, edges, typed state, handoffs. LangGraph and the Agent Development Kit are frameworks. A **harness** is a program that runs an agent for a user — Claude Code, Codex, an internal Slack bot. I spent a whole post on [when to build, fork, or adopt one](/blog/agent-harness-build-fork-adopt-yc-qm).
 
 A **runtime** is the execution substrate underneath both. It answers a narrower and more physical set of questions: on what machine does the loop iterate, what happens to its state between iterations, what happens when the machine dies mid-iteration, and how do a thousand concurrent loops share one finite pool of model tokens.
 
@@ -427,7 +427,7 @@ An agent is halfway through a turn. It has called `issue_refund(order_id="A-4471
 
 Nothing malfunctioned. The retry was correct, the tool was correct, the model was consistent. The system was wrong because nobody told the runtime that `issue_refund` is not a function you may call twice.
 
-I wrote about this at length in [The Grid Doesn't Care About Your Retry Loop](https://juanlara18.github.io/portfolio/#/blog/senior-infrastructure-distributed-systems-failure-networking), where the failure mode is retry storms and the fix is idempotency. Agent runtimes make it harder for three reasons. The retry decision is often made by infrastructure you do not control. The "request" being retried is a *loop*, not a call, so a naive retry re-executes an unbounded number of side effects. And worst: the model may not reproduce the same tool call on replay, so you cannot rely on positional matching to detect duplicates.
+I wrote about this at length in [The Grid Doesn't Care About Your Retry Loop](/blog/senior-infrastructure-distributed-systems-failure-networking), where the failure mode is retry storms and the fix is idempotency. Agent runtimes make it harder for three reasons. The retry decision is often made by infrastructure you do not control. The "request" being retried is a *loop*, not a call, so a naive retry re-executes an unbounded number of side effects. And worst: the model may not reproduce the same tool call on replay, so you cannot rely on positional matching to detect duplicates.
 
 ### Safe and unsafe tools are different objects
 

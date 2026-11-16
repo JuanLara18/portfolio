@@ -42,12 +42,17 @@ const postToMarkdown = (post) => {
     `date: ${JSON.stringify(post.date || '')}`,
     `category: ${post.category || ''}`,
     `slug: ${post.slug || ''}`,
-    `url: https://juanlara18.github.io/portfolio/#/blog/${post.slug || ''}`,
+    `url: https://juanlara18.github.io/portfolio/blog/${post.category || ''}/${post.slug || ''}/`,
     '---',
     '',
     '',
   ].join('\n');
-  return front + (post.content || '').trim() + '\n';
+  // Site-relative links (`/blog/<slug>`) mean nothing outside the site, so the
+  // downloaded file gets absolute ones; /blog/<slug> redirects to the post.
+  const body = (post.content || '')
+    .trim()
+    .replace(/\]\(\/blog\//g, '](https://juanlara18.github.io/portfolio/blog/');
+  return front + body + '\n';
 };
 
 // Compact, podcast-style inline player for a single series step. Sits above the

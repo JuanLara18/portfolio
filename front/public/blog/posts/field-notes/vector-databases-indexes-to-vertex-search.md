@@ -11,13 +11,13 @@ estimatedWordCount: 6500
 
 # Vector Databases Demystified: From Indexes to Vertex AI Vector Search
 
-You have spent weeks getting embeddings right. You picked a model, you chunked your documents, you normalized your vectors, and now every paragraph in your knowledge base is a point in a 768-dimensional space where semantic similarity is geometric proximity. If that sentence already feels natural, you have done the hard conceptual work — and if it does not, start with [Embeddings: The Geometry of Meaning](https://juanlara18.github.io/portfolio/#/blog/embeddings-geometry-of-meaning), which is the prerequisite this entire post builds on.
+You have spent weeks getting embeddings right. You picked a model, you chunked your documents, you normalized your vectors, and now every paragraph in your knowledge base is a point in a 768-dimensional space where semantic similarity is geometric proximity. If that sentence already feels natural, you have done the hard conceptual work — and if it does not, start with [Embeddings: The Geometry of Meaning](/blog/embeddings-geometry-of-meaning), which is the prerequisite this entire post builds on.
 
 Then you write the query. "Find the ten chunks most similar to this question." And you discover the quiet catastrophe at the center of every retrieval system: similarity is easy to define and brutally expensive to compute at scale. The embeddings were the easy part. Searching them is the part that decides whether your system survives production.
 
 This post is the map of that territory. We start from the single constraint that forces everything else into existence — the cost of exact nearest-neighbor search — and let the index *emerge* from it. We walk the major index families (trees, IVF, product quantization, HNSW, ScaNN), clear up the confusions that trip up almost everyone (vector database versus index versus library, which distance metric, how filtering interacts with approximate search), then go deep on Google Cloud, ending with Vertex AI Vector Search in production: how it works, how to build and deploy it, what it costs, and what will bite you at 2 a.m.
 
-> **Prerequisites.** You should be comfortable with what an embedding is and why cosine similarity captures semantic relatedness. You do not need to know any index internals — that is what we are about to build. If you want the companion piece on how to *evaluate* the systems we discuss, read [Vector Database Benchmarks](https://juanlara18.github.io/portfolio/#/blog/vector-db-benchmarks) after this; this post explains the machinery, that one explains how to read the numbers people publish about it.
+> **Prerequisites.** You should be comfortable with what an embedding is and why cosine similarity captures semantic relatedness. You do not need to know any index internals — that is what we are about to build. If you want the companion piece on how to *evaluate* the systems we discuss, read [Vector Database Benchmarks](/blog/vector-db-benchmarks) after this; this post explains the machinery, that one explains how to read the numbers people publish about it.
 
 ---
 
@@ -216,7 +216,7 @@ flowchart LR
 
 ## The Vector Options on Google Cloud
 
-Now we turn to the cloud the question is really about. Google Cloud does not have *a* vector product; it has four meaningfully different ones, and choosing wrong is a slow, expensive mistake. Here is the map. (For the broader stack around these — RAG Engine, embeddings, ingestion — see [GCP AI Stack: Vertex AI, AlloyDB, and the Cloud-Native Knowledge Pipeline](https://juanlara18.github.io/portfolio/#/blog/gcp-ai-stack-vertex-alloydb-knowledge-pipeline).)
+Now we turn to the cloud the question is really about. Google Cloud does not have *a* vector product; it has four meaningfully different ones, and choosing wrong is a slow, expensive mistake. Here is the map. (For the broader stack around these — RAG Engine, embeddings, ingestion — see [GCP AI Stack: Vertex AI, AlloyDB, and the Cloud-Native Knowledge Pipeline](/blog/gcp-ai-stack-vertex-alloydb-knowledge-pipeline).)
 
 | GCP option | What it is | Index tech | Sweet spot | Watch out for |
 |---|---|---|---|---|
@@ -261,7 +261,7 @@ Autoscaling adjusts the replica count between a `minReplicaCount` and `maxReplic
 
 The practical implications:
 
-- **Always-on means budget-on.** Vertex AI Vector Search is excellent for systems with sustained query traffic and large corpora. For a low-traffic side project, an always-on endpoint can cost more per month than the rest of your cloud bill — exactly the kind of footgun the [GCP stack post](https://juanlara18.github.io/portfolio/#/blog/gcp-ai-stack-vertex-alloydb-knowledge-pipeline) warns about. For bursty or tiny workloads, pgvector on a database you are already paying for is often the better economics.
+- **Always-on means budget-on.** Vertex AI Vector Search is excellent for systems with sustained query traffic and large corpora. For a low-traffic side project, an always-on endpoint can cost more per month than the rest of your cloud bill — exactly the kind of footgun the [GCP stack post](/blog/gcp-ai-stack-vertex-alloydb-knowledge-pipeline) warns about. For bursty or tiny workloads, pgvector on a database you are already paying for is often the better economics.
 - **Right-size `minReplicaCount`.** It sets your latency-and-availability floor and your cost floor simultaneously. Set it to your real baseline load, let autoscaling handle peaks, and do not leave it inflated.
 - **Latency SLOs are a deployment concern, not just an index concern.** Recall comes from `fractionLeafNodesToSearch`; tail latency comes from replica count, machine type, sharding, and network path (public vs VPC endpoint). Tune both.
 
@@ -352,7 +352,7 @@ The conceptual distance between these two snippets *is* the difference between a
 
 ## How It Compares
 
-No tool is a sales pitch, so here is a balanced read on where Vertex AI Vector Search sits among the systems you might otherwise pick. This complements the deeper treatment in the [benchmarks post](https://juanlara18.github.io/portfolio/#/blog/vector-db-benchmarks); here we care about character, not leaderboard position.
+No tool is a sales pitch, so here is a balanced read on where Vertex AI Vector Search sits among the systems you might otherwise pick. This complements the deeper treatment in the [benchmarks post](/blog/vector-db-benchmarks); here we care about character, not leaderboard position.
 
 | System | Model | Default index | Filtering | Strength | Trade-off |
 |---|---|---|---|---|---|

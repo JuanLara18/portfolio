@@ -25,10 +25,10 @@ This post is the one I went looking for and could not find. It evaluates the rea
 
 This is a decision-framework post, not a tutorial. I assume you are comfortable with the things the rest of this blog already covers and will not re-derive them here:
 
-- You know what a container is and why it matters. If not, start with [Docker for ML engineers](https://juanlara18.github.io/portfolio/#/blog/docker-for-ml-engineers), because every option below is downstream of the container.
-- You know what infrastructure as code buys you. The self-hosted option leans entirely on [Terraform](https://juanlara18.github.io/portfolio/#/blog/terraform-infrastructure-as-code).
-- You have used an AI coding agent that executes commands, in the [Claude Code](https://juanlara18.github.io/portfolio/#/blog/claude-code-complete-guide) sense, not just inline autocomplete. That changes the sandbox requirement materially.
-- You accept the framing that cloud is a different way of building, not just bigger computers, which I argued in [cloud infrastructure for ML](https://juanlara18.github.io/portfolio/#/blog/cloud-ml-infrastructure).
+- You know what a container is and why it matters. If not, start with [Docker for ML engineers](/blog/docker-for-ml-engineers), because every option below is downstream of the container.
+- You know what infrastructure as code buys you. The self-hosted option leans entirely on [Terraform](/blog/terraform-infrastructure-as-code).
+- You have used an AI coding agent that executes commands, in the [Claude Code](/blog/claude-code-complete-guide) sense, not just inline autocomplete. That changes the sandbox requirement materially.
+- You accept the framing that cloud is a different way of building, not just bigger computers, which I argued in [cloud infrastructure for ML](/blog/cloud-ml-infrastructure).
 
 I also assume a working definition of "AI work" that is broader than training models. It includes RAG and agent development, data engineering against a warehouse, notebook-driven analysis, fine-tuning, and the long tail of glue code that touches production data. These have different gravity, and that is the whole point.
 
@@ -42,7 +42,7 @@ Before the options, the forces. Six of them push code off the laptop and into ma
 
 **Data gravity.** Data is heavy. If your training set or your document corpus lives in BigQuery or a Cloud Storage bucket inside a VPC, dragging it to a laptop is slow, expensive, and frequently illegal. It is far cheaper to move the compute to the data than the data to the compute. This single fact bends most enterprise decisions toward cloud environments that sit next to the data.
 
-**Secrets and credentials.** A laptop that holds a long-lived service-account key is a breach waiting for a lost bag. Governed environments let you bind short-lived, workload-scoped identity to the environment itself, so the secret never lands on a portable disk. This is the same capability-token discipline I argued for at the application layer in [the stack I would adopt after 100 posts](https://juanlara18.github.io/portfolio/#/blog/stack-recommendations-after-100-posts), applied one floor down.
+**Secrets and credentials.** A laptop that holds a long-lived service-account key is a breach waiting for a lost bag. Governed environments let you bind short-lived, workload-scoped identity to the environment itself, so the secret never lands on a portable disk. This is the same capability-token discipline I argued for at the application layer in [the stack I would adopt after 100 posts](/blog/stack-recommendations-after-100-posts), applied one floor down.
 
 **Reproducibility.** "Works on my machine" is not a joke, it is a failure mode with a cost. When the environment is a versioned artifact, every cook gets the same station. When it is a laptop that accreted state over eighteen months, onboarding is a week and bugs are unfalsifiable.
 
@@ -227,13 +227,13 @@ The `idle-timeout-seconds` metadata key is the most important flag in that comma
 
 **Who it is for.** Data scientists and ML engineers doing exploratory, notebook-shaped work close to GCP data: feature exploration, model prototyping, ad hoc analysis against BigQuery, fine-tuning experiments. When the unit of work is "open a notebook, pull a sample, plot something, try a model," this is the right environment and a general IDE would be friction.
 
-**Failure modes.** The big one is the **notebook-to-production gap**. A notebook is a wonderful exploration surface and a terrible production artifact. Code that lives only in cells, with hidden execution order and global state, does not become a pipeline by wishing. Teams that treat Workbench as the place where things ship end up with unreviewable, unversioned, irreproducible logic, which is exactly the chaos I warned about in [structuring ML projects](https://juanlara18.github.io/portfolio/#/blog/structuring-ml-projects). Use Workbench to explore, then promote the logic into versioned modules that run in a real environment. The second failure mode is forgetting idle shutdown and paying for sleeping GPUs. The third is reaching for a notebook when the task is general software engineering, where a notebook is the wrong shape entirely.
+**Failure modes.** The big one is the **notebook-to-production gap**. A notebook is a wonderful exploration surface and a terrible production artifact. Code that lives only in cells, with hidden execution order and global state, does not become a pipeline by wishing. Teams that treat Workbench as the place where things ship end up with unreviewable, unversioned, irreproducible logic, which is exactly the chaos I warned about in [structuring ML projects](/blog/structuring-ml-projects). Use Workbench to explore, then promote the logic into versioned modules that run in a real environment. The second failure mode is forgetting idle shutdown and paying for sleeping GPUs. The third is reaching for a notebook when the task is general software engineering, where a notebook is the wrong shape entirely.
 
 ## Option 6: Coder
 
 **What it is.** An open-source, self-hosted platform for cloud development environments, where every workspace is defined in Terraform and runs on infrastructure you control. If Cloud Workstations is the managed GCP answer, Coder is the bring-your-own-control-plane answer: you run the Coder server, you write the templates, and workspaces provision onto your EC2, your GKE pods, your Docker hosts, or your on-prem hardware.
 
-**How it works.** This is where the [Terraform](https://juanlara18.github.io/portfolio/#/blog/terraform-infrastructure-as-code) knowledge pays off. A Coder template is a complete Terraform configuration using the `coder` provider. The non-negotiable resource is a `coder_agent`, which runs inside the workspace and facilitates connections over a secure tunnel, with SSH, port forwarding, and IDE access. You attach editors and services with `coder_app`. Workspaces connect over a WireGuard tunnel and shut down automatically when idle to save money.
+**How it works.** This is where the [Terraform](/blog/terraform-infrastructure-as-code) knowledge pays off. A Coder template is a complete Terraform configuration using the `coder` provider. The non-negotiable resource is a `coder_agent`, which runs inside the workspace and facilitates connections over a secure tunnel, with SSH, port forwarding, and IDE access. You attach editors and services with `coder_app`. Workspaces connect over a WireGuard tunnel and shut down automatically when idle to save money.
 
 ```hcl
 terraform {
@@ -309,7 +309,7 @@ Coder has also leaned into the agent era. Recent versions can run an AI coding a
 
 **JetBrains remote development** is less a separate environment and more a way to attach a heavy, full-featured IDE backend to a remote machine while keeping a thin client local. It composes with most of the options above rather than competing with them, and it matters because not everyone lives in VS Code. JetBrains IDEs also consume the dev container spec, so the portable-config layer still applies.
 
-The deeper shift is **AI coding agents**, the [Claude Code](https://juanlara18.github.io/portfolio/#/blog/claude-code-complete-guide) and Cursor generation, which have quietly changed what an environment is for. An agent that reads files, runs shell commands, installs dependencies, and iterates until a task is done is not autocomplete; it is a process acting with your authority. That reframes the environment as a sandbox in two ways. First, you want the agent's blast radius bounded to a disposable workspace, not your personal machine, which pushes toward ephemeral cloud environments you can destroy and recreate. Second, you want the agent's network and credential access scoped, which is exactly what governed environments provide and what a laptop does not. The reason this whole post matters more in 2027 than it would have in 2023 is that the agent made "where does the code run" inseparable from "where does an autonomous process run with my keys."
+The deeper shift is **AI coding agents**, the [Claude Code](/blog/claude-code-complete-guide) and Cursor generation, which have quietly changed what an environment is for. An agent that reads files, runs shell commands, installs dependencies, and iterates until a task is done is not autocomplete; it is a process acting with your authority. That reframes the environment as a sandbox in two ways. First, you want the agent's blast radius bounded to a disposable workspace, not your personal machine, which pushes toward ephemeral cloud environments you can destroy and recreate. Second, you want the agent's network and credential access scoped, which is exactly what governed environments provide and what a laptop does not. The reason this whole post matters more in 2027 than it would have in 2023 is that the agent made "where does the code run" inseparable from "where does an autonomous process run with my keys."
 
 ## The Comparison Table
 
@@ -336,7 +336,7 @@ These are the ones I have personally stepped on or watched a colleague step on.
 
 **Dev container drift from production.** If the dev container and the production image diverge, you have reintroduced the exact bug containers were supposed to kill. Share a base image between them and treat divergence as a defect.
 
-**Secrets baked into images or env files.** The whole point of governed environments is workload-scoped identity. Do not undo it by committing a service-account key into a dev container image or a `.env`. Use the environment's native identity binding. This is the same discipline as the capability tokens in [the 100-posts stack manifesto](https://juanlara18.github.io/portfolio/#/blog/stack-recommendations-after-100-posts).
+**Secrets baked into images or env files.** The whole point of governed environments is workload-scoped identity. Do not undo it by committing a service-account key into a dev container image or a `.env`. Use the environment's native identity binding. This is the same discipline as the capability tokens in [the 100-posts stack manifesto](/blog/stack-recommendations-after-100-posts).
 
 **Treating notebooks as production.** Workbench is for exploration. Logic that matters gets promoted into versioned, tested modules that run in a real environment. The notebook-to-production gap is where the most expensive irreproducibility lives.
 

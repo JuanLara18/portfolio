@@ -17,7 +17,7 @@ The genius was not the steel box. Anyone can weld a steel box. The genius was th
 
 An API is the same trick. The code behind the endpoint is the steel box, and you can weld one in an afternoon now. Point a model at a feature description and you will have route handlers, request validation, an OpenAPI document, and a typed client in less time than it takes to read this paragraph. The implementation has become nearly free. But the *interface* you are publishing is a promise to every system that will ever call it, and like the corner casting on a container, the value is not in the thing itself. It is in the fact that everyone can depend on it not changing out from under them.
 
-This is the third field note in a series on senior judgment in the age of AI coding. The throughline is simple and it keeps proving itself: the AI generates the implementation, but the scarce skill is deciding *what* to build, *which* trade-off to take, and *when* the generated thing is subtly, expensively wrong. Nowhere is that gap wider than in API design. The first post covered [infrastructure and the physics of distributed systems](https://juanlara18.github.io/portfolio/#/blog/senior-infrastructure-distributed-systems-failure-networking). The second covered [data modeling and query patterns](https://juanlara18.github.io/portfolio/#/blog/senior-data-modeling-query-patterns-database-design). This one is about the surface where your system meets everyone else's: the contract.
+This is the third field note in a series on senior judgment in the age of AI coding. The throughline is simple and it keeps proving itself: the AI generates the implementation, but the scarce skill is deciding *what* to build, *which* trade-off to take, and *when* the generated thing is subtly, expensively wrong. Nowhere is that gap wider than in API design. The first post covered [infrastructure and the physics of distributed systems](/blog/senior-infrastructure-distributed-systems-failure-networking). The second covered [data modeling and query patterns](/blog/senior-data-modeling-query-patterns-database-design). This one is about the surface where your system meets everyone else's: the contract.
 
 Let me show you why the contract is the part the AI cannot own, and then let me show you how to design one that survives contact with the real world.
 
@@ -410,8 +410,8 @@ The container revolution did not eliminate the need for people who understood sh
 
 - Comfort with HTTP fundamentals: methods, status codes, headers, and the request/response cycle.
 - Basic familiarity with JSON and at least one web framework. The examples use FastAPI but the ideas are framework-agnostic.
-- The infrastructure mindset from [the first post in this series](https://juanlara18.github.io/portfolio/#/blog/senior-infrastructure-distributed-systems-failure-networking): networks fail, requests time out, retries happen. That is *why* idempotency is a contract term, not a nicety.
-- The data-modeling lens from [the second post](https://juanlara18.github.io/portfolio/#/blog/senior-data-modeling-query-patterns-database-design): your resource shapes often mirror your data model, and the same "easy to change, hard to change" asymmetry applies.
+- The infrastructure mindset from [the first post in this series](/blog/senior-infrastructure-distributed-systems-failure-networking): networks fail, requests time out, retries happen. That is *why* idempotency is a contract term, not a nicety.
+- The data-modeling lens from [the second post](/blog/senior-data-modeling-query-patterns-database-design): your resource shapes often mirror your data model, and the same "easy to change, hard to change" asymmetry applies.
 
 **Gotchas that bite teams repeatedly:**
 

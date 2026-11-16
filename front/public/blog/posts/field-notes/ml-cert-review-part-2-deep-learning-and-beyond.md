@@ -336,7 +336,7 @@ The default cert answer is: **AdamW plus warmup plus cosine decay for transforme
 
 ## Beyond CNN and RNN
 
-The exam is unlikely to drill you on transformer math (Part I covered the basics, and the user's [Attention Is All You Need](https://juanlara18.github.io/portfolio/#/blog/attention-is-all-you-need) post goes deeper than any cert blueprint). What you need is the survey-level map of the post-RNN architectural landscape.
+The exam is unlikely to drill you on transformer math (Part I covered the basics, and the user's [Attention Is All You Need](/blog/attention-is-all-you-need) post goes deeper than any cert blueprint). What you need is the survey-level map of the post-RNN architectural landscape.
 
 **Transformers**. The encoder block is self-attention plus feedforward, both wrapped in residual connections and layer normalization. Self-attention is the parallel computation of:
 
@@ -344,9 +344,9 @@ $$
 \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V
 $$
 
-Three flavors based on which masking is used: encoder-only (BERT family, bidirectional, classification and embedding), decoder-only (GPT family, causal, generation), and encoder-decoder (T5, original Transformer, sequence-to-sequence). The user's posts on [BERT](https://juanlara18.github.io/portfolio/#/blog/bert-pre-training-bidirectional-transformers) and [T5](https://juanlara18.github.io/portfolio/#/blog/t5-text-to-text-transfer-transformer) cover the variants in detail.
+Three flavors based on which masking is used: encoder-only (BERT family, bidirectional, classification and embedding), decoder-only (GPT family, causal, generation), and encoder-decoder (T5, original Transformer, sequence-to-sequence). The user's posts on [BERT](/blog/bert-pre-training-bidirectional-transformers) and [T5](/blog/t5-text-to-text-transfer-transformer) cover the variants in detail.
 
-**State Space Models and Mamba**. SSMs replace attention with a linear recurrence whose parameters are learned. The Mamba (Gu and Dao, 2023) variant adds **input-dependent selection** to the SSM dynamics, recovering some of the content-addressable behavior of attention while keeping linear time complexity in sequence length. Mamba scales to 1M-token contexts where transformers choke on the quadratic attention. Deeper coverage in the user's [Mamba post](https://juanlara18.github.io/portfolio/#/blog/mamba-selective-state-spaces).
+**State Space Models and Mamba**. SSMs replace attention with a linear recurrence whose parameters are learned. The Mamba (Gu and Dao, 2023) variant adds **input-dependent selection** to the SSM dynamics, recovering some of the content-addressable behavior of attention while keeping linear time complexity in sequence length. Mamba scales to 1M-token contexts where transformers choke on the quadratic attention. Deeper coverage in the user's [Mamba post](/blog/mamba-selective-state-spaces).
 
 **Mixture of Experts**. An MoE layer replaces a single feedforward block with $E$ parallel feedforward "experts" plus a gating network that routes each token to the top-$k$ experts (typically $k=2$). Total parameter count is high, active parameter count per token is low. Switch Transformer, Mixtral 8x7B, GPT-4 (rumored), DeepSeek V3 all use MoE.
 
@@ -429,7 +429,7 @@ averaged = all_reduce_average(local_grad)
 | Best at | Research velocity, ecosystem | Mobile and edge, TF Serving | TPU, scientific computing, very large models |
 | Sharp edge | Less mature graph compiler than JAX | API churn historically | Steeper learning curve, NumPy-like but functional |
 
-The cert default: **PyTorch unless the question mentions TPU (then JAX) or mobile and edge inference (then TFLite)**. The user's deeper [PyTorch vs TensorFlow post](https://juanlara18.github.io/portfolio/#/blog/pytorch-tensorflow-deep-learning-frameworks) covers the trade-offs at production depth.
+The cert default: **PyTorch unless the question mentions TPU (then JAX) or mobile and edge inference (then TFLite)**. The user's deeper [PyTorch vs TensorFlow post](/blog/pytorch-tensorflow-deep-learning-frameworks) covers the trade-offs at production depth.
 
 **Online and incremental learning**. Batch training assumes the dataset is static. Online learning updates the model with each incoming sample. Incremental learning sits in between, updating with small mini-batches as new data arrives. The challenges are **concept drift** (the data distribution changes) and **catastrophic forgetting** (the model overfits to recent data and loses old knowledge). Standard techniques: replay buffers, elastic weight consolidation, distillation from a frozen teacher.
 
@@ -452,7 +452,7 @@ NLP is one full cert blueprint section by itself. The fast tour:
 
 All three trade off vocabulary size against sequence length. Larger vocabularies mean shorter sequences and more parameters in the embedding table.
 
-**Embeddings** map tokens to dense vectors. Static embeddings (Word2Vec, GloVe, FastText) assign one vector per token regardless of context. Contextual embeddings (BERT, modern LMs) produce vectors that depend on surrounding text. The user's [Embeddings, Geometry of Meaning](https://juanlara18.github.io/portfolio/#/blog/embeddings-geometry-of-meaning) post covers the geometry.
+**Embeddings** map tokens to dense vectors. Static embeddings (Word2Vec, GloVe, FastText) assign one vector per token regardless of context. Contextual embeddings (BERT, modern LMs) produce vectors that depend on surrounding text. The user's [Embeddings, Geometry of Meaning](/blog/embeddings-geometry-of-meaning) post covers the geometry.
 
 **Encoder vs decoder vs encoder-decoder**:
 
@@ -480,8 +480,8 @@ timeline
 **Fine-tuning vs RAG vs prompting**. Three ways to specialize an LLM:
 
 - **Prompting**: change the input, not the model. Cheapest. Works when the model already knows the task and just needs instruction.
-- **RAG (Retrieval-Augmented Generation)**: keep the model frozen, retrieve relevant context at inference, prepend it to the prompt. The right answer when the knowledge is private, large, or changes frequently. The user's series on [RAG building production systems](https://juanlara18.github.io/portfolio/#/blog/rag-building-production-systems) and [advanced patterns](https://juanlara18.github.io/portfolio/#/blog/rag-advanced-patterns) is the deeper read.
-- **Fine-tuning**: update the model's weights on task data. Full fine-tuning is expensive; LoRA and QLoRA are the parameter-efficient defaults. The user's posts on [fine-tuning Gemma 4 with LoRA and QLoRA](https://juanlara18.github.io/portfolio/#/blog/fine-tuning-gemma4-lora-qlora) and [fine-tuning embeddings](https://juanlara18.github.io/portfolio/#/blog/fine-tuning-embeddings) cover the practice.
+- **RAG (Retrieval-Augmented Generation)**: keep the model frozen, retrieve relevant context at inference, prepend it to the prompt. The right answer when the knowledge is private, large, or changes frequently. The user's series on [RAG building production systems](/blog/rag-building-production-systems) and [advanced patterns](/blog/rag-advanced-patterns) is the deeper read.
+- **Fine-tuning**: update the model's weights on task data. Full fine-tuning is expensive; LoRA and QLoRA are the parameter-efficient defaults. The user's posts on [fine-tuning Gemma 4 with LoRA and QLoRA](/blog/fine-tuning-gemma4-lora-qlora) and [fine-tuning embeddings](/blog/fine-tuning-embeddings) cover the practice.
 
 The cert decision tree: prompt first, RAG second, fine-tune last. Fine-tuning is the answer when you have stable task data and need a behavior that prompting cannot reliably elicit.
 
@@ -523,7 +523,7 @@ where $r_t(\theta) = \pi_\theta(a_t|s_t) / \pi_{\theta_{\text{old}}}(a_t|s_t)$ a
 
 **Model-based vs model-free**. Model-free agents (most of the above) learn the policy or value function from raw experience. Model-based agents learn a model of the environment dynamics and plan against it. Model-based is sample-efficient when the model is accurate; brittle when it is not.
 
-**RLHF** is the RL pattern most engineers actually meet. The pipeline: (1) supervised fine-tuning on demonstration data, (2) train a reward model from human preference comparisons, (3) optimize the policy against the reward model with PPO. DPO collapses steps 2 and 3 into one. The user's deeper coverage is in [Reinforcement Learning, First Principles](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-first-principles), [Reinforcement Learning In Practice](https://juanlara18.github.io/portfolio/#/blog/reinforcement-learning-in-practice), and [RLHF and DPO](https://juanlara18.github.io/portfolio/#/blog/rlhf-dpo-alignment).
+**RLHF** is the RL pattern most engineers actually meet. The pipeline: (1) supervised fine-tuning on demonstration data, (2) train a reward model from human preference comparisons, (3) optimize the policy against the reward model with PPO. DPO collapses steps 2 and 3 into one. The user's deeper coverage is in [Reinforcement Learning, First Principles](/blog/reinforcement-learning-first-principles), [Reinforcement Learning In Practice](/blog/reinforcement-learning-in-practice), and [RLHF and DPO](/blog/rlhf-dpo-alignment).
 
 For the cert, internalize the four-line table:
 

@@ -163,7 +163,7 @@ Gradient descent appears nowhere in universal approximation and inherits no guar
 
 ### No Generalization
 
-This is the most consequential omission, and it connects directly to [the VC dimension post](https://juanlara18.github.io/portfolio/#/blog/vc-dimension-sauer-shelah) earlier in this series.
+This is the most consequential omission, and it connects directly to [the VC dimension post](/blog/vc-dimension-sauer-shelah) earlier in this series.
 
 Approximation is a statement about a compact set with the target function *in hand*. Learning is a statement about a finite sample drawn from an unknown distribution. These are different problems, and richness that helps the first hurts the second — provably.
 

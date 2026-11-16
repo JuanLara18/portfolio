@@ -147,7 +147,7 @@ Part 3 covers this layer in depth.
 
 ### Layer 3: Tool plane
 
-This is MCP, and it is the layer people most often think they understand. If the protocol itself is new to you, [The Model Context Protocol](https://juanlara18.github.io/portfolio/#/blog/model-context-protocol) is the primer.
+This is MCP, and it is the layer people most often think they understand. If the protocol itself is new to you, [The Model Context Protocol](/blog/model-context-protocol) is the primer.
 
 The platform-relevant insight is a distinction that MCP tutorials skip entirely: a **registry** is not a **gateway**. A registry is a catalog — what tools exist, who owns them, what they do, what schema they take. A gateway is a data-path proxy — every tool call flows through it, and it injects credentials, enforces authorization, applies rate limits, and writes the audit record. A registry answers "what can I use." A gateway answers "you may not do that." Teams routinely build one and believe they have the other, which is how you end up with a beautiful tool catalog and no idea what was actually invoked. Google's split is instructive here: Agent Registry and Agent Gateway are separate products at separate maturity levels. AWS's AgentCore Gateway sits squarely on the data path, connecting to existing MCP servers and turning APIs and Lambda functions into agent-callable tools.
 
@@ -711,7 +711,7 @@ class ModelArmorScreener:
 
 The comment at the top of that module is the most important line in it. Write your assumptions into the code, because six months from now someone will read `SafetyPlane` and assume it means safe.
 
-For a deeper treatment of rail design itself, [Guardrails for Agent Systems: A Field Guide](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide) goes layer by layer, and [Bank-Grade Agent Security](https://juanlara18.github.io/portfolio/#/blog/bank-grade-agent-security-iam-gateways) covers the IAM and gateway side in a regulated setting.
+For a deeper treatment of rail design itself, [Guardrails for Agent Systems: A Field Guide](/blog/agent-guardrails-field-guide) goes layer by layer, and [Bank-Grade Agent Security](/blog/bank-grade-agent-security-iam-gateways) covers the IAM and gateway side in a regulated setting.
 
 ## What a Managed Runtime Buys, and What It Leaves You
 
@@ -776,7 +776,7 @@ quadrantChart
     Domain safety rules: [0.88, 0.30]
 ```
 
-The shape of that chart is the strategy. Everything in the upper left you should adopt and stop thinking about. Everything in the lower right is the actual job — it is where your organization differs from every other organization, which is exactly why no vendor can ship it. Teams get into trouble by inverting this: building a bespoke runtime, which is upper-left work, while leaving eval suites and tool authorization policy, which is lower-right work, undone. I wrote about that specific inversion in [Anatomy of an Agent Harness](https://juanlara18.github.io/portfolio/#/blog/agent-harness-build-fork-adopt-yc-qm) from the builder's side; the platform side of the same argument is this chart.
+The shape of that chart is the strategy. Everything in the upper left you should adopt and stop thinking about. Everything in the lower right is the actual job — it is where your organization differs from every other organization, which is exactly why no vendor can ship it. Teams get into trouble by inverting this: building a bespoke runtime, which is upper-left work, while leaving eval suites and tool authorization policy, which is lower-right work, undone. I wrote about that specific inversion in [Anatomy of an Agent Harness](/blog/agent-harness-build-fork-adopt-yc-qm) from the builder's side; the platform side of the same argument is this chart.
 
 ## A Reference Architecture
 
@@ -842,7 +842,7 @@ Three properties are worth naming explicitly.
 
 **Memory sits inside the data plane but is scoped by control plane policy.** The `memory_scope` field in the registry record decides whether an agent's writes are visible to itself only or to the organization. Promotion to organizational scope is a reviewed action, which is your structural answer to memory poisoning.
 
-If you are coming at this from the builder's side, [Agent Architecture and Orchestration](https://juanlara18.github.io/portfolio/#/blog/agent-architecture-and-orchestration) covers what happens *inside* the runtime box — routers, supervisors, cyclic graphs. This post is deliberately silent on that, because from the platform's seat, the contents of that box are the tenant's business. That silence is the point. A good platform is indifferent to your topology and uncompromising about your identity.
+If you are coming at this from the builder's side, [Agent Architecture and Orchestration](/blog/agent-architecture-and-orchestration) covers what happens *inside* the runtime box — routers, supervisors, cyclic graphs. This post is deliberately silent on that, because from the platform's seat, the contents of that box are the tenant's business. That silence is the point. A good platform is indifferent to your topology and uncompromising about your identity.
 
 ## Where This Series Goes
 

@@ -60,7 +60,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "prebuild": "npm run build-blog-data && npm run build-books && npm run build-knowledge-base && npm run build-sitemap && npm run build-rss",
+    "prebuild": "npm run build-blog-data && npm run validate-links && npm run build-books && npm run build-knowledge-base && npm run build-sitemap && npm run build-rss",
     "build-blog-data": "node scripts/build-blog-data.js",
     "build-books": "node scripts/build-books.js",
     "build-knowledge-base": "node scripts/build-knowledge-base.js",
@@ -75,7 +75,8 @@
     "sync:fast": "python scripts/sync.py --fast",
     "sync:check": "python scripts/sync.py --check",
     "pdf:series": "node scripts/pdf/build.js",
-    "pdf:series:list": "node scripts/pdf/build.js --list"
+    "pdf:series:list": "node scripts/pdf/build.js --list",
+    "validate-links": "node scripts/validate-links.js"
   },
   "browserslist": {
     "production": [

@@ -17,7 +17,7 @@ At two hops this is a perfectly ordinary SQL problem. Join `account` to `company
 
 At five hops it stops being ordinary. The chain now runs through four intermediate holding companies in three jurisdictions, and the same query — expressed as a recursive CTE, indexed exactly the way the documentation says to index it — goes from eight milliseconds to a number I stopped waiting for. Not gradually. It was fine, then it was fine, then the query planner made a different decision at depth four and the whole thing fell off a cliff.
 
-Everyone in this business has that story. And everyone has heard the standard explanation: *graph databases are faster for connected data.* Which is true in roughly the way "electric cars are faster off the line" is true — correct, unhelpful, and hiding all the interesting engineering. The blog has [thirty-nine posts about knowledge graphs and ontologies](https://juanlara18.github.io/portfolio/#/blog/knowledge-graphs-practice), and not one of them explains what the engine is actually doing under the query. This post fixes that.
+Everyone in this business has that story. And everyone has heard the standard explanation: *graph databases are faster for connected data.* Which is true in roughly the way "electric cars are faster off the line" is true — correct, unhelpful, and hiding all the interesting engineering. The blog has [thirty-nine posts about knowledge graphs and ontologies](/blog/knowledge-graphs-practice), and not one of them explains what the engine is actually doing under the query. This post fixes that.
 
 This is Part 1 of a three-part series, **Graph Engines Under the Hood**. Part 1 is the storage and execution layer: what a hop physically is, why it costs what it costs, and where the standard story is overstated. Part 2 covers query languages — Cypher, GQL, and what a graph query planner does with a pattern. Part 3 covers engine selection: the vendor landscape and how to choose without believing anyone's benchmark. Here we stay strictly below the query language.
 
@@ -26,9 +26,9 @@ This is Part 1 of a three-part series, **Graph Engines Under the Hood**. Part 1 
 I am going to assume a few things and point at where to fill gaps rather than re-derive them.
 
 - **You know what a B-tree index is** and roughly why a lookup in one is logarithmic. If "fanout" and "page" are familiar words, you are fine.
-- **You know the property graph model**: nodes with labels and properties, typed directed relationships between them. [Knowledge Graphs in Practice](https://juanlara18.github.io/portfolio/#/blog/knowledge-graphs-practice) draws the taxonomy if you want it.
+- **You know the property graph model**: nodes with labels and properties, typed directed relationships between them. [Knowledge Graphs in Practice](/blog/knowledge-graphs-practice) draws the taxonomy if you want it.
 - **You have written a join, and ideally a recursive CTE**, and have some feel for what a query planner is choosing between.
-- **You have seen a graph store that is not natively a graph store.** [Spanner Graph](https://juanlara18.github.io/portfolio/#/blog/spanner-graph-for-knowledge-and-agents) is exactly that — a property graph declared as a view over relational tables — and it is a useful contrast throughout.
+- **You have seen a graph store that is not natively a graph store.** [Spanner Graph](/blog/spanner-graph-for-knowledge-and-agents) is exactly that — a property graph declared as a view over relational tables — and it is a useful contrast throughout.
 
 ## What a Join Actually Costs
 
@@ -445,7 +445,7 @@ Now the part that most treatments of this topic skip entirely: **not every produ
 
 ### Layered engines
 
-A large fraction of the market builds a graph API on top of a storage engine that is not graph-native. JanusGraph stores adjacency in Cassandra, HBase, or Bigtable. Amazon Neptune uses its own log-structured storage. Aerospike Graph sits on a key-value store. [Spanner Graph declares a property graph as a view over relational tables](https://juanlara18.github.io/portfolio/#/blog/spanner-graph-for-knowledge-and-agents) and resolves each hop as a key lookup against a distributed key-ordered store.
+A large fraction of the market builds a graph API on top of a storage engine that is not graph-native. JanusGraph stores adjacency in Cassandra, HBase, or Bigtable. Amazon Neptune uses its own log-structured storage. Aerospike Graph sits on a key-value store. [Spanner Graph declares a property graph as a view over relational tables](/blog/spanner-graph-for-knowledge-and-agents) and resolves each hop as a key lookup against a distributed key-ordered store.
 
 These pay an extra indirection per hop — often a genuine index lookup, sometimes a network round trip — and in exchange they get horizontal scale-out, an operational story their parent system already solved, and multi-model access to the same data. Whether that trade is good depends entirely on your $\rho$ and your $k$. For bounded traversals at two or three hops over a graph too large for one machine, layered engines are frequently the right answer and the index-free purists are simply wrong. For six-hop variable-length path search from a single seed, the per-hop network cost is fatal.
 

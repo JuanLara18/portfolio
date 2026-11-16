@@ -19,6 +19,8 @@
     textwidth    prose measure, mm
     widewidth    text column plus permitted overhang, mm
     partmap      JSON object: post slug -> part number, for cross-references
+    catmap       JSON object: post slug -> category, for every post the body
+                 links to, so links outside the volume print a full URL
     totalparts   number of level-1 headers, for "Part 2 of 5"
 ]]
 
@@ -26,6 +28,8 @@ local NOTES = 'foot'
 local TEXTWIDTH = 112
 local WIDEWIDTH = 168
 local PARTMAP = {}
+local CATMAP = {}
+local SITE_URL = 'https://juanlara18.github.io/portfolio'
 local TOTALPARTS = 0
 
 -- A diagram at least this wide relative to its height gets its own rotated
@@ -63,10 +67,13 @@ local function url_note(url)
   return raw('\\srcnote{' .. escape_url(url) .. '}')
 end
 
---- `https://juanlara18.github.io/portfolio/#/blog/the-objective-has-a-shape`
---- → `the-objective-has-a-shape`, or nil for anything else.
+--- The post slug a link points at, or nil for anything else. Posts link to
+--- each other as `/blog/<slug>`; the HashRouter-era absolute form
+--- (`https://juanlara18.github.io/portfolio/#/blog/<slug>`) is still accepted.
 local function blog_slug(url)
-  return url:match('juanlara18%.github%.io/portfolio/#/blog/([%w%-]+)')
+  return url:match('^/blog/([%w%-]+)$')
+      or url:match('^/blog/([%w%-]+)#')
+      or url:match('juanlara18%.github%.io/portfolio/#/blog/([%w%-]+)')
 end
 
 --- How a link renders depends on where it points and where it sits.
@@ -78,8 +85,14 @@ local function render_link(el, style)
   if slug and PARTMAP[slug] then
     -- Same compilation: a page reference beats a URL the reader cannot click.
     local out = el.content
-    table.insert(out, raw('\\,(Part~' .. PARTMAP[slug] .. ')'))
+    -- pandoc.json.decode yields floats; without the conversion this printed "Part 5.0".
+    table.insert(out, raw('\\,(Part~' .. math.tointeger(PARTMAP[slug]) .. ')'))
     return out
+  end
+
+  if slug and CATMAP[slug] then
+    -- Another post of the blog: print the address a reader can type.
+    url = SITE_URL .. '/blog/' .. CATMAP[slug] .. '/' .. slug .. '/'
   end
 
   if not url:match('^https?://') then
@@ -279,6 +292,10 @@ local function read_meta(meta)
   if meta.partmap then
     local ok, decoded = pcall(pandoc.json.decode, pandoc.utils.stringify(meta.partmap))
     if ok and type(decoded) == 'table' then PARTMAP = decoded end
+  end
+  if meta.catmap then
+    local ok, decoded = pcall(pandoc.json.decode, pandoc.utils.stringify(meta.catmap))
+    if ok and type(decoded) == 'table' then CATMAP = decoded end
   end
 end
 

@@ -14,6 +14,8 @@ const BlogCategoryPage = lazy(() => import('./pages/BlogCategoryPage'));
 const BlogGraphPage = lazy(() => import('./pages/BlogGraphPage'));
 const BlogSeriesPage = lazy(() => import('./pages/BlogSeriesPage'));
 const BlogBooksPage = lazy(() => import('./pages/BlogBooksPage'));
+const PostRedirectPage = lazy(() => import('./pages/PostRedirectPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Minimal loading fallback (matches the app background to avoid flash)
 const PageLoader = () => (
@@ -107,9 +109,11 @@ function App() {
                 <Route path="/blog/category/:category" element={<BlogCategoryPage />} />
                 <Route path="/blog/tag/:tag" element={<BlogCategoryPage />} />
                 <Route path="/blog/:category/:slug" element={<BlogPostPage />} />
-                
-                {/* Fallback route redirects to home */}
-                <Route path="*" element={<LandingPage />} />
+                {/* Short post address /blog/<slug>: the form posts use to link to
+                    each other. Static segments above (graph, series, books) win. */}
+                <Route path="/blog/:slug" element={<PostRedirectPage />} />
+
+                <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Suspense>
           </div>

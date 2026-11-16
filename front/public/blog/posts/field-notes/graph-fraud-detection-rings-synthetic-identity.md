@@ -21,7 +21,7 @@ The account was one hop from a phone number, two hops from an address, four hops
 
 That is the argument for graph fraud detection in one anecdote — a composite rather than a case, because the shape matters more than the numbers. This post is about turning that shape into something that runs every night, produces a queue a human team can actually work, and survives contact with a regulator and with an adversary who is reading your decisions and adapting.
 
-This is **Part 5 of Graph Analytics in Production**. [Part 1](https://juanlara18.github.io/portfolio/#/blog/graph-analytics-gds-execution-model) covered the execution model — projections, memory, the in-memory graph as a separate artifact. [Part 2](https://juanlara18.github.io/portfolio/#/blog/centrality-communities-in-practice) covered centrality and community detection, including the instruction to run connected components first and never ship a community ID as a stable key. [Part 3](https://juanlara18.github.io/portfolio/#/blog/node-embeddings-fastrp-node2vec-graphsage) covered node embeddings and the temporal-cut discipline that keeps them honest. Part 4, on link prediction pipelines, is forthcoming. I lean on all of them and re-derive none.
+This is **Part 5 of Graph Analytics in Production**. [Part 1](/blog/graph-analytics-gds-execution-model) covered the execution model — projections, memory, the in-memory graph as a separate artifact. [Part 2](/blog/centrality-communities-in-practice) covered centrality and community detection, including the instruction to run connected components first and never ship a community ID as a stable key. [Part 3](/blog/node-embeddings-fastrp-node2vec-graphsage) covered node embeddings and the temporal-cut discipline that keeps them honest. Part 4, on link prediction pipelines, is forthcoming. I lean on all of them and re-derive none.
 
 ## Four Typologies and What They Look Like in a Graph
 
@@ -449,7 +449,7 @@ NVIDIA's framing of the payoff is refreshingly non-committal, and I quote it bec
 
 Everything above says gradient boosting on graph features. So when is the expensive option right?
 
-The mechanism is not in scope here — the [graph neural networks post](https://juanlara18.github.io/portfolio/#/blog/graph-neural-networks-learning-structured-data) covers message passing, GCN, and GAT, and this section assumes it. The question here is purely economic.
+The mechanism is not in scope here — the [graph neural networks post](/blog/graph-neural-networks-learning-structured-data) covers message passing, GCN, and GAT, and this section assumes it. The question here is purely economic.
 
 The literature is clear that GNNs capture relational structure more directly than any fixed feature extraction does. Cheng, Zou, Xiang and Jiang's review in *Frontiers of Computer Science* states that GNNs are "exceptionally adept at capturing complex relational patterns and dynamics within financial networks, significantly outperforming traditional fraud detection methods." What the review does not do — and what I have not found any survey do credibly — is give you a single portable lift number, because reported gains depend entirely on the dataset, the graph construction, and the operating point. Benchmarks on the IEEE-CIS dataset, 590,540 transactions at roughly a 3.5% fraud rate, report a wide spread of AUC figures across GNN variants, and comparing them across papers compares graph constructions more than models.
 

@@ -1091,11 +1091,11 @@ Whatever the entry point, four practices hold:
 
 This post is designed to stand alone. Several of its sections compress topics that have longer treatments here, for when you want depth on one layer:
 
-- The OWL, RDF, and SHACL tradition this post contrasts against: [Ontologies: The Blueprint Behind Every Knowledge Base That Actually Works](https://juanlara18.github.io/portfolio/#/blog/ontologies-building-knowledge-bases) and [TBox and ABox](https://juanlara18.github.io/portfolio/#/blog/tbox-abox-schema-facts-distinction).
-- Ontology-as-code with a full CI pipeline, compiling YAML to OWL: [Ontologies in Production](https://juanlara18.github.io/portfolio/#/blog/ontology-production-pipeline-gcp).
-- The semantic layer from the BI side, with LookML, MetricFlow, and Cube compared: [LookML: The Semantic Layer That Turns SQL Into a Product](https://juanlara18.github.io/portfolio/#/blog/lookml-semantic-layer-data-modeling).
-- Product thinking and the contract as an artifact: [Knowledge as a Product](https://juanlara18.github.io/portfolio/#/blog/knowledge-as-a-product).
-- Where a catalog fits next to an ontology: [Knowledge Catalog vs Ontologies](https://juanlara18.github.io/portfolio/#/blog/knowledge-catalog-vs-ontologies).
+- The OWL, RDF, and SHACL tradition this post contrasts against: [Ontologies: The Blueprint Behind Every Knowledge Base That Actually Works](/blog/ontologies-building-knowledge-bases) and [TBox and ABox](/blog/tbox-abox-schema-facts-distinction).
+- Ontology-as-code with a full CI pipeline, compiling YAML to OWL: [Ontologies in Production](/blog/ontology-production-pipeline-gcp).
+- The semantic layer from the BI side, with LookML, MetricFlow, and Cube compared: [LookML: The Semantic Layer That Turns SQL Into a Product](/blog/lookml-semantic-layer-data-modeling).
+- Product thinking and the contract as an artifact: [Knowledge as a Product](/blog/knowledge-as-a-product).
+- Where a catalog fits next to an ontology: [Knowledge Catalog vs Ontologies](/blog/knowledge-catalog-vs-ontologies).
 
 ## Going Deeper
 

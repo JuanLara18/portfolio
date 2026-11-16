@@ -19,7 +19,7 @@ The first structure is the **org chart**. The second is the **collaboration netw
 
 It is also where the serious ethical questions live, and this is the part almost every article about organizational network analysis skips. While preparing this post I read the canonical practitioner page on ONA from one of the field's most cited researchers. It describes what ONA measures and lists a dozen business outcomes it improves, and contains not one sentence about privacy, aggregation thresholds, legal basis, or how to keep the analysis from becoming a performance-management weapon. That omission is the industry norm. This post is an attempt to correct it, because I work in a regulated financial institution, and any design I propose has to survive a conversation with a data protection officer and, in several jurisdictions, a works council with an actual veto.
 
-So this is Part 4 of [Graph Analytics in Production](/blog/graph-analytics-gds-execution-model). Parts 1 through 3 built the machinery: the [GDS execution model](/blog/graph-analytics-gds-execution-model), [centrality and communities in practice](https://juanlara18.github.io/portfolio/#/blog/centrality-communities-in-practice), and [node embeddings](/blog/node-embeddings-fastrp-node2vec-graphsage). This part points that machinery at the organization itself, which is the one graph where the analyst is inside the data.
+So this is Part 4 of [Graph Analytics in Production](/blog/graph-analytics-gds-execution-model). Parts 1 through 3 built the machinery: the [GDS execution model](/blog/graph-analytics-gds-execution-model), [centrality and communities in practice](/blog/centrality-communities-in-practice), and [node embeddings](/blog/node-embeddings-fastrp-node2vec-graphsage). This part points that machinery at the organization itself, which is the one graph where the analyst is inside the data.
 
 ## Two Structures: One Designed, One Emergent
 
@@ -154,7 +154,7 @@ Betweenness counts how often a node sits on shortest paths between other nodes:
 
 $$C_B(v) \;=\; \sum_{s \neq v \neq t} \frac{\sigma_{st}(v)}{\sigma_{st}}$$
 
-where $\sigma_{st}$ is the number of shortest paths from $s$ to $t$ and $\sigma_{st}(v)$ is the number of those that pass through $v$. This is the same measure covered in [Network Science: Communities, Centrality, and Small Worlds](https://juanlara18.github.io/portfolio/#/blog/network-science-communities-centrality), applied to a graph where the nodes are colleagues.
+where $\sigma_{st}$ is the number of shortest paths from $s$ to $t$ and $\sigma_{st}(v)$ is the number of those that pass through $v$. This is the same measure covered in [Network Science: Communities, Centrality, and Small Worlds](/blog/network-science-communities-centrality), applied to a graph where the nodes are colleagues.
 
 Organizationally, betweenness is **brokerage**: the extent to which a node connects parts of the organization that would otherwise be disconnected. High betweenness with low formal authority is the classic hidden-broker pattern, and it is the strongest key-person risk signal a graph can give you.
 
@@ -350,7 +350,7 @@ The test I apply: **would this design survive being explained, in full detail, i
 
 If the answer is no, the design is wrong. Not the communication strategy. The design. Concretely, transparency-by-design means publishing the channel list and the weighting parameters, letting people see the aggregate outputs that include them, providing a genuine opt-out that does not carry consequences even though your legal basis does not require one, and stating the retention window as a number of months rather than a vague "as long as necessary."
 
-Everything in this section maps onto the governance disciplines covered in [DAMA DMBOK: The Data Governance Framework Every Data Engineer Should Know](https://juanlara18.github.io/portfolio/#/blog/dama-dmbok-data-governance). Purpose limitation is metadata management. Retention is data lifecycle. The suppression logic is data quality with a legal consequence. ONA is not a special case that needs its own governance framework; it is an ordinary case that needs the framework applied rigorously, because the data subjects are your colleagues.
+Everything in this section maps onto the governance disciplines covered in [DAMA DMBOK: The Data Governance Framework Every Data Engineer Should Know](/blog/dama-dmbok-data-governance). Purpose limitation is metadata management. Retention is data lifecycle. The suppression logic is data quality with a legal consequence. ONA is not a special case that needs its own governance framework; it is an ordinary case that needs the framework applied rigorously, because the data subjects are your colleagues.
 
 ## What ONA Is Legitimately Good For
 

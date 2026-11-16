@@ -41,6 +41,11 @@ jobs:
       - name: Validate Content Consistency ✅
         run: npm run sync:check
 
+      - name: Run Unit Tests 🧪
+        run: npm test -- --watchAll=false
+        env:
+          CI: true
+
       - name: Optimize Images 🖼️
         run: |
           echo "=== Checking for unoptimized images ==="

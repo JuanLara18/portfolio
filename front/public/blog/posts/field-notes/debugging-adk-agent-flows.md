@@ -27,9 +27,9 @@ Everything below was checked against `google-adk` **2.8.0**, released 2026-08-26
 
 ## Prerequisites
 
-This post assumes you have shipped an ADK agent and are now operating it: sessions, events, tools, sub-agents, and the runner should all be familiar. For the ground floor, start with [Google ADK: Building Production Agents from First Principles](https://juanlara18.github.io/portfolio/#/blog/google-adk-agent-development-deep-dive).
+This post assumes you have shipped an ADK agent and are now operating it: sessions, events, tools, sub-agents, and the runner should all be familiar. For the ground floor, start with [Google ADK: Building Production Agents from First Principles](/blog/google-adk-agent-development-deep-dive).
 
-If something in your codebase broke quietly during the 2.x upgrade, read [Migrating from ADK 1.x to 2.0](https://juanlara18.github.io/portfolio/#/blog/migrating-adk-1x-to-2x) first. Three of that migration's breaking changes are themselves flow errors; this post helps you find them but will not re-explain them. For the graph runtime explained rather than debugged, see [ADK Graph Workflows: Deterministic Orchestration for Agents](https://juanlara18.github.io/portfolio/#/blog/adk-graph-workflows-deterministic-orchestration) — I will use routes, nodes, and `node_info` freely without re-deriving them. And [Operating Agents at Scale: Evaluation and Observability](https://juanlara18.github.io/portfolio/#/blog/operating-agents-eval-observability-scale) is the platform-level companion to this post's framework-level focus.
+If something in your codebase broke quietly during the 2.x upgrade, read [Migrating from ADK 1.x to 2.0](/blog/migrating-adk-1x-to-2x) first. Three of that migration's breaking changes are themselves flow errors; this post helps you find them but will not re-explain them. For the graph runtime explained rather than debugged, see [ADK Graph Workflows: Deterministic Orchestration for Agents](/blog/adk-graph-workflows-deterministic-orchestration) — I will use routes, nodes, and `node_info` freely without re-deriving them. And [Operating Agents at Scale: Evaluation and Observability](/blog/operating-agents-eval-observability-scale) is the platform-level companion to this post's framework-level focus.
 
 ---
 
@@ -985,7 +985,7 @@ flowchart TD
     K --> P[Return structured tool output, not prose]
 ```
 
-The first branch is the one people skip. **Confirm that nothing raised before you start looking for a flow error**, because half of all reports that sound like flow errors are ordinary exceptions being swallowed somewhere. And the last leaf is the honest one: sometimes the flow is perfect and the model is just wrong, at which point you need [the guardrails and evaluation toolkit](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide) instead.
+The first branch is the one people skip. **Confirm that nothing raised before you start looking for a flow error**, because half of all reports that sound like flow errors are ordinary exceptions being swallowed somewhere. And the last leaf is the honest one: sometimes the flow is perfect and the model is just wrong, at which point you need [the guardrails and evaluation toolkit](/blog/agent-guardrails-field-guide) instead.
 
 ---
 

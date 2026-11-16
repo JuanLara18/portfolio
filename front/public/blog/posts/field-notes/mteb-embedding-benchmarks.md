@@ -17,7 +17,7 @@ The decision is harder than it appears. The embedding model landscape has dozens
 
 There is one benchmark that attempts to cut through this: the **Massive Text Embedding Benchmark**, known as MTEB. It is the closest thing to a standard in embedding model evaluation, and like all standards, it is genuinely useful and genuinely incomplete. Understanding what it measures — and what it deliberately does not — is the difference between choosing the right model and choosing the most-marketed one.
 
-This post is the third in the [Benchmarks series](./vector-db-benchmarks). It assumes you are building production systems that use embeddings for retrieval, and that you want to understand the evaluation, not just the leaderboard position.
+This post is the third in the [Benchmarks series](/blog/vector-db-benchmarks). It assumes you are building production systems that use embeddings for retrieval, and that you want to understand the evaluation, not just the leaderboard position.
 
 ---
 
@@ -432,7 +432,7 @@ For multilingual RAG systems, the relevant subtab on the MTEB leaderboard is "Mu
 
 ## Connecting Back: MTEB, BEIR, and the Vector Database Decision
 
-The [vector database benchmarks post](./vector-db-benchmarks) established that choosing a vector database involves understanding index types, recall-throughput tradeoffs, and which benchmarks reflect your workload. The embedding model decision sits upstream of all of that.
+The [vector database benchmarks post](/blog/vector-db-benchmarks) established that choosing a vector database involves understanding index types, recall-throughput tradeoffs, and which benchmarks reflect your workload. The embedding model decision sits upstream of all of that.
 
 The combination matters: a retrieval system's quality is the product of the embedding model's semantic precision and the vector database's recall accuracy. A model that achieves 0.58 nDCG@10 on BEIR, run through a vector database configured for recall@10 = 0.99, will retrieve better results than the same model through a database configured for recall@10 = 0.90. But a 0.58 model through a well-configured database will still underperform a 0.62 model through the same database on your specific domain — if the 0.62 model was trained on data that resembles your domain.
 

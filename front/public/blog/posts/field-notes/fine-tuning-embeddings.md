@@ -17,7 +17,7 @@ At this point, most teams reach for reranking, hybrid search, or a bigger LLM. T
 
 This post is the full playbook. We'll cover what fine-tuning an embedding model actually means (and how it differs from fine-tuning an LLM), when it's worth the effort and when it isn't, what training data looks like and how to generate it synthetically when you don't have any, the zoo of loss functions and which one to actually use, why hard negative mining is the single highest-leverage decision in the whole pipeline, a complete walkthrough with Sentence Transformers v5, how to evaluate the result honestly, and the production gotchas around shipping a new embedding model without nuking your vector index.
 
-This post assumes you've read (or at least agree with the premises of) [Embeddings: The Geometry of Meaning](/blog/research/embeddings-geometry-of-meaning) and [MTEB: Choosing the Right Embedding Model](/blog/field-notes/mteb-embedding-benchmarks). You have an off-the-shelf embedding model picked. It works okay. You want to know whether fine-tuning is worth the effort for your use case, and if so, how to do it without burning a week on dead ends.
+This post assumes you've read (or at least agree with the premises of) [Embeddings: The Geometry of Meaning](/blog/embeddings-geometry-of-meaning) and [MTEB: Choosing the Right Embedding Model](/blog/mteb-embedding-benchmarks). You have an off-the-shelf embedding model picked. It works okay. You want to know whether fine-tuning is worth the effort for your use case, and if so, how to do it without burning a week on dead ends.
 
 ## What Fine-Tuning an Embedding Model Actually Is
 

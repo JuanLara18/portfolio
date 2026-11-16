@@ -13,7 +13,7 @@ estimatedWordCount: 7200
 
 There is a moment in every certification exam where you find out whether you actually built things or just read about them. On the Claude Certified Developer exam, that moment arrives around question five, when a scenario hands you a truncated streaming response, a `stop_reason` you were not expecting, and four remediation options that all look plausible if you have never handled the real thing in production code.
 
-This is the second post in a three-part series on Anthropic's certification track, which launched on July 13, 2026. The first post covered the [Claude Certified Associate exam](https://juanlara18.github.io/portfolio/#/blog/claude-certified-associate-exam-guide), the entry credential aimed at operators, analysts, and advisory roles. This one covers the Claude Certified Developer, Foundations (CCDV-F): the certification that maps most directly onto what working engineers here actually ship. The third will cover the Architect Professional.
+This is the second post in a three-part series on Anthropic's certification track, which launched on July 13, 2026. The first post covered the [Claude Certified Associate exam](/blog/claude-certified-associate-exam-guide), the entry credential aimed at operators, analysts, and advisory roles. This one covers the Claude Certified Developer, Foundations (CCDV-F): the certification that maps most directly onto what working engineers here actually ship. The third will cover the Architect Professional.
 
 My claim for this post is simple: a reader who genuinely understands everything in it should be able to pass. That means I am not going to give you a list of links and wish you luck. I am going to teach the substance, domain by domain, with the same production-quality Python I would write for a real integration. The blog already has deep coverage of most of these topics individually, and I will link to that prior depth where it helps. Think of this post as the exam-shaped consolidation: the same material, reorganized around Anthropic's blueprint and weighted the way the exam weights it.
 
@@ -348,7 +348,7 @@ Two more caching facts round out the domain. The render order (tools, then syste
 
 Anthropic's framing, which the exam adopts wholesale, distinguishes **workflows** (you orchestrate the steps in code; the model fills in the steps) from **agents** (the model directs its own tool use in a loop until the task is done). The design rule: use the simplest tier that works. A pipeline with known steps is a workflow. Reach for an agent only when the task is open-ended enough that you cannot enumerate the steps in advance, the outcome justifies the cost, and errors are catchable.
 
-I have written about these patterns at length in [production patterns for LLM agents](https://juanlara18.github.io/portfolio/#/blog/production-llm-agents-patterns) and [agent architecture and orchestration](https://juanlara18.github.io/portfolio/#/blog/agent-architecture-and-orchestration); for the exam, what matters is that you can read and write the canonical agent loop. Here it is, manually, because the exam tests the loop mechanics:
+I have written about these patterns at length in [production patterns for LLM agents](/blog/production-llm-agents-patterns) and [agent architecture and orchestration](/blog/agent-architecture-and-orchestration); for the exam, what matters is that you can read and write the canonical agent loop. Here it is, manually, because the exam tests the loop mechanics:
 
 ```python
 import anthropic, json
@@ -463,7 +463,7 @@ Eleven percent of the exam is the discipline of writing prompts that behave, and
 
 A before-and-after makes the exam's taste concrete. This prompt will appear in some form as the "what is
 
-Context engineering is the newer half of this domain: treating the context window as a budget to be allocated. Know the levers in order of increasing machinery. First, just send less (retrieve relevant chunks instead of whole corpora). Second, place stable content first so caching absorbs it. Third, for long-running conversations, use context editing (clearing stale tool results) and compaction (server-side summarization of earlier turns) rather than letting the window fill until requests fail with a context-exceeded stop reason. The blog goes deeper on retrieval trade-offs in [agent memory and retrieval](https://juanlara18.github.io/portfolio/#/blog/agent-memory-and-retrieval-embeddings-to-rag); for the exam, knowing which lever matches which symptom is enough.
+Context engineering is the newer half of this domain: treating the context window as a budget to be allocated. Know the levers in order of increasing machinery. First, just send less (retrieve relevant chunks instead of whole corpora). Second, place stable content first so caching absorbs it. Third, for long-running conversations, use context editing (clearing stale tool results) and compaction (server-side summarization of earlier turns) rather than letting the window fill until requests fail with a context-exceeded stop reason. The blog goes deeper on retrieval trade-offs in [agent memory and retrieval](/blog/agent-memory-and-retrieval-embeddings-to-rag); for the exam, knowing which lever matches which symptom is enough.
 
 ## Domain 5: Tools and MCPs (10.6%)
 
@@ -474,7 +474,7 @@ Half of this domain is tool definition craft; the other half is the Model Contex
 - **`strict: true` on a tool definition** guarantees the arguments validate against the schema exactly (the schema needs `additionalProperties: false` and a `required` list). This is the answer when a scenario complains about occasionally malformed tool arguments.
 - **Server tools versus client tools.** Web search, web fetch, and code execution run on Anthropic's infrastructure: declare them in `tools` and results come back in the same response. Your own tools are client-side: the model requests, you execute. Know which side each named tool lives on.
 
-MCP is the standardization layer over all of this: an open protocol where servers expose tools, resources, and prompts over a defined transport, and any MCP client (Claude Code, Claude Desktop, the API's MCP connector, or your own) can consume them without bespoke glue. I have covered the protocol's architecture in [Model Context Protocol](https://juanlara18.github.io/portfolio/#/blog/model-context-protocol) and how it relates to agent-to-agent protocols in [MCP and A2A](https://juanlara18.github.io/portfolio/#/blog/agent-integration-protocols-mcp-and-a2a), so here is just the exam surface.
+MCP is the standardization layer over all of this: an open protocol where servers expose tools, resources, and prompts over a defined transport, and any MCP client (Claude Code, Claude Desktop, the API's MCP connector, or your own) can consume them without bespoke glue. I have covered the protocol's architecture in [Model Context Protocol](/blog/model-context-protocol) and how it relates to agent-to-agent protocols in [MCP and A2A](/blog/agent-integration-protocols-mcp-and-a2a), so here is just the exam surface.
 
 A minimal MCP server with the official Python SDK:
 
@@ -538,7 +538,7 @@ Delimiting and explicit trust framing is layer one. The layers the exam wants st
 4. **Output filtering before display or execution.** Model output that will be rendered, executed, or forwarded is another injection surface.
 5. **Handle refusals as a first-class outcome.** Check for `stop_reason == "refusal"` (with `stop_details` carrying a category) before reading content, surface it, and do not blindly retry the identical prompt.
 
-The conceptual framing behind items 1 through 4 is the "lethal trifecta": an agent with access to private data, exposure to untrusted content, and an exfiltration channel is exploitable almost by definition, so remove or gate at least one leg. I wrote a full taxonomy of these controls in the [agent guardrails field guide](https://juanlara18.github.io/portfolio/#/blog/agent-guardrails-field-guide); if this domain feels thin for you, that post plus this section is the coverage you need. Round it out with the operational hygiene items: keys in environment variables or a secret manager, never in code or client-side bundles; per-environment keys; rotation on exposure; and logging of tool calls for audit.
+The conceptual framing behind items 1 through 4 is the "lethal trifecta": an agent with access to private data, exposure to untrusted content, and an exfiltration channel is exploitable almost by definition, so remove or gate at least one leg. I wrote a full taxonomy of these controls in the [agent guardrails field guide](/blog/agent-guardrails-field-guide); if this domain feels thin for you, that post plus this section is the coverage you need. Round it out with the operational hygiene items: keys in environment variables or a secret manager, never in code or client-side bundles; per-environment keys; rotation on exposure; and logging of tool calls for audit.
 
 ## Domain 7: Claude Code (3.1%)
 
@@ -549,7 +549,7 @@ At 3.1 percent this is one or two questions, and they are about knowing what the
 - **Slash commands and skills** package reusable workflows; **hooks** run shell commands on lifecycle events; **MCP servers** plug external tools into the session.
 - **Headless mode** (`claude -p "..."`) runs it non-interactively for CI and scripting.
 
-If you can distinguish CLAUDE.md (instructions) from settings.json (permissions) from MCP config (external tools), you have these questions. For actual day-to-day mastery, the [complete guide to Claude Code](https://juanlara18.github.io/portfolio/#/blog/claude-code-complete-guide) on this blog goes far beyond what the exam needs.
+If you can distinguish CLAUDE.md (instructions) from settings.json (permissions) from MCP config (external tools), you have these questions. For actual day-to-day mastery, the [complete guide to Claude Code](/blog/claude-code-complete-guide) on this blog goes far beyond what the exam needs.
 
 ## Domain 8: Eval, Testing, and Debugging (2.6%)
 
@@ -560,7 +560,7 @@ The smallest domain, but its ideas also underpin scenario questions elsewhere, s
 - **Judge with a different, stronger model than the one being judged**, give the judge a rubric and a constrained output format, and spot-check the judge against humans.
 - **Debugging is observability.** Log full request and response pairs (including `stop_reason` and `usage`), diff prompts between versions, and reproduce failures as new eval cases so they stay fixed.
 
-I go much deeper on running evals as an operational practice in [operating agents: eval, observability, scale](https://juanlara18.github.io/portfolio/#/blog/operating-agents-eval-observability-scale). For the exam, the mini-project below is the better preparation, because it makes the ideas concrete.
+I go much deeper on running evals as an operational practice in [operating agents: eval, observability, scale](/blog/operating-agents-eval-observability-scale). For the exam, the mini-project below is the better preparation, because it makes the ideas concrete.
 
 ## A worked mini-project: agent plus eval harness
 

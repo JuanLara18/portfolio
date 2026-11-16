@@ -34,8 +34,8 @@ Before diving in, what you need to follow along and eventually build this:
 - **Python 3.11+** and the [`mcp` SDK](https://github.com/modelcontextprotocol/python-sdk) (v1.25+)
 - A **dbt project** with MetricFlow semantic layer definitions (or an equivalent semantic layer -- Cube, AtScale, or even a well-documented YAML glossary)
 - **Power BI Pro or Premium** workspace with REST API access (service principal or delegated auth)
-- Familiarity with the MCP primitives: tools, resources, and prompts (covered in [The Model Context Protocol: How AI Learned to Use Tools](/blog/field-notes/model-context-protocol))
-- A working **text-to-SQL** setup or willingness to build one (see [Text-to-SQL: Bridging Natural Language and Structured Data](/blog/field-notes/text-to-sql))
+- Familiarity with the MCP primitives: tools, resources, and prompts (covered in [The Model Context Protocol: How AI Learned to Use Tools](/blog/model-context-protocol))
+- A working **text-to-SQL** setup or willingness to build one (see [Text-to-SQL: Bridging Natural Language and Structured Data](/blog/text-to-sql))
 
 ---
 

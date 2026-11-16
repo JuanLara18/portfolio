@@ -270,7 +270,7 @@ quadrantChart
 
 ## Why None of This Is Paralysing
 
-The set of all functions is not the set of functions the world produces. That sentence is the resolution, and it is not a hand-wave but a claim with empirical content — the subject of an earlier post on [the manifold hypothesis](https://juanlara18.github.io/portfolio/#/blog/the-manifold-hypothesis), which I will not re-derive here. Natural data concentrates near low-dimensional structure inside its ambient space; images, language, audio and sensor readings occupy a vanishing fraction of the spaces their representations nominally span.
+The set of all functions is not the set of functions the world produces. That sentence is the resolution, and it is not a hand-wave but a claim with empirical content — the subject of an earlier post on [the manifold hypothesis](/blog/the-manifold-hypothesis), which I will not re-derive here. Natural data concentrates near low-dimensional structure inside its ambient space; images, language, audio and sensor readings occupy a vanishing fraction of the spaces their representations nominally span.
 
 Put that beside Theorem B's premise and the tension dissolves. Theorem B averages over $\mathcal{Y}^{\mathcal{X}}$, almost every member of which is incompressible; real problems live in a set of compressible objects that is negligible in that average. The theorem describes one set, the world supplies another, and the theorem says nothing about the difference.
 
