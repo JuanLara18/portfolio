@@ -481,7 +481,7 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 .mermaid-diagram svg {
   max-width: 100%;
   height: auto;
-  font-family: 'IBM Plex Sans', system-ui, sans-serif !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
   display: block;
 }
 

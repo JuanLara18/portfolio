@@ -151,37 +151,37 @@ const expandMermaidLabelBounds = (svg) => {
 // per theme change, even when many diagrams render simultaneously.
 let mermaidConfigKey = null;
 
-// Mermaid configuration helper — brand identity v1 (docs/brand.md › Visual identity).
-//   Primary: cyan-700 (#0E7490) day / #22D3EE night — emphasis, titles
-//   Harmonic: cobalt #3557D0 day / #7C9CFF night — edges (a diagram is a graph)
-//   Canvas: white by day, near-black #05070A at night
-// Nodes stay neutral; colour marks structure, not decoration.
+// Mermaid configuration helper — Brand v2 palette.
+//   Accent: cyan-700 (#0E7490) light / cyan-400 (#22D3EE) dark
+//   Dark canvas: brand-bg (#0B1120)
+//   Light canvas: white
+// Mermaid stays monochrome-ish (neutral nodes, cyan accents for arrows + emphasis).
 const getMermaidConfig = (isDark) => ({
   startOnLoad: false,
   theme: isDark ? 'dark' : 'default',
   securityLevel: 'loose',
-  fontFamily: '"IBM Plex Sans", system-ui, sans-serif',
+  fontFamily: 'Inter, system-ui, sans-serif',
   flowchart: {
     htmlLabels: true,
     curve: 'basis',
     padding: 15,
   },
   themeVariables: isDark ? {
-    // ── Night: near-black canvas, cobalt edges, cyan emphasis ──
-    background:            '#05070A', // brand-bg (night)
-    mainBkg:               '#0C1017', // node fill — brand-bg-soft, slightly lifted from page
-    nodeBorder:            '#2A3448', // node border — neutral, not screaming
+    // ── Dark mode: brand navy + cyan accents ──
+    background:            '#0B1120', // brand-bg
+    mainBkg:               '#101a2e', // node fill — brand-bg-soft, slightly lifted from page
+    nodeBorder:            '#3a4660', // node border — neutral, not screaming
     primaryColor:          '#0e2a3a', // primary-class nodes — dark cyan-tinted
     primaryBorderColor:    '#22D3EE', // primary node border — brand-accent
-    primaryTextColor:      '#E9E9E4', // text on primary nodes — brand-fg
-    secondaryColor:        '#0A0D13', // secondary — darker than nodes for hierarchy
-    tertiaryColor:         '#111622', // tertiary — mid step
-    lineColor:             '#7C9CFF', // arrows — harmonic (cobalt, night)
-    clusterBkg:            '#090C12', // subgraph fill — almost page bg
-    clusterBorder:         '#1F2738', // subgraph border — subtle neutral
+    primaryTextColor:      '#F5F5F0', // text on primary nodes — warm white
+    secondaryColor:        '#0c1422', // secondary — darker than nodes for hierarchy
+    tertiaryColor:         '#13203a', // tertiary — mid step
+    lineColor:             '#22D3EE', // arrows — brand-accent (cyan-400)
+    clusterBkg:            '#0a1020', // subgraph fill — almost page bg
+    clusterBorder:         '#2a3550', // subgraph border — subtle neutral
     titleColor:            '#67E8F9', // titles — cyan-300, brighter accent
-    edgeLabelBackground:   '#0C1017', // edge labels match node bg
-    nodeTextColor:         '#E9E9E4', // node text — brand-fg
+    edgeLabelBackground:   '#101a2e', // edge labels match node bg
+    nodeTextColor:         '#E5E7F0', // node text — slightly cool light
   } : {
     // ── Light mode: white canvas + cyan-700 accents ──
     background:            '#ffffff',
@@ -192,7 +192,7 @@ const getMermaidConfig = (isDark) => ({
     primaryTextColor:      '#0E7490', // text on primary nodes — cyan-700
     secondaryColor:        '#f4f4f5', // secondary — slightly deeper neutral
     tertiaryColor:         '#fafafa', // tertiary — back to nearly white
-    lineColor:             '#3557D0', // arrows — harmonic (cobalt, day)
+    lineColor:             '#0E7490', // arrows — cyan-700 (brand light accent)
     clusterBkg:            '#fafafa', // subgraph fill — very light neutral
     clusterBorder:         '#e5e7eb', // subgraph border — gray-200
     titleColor:            '#0E7490', // titles — cyan-700
@@ -708,7 +708,7 @@ const MermaidDiagram = memo(({ chart }) => {
     return (
       <div 
         ref={containerRef}
-        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-brand-bg-soft dark:to-brand-bg-soft rounded-xl border border-gray-200 dark:border-brand-border min-h-[200px]"
+        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 min-h-[200px]"
       >
         <div className="flex items-center justify-center h-full text-gray-400 dark:text-gray-500">
           <span className="text-sm">Diagram</span>
@@ -722,7 +722,7 @@ const MermaidDiagram = memo(({ chart }) => {
     return (
       <div 
         ref={containerRef}
-        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-brand-bg-soft dark:to-brand-bg-soft rounded-xl border border-gray-200 dark:border-brand-border"
+        className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700"
       >
         <div className="flex items-center justify-center gap-3 text-gray-500 dark:text-gray-400">
           <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -770,12 +770,12 @@ const MermaidDiagram = memo(({ chart }) => {
       )}
       <div
         ref={containerRef}
-        className="my-8 group relative bg-gray-50 dark:bg-brand-bg-soft rounded-xl border border-gray-200 dark:border-brand-border overflow-hidden"
+        className="my-8 group relative bg-gradient-to-br from-blue-50/40 to-slate-50 dark:from-slate-800/60 dark:to-slate-900/80 rounded-xl border border-blue-100 dark:border-slate-700/80 overflow-hidden"
       >
         {/* Fullscreen button — always visible on touch, hover-reveal on desktop */}
         <button
           onClick={() => setIsFullscreen(true)}
-          className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-brand-bg-soft/90 hover:bg-white dark:hover:bg-brand-border rounded-lg shadow-sm border border-gray-200 dark:border-brand-border text-gray-600 dark:text-gray-300 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 z-10"
+          className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 z-10"
           aria-label="View fullscreen"
           title="View fullscreen"
         >
