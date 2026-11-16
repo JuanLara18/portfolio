@@ -7,21 +7,24 @@ export const BLOG_CONFIG = {
     curiosities: {
       name: 'Mathematical Curiosities',
       description: 'Explorations of games, puzzles, and mathematical phenomena',
-      // Brand v2: single accent (cyan). Keep `color` field for back-compat with any
-      // consumer that still reads it, but every category resolves to the same accent.
+      // Colour role by positioning weight: Field Notes = primary, Research = harmonic,
+      // Curiosities = muted. See categoryToneClass(). `color` kept for back-compat.
       color: 'cyan',
+      tone: 'muted',
       icon: 'Brain'
     },
     research: {
       name: 'Research Notes',
       description: 'Academic papers, studies, and research insights',
       color: 'cyan',
+      tone: 'harmonic',
       icon: 'FileText'
     },
     'field-notes': {
       name: 'Field Notes',
       description: 'Practical guides and technical deep-dives from real-world ML/AI work',
       color: 'cyan',
+      tone: 'primary',
       icon: 'Code2'
     }
   },
@@ -30,6 +33,17 @@ export const BLOG_CONFIG = {
   /** Desktop (≥1024px, lg: 3-column grid) */
   postsPerPageDesktop: 9
 };
+
+const TONE_CLASSES = {
+  primary: 'text-cyan-700 dark:text-brand-accent',
+  harmonic: 'text-brand-harmonic',
+  muted: 'text-gray-500 dark:text-brand-fg-muted',
+};
+
+/** Text colour class for a category label, by its brand colour role. */
+export function categoryToneClass(category) {
+  return TONE_CLASSES[BLOG_CONFIG.categories[category]?.tone] || TONE_CLASSES.primary;
+}
 
 export async function loadAllPosts() {
   try {

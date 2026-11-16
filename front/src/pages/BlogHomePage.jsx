@@ -10,7 +10,7 @@ import {
   Library,
   ArrowRight
 } from 'lucide-react';
-import { loadAllPosts, getAllTags, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
+import { loadAllPosts, getAllTags, BLOG_CONFIG, getWebPPath, categoryToneClass } from '../utils/blogUtils';
 import { variants as motionVariants } from '../utils';
 import { PostCard } from '../components/features/blog/PostCard';
 import { ViewToggle } from '../components/ui';
@@ -148,7 +148,7 @@ export default function BlogHomePage() {
       <div className="min-h-screen bg-white dark:bg-brand-bg flex items-center justify-center">
         <div className="text-center max-w-md px-6">
           <BookOpen className="mx-auto h-12 w-12 text-gray-400 dark:text-brand-fg-muted mb-4" />
-          <h1 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg mb-2">
+          <h1 className="type-section text-2xl text-gray-900 dark:text-brand-fg mb-2">
             Unable to load posts.
           </h1>
           <p className="text-gray-600 dark:text-brand-fg-muted mb-6">{error}</p>
@@ -207,9 +207,9 @@ export default function BlogHomePage() {
             {/* Editorial display headline */}
             <motion.h1
               variants={fadeInUp}
-              className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-gray-900 dark:text-brand-fg mb-6"
+              className="type-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.08] text-gray-900 dark:text-brand-fg mb-6"
             >
-              Notes from production<span className="text-cyan-700 dark:text-brand-accent">.</span>
+              Notes from production<span className="text-brand-contrast">.</span>
             </motion.h1>
 
             <motion.p
@@ -366,7 +366,7 @@ export default function BlogHomePage() {
                 className="text-center py-24"
               >
                 <Search size={32} className="mx-auto text-gray-400 dark:text-brand-fg-muted mb-4" />
-                <h3 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg mb-2">No posts found.</h3>
+                <h3 className="type-section text-2xl text-gray-900 dark:text-brand-fg mb-2">No posts found.</h3>
                 <p className="text-gray-600 dark:text-brand-fg-muted mb-6 max-w-md mx-auto">
                   No matches. Try different terms or browse all categories.
                 </p>
@@ -429,7 +429,7 @@ export default function BlogHomePage() {
                                   src={buildUrl(headerImagePath)}
                                   alt={post.title}
                                   loading="lazy"
-                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                  className="w-full h-full object-cover brand-duotone transition-transform duration-500 group-hover:scale-[1.03]"
                                   onError={(e) => { e.target.src = buildUrl(fallbackPath); }}
                                 />
                               </picture>
@@ -437,7 +437,7 @@ export default function BlogHomePage() {
 
                             {/* Content */}
                             <div className="flex-1 min-w-0">
-                              <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-cyan-700 dark:text-brand-accent mb-2">
+                              <p className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-2 ${categoryToneClass(post.category)}`}>
                                 {categoryName}
                                 {post.readingTime && (
                                   <>
@@ -446,7 +446,7 @@ export default function BlogHomePage() {
                                   </>
                                 )}
                               </p>
-                              <h3 className="font-bold text-xl sm:text-2xl tracking-tight leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-2">
+                              <h3 className="type-section text-xl sm:text-2xl leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-2">
                                 {post.title}
                               </h3>
                               {post.excerpt && (

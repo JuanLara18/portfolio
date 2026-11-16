@@ -1,5 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
-import { BLOG_CONFIG, getWebPPath } from '../../../utils/blogUtils';
+import { BLOG_CONFIG, getWebPPath, categoryToneClass } from '../../../utils/blogUtils';
 import { variants as motionVariants } from '../../../utils';
 import { motion } from 'framer-motion';
 
@@ -32,7 +32,7 @@ export const PostCard = ({ post }) => {
       variants={fadeInUp}
       className="relative group flex flex-col h-full pb-8 border-b border-gray-200/60 dark:border-white/[0.08]"
     >
-      {/* Header Image — flush, no rounding, no overlay */}
+      {/* Header Image — flush, no rounding, brand duotone */}
       <div className="relative overflow-hidden aspect-[16/9] mb-5">
         <picture>
           <source
@@ -46,18 +46,18 @@ export const PostCard = ({ post }) => {
             onError={(e) => {
               e.target.src = getImageUrl(fallbackPath);
             }}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover brand-duotone"
           />
         </picture>
       </div>
 
       {/* Kicker — category */}
-      <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-cyan-700 dark:text-brand-accent mb-3">
+      <div className={`font-mono text-[10px] tracking-[0.18em] uppercase mb-3 ${categoryToneClass(post.category)}`}>
         {categoryConfig?.name || post.category}
       </div>
 
-      {/* Title — Newsreader italic; stretched link covers the whole card */}
-      <h2 className="font-bold text-2xl md:text-[1.7rem] tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-3 line-clamp-2 group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
+      {/* Title — serif; stretched link covers the whole card */}
+      <h2 className="type-section text-2xl md:text-[1.7rem] leading-tight text-gray-900 dark:text-brand-fg mb-3 line-clamp-2 group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
         <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
           {post.title.split(':')[0]}
         </Link>

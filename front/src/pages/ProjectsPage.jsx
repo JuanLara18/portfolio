@@ -306,7 +306,7 @@ const ProjectCard = ({ project }) => {
           )}
         </p>
 
-        <h3 className="font-bold text-2xl md:text-[1.7rem] tracking-tight leading-tight mb-3 text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
+        <h3 className="type-section text-2xl md:text-[1.7rem] leading-tight mb-3 text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
           {project.name.split(':')[0]}
         </h3>
 
@@ -531,9 +531,9 @@ export default function ProjectsPage() {
 
                 <motion.h1
                   variants={fadeInUp}
-                  className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-gray-900 dark:text-brand-fg mb-6"
+                  className="type-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.08] text-gray-900 dark:text-brand-fg mb-6"
                 >
-                  Built<span className="text-cyan-700 dark:text-brand-accent">.</span> Shipped<span className="text-cyan-700 dark:text-brand-accent">.</span> Learned<span className="text-cyan-700 dark:text-brand-accent">.</span>
+                  Built<span className="text-brand-contrast">.</span> Shipped<span className="text-brand-contrast">.</span> Learned<span className="text-brand-contrast">.</span>
                 </motion.h1>
 
                 <motion.p
@@ -652,7 +652,7 @@ export default function ProjectsPage() {
                   className="text-center py-24"
                 >
                   <Search size={28} className="mx-auto mb-4 text-gray-400 dark:text-brand-fg-muted" />
-                  <h3 className="font-bold text-xl tracking-tight mb-2 text-gray-900 dark:text-brand-fg">
+                  <h3 className="type-section text-xl mb-2 text-gray-900 dark:text-brand-fg">
                     No projects found
                   </h3>
                   <p className="font-sans text-sm text-gray-600 dark:text-brand-fg-muted mb-6 max-w-md mx-auto">
@@ -710,7 +710,7 @@ export default function ProjectsPage() {
                                   </>
                                 )}
                               </p>
-                              <h3 className="font-bold text-xl sm:text-2xl tracking-tight leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-2">
+                              <h3 className="type-section text-xl sm:text-2xl leading-snug text-gray-900 dark:text-brand-fg group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors mb-2">
                                 {project.name}
                               </h3>
                               {project.description && (

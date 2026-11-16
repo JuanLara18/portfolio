@@ -35,7 +35,7 @@ try {
 }
 
 const SITE_URL = (process.env.SITE_URL || 'https://juanlara18.github.io/portfolio').replace(/\/$/, '');
-const DEFAULT_IMAGE = `${SITE_URL}/portfolio.png`;
+const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`;
 
 function escapeHtmlAttr(s) {
   return String(s)

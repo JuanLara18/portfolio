@@ -88,7 +88,7 @@ const ExperienceCard = ({
         </div>
 
         <div className="min-w-0 flex-1">
-          <h3 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg leading-tight mb-1">{role}</h3>
+          <h3 className="type-section text-2xl text-gray-900 dark:text-brand-fg leading-tight mb-1">{role}</h3>
           <div className="font-mono text-sm tracking-wide text-cyan-700 dark:text-brand-accent mb-1">{company}</div>
           <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-500 dark:text-brand-fg-muted">
             {period} <span className="mx-1.5 opacity-60">|</span> {location}
@@ -513,8 +513,8 @@ const courses = [
                 About
               </p>
 
-              <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 leading-[0.95] text-gray-900 dark:text-brand-fg tracking-tight">
-                Juan Lara.
+              <h1 className="type-name text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 leading-[1] text-gray-900 dark:text-brand-fg">
+                Juan Lara<span className="text-brand-contrast">.</span>
               </h1>
 
               <h2 className="font-mono text-xs sm:text-sm tracking-[0.05em] text-cyan-700 dark:text-brand-accent mb-6">
@@ -524,7 +524,7 @@ const courses = [
               <div className="space-y-4 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
                 {/* Pitch. Bold opener, italic industries, colored company names. */}
                 <p>
-                  <span className="font-semibold text-gray-900 dark:text-white">AI Engineer</span> building production AI since 2022 across <span className="italic">banking</span>, <span className="italic">retail logistics</span>, <span className="italic">healthcare AI</span>, and <span className="italic">academic research</span>. Currently at <span className="font-semibold text-red-600 dark:text-red-400">Davivienda</span>. Previously at <span className="font-semibold text-blue-600 dark:text-blue-400">Falabella</span>, <span className="font-semibold text-emerald-600 dark:text-emerald-400">GenomAI</span>, and <span className="font-semibold text-amber-600 dark:text-amber-400">Harvard University</span>.
+                  <span className="font-semibold text-gray-900 dark:text-brand-fg">AI Engineer</span> building production AI since 2022 across <span className="italic">banking</span>, <span className="italic">retail logistics</span>, <span className="italic">healthcare AI</span>, and <span className="italic">academic research</span>. Currently at <span className="font-semibold text-gray-900 dark:text-brand-fg">Davivienda</span>. Previously at <span className="font-semibold text-gray-900 dark:text-brand-fg">Falabella</span>, <span className="font-semibold text-gray-900 dark:text-brand-fg">GenomAI</span>, and <span className="font-semibold text-gray-900 dark:text-brand-fg">Harvard University</span>.
                 </p>
 
                 <AnimatePresence>
@@ -582,9 +582,9 @@ const courses = [
             </motion.p>
             <motion.h2
               variants={fadeInUp}
-              className="font-bold text-2xl sm:text-3xl md:text-4xl text-center tracking-tight text-gray-900 dark:text-brand-fg mb-3"
+              className="type-section text-2xl sm:text-3xl md:text-4xl text-center text-gray-900 dark:text-brand-fg mb-3"
             >
-              Technical proficiency<span className="text-cyan-700 dark:text-brand-accent">.</span>
+              Technical proficiency<span className="text-brand-contrast">.</span>
             </motion.h2>
             <motion.p
               variants={fadeInUp}
@@ -599,7 +599,7 @@ const courses = [
             >
               {/* Generative AI & NLP */}
               <div>
-                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-purple-600 dark:text-purple-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-purple-600/30 dark:border-purple-400/30">
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <BrainCircuit className="flex-shrink-0" size={18} />
                   Generative AI & NLP
                 </h3>
@@ -613,7 +613,7 @@ const courses = [
 
               {/* ML Engineering & MLOps */}
               <div>
-                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-emerald-600/30 dark:border-emerald-400/30">
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <Server className="flex-shrink-0" size={18} />
                   Production ML & MLOps
                 </h3>
@@ -627,7 +627,7 @@ const courses = [
 
               {/* Cloud & Data Engineering */}
               <div>
-                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-sky-600 dark:text-sky-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-sky-600/30 dark:border-sky-400/30">
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <Cloud className="flex-shrink-0" size={18} />
                   Cloud & Data Engineering
                 </h3>
@@ -641,7 +641,7 @@ const courses = [
 
               {/* Core ML & Research */}
               <div>
-                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-amber-600 dark:text-amber-400 flex items-center gap-2 mb-3 pb-2.5 border-b border-amber-600/30 dark:border-amber-400/30">
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <Code className="flex-shrink-0" size={18} />
                   Core ML & Research
                 </h3>
@@ -674,7 +674,7 @@ const courses = [
               >
                 <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
                   <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Experience</p>
-                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">What I've shipped<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
+                  <h2 className="type-section text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg">What I've shipped<span className="text-brand-contrast">.</span></h2>
                 </motion.div>
 
                 <div>
@@ -702,7 +702,7 @@ const courses = [
               >
                 <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
                   <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Education</p>
-                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Where I trained<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
+                  <h2 className="type-section text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg">Where I trained<span className="text-brand-contrast">.</span></h2>
                 </motion.div>
 
                 <div>
@@ -721,7 +721,7 @@ const courses = [
               >
                 <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
                   <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Awards</p>
-                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Recognition<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
+                  <h2 className="type-section text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg">Recognition<span className="text-brand-contrast">.</span></h2>
                 </motion.div>
 
                 <div>
@@ -762,7 +762,7 @@ const courses = [
               >
                 <motion.div variants={fadeInUp} className="mb-4 pb-4 border-b border-gray-200/60 dark:border-white/[0.08]">
                   <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Profile</p>
-                  <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Languages<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
+                  <h2 className="type-section text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg">Languages<span className="text-brand-contrast">.</span></h2>
                 </motion.div>
 
                 <div className="py-4 flex gap-10">
@@ -794,7 +794,7 @@ const courses = [
           >
             <motion.div variants={fadeInUp} className="mb-10 text-center">
               <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">Training</p>
-              <h2 className="font-bold text-2xl sm:text-3xl tracking-tight text-gray-900 dark:text-brand-fg">Continuing education<span className="text-cyan-700 dark:text-brand-accent">.</span></h2>
+              <h2 className="type-section text-2xl sm:text-3xl text-gray-900 dark:text-brand-fg">Continuing education<span className="text-brand-contrast">.</span></h2>
             </motion.div>
             
             <motion.div 

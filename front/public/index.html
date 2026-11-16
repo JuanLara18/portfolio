@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0B1120" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#05070A" media="(prefers-color-scheme: dark)" />
     
     <!-- SPA routing on GitHub Pages: decode the ?/path encoded by 404.html so
          the browser URL matches what the user originally requested before React
@@ -42,7 +42,10 @@
     <meta property="og:url" content="https://juanlara18.github.io/portfolio/">
     <meta property="og:title" content="Juan Lara · AI Engineer">
     <meta property="og:description" content="AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy.">
-    <meta property="og:image" content="%PUBLIC_URL%/portfolio.png">
+    <meta property="og:image" content="%PUBLIC_URL%/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Juan Lara. Frontier AI. Engineered for production.">
     <meta property="og:site_name" content="Juan Lara">
 
     <!-- Twitter -->
@@ -50,19 +53,21 @@
     <meta property="twitter:url" content="https://juanlara18.github.io/portfolio/">
     <meta property="twitter:title" content="Juan Lara · AI Engineer">
     <meta property="twitter:description" content="AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy.">
-    <meta property="twitter:image" content="%PUBLIC_URL%/portfolio.png">
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-default.png">
     
     <!-- Favicons -->
+    <!-- Icons: real multi-size ICO for legacy clients, SVG for modern browsers, opaque PNG for iOS -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="48x48">
     <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/logo192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    
-    <!-- Fonts: Inter (body sans), Newsreader (display serif italic), JetBrains Mono (technical) -->
+
+    <!-- Fonts: IBM Plex superfamily. Serif = voice and name, Sans = reading and UI, Mono = code and labels.
+         Every style the site renders is declared so the browser never synthesizes bold or italic;
+         browsers only download the files a page actually uses. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&family=JetBrains+Mono:wght@400;500;600&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this application.</noscript>

@@ -282,7 +282,7 @@ function SeriesStep({ post, isLast, playingSlug, setPlayingSlug }) {
               {categoryConfig?.name || post.category}
             </div>
 
-            <h3 className="font-bold text-xl md:text-2xl tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-2 group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
+            <h3 className="type-section text-xl md:text-2xl leading-tight text-gray-900 dark:text-brand-fg mb-2 group-hover:text-cyan-700 dark:group-hover:text-brand-accent transition-colors">
               <Link to={postUrl} className="after:absolute after:inset-0 after:content-['']">
                 {post.title.split(':')[0]}
               </Link>
@@ -315,7 +315,7 @@ function SeriesStep({ post, isLast, playingSlug, setPlayingSlug }) {
                 onError={(e) => {
                   e.target.src = getImageUrl(fallbackPath);
                 }}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover brand-duotone"
               />
             </picture>
           </div>
@@ -428,9 +428,9 @@ export default function BlogSeriesPage() {
           </motion.div>
           <motion.h1
             variants={fadeInUp}
-            className="font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] text-gray-900 dark:text-brand-fg mb-5"
+            className="type-title text-3xl sm:text-4xl md:text-5xl leading-[1.08] text-gray-900 dark:text-brand-fg mb-5"
           >
-            Posts that build on each other<span className="text-cyan-700 dark:text-brand-accent">.</span>
+            Posts that build on each other<span className="text-brand-contrast">.</span>
           </motion.h1>
           <motion.p
             variants={fadeInUp}
@@ -473,7 +473,7 @@ export default function BlogSeriesPage() {
                           <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">
                             {s.partsTotal} parts
                           </div>
-                          <h2 className="font-bold text-xl md:text-2xl tracking-tight leading-tight text-gray-900 dark:text-brand-fg mb-2">
+                          <h2 className="type-section text-xl md:text-2xl leading-tight text-gray-900 dark:text-brand-fg mb-2">
                             {s.title}
                           </h2>
                           <p className="text-gray-600 dark:text-brand-fg-muted leading-relaxed max-w-2xl text-sm">

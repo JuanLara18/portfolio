@@ -20,12 +20,33 @@
   }
 }
 
+/* Brand roles that follow the active mode (Tailwind: brand-primary / brand-harmonic / brand-contrast).
+   Channel triplets so opacity modifiers work. Day on :root, night on .dark. */
 :root{
-  --primary:#2563eb;--primary-dark:#1d4ed8;--primary-light:#60a5fa;--primary-shadow:rgba(37,99,235,.2);
+  --brand-primary:14 116 144;   /* #0E7490 cyan 700 */
+  --brand-harmonic:53 87 208;   /* #3557D0 cobalt */
+  --brand-contrast:180 83 9;    /* #B45309 amber, day */
+}
+.dark{
+  --brand-primary:34 211 238;   /* #22D3EE cyan */
+  --brand-harmonic:124 156 255; /* #7C9CFF cobalt */
+  --brand-contrast:245 181 68;  /* #F5B544 amber, night */
+}
+
+/* Type roles. Titles carry the voice (serif italic); sections are upright. */
+@layer components{
+  .type-title{font-family:"IBM Plex Serif",Georgia,serif;font-style:italic;font-weight:600;letter-spacing:-0.015em}
+  .type-section{font-family:"IBM Plex Serif",Georgia,serif;font-style:normal;font-weight:600;letter-spacing:-0.01em}
+  .type-name{font-family:"IBM Plex Serif",Georgia,serif;font-style:normal;font-weight:500;letter-spacing:-0.012em}
+  .brand-duotone{filter:url(#brand-duotone)}
+}
+
+:root{
+  --primary:#0E7490;--primary-dark:#155E75;--primary-light:#22D3EE;--primary-shadow:rgba(14,116,144,.25);
   --secondary:#4338ca;--secondary-dark:#3730a3;--secondary-light:#818cf8;--secondary-shadow:rgba(67,56,202,.2);
   --bg-primary:#fff;--bg-secondary:#f8fafc;--bg-accent:#f0f5ff;
   --text-primary:#0f172a;--text-secondary:#334155;--text-tertiary:#64748b;
-  --primary-dark-mode:#3b82f6;--primary-dark-mode-dark:#2563eb;--primary-dark-mode-light:#93c5fd;--primary-shadow-dark:rgba(59,130,246,.5);
+  --primary-dark-mode:#22D3EE;--primary-dark-mode-dark:#0E7490;--primary-dark-mode-light:#67E8F9;--primary-shadow-dark:rgba(34,211,238,.45);
   --bg-primary-dark:#0f172a;--text-primary-dark:#f1f5f9;--text-secondary-dark:#cbd5e1;--text-tertiary-dark:#94a3b8;
   --transition-slow:700ms cubic-bezier(.22,1,.36,1);--transition-medium:500ms cubic-bezier(.22,1,.36,1);--transition-fast:300ms cubic-bezier(.22,1,.36,1);
   --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);
@@ -460,7 +481,7 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 .mermaid-diagram svg {
   max-width: 100%;
   height: auto;
-  font-family: 'Inter', system-ui, sans-serif !important;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif !important;
   display: block;
 }
 

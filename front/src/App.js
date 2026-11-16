@@ -87,8 +87,20 @@ function App() {
       >
         <ScrollToTop />
         <TransitionProvider>
-        <div className="App min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
-          <Navbar 
+        <div className="App min-h-screen bg-white dark:bg-brand-bg text-gray-900 dark:text-brand-fg relative overflow-x-hidden">
+          {/* Brand duotone for blog photos (class .brand-duotone): shadows -> night bg,
+              mid-tones -> cobalt, highlights -> light cyan. Source images stay untouched. */}
+          <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true" focusable="false">
+            <filter id="brand-duotone" colorInterpolationFilters="sRGB">
+              <feColorMatrix type="matrix" values=".3 .59 .11 0 0  .3 .59 .11 0 0  .3 .59 .11 0 0  0 0 0 1 0" />
+              <feComponentTransfer>
+                <feFuncR type="table" tableValues="0.02 0.216 0.671" />
+                <feFuncG type="table" tableValues="0.027 0.273 0.934" />
+                <feFuncB type="table" tableValues="0.039 0.443 0.975" />
+              </feComponentTransfer>
+            </filter>
+          </svg>
+          <Navbar
             darkMode={darkMode} 
             toggleDarkMode={toggleDarkMode} 
           />

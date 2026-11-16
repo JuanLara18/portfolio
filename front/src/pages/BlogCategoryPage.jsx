@@ -94,7 +94,7 @@ export default function BlogCategoryPage() {
       <div className="min-h-screen bg-white dark:bg-brand-bg flex items-center justify-center">
         <div className="text-center max-w-md px-6">
           <BookOpen className="mx-auto h-12 w-12 text-gray-400 dark:text-brand-fg-muted mb-4" />
-          <h1 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg mb-2">
+          <h1 className="type-section text-2xl text-gray-900 dark:text-brand-fg mb-2">
             Unable to load posts.
           </h1>
           <p className="text-gray-600 dark:text-brand-fg-muted mb-6">{error}</p>
@@ -151,7 +151,7 @@ export default function BlogCategoryPage() {
 
               <motion.h1
                 variants={fadeInUp}
-                className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-gray-900 dark:text-brand-fg mb-6"
+                className="type-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.08] text-gray-900 dark:text-brand-fg mb-6"
               >
                 {displayInfo.title}
               </motion.h1>
@@ -190,7 +190,7 @@ export default function BlogCategoryPage() {
                 className="text-center py-24"
               >
                 <BookOpen size={32} className="mx-auto text-gray-400 dark:text-brand-fg-muted mb-4" />
-                <h3 className="font-bold text-2xl tracking-tight text-gray-900 dark:text-brand-fg mb-2">No posts found.</h3>
+                <h3 className="type-section text-2xl text-gray-900 dark:text-brand-fg mb-2">No posts found.</h3>
                 <p className="text-gray-600 dark:text-brand-fg-muted mb-6 max-w-md mx-auto">
                   {isCategory
                     ? `No posts have been published in the "${displayInfo.title}" category.`

@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="12" fill="#0B1120"/>
-  <g stroke="#22D3EE" stroke-width="5.5" stroke-linecap="square" fill="none">
-    <path d="M24 22h26"/>
-    <path d="M14 38h36"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.00 48.00" width="48" height="48" role="img" aria-label="Juan Lara"><title>Juan Lara</title><rect width="48" height="48" rx="10" fill="#05070A"/><g><path d="M26 9.5V27C26 34 21.5 38 14 38" fill="none" stroke="#E9E9E4" stroke-width="6"/><circle cx="26" cy="9.5" r="6" fill="#E9E9E4"/><circle cx="12.5" cy="38" r="6" fill="#E9E9E4"/><circle cx="38.5" cy="37.5" r="6" fill="#F5B544"/></g></svg>

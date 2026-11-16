@@ -49,6 +49,10 @@ To enrich a post's metadata (concepts, prereqs, teaches, tech, depth), edit the 
 
 `main` only accepts pull requests (squash merge, CI must pass); every merge deploys. Work on a branch named by change type (`post/`, `feat/`, `fix/`, `perf/`, `docs/`, `ci/`, `chore/`), use a Conventional Commit as the PR title, and never push to `main` directly. Versions are annotated `vX.Y.Z` tags with a GitHub Release; new posts alone do not need one. Details: `docs/workflow.md`.
 
+## Visual identity
+
+The brand system is fixed: read `docs/brand.md` §10 before touching UI. IBM Plex only (`font-display`/`type-title` serif italic for titles, `type-section` for sections, `type-name` for the name, never italic). Colour roles: primary cyan (`text-cyan-700 dark:text-brand-accent`), harmonic cobalt (`brand-harmonic`), contrast amber (`brand-contrast`) only for the logo node and the period that closes a title. No per-company, per-pillar or decorative colours, and no hex values in components. Night is near-black `#05070A`, day is pure white. Logo files: `front/public/brand/`.
+
 ## Authoring posts
 
 Use the `new-blog-post` skill for the full workflow (frontmatter, header image, audio generation). The post becomes available to the knowledge base on the next build.
