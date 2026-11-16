@@ -33,6 +33,7 @@ import { ChevronDown, ChevronRight, Copy, Check, AlertCircle, Maximize2, X } fro
 import 'katex/dist/katex.min.css';
 import { resolveInternalHref } from '../../../../utils/postLinks';
 import { getMermaidConfig, diagramType } from './mermaidTheme';
+import { BRAND_COLORS } from '../../../../data/brand';
 
 // Syntax highlighting: only the grammars the posts actually use (the full
 // Prism build carries ~280). Grammar aliases come along: bash covers sh/shell,
@@ -468,15 +469,17 @@ const MermaidFullscreenViewer = memo(({ svg, onClose, isDarkMode }) => {
   }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   // Theming helpers
-  const bg = isDarkMode ? '#0f172a' : '#f1f5f9';
-  const dotColor = isDarkMode ? '#1e293b' : '#cbd5e1';
+  // Same canvas as the diagram itself, so edge-label backgrounds disappear into it.
+  const brand = BRAND_COLORS[isDarkMode ? 'night' : 'day'];
+  const bg = brand.bg;
+  const dotColor = brand.border;
   const toolbarCls = isDarkMode
-    ? 'bg-gray-900 border-gray-700/80 text-gray-100'
+    ? 'bg-brand-bg-soft border-brand-border text-brand-fg'
     : 'bg-white border-gray-200 text-gray-900';
   const btnCls = isDarkMode
     ? 'text-gray-300 hover:bg-white/10 hover:text-white min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0'
     : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 min-h-[44px] min-w-[44px] md:min-h-0 md:min-w-0';
-  const dividerCls = isDarkMode ? 'bg-gray-700' : 'bg-gray-200';
+  const dividerCls = isDarkMode ? 'bg-brand-border' : 'bg-gray-200';
   const zoomCls = isDarkMode ? 'text-gray-400' : 'text-gray-500';
   const hintCls = isDarkMode ? 'text-gray-600' : 'text-gray-400';
 
@@ -666,7 +669,7 @@ const MermaidDiagram = memo(({ chart }) => {
     return (
       <div 
         ref={containerRef}
-        className="my-10 p-6 rounded-xl border border-gray-200/80 dark:border-white/[0.08] min-h-[200px]"
+        className="my-10 p-6 rounded-xl border border-gray-200 dark:border-brand-border min-h-[200px]"
       >
         <div className="flex items-center justify-center h-full text-gray-400 dark:text-gray-500">
           <span className="text-sm">Diagram</span>
@@ -680,7 +683,7 @@ const MermaidDiagram = memo(({ chart }) => {
     return (
       <div 
         ref={containerRef}
-        className="my-10 p-6 rounded-xl border border-gray-200/80 dark:border-white/[0.08]"
+        className="my-10 p-6 rounded-xl border border-gray-200 dark:border-brand-border"
       >
         <div className="flex items-center justify-center gap-3 text-gray-500 dark:text-gray-400">
           <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -728,12 +731,12 @@ const MermaidDiagram = memo(({ chart }) => {
       )}
       <div
         ref={containerRef}
-        className="my-10 group relative rounded-xl border border-gray-200/80 dark:border-white/[0.08] bg-white dark:bg-brand-bg overflow-hidden"
+        className="my-10 group relative rounded-xl border border-gray-200 dark:border-brand-border bg-white dark:bg-brand-bg overflow-hidden"
       >
         {/* Fullscreen button — always visible on touch, hover-reveal on desktop */}
         <button
           onClick={() => setIsFullscreen(true)}
-          className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-lg shadow-sm border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 z-10"
+          className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-brand-bg-soft/90 hover:bg-white dark:hover:bg-brand-border rounded-lg shadow-sm border border-gray-200 dark:border-brand-border text-gray-600 dark:text-brand-fg-muted opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 z-10"
           aria-label="View fullscreen"
           title="View fullscreen"
         >

@@ -373,6 +373,22 @@ Every style the site renders is declared in `index.html` (browsers only download
 - **Share cards** are typographic: `og-default.png` for every page that is not a post. Per-post cards (category, title in serif italic with the amber period, lockup) are the next step; until then posts keep their header photo as share image.
 - **The graph motif** uses harmonic edges, primary nodes and exactly one contrast node.
 
+### 10.6. Diagrams and charts
+
+Blog diagrams are graphs, so they follow the graph motif without its contrast node. The theme lives in `MarkdownRenderer/mermaidTheme.js` and reads `BRAND_COLORS` and `BRAND_FONTS`; authoring rules are in `docs/authoring.md`.
+
+- **Structure.** Nodes are base colours (`bg` by day, `surface` at night) with a hairline outline. Edges and arrowheads are harmonic. The node the paragraph is about takes primary (`:::accent`); context is dashed and muted (`:::muted`). Group labels use the Label role (Mono 500, uppercase, +12%).
+- **Fills.** Regions that need colour (timeline periods, mindmap branches, quadrants) use tints of primary and harmonic, so text on top keeps full contrast.
+- **No amber.** Contrast stays reserved for the logo node and the closing period, even inside diagrams.
+- **Data series are the one exception.** Cyan and cobalt sit too close to tell two series apart, so charts (pie, xychart, radar, git branches) use their own set, checked for colour-vision deficiency on each surface. Use at most four series; more data than that belongs in a table.
+
+| Series | Day | Night |
+|---|---|---|
+| 1 | `#0E7FA0` | `#0E9DBB` |
+| 2 | `#E11D48` | `#E8506A` |
+| 3 | `#3557D0` | `#5B7CF0` |
+| 4 | `#0E9A6E` | `#16A37A` |
+
 ### 10.5. Icons and metadata
 
 `favicon.svg` (modern browsers), `favicon.ico` with real 16/32/48 bitmaps, `apple-touch-icon.png` 180 px opaque, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (artwork inside the 80% safe zone). `theme-color` is declared per colour scheme; the manifest uses the night background.

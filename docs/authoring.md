@@ -103,7 +103,7 @@ Pick the type by the question the diagram answers:
 | States and transitions | `stateDiagram-v2` |
 | A process with decisions | `flowchart` |
 
-A `quadrantChart` needs real positions. If the coordinates are not measured, use a table or a list.
+A `quadrantChart` needs real positions. If the coordinates are not measured, use a table or a list. Charts carry at most four series (a `pie` at most four slices); more data than that is a table.
 
 ### Code
 
