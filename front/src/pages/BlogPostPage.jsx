@@ -488,6 +488,8 @@ const ReadingMode = ({ post, onClose, baseImagePath }) => {
         color: tc.text,
         '--rm-font-size': `${fontSize}px`,
         '--rm-line-height': String(lineHeight),
+        // Opaque background for pinned table columns (sepia included).
+        '--read-bg': tc.bg,
       }}
       className="fixed inset-0 z-[400] flex flex-col reading-mode-active"
     >

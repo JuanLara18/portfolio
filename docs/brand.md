@@ -392,3 +392,13 @@ Blog diagrams are graphs, so they follow the graph motif without its contrast no
 | 2 | `#E11D48` | `#E8506A` |
 | 3 | `#3557D0` | `#5B7CF0` |
 | 4 | `#0E9A6E` | `#16A37A` |
+
+### 10.7. Tables and code
+
+Both live in `MarkdownRenderer/ReadingSurfaces.jsx`, with styles under "Reading surfaces" in `index.css`. They are designed for a phone first (iPhone, Safari) and must also read well on a laptop.
+
+- **Wide content scrolls inside its own box, never the page.** The edge that hides content fades out, so the reader sees there is more to the left or right. On phones, tables and code run edge to edge to win back the gutter.
+- **Tables wrap their text.** Each column keeps a minimum width (9em on phones, 7.5em on wide screens); below that the table scrolls instead of stacking words one per line. When a scrolling table has a narrow first column, that column stays pinned so every row keeps its name. Figures are tabular.
+- **Code is IBM Plex Mono on a faint tint**, not a dark slab. The syntax theme (`codeTheme.js`) is restrained: comments muted and italic, strings primary, numbers and constants harmonic, keywords by weight, punctuation muted, never amber.
+- **Long code opens compact.** Blocks over 30 lines that contain functions or classes open as an outline: function bodies fold, with a control in the gutter and a "⋯ N lines" marker, as in an editor. Blocks that are still long after that show a preview and "Show all N lines". Fold rules are in `codeFolding.js`; copy always copies the whole block.
+- **Long lines are the reader's choice.** "Wrap" appears when lines overflow; wrapped lines keep a hanging indent, and the choice is remembered for later blocks.

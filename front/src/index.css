@@ -205,28 +205,6 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   /* Excerpt boxes on mobile - reduce padding */
   article .mb-8.p-6{padding:1.25rem!important;margin-bottom:1.5rem!important}
   
-  /* Code blocks - better visibility and scrolling */
-  article pre, article code[class*="language-"]{
-    font-size:0.875rem!important;
-    line-height:1.5!important;
-    max-width:100%!important;
-    overflow-x:auto!important;
-  }
-  
-  /* Inline code better visibility */
-  article code:not([class*="language-"]){
-    padding:0.15rem 0.4rem!important;
-    font-size:0.9rem!important;
-    background:rgba(229,231,235,1)!important;
-    border:1px solid rgba(209,213,219,1)!important;
-  }
-  
-  .dark article code:not([class*="language-"]){
-    background:rgba(55,65,81,0.8)!important;
-    border:1px solid rgba(75,85,99,1)!important;
-    color:rgba(229,231,235,1)!important;
-  }
-
   /* Text inside cards */
   /* Slightly smaller typography to fit more content while keeping proportions */
   .mobile-card-text,.mobile-card p,.mobile-card .line-clamp-3,.mobile-card .line-clamp-2{font-size:0.95rem!important;line-height:1.5!important}
@@ -434,6 +412,219 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
   font-size: calc(var(--rm-font-size, 16px) * 0.85) !important;
   line-height: 1.5 !important;
 }
+
+/* --------------------------------------------------------------------------
+   Reading surfaces: tables and code blocks inside a post
+   (MarkdownRenderer/ReadingSurfaces.jsx). Lines and tints are mixed from
+   currentColor so they follow every theme, sepia reading mode included.
+   ----------------------------------------------------------------------- */
+
+/* Sideways scroller. The edge that hides content fades out, so the reader
+   sees there is more to the left or right instead of guessing. */
+.scroll-fade {
+  --fade: 2.75rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.scroll-fade:focus-visible { outline: 2px solid rgb(var(--brand-primary)); outline-offset: 2px; }
+.scroll-fade[data-fade-right] {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+          mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+}
+.scroll-fade[data-fade-left]:not([data-pinned]) {
+  -webkit-mask-image: linear-gradient(to left, #000 calc(100% - var(--fade)), transparent);
+          mask-image: linear-gradient(to left, #000 calc(100% - var(--fade)), transparent);
+}
+.scroll-fade[data-fade-left][data-fade-right]:not([data-pinned]) {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+}
+
+/* Tables. On phones they run edge to edge to win back the page gutter. */
+.md-table-scroll { margin: 1.75em -1rem; --md-col-min: 9em; }
+.md-table-frame {
+  /* As wide as the content needs, at least the column, and no wider than the
+     column unless the columns would get narrower than --md-col-min. */
+  width: max-content;
+  min-width: 100%;
+  max-width: max(100%, calc(var(--md-table-cols, 1) * var(--md-col-min)));
+  font-size: 0.9375rem;
+}
+.md-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+.md-table th,
+.md-table td {
+  padding: 0.6em 0.85em;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 13%, transparent);
+}
+.md-table th {
+  font-weight: 600;
+  vertical-align: bottom;
+  border-bottom: 1.5px solid color-mix(in srgb, currentColor 40%, transparent);
+  text-wrap: balance;
+}
+.md-table tr > :first-child { padding-left: 1rem; }
+.md-table tr > :last-child { padding-right: 1rem; }
+.md-table tbody tr:last-child > * { border-bottom-color: color-mix(in srgb, currentColor 25%, transparent); }
+
+/* When the table scrolls and its first column is narrow, that column stays
+   put so every row keeps its name. A hairline marks the scrolled edge. */
+.scroll-fade[data-pinned] .md-table tr > :first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--read-bg, rgb(var(--brand-bg)));
+}
+.scroll-fade[data-pinned][data-fade-left] .md-table tr > :first-child {
+  box-shadow: inset -1px 0 0 color-mix(in srgb, currentColor 18%, transparent),
+              6px 0 8px -6px color-mix(in srgb, currentColor 25%, transparent);
+}
+
+@media (min-width: 640px) {
+  .md-table-scroll { margin: 2em 0; }
+  .md-table-frame { font-size: 1rem; }
+  .md-table tr > :first-child { padding-left: 0; }
+  .md-table tr > :last-child { padding-right: 0; }
+  .scroll-fade[data-pinned] .md-table tr > :first-child { padding-right: 1em; }
+}
+
+/* Code blocks: IBM Plex Mono, a faint tint instead of a dark slab, and a
+   header with the language, a wrap toggle (when lines overflow) and copy. */
+.md-code {
+  margin: 1.75em -1rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  background: color-mix(in srgb, currentColor 4.5%, transparent);
+  border-block: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+}
+.md-code-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.15rem 0.5rem 0.15rem 1rem;
+  color: inherit;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.md-code-lang { opacity: 0.65; }
+.md-code-actions { display: flex; gap: 0.125rem; }
+.md-code-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.25rem;
+  padding: 0 0.6rem;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  opacity: 0.75;
+  border-radius: 0.25rem;
+  transition: opacity 0.15s, color 0.15s;
+}
+.md-code-btn:hover, .md-code-btn:focus-visible { opacity: 1; color: rgb(var(--brand-primary)); }
+.md-code-btn[aria-pressed="true"] { opacity: 1; color: rgb(var(--brand-primary)); }
+.md-code-btn-text { display: none; }
+.md-code-scroll { --fade: 2rem; }
+.md-code-pre {
+  /* inline-block so the right padding survives at the end of a scrolled line */
+  display: inline-block !important;
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 0.9rem 1rem 1rem !important;
+  margin: 0 !important;
+  background: none !important;
+  font-size: 1em;
+}
+.md-code[data-wrap] .md-code-pre { display: block !important; }
+
+/* One block per line, so lines can fold and carry a gutter control. */
+.md-line { display: block; position: relative; min-height: 1.65em; }
+.md-code[data-gutter] .md-code-pre { padding-left: 2rem !important; }
+.md-fold {
+  position: absolute;
+  left: -1.6rem;
+  top: 0;
+  width: 1.4rem;
+  height: 1.65em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  opacity: 0.45;
+  border-radius: 0.2rem;
+}
+.md-fold:hover, .md-fold:focus-visible { opacity: 1; color: rgb(var(--brand-primary)); }
+.md-fold[aria-expanded="false"] { opacity: 0.85; color: rgb(var(--brand-primary)); }
+.md-fold-more {
+  font: inherit;
+  font-size: 0.92em;
+  color: rgb(var(--brand-muted));
+  padding: 0 0.55em;
+  border-radius: 0.2rem;
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  text-indent: 0;
+}
+.md-fold-more:hover, .md-fold-more:focus-visible { color: rgb(var(--brand-primary)); }
+
+/* Long blocks show a preview first; the last lines fade into the bar that
+   opens the rest. */
+.md-code[data-clamped] .md-code-pre {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 5em), transparent);
+          mask-image: linear-gradient(to bottom, #000 calc(100% - 5em), transparent);
+}
+.md-code-more {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.8;
+}
+.md-code-more:hover, .md-code-more:focus-visible { opacity: 1; color: rgb(var(--brand-primary)); }
+.md-code[data-wrap] code { overflow-wrap: anywhere !important; word-break: normal !important; }
+
+@media (min-width: 640px) {
+  .md-code {
+    margin: 2em 0;
+    font-size: 0.875rem;
+    border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  }
+  .md-code-btn-text { display: inline; }
+}
+@media (min-width: 1024px) {
+  .md-code { font-size: 0.90625rem; }
+  .md-table-scroll { --md-col-min: 7.5em; }
+}
+
+/* Inline code may break inside a long identifier rather than push the line
+   past the column (break-word keeps it from crushing table columns). */
+.prose :not(pre) > code { overflow-wrap: break-word; }
+
+/* Reading mode scales tables with the chosen text size. */
+.reading-mode-active .md-table-frame { font-size: calc(var(--rm-font-size, 16px) * 0.88); }
 
 /* --------------------------------------------------------------------------
    Mermaid diagrams
