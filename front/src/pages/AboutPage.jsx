@@ -47,10 +47,13 @@ const SkillItem = ({ name, icon: Icon }) => {
   );
 };
 
-// Logos come in very different shapes, from a 12:1 wordmark to a 2:1 crest.
-// Sizing them by area instead of by box gives them the same visual weight:
-// each gets about `area` px² of ink, capped by the tile.
-const LogoMark = ({ src, alt, area = 3400, maxW = 140, maxH = 50, column = 'sm:w-44' }) => {
+// Logos come in very different shapes, from a 12:1 wordmark to a 1:1 crest.
+// Equal boxes make crests look small; equal areas make wordmarks look big.
+// In between: height falls off gently with the aspect ratio
+// (height = base / aspect^0.35), width follows, and a width cap stops the
+// longest wordmarks. Every logo sits centred in a slot of the same size, so
+// the column reads as one even row of marks.
+const LogoMark = ({ src, alt, base = 44, maxW = 132, slot = 'sm:w-44 sm:justify-center' }) => {
   const imgRef = useRef(null);
   const [size, setSize] = useState(null);
   const fit = (img) => {
@@ -58,33 +61,32 @@ const LogoMark = ({ src, alt, area = 3400, maxW = 140, maxH = 50, column = 'sm:w
     const h = img.naturalHeight;
     if (!w || !h) return;
     const aspect = w / h;
-    let height = Math.sqrt(area / aspect);
+    let height = base / Math.pow(aspect, 0.35);
     let width = height * aspect;
     if (width > maxW) { width = maxW; height = width / aspect; }
-    if (height > maxH) { height = maxH; width = height * aspect; }
     setSize({ width: Math.round(width), height: Math.round(height) });
   };
   useEffect(() => {
     // A cached image may finish loading before onLoad is attached.
     if (imgRef.current && imgRef.current.complete) fit(imgRef.current);
   }, []);
-  const base = process.env.PUBLIC_URL || '';
+  const publicUrl = process.env.PUBLIC_URL || '';
   const webp = src.replace(/\.(png|jpe?g)$/i, '.webp');
   return (
     // By day the logo sits flush with the text; at night it needs a white
     // ground, which hugs the logo instead of filling a fixed box.
-    <div className={`${column} flex-shrink-0 flex items-center min-h-[3rem]`}>
+    <div className={`${slot} flex-shrink-0 flex items-center min-h-[3.5rem]`}>
       <div className="inline-flex bg-white dark:bg-white/95 dark:p-2.5 rounded-sm">
       <picture>
-        {webp !== src && <source srcSet={`${base}${webp}`} type="image/webp" />}
+        {webp !== src && <source srcSet={`${publicUrl}${webp}`} type="image/webp" />}
         <img
           ref={imgRef}
-          src={`${base}${src}`}
+          src={`${publicUrl}${src}`}
           alt={alt}
           loading="lazy"
           decoding="async"
           onLoad={(e) => fit(e.currentTarget)}
-          style={size || { maxWidth: maxW, maxHeight: maxH }}
+          style={size || { maxWidth: maxW, maxHeight: base }}
         />
       </picture>
       </div>
@@ -179,6 +181,7 @@ const ExperienceCard = ({
 // Education card component
 const EducationCard = ({ 
   degree, 
+  status,
   institution, 
   period, 
   location, 
@@ -200,10 +203,15 @@ const EducationCard = ({
     >
       {/* Stacked on phones and in the narrow desktop column, side by side between. */}
       <div className="flex flex-col sm:flex-row lg:flex-col sm:items-start gap-4 mb-3">
-        <LogoMark src={`/images/institutions/${logo}`} alt={`${institution} logo`} />
+        <LogoMark src={`/images/institutions/${logo}`} alt={`${institution} logo`} slot="sm:w-44 sm:justify-center lg:w-auto lg:justify-start" />
 
         <div className="min-w-0 flex-1">
-          <h3 className="type-section text-xl text-gray-900 dark:text-brand-fg leading-tight mb-1">{degree}</h3>
+          <h3 className="type-section text-xl text-gray-900 dark:text-brand-fg leading-tight mb-1">
+            {degree}
+            {status && (
+              <span className="ml-2 align-middle font-mono text-[10px] font-normal tracking-[0.12em] uppercase text-cyan-700 dark:text-brand-accent whitespace-nowrap">{status}</span>
+            )}
+          </h3>
           <div className="font-mono text-sm tracking-wide text-cyan-700 dark:text-brand-accent leading-tight">{institution}</div>
           <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-500 dark:text-brand-fg-muted mt-1">
             {period} <span className="mx-1 opacity-60">·</span> {location}
@@ -261,10 +269,9 @@ const CourseCard = ({
         <LogoMark
           src={`/images/institutions/${logo}`}
           alt={`${provider} logo`}
-          area={2000}
-          maxW={92}
-          maxH={40}
-          column="w-28"
+          base={34}
+          maxW={96}
+          slot="w-28 justify-center"
         />
 
         <div className="min-w-0 flex-1">
@@ -389,7 +396,8 @@ const experiences = [
   // Education data
   const education = [
     {
-      degree: "M.S. in Artificial Intelligence (In Progress)",
+      degree: "M.S. in Artificial Intelligence",
+      status: "In progress",
       institution: "Universidad de los Andes",
       period: "Jan 2026 - Nov 2027",
       location: "Bogotá",

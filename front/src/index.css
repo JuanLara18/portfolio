@@ -613,12 +613,21 @@ html,body{overscroll-behavior:none;position:relative;height:100%;min-height:100v
 
 
 /* --------------------------------------------------------------------------
-   Post body line length. On wide screens the text keeps a reading measure of
-   about 70 characters; tables, code, diagrams and equations may use the full
-   column.
+   Post body on wide screens. The article column is sized for reading (the
+   sidebar takes a fixed width, the article the rest), the text grows to 19px,
+   and text, tables and code share one edge: about 75 characters per line with
+   no gap beside the paragraphs.
    ----------------------------------------------------------------------- */
+@media (min-width: 1280px) {
+  .post-body .prose { font-size: 1.1875rem; }
+  .post-body .prose > p,
+  .post-body .prose li { font-size: inherit; }
+}
 @media (min-width: 1024px) {
-  .post-body .prose > :is(p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote) { max-width: 34em; }
+  .post-body { max-width: 46rem; }
+}
+@media (min-width: 1280px) {
+  .post-body { max-width: 48rem; }
 }
 
 /* Mobile category and tags: two rows that scroll sideways together. */

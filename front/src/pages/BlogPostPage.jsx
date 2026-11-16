@@ -689,7 +689,7 @@ export default function BlogPostPage() {
                 initial="hidden"
                 animate="visible"
                 variants={slideInLeft}
-                className="lg:w-3/4"
+                className="lg:flex-1 lg:min-w-0"
               >
                 <div>
                   {post.audio && <AudioPlayer audio={post.audio} />}
@@ -715,7 +715,7 @@ export default function BlogPostPage() {
               {/* Sidebar — hidden on mobile, visible on desktop */}
               <aside
                 ref={sidebarRef}
-                className="hidden lg:flex lg:flex-col lg:w-1/4 lg:gap-10 sticky self-start"
+                className="hidden lg:flex lg:flex-col lg:w-64 xl:w-72 lg:flex-shrink-0 lg:gap-10 sticky self-start"
               >
                 {/* Table of Contents */}
                 <TableOfContents content={post.content} />

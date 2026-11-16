@@ -406,7 +406,7 @@ Both live in `MarkdownRenderer/ReadingSurfaces.jsx`, with styles under "Reading 
 
 ### 10.8. Reading
 
-- **Line length.** About 70 characters per line: on wide screens post text stops at 34em while tables, code, diagrams and equations use the full column; reading mode sets its column in em of the text size, so the measure holds at any size.
+- **Line length.** About 75 characters per line. On wide screens the sidebar takes a fixed width, the post body is at most 48rem, and text grows to 19px, so text, tables, code and equations share one edge with no gap beside the paragraphs. Reading mode sets its column in em of the text size, so the measure holds at any size.
 - **Reading mode** (`components/features/blog/ReadingMode.jsx`) uses the brand: day and night are the site's palette, sepia is the one reading-only palette, the title is `type-title` with the amber period. One base size drives every size inside, so headings (1.45em), tables (0.875em) and code (0.8em) keep their proportion. Its bar slides away while reading and returns on scroll up or a tap on the text; text settings live in one "Aa" panel; it lists the sections, remembers the place per post and shows the time left. Every control is at least 44px.
 - **Phones.** `.container` has no 320px step (see `tailwind.config.js`), so phone pages use the full width minus a 16px gutter.
-- **Logos** (About) are sized by area, not by box, so a 12:1 wordmark and a 2:1 crest carry the same weight. Logo files carry no transparent margin. By day a logo sits flush with the text; at night it gets a white ground that hugs it.
+- **Logos** (About) sit centred in slots of one size. Height falls off gently with the aspect ratio (height = base / aspect^0.35) and a width cap stops long wordmarks, so crests and wordmarks carry a similar weight. Logo files carry no transparent margin. At night a logo gets a white ground that hugs it.
