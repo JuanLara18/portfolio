@@ -47,11 +47,14 @@ function rfc822(dateStr) {
 }
 
 function postUrl(post) {
-  return `${SITE_URL}/blog/${encodeURIComponent(post.category)}/${encodeURIComponent(post.slug)}`;
+  return `${SITE_URL}/blog/${encodeURIComponent(post.category)}/${encodeURIComponent(post.slug)}/`;
 }
 
 function itemXml(post) {
   const url = postUrl(post);
+  // The guid keeps the pre-trailing-slash form: changing it would make every
+  // feed reader show all posts as new. Guids must never change.
+  const guid = url.replace(/\/$/, '');
   const title = escapeXml(post.title || post.slug);
   const desc = cdata(post.excerpt || post.description || '');
   const pub = rfc822(post.date);
@@ -70,7 +73,7 @@ function itemXml(post) {
     '  <item>',
     `    <title>${title}</title>`,
     `    <link>${escapeXml(url)}</link>`,
-    `    <guid isPermaLink="true">${escapeXml(url)}</guid>`,
+    `    <guid isPermaLink="true">${escapeXml(guid)}</guid>`,
     `    <pubDate>${pub}</pubDate>`,
     `    <description>${desc}</description>`,
     categories,
@@ -100,7 +103,7 @@ function main() {
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>${escapeXml(SITE_NAME)}</title>
-    <link>${SITE_URL}/blog</link>
+    <link>${SITE_URL}/blog/</link>
     <atom:link href="${FEED_URL}" rel="self" type="application/rss+xml" />
     <description>${escapeXml(SITE_DESC)}</description>
     <language>en-us</language>

@@ -452,7 +452,7 @@ const courses = [
       <SEO
         title="About · Juan Lara"
         description="AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy."
-        canonical="https://juanlara18.github.io/portfolio/#/about"
+        canonical="https://juanlara18.github.io/portfolio/about/"
         keywords={[
           'Juan Lara',
           'AI Engineer',

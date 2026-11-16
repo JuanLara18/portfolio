@@ -5,7 +5,7 @@
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Juan Lara — Writing</title>
-    <link>https://juanlara18.github.io/portfolio/blog</link>
+    <link>https://juanlara18.github.io/portfolio/blog/</link>
     <atom:link href="https://juanlara18.github.io/portfolio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.</description>
     <language>en-us</language>
@@ -13,7 +13,7 @@
     <generator>build-rss.js</generator>
   <item>
     <title>Apache Ossie: Ontologies, Semantic Models, and Data Contracts as One Open Stack</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack</guid>
     <pubDate>Thu, 29 Mar 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Every company defines 'customer' and 'revenue' five times, in five tools, in five formats. Apache Ossie, the former Open Semantic Interchange, is the first serious attempt to write those definitions once in an open format, from the business concept down to the SQL. This is the complete guide: the vocabulary, the theory behind it, the three layers, a banking example that validates against the real schemas, and an honest account of what the standard still leaves out.]]></description>
@@ -34,7 +34,7 @@
   </item>
   <item>
     <title>The Representation Has a Shape</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape</guid>
     <pubDate>Thu, 22 Mar 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[High-dimensional theory says two random vectors are almost surely nearly orthogonal. Embed a few thousand unrelated sentences with a real encoder and the mean pairwise cosine comes back large and positive. The gap between those two facts is a narrow cone, a packing bound, and a curvature nobody chose -- and every one of them is measurable.]]></description>
@@ -54,7 +54,7 @@
   </item>
   <item>
     <title>The Distribution Has a Shape</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape</guid>
     <pubDate>Thu, 15 Mar 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Expectation is a projection, covariance is a quadratic form, and information is curvature. Those are the same three geometric operations that read an objective function, applied instead to the data -- and once they land, most of statistics stops being a list of formulas and becomes one picture examined from three sides.]]></description>
@@ -74,7 +74,7 @@
   </item>
   <item>
     <title>The Objective Has a Shape</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape</guid>
     <pubDate>Thu, 08 Mar 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[The same least-squares problem, with one column expressed in micrometres instead of metres, goes from converging in forty-four steps to not converging in forty thousand. Nothing statistical changed; the geometry did. Conditioning, curvature and duality are three numbers you can read off an objective before you run anything, and they explain most of what you experience as a model refusing to train.]]></description>
@@ -94,7 +94,7 @@
   </item>
   <item>
     <title>Double Descent: Where the Classical Theory Runs Out</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/double-descent</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/double-descent/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/double-descent</guid>
     <pubDate>Thu, 01 Mar 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Two theorems proved earlier in this series predict that a model with far more parameters than data cannot generalize. Those models are the state of the art. This post locates exactly which step of the reasoning fails, proves the implicit-bias result that replaces it, measures the double descent curve in numpy, and ends where the theory actually ends: on an open problem.]]></description>
@@ -114,7 +114,7 @@
   </item>
   <item>
     <title>Backprop Is Reverse-Mode Differentiation</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation</guid>
     <pubDate>Thu, 22 Feb 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Backpropagation is not a neural-network trick. It is reverse-mode automatic differentiation on a computational graph, and the reason it is the only viable choice is a complexity theorem from 1983 that predates its fame in machine learning. This post derives the delta recursion from the chain rule, states the cheap gradient principle, and shows that weight initialization is a short variance calculation rather than folklore.]]></description>
@@ -134,7 +134,7 @@
   </item>
   <item>
     <title>Universal Approximation, and What It Does Not Give You</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you</guid>
     <pubDate>Thu, 15 Feb 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[A neural network can approximate any continuous function. The sentence is true, it is beautiful, and it settles almost nothing. This post states the theorem in the form its authors proved it, gives the architecture of the argument honestly, and then spends most of its length on the four things it does not say: no width bound, no algorithm, no generalization, and no depth.]]></description>
@@ -153,7 +153,7 @@
   </item>
   <item>
     <title>The Bellman Operator Is a Contraction</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction</guid>
     <pubDate>Thu, 08 Feb 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Everyone who has written value iteration has watched it converge and taken it on faith. The guarantee is a theorem with a one-page proof, and it explains three things at once: why an optimal value function exists, why iteration finds it geometrically fast, and why the discount factor is a convergence rate rather than a statement about caring about the future. It also explains precisely why all of that dies the moment the table becomes a neural network.]]></description>
@@ -173,7 +173,7 @@
   </item>
   <item>
     <title>EM Never Goes Down: Jensen&apos;s Inequality as an Algorithm</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down</guid>
     <pubDate>Thu, 01 Feb 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Expectation-Maximization looks like a heuristic: guess the hidden labels, refit, repeat. It is not. Every iteration provably cannot decrease the observed-data likelihood, and the whole proof is Jensen's inequality applied once. The same decomposition turns out to be the ELBO, which makes EM and variational inference one identity read two ways.]]></description>
@@ -193,7 +193,7 @@
   </item>
   <item>
     <title>One Eigendecomposition, Four Algorithms</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms</guid>
     <pubDate>Thu, 25 Jan 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[PCA, latent semantic analysis, spectral clustering and kernel PCA are taught as four techniques in four chapters. They are one computation: the eigenvectors of a symmetric positive semidefinite matrix. Only the matrix changes. This post proves the theorems that make that computation optimal, in full, and then reads the four algorithms off them.]]></description>
@@ -212,7 +212,7 @@
   </item>
   <item>
     <title>Weak Learnability Equals Strong Learnability</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong</guid>
     <pubDate>Thu, 18 Jan 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Kearns and Valiant asked whether a hypothesis barely better than a coin flip could be amplified to arbitrary accuracy. Schapire proved it could. This post derives AdaBoost as coordinate descent on the exponential loss, proves the training-error bound that makes the equivalence constructive, and then treats the anomaly that followed as the unresolved question it remains.]]></description>
@@ -231,7 +231,7 @@
   </item>
   <item>
     <title>The Kernel Trick Is a Theorem, Not a Trick</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem</guid>
     <pubDate>Thu, 11 Jan 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[An RBF kernel corresponds to an infinite-dimensional feature space, and people say this cheerfully without noticing that optimizing over an infinite-dimensional space should be impossible. It is not impossible, and the reason is a theorem from 1971 that almost nobody who trains an SVM has read.]]></description>
@@ -250,7 +250,7 @@
   </item>
   <item>
     <title>Penalizing Is Constraining: What Regularization Actually Does</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining</guid>
     <pubDate>Thu, 04 Jan 2029 00:00:00 GMT</pubDate>
     <description><![CDATA[Everyone has seen the picture: elliptical error contours meeting a circle for ridge, a diamond for LASSO, and the diamond's corners explaining sparsity. That picture is about a constrained problem. What you actually minimize is a penalized one. This post proves they are the same problem, and then derives -- rather than asserts -- why L1 produces exact zeros and L2 never can.]]></description>
@@ -270,7 +270,7 @@
   </item>
   <item>
     <title>No Free Lunch: Every Model Is an Assumption You Already Made</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem</guid>
     <pubDate>Thu, 28 Dec 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The fundamental theorem of statistical learning says a class is learnable exactly when its VC dimension is finite. The obvious escape is to take a bigger class. A short theorem forbids it. This post proves that theorem, separates it from the two other results that share its name, and then reads the standard toolbox backwards to the assumption each method is quietly making.]]></description>
@@ -290,7 +290,7 @@
   </item>
   <item>
     <title>When the Hypothesis Class Is Infinite: VC Dimension and the Sauer-Shelah Lemma</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah</guid>
     <pubDate>Thu, 21 Dec 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[There are uncountably many linear classifiers in the plane, and the union bound over them proves nothing at all. Yet linear classifiers generalize. The resolution is that cardinality was never the right measure: what matters is how many distinct labelings a class can produce on a finite sample, and that count is either exponential forever or polynomial. There is nothing in between.]]></description>
@@ -309,7 +309,7 @@
   </item>
   <item>
     <title>Probably Approximately Correct: What It Means to Say a Machine Learned</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct</guid>
     <pubDate>Thu, 14 Dec 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Before 1984 nobody could state, precisely enough to prove, what it means for an algorithm to have learned something. Valiant gave the definition, and both of its hedges turn out to be forced. This post proves three theorems inside that framework, starting with the cleanest nontrivial result in learning theory: how many examples it takes to learn a rectangle you cannot see.]]></description>
@@ -328,7 +328,7 @@
   </item>
   <item>
     <title>From Markov to Hoeffding: The Inequalities Every Generalization Bound Is Made Of</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities</guid>
     <pubDate>Thu, 07 Dec 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[You report 94.2% accuracy on a held-out set. What is the honest error bar? Four theorems, each proved from the one before it, answer that question, and the answer is much wider than anyone puts in a paper. This is the toolbox every generalization bound in machine learning is secretly built from.]]></description>
@@ -347,7 +347,7 @@
   </item>
   <item>
     <title>What Are We Actually Minimizing? Empirical Risk, and the Two Decompositions Everyone Conflates</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance</guid>
     <pubDate>Thu, 30 Nov 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[You minimize training error. You care about test error. Nothing in that sentence connects the two. This post proves the two theorems that name what sits in the gap -- the approximation/estimation split, which works for any loss, and the bias-variance split, which does not -- and then insists that they are not the same decomposition.]]></description>
@@ -367,7 +367,7 @@
   </item>
   <item>
     <title>The Loss Function Is a Probability Assumption</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions</guid>
     <pubDate>Thu, 23 Nov 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Almost nobody is told that MSE and cross-entropy are derived rather than chosen. They fall out of one theorem: the loss you minimize is the negative log-density of the noise you assumed, up to a positive affine transformation. Change the assumption and you get a different loss -- Laplace gives absolute error, Poisson gives deviance, Student-t gives a redescending robust loss, and Huber's loss is the exact maximum-likelihood loss for the least favorable distribution near a Gaussian.]]></description>
@@ -387,7 +387,7 @@
   </item>
   <item>
     <title>Nothing Threw: Debugging Agent Flows in ADK 2.x</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows</guid>
     <pubDate>Thu, 16 Nov 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The hardest agent bugs raise nothing. The stack trace is empty, the run completed, the answer was fluent and wrong. Or the right answer was produced by a sub-agent and never reached the user at all. This is a field guide to debugging flow errors in ADK 2.x: what the framework hides by default, why the event stream is the only ground truth, who actually owns the user-facing turn, and the flow recorder plugin you should write once and never write again.]]></description>
@@ -409,7 +409,7 @@
   </item>
   <item>
     <title>Migrating from ADK 1.x to 2.0: The Breaking Changes That Actually Break You</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x</guid>
     <pubDate>Thu, 09 Nov 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[ADK 2.0 replaced the execution model, not just the feature set. Three of its breaking changes do not raise an exception: your orchestration override gets bypassed, your event appends stop routing, and your exception handler eats the framework's retries. This is the migration guide, including the database work everyone underestimates and the honest case for staying on 1.x.]]></description>
@@ -431,7 +431,7 @@
   </item>
   <item>
     <title>Graph Workflows in ADK 2.0: Putting Control Flow Back in Code</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration</guid>
     <pubDate>Thu, 02 Nov 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[ADK 2.0 replaced the agent hierarchy with a graph. Agents, tools and plain functions are all nodes now, edges are written in Python rather than negotiated with a prompt, and every node can choose independently whether a model or a compiler decides what happens next. This is the deep dive on the Workflow runtime: routes, typed data flow, JoinNode fan-in, retries and timeouts, human-in-the-loop pauses, dynamic workflows with automatic checkpointing, and an honest look at where LangGraph still wins.]]></description>
@@ -452,7 +452,7 @@
   </item>
   <item>
     <title>Golden Paths for Agents: Multi-Tenancy, Self-Service, and the Platform as Product</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy</guid>
     <pubDate>Thu, 26 Oct 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The four previous parts of this series described components: a control plane, a runtime, a sandbox, a tool plane. This one describes the discipline that turns components into a platform. Golden paths for agent teams, multi-tenancy that survives a shared vector store, policy as code instead of policy as wiki page, cost attribution that keeps the platform politically alive, and the honest organizational problem underneath all of it.]]></description>
@@ -472,7 +472,7 @@
   </item>
   <item>
     <title>The Tool Plane: MCP Registry, Gateway, and Governing Ten Thousand Servers</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane</guid>
     <pubDate>Thu, 19 Oct 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Choosing MCP as your tool interface is the easy decision and the right one. It is also where the platform problems begin. Part 4 of The Agent Platform builds the tool plane: an internal registry that says what exists, a gateway that decides who may call it, credential brokering so agents never hold secrets, versioning that survives schema drift, and a curation discipline for a world with more than ten thousand public servers.]]></description>
@@ -492,7 +492,7 @@
   </item>
   <item>
     <title>Sandboxing Agents: microVMs, gVisor, and the Isolation Boundary That Actually Holds</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor</guid>
     <pubDate>Thu, 12 Oct 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Part 3 of The Agent Platform. When an agent executes code, the container boundary is not enough — namespaces and cgroups were built for resource isolation, not security. This is the engineering guide to microVMs, gVisor, and hardened containers: the mechanism of each, the cold start versus isolation tradeoff, the egress control everyone forgets, and how to match isolation strength to what the agent is actually trusted with.]]></description>
@@ -512,7 +512,7 @@
   </item>
   <item>
     <title>The Agent Runtime: Sessions, State, and Where the Turn Loop Actually Executes</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology</guid>
     <pubDate>Thu, 05 Oct 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Everyone argues about frameworks. Almost nobody asks where the turn loop physically runs, what happens to a session between turns, or what breaks when a pod is rescheduled mid-conversation. Part two of The Agent Platform: the runtime is the least glamorous and most consequential choice you will make.]]></description>
@@ -532,7 +532,7 @@
   </item>
   <item>
     <title>The Agent Platform: Control Plane, Data Plane, and Everything You Have to Own</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane</guid>
     <pubDate>Thu, 28 Sep 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Almost everything written about agents is written from the seat of the team building one. This series is written from the other seat: the platform engineer who has to host everyone else's. Part one maps the ten layers of an agent platform, separates control plane from data plane, and is honest about what an LLM firewall does not solve.]]></description>
@@ -552,7 +552,7 @@
   </item>
   <item>
     <title>Graph Fraud Detection: Rings, Synthetic Identity, and the Pipeline That Ships</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity</guid>
     <pubDate>Thu, 21 Sep 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Part 5 of Graph Analytics in Production. Fraud is where graphs earn their keep, because the signal is structurally invisible to a row-wise model — a ring sits six hops deep and no amount of feature engineering on a flat table recovers it. This is the working guide: the four typologies and their graph signatures, which shared attributes should become edges and which are pure supernode poison, the community-plus-embeddings-plus-gradient-boosting pipeline that actually reaches production, why precision at the alert budget is the only metric your operation feels, and why the model decays faster here than anywhere else you have deployed.]]></description>
@@ -572,7 +572,7 @@
   </item>
   <item>
     <title>Organizational Network Analysis: The Company Graph Nobody Drew</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph</guid>
     <pubDate>Thu, 14 Sep 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Every company has two structures: the org chart someone designed, and the collaboration network that actually emerged. Part 4 of Graph Analytics in Production applies centrality, community detection, and structural holes to the organization itself, and spends as much time on the ethics as on the algorithms, because this is the one graph where getting the governance wrong hurts people.]]></description>
@@ -592,7 +592,7 @@
   </item>
   <item>
     <title>Node Embeddings: FastRP, Node2Vec, and GraphSAGE in Production</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage</guid>
     <pubDate>Thu, 07 Sep 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Part 3 of Graph Analytics in Production. Centrality gives you one number per node; embeddings give you a hundred and twenty-eight. This post covers what those numbers actually preserve, why FastRP wins on cost through the Johnson-Lindenstrauss lemma, when Node2Vec's p and q knobs are worth their price, why GraphSAGE is the only inductive option, and the temporal leakage trap that makes offline metrics beautiful and production metrics honest.]]></description>
@@ -612,7 +612,7 @@
   </item>
   <item>
     <title>Centrality and Communities in Practice</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice</guid>
     <pubDate>Thu, 31 Aug 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The theory says betweenness finds brokers and modularity finds communities. Production says your top broker is the IT helpdesk service account and your communities change every time you rerun the job. This is the practitioner's guide to centrality and community detection on real graphs: which measure answers which question, why betweenness will not scale, what the PageRank knobs actually control, the resolution limit you cannot tune away, and why you must never ship a community ID as a stable key.]]></description>
@@ -632,7 +632,7 @@
   </item>
   <item>
     <title>Graph Analytics at Scale: The GDS Execution Model</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model</guid>
     <pubDate>Thu, 24 Aug 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Most engineers meet graph algorithms as textbook pseudocode, then try to run one on a real graph and discover the algorithm was never the hard part. Part 1 of a series on graph analytics in production: why transactional storage is the wrong shape, what CSR actually is, how projections decide both your memory bill and your answer, the five execution modes, and the serverless shift that takes the graph database off the critical path.]]></description>
@@ -652,7 +652,7 @@
   </item>
   <item>
     <title>Choosing a Graph Engine in 2026</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026</guid>
     <pubDate>Thu, 17 Aug 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Part 3 of Graph Engines Under the Hood. Not a feature matrix, but a decision framework: four questions about your workload that actually determine the answer, an honest survey of where every engine category sits in 2026, the cautionary tale of Kuzu's disappearance, and the uncomfortable case that you may not need a graph database at all.]]></description>
@@ -672,7 +672,7 @@
   </item>
   <item>
     <title>GQL: The First New ISO Query Language Standard Since SQL</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq</guid>
     <pubDate>Thu, 10 Aug 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[In April 2024, ISO published GQL as ISO/IEC 39075 — the first genuinely new database query language standard since SQL in 1987. Thirty-seven years. Part 2 of Graph Engines Under the Hood looks at what GQL actually standardizes, how it diverges from Cypher, why SQL/PGQ matters more than most teams realize, and how much of it is really implemented in 2026.]]></description>
@@ -691,7 +691,7 @@
   </item>
   <item>
     <title>Inside a Graph Engine: Index-Free Adjacency and Why a Traversal Is Not a Join</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency</guid>
     <pubDate>Thu, 03 Aug 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Everyone repeats that graph databases are faster for connected data, and almost nobody says why. This is the mechanical answer: fixed-size records, physical pointers, offset arithmetic, and the doubly-linked relationship chain that turns a hop into a dereference. Plus the honest accounting of what it costs, when a columnar relational engine still wins, and why traversal-as-matrix-multiply is a genuinely different machine.]]></description>
@@ -711,7 +711,7 @@
   </item>
   <item>
     <title>Anatomy of an Agent Harness: Reading YC&apos;s QM and Deciding When to Build, Fork, or Adopt</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm</guid>
     <pubDate>Thu, 27 Jul 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Y Combinator open-sourced the multi-agent harness that runs its own company. Reading the source settles an argument: the agent loop is the easy part, and the other forty-six directories are the reason you should not write one from scratch.]]></description>
@@ -731,7 +731,7 @@
   </item>
   <item>
     <title>Don&apos;t Reinvent the Agent: How to Compose, Adapt, and Fork Open-Source Repositories into Production AI Systems</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition</guid>
     <pubDate>Thu, 20 Jul 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Why senior AI architects stop building agent infrastructure from scratch, how to compose heavy-hitting open-source building blocks like superpowers, Mem0, Instructor, and turbovec, and critical trade-offs vs enterprise cloud platforms like GCP GEAP.]]></description>
@@ -751,7 +751,7 @@
   </item>
   <item>
     <title>Enterprise Knowledge Graphs on GCP: Cloud Spanner Graph, Dataplex, and Transversal MCP Servers on Cloud Run</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp</guid>
     <pubDate>Thu, 13 Jul 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[A practical blueprint for building an enterprise-wide, transversal Graph Context Engine on Google Cloud Platform using Cloud Spanner Graph, Dataplex Knowledge Catalog, and serverless MCP endpoints on Cloud Run.]]></description>
@@ -771,7 +771,7 @@
   </item>
   <item>
     <title>The Production Graph Stack for Agents: Pragmatic Ontologies, LightRAG, and MCP Context Engines</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies</guid>
     <pubDate>Thu, 06 Jul 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Why pure vector embeddings fail at multi-hop reasoning in production, how Pragmatic Ontologies provide neurosymbolic grounding, and why modern agentic architectures choose MCP Tool Traversals over raw NL2Cypher.]]></description>
@@ -791,7 +791,7 @@
   </item>
   <item>
     <title>The Agent That Remembers You: Continuity Engineering on ADK 2.0 and Gemini Enterprise</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</guid>
     <pubDate>Thu, 29 Jun 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Hermes and OpenClaw feel alive because they remember and compound. Most production agents feel frozen. Here is how to engineer that continuity into real enterprise agents on ADK 2.0 and the Gemini Enterprise Agent Platform, without reinventing the wheel, with a BI dashboard agent for durable facts and an on-call agent for durable procedures, plus how the same ideas map to LangGraph, the Anthropic and OpenAI SDKs, and Bedrock AgentCore.]]></description>
@@ -813,7 +813,7 @@
   </item>
   <item>
     <title>OpenClaw vs Hermes: Two Philosophies of the Self-Hosted Agent</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison</guid>
     <pubDate>Thu, 22 Jun 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Two open-source agents exploded in 2026 with opposite instincts: OpenClaw wants to do everything on your machine right now, Hermes wants to remember and compound. This is the honest head-to-head, with a decision matrix you can actually use.]]></description>
@@ -834,7 +834,7 @@
   </item>
   <item>
     <title>Hermes: The Self-Improving Agent That Remembers</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/hermes-self-improving-agent-persistent-memory</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/hermes-self-improving-agent-persistent-memory/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/hermes-self-improving-agent-persistent-memory</guid>
     <pubDate>Thu, 15 Jun 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Nous Research built a model lab. Then they built an agent that gets more capable the longer it runs, writing its own skills from experience and storing them next to a memory of who you are. This is the anatomy of Hermes, what its self-improvement actually is, and where the marketing outruns the mechanism.]]></description>
@@ -855,7 +855,7 @@
   </item>
   <item>
     <title>OpenClaw: Anatomy of the Agent Platform That Ate GitHub</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-anatomy-viral-agent-platform</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-anatomy-viral-agent-platform/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-anatomy-viral-agent-platform</guid>
     <pubDate>Thu, 08 Jun 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[In five months an open-source personal agent went from a solo developer's side project to the sixth most-starred repository on GitHub. This is a deep technical anatomy of OpenClaw: the Gateway that runs the whole show, the skills plugin model, vector-DB memory, the genuinely surprising things people built with it, and the failure modes that turned it into a favorite case study for AI security researchers.]]></description>
@@ -875,7 +875,7 @@
   </item>
   <item>
     <title>Magnifica Humanitas: Reading the Pope&apos;s AI Encyclical as an Engineer</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis</guid>
     <pubDate>Thu, 01 Jun 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Pope Leo XIV's first encyclical is a 42,300-word argument about artificial intelligence, signed on the 135th anniversary of Rerum Novarum — the document that defined the Church's response to the industrial revolution. Most engineers will never read it. This post does: chapter by chapter, quote by quote, mapping its claims about non-neutrality, cognitive disarmament, and concentration of power onto the design decisions ML practitioners make every day.]]></description>
@@ -895,7 +895,7 @@
   </item>
   <item>
     <title>FinOps for AI Agents: Token Economics, Cost Observability, and a Bill You Can Explain</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics</guid>
     <pubDate>Thu, 25 May 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Token spend is the new cloud bill -- variable, usage-driven, and easy to ignore until it triples. This post applies the FinOps discipline to LLM and agent systems: the real cost equation of an agent task, unit economics that survive a CFO meeting, attribution and metering architecture, the optimization levers ranked by effort and impact, and a budget-aware agent loop in production-quality Python.]]></description>
@@ -915,7 +915,7 @@
   </item>
   <item>
     <title>Bank-Grade Agent Security: IAM, MCP Gateways, and Zero Trust at Enterprise Scale</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways</guid>
     <pubDate>Thu, 18 May 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Part 2 of the agent security series moves from the startup to the bank: enterprise IAM for agents as first-class principals, agent identity on Google Cloud, the MCP gateway pattern that never lets a client touch a server directly, zero trust with SPIFFE-style workload identity, and the audit machinery regulators actually ask for.]]></description>
@@ -937,7 +937,7 @@
   </item>
   <item>
     <title>Who Is Your Agent? OAuth, MCP Auth, and Identity for AI Agents — the Startup Playbook</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity</guid>
     <pubDate>Thu, 11 May 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[AI agents are non-human identities that act with delegated human power, long after the login that granted it. This post — part 1 of a two-part series on agent security — rebuilds OAuth from the agent's point of view, walks through the MCP authorization spec requirement by requirement, and lays out a concrete identity architecture for a five-person startup shipping an agent that touches users' Gmail, Calendar, and CRM.]]></description>
@@ -959,7 +959,7 @@
   </item>
   <item>
     <title>The Claude Certified Architect Professional Exam (CCAR-P): A Complete Study Guide</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide</guid>
     <pubDate>Thu, 04 May 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The Professional Architect certification is the hardest credential in Anthropic's track: seven domains, 63 scenario questions, and almost no code. This guide teaches the architecture reasoning, governance frameworks, and lifecycle discipline the exam actually tests, from someone who does this work in a regulated bank.]]></description>
@@ -981,7 +981,7 @@
   </item>
   <item>
     <title>The Claude Certified Developer Exam: A Complete Study Guide</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide</guid>
     <pubDate>Thu, 27 Apr 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[A domain-by-domain study guide for Anthropic's CCDV-F exam. Eight domains, real SDK code for every one of them, a worked mini-project, and a preparation plan built for working engineers.]]></description>
@@ -1003,7 +1003,7 @@
   </item>
   <item>
     <title>The Claude Certified Associate Exam: A Complete Study Guide for CCAO-F</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide</guid>
     <pubDate>Thu, 20 Apr 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Anthropic's entry-level certification tests whether you can evaluate Claude's outputs, design workflows around it, and use it responsibly. This is the full study guide: every domain in blueprint order, the actual material behind each one, and how to walk into the exam ready to pass.]]></description>
@@ -1023,7 +1023,7 @@
   </item>
   <item>
     <title>The Graph Layer in Production: MCP, Local-First, and Build vs Buy</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy</guid>
     <pubDate>Thu, 13 Apr 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The finale of the graph-layer series. Four posts argued that agents need a graph of your code. This one is about shipping it: why MCP became the universal transport, why the winning pattern is pre-computed and local-first with no code egress, how to keep the graph fresh, when it pays for itself, and the honest senior take on when not to graphify at all.]]></description>
@@ -1043,7 +1043,7 @@
   </item>
   <item>
     <title>Graph Memory: Giving Agents a Temporal Knowledge Graph</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee</guid>
     <pubDate>Thu, 06 Apr 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Vector memory retrieves text that looks like the past. It cannot tell you that the past changed. This is the fourth post in The Graph Layer for Agents: how to give an agent a memory that models evolving, contradicting facts over time as a bi-temporal knowledge graph, why fact invalidation beats deletion, what Graphiti and Cognee actually do, and the senior judgment of when none of this is worth the cost.]]></description>
@@ -1063,7 +1063,7 @@
   </item>
   <item>
     <title>Querying Code Graphs: Blast Radius, Localization, and Ranking Context</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization</guid>
     <pubDate>Thu, 30 Mar 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Part 3 of The Graph Layer for Agents. You have a code graph. Now what queries actually make an agent smarter? Localization, blast radius, PageRank-ranked context, and multi-hop retrieval, with real networkx over a call graph. The point is fewer tokens, fewer tool calls, better grounding.]]></description>
@@ -1083,7 +1083,7 @@
   </item>
   <item>
     <title>Repo to Graph: AST-Derived vs LLM-Extracted Knowledge Graphs</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction</guid>
     <pubDate>Thu, 23 Mar 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Part 2 of The Graph Layer for Agents. Two indexers point at the same Java repo. One finishes in eight seconds and answers every architecture question correctly. The other takes forty minutes, silently drops 377 files, and still gets some answers wrong. This is the story of how a repository actually becomes a graph, and why the boring deterministic path wins.]]></description>
@@ -1103,7 +1103,7 @@
   </item>
   <item>
     <title>The Graph Layer for Agents: Why Grep and Embeddings Stopped Being Enough</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short</guid>
     <pubDate>Thu, 16 Mar 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Coding agents hit a hard ceiling with grep and vector embeddings, because neither can answer the questions that matter, what breaks if I touch this, who calls this, where does this decision actually live. The answer emerging across the industry in 2025 and 2026 is the context engine, a pre-analyzed queryable graph of your codebase served to the agent over MCP. This is part one of a five-part series, the map before the deep dives.]]></description>
@@ -1123,7 +1123,7 @@
   </item>
   <item>
     <title>Engineering for the Product: Scale, Prioritization, and Architecture as Judgment</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture</guid>
     <pubDate>Thu, 09 Mar 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The capstone of the senior-in-the-age-of-AI series. Implementation is cheap now, so the scarce skill moves up the stack: deciding what to build, how much to scale, which trade-off to take, and when generated code is subtly wrong. A field guide to engineering judgment as a product discipline, told through the lens of city planning.]]></description>
@@ -1142,7 +1142,7 @@
   </item>
   <item>
     <title>The Theory That Survives: CAP, PACELC, and the Trade-offs an AI Will Quietly Violate</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs</guid>
     <pubDate>Thu, 02 Mar 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Frameworks churn. The theorems that bound what a distributed system can do are permanent, and an AI coding tool will confidently generate a system that quietly violates the consistency model you actually needed. This is the theory with the longest shelf life, framed as a brass balance scale where every guarantee you add to one pan is paid for in another.]]></description>
@@ -1161,7 +1161,7 @@
   </item>
   <item>
     <title>The Container, Not the Code: API Design as a Contract</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx</guid>
     <pubDate>Thu, 24 Feb 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[An AI can generate endpoint handlers and an OpenAPI spec in seconds. But an API is a promise to other humans and systems, and promises are expensive to break. This is the third field note in a series on what stays scarce when the implementation becomes free: the contract, not the code, is the hard part.]]></description>
@@ -1180,7 +1180,7 @@
   </item>
   <item>
     <title>The Shelf That Outlives the Building: Data Modeling for the Senior Engineer</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design</guid>
     <pubDate>Thu, 17 Feb 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[An AI will generate a CREATE TABLE statement in two seconds. It cannot tell you whether that table is the right shape for the queries you will run for the next ten years. The data model is the one decision that outlives every rewrite and is the most expensive to get wrong. This is the second post in a series on the judgment that stays scarce when machines write the code.]]></description>
@@ -1200,7 +1200,7 @@
   </item>
   <item>
     <title>The Grid Doesn&apos;t Care About Your Retry Loop: Infrastructure Judgment in the Age of AI Coding</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking</guid>
     <pubDate>Thu, 10 Feb 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[An AI can scaffold a Kubernetes manifest or a retry loop in seconds. It cannot decide your failure domains, your blast radius, or whether your retry will trigger a thundering herd at 3am. This is the first post in a series on the senior judgment that survives the code generator, starting with the hardest place to be wrong: infrastructure.]]></description>
@@ -1220,7 +1220,7 @@
   </item>
   <item>
     <title>The Enterprise Shield: Governance, Security, and Business Value of Agents</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business</guid>
     <pubDate>Thu, 03 Feb 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[The strategic close to the agentic engineering arc. An agent that is fluent and clever but insecure, unaccountable, or untethered to a business metric should not ship. This is the shield a regulated bank wraps around a production agent: prompt-injection defense in depth, retrieval ACLs, PII masking, an incident protocol for a jailbreak in the wild, responsible-AI controls for proxy bias, system cards and red teaming to satisfy a security review, and the FinOps and ROI arguments that prove the thing earns its keep.]]></description>
@@ -1241,7 +1241,7 @@
   </item>
   <item>
     <title>Operating Agents: Evaluation, Observability, and Scalability</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale</guid>
     <pubDate>Thu, 27 Jan 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[An agent that demos beautifully is not a production service. This is the operations layer of agentic engineering: how to measure quality with RAGAS-style metrics, build regression gates that block bad deploys, make stochastic bugs reproducible, trace every decision for audit, and scale the whole thing without setting your token budget on fire.]]></description>
@@ -1261,7 +1261,7 @@
   </item>
   <item>
     <title>Integration Protocols: How Agents Talk to the World and to Each Other</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a</guid>
     <pubDate>Thu, 20 Jan 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Every agent you build has to reach data it does not own and cooperate with agents it did not write. Do that with bespoke connectors and the cost explodes as M times N. This is the protocol layer of agentic engineering: MCP for tools and context, A2A for agent-to-agent collaboration, and why a standard beats a super-agent, a single model, or a shared vector database every time.]]></description>
@@ -1281,7 +1281,7 @@
   </item>
   <item>
     <title>Agent Memory and Retrieval: From Embeddings to Production RAG</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag</guid>
     <pubDate>Thu, 13 Jan 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[An agent's intelligence is mostly its context system: what it can remember across turns and what it can pull in from the outside. Memory and retrieval are one design surface. This is the engineering of that surface, from the geometry of embeddings to the production failures that decide whether your agent answers from today's policy or last year's deleted record.]]></description>
@@ -1301,7 +1301,7 @@
   </item>
   <item>
     <title>Agent Architecture and Orchestration: Routers, Graphs, and Multi-Agent Workflows</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration</guid>
     <pubDate>Thu, 06 Jan 2028 00:00:00 GMT</pubDate>
     <description><![CDATA[Control flow is the part of agent engineering nobody puts in the demo and everybody fights with in production. This is a working tour of the topologies that matter, routers, hierarchical supervisors, consensus layers, and the cyclic graphs underneath them, plus the LangGraph, CrewAI, LangChain, and LlamaIndex machinery that makes them durable instead of brittle.]]></description>
@@ -1321,7 +1321,7 @@
   </item>
   <item>
     <title>Foundations of Agentic AI: How LLMs Think, and What Makes a Program an Agent</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents</guid>
     <pubDate>Thu, 30 Dec 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Part one of a six-part series on agentic AI engineering. We demystify what an LLM actually does when it thinks, why it can never be certain, and where the bright line falls between a hardcoded chain and a program that controls its own flow.]]></description>
@@ -1341,7 +1341,7 @@
   </item>
   <item>
     <title>Defining the Knowledge Stack: Assets, Products, Tools, and Pipelines</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</guid>
     <pubDate>Thu, 23 Dec 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[You cannot structure what you cannot define. Before an enterprise argues about which knowledge base to build, it needs crisp words for the strata involved: assets, products, tools, pipelines, and the discipline that binds them. This is the definitional companion to the knowledge-as-a-product argument, a layered vocabulary you can lift straight into your own org docs.]]></description>
@@ -1363,7 +1363,7 @@
   </item>
   <item>
     <title>Comparing Knowledge Bases: Detecting Semantic and Textual Overlap Between Knowledge Products</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap</guid>
     <pubDate>Thu, 16 Dec 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[A large organization rarely has one knowledge base. It has two FAQ spreadsheets that nobody realized were eighty percent the same, plus a vectorized KB and a structured one that may or may not be talking about the same things. This is the rigorous version of the question every governance review eventually asks, do these two knowledge bases overlap, and what should we do about it, worked from exact-duplicate hashing through MinHash, embeddings, optimal transport, and the contradiction case that usually matters most.]]></description>
@@ -1384,7 +1384,7 @@
   </item>
   <item>
     <title>ADK, Advanced: The Evolution of Agent Engineering</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</guid>
     <pubDate>Thu, 09 Dec 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The fastest way to understand Google's ADK deeply is not a tutorial. It is the history. This post narrates the year by year evolution of how we thought about building an agent with an LLM, through the graph based Workflow Runtime that arrived in ADK 2.0, and shows how every complexity that accumulated along the way is resolved, simplified, or quietly absorbed, including its limits.]]></description>
@@ -1406,7 +1406,7 @@
   </item>
   <item>
     <title>Redis for AI on GCP: A Critical Buy-vs-Build Analysis</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp</guid>
     <pubDate>Thu, 02 Dec 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[You already run everything on Google Cloud. Redis is selling an AI bundle -- agent memory, vector search, semantic caching, feature serving -- and it is one click away on the Marketplace. This is a skeptical procurement analysis of what you actually gain by adding it, where Memorystore and Vertex already cover you, and three POCs that would prove or disprove the value before you sign anything.]]></description>
@@ -1427,7 +1427,7 @@
   </item>
   <item>
     <title>Understanding Cloud Spanner: Graphs, Knowledge, and Where Ontologies Fit</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents</guid>
     <pubDate>Thu, 25 Nov 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Spanner was built to solve a problem most databases declare impossible: global scale, horizontal sharding, and external consistency at the same time. This is a field-notes tour of why it exists, how Spanner Graph layers a property graph on relational tables, and the honest answer to the question I keep getting asked: should your ontology and knowledge graph live in Spanner?]]></description>
@@ -1448,7 +1448,7 @@
   </item>
   <item>
     <title>The Definitive Knowledge Catalog Workshop: Catalog, Enrich, Search</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop</guid>
     <pubDate>Thu, 18 Nov 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[A hands-on, lab-style walkthrough of Google's Knowledge Catalog, the Dataplex-lineage cataloging and AI-grounding layer. We work the three core moves end to end, catalog then enrich then search, explain how each works under the hood, and close with the hard usability questions: catalog everything or be selective, one catalog or many, and what the service genuinely does not solve.]]></description>
@@ -1469,7 +1469,7 @@
   </item>
   <item>
     <title>Vector Databases Demystified: From Indexes to Vertex AI Vector Search</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search</guid>
     <pubDate>Thu, 11 Nov 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[You have embeddings. Now you need to find the nearest ones among billions, in milliseconds, without melting your budget. This is the full story of how vector indexes emerge from that one constraint, how the major index families actually work, and how to run a production vector database on Google Cloud with Vertex AI Vector Search.]]></description>
@@ -1490,7 +1490,7 @@
   </item>
   <item>
     <title>The Algorithm Behind Regex: From Patterns to Finite Automata</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata</guid>
     <pubDate>Thu, 04 Nov 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[A regular expression looks like line noise but it is secretly a tiny, beautiful machine. The same pattern can be matched in guaranteed linear time, yet the regex engine shipped with Python, Perl, and JavaScript can grind to a halt for minutes on a 30-character string. This is the story of Thompson's construction, finite automata, and why the most popular regex engines on earth chose the one algorithm that can blow up exponentially.]]></description>
@@ -1510,7 +1510,7 @@
   </item>
   <item>
     <title>Curating and Governing an Enterprise Agent: A Lifecycle Operating Model</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle</guid>
     <pubDate>Thu, 28 Oct 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Most teams treat an agent like a product launch: build it, ship it, move on. A production agent is more like a warship. It gets designed, sea-trialed, and certified, and then it returns to the dry dock again and again for inspection and refit across its whole service life. This is the end-to-end operating model for curating and governing an enterprise agent, phase by phase, with owners, gates, artifacts, and the GCP services that help at each step.]]></description>
@@ -1532,7 +1532,7 @@
   </item>
   <item>
     <title>Knowledge as a Product: What a Knowledge Base Really Is, and How Large Organizations Should Build One</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product</guid>
     <pubDate>Thu, 21 Oct 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Most enterprises treat their knowledge base as a pile of documents bolted onto a vector store, then wonder why nobody trusts it. The fix is older than RAG and borrowed from data mesh: treat knowledge as a product, with an owner, a contract, an SLA, and a shelf you can actually find it on. This is the long version of that argument, applied to a large regulated bank.]]></description>
@@ -1554,7 +1554,7 @@
   </item>
   <item>
     <title>Where Your Code Should Live: Cloud Workstations, Workbench, Coder, and the AI Team&apos;s Dev Environment</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams</guid>
     <pubDate>Thu, 14 Oct 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The blog has eighty-something posts on what to build and almost nothing on where to build it. This is the missing one. For an AI engineering team in a regulated enterprise, the dev environment is not a personal preference, it is part of the architecture, and choosing it badly costs you GPUs, data residency, and your audit trail.]]></description>
@@ -1574,7 +1574,7 @@
   </item>
   <item>
     <title>Agent Architectures: What Makes an Agent Productive</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architectures-productive-patterns</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architectures-productive-patterns/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-architectures-productive-patterns</guid>
     <pubDate>Thu, 07 Oct 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[We put LLMs in a loop, gave them tools, and called them agents. But putting an engine in a chassis doesn't make a car. This is the engineering behind agent architectures—from single routers to multi-agent supervisors—and the enterprise tools and cloud services that turn brittle demos into productive enterprise systems.]]></description>
@@ -1593,7 +1593,7 @@
   </item>
   <item>
     <title>The RL Algorithm Tree: A Practitioner&apos;s Tour from Policy Gradients to AlphaZero</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour</guid>
     <pubDate>Thu, 30 Sep 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The cert review showed you the silhouette of reinforcement learning. The tree the field actually uses has four branches, fifteen named algorithms, and a clean logic for which one to reach for. This is the tour through it, with the equation, the contribution, and the minimal skeleton for each.]]></description>
@@ -1613,7 +1613,7 @@
   </item>
   <item>
     <title>ML Cert Review, Part II: Deep Learning, Scale, NLP, RL, and Explainability</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond</guid>
     <pubDate>Thu, 23 Sep 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Part II of the cert review picks up where the classical foundations end. This is the modern stack: deep learning core, regularization, optimizers, distributed training, the NLP and RL fast tours, explainability, and the tooling map. Crisp coverage at cert speed.]]></description>
@@ -1634,7 +1634,7 @@
   </item>
   <item>
     <title>ML Cert Review, Part I: How Models Learn and How We Measure Them</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations</guid>
     <pubDate>Thu, 16 Sep 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[You've picked your cert. Now here is the ground you actually need to be solid on. A dense, opinionated refresher on the classical ML half of any modern ML certification: metrics, losses, activations, the bias-variance trade-off, feature engineering, evaluation, ensembles, and the algorithm zoo.]]></description>
@@ -1654,7 +1654,7 @@
   </item>
   <item>
     <title>Google Cloud Certifications in 2026: A Practical Roadmap</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</guid>
     <pubDate>Thu, 09 Sep 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[What the cert ladder actually looks like in 2026, what's been added in the agent era, what each exam is honestly like, and how a working engineer should pick one. The post I wish had existed when I started planning.]]></description>
@@ -1672,7 +1672,7 @@
   </item>
   <item>
     <title>The Forgotten Half of Your App: How Data Actually Flows Between Front, Back, and Backups</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups</guid>
     <pubDate>Thu, 02 Sep 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Most engineers can draw a frontend, a backend, and a database. Then the interviewer asks about backups, replicas, dev refresh, point in time recovery, and the analytics warehouse, and the room goes quiet. The second half of the data plane is where production maturity lives. This post is the honest map: vocabulary, trade offs, and a default architecture you can copy.]]></description>
@@ -1692,7 +1692,7 @@
   </item>
   <item>
     <title>Google ADK: Building Production Agents from First Principles</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</guid>
     <pubDate>Thu, 26 Aug 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The Agent Development Kit is Google's open-source framework for authoring, evaluating, and deploying agents. This post is the most thorough single resource I could write on it: the pillar mental model as it stands after ADK 2.0, runnable code for every core abstraction, graph workflows, skills, an end-to-end multi-agent finance assistant, the agent loop drawn properly, eval, deployment to Agent Runtime, and an honest comparison with the rest of the field.]]></description>
@@ -1714,7 +1714,7 @@
   </item>
   <item>
     <title>The Stack I Would Adopt After 100 Posts: An Opinionated Manifesto</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</guid>
     <pubDate>Thu, 19 Aug 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The hundredth post was the structural retrospective. This is the practical one. After a hundred posts of saying it depends, here is the stack I would actually pick today, the books and papers that earned their place on my shelf, the patterns that proved their weight, and the ones I would refuse to deploy a second time.]]></description>
@@ -1736,7 +1736,7 @@
   </item>
   <item>
     <title>100 Posts as a Knowledge Graph: A Retrospective in Network Science</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective</guid>
     <pubDate>Thu, 12 Aug 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[When you write 99 posts and then plot the result as a graph, the picture is not what you thought you were drawing. This is post number 100, and instead of a victory lap I ran the corpus through networkx: 99 nodes, 685k words, 223 tags, 2,408 tag-tag edges. What the structure reveals is more interesting than the chronology. There is a spine, four-and-a-half communities, a long tail of singleton tags that I tagged once and forgot, a handful of bridge posts holding the graph together, and a measurable bias toward production over theory. This is the blog reading itself, with real numbers, real cluster names, and the uncomfortable parts left in.]]></description>
@@ -1756,7 +1756,7 @@
   </item>
   <item>
     <title>Agent Engineering as a Discipline: Six Roles That Just Got Names</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines</guid>
     <pubDate>Thu, 05 Aug 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[By 2026 the people who keep production agents alive had stopped calling themselves AI engineers and started using more specific titles. Context Engineer. Memory Engineer. Harness Engineer. Tool Engineer. Eval Engineer. Identity and Policy Engineer. This post is a tour of those six disciplines: what each one owns, the artifacts they produce, the named effects they fight, the anti-patterns that keep biting, and an honest projection of which roles will consolidate, which will be absorbed by vendors, and which are LinkedIn theater.]]></description>
@@ -1778,7 +1778,7 @@
   </item>
   <item>
     <title>Knowledge Catalog vs Ontologies: A Confluence, Not a Replacement</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies</guid>
     <pubDate>Thu, 29 Jul 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Google's Knowledge Catalog and a domain ontology look like they answer the same question. They do not. One is an asset registry with governance and lineage; the other is a formal model of meaning with inferential reasoning. A mature knowledge layer almost always needs both, with a clear arrow of dependency between them. This post is the four-part arc's closing piece, naming the substitutions, the anti-patterns, and the honest hybrid architecture.]]></description>
@@ -1800,7 +1800,7 @@
   </item>
   <item>
     <title>Gemini Enterprise and the Knowledge Catalog: Two Buildings, Room by Room</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive</guid>
     <pubDate>Thu, 22 Jul 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The Cloud Next 26 overview gave you the map. This post zooms in on the two pieces that will reshape a Knowledge Data Engineer's day-to-day in the next twelve months: the Gemini Enterprise Agent Platform as a control plane, and the Knowledge Catalog as the semantic spine that grounds every agent answer in audited enterprise truth.]]></description>
@@ -1822,7 +1822,7 @@
   </item>
   <item>
     <title>Google Cloud Next 2026: The Agent-Native Stack, Decoded</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack</guid>
     <pubDate>Thu, 15 Jul 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[On April 22, 2026, Sundar Pichai walked onstage at Mandalay Bay and quietly renamed Vertex AI. The new label, Gemini Enterprise Agent Platform, sounds like marketing. It is not. It is the most aggressive cloud reorganization since the original Compute Engine launch. This is the practitioner's deep dive into every announcement that matters, what it replaces, and what to actually adopt.]]></description>
@@ -1844,7 +1844,7 @@
   </item>
   <item>
     <title>Guardrails for Agent Systems: A Field Guide</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide</guid>
     <pubDate>Thu, 08 Jul 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[What goes wrong when an agent gets loose in production, and the layered defenses that actually keep it from doing damage. A practitioner's mental model: threat taxonomy, five guardrail layers with code, blast radius reasoning, the tooling landscape, evaluation, and the anti-patterns that defeat the whole effort.]]></description>
@@ -1865,7 +1865,7 @@
   </item>
   <item>
     <title>Populating a Knowledge Graph with LLMs: A Banking Case Study</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking</guid>
     <pubDate>Thu, 01 Jul 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[There is an abyss between the GraphRAG paper and a pipeline that runs reliably in production. This post crosses that gap with a worked banking case — ingesting mortgage-loan documents into Neo4j with a schema-embedded extraction prompt, Pydantic repair, pySHACL validation, entity resolution, and idempotent MERGE Cypher.]]></description>
@@ -1887,7 +1887,7 @@
   </item>
   <item>
     <title>Ontologies in Production: A CI/CD Pipeline for Enterprise Schemas on GCP</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp</guid>
     <pubDate>Thu, 24 Jun 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[An ontology that lives on one engineer's laptop is not an ontology, it is a document. Putting one into production has its own architectural shape: Git as source of truth, YAML authored and compiled into OWL, SHACL, and JSON-Schema, CI that runs competency questions as tests, and GCP plumbing that treats the schema as code, not data.]]></description>
@@ -1908,7 +1908,7 @@
   </item>
   <item>
     <title>Modular Ontologies: The Core + Domains Pattern for Enterprise Knowledge Graphs</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern</guid>
     <pubDate>Thu, 17 Jun 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[An enterprise ontology is neither a single monolithic file nor a loose federation of domain silos. Real projects converge to Core + Domains: a small, stable core of cross-cutting concepts and orbiting modules per business line. This post derives the operational rule that governs that split, using banking as the grounded example.]]></description>
@@ -1929,7 +1929,7 @@
   </item>
   <item>
     <title>TBox and ABox: Why the Schema/Facts Split Matters in Production Knowledge Graphs</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction</guid>
     <pubDate>Thu, 10 Jun 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Most enterprise knowledge-graph projects fail at the same join: the place where the schema of the world meets the facts about the world. The Description-Logic distinction between TBox, ABox, and RBox is not academic pedantry. It is the operating model that tells you how to lay out files, who owns what, how often each piece changes, which tools to use, and where SHACL sits in the pipeline. This post grounds the theory in a banking knowledge graph and shows the concrete failure modes when teams collapse the distinction.]]></description>
@@ -1950,7 +1950,7 @@
   </item>
   <item>
     <title>Ontology-Grounded RAG: Why Chunks-in-Nodes Matter More Than the Ontology Itself</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes</guid>
     <pubDate>Thu, 03 Jun 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[A 2025 paper quietly demolishes the assumption that ontology source is what matters for graph-based RAG. The real lever is whether your nodes carry text chunks — and if they don't, structure alone underperforms naive vector RAG by 40 points.]]></description>
@@ -1970,7 +1970,7 @@
   </item>
   <item>
     <title>Query Routing: How the Agent Decides Where to Look</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions</guid>
     <pubDate>Thu, 27 May 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[In a hybrid retrieval system with vector stores, graphs, SQL and APIs, the quality of each source matters less than the decision of which one to consult. This post walks through three routing strategies — LLM-only, explicit classifier, cascading fallback — and shows how to evaluate the router as a first-class component.]]></description>
@@ -1990,7 +1990,7 @@
   </item>
   <item>
     <title>From Ontology to Agent Toolbox: Turning Your Schema Into Tools</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox</guid>
     <pubDate>Thu, 20 May 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[An ontology is not just a schema — it is the blueprint that tells you which tools to give your agent. This post walks through three levels of tool granularity, from a monolithic Cypher endpoint to domain-scoped tools derived class-by-class from an OWL ontology, with production-quality Python, guardrails, and role-based access.]]></description>
@@ -2010,7 +2010,7 @@
   </item>
   <item>
     <title>LookML: The Semantic Layer That Turns SQL Into a Product</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling</guid>
     <pubDate>Thu, 13 May 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Raw SQL tables are not data products. Between the warehouse and the business sits a translation layer that defines what metrics mean, how tables relate, and who can see what. LookML is one answer to that problem -- a code-based semantic modeling language that version-controls your analytics and opens the door to agentic, programmatic BI.]]></description>
@@ -2030,7 +2030,7 @@
   </item>
   <item>
     <title>Network Science: Communities, Centrality, and Small Worlds</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality</guid>
     <pubDate>Thu, 06 May 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Graph theory gives you the language. Network science asks: what does a graph's structure tell you about the system it represents? From Granovetter's weak ties to Barabasi's scale-free hubs, this is the science of extracting meaning from connections -- who matters most, who belongs together, and why real networks look nothing like random ones.]]></description>
@@ -2048,7 +2048,7 @@
   </item>
   <item>
     <title>Graph Theory: The Mathematics of Connections</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections</guid>
     <pubDate>Thu, 29 Apr 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[From Euler's walk across seven bridges in 1736 to the mathematics that powers social networks, recommendation systems, and neural networks -- graph theory is the language of connections. This is the foundation that every algorithm on networks assumes you already know.]]></description>
@@ -2066,7 +2066,7 @@
   </item>
   <item>
     <title>Ramanujan&apos;s Constant: Why e^(pi*sqrt(163)) Is Almost an Integer</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer</guid>
     <pubDate>Thu, 22 Apr 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The number e^(pi*sqrt(163)) misses being an integer by about 7.5 x 10^-13. This is not a coincidence -- it is a consequence of 163 being a Heegner number, where the j-invariant, complex multiplication, and the class number one problem converge into one of the most beautiful near-misses in all of mathematics.]]></description>
@@ -2084,7 +2084,7 @@
   </item>
   <item>
     <title>Fermat&apos;s Last Theorem for n=4: Infinite Descent and Gaussian Integers</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent</guid>
     <pubDate>Thu, 15 Apr 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Fermat proved exactly one case of his famous Last Theorem: the case n=4, using a technique he invented called infinite descent. We walk through his classical proof step by step, then re-prove it using Gaussian integers to reveal why algebraic number theory makes everything cleaner. Two proofs, one theorem, and the birth of a proof technique that changed mathematics.]]></description>
@@ -2102,7 +2102,7 @@
   </item>
   <item>
     <title>Algebraic Number Theory: When Unique Factorization Breaks</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks</guid>
     <pubDate>Thu, 08 Apr 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[You learned that every integer factors uniquely into primes. It feels like a law of nature. But extend to larger number rings and it shatters -- spectacularly. In the ring of integers of certain number fields, the number 6 has two genuinely different prime factorizations. Algebraic number theory was born from fixing this.]]></description>
@@ -2122,7 +2122,7 @@
   </item>
   <item>
     <title>PageRank: The Eigenvector That Launched Google</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</guid>
     <pubDate>Thu, 01 Apr 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[An algorithm most engineers have heard of but few understand mathematically. Starting from the original problem of ranking web pages without reading them, we build the random surfer model, derive PageRank as the dominant eigenvector of a stochastic transition matrix, and trace how one linear algebra insight became worth hundreds of billions of dollars.]]></description>
@@ -2142,7 +2142,7 @@
   </item>
   <item>
     <title>Graph Neural Networks: Learning on Structured Data</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</guid>
     <pubDate>Thu, 25 Mar 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Your data has structure that tabular models ignore. Graph Neural Networks learn directly from nodes, edges, and neighborhoods — turning social networks into recommendations, molecules into property predictions, and transaction graphs into fraud detectors. This post covers message passing, GCN, GAT, GraphSAGE, and production deployment with PyTorch Geometric.]]></description>
@@ -2163,7 +2163,7 @@
   </item>
   <item>
     <title>Vertex AI: The Complete GCP ML Platform from the CLI</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</guid>
     <pubDate>Thu, 18 Mar 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Google Cloud's ML platform is massive — notebooks, custom training, AutoML, model registry, endpoints, pipelines, feature store, vector search, generative AI, monitoring, and more. This is the map: every service explained with its CLI commands, Python SDK equivalents, pricing model, and the trade-offs you need to know before committing budget.]]></description>
@@ -2183,7 +2183,7 @@
   </item>
   <item>
     <title>Network Fundamentals: Every Concept You Need to Know</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept</guid>
     <pubDate>Thu, 11 Mar 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Every application you build runs on a network. This is the definitive guide to the concepts that make it work: the OSI model layer by layer, TCP/IP internals, IP addressing and subnetting, DNS resolution, HTTP and TLS, routing, NAT, DHCP, VPNs, network security, and the troubleshooting toolkit every engineer should master.]]></description>
@@ -2202,7 +2202,7 @@
   </item>
   <item>
     <title>Terraform: Infrastructure as Code from Zero to Production</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code</guid>
     <pubDate>Thu, 04 Mar 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Clicking through a cloud console works until it doesn't. Terraform lets you describe your entire infrastructure in code — versioned, reviewable, reproducible. This is the complete guide: HCL syntax, providers, state management, modules, production workflows, and the hard-won patterns that keep teams from breaking things at 2 AM.]]></description>
@@ -2222,7 +2222,7 @@
   </item>
   <item>
     <title>Shannon&apos;s Number: Why Chess Is &apos;Uncomputable&apos; and Why Computers Beat Us Anyway</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree</guid>
     <pubDate>Thu, 25 Feb 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Claude Shannon estimated 10^120 possible chess games in 1950 — a number so large it dwarfs the atoms in the observable universe. The game tree is formally EXPTIME-complete. And yet a laptop running Stockfish will crush every grandmaster alive. The reconciliation is one of the most elegant ideas in computer science: you don't need to search the whole tree.]]></description>
@@ -2240,7 +2240,7 @@
   </item>
   <item>
     <title>Designing an MCP Server That Turns Natural Language into Power BI Dashboards</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard</guid>
     <pubDate>Thu, 18 Feb 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The request 'show me churn by region last quarter' is actually three hard problems: understanding what churn means in your organization, generating correct SQL over your semantic layer, and choosing the right visualization. This post designs an MCP server that solves all three, grounding every step against a curated semantic layer so the LLM never hallucinates a metric or invents a column.]]></description>
@@ -2260,7 +2260,7 @@
   </item>
   <item>
     <title>Kubernetes for ML Engineers: The Minimum Subset You Actually Need</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml</guid>
     <pubDate>Thu, 11 Feb 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Most Kubernetes guides are written for platform engineers. This one is not. If you already know Docker and just want to train models, serve predictions, and stop asking DevOps for favors, here is the 20% of Kubernetes that delivers 80% of the value -- the objects, commands, and YAML patterns an ML engineer actually touches.]]></description>
@@ -2280,7 +2280,7 @@
   </item>
   <item>
     <title>Multimodal Embeddings: One Vector Space for Everything, and the Metric Problem Nobody Talks About</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</guid>
     <pubDate>Thu, 04 Feb 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[The promise of multimodal embeddings is seductive: encode text, images, audio, and video into a single vector space and let cosine similarity do the rest. The reality is messier. Cross-modal retrieval breaks in subtle ways because different modalities occupy different submanifolds, and naive top-k returns nonsense. This is the full story — from CLIP to SigLIP to ImageBind, the modality gap that haunts production systems, and the retrieval patterns that actually work.]]></description>
@@ -2300,7 +2300,7 @@
   </item>
   <item>
     <title>Bash as a Daily Driver: The Subset an ML Engineer Actually Uses</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer</guid>
     <pubDate>Thu, 28 Jan 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Bash is half duct tape, half landmine. This is the narrow slice of shell that ML and data engineers actually leverage every day -- pipe composition, safe scripting, parallelism, modern replacements, JSON wrangling -- and the honest decision point for switching to Python.]]></description>
@@ -2318,7 +2318,7 @@
   </item>
   <item>
     <title>Caching in LLM Systems: Four Layers That Actually Move the Needle</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers</guid>
     <pubDate>Thu, 21 Jan 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Generic caching advice does not transfer cleanly to LLM applications. This post maps the four concrete cache layers in a production LLM system -- prompt prefix, embedding, retrieval, and response -- explains how they interact, and provides a decision framework for when to deploy each one.]]></description>
@@ -2338,7 +2338,7 @@
   </item>
   <item>
     <title>Production LLM Agents: Patterns That Survive Contact With Users</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns</guid>
     <pubDate>Thu, 14 Jan 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Real production patterns for LLM agents in 2026: the ReAct loop, planner/executor splits, tool-use protocols, memory architectures, reflection, multi-agent coordination, failure modes that actually break you, and observability that earns its keep.]]></description>
@@ -2358,7 +2358,7 @@
   </item>
   <item>
     <title>The Hash as an Engineering Tool: Content Addressing, Caches, and the Quiet Primitive Behind Modern Systems</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool</guid>
     <pubDate>Thu, 07 Jan 2027 00:00:00 GMT</pubDate>
     <description><![CDATA[Hashes are not just a crypto topic. They are the quiet primitive behind Git, Docker, Bazel, IPFS, rsync, Bitcoin, CDNs, backup systems, and half the distributed systems you interact with every day. This is a tour of the hash as an everyday engineering tool — content-addressable storage, build caches, chunk deduplication, Merkle trees, consistent hashing, bloom filters, and the fingerprinting tricks that make modern infrastructure feel like magic.]]></description>
@@ -2378,7 +2378,7 @@
   </item>
   <item>
     <title>When Models Feel: Inside Anthropic&apos;s Paper on Emotion Concepts in LLMs</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms</guid>
     <pubDate>Thu, 31 Dec 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Anthropic's interpretability team found 171 emotion-like representations inside Claude Sonnet 4.5, proved they causally shape behavior, and showed how a vector called desperate can turn an otherwise aligned model into one that blackmails and cheats. Here's what the paper actually says and why it matters.]]></description>
@@ -2398,7 +2398,7 @@
   </item>
   <item>
     <title>Reading microgpt: What Karpathy&apos;s 200-Line LLM Teaches You That PyTorch Hides</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy</guid>
     <pubDate>Thu, 24 Dec 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In February 2026, Andrej Karpathy published a 199-line Python file that trains and runs a GPT end-to-end. No PyTorch, no NumPy, no dependencies — just a Value class, a transformer, Adam, and a loop. This is the culmination of a decade of simplification work, and reading it line by line is the best introduction to what LLMs actually are. Here's the full tour.]]></description>
@@ -2417,7 +2417,7 @@
   </item>
   <item>
     <title>Claude Code: The Complete Guide to Becoming a Power User of the AI That Codes With You</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide</guid>
     <pubDate>Thu, 17 Dec 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Most developers use Claude Code like a smarter autocomplete. A small minority treat it as what it actually is — a programmable agent that reads files, runs commands, spawns helpers, and iterates until your task is done. This is the complete mental model, every subsystem that matters, and how to actually become an expert.]]></description>
@@ -2437,7 +2437,7 @@
   </item>
   <item>
     <title>Git and GitHub: The Complete Mental Model for Working with Code</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide</guid>
     <pubDate>Thu, 10 Dec 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Git is the single most-used piece of software in the entire profession, and most engineers use maybe 15% of it from muscle memory. This is the full guide — how Git actually stores your code, every command that matters and what it really does, how to recover from the disasters, branching strategies, GitHub's model on top of Git, Actions, organizations, and the gotchas you will hit. Long because it has to be.]]></description>
@@ -2457,7 +2457,7 @@
   </item>
   <item>
     <title>Apache Airflow: The Orchestrator That Runs the Data World</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration</guid>
     <pubDate>Thu, 03 Dec 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A working engineer's guide to Airflow in the 3.x era — what it actually is, how the scheduler and executors fit together, when to use TaskFlow vs classic operators, why Assets and DAG versioning changed the mental model, and the honest tradeoffs against Prefect and Dagster. Written for people who need to ship pipelines, not slide-deck architects.]]></description>
@@ -2477,7 +2477,7 @@
   </item>
   <item>
     <title>Fine-Tuning Embeddings: What You Gain, What You Need, and How to Actually Do It</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings</guid>
     <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Off-the-shelf embeddings are the default, but in specialized domains they leave 5-15 points of retrieval quality on the table. This is the full playbook for when to fine-tune, what training data looks like, which loss function to pick, how hard negative mining changes everything, and how to ship the result without breaking your vector index.]]></description>
@@ -2497,7 +2497,7 @@
   </item>
   <item>
     <title>Mamba: The Paper That Asked If Attention Was Really All You Need</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces</guid>
     <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A line-by-line walkthrough of Gu and Dao's 2023 Mamba paper: what state space models are, where they came from, why S4 nearly worked, the single insight that made them competitive with Transformers, and the hardware-aware trick that made them fast. Written to be understood, not just cited.]]></description>
@@ -2517,7 +2517,7 @@
   </item>
   <item>
     <title>ElevenLabs in Production: How Neural Voice Synthesis Actually Works</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering</guid>
     <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A technical walkthrough of ElevenLabs — how the models are built, how to wire them into a real application with streaming and WebSockets, and the ethical, operational, and cost considerations you need to think about before shipping a voice feature.]]></description>
@@ -2537,7 +2537,7 @@
   </item>
   <item>
     <title>Curating Knowledge Bases: The Unglamorous Work That Makes RAG Actually Work</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation</guid>
     <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Everyone talks about chunking strategies and embedding models. Nobody talks about what happens before — the document triage, token budget math, metadata enrichment, deduplication, and freshness policies that determine whether your knowledge base is an asset or a liability. This post covers the full curation lifecycle.]]></description>
@@ -2557,7 +2557,7 @@
   </item>
   <item>
     <title>Knowledge Graphs in Practice: From Documents to Queryable Intelligence</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice</guid>
     <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Ontologies give you the blueprint. Knowledge graphs give you the building. This post walks through the full construction pipeline — extracting entities with LLMs, building graphs in Neo4j, querying with Cypher, and wiring it all into GraphRAG — with working Python code at every step.]]></description>
@@ -2577,7 +2577,7 @@
   </item>
   <item>
     <title>Enterprise AI Stack: A Decision Framework That Outlasts the Hype Cycle</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection</guid>
     <pubDate>Thu, 22 Oct 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Choosing between No-Code, Low-Code, and custom AI platforms shouldn't require a PhD in vendor marketing. This framework breaks the decision into six durable axes — scope, gateway, guardrails, observability, contingency, and interface — so your team picks the right stack for each use case, not just the loudest one.]]></description>
@@ -2597,7 +2597,7 @@
   </item>
   <item>
     <title>Ontologies: The Blueprint Behind Every Knowledge Base That Actually Works</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases</guid>
     <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Ontologies turn chaotic data into structured knowledge. Learn how to design, build, and deploy ontology-driven knowledge bases — from RDF triples to production-ready systems that power RAG, search, and enterprise AI.]]></description>
@@ -2616,7 +2616,7 @@
   </item>
   <item>
     <title>Data Silos: The Silent Tax on Every Decision Your Company Makes</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers</guid>
     <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Data silos are more than a technical inconvenience — they're a structural tax on every decision your organization makes. This post unpacks why silos form, why naïve centralization fails, and how to build a federation strategy that actually works, with cloud-native patterns on AWS and GCP.]]></description>
@@ -2636,7 +2636,7 @@
   </item>
   <item>
     <title>DAMA DMBOK: The Data Governance Framework Every Data Engineer Should Know</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance</guid>
     <pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[DAMA DMBOK is the industry standard framework for data governance, but most engineers encounter it as a wall of jargon. This guide breaks down all 11 knowledge areas with clear definitions, real narrative, and applies them to a bank building an AI-powered knowledge base from scratch.]]></description>
@@ -2656,7 +2656,7 @@
   </item>
   <item>
     <title>Apache Spark: From a PhD Paper to the Backbone of the Modern Data Stack</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide</guid>
     <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Apache Spark started as a 2010 Berkeley paper asking a deceptively simple question: what if we didn't have to write to disk between every computation step? Fifteen years later, it powers data pipelines across most of the Fortune 500. Here's the full story — the engine, the language, the ecosystem, and the honest trade-offs.]]></description>
@@ -2676,7 +2676,7 @@
   </item>
   <item>
     <title>Dataiku and the Enterprise AI Ecosystem: What Platforms Solve, What They Don&apos;t, and When to Use One</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem</guid>
     <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A practical look at Dataiku DSS in the context of the broader enterprise data + AI landscape: the real problems it solves, where it falls short, the honest trade-offs against alternatives, and frameworks for deciding if it's the right tool for your team.]]></description>
@@ -2696,7 +2696,7 @@
   </item>
   <item>
     <title>Document Processing: OCR, Layout Detection, and the Path to Clean Text</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout</guid>
     <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Before you can retrieve from a document, you have to read it. That sounds trivial until you face a rotated scan, a two-column PDF, a table that spans pages, or a PPTX with embedded charts. This is the complete guide to document processing: image preprocessing, OCR engines, layout detection, full-pipeline parsers, table extraction, cloud APIs, vision LLMs, and benchmarks — with a routing pattern you can deploy today.]]></description>
@@ -2716,7 +2716,7 @@
   </item>
   <item>
     <title>LLM as a Judge: Using Language Models to Evaluate Language Models</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge</guid>
     <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Evaluating open-ended AI output at scale is one of the hardest unsolved problems in the field. Human evaluation is the gold standard but doesn't scale. Classical metrics like BLEU and ROUGE miss what matters. LLM-as-a-Judge — using a stronger model to evaluate another — achieves over 80% agreement with human raters and is reshaping how the field measures quality, trains reward models, and builds evaluation pipelines.]]></description>
@@ -2736,7 +2736,7 @@
   </item>
   <item>
     <title>Enterprise AI PoCs: From Vendor Demos to Decisions You Can Defend</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation</guid>
     <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Most AI proofs of concept are designed to impress, not to inform. They test vendor demos against ideal data, measure metrics that don't match business objectives, and end with a slide deck that recommends the option the team already preferred. Here's a rigorous framework for running PoCs that produce defensible, production-aligned decisions — covering vector database evaluation, RAG quality measurement, text-to-SQL agents, and what changes when you're working in a regulated environment.]]></description>
@@ -2756,7 +2756,7 @@
   </item>
   <item>
     <title>Building Enterprise MCP Servers: From Prototype to Production</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise</guid>
     <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[The existing MCP post explains the concept. This one is about building servers that survive contact with a real company: authentication with OAuth 2.1, per-tool authorization scopes, audit logging, middleware, multi-tenant isolation, gateway patterns, and deployment strategies that don't require every developer to run their own Python process.]]></description>
@@ -2776,7 +2776,7 @@
   </item>
   <item>
     <title>The Fourier Transform: Every Signal Is a Sum of Sine Waves</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform</guid>
     <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[An idea Lagrange called 'impossible' in 1807 now underlies JPEG compression, MRI machines, audio equalizers, and diffusion models. Here's where the Fourier transform comes from, why the formula looks the way it does, and why this 200-year-old insight keeps showing up at the center of modern machine learning.]]></description>
@@ -2795,7 +2795,7 @@
   </item>
   <item>
     <title>PyTorch, TensorFlow, and JAX: The Deep Learning Framework Landscape in 2026</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks</guid>
     <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[PyTorch dominates research, TensorFlow still rules mobile and edge deployment, and JAX is quietly rewriting the rules for large-scale training. A complete guide to all three — their architecture, strengths, production patterns, and when to choose each.]]></description>
@@ -2814,7 +2814,7 @@
   </item>
   <item>
     <title>The Books That Shaped Software: Clean Code, Design Patterns, and Architecture</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics</guid>
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Clean Code, the Gang of Four, Hexagonal Architecture — these books sit on every senior engineer's shelf. But reading them uncritically in 2026 is almost as dangerous as not reading them at all. Here's what they got right, where they lead you astray, and how the ideas evolved into the architecture patterns we actually use.]]></description>
@@ -2831,7 +2831,7 @@
   </item>
   <item>
     <title>LlamaIndex vs LangChain: Choosing Your LLM Framework in 2026</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks</guid>
     <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Both LlamaIndex and LangChain can build a RAG pipeline. Both can run agents. Both have grown toward each other's territory. The question is no longer 'which can do it' but 'which mental model fits your problem.' This is the honest comparison — what each framework is actually designed for, where each excels without fighting the defaults, and how the broader ecosystem of DSPy, Haystack, CrewAI, and Pydantic AI each answer a different question.]]></description>
@@ -2851,7 +2851,7 @@
   </item>
   <item>
     <title>The AI Engineer&apos;s Inference Toolkit: Ollama, vLLM, LM Studio, and Docker</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools</guid>
     <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Every AI engineer eventually needs to run models locally — for privacy, cost control, latency, or just to avoid depending on an API that might break at 2am. This is the practical guide to the three tools that matter: LM Studio for exploration, Ollama for development, and vLLM for production. With complete Docker Compose setups and proof-of-concept patterns.]]></description>
@@ -2871,7 +2871,7 @@
   </item>
   <item>
     <title>RLHF, DPO, and the Art of Teaching Models to Behave</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment</guid>
     <pubDate>Tue, 16 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Pre-training produces a model that's brilliant at predicting text. Alignment turns it into a model that's actually useful — and safe. This is the deep guide to RLHF, DPO, and their 2025-2026 successors: how the reward model works, why PPO is unstable, how DPO eliminates the need for it, what SimPO, KTO, ORPO, and GRPO each solve, and what all of this means when you're building on top of aligned models.]]></description>
@@ -2891,7 +2891,7 @@
   </item>
   <item>
     <title>Fine-tuning Gemma 4: When Prompting Isn&apos;t Enough</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora</guid>
     <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Gemma 4 dropped last week: four sizes, Apache 2.0, multimodal, and day-one fine-tuning support. This is the deep guide — understanding the family, choosing the right variant for your hardware, why full fine-tuning is economically indefensible, how LoRA and QLoRA make adaptation practical on consumer GPUs, and a complete working recipe with Gemma 4 E4B from dataset to deployed adapter.]]></description>
@@ -2911,7 +2911,7 @@
   </item>
   <item>
     <title>Lakehouse Architecture: How Open Table Formats Fixed the Data Lake&apos;s Original Sin</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture</guid>
     <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Data lakes promised cheap, flexible analytics — and delivered corrupt reads, GDPR nightmares, and query engines flying blind. The lakehouse pattern fixes this by layering ACID transactions, schema enforcement, and row-level operations directly onto object storage. This is the story of how Apache Iceberg, Delta Lake, and Apache Hudi changed what's possible — and when to use each.]]></description>
@@ -2931,7 +2931,7 @@
   </item>
   <item>
     <title>dbt: The Analytics Engineering Tool That Turned SQL into Software</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering</guid>
     <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Every data team reaches the same crisis point: SQL transformations scattered across notebooks, dashboards, and ad-hoc scripts, with no one sure which version is correct. dbt solves this by bringing software engineering practices — version control, testing, documentation, modularity — to the SQL layer. This is a complete guide to building reliable analytical pipelines with dbt.]]></description>
@@ -2951,7 +2951,7 @@
   </item>
   <item>
     <title>Dimensional Modeling: The Kimball Method for Analytical Data Warehouses</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball</guid>
     <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Your pipeline is clean, your data is accurate, and your BI dashboard still takes 45 seconds to load. The problem is rarely the data — it's the model. This is a complete guide to Kimball's dimensional modeling: star schemas, grain declaration, SCD types, the bus matrix, and how to implement all of it in dbt.]]></description>
@@ -2971,7 +2971,7 @@
   </item>
   <item>
     <title>SQL, Pandas, PySpark, and DuckDB: The Data Engineer&apos;s Complete Reference</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb</guid>
     <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Four tools, one mental model. SQL for declarative in-database logic. Pandas for in-memory exploration. PySpark for distributed scale. DuckDB for the vast middle ground that doesn't need a cluster. Every pattern you need, side by side, with clear rules for when to reach for each.]]></description>
@@ -2991,7 +2991,7 @@
   </item>
   <item>
     <title>Data Engineering Fundamentals: The Mental Model Every Engineer Needs</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals</guid>
     <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Data engineering is not about moving files from A to B. It's about building reliable, scalable, observable systems that make data trustworthy — for analysts, ML models, and increasingly, AI agents. This post dismantles the buzzwords and builds the mental model from first principles.]]></description>
@@ -3011,7 +3011,7 @@
   </item>
   <item>
     <title>GCP AI Stack: Vertex AI, AlloyDB, and the Cloud-Native Knowledge Pipeline</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline</guid>
     <pubDate>Sat, 25 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Google Cloud's AI infrastructure has matured rapidly: the Vertex AI RAG Engine is GA, AlloyDB now ships a custom ScaNN vector index, and a full cloud-native knowledge pipeline is within reach from CLI alone. But the real costs, regional constraints, and architectural trade-offs are rarely discussed honestly. This post covers what the stack actually looks like in 2025-2026, where it delivers, and where it quietly disappoints.]]></description>
@@ -3033,7 +3033,7 @@
   </item>
   <item>
     <title>Enterprise Knowledge Bases: From RAG Pipelines to Agent-Ready Context Engines</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases</guid>
     <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Building knowledge bases that serve both humans and AI agents requires more than chunking and vector search. This guide covers the complete architecture — from knowledge engineering and domain ontologies through chunking hierarchies and permission-aware retrieval to the unified context engines and MCP-based tool interfaces that make enterprise knowledge agent-ready.]]></description>
@@ -3054,7 +3054,7 @@
   </item>
   <item>
     <title>RAGAS: Evaluating RAG End-to-End</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag</guid>
     <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Building a RAG system is only half the problem. The other half — knowing whether it actually works, understanding exactly where it fails, and having a reliable signal to improve it — is arguably harder. RAGAS offers a framework for decomposing RAG quality into measurable, interpretable dimensions. This is how it works, why it matters, and what it still can't tell you.]]></description>
@@ -3074,7 +3074,7 @@
   </item>
   <item>
     <title>LangGraph: Orchestrating Multi-Agent Workflows</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows</guid>
     <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A practical guide to LangGraph 1.x: how StateGraph works, when to use agents vs. chains, the patterns that actually work in production (Supervisor, Subgraph, HITL, Map-Reduce), and an honest comparison with alternatives.]]></description>
@@ -3094,7 +3094,7 @@
   </item>
   <item>
     <title>Text-to-SQL: Bridging Natural Language and Structured Data</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql</guid>
     <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A practical deep-dive into the current state of NL→SQL systems: benchmarks, architectures, production pitfalls, and what actually works in 2026 for querying enterprise data warehouses with natural language.]]></description>
@@ -3114,7 +3114,7 @@
   </item>
   <item>
     <title>MTEB: Choosing the Right Embedding Model for Your Task</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks</guid>
     <pubDate>Sat, 04 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[The top model on the MTEB leaderboard is not automatically the right model for your RAG system. MTEB covers eight distinct task types, and a model that dominates retrieval may be mediocre at clustering or reranking. This is a complete guide to what MTEB measures, how to read it critically, and how to match an embedding model to the actual work it needs to do.]]></description>
@@ -3134,7 +3134,7 @@
   </item>
   <item>
     <title>LLM Benchmarks: A Field Guide to Reading the Leaderboards</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks</guid>
     <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Leaderboards still matter in 2026, but not in the way benchmark charts want you to believe. This field guide explains which LLM benchmarks are now historical, which still matter at the frontier, what agentic and tool-use benchmarks changed, and how to read every score critically.]]></description>
@@ -3153,7 +3153,7 @@
   </item>
   <item>
     <title>Advanced RAG: From Naive Retrieval to Systems That Actually Work</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns</guid>
     <pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Naive RAG — chunk documents, embed them, retrieve the top-k, stuff into the prompt — works in demos. In production, it fails in predictable, fixable ways. This post covers the patterns that separate brittle prototypes from reliable systems: query transformation, advanced retrieval strategies, re-ranking, agentic RAG, GraphRAG, and how to decide when RAG is the wrong answer entirely.]]></description>
@@ -3174,7 +3174,7 @@
   </item>
   <item>
     <title>Building RAG Systems: Pipelines, Chunking, and Vector Search</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems</guid>
     <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A language model that can look things up is more useful than one that can't. But building a RAG system that actually works in production requires understanding dozens of decisions that the research paper glossed over: how to split documents, which embeddings to use, which vector database to run, how to retrieve well. This is the complete practical guide to the first half of the RAG stack.]]></description>
@@ -3195,7 +3195,7 @@
   </item>
   <item>
     <title>RAG: How Language Models Learned to Look Things Up</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation</guid>
     <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Language models are powerful but trapped. They know only what they saw during training—a snapshot of the world that freezes the moment training ends. RAG broke this constraint. By combining a neural retriever with a neural generator, it gave language models the ability to consult external knowledge at inference time. This is the story of the original paper, the idea it introduced, and why it changed how we think about what language models can be.]]></description>
@@ -3215,7 +3215,7 @@
   </item>
   <item>
     <title>Vector Database Benchmarks: Reading the Numbers That Actually Matter</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks</guid>
     <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[A chart says Qdrant handles 10,000 queries per second. Another says Pinecone wins at recall. Both are correct. Neither tells you what you actually need to know. This is how to read vector database benchmarks critically, what the numbers hide, and how to make decisions that hold up in production.]]></description>
@@ -3235,7 +3235,7 @@
   </item>
   <item>
     <title>Scaling Laws: The Equations That Predicted the Future of AI</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models</guid>
     <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In early 2020, a team at OpenAI published a set of equations that described how language model performance grows with compute, data, and parameters. They weren't speculating. They had measured it. The curves fit. And the implications were so consequential that much of the subsequent history of AI can be read as their logical extension.]]></description>
@@ -3255,7 +3255,7 @@
   </item>
   <item>
     <title>T5: The Unification of Language</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer</guid>
     <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In 2019, a Google team asked a deceptively simple question: what if every NLP task were just a text prediction problem? The answer — T5 — didn't just win benchmarks. It proposed a new way of thinking about what language models are for, and planted the seed of the instruction-following revolution that followed.]]></description>
@@ -3275,7 +3275,7 @@
   </item>
   <item>
     <title>Experiment Tracking in MLOps: Never Lose a Good Run Again</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops</guid>
     <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Every ML engineer has had the same nightmare: a model that performed brilliantly last week, and no record of how to reproduce it. Experiment tracking is the discipline that makes that nightmare impossible. This is the complete guide—from what needs to be tracked and why, to deep dives into MLflow, Weights & Biases, Trackio, Neptune, and DVC, with production-grade patterns for teams that need to move fast without losing their work.]]></description>
@@ -3294,7 +3294,7 @@
   </item>
   <item>
     <title>BERT: How Machines Learned to Read in Both Directions</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers</guid>
     <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In October 2018, a Google research team released a model that simultaneously broke eleven NLP benchmarks—some by enormous margins. BERT didn't just improve the state of the art; it redefined what 'understanding language' could mean for a machine. This is the complete story: the problem it solved, the elegant training objectives that made it possible, what it actually learned, and why it changed everything that came after.]]></description>
@@ -3314,7 +3314,7 @@
   </item>
   <item>
     <title>The Collatz Conjecture: The Simplest Problem No One Can Solve</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture</guid>
     <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Take any positive integer. If it is even, divide by two. If it is odd, multiply by three and add one. Repeat. No matter what number you start with, you always seem to reach 1. This has been verified for numbers up to 2^68, tested by the brightest minds in mathematics for nearly a century, and yet no one can prove it. This is the Collatz Conjecture—a problem so simple a child can understand it, and so deep it may be beyond contemporary mathematics.]]></description>
@@ -3332,7 +3332,7 @@
   </item>
   <item>
     <title>Gödel&apos;s Incompleteness Theorems: The Day Mathematics Discovered Its Own Limits</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems</guid>
     <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[In 1931, a 25-year-old Austrian logician proved that mathematics cannot fully know itself. Kurt Gödel showed that any consistent formal system powerful enough to express arithmetic contains true statements that it can never prove. This is the story of that proof, the machinery behind it, and why its consequences still reverberate through mathematics, computer science, and philosophy.]]></description>
@@ -3350,7 +3350,7 @@
   </item>
   <item>
     <title>Files Under the Hood: From Bits to Tensors</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood</guid>
     <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[We use files every day, but rarely stop to think about what they actually are. From the OS abstraction of a file to columnar storage like Parquet, all the way to modern AI tensor formats like Safetensors and GGUF, this is a deep dive into the evolution of how we persist memory to disk.]]></description>
@@ -3368,7 +3368,7 @@
   </item>
   <item>
     <title>Benford&apos;s Law: The Strange Dominance of the Number One</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law</guid>
     <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[If you pick a random number from any real-world dataset—populations, stock prices, river lengths, tax returns—the first digit is far more likely to be a 1 than a 9. This is not a coincidence. It is a deep mathematical truth about how quantities grow, and it has become one of the most powerful forensic tools in the fight against fraud.]]></description>
@@ -3387,7 +3387,7 @@
   </item>
   <item>
     <title>Docker for Machine Learning Engineers: From &apos;Works on My Machine&apos; to Works Everywhere</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers</guid>
     <pubDate>Fri, 13 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Every ML engineer has shipped a model that worked perfectly—until it ran on someone else's machine. Docker eliminates that failure mode entirely. This is the complete guide to containerization for ML: what Docker is, why it exists, how to write production-grade Dockerfiles, and how to go from a trained model to a portable, reproducible, deployable artifact.]]></description>
@@ -3407,7 +3407,7 @@
   </item>
   <item>
     <title>The Model Context Protocol: How AI Learned to Use Tools</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol</guid>
     <pubDate>Thu, 12 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[AI models are powerful, but they are blind. They cannot read your files, query your database, or call your APIs—unless someone builds the bridge. The Model Context Protocol is that bridge: an open standard that gives AI a universal way to interact with the world. This is the story of MCP, how it works, and why it matters.]]></description>
@@ -3425,7 +3425,7 @@
   </item>
   <item>
     <title>Reinforcement Learning in Practice: The Engineering That Makes It Work</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice</guid>
     <pubDate>Sat, 07 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Theory is necessary but not sufficient. This is the engineering companion to RL—the implementation details that papers omit, the GPU patterns that supervised learning never taught you, the tricks that separate converging agents from wasted compute, and the deployment patterns that survive contact with reality.]]></description>
@@ -3444,7 +3444,7 @@
   </item>
   <item>
     <title>Reinforcement Learning: From First Principles to Open Frontiers</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles</guid>
     <pubDate>Thu, 05 Feb 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Most ML engineers have never truly entered the world of reinforcement learning. This is the definitive guide—from Markov Decision Processes and value functions to reward hacking, sim-to-real transfer, multi-agent chaos, and the brutal gap between papers and production systems that actually work.]]></description>
@@ -3464,7 +3464,7 @@
   </item>
   <item>
     <title>Machine Learning Libraries Under the Hood: The Definitive Deep Dive</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood</guid>
     <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Abstractions are convenient until they break. This is an exhaustive journey through the silicon and software of the ML stack—from NumPy's memory layout and SIMD vectorization to the zero-copy revolution of Apache Arrow, the modern dominance of Polars, and the JIT compilers that turn Python into machine code.]]></description>
@@ -3484,7 +3484,7 @@
   </item>
   <item>
     <title>Cloud Infrastructure for Machine Learning: From Local to Global Scale</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure</guid>
     <pubDate>Wed, 31 Dec 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[The cloud is not just bigger computers—it is an entirely different way of building ML systems. This guide covers when to move to cloud, which services to use, how to avoid cost disasters, and the architectural patterns that separate successful cloud ML projects from expensive failures.]]></description>
@@ -3504,7 +3504,7 @@
   </item>
   <item>
     <title>Metrics, Evaluation, and Monitoring: Ensuring ML Models Actually Work</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring</guid>
     <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[A model that works in a notebook is not a model that works. This guide covers the complete lifecycle of model evaluation—from choosing the right metrics to detecting drift in production, from offline evaluation to real-time monitoring systems that catch failures before users do.]]></description>
@@ -3524,7 +3524,7 @@
   </item>
   <item>
     <title>Working with ML Models: From Hugging Face to Custom Training</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models</guid>
     <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[The art of machine learning is knowing when to use what already exists and when to build your own. This guide covers the complete spectrum—from selecting pre-trained models and understanding licenses to fine-tuning strategies and the decision to train from scratch.]]></description>
@@ -3543,7 +3543,7 @@
   </item>
   <item>
     <title>Computational Resources for Machine Learning: From Silicon to Tensors</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml</guid>
     <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[Before you train a single model, you need to understand what is actually running your code. This is the definitive guide to computational resources in ML—GPUs, CUDA, memory hierarchies, data types, and the art of knowing when your hardware is the bottleneck.]]></description>
@@ -3563,7 +3563,7 @@
   </item>
   <item>
     <title>The Manifold Hypothesis: Why Deep Learning Works</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis</guid>
     <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[We train models on high-dimensional chaos, yet they learn. Why? The answer lies in geometry: the world is a crumpled sheet of paper, and intelligence is the act of smoothing it out.]]></description>
@@ -3583,7 +3583,7 @@
   </item>
   <item>
     <title>Python Beyond the Basics: The Language Behind the Language</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics</guid>
     <pubDate>Fri, 21 Nov 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[Everyone writes Python. Few truly understand it. This is a deep dive into the mechanisms that separate elegant, maintainable code from the sprawling chaos that haunts production systems—from the data model to metaclasses, from decorators to the GIL.]]></description>
@@ -3601,7 +3601,7 @@
   </item>
   <item>
     <title>Structuring Machine Learning Projects: From Chaos to Production-Ready</title>
-    <link>https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects</link>
+    <link>https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects</guid>
     <pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[Most ML projects die in the chaos of unversioned notebooks and dependency hell. This is the definitive guide to structuring projects that scale—from folder architecture to Git workflows, from Poetry mastery to the bridge between experimentation and production.]]></description>
@@ -3621,7 +3621,7 @@
   </item>
   <item>
     <title>1+2+3+4+... = -1/12: From Magic Trick to Deep Truth</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth</guid>
     <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[A viral equation that seems impossible. Then the revelation: it's a glimpse into how mathematics transcends intuition. The journey from viral paradox to zeta function truth.]]></description>
@@ -3638,7 +3638,7 @@
   </item>
   <item>
     <title>Embeddings: The Geometry of Meaning</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning</guid>
     <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[How do you teach a computer what 'king' means? You don't explain—you show it where 'king' lives in a space where meaning has coordinates. A deep dive into embeddings, from Word2Vec to modern sentence transformers, and why representing concepts as vectors changed everything.]]></description>
@@ -3658,7 +3658,7 @@
   </item>
   <item>
     <title>Tetris Is NP-Complete: The Hardest Problem Hiding in Plain Sight</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete</guid>
     <pubDate>Sat, 23 Aug 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[That seemingly simple game on your phone? It harbors one of computer science's most notorious complexity classes. Discover how Tetris became a lens for understanding computational hardness—and why some problems resist even our most powerful computers.]]></description>
@@ -3675,7 +3675,7 @@
   </item>
   <item>
     <title>Attention is All You Need: Understanding the Transformer Revolution</title>
-    <link>https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need</link>
+    <link>https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need</guid>
     <pubDate>Mon, 20 Jan 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[How a single elegant idea—pure attention—toppled decades of sequential thinking and sparked the AI revolution. A deep dive into the architecture that changed everything.]]></description>
@@ -3695,7 +3695,7 @@
   </item>
   <item>
     <title>Solving the Rubik&apos;s Cube Using Group Theory</title>
-    <link>https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory</link>
+    <link>https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory/</link>
     <guid isPermaLink="true">https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory</guid>
     <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
     <description><![CDATA[What if I told you that every time you twist a Rubik's cube, you're exploring one of mathematics' most elegant structures? Discover how group theory transforms a childhood puzzle into a profound mathematical journey.]]></description>

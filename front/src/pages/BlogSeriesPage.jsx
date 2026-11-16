@@ -395,10 +395,10 @@ export default function BlogSeriesPage() {
       <SEO
         title="Reading Series · Juan Lara"
         description="Curated, multi-part reading series from the blog — ordered arcs on RAG, agents, graph engineering, knowledge systems, ML fundamentals, data engineering, and more."
-        canonical="https://juanlara18.github.io/portfolio/#/blog/series"
+        canonical="https://juanlara18.github.io/portfolio/blog/series/"
         breadcrumbs={[
-          { name: 'Blog', url: 'https://juanlara18.github.io/portfolio/#/blog' },
-          { name: 'Reading Series', url: 'https://juanlara18.github.io/portfolio/#/blog/series' },
+          { name: 'Blog', url: 'https://juanlara18.github.io/portfolio/blog/' },
+          { name: 'Reading Series', url: 'https://juanlara18.github.io/portfolio/blog/series/' },
         ]}
       />
 
@@ -517,7 +517,7 @@ export default function BlogSeriesPage() {
                               }}
                               disabled={downloadingId === s.id}
                               title="Download all posts in this series as markdown (.zip)"
-                              className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors"
+                              className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-gray-400 dark:text-brand-fg-muted hover:text-cyan-700 dark:hover:text-brand-accent transition-colors disabled:opacity-60 disabled:cursor-wait"
                             >
                               <Download size={13} />
                               <span>{downloadingId === s.id ? 'Preparing…' : 'Download .md'}</span>

@@ -69,22 +69,26 @@ function build() {
 
   // Static top-level routes.
   entries.push(urlEntry(`${SITE_URL}/`, today, 'monthly', '1.0'));
-  entries.push(urlEntry(`${SITE_URL}/about`, today, 'monthly', '0.8'));
-  entries.push(urlEntry(`${SITE_URL}/projects`, today, 'monthly', '0.8'));
-  entries.push(urlEntry(`${SITE_URL}/blog`, today, 'weekly', '0.9'));
-  entries.push(urlEntry(`${SITE_URL}/blog/series`, today, 'weekly', '0.7'));
-  entries.push(urlEntry(`${SITE_URL}/blog/books`, today, 'weekly', '0.7'));
+  // Every URL carries a trailing slash: GitHub Pages serves each route from
+  // <path>/index.html (scripts/inject-blog-meta.js), so the slash form answers
+  // 200 and the bare form a 301. Keep in sync with canonicalUrl() in SEO.jsx.
+  entries.push(urlEntry(`${SITE_URL}/about/`, today, 'monthly', '0.8'));
+  entries.push(urlEntry(`${SITE_URL}/projects/`, today, 'monthly', '0.8'));
+  entries.push(urlEntry(`${SITE_URL}/blog/`, today, 'weekly', '0.9'));
+  entries.push(urlEntry(`${SITE_URL}/blog/series/`, today, 'weekly', '0.7'));
+  entries.push(urlEntry(`${SITE_URL}/blog/books/`, today, 'weekly', '0.7'));
+  entries.push(urlEntry(`${SITE_URL}/blog/graph/`, today, 'weekly', '0.5'));
 
   // Category pages (derived from post set).
   const categories = [...new Set(posts.map((p) => p.category).filter(Boolean))];
   for (const category of categories) {
-    entries.push(urlEntry(`${SITE_URL}/blog/category/${encodeURIComponent(category)}`, today, 'weekly', '0.7'));
+    entries.push(urlEntry(`${SITE_URL}/blog/category/${encodeURIComponent(category)}/`, today, 'weekly', '0.7'));
   }
 
   // Individual posts.
   for (const post of posts) {
     if (!post || !post.slug || !post.category) continue;
-    const loc = `${SITE_URL}/blog/${encodeURIComponent(post.category)}/${encodeURIComponent(post.slug)}`;
+    const loc = `${SITE_URL}/blog/${encodeURIComponent(post.category)}/${encodeURIComponent(post.slug)}/`;
     const lastmod = toIsoDate(post.updatedDate) || toIsoDate(post.date) || today;
     entries.push(urlEntry(loc, lastmod, 'monthly', '0.7'));
   }

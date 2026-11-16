@@ -49,19 +49,25 @@ function auditBlock(raw, normalized, file, idx) {
     });
   }
 
-  // Unclosed double-quoted strings (odd number of " inside a line)
+  // Unclosed double-quoted strings. A quoted label may legitimately span
+  // several lines (Mermaid renders the line breaks), so quote state carries
+  // across lines and only a quote still open at the end of the block is
+  // reported, at the line where it opened.
   const lines = normalized.split('\n');
+  let openedAt = -1;
   lines.forEach((line, lineIdx) => {
-    // Skip comment lines
-    if (line.trimStart().startsWith('%%')) return;
-    const quotesInLine = (line.match(/"/g) || []).length;
-    if (quotesInLine % 2 !== 0) {
-      issues.push({
-        severity: 'warning',
-        message: `Possible unclosed double-quote on line ${lineIdx + 1}: ${line.trim()}`,
-      });
+    if (openedAt < 0 && line.trimStart().startsWith('%%')) return; // comment
+    for (const ch of line) {
+      if (ch !== '"') continue;
+      openedAt = openedAt < 0 ? lineIdx : -1;
     }
   });
+  if (openedAt >= 0) {
+    issues.push({
+      severity: 'warning',
+      message: `Unclosed double-quote opened on line ${openedAt + 1}: ${lines[openedAt].trim()}`,
+    });
+  }
 
   // Detect `%%{init:...}%%` directives (fine, but note them)
   if (/^%%\{/.test(normalized)) {

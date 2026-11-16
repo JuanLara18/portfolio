@@ -2,1164 +2,1170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://juanlara18.github.io/portfolio/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/about</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/about/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/projects</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/projects/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/blog/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/series</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/blog/series/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/books</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/blog/books/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/blog/graph/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/field-notes/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/research</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/research/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://juanlara18.github.io/portfolio/blog/category/curiosities/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/apache-ossie-open-semantic-stack/</loc>
     <lastmod>2029-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/the-representation-has-a-shape/</loc>
     <lastmod>2029-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/the-distribution-has-a-shape/</loc>
     <lastmod>2029-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/the-objective-has-a-shape/</loc>
     <lastmod>2029-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/double-descent</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/double-descent/</loc>
     <lastmod>2029-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/backprop-is-reverse-mode-differentiation/</loc>
     <lastmod>2029-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/universal-approximation-and-what-it-does-not-give-you/</loc>
     <lastmod>2029-02-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/bellman-operator-is-a-contraction/</loc>
     <lastmod>2029-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/em-never-goes-down/</loc>
     <lastmod>2029-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/one-eigendecomposition-four-algorithms/</loc>
     <lastmod>2029-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/weak-learnability-equals-strong/</loc>
     <lastmod>2029-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/kernel-trick-representer-theorem/</loc>
     <lastmod>2029-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/penalizing-is-constraining/</loc>
     <lastmod>2029-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/no-free-lunch-theorem/</loc>
     <lastmod>2028-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/vc-dimension-sauer-shelah/</loc>
     <lastmod>2028-12-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/probably-approximately-correct/</loc>
     <lastmod>2028-12-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/markov-to-hoeffding-concentration-inequalities/</loc>
     <lastmod>2028-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/what-are-we-minimizing-erm-bias-variance/</loc>
     <lastmod>2028-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/loss-functions-are-probability-assumptions/</loc>
     <lastmod>2028-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/debugging-adk-agent-flows/</loc>
     <lastmod>2028-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/migrating-adk-1x-to-2x/</loc>
     <lastmod>2028-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/adk-graph-workflows-deterministic-orchestration/</loc>
     <lastmod>2028-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-golden-paths-multi-tenancy/</loc>
     <lastmod>2028-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-registry-gateway-tool-plane/</loc>
     <lastmod>2028-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/sandboxing-agents-microvm-gvisor/</loc>
     <lastmod>2028-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-runtime-sessions-state-topology/</loc>
     <lastmod>2028-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-platform-control-plane-data-plane/</loc>
     <lastmod>2028-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-fraud-detection-rings-synthetic-identity/</loc>
     <lastmod>2028-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/organizational-network-analysis-company-graph/</loc>
     <lastmod>2028-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/node-embeddings-fastrp-node2vec-graphsage/</loc>
     <lastmod>2028-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/centrality-communities-in-practice/</loc>
     <lastmod>2028-08-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-analytics-gds-execution-model/</loc>
     <lastmod>2028-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/choosing-a-graph-engine-2026/</loc>
     <lastmod>2028-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gql-standard-cypher-sqlpgq/</loc>
     <lastmod>2028-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-engine-internals-index-free-adjacency/</loc>
     <lastmod>2028-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-harness-build-fork-adopt-yc-qm/</loc>
     <lastmod>2028-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dont-reinvent-the-agent-open-source-composition/</loc>
     <lastmod>2028-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-graph-mcp-architecture-gcp/</loc>
     <lastmod>2028-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/production-graph-stack-agents-mcp-ontologies/</loc>
     <lastmod>2028-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-memory-continuity-adk-geap/</loc>
     <lastmod>2028-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-vs-hermes-self-hosted-agent-comparison/</loc>
     <lastmod>2028-06-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/hermes-self-improving-agent-persistent-memory</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/hermes-self-improving-agent-persistent-memory/</loc>
     <lastmod>2028-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-anatomy-viral-agent-platform</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/openclaw-anatomy-viral-agent-platform/</loc>
     <lastmod>2028-06-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/magnifica-humanitas-ai-encyclical-analysis/</loc>
     <lastmod>2028-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/finops-llm-agents-token-economics/</loc>
     <lastmod>2028-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/bank-grade-agent-security-iam-gateways/</loc>
     <lastmod>2028-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-authentication-oauth-mcp-identity/</loc>
     <lastmod>2028-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-architect-professional-exam-guide/</loc>
     <lastmod>2028-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-developer-exam-guide/</loc>
     <lastmod>2028-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-certified-associate-exam-guide/</loc>
     <lastmod>2028-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-layer-in-production-mcp-build-vs-buy/</loc>
     <lastmod>2028-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-memory-temporal-agents-graphiti-cognee/</loc>
     <lastmod>2028-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/querying-code-graphs-blast-radius-localization/</loc>
     <lastmod>2028-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/repo-to-graph-ast-vs-llm-extraction/</loc>
     <lastmod>2028-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-graph-layer-why-grep-embeddings-fell-short/</loc>
     <lastmod>2028-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-product-engineering-scale-prioritization-architecture/</loc>
     <lastmod>2028-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-distributed-theory-cap-pacelc-tradeoffs/</loc>
     <lastmod>2028-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-api-design-contracts-versioning-dx/</loc>
     <lastmod>2028-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-data-modeling-query-patterns-database-design/</loc>
     <lastmod>2028-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/senior-infrastructure-distributed-systems-failure-networking/</loc>
     <lastmod>2028-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agents-governance-security-business/</loc>
     <lastmod>2028-02-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/operating-agents-eval-observability-scale/</loc>
     <lastmod>2028-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-integration-protocols-mcp-and-a2a/</loc>
     <lastmod>2028-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-memory-and-retrieval-embeddings-to-rag/</loc>
     <lastmod>2028-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architecture-and-orchestration/</loc>
     <lastmod>2028-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/foundations-of-agentic-ai-llms-to-agents/</loc>
     <lastmod>2027-12-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/defining-the-knowledge-stack/</loc>
     <lastmod>2027-12-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/comparing-knowledge-bases-semantic-overlap/</loc>
     <lastmod>2027-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/adk-advanced-evolution-of-agent-engineering/</loc>
     <lastmod>2027-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/redis-for-ai-buy-vs-build-gcp/</loc>
     <lastmod>2027-12-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/spanner-graph-for-knowledge-and-agents/</loc>
     <lastmod>2027-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-knowledge-catalog-workshop/</loc>
     <lastmod>2027-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/vector-databases-indexes-to-vertex-search/</loc>
     <lastmod>2027-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/regex-engines-finite-automata/</loc>
     <lastmod>2027-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-agent-governance-lifecycle/</loc>
     <lastmod>2027-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-as-a-product/</loc>
     <lastmod>2027-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dev-environments-for-ai-teams/</loc>
     <lastmod>2027-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architectures-productive-patterns</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-architectures-productive-patterns/</loc>
     <lastmod>2027-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rl-algorithm-taxonomy-tour/</loc>
     <lastmod>2027-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-2-deep-learning-and-beyond/</loc>
     <lastmod>2027-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-cert-review-part-1-foundations/</loc>
     <lastmod>2027-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-certifications-2026-roadmap/</loc>
     <lastmod>2027-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/application-data-flow-replicas-backups/</loc>
     <lastmod>2027-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-adk-agent-development-deep-dive/</loc>
     <lastmod>2027-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/stack-recommendations-after-100-posts/</loc>
     <lastmod>2027-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/100-posts-knowledge-graph-retrospective/</loc>
     <lastmod>2027-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-engineering-disciplines/</loc>
     <lastmod>2027-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-catalog-vs-ontologies/</loc>
     <lastmod>2027-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gemini-enterprise-knowledge-catalog-deep-dive/</loc>
     <lastmod>2027-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/google-cloud-next-2026-agent-native-stack/</loc>
     <lastmod>2027-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/agent-guardrails-field-guide/</loc>
     <lastmod>2027-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/populating-knowledge-graph-llms-banking/</loc>
     <lastmod>2027-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-production-pipeline-gcp/</loc>
     <lastmod>2027-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/modular-ontologies-core-domains-pattern/</loc>
     <lastmod>2027-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/tbox-abox-schema-facts-distinction/</loc>
     <lastmod>2027-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/ontology-grounded-rag-chunks-in-nodes/</loc>
     <lastmod>2027-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/query-routing-agent-decisions/</loc>
     <lastmod>2027-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ontology-to-agent-toolbox/</loc>
     <lastmod>2027-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/lookml-semantic-layer-data-modeling/</loc>
     <lastmod>2027-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/network-science-communities-centrality/</loc>
     <lastmod>2027-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/graph-theory-mathematics-of-connections/</loc>
     <lastmod>2027-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/ramanujan-constant-almost-integer/</loc>
     <lastmod>2027-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/fermat-n4-infinite-descent/</loc>
     <lastmod>2027-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/algebraic-number-theory-when-factorization-breaks/</loc>
     <lastmod>2027-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/pagerank-eigenvectors/</loc>
     <lastmod>2027-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/graph-neural-networks-learning-structured-data/</loc>
     <lastmod>2027-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/vertex-ai-gcp-ml-platform-cli/</loc>
     <lastmod>2027-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/network-fundamentals-every-concept/</loc>
     <lastmod>2027-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/terraform-infrastructure-as-code/</loc>
     <lastmod>2027-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/shannon-number-chess-game-tree/</loc>
     <lastmod>2027-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-server-nl-to-powerbi-dashboard/</loc>
     <lastmod>2027-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/kubernetes-minimum-subset-ml/</loc>
     <lastmod>2027-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/multimodal-embeddings-metric-problem/</loc>
     <lastmod>2027-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/bash-daily-driver-ml-engineer/</loc>
     <lastmod>2027-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/llm-caching-four-layers/</loc>
     <lastmod>2027-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/production-llm-agents-patterns/</loc>
     <lastmod>2027-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/content-addressable-hash-as-engineering-tool/</loc>
     <lastmod>2027-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/emotion-concepts-in-llms/</loc>
     <lastmod>2026-12-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/microgpt-reading-karpathy/</loc>
     <lastmod>2026-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/claude-code-complete-guide/</loc>
     <lastmod>2026-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/git-and-github-complete-guide/</loc>
     <lastmod>2026-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/apache-airflow-orchestration/</loc>
     <lastmod>2026-12-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-embeddings/</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/mamba-selective-state-spaces/</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/elevenlabs-voice-ai-engineering/</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-base-curation/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/knowledge-graphs-practice/</loc>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-ai-platform-selection/</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ontologies-building-knowledge-bases/</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/data-silos-breaking-information-barriers/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dama-dmbok-data-governance/</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/apache-spark-ecosystem-guide/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dataiku-enterprise-data-ai-ecosystem/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/document-processing-ocr-layout/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/llm-as-a-judge/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ai-poc-enterprise-evaluation/</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mcp-production-enterprise/</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/fourier-transform/</loc>
     <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/pytorch-tensorflow-deep-learning-frameworks/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/software-engineering-classics/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/llamaindex-langchain-llm-frameworks/</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/local-llm-inference-tools/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rlhf-dpo-alignment/</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/fine-tuning-gemma4-lora-qlora/</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/lakehouse-architecture/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dbt-analytics-engineering/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/dimensional-modeling-kimball/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/sql-pandas-pyspark-duckdb/</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/data-engineering-fundamentals/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/gcp-ai-stack-vertex-alloydb-knowledge-pipeline/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/enterprise-knowledge-bases/</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ragas-evaluating-rag/</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/langgraph-multi-agent-workflows/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/text-to-sql/</loc>
     <lastmod>2026-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/mteb-embedding-benchmarks/</loc>
     <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/llm-benchmarks/</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rag-advanced-patterns/</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/rag-building-production-systems/</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/rag-retrieval-augmented-generation/</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/vector-db-benchmarks/</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/scaling-laws-neural-language-models/</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/t5-text-to-text-transfer-transformer/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/experiment-tracking-mlops/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/bert-pre-training-bidirectional-transformers/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/collatz-conjecture/</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/godels-incompleteness-theorems/</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/files-under-the-hood/</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/benfords-law/</loc>
     <lastmod>2026-02-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/docker-for-ml-engineers/</loc>
     <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/model-context-protocol/</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-in-practice/</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/reinforcement-learning-first-principles/</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-libraries-under-the-hood/</loc>
     <lastmod>2026-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/cloud-ml-infrastructure/</loc>
     <lastmod>2025-12-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/ml-metrics-evaluation-monitoring/</loc>
     <lastmod>2025-12-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/working-with-ml-models/</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/computational-resources-ml/</loc>
     <lastmod>2025-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/the-manifold-hypothesis/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/python-beyond-the-basics/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/field-notes/structuring-ml-projects/</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/sum-of-naturals-minus-one-twelfth/</loc>
     <lastmod>2025-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/embeddings-geometry-of-meaning/</loc>
     <lastmod>2025-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/tetris-np-complete/</loc>
     <lastmod>2025-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/research/attention-is-all-you-need/</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory</loc>
+    <loc>https://juanlara18.github.io/portfolio/blog/curiosities/rubiks-cube-group-theory/</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Search, X, ZoomIn, ZoomOut, LocateFixed, SlidersHorizontal } from 'lucide-react';
 import { loadAllPosts } from '../utils/blogUtils';
+import { SEO } from '../components/common/SEO';
 import {
   forceSimulation,
   forceLink,
@@ -792,6 +793,10 @@ export default function BlogGraphPage() {
 
   return (
     <div className={`fixed inset-0 z-50 flex flex-col ${isDark ? 'bg-brand-bg' : 'bg-white'}`} style={{ marginTop: 0, paddingTop: 0 }}>
+      <SEO
+        title="Topic Graph · Juan Lara"
+        description="An interactive map of the blog: every topic as a node, linked by the posts that share it."
+      />
       {/* Top bar */}
       <div className={`relative z-10 flex items-center justify-between px-4 py-3 backdrop-blur-md border-b ${isDark ? 'bg-brand-bg/95 border-white/[0.08]' : 'bg-white/95 border-gray-200'}`}>
         <div className="flex items-center gap-4">

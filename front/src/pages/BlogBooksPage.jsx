@@ -206,10 +206,10 @@ export default function BlogBooksPage() {
       <SEO
         title="Books & Papers · Juan Lara"
         description="Every book and academic paper cited across the blog, ranked by how many posts reference it — the recurring canonical sources behind the writing."
-        canonical="https://juanlara18.github.io/portfolio/#/blog/books"
+        canonical="https://juanlara18.github.io/portfolio/blog/books/"
         breadcrumbs={[
-          { name: 'Blog', url: 'https://juanlara18.github.io/portfolio/#/blog' },
-          { name: 'Books & Papers', url: 'https://juanlara18.github.io/portfolio/#/blog/books' },
+          { name: 'Blog', url: 'https://juanlara18.github.io/portfolio/blog/' },
+          { name: 'Books & Papers', url: 'https://juanlara18.github.io/portfolio/blog/books/' },
         ]}
       />
 

@@ -39,6 +39,32 @@ const PUBLISHER_SCHEMA = {
 };
 
 /**
+ * Canonical form of a page URL: site origin + path, no query or fragment, and
+ * a trailing slash. GitHub Pages serves each route from `<path>/index.html`
+ * (see scripts/inject-blog-meta.js), so `/blog/x/` answers 200 while `/blog/x`
+ * answers a 301 to it — the slash form is the one crawlers should index.
+ * Accepts an absolute site URL (including the old `#/` HashRouter form) or,
+ * when none is given, uses the current location.
+ */
+export function canonicalUrl(url) {
+  let path;
+  if (url && url.startsWith(SITE_URL)) {
+    path = url.slice(SITE_URL.length);
+  } else if (typeof window !== 'undefined') {
+    const base = process.env.PUBLIC_URL || '';
+    path = window.location.pathname.startsWith(base)
+      ? window.location.pathname.slice(base.length)
+      : window.location.pathname;
+  } else {
+    path = '/';
+  }
+  path = path.replace(/^\/?#\//, '/').split(/[?#]/)[0] || '/';
+  if (!path.startsWith('/')) path = `/${path}`;
+  if (!path.endsWith('/')) path = `${path}/`;
+  return SITE_URL + path;
+}
+
+/**
  * SEO component for dynamic meta tags + JSON-LD on each page.
  *
  * Emits three layers of structured data so different crawlers get the
@@ -75,8 +101,9 @@ export const SEO = ({
   author = 'Juan Lara',
   article,
   breadcrumbs,
+  noindex = false,
 }) => {
-  const pageUrl = canonical || (typeof window !== 'undefined' ? window.location.href : SITE_URL);
+  const pageUrl = canonicalUrl(canonical);
   const ogImage = image || DEFAULT_IMAGE;
   const isArticle = type === 'article';
 
@@ -199,9 +226,13 @@ export const SEO = ({
       )}
 
       {/* Indexing directives */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="bingbot" content="index, follow" />
+      {noindex ? (
+        <meta name="robots" content="noindex, follow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      )}
+      <meta name="googlebot" content={noindex ? 'noindex, follow' : 'index, follow'} />
+      <meta name="bingbot" content={noindex ? 'noindex, follow' : 'index, follow'} />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content="English" />
     </Helmet>

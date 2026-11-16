@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
- * inject-blog-meta.js — generate per-post static HTML shards with correct
+ * inject-blog-meta.js — generate per-route static HTML shards (every post plus
+ * the non-post pages: about, projects, blog index, series, books, graph,
+ * categories) with correct
  * Open Graph / Twitter meta tags so social crawlers (Twitter, LinkedIn,
  * Discord, Slack, Facebook) see post-specific titles, descriptions and images
  * when a link is shared.
@@ -77,26 +79,77 @@ function replaceTitle(html, title) {
   return html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtmlAttr(title)}</title>`);
 }
 
+// Social preview image for a post: its header (the JPEG, not the WebP twin —
+// LinkedIn and some other crawlers do not render WebP previews).
 function resolveImage(post) {
-  const candidate = post.coverImage || post.image || post.thumbnail;
+  const candidate = post.headerImage;
   if (!candidate) return DEFAULT_IMAGE;
   if (/^https?:\/\//.test(candidate)) return candidate;
   const rel = candidate.startsWith('/') ? candidate : `/${candidate}`;
   return `${SITE_URL}${rel}`;
 }
 
-function injectForPost(sourceHtml, post) {
-  const title = post.title ? `${post.title} | Juan Lara` : 'Juan Lara | Portfolio';
-  const description = truncate(post.excerpt || post.description || '', 200) ||
-    'Research Assistant at Harvard Business School writing about Machine Learning, AI Agents, and NLP.';
-  const url = `${SITE_URL}/blog/${encodeURIComponent(post.category)}/${encodeURIComponent(post.slug)}`;
-  const image = resolveImage(post);
+// Same category names the app shows (src/utils/blogUtils.js BLOG_CONFIG).
+const CATEGORY_NAMES = {
+  curiosities: 'Mathematical Curiosities',
+  research: 'Research Notes',
+  'field-notes': 'Field Notes',
+};
 
+// Routes that are not posts but should still answer 200 with their own meta.
+// Titles and descriptions mirror each page's <SEO> so the pre-JS and post-JS
+// heads agree.
+function staticPages(categories) {
+  return [
+    {
+      path: 'about',
+      title: 'About · Juan Lara',
+      description: "AI Engineer building production AI systems at enterprise scale. Knowledge systems for AI agents in banking, RAG and GraphRAG platforms, agentic architectures. Currently leading the knowledge-base cell of Davivienda's AI-First strategy.",
+    },
+    {
+      path: 'projects',
+      title: 'Projects · Juan Lara',
+      description: 'Portfolio of AI and machine learning projects including TextInsight, RAG systems, and production-ready generative AI solutions. Explore ML engineering work and research implementations.',
+    },
+    {
+      path: 'blog',
+      title: 'Blog · Juan Lara',
+      description: 'Technical articles about AI, machine learning, NLP, and computer science. Deep dives into research papers, curiosities, and practical ML engineering.',
+    },
+    {
+      path: 'blog/series',
+      title: 'Reading Series · Juan Lara',
+      description: 'Curated, multi-part reading series from the blog — ordered arcs on RAG, agents, graph engineering, knowledge systems, ML fundamentals, data engineering, and more.',
+    },
+    {
+      path: 'blog/books',
+      title: 'Books & Papers · Juan Lara',
+      description: 'Every book and academic paper cited across the blog, ranked by how many posts reference it — the recurring canonical sources behind the writing.',
+    },
+    {
+      path: 'blog/graph',
+      title: 'Topic Graph · Juan Lara',
+      description: 'An interactive map of the blog: every topic as a node, linked by the posts that share it.',
+    },
+    ...categories.map((category) => {
+      const name = CATEGORY_NAMES[category] || category;
+      return {
+        path: `blog/category/${category}`,
+        title: `${name} · Juan Lara`,
+        description: `Browse ${name} posts by Juan Lara. Engineering notes on production AI, RAG systems, agentic architectures, and LLM ops.`,
+      };
+    }),
+  ];
+}
+
+// Rewrite the head of index.html for one page. `url` is the canonical URL
+// (trailing slash: GitHub Pages serves <path>/index.html there with a 200).
+function injectMeta(sourceHtml, { title, description, url, image = DEFAULT_IMAGE, type = 'website' }) {
   let html = sourceHtml;
   html = replaceTitle(html, title);
   html = replaceMeta(html, 'name', 'title', title);
   html = replaceMeta(html, 'name', 'description', description);
-  html = replaceMeta(html, 'property', 'og:type', 'article');
+  html = replaceMeta(html, 'property', 'og:type', type);
   html = replaceMeta(html, 'property', 'og:url', url);
   html = replaceMeta(html, 'property', 'og:title', title);
   html = replaceMeta(html, 'property', 'og:description', description);
@@ -105,8 +158,14 @@ function injectForPost(sourceHtml, post) {
   html = replaceMeta(html, 'property', 'twitter:title', title);
   html = replaceMeta(html, 'property', 'twitter:description', description);
   html = replaceMeta(html, 'property', 'twitter:image', image);
-
   return html;
+}
+
+function injectForPost(sourceHtml, post) {
+  const title = `${post.title} · Juan Lara`;
+  const description = truncate(post.excerpt || post.description || '', 200) || title;
+  const url = `${SITE_URL}/blog/${encodeURIComponent(post.category)}/${encodeURIComponent(post.slug)}/`;
+  return injectMeta(sourceHtml, { title, description, url, image: resolveImage(post), type: 'article' });
 }
 
 function writeShard(outRelDir, html) {
@@ -137,22 +196,17 @@ function main() {
     count += 1;
   }
 
-  // Top-level /blog shard with aggregated meta.
-  const blogHtml = injectForPost(sourceHtml, {
-    title: 'Writing',
-    excerpt: 'Technical writing on machine learning, AI agents, NLP, and data engineering — research notes, field notes, and curiosities.',
-    category: '',
-    slug: '',
-  }).replace(
-    /<meta property="og:url" content="[^"]*">/,
-    `<meta property="og:url" content="${SITE_URL}/blog">`
-  ).replace(
-    /<meta property="twitter:url" content="[^"]*">/,
-    `<meta property="twitter:url" content="${SITE_URL}/blog">`
-  );
-  writeShard('blog', blogHtml);
+  // Non-post routes. Without a shard GitHub Pages answers these with 404.html
+  // (status 404), which the SPA redirect hides from readers but not from
+  // search engines.
+  const categories = [...new Set(posts.map((p) => p.category).filter(Boolean))];
+  const pages = staticPages(categories);
+  for (const page of pages) {
+    const html = injectMeta(sourceHtml, { ...page, url: `${SITE_URL}/${page.path}/` });
+    writeShard(page.path, html);
+  }
 
-  console.log(`[OK] blog meta injected: ${count} post shard(s) + /blog -> build/blog/...`);
+  console.log(`[OK] meta injected: ${count} post shard(s) + ${pages.length} page shard(s) -> build/`);
 }
 
 if (require.main === module) {
