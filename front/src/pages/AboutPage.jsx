@@ -322,11 +322,11 @@ const experiences = [
     description:
       "Leading the knowledge-base cell of Davivienda's AI-First strategy: the semantic layer that grounds the bank's AI agents in verifiable, traceable, and governed business context.",
     responsibilities: [
-      "Designing the bank's knowledge architecture on GCP: ontologies, metadata, and retrieval services that turn scattered business data into agent-ready context.",
-      "Defining AI lifecycle governance so knowledge assets stay versioned, auditable, and trustworthy from ingestion to agent consumption in a regulated bank.",
-      "Working hands-on with engineering teams across the bank as internal AI products move from architecture review to production on the Gemini Enterprise Agent Platform."
+      "Designing the bank's knowledge architecture: an enterprise ontology built as a shared core plus domain modules, and the pipeline that turns it into a knowledge graph agents can query.",
+      "Building a self-service knowledge platform: teams publish governed sources by configuration and expose them to agents as MCP tools, versioned and auditable from ingestion to agent consumption.",
+      "Coordinating engineering, governance, and security teams as internal AI products move from architecture review to production on the Gemini Enterprise Agent Platform, and training them on graph and agent practices."
     ],
-    skills: ["Knowledge Architecture", "Semantic Layer", "Gemini Enterprise Agent Platform", "BigQuery", "AI Governance", "Python"],
+    skills: ["Knowledge Architecture", "Ontologies & Knowledge Graphs", "Semantic Layer", "Agent Platforms", "AI Governance", "Solution Architecture"],
     logo: "davivienda-logo.png"
   },
   {
@@ -582,10 +582,10 @@ const courses = [
                     >
                       {/* Focus \u2014 moved into Read more so the visible bio stays compact */}
                       <p className="pt-2">
-                        My focus is the engineering layer between ML research and enterprise systems. Retrieval platforms, from RAG to GraphRAG. Agentic architectures. Knowledge-grounded LLM applications. The data foundations that make them reliable.
+                        My focus is the knowledge layer that enterprise AI runs on. Ontologies and knowledge graphs. Semantic layers. Retrieval, from RAG to GraphRAG. The agent architectures built on top, and the governance that lets a regulated company run them.
                       </p>
                       <p>
-                        At Davivienda I lead the knowledge-base cell of the AI-First strategy, building the semantic layer that grounds the bank's AI agents in verifiable, traceable business context. Before that: ML for logistics at Falabella (a distribution center moving ~4.6M SKUs), compliance-grade generative AI in healthcare at GenomAI, and three years of research engineering at Harvard.
+                        At Davivienda I lead the knowledge-base cell of the AI-First strategy, building the semantic layer that grounds the bank's AI agents in verifiable, traceable business context: the bank's ontology, the pipeline that turns it into a knowledge graph, and a self-service platform for publishing governed knowledge to agents. Before that: ML for logistics at Falabella (a distribution center moving ~4.6M SKUs), compliance-grade generative AI in healthcare at GenomAI, and three years of research engineering at Harvard.
                       </p>
                       <p>
                         <span className="font-medium text-gray-900 dark:text-gray-100">Computer Science + Mathematics</span> dual degree, 4.7/5.0. M.Sc. in Artificial Intelligence in progress at <span className="font-medium text-gray-900 dark:text-gray-100">Universidad de los Andes</span>.
@@ -634,7 +634,7 @@ const courses = [
               variants={fadeInUp}
               className="text-center text-sm mb-12 text-gray-600 dark:text-brand-fg-muted"
             >
-              The technologies I work with in production.
+              What I design, build, and run in production.
             </motion.p>
 
             <motion.div
@@ -645,13 +645,13 @@ const courses = [
               <div>
                 <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <BrainCircuit className="flex-shrink-0" size={18} />
-                  Generative AI & NLP
+                  Knowledge & Retrieval
                 </h3>
                 <div className="space-y-1">
-                  <SkillItem name="RAG & GraphRAG Architectures" icon={Database} />
-                  <SkillItem name="LLM Fine-Tuning & PEFT" icon={Code} />
-                  <SkillItem name="Google ADK 2.0 & LangGraph" icon={Layers} />
-                  <SkillItem name="Vector Databases" icon={BrainCircuit} />
+                  <SkillItem name="Ontologies & Knowledge Graphs" icon={Layers} />
+                  <SkillItem name="Semantic Layers" icon={Database} />
+                  <SkillItem name="RAG & GraphRAG" icon={BrainCircuit} />
+                  <SkillItem name="Context Engineering" icon={Code} />
                 </div>
               </div>
 
@@ -659,13 +659,13 @@ const courses = [
               <div>
                 <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <Server className="flex-shrink-0" size={18} />
-                  Production ML & MLOps
+                  Agentic Systems
                 </h3>
                 <div className="space-y-1">
-                  <SkillItem name="Model Serving & Endpoints" icon={Globe} />
-                  <SkillItem name="CI/CD & Deployment" icon={Github} />
-                  <SkillItem name="GCP (Gemini Enterprise Agent Platform)" icon={Box} />
-                  <SkillItem name="Model Drift & Monitoring" icon={LineChart} />
+                  <SkillItem name="Agent Architectures" icon={Layers} />
+                  <SkillItem name="Agent Interoperability (MCP, A2A)" icon={Globe} />
+                  <SkillItem name="Evaluation & Observability" icon={LineChart} />
+                  <SkillItem name="LLM Fine-Tuning" icon={Code} />
                 </div>
               </div>
 
@@ -673,13 +673,13 @@ const courses = [
               <div>
                 <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <Cloud className="flex-shrink-0" size={18} />
-                  Cloud & Data Engineering
+                  Architecture & Platform
                 </h3>
                 <div className="space-y-1">
-                  <SkillItem name="GCP & AWS" icon={Cloud} />
-                  <SkillItem name="BigQuery & Spark" icon={Layers} />
-                  <SkillItem name="Containerization (Docker)" icon={Box} />
-                  <SkillItem name="ETL & Data Pipelines" icon={Database} />
+                  <SkillItem name="Solution Architecture" icon={Box} />
+                  <SkillItem name="Cloud AI Platforms (GCP, AWS)" icon={Cloud} />
+                  <SkillItem name="Data Foundations for AI" icon={Database} />
+                  <SkillItem name="AI Governance & Security" icon={Github} />
                 </div>
               </div>
 
@@ -687,13 +687,13 @@ const courses = [
               <div>
                 <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-cyan-700 dark:text-brand-accent flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-200 dark:border-brand-border">
                   <Code className="flex-shrink-0" size={18} />
-                  Core ML & Research
+                  ML & Research
                 </h3>
                 <div className="space-y-1">
-                  <SkillItem name="PyTorch & TensorFlow" icon={BrainCircuit} />
-                  <SkillItem name="Mathematical Modeling" icon={BarChart} />
-                  <SkillItem name="XGBoost & scikit-learn" icon={LineChart} />
+                  <SkillItem name="Deep Learning" icon={BrainCircuit} />
                   <SkillItem name="Reinforcement Learning" icon={Cpu} />
+                  <SkillItem name="Statistical Learning Theory" icon={BarChart} />
+                  <SkillItem name="Mathematical Modeling" icon={LineChart} />
                 </div>
               </div>
             </motion.div>
