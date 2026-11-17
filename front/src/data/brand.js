@@ -46,9 +46,9 @@ export const BIO_200 =
   "(a distribution center moving ~4.6M SKUs), compliance-grade generative AI in " +
   "healthcare at GenomAI, and three years of research engineering at Harvard " +
   "University.\n\n" +
-  "My focus is the engineering layer between ML research and enterprise systems. " +
-  "Retrieval platforms, from RAG to GraphRAG. Agentic architectures. Knowledge-grounded " +
-  "LLM applications. The data foundations that make them reliable.\n\n" +
+  "My focus is the knowledge layer that enterprise AI runs on. Ontologies and knowledge " +
+  "graphs. Semantic layers. Retrieval, from RAG to GraphRAG. The agent architectures built " +
+  "on top, and the governance that lets a regulated company run them.\n\n" +
   "Computer Science + Mathematics dual degree, 4.7/5.0. M.Sc. in Artificial " +
   "Intelligence in progress at Universidad de los Andes. Open to talks, technical " +
   "engagements, and collaborations on production AI systems.";
