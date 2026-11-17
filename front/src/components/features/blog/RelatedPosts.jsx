@@ -7,7 +7,8 @@
 import { Link } from 'react-router-dom';
 import blogData from '../../../data/blogData.json';
 import { SERIES } from '../../../data/series';
-import { BLOG_CONFIG, categoryToneClass } from '../../../utils/blogUtils';
+import { BLOG_CONFIG, categoryToneClass, getWebPPath } from '../../../utils/blogUtils';
+import SeriesCover from './SeriesCover';
 
 const POSTS = blogData.posts || [];
 
@@ -55,15 +56,30 @@ export function seriesNeighbours(post) {
   return null;
 }
 
-const PostLink = ({ p, kicker }) => (
-  <Link to={`/blog/${p.category}/${p.slug}`} className="related-item group">
-    <span className={`related-kicker ${kicker ? '' : categoryToneClass(p.category)}`}>
-      {kicker || BLOG_CONFIG.categories[p.category]?.name || p.category}
-    </span>
-    <span className="related-title">{p.title}</span>
-    <span className="related-meta">{p.readingTime} min read</span>
-  </Link>
-);
+const imageUrl = (path) => `${process.env.PUBLIC_URL || ''}${path}`;
+
+// `thumb` adds the post's header image (duotone, like every blog photo); the
+// series neighbours carry one, the related list stays text only.
+const PostLink = ({ p, kicker, thumb = false }) => {
+  const header = p.headerImage || `/blog/headers/default-${p.category}.jpg`;
+  return (
+    <Link to={`/blog/${p.category}/${p.slug}`} className={`related-item group ${thumb ? 'related-item-thumb' : ''}`}>
+      {thumb && (
+        <picture className="related-thumb">
+          <source srcSet={imageUrl(getWebPPath(header))} type="image/webp" />
+          <img src={imageUrl(header)} alt="" loading="lazy" decoding="async" className="brand-duotone" />
+        </picture>
+      )}
+      <span className="related-text">
+        <span className={`related-kicker ${kicker ? '' : categoryToneClass(p.category)}`}>
+          {kicker || BLOG_CONFIG.categories[p.category]?.name || p.category}
+        </span>
+        <span className="related-title">{p.title}</span>
+        <span className="related-meta">{p.readingTime} min read</span>
+      </span>
+    </Link>
+  );
+};
 
 export default function RelatedPosts({ post }) {
   const inSeries = seriesNeighbours(post);
@@ -77,12 +93,24 @@ export default function RelatedPosts({ post }) {
 
       {inSeries && (
         <div className="related-series">
-          <Link to="/blog/series" className="related-series-name">
-            {`Part ${inSeries.part} of ${inSeries.total} · ${inSeries.series.title}`}
+          {/* Opens this series on the series page, with this post marked. */}
+          <Link
+            to={`/blog/series#${inSeries.series.id}`}
+            state={{ from: post.slug }}
+            className="related-series-link group"
+          >
+            <span className="related-series-cover">
+              <SeriesCover id={inSeries.series.id} parts={inSeries.total} label={false} className="block w-full h-auto" />
+            </span>
+            <span className="related-series-text">
+              <span className="related-kicker">{`Part ${inSeries.part} of ${inSeries.total}`}</span>
+              <span className="related-series-name">{inSeries.series.title}</span>
+              <span className="related-meta">See the whole series</span>
+            </span>
           </Link>
           <div className="related-grid related-grid-2">
-            {inSeries.prev && <PostLink p={inSeries.prev} kicker="Previous in the series" />}
-            {inSeries.next && <PostLink p={inSeries.next} kicker="Next in the series" />}
+            {inSeries.prev && <PostLink p={inSeries.prev} kicker="Previous in the series" thumb />}
+            {inSeries.next && <PostLink p={inSeries.next} kicker="Next in the series" thumb />}
           </div>
         </div>
       )}

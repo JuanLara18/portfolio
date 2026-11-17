@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SEO } from '../components/common/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, BookOpen, Play, Pause, Download, Gauge, ChevronDown } from 'lucide-react';
 import { getSeriesWithPosts, loadPostContent, BLOG_CONFIG, getWebPPath } from '../utils/blogUtils';
 import { buildZip } from '../utils/zip';
+import SeriesCover from '../components/features/blog/SeriesCover';
 import { variants as motionVariants } from '../utils';
 
 const fadeInUp = motionVariants.fadeInUp();
@@ -251,7 +252,7 @@ function SeriesAudioBar({ post, playingSlug, setPlayingSlug }) {
   );
 }
 
-function SeriesStep({ post, isLast, playingSlug, setPlayingSlug }) {
+function SeriesStep({ post, isLast, playingSlug, setPlayingSlug, isCurrent = false }) {
   const categoryConfig = BLOG_CONFIG.categories[post.category];
   const headerImagePath = post.headerImage || `/blog/headers/default-${post.category}.jpg`;
   const fallbackPath = '/blog/headers/default.jpg';
@@ -259,7 +260,7 @@ function SeriesStep({ post, isLast, playingSlug, setPlayingSlug }) {
   const hasAudio = Boolean(post.audio?.en?.url || post.audio?.es?.url);
 
   return (
-    <motion.li variants={fadeInUp} className="relative pl-14 sm:pl-16">
+    <motion.li variants={fadeInUp} className="relative pl-14 sm:pl-16" aria-current={isCurrent ? 'page' : undefined}>
       {/* Vertical connector line down to the next step */}
       {!isLast && (
         <span
@@ -269,7 +270,7 @@ function SeriesStep({ post, isLast, playingSlug, setPlayingSlug }) {
       )}
 
       {/* Part number badge */}
-      <span className="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-gray-200 dark:border-white/[0.12] bg-white dark:bg-brand-bg font-mono text-xs sm:text-sm text-cyan-700 dark:text-brand-accent">
+      <span className={`absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-full border font-mono text-xs sm:text-sm ${isCurrent ? 'border-cyan-700 dark:border-brand-accent bg-cyan-700 dark:bg-brand-accent text-white dark:text-brand-bg' : 'border-gray-200 dark:border-white/[0.12] bg-white dark:bg-brand-bg text-cyan-700 dark:text-brand-accent'}`}>
         {post.part}
       </span>
 
@@ -339,7 +340,11 @@ export default function BlogSeriesPage() {
   // Only one step's audio plays at a time across the whole page.
   const [playingSlug, setPlayingSlug] = useState(null);
   // Accordion: which series is currently expanded (null = all collapsed).
-  const [expandedId, setExpandedId] = useState(null);
+  // A link to /blog/series#<id> opens that series; `state.from` marks the post
+  // the reader came from.
+  const location = useLocation();
+  const [expandedId, setExpandedId] = useState(() => (location.hash ? decodeURIComponent(location.hash.slice(1)) : null));
+  const fromSlug = location.state?.from;
 
   // Series id currently being packed (bodies are fetched on demand).
   const [downloadingId, setDownloadingId] = useState(null);
@@ -389,6 +394,17 @@ export default function BlogSeriesPage() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    const id = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+    if (!id || loading) return;
+    setExpandedId(id);
+    const t = setTimeout(() => {
+      const el = document.getElementById(`series-${id}`);
+      if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }, 80);
+    return () => clearTimeout(t);
+  }, [location.hash, loading]);
 
   return (
     <>
@@ -455,11 +471,12 @@ export default function BlogSeriesPage() {
               return (
                 <motion.section
                   key={s.id}
+                  id={`series-${s.id}`}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: '-40px' }}
                   variants={staggerContainer}
-                  className="border border-gray-200/60 dark:border-white/[0.08] rounded-lg overflow-hidden"
+                  className="border border-gray-200/60 dark:border-white/[0.08] rounded-lg overflow-hidden scroll-mt-24"
                 >
                   {/* Clickable header — always visible */}
                   <button
@@ -468,11 +485,11 @@ export default function BlogSeriesPage() {
                     className="w-full text-left px-5 sm:px-7 py-5 sm:py-6 cursor-pointer hover:bg-gray-50/50 dark:hover:bg-white/[0.02] transition-colors"
                   >
                     <motion.div variants={fadeInUp}>
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start justify-between gap-4 sm:gap-6">
+                        <div className="w-24 sm:w-44 shrink-0 overflow-hidden rounded-sm border border-gray-200/70 dark:border-white/[0.08]">
+                          <SeriesCover id={s.id} parts={s.partsTotal} className="block w-full h-auto" />
+                        </div>
                         <div className="min-w-0 flex-1">
-                          <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-gray-500 dark:text-brand-fg-muted mb-2">
-                            {s.partsTotal} parts
-                          </div>
                           <h2 className="type-section text-xl md:text-2xl leading-tight text-gray-900 dark:text-brand-fg mb-2">
                             {s.title}
                           </h2>
@@ -535,6 +552,7 @@ export default function BlogSeriesPage() {
                                 key={post.slug}
                                 post={post}
                                 isLast={index === s.posts.length - 1}
+                                isCurrent={post.slug === fromSlug}
                                 playingSlug={playingSlug}
                                 setPlayingSlug={setPlayingSlug}
                               />
