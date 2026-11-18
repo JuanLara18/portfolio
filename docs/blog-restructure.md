@@ -74,6 +74,27 @@ Every post gets one of:
 
 A 2028 date stays as a release slot; the line, not the date, orders the reading.
 
+## What the overlap measurement showed
+
+Every post was split into its `##` sections (1,707 of them) and compared with
+every section of every other post, by wording (TF-IDF) and by meaning (local
+embeddings). Tools and thresholds: `tools/restructure/README.md`.
+
+- **There is almost no repeated text.** No two sections share more than about
+  half their wording, and the closest pairs by meaning, read side by side, are
+  the same topic told from different angles.
+- **The excess is breadth, not duplication.** The blog revisits topics with
+  fresh writing each time. Curation is therefore mostly selection and order
+  (canon, keep, archive), not merging.
+- **A merge needs a reader's reason.** Two posts merge when they do the same job
+  for the same reader (two introductions to one subject), not because they cover
+  the same topic. Of six merges proposed from outlines, one survived.
+
+## Sections outside the lines
+
+- **Certifications**: exam guides and reviews (Anthropic, Google Cloud). A
+  section of its own, not a line and not archived.
+
 ## Phases
 
 1. **Audit.** One row per post in `docs/blog-inventory.csv`: line, series, words,
